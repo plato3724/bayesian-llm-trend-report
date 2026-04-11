@@ -1,6 +1,6 @@
 {
   "created_at": "2026-04-11T02:31:52+00:00",
-  "last_recomputed_at": "2026-04-11T12:18:13+00:00",
+  "last_recomputed_at": "2026-04-11T12:29:59+00:00",
   "included_articles": [
     "20fb29fec269",
     "44f454b544d9",
@@ -11,6 +11,7 @@
     "2f9fe8beb5ba",
     "8f8f6c5c71fe",
     "5c7678b0d4c9",
+    "06eb3b8e8732",
     "7ffdcd4439dc"
   ],
   "active_hypotheses": [
@@ -43,6 +44,12 @@
       "statement": "软件工程的瓶颈正从纯实现转向编排、验证、测试与方向判断，中间层工程师的优势会被重新洗牌。",
       "posterior_probability": 0.9620894408970607,
       "posterior_band": "very_likely"
+    },
+    {
+      "id": "nostalgia_economy_mainstreaming",
+      "statement": "在宏观不确定性加剧的时期，中国消费市场正在从面向未来的进取型消费转向面向过去的情感补偿型消费，'怀旧经济'正在从亚文化走向千亿级主流品类。",
+      "posterior_probability": 0.617747874769249,
+      "posterior_band": "uncertain"
     },
     {
       "id": "embodied_models_add_tactile_grounding",

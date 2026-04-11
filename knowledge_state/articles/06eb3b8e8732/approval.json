@@ -1,0 +1,30 @@
+{
+  "article_id": "06eb3b8e8732",
+  "timestamp": "2026-04-11T12:29:52+00:00",
+  "approver": "llm:claude-sonnet",
+  "decision": "auto_approved",
+  "overall_rationale": "Phase 2 首次 economy 域跨域运行。4 条 claim 中 2 条挂到 nostalgia_economy_mainstreaming，采用冷启动保守校准（moderate/support/slight × 2 ≈ 0.48 log-odds），预期后验落在 uncertain 上沿而非 likely，避免单篇评论型文章把全新域假说直接推进 likely 带。另 2 条作为正交事实登记，不挂假说，防止口径漂移与双重计数。所有 item 带 domain=economy，不触达任何 AI 假说，也不应触发 cross-domain 警告——若触发则说明 domain 标注或假说选择出错，必须中断。meta_tags 刻意避开与 AI 域的伪造共鸣：拒绝 'grounding_as_missing_layer'，因为 AI 域 grounding 指感官/因果锚定，与 economy 域情感避风港不是同一概念，强共用会制造隐喻坍缩。Phase 2 的诚实成果是 '2 个域 / 0 个 cross-domain cluster'。本次运行结束后，git diff 应仅显示 economy 假说、synthesis_state 时间戳与 article supporting_items 更新，不应触动任何 AI 假说的 posterior。",
+  "per_claim_decisions": [
+    {
+      "claim_id": "nostalgia_market_size_3553b",
+      "decision": "accept",
+      "reasoning": "艾媒3553亿数据能直接对应'千亿级主流品类'命题。trust=moderate 是因为艾媒属于行业研报、方法不全透明；strength=slight 是因为单一数据源、'复古经济'口径宽，缺少国家统计或第二家机构交叉验证。保守校准合理，挂载到 nostalgia_economy_mainstreaming。"
+    },
+    {
+      "claim_id": "retro_product_revivals",
+      "decision": "accept",
+      "reasoning": "多品类现象并发公开可核验，方向明确支持'亚文化走向主流'。strength=slight 而非 moderate 是 Phase 2 冷启动刻意降档：评论型媒体非一手源、现象并发 ≠ 趋势持续、单篇不能把新域假说直接送进 likely 带。挂载到 nostalgia_economy_mainstreaming。"
+    },
+    {
+      "claim_id": "secondhand_users_20pct_yoy",
+      "decision": "accept_as_fact",
+      "reasoning": "保留 hypothesis_id=null 正确。二手平台增速与怀旧经济只部分重叠、文章未标注一手来源，挂上假说会造成口径蹭边与双重计数。作为正交事实登记，将来若出现 secondhand_economy 假说或独立一手源可回挂。"
+    },
+    {
+      "claim_id": "ai_blockchain_secondhand_upgrade_thesis",
+      "decision": "accept_as_fact",
+      "reasoning": "保留 hypothesis_id=null 正确。这是作者对未来的论断、非当前证据。把前瞻叙事算进后验会模糊'已发生'与'作者相信会发生'的边界。Phase 2 原则：后验只由已发生事实驱动，论断作为正交背景。"
+    }
+  ],
+  "human_override": null
+}

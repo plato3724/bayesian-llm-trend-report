@@ -1,7 +1,7 @@
 {
   "article_id": "06eb3b8e8732",
-  "verification_status": "completed",
-  "verified_at": "2026-04-11T12:29:59+00:00",
+  "verification_status": "drafted",
+  "drafted_at": "2026-04-11T12:29:52+00:00",
   "items": [
     {
       "claim_id": "nostalgia_market_size_3553b",
@@ -45,10 +45,5 @@
       "source_title": "\"怀旧经济\"火了，我们到底在怀念什么？ —— 吴晓波频道",
       "assessment": "AI验货+区块链溯源+信用评价将二手品类升级为资产管理与循环经济生态——这是作者的前瞻性论断，非当前已发生证据，也不是怀旧经济主流化的直接证据。作为正交观察登记，不挂假说，避免用'未来可能'叙事去更新'已经在发生'的后验。Phase 2 原则：后验只由已发生事实驱动，论断作为背景保留。"
     }
-  ],
-  "approval_ref": {
-    "approver": "llm:claude-sonnet",
-    "decision": "auto_approved",
-    "timestamp": "2026-04-11T12:29:52+00:00"
-  }
+  ]
 }
