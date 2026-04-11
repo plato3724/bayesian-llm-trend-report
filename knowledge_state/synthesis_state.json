@@ -1,6 +1,6 @@
 {
   "created_at": "2026-04-11T02:31:52+00:00",
-  "last_recomputed_at": "2026-04-11T09:55:48+00:00",
+  "last_recomputed_at": "2026-04-11T11:05:23+00:00",
   "included_articles": [
     "20fb29fec269",
     "44f454b544d9",
@@ -18,7 +18,7 @@
       "id": "agent_harness_decoupling",
       "statement": "高价值 agent 系统正从单体 chat loop 转向 durable session、isolated sandbox 与 harness/runtime 解耦的架构。",
       "posterior_probability": 0.9906097670126264,
-      "posterior_band": "very_likely"
+      "posterior_band": "near_certain"
     },
     {
       "id": "structured_external_memory",
@@ -30,7 +30,7 @@
       "id": "token_efficiency_as_architecture",
       "statement": "Token 效率正在从局部优化升级为架构级目标，表现为结构化压缩、查询式检索、简洁协议与多层记忆栈。",
       "posterior_probability": 0.9086942703203016,
-      "posterior_band": "very_likely"
+      "posterior_band": "likely"
     },
     {
       "id": "speech_from_tts_to_scene_generation",
@@ -48,7 +48,7 @@
       "id": "embodied_models_add_tactile_grounding",
       "statement": "具身系统的下一批关键增量证据来自触觉模态，尤其是与 egocentric video 对齐的 tactile grounding。",
       "posterior_probability": 0.8578369446320776,
-      "posterior_band": "very_likely"
+      "posterior_band": "likely"
     }
   ],
   "retired_hypotheses": [],

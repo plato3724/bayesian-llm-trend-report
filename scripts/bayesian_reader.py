@@ -1053,8 +1053,9 @@ POSTERIOR_BANDS: list[tuple[str, float, float]] = [
     ("very_unlikely", 0.00, 0.15),
     ("unlikely", 0.15, 0.35),
     ("uncertain", 0.35, 0.65),
-    ("likely", 0.65, 0.85),
-    ("very_likely", 0.85, 1.01),
+    ("likely", 0.65, 0.93),
+    ("very_likely", 0.93, 0.98),
+    ("near_certain", 0.98, 1.01),
 ]
 
 POSTERIOR_BAND_LABELS: dict[str, str] = {
@@ -1062,7 +1063,8 @@ POSTERIOR_BAND_LABELS: dict[str, str] = {
     "unlikely": "证据偏弱",
     "uncertain": "拿不准",
     "likely": "证据偏强",
-    "very_likely": "几乎可以确认",
+    "very_likely": "证据很强",
+    "near_certain": "几乎可以确认",
     "unknown": "无数据",
 }
 
