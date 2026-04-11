@@ -1,0 +1,33 @@
+{
+  "article_id": "44f454b544d9",
+  "claim_extraction_status": "completed",
+  "extracted_at": "2026-04-11T03:13:00+00:00",
+  "claims": [
+    {
+      "id": "claw_multilayer_lab",
+      "type": "tool",
+      "text": "Claw AI Lab 将自己定义为 autonomous multi-agent research team，并给出了 5-layer hierarchical pipeline。",
+      "hypothesis_candidates": [
+        "agent_harness_decoupling",
+        "software_engineering_shifts_to_orchestration_and_testing"
+      ]
+    },
+    {
+      "id": "claw_code_harness",
+      "type": "technique",
+      "text": "Claw-Code Harness 提供 isolated runs、log capture，并把 verified results 回灌给 agent loop。",
+      "hypothesis_candidates": [
+        "agent_harness_decoupling",
+        "software_engineering_shifts_to_orchestration_and_testing"
+      ]
+    },
+    {
+      "id": "claw_hitl_quality_gates",
+      "type": "technique",
+      "text": "Claw AI Lab 在关键阶段提供 human-in-the-loop 质量闸门和 rollback。",
+      "hypothesis_candidates": [
+        "software_engineering_shifts_to_orchestration_and_testing"
+      ]
+    }
+  ]
+}

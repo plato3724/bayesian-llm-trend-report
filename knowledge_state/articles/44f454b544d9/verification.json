@@ -1,0 +1,40 @@
+{
+  "article_id": "44f454b544d9",
+  "verification_status": "completed",
+  "verified_at": "2026-04-11T03:18:00+00:00",
+  "items": [
+    {
+      "claim_id": "claw_multilayer_lab",
+      "hypothesis_id": "agent_harness_decoupling",
+      "status": "partially_verified",
+      "source_type": "official_project_page",
+      "source_title": "Claw AI Lab | Autonomous Multi-Agent Research",
+      "source_url": "https://www.clawailab.ai/",
+      "assessment": "官方站点明确展示了 multi-agent research team 和 5-layer hierarchical pipeline，但这仍是项目自述。",
+      "weight": 0.6,
+      "likelihood_ratio": 2.5
+    },
+    {
+      "claim_id": "claw_code_harness",
+      "hypothesis_id": "agent_harness_decoupling",
+      "status": "partially_verified",
+      "source_type": "official_project_page",
+      "source_title": "Claw AI Lab | Autonomous Multi-Agent Research",
+      "source_url": "https://www.clawailab.ai/",
+      "assessment": "官方站点直接描述了 Claw-Code Harness 的 isolated runs、capture logs 和 verified results feedback。",
+      "weight": 0.55,
+      "likelihood_ratio": 2.2
+    },
+    {
+      "claim_id": "claw_hitl_quality_gates",
+      "hypothesis_id": "software_engineering_shifts_to_orchestration_and_testing",
+      "status": "partially_verified",
+      "source_type": "official_project_page",
+      "source_title": "Claw AI Lab | Autonomous Multi-Agent Research",
+      "source_url": "https://www.clawailab.ai/",
+      "assessment": "官方站点明确写了 quality gates with rollback；这支持“工程瓶颈转向验证与编排”的假设，但证据仍来自项目方自述。",
+      "weight": 0.55,
+      "likelihood_ratio": 2.0
+    }
+  ]
+}

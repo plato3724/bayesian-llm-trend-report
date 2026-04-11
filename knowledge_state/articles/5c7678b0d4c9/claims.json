@@ -1,0 +1,31 @@
+{
+  "article_id": "5c7678b0d4c9",
+  "claim_extraction_status": "completed",
+  "extracted_at": "2026-04-11T03:14:00+00:00",
+  "claims": [
+    {
+      "id": "simon_inflection_point",
+      "type": "event",
+      "text": "Simon Willison 将 2025 年 11 月描述为 coding agents 的 inflection point：模型只是小幅变强，但跨过了‘基本都能按要求工作’的阈值。",
+      "hypothesis_candidates": [
+        "software_engineering_shifts_to_orchestration_and_testing"
+      ]
+    },
+    {
+      "id": "software_bottleneck_testing",
+      "type": "technique",
+      "text": "Simon Willison 认为软件工程的新瓶颈已从实现转向 testing、proving 和选方案，因为原型和实现的速度大幅提升。",
+      "hypothesis_candidates": [
+        "software_engineering_shifts_to_orchestration_and_testing"
+      ]
+    },
+    {
+      "id": "middle_engineers_disrupted",
+      "type": "event",
+      "text": "Simon Willison 引述 ThoughtWorks 的讨论，认为最尴尬的位置是‘中间层工程师’，同时他自己也公开说对软件工时估算的旧经验已经失效。",
+      "hypothesis_candidates": [
+        "software_engineering_shifts_to_orchestration_and_testing"
+      ]
+    }
+  ]
+}

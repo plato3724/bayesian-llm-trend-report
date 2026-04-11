@@ -1,0 +1,23 @@
+{
+  "article_id": "3c07c6956807",
+  "claim_extraction_status": "completed",
+  "extracted_at": "2026-04-11T03:12:00+00:00",
+  "claims": [
+    {
+      "id": "caveman_plugin_scope",
+      "type": "tool",
+      "text": "caveman 是面向 Claude Code、Codex 等 coding agent 的 skill/plugin。",
+      "hypothesis_candidates": [
+        "token_efficiency_as_architecture"
+      ]
+    },
+    {
+      "id": "caveman_token_savings",
+      "type": "technique",
+      "text": "caveman README 声称通过更简洁的响应风格可减少约 75% 输出 token，并配套压缩工具减少约 45% 输入 token。",
+      "hypothesis_candidates": [
+        "token_efficiency_as_architecture"
+      ]
+    }
+  ]
+}

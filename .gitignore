@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+web_report/
+knowledge_state/articles/*/raw/
+knowledge_state/articles/*/manual/

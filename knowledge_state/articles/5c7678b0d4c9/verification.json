@@ -1,0 +1,40 @@
+{
+  "article_id": "5c7678b0d4c9",
+  "verification_status": "completed",
+  "verified_at": "2026-04-11T03:18:00+00:00",
+  "items": [
+    {
+      "claim_id": "simon_inflection_point",
+      "hypothesis_id": "software_engineering_shifts_to_orchestration_and_testing",
+      "status": "verified",
+      "source_type": "primary_author_blog",
+      "source_title": "Highlights from my conversation about agentic engineering on Lenny’s Podcast",
+      "source_url": "https://simonwillison.net/2026/Apr/2/lennys-podcast/",
+      "assessment": "这是 Simon 本人对播客内容的整理，一手确认了他关于 2025 年 11 月 inflection point 的判断。",
+      "weight": 0.85,
+      "likelihood_ratio": 4.0
+    },
+    {
+      "claim_id": "software_bottleneck_testing",
+      "hypothesis_id": "software_engineering_shifts_to_orchestration_and_testing",
+      "status": "verified",
+      "source_type": "primary_author_blog",
+      "source_title": "Highlights from my conversation about agentic engineering on Lenny’s Podcast",
+      "source_url": "https://simonwillison.net/2026/Apr/2/lennys-podcast/",
+      "assessment": "Simon 在自己的总结中明确写出 bottleneck has moved to testing，并解释了为什么先做多个 prototype 再验证成为新常态。",
+      "weight": 0.8,
+      "likelihood_ratio": 3.4
+    },
+    {
+      "claim_id": "middle_engineers_disrupted",
+      "hypothesis_id": "software_engineering_shifts_to_orchestration_and_testing",
+      "status": "verified",
+      "source_type": "primary_author_blog",
+      "source_title": "Highlights from my conversation about agentic engineering on Lenny’s Podcast",
+      "source_url": "https://simonwillison.net/2026/Apr/2/lennys-podcast/",
+      "assessment": "同一篇一手总结里同时出现了 'my ability to estimate software is broken' 和 'the people in the middle' 的判断。",
+      "weight": 0.7,
+      "likelihood_ratio": 2.7
+    }
+  ]
+}

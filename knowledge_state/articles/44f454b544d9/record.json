@@ -1,0 +1,73 @@
+{
+  "article_id": "44f454b544d9",
+  "title": "Claude Code Harness+龙虾科研团来了！金字塔分层架构+多智能体讨论，单人也能跑出「实验室」科研",
+  "url": "https://mp.weixin.qq.com/s/Dc1ZW4NEn2xVmJAd6lEZNQ",
+  "ingested_from": "url.md",
+  "ingested_at": "2026-04-11T02:31:52+00:00",
+  "last_updated_at": "2026-04-11T02:56:08+00:00",
+  "content_state": {
+    "full_text_status": "acquired",
+    "canonical_text_source": "D:\\code\\tec_trade\\knowledge_state\\articles\\44f454b544d9\\canonical_text.txt",
+    "fetch_attempts": [
+      {
+        "attempted_at": "2026-04-11T02:32:05+00:00",
+        "status": "acquired",
+        "status_code": 200,
+        "final_url": "https://mp.weixin.qq.com/s/Dc1ZW4NEn2xVmJAd6lEZNQ",
+        "content_type": "text/html",
+        "text_length": 3874,
+        "raw_path": "D:\\code\\tec_trade\\knowledge_state\\articles\\44f454b544d9\\raw\\fetch_20260411T023203Z.html",
+        "text_path": "D:\\code\\tec_trade\\knowledge_state\\articles\\44f454b544d9\\raw\\extract_20260411T023203Z.txt",
+        "note": "Full text looks sufficient for claim extraction."
+      },
+      {
+        "attempted_at": "2026-04-11T02:33:07+00:00",
+        "status": "acquired",
+        "status_code": 200,
+        "final_url": "https://mp.weixin.qq.com/s/Dc1ZW4NEn2xVmJAd6lEZNQ",
+        "content_type": "text/html",
+        "text_length": 3121,
+        "raw_path": "D:\\code\\tec_trade\\knowledge_state\\articles\\44f454b544d9\\raw\\fetch_20260411T023304Z.html",
+        "text_path": "D:\\code\\tec_trade\\knowledge_state\\articles\\44f454b544d9\\raw\\extract_20260411T023304Z.txt",
+        "note": "Full text looks sufficient for claim extraction."
+      }
+    ],
+    "manual_artifacts": [],
+    "next_action": "monitor_for_new_evidence"
+  },
+  "analysis_state": {
+    "claim_extraction_status": "completed",
+    "verification_status": "completed",
+    "bayesian_status": "included"
+  },
+  "article_summary": {
+    "events": [],
+    "techniques": [
+      "Claw-Code Harness 提供 isolated runs、log capture，并把 verified results 回灌给 agent loop。",
+      "Claw AI Lab 在关键阶段提供 human-in-the-loop 质量闸门和 rollback。"
+    ],
+    "tools": [
+      "Claw AI Lab 将自己定义为 autonomous multi-agent research team，并给出了 5-layer hierarchical pipeline。"
+    ]
+  },
+  "hypothesis_impacts": [
+    {
+      "hypothesis_id": "agent_harness_decoupling",
+      "status": "partially_verified",
+      "weight": 0.6,
+      "likelihood_ratio": 2.5
+    },
+    {
+      "hypothesis_id": "agent_harness_decoupling",
+      "status": "partially_verified",
+      "weight": 0.55,
+      "likelihood_ratio": 2.2
+    },
+    {
+      "hypothesis_id": "software_engineering_shifts_to_orchestration_and_testing",
+      "status": "partially_verified",
+      "weight": 0.55,
+      "likelihood_ratio": 2.0
+    }
+  ]
+}

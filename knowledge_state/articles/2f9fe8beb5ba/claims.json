@@ -1,0 +1,31 @@
+{
+  "article_id": "2f9fe8beb5ba",
+  "claim_extraction_status": "completed",
+  "extracted_at": "2026-04-11T03:12:00+00:00",
+  "claims": [
+    {
+      "id": "any2speech_native_agentic",
+      "type": "tool",
+      "text": "Any2Speech 将自己定义为 Native Agentic 的无边界长音频合成框架。",
+      "hypothesis_candidates": [
+        "speech_from_tts_to_scene_generation"
+      ]
+    },
+    {
+      "id": "any2speech_gst_interface",
+      "type": "technique",
+      "text": "Any2Speech 使用 GST(Global-Sentence-Token) 分层 schema，作为 LLM Agent 与合成引擎之间的结构化语义接口。",
+      "hypothesis_candidates": [
+        "speech_from_tts_to_scene_generation"
+      ]
+    },
+    {
+      "id": "any2speech_any_input_long_audio",
+      "type": "technique",
+      "text": "Any2Speech 将文本、视频、网页、音频、剧本等任意输入转成结构化生成指令，目标是长上下文连贯、多角色交互和完整声学场景。",
+      "hypothesis_candidates": [
+        "speech_from_tts_to_scene_generation"
+      ]
+    }
+  ]
+}

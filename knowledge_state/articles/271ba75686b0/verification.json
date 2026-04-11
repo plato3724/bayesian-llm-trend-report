@@ -1,0 +1,25 @@
+{
+  "article_id": "271ba75686b0",
+  "verification_status": "completed",
+  "verified_at": "2026-04-11T03:18:00+00:00",
+  "items": [
+    {
+      "claim_id": "meta_tokenmaxxing",
+      "hypothesis_id": null,
+      "status": "unverified",
+      "source_type": "no_primary_source_collected",
+      "source_title": null,
+      "source_url": null,
+      "assessment": "当前没有拿到 Meta 内部备忘录、产品截图、官方声明或其他足够强的一手来源，因此这类内部排行和吞吐量说法先排除。"
+    },
+    {
+      "claim_id": "meta_looping_agents",
+      "hypothesis_id": null,
+      "status": "unverified",
+      "source_type": "no_primary_source_collected",
+      "source_title": null,
+      "source_url": null,
+      "assessment": "关于员工故意空转 agent 刷 token 的描述目前只看到媒体转述，未找到足够强的一手证据。"
+    }
+  ]
+}

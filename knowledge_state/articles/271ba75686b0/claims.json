@@ -1,0 +1,19 @@
+{
+  "article_id": "271ba75686b0",
+  "claim_extraction_status": "completed",
+  "extracted_at": "2026-04-11T03:16:00+00:00",
+  "claims": [
+    {
+      "id": "meta_tokenmaxxing",
+      "type": "event",
+      "text": "Meta 内部存在按 token 消耗排名的文化，且日均消耗达 2 万亿 token。",
+      "hypothesis_candidates": []
+    },
+    {
+      "id": "meta_looping_agents",
+      "type": "event",
+      "text": "Meta 员工通过循环运行 agent 空转来刷 token 排行榜。",
+      "hypothesis_candidates": []
+    }
+  ]
+}

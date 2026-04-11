@@ -1,0 +1,31 @@
+{
+  "article_id": "7bb7bc9e2b3e",
+  "claim_extraction_status": "completed",
+  "extracted_at": "2026-04-11T03:15:00+00:00",
+  "claims": [
+    {
+      "id": "graphify_multimodal_kg",
+      "type": "tool",
+      "text": "Graphify 是一个面向 AI coding assistants 的多模态知识图谱构建工具，可将代码、文档、论文和图示变成可查询 graph。",
+      "hypothesis_candidates": [
+        "structured_external_memory"
+      ]
+    },
+    {
+      "id": "graphify_tree_sitter_plus_llm",
+      "type": "technique",
+      "text": "Graphify 将 Tree-sitter 静态分析与 LLM 语义提取组合起来构图，并明确写出 no vector embeddings required。",
+      "hypothesis_candidates": [
+        "structured_external_memory"
+      ]
+    },
+    {
+      "id": "graphify_token_reduction",
+      "type": "technique",
+      "text": "Graphify 官方站点声称可以带来 71.5× token reduction，并输出 graph.html、graph.json 和 GRAPH_REPORT.md。",
+      "hypothesis_candidates": [
+        "token_efficiency_as_architecture"
+      ]
+    }
+  ]
+}

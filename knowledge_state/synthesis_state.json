@@ -1,0 +1,121 @@
+{
+  "created_at": "2026-04-11T02:31:52+00:00",
+  "last_recomputed_at": "2026-04-11T02:55:33+00:00",
+  "included_articles": [
+    "20fb29fec269",
+    "44f454b544d9",
+    "4a8b83da74e8",
+    "7bb7bc9e2b3e",
+    "3c07c6956807",
+    "2f9fe8beb5ba",
+    "8f8f6c5c71fe",
+    "5c7678b0d4c9",
+    "7ffdcd4439dc"
+  ],
+  "active_hypotheses": [
+    {
+      "id": "agent_harness_decoupling",
+      "statement": "高价值 agent 系统正从单体 chat loop 转向 durable session、isolated sandbox 与 harness/runtime 解耦的架构。",
+      "posterior_probability": 0.9906097670126264
+    },
+    {
+      "id": "structured_external_memory",
+      "statement": "长程记忆与知识管理正在从暴力扩上下文，转向结构化、可外部化、可查询的 memory / graph / session object。",
+      "posterior_probability": 0.962270127065804
+    },
+    {
+      "id": "token_efficiency_as_architecture",
+      "statement": "Token 效率正在从局部优化升级为架构级目标，表现为结构化压缩、查询式检索、简洁协议与多层记忆栈。",
+      "posterior_probability": 0.87410971862154
+    },
+    {
+      "id": "speech_from_tts_to_scene_generation",
+      "statement": "语音模型正从句子级 TTS 走向场景级、长音频、可导演式的生成，并且小型开源模型的可用性在快速上升。",
+      "posterior_probability": 0.9677651659847331
+    },
+    {
+      "id": "software_engineering_shifts_to_orchestration_and_testing",
+      "statement": "软件工程的瓶颈正从纯实现转向编排、验证、测试与方向判断，中间层工程师的优势会被重新洗牌。",
+      "posterior_probability": 0.9620894408970607
+    },
+    {
+      "id": "embodied_models_add_tactile_grounding",
+      "statement": "具身系统的下一批关键增量证据来自触觉模态，尤其是与 egocentric video 对齐的 tactile grounding。",
+      "posterior_probability": 0.8578369446320776
+    }
+  ],
+  "retired_hypotheses": [],
+  "excluded_articles": [
+    {
+      "article_id": "271ba75686b0",
+      "reason": "主要事件依赖内部传闻，缺少足够强的一手来源。"
+    },
+    {
+      "article_id": "ecfdeb44e0ae",
+      "reason": "产品存在已确认，但技术主张缺少足够细的主源文档，暂不进入跨文章后验更新。"
+    }
+  ],
+  "trend_narrative": [
+    "第一版后验更支持“agent 基础设施化”而不是“更会聊天”。Anthropic 和 Claw AI Lab 都把 session、sandbox、harness、verified-result loop 放到了核心位置。",
+    "第二个强信号不是更长上下文，而是更外部化、可查询、可结构化的 memory/object/graph。MemPalace 与 Graphify 都在绕开“把一切都塞进窗口”。",
+    "第三个稳定趋势是 token efficiency 变成独立设计轴，而不是附属优化项。Graphify、caveman、MemPalace 都把 token/cost/latency tradeoff 写进产品形态里。",
+    "语音方向不再只是 TTS。Any2Speech 与 VoxCPM2 共同指向角色、情绪、场景、长音频和 voice design 的统一建模。",
+    "软件工程趋势上，Simon Willison 的一手总结与 agent/harness 项目相互印证：实现变快之后，真正的稀缺能力转向验证、测试、编排与判断。",
+    "多模态外延继续向物理世界推进。EgoTouch/TouchAnything 代表的是 tactile grounding，而不是单纯再加一种输入模态。"
+  ],
+  "tool_index": [
+    {
+      "name": "Managed Agents",
+      "category": "agent_runtime",
+      "source_article_id": "20fb29fec269",
+      "url": "https://www.anthropic.com/engineering/managed-agents"
+    },
+    {
+      "name": "MemPalace",
+      "category": "memory_system",
+      "source_article_id": "4a8b83da74e8",
+      "url": "https://www.mempalace.tech/"
+    },
+    {
+      "name": "Graphify",
+      "category": "knowledge_graph",
+      "source_article_id": "7bb7bc9e2b3e",
+      "url": "https://graphify.net/"
+    },
+    {
+      "name": "caveman",
+      "category": "token_compression",
+      "source_article_id": "3c07c6956807",
+      "url": "https://github.com/JuliusBrussee/caveman"
+    },
+    {
+      "name": "Any2Speech",
+      "category": "speech_generation",
+      "source_article_id": "2f9fe8beb5ba",
+      "url": "https://any2speech.github.io/"
+    },
+    {
+      "name": "VoxCPM2",
+      "category": "speech_generation",
+      "source_article_id": "8f8f6c5c71fe",
+      "url": "https://github.com/OpenBMB/VoxCPM"
+    },
+    {
+      "name": "Claw AI Lab",
+      "category": "multi_agent_research",
+      "source_article_id": "44f454b544d9",
+      "url": "https://www.clawailab.ai/"
+    },
+    {
+      "name": "EgoTouch / TouchAnything",
+      "category": "embodied_tactile",
+      "source_article_id": "7ffdcd4439dc",
+      "url": "https://jianyi2004.github.io/TouchAnything-Website/"
+    }
+  ],
+  "notes": [
+    "This file is derived only from verified claims.",
+    "Articles without full text or without verification remain excluded.",
+    "Not every claim inside an included article is accepted; low-quality or marketing-heavy claims remain excluded at claim level."
+  ]
+}

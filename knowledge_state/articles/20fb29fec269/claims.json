@@ -1,0 +1,39 @@
+{
+  "article_id": "20fb29fec269",
+  "claim_extraction_status": "completed",
+  "extracted_at": "2026-04-11T03:10:00+00:00",
+  "claims": [
+    {
+      "id": "managed_agents_service",
+      "type": "event",
+      "text": "Anthropic 发布了面向长时程 agent 工作的托管服务 Managed Agents。",
+      "hypothesis_candidates": [
+        "agent_harness_decoupling"
+      ]
+    },
+    {
+      "id": "virtualized_agent_interfaces",
+      "type": "technique",
+      "text": "Managed Agents 将 agent 运行时虚拟化为 session、harness、sandbox 三个可独立替换的接口。",
+      "hypothesis_candidates": [
+        "agent_harness_decoupling",
+        "structured_external_memory"
+      ]
+    },
+    {
+      "id": "decoupling_improves_latency_and_security",
+      "type": "technique",
+      "text": "Anthropic 将 brain、hands、session 解耦后，用 durable session log 与 sandbox 外置凭证改善了延迟与安全边界。",
+      "hypothesis_candidates": [
+        "agent_harness_decoupling",
+        "token_efficiency_as_architecture"
+      ]
+    },
+    {
+      "id": "creao_first_consumer_harness",
+      "type": "event",
+      "text": "CREAO 是全球第一个真正面向普通用户的 AI Agent Harness。",
+      "hypothesis_candidates": []
+    }
+  ]
+}

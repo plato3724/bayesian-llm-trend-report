@@ -1,0 +1,80 @@
+{
+  "article_id": "4a8b83da74e8",
+  "title": "《生化危机》女主演跨界AI拿SOTA了！打造免费“AI记忆系统”爆火GitHub",
+  "url": "https://mp.weixin.qq.com/s/wtUOYjlnUHED6iclScu2zg",
+  "ingested_from": "url.md",
+  "ingested_at": "2026-04-11T02:31:52+00:00",
+  "last_updated_at": "2026-04-11T02:56:08+00:00",
+  "content_state": {
+    "full_text_status": "acquired",
+    "canonical_text_source": "D:\\code\\tec_trade\\knowledge_state\\articles\\4a8b83da74e8\\canonical_text.txt",
+    "fetch_attempts": [
+      {
+        "attempted_at": "2026-04-11T02:32:06+00:00",
+        "status": "acquired",
+        "status_code": 200,
+        "final_url": "https://mp.weixin.qq.com/s/wtUOYjlnUHED6iclScu2zg",
+        "content_type": "text/html",
+        "text_length": 5581,
+        "raw_path": "D:\\code\\tec_trade\\knowledge_state\\articles\\4a8b83da74e8\\raw\\fetch_20260411T023205Z.html",
+        "text_path": "D:\\code\\tec_trade\\knowledge_state\\articles\\4a8b83da74e8\\raw\\extract_20260411T023205Z.txt",
+        "note": "Full text looks sufficient for claim extraction."
+      },
+      {
+        "attempted_at": "2026-04-11T02:33:09+00:00",
+        "status": "acquired",
+        "status_code": 200,
+        "final_url": "https://mp.weixin.qq.com/s/wtUOYjlnUHED6iclScu2zg",
+        "content_type": "text/html",
+        "text_length": 4773,
+        "raw_path": "D:\\code\\tec_trade\\knowledge_state\\articles\\4a8b83da74e8\\raw\\fetch_20260411T023307Z.html",
+        "text_path": "D:\\code\\tec_trade\\knowledge_state\\articles\\4a8b83da74e8\\raw\\extract_20260411T023307Z.txt",
+        "note": "Full text looks sufficient for claim extraction."
+      }
+    ],
+    "manual_artifacts": [],
+    "next_action": "monitor_for_new_evidence"
+  },
+  "analysis_state": {
+    "claim_extraction_status": "completed",
+    "verification_status": "completed",
+    "bayesian_status": "included"
+  },
+  "article_summary": {
+    "events": [
+      "MemPalace 官方站点宣称其 LongMemEval raw 96.6%、hybrid 100%，同时承认 hybrid 分数和 AAAK 准确率存在方法学争议。"
+    ],
+    "techniques": [
+      "MemPalace 把长期记忆组织成 wings / rooms / halls / closets / drawers 的分层结构，并用 AAAK 做高压缩摘要。"
+    ],
+    "tools": [
+      "MemPalace 采用“全部逐字保存，再做可导航检索”的长期记忆方案，而不是先让 AI 判断什么值得记。"
+    ]
+  },
+  "hypothesis_impacts": [
+    {
+      "hypothesis_id": "structured_external_memory",
+      "status": "partially_verified",
+      "weight": 0.8,
+      "likelihood_ratio": 3.5
+    },
+    {
+      "hypothesis_id": "structured_external_memory",
+      "status": "partially_verified",
+      "weight": 0.6,
+      "likelihood_ratio": 2.3
+    },
+    {
+      "hypothesis_id": "token_efficiency_as_architecture",
+      "status": "partially_verified",
+      "weight": 0.45,
+      "likelihood_ratio": 1.8
+    },
+    {
+      "hypothesis_id": "token_efficiency_as_architecture",
+      "status": "partially_verified",
+      "weight": 0.55,
+      "likelihood_ratio": 1.8
+    }
+  ]
+}

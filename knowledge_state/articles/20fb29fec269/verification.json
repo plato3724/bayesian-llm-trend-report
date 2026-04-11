@@ -1,0 +1,60 @@
+{
+  "article_id": "20fb29fec269",
+  "verification_status": "completed",
+  "verified_at": "2026-04-11T03:18:00+00:00",
+  "items": [
+    {
+      "claim_id": "managed_agents_service",
+      "hypothesis_id": "agent_harness_decoupling",
+      "status": "verified",
+      "source_type": "official_engineering_post",
+      "source_title": "Scaling Managed Agents: Decoupling the brain from the hands",
+      "source_url": "https://www.anthropic.com/engineering/managed-agents",
+      "assessment": "Anthropic 明确将 Managed Agents 描述为 its hosted service for long-horizon agent work。",
+      "weight": 0.95,
+      "likelihood_ratio": 4.5
+    },
+    {
+      "claim_id": "virtualized_agent_interfaces",
+      "hypothesis_id": "agent_harness_decoupling",
+      "status": "verified",
+      "source_type": "official_engineering_post",
+      "source_title": "Scaling Managed Agents: Decoupling the brain from the hands",
+      "source_url": "https://www.anthropic.com/engineering/managed-agents",
+      "assessment": "官方文档直接给出了 session、harness、sandbox 三层接口，并说明三者可独立替换。",
+      "weight": 0.85,
+      "likelihood_ratio": 4.0
+    },
+    {
+      "claim_id": "virtualized_agent_interfaces",
+      "hypothesis_id": "structured_external_memory",
+      "status": "verified",
+      "source_type": "official_engineering_post",
+      "source_title": "Scaling Managed Agents: Decoupling the brain from the hands",
+      "source_url": "https://www.anthropic.com/engineering/managed-agents",
+      "assessment": "Anthropic 将 session 明确建模为 context object outside Claude's context window，这支持外部化上下文对象的趋势。",
+      "weight": 0.55,
+      "likelihood_ratio": 1.7
+    },
+    {
+      "claim_id": "decoupling_improves_latency_and_security",
+      "hypothesis_id": "agent_harness_decoupling",
+      "status": "verified",
+      "source_type": "official_engineering_post",
+      "source_title": "Scaling Managed Agents: Decoupling the brain from the hands",
+      "source_url": "https://www.anthropic.com/engineering/managed-agents",
+      "assessment": "官方文档给出 decoupling 后 p50 TTFT roughly 60% down、p95 over 90% down，并解释了将凭证隔离在 sandbox 外的安全边界设计。",
+      "weight": 0.8,
+      "likelihood_ratio": 3.8
+    },
+    {
+      "claim_id": "creao_first_consumer_harness",
+      "hypothesis_id": null,
+      "status": "unverified",
+      "source_type": "no_primary_source_collected",
+      "source_title": null,
+      "source_url": null,
+      "assessment": "当前未收集到足以支撑“全球第一个消费级 Agent Harness”这类营销表述的一手来源，因此不进入趋势更新。"
+    }
+  ]
+}

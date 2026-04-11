@@ -1,0 +1,73 @@
+{
+  "article_id": "2f9fe8beb5ba",
+  "title": "小米AI语音新框架：人人都能当声音导演",
+  "url": "https://mp.weixin.qq.com/s/iECTNjrTOOpWN3tqGeektw",
+  "ingested_from": "url.md",
+  "ingested_at": "2026-04-11T02:31:52+00:00",
+  "last_updated_at": "2026-04-11T02:56:08+00:00",
+  "content_state": {
+    "full_text_status": "acquired",
+    "canonical_text_source": "D:\\code\\tec_trade\\knowledge_state\\articles\\2f9fe8beb5ba\\canonical_text.txt",
+    "fetch_attempts": [
+      {
+        "attempted_at": "2026-04-11T02:32:01+00:00",
+        "status": "acquired",
+        "status_code": 200,
+        "final_url": "https://mp.weixin.qq.com/s/iECTNjrTOOpWN3tqGeektw",
+        "content_type": "text/html",
+        "text_length": 4579,
+        "raw_path": "D:\\code\\tec_trade\\knowledge_state\\articles\\2f9fe8beb5ba\\raw\\fetch_20260411T023158Z.html",
+        "text_path": "D:\\code\\tec_trade\\knowledge_state\\articles\\2f9fe8beb5ba\\raw\\extract_20260411T023158Z.txt",
+        "note": "Full text looks sufficient for claim extraction."
+      },
+      {
+        "attempted_at": "2026-04-11T02:33:02+00:00",
+        "status": "acquired",
+        "status_code": 200,
+        "final_url": "https://mp.weixin.qq.com/s/iECTNjrTOOpWN3tqGeektw",
+        "content_type": "text/html",
+        "text_length": 3810,
+        "raw_path": "D:\\code\\tec_trade\\knowledge_state\\articles\\2f9fe8beb5ba\\raw\\fetch_20260411T023300Z.html",
+        "text_path": "D:\\code\\tec_trade\\knowledge_state\\articles\\2f9fe8beb5ba\\raw\\extract_20260411T023300Z.txt",
+        "note": "Full text looks sufficient for claim extraction."
+      }
+    ],
+    "manual_artifacts": [],
+    "next_action": "monitor_for_new_evidence"
+  },
+  "analysis_state": {
+    "claim_extraction_status": "completed",
+    "verification_status": "completed",
+    "bayesian_status": "included"
+  },
+  "article_summary": {
+    "events": [],
+    "techniques": [
+      "Any2Speech 使用 GST(Global-Sentence-Token) 分层 schema，作为 LLM Agent 与合成引擎之间的结构化语义接口。",
+      "Any2Speech 将文本、视频、网页、音频、剧本等任意输入转成结构化生成指令，目标是长上下文连贯、多角色交互和完整声学场景。"
+    ],
+    "tools": [
+      "Any2Speech 将自己定义为 Native Agentic 的无边界长音频合成框架。"
+    ]
+  },
+  "hypothesis_impacts": [
+    {
+      "hypothesis_id": "speech_from_tts_to_scene_generation",
+      "status": "partially_verified",
+      "weight": 0.7,
+      "likelihood_ratio": 3.0
+    },
+    {
+      "hypothesis_id": "speech_from_tts_to_scene_generation",
+      "status": "partially_verified",
+      "weight": 0.6,
+      "likelihood_ratio": 2.6
+    },
+    {
+      "hypothesis_id": "speech_from_tts_to_scene_generation",
+      "status": "partially_verified",
+      "weight": 0.55,
+      "likelihood_ratio": 2.3
+    }
+  ]
+}

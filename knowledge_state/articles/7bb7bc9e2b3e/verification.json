@@ -1,0 +1,40 @@
+{
+  "article_id": "7bb7bc9e2b3e",
+  "verification_status": "completed",
+  "verified_at": "2026-04-11T03:18:00+00:00",
+  "items": [
+    {
+      "claim_id": "graphify_multimodal_kg",
+      "hypothesis_id": "structured_external_memory",
+      "status": "partially_verified",
+      "source_type": "official_project_page",
+      "source_title": "Graphify — Open-Source Knowledge Graph Skill for AI Coding Assistants",
+      "source_url": "https://graphify.net/",
+      "assessment": "官方站点明确给出 multi-modal knowledge graph builder 的定位与输入模态范围。",
+      "weight": 0.75,
+      "likelihood_ratio": 3.0
+    },
+    {
+      "claim_id": "graphify_tree_sitter_plus_llm",
+      "hypothesis_id": "structured_external_memory",
+      "status": "partially_verified",
+      "source_type": "official_project_page",
+      "source_title": "Graphify — Open-Source Knowledge Graph Skill for AI Coding Assistants",
+      "source_url": "https://graphify.net/",
+      "assessment": "站点明确写出 Tree-sitter + LLM semantic extraction，以及 no vector embeddings required。",
+      "weight": 0.65,
+      "likelihood_ratio": 2.6
+    },
+    {
+      "claim_id": "graphify_token_reduction",
+      "hypothesis_id": "token_efficiency_as_architecture",
+      "status": "partially_verified",
+      "source_type": "official_project_page",
+      "source_title": "Graphify — Open-Source Knowledge Graph Skill for AI Coding Assistants",
+      "source_url": "https://graphify.net/",
+      "assessment": "71.5× token reduction 来自项目官方站点，自陈色彩较强，但足以作为“token efficiency 已上升为产品卖点”的中等强度证据。",
+      "weight": 0.7,
+      "likelihood_ratio": 3.5
+    }
+  ]
+}

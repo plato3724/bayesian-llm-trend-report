@@ -1,0 +1,29 @@
+{
+  "article_id": "7ffdcd4439dc",
+  "verification_status": "completed",
+  "verified_at": "2026-04-11T03:18:00+00:00",
+  "items": [
+    {
+      "claim_id": "egotouch_dataset_scope",
+      "hypothesis_id": "embodied_models_add_tactile_grounding",
+      "status": "verified",
+      "source_type": "official_project_page",
+      "source_title": "TouchAnything | Multi-View Tactile Prediction",
+      "source_url": "https://jianyi2004.github.io/TouchAnything-Website/",
+      "assessment": "官方项目页直接给出 302 tasks、4,530 episodes、multi-view video、42 joints 与 pressure maps 的数据集规格。",
+      "weight": 0.9,
+      "likelihood_ratio": 4.0
+    },
+    {
+      "claim_id": "touchanything_architecture",
+      "hypothesis_id": "embodied_models_add_tactile_grounding",
+      "status": "verified",
+      "source_type": "official_project_page",
+      "source_title": "TouchAnything | Multi-View Tactile Prediction",
+      "source_url": "https://jianyi2004.github.io/TouchAnything-Website/",
+      "assessment": "项目页明确列出 shared DINOv2 encoder、learnable view embeddings、cross-view attention 和 view dropout。",
+      "weight": 0.6,
+      "likelihood_ratio": 2.5
+    }
+  ]
+}

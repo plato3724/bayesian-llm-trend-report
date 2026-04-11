@@ -1,0 +1,29 @@
+{
+  "article_id": "8f8f6c5c71fe",
+  "verification_status": "completed",
+  "verified_at": "2026-04-11T03:18:00+00:00",
+  "items": [
+    {
+      "claim_id": "voxcpm2_capabilities",
+      "hypothesis_id": "speech_from_tts_to_scene_generation",
+      "status": "verified",
+      "source_type": "github_repo",
+      "source_title": "OpenBMB/VoxCPM",
+      "source_url": "https://github.com/OpenBMB/VoxCPM",
+      "assessment": "GitHub README 明确给出 VoxCPM2 的 2B 参数规模、30 语言、9 种中文方言、Voice Design、Controllable Voice Cloning 与 48kHz 输出。",
+      "weight": 0.85,
+      "likelihood_ratio": 3.2
+    },
+    {
+      "claim_id": "voxcpm2_open_source_stack",
+      "hypothesis_id": "speech_from_tts_to_scene_generation",
+      "status": "verified",
+      "source_type": "github_repo",
+      "source_title": "OpenBMB/VoxCPM",
+      "source_url": "https://github.com/OpenBMB/VoxCPM",
+      "assessment": "README 明确写出 Apache-2.0 许可、Python API、CLI、Web Demo 与 Nano-vLLM deployment path。",
+      "weight": 0.7,
+      "likelihood_ratio": 2.4
+    }
+  ]
+}

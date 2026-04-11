@@ -1,0 +1,40 @@
+{
+  "article_id": "2f9fe8beb5ba",
+  "verification_status": "completed",
+  "verified_at": "2026-04-11T03:18:00+00:00",
+  "items": [
+    {
+      "claim_id": "any2speech_native_agentic",
+      "hypothesis_id": "speech_from_tts_to_scene_generation",
+      "status": "partially_verified",
+      "source_type": "official_project_page",
+      "source_title": "AnytoSpeech | 从独白到舞台，做自己的声音导演",
+      "source_url": "https://any2speech.github.io/",
+      "assessment": "项目官方页明确把产品定位成 Native Agentic、borderless long audio synthesis；这是团队自述，未另找第三方评测，因此记为 partially verified。",
+      "weight": 0.7,
+      "likelihood_ratio": 3.0
+    },
+    {
+      "claim_id": "any2speech_gst_interface",
+      "hypothesis_id": "speech_from_tts_to_scene_generation",
+      "status": "partially_verified",
+      "source_type": "official_project_page",
+      "source_title": "AnytoSpeech | 从独白到舞台，做自己的声音导演",
+      "source_url": "https://any2speech.github.io/",
+      "assessment": "官方项目页给出了 GST schema、Structured Semantic Interface 与 Agent->Synthesis Engine 的接口描述。",
+      "weight": 0.6,
+      "likelihood_ratio": 2.6
+    },
+    {
+      "claim_id": "any2speech_any_input_long_audio",
+      "hypothesis_id": "speech_from_tts_to_scene_generation",
+      "status": "partially_verified",
+      "source_type": "official_project_page",
+      "source_title": "AnytoSpeech | 从独白到舞台，做自己的声音导演",
+      "source_url": "https://any2speech.github.io/",
+      "assessment": "官方页展示了任意模态输入、长音频、多人交互与完整声学场景的目标能力，但目前主要是项目自陈。",
+      "weight": 0.55,
+      "likelihood_ratio": 2.3
+    }
+  ]
+}

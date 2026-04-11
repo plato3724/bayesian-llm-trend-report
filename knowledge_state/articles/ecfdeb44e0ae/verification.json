@@ -1,0 +1,16 @@
+{
+  "article_id": "ecfdeb44e0ae",
+  "verification_status": "completed",
+  "verified_at": "2026-04-11T03:18:00+00:00",
+  "items": [
+    {
+      "claim_id": "aitubiao_editable_chart_agent",
+      "hypothesis_id": null,
+      "status": "unverified",
+      "source_type": "insufficient_primary_detail",
+      "source_title": "爱图表 - 不止生成，更可深度编辑的「图表智能体」",
+      "source_url": "https://aitubiao.com/",
+      "assessment": "官网可以确认产品存在，但当前没有抓到足够可核实的技术文档、论文或公开 benchmark，因此先不纳入跨文章趋势更新。"
+    }
+  ]
+}

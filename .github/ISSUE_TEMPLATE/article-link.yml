@@ -1,0 +1,26 @@
+name: Add Article Link
+description: 用手机快速提交一篇新文章链接，供后续抓取、核实和纳入趋势框架
+title: "[Article] "
+labels:
+  - article
+body:
+  - type: input
+    id: article_url
+    attributes:
+      label: 文章链接
+      description: 每个 issue 放一篇文章，直接粘贴 URL
+      placeholder: https://...
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: 备注
+      description: 可选。你在手机上看到的关键点、怀疑点、想重点核实的地方都可以写这里
+      placeholder: 例如：这篇主要讲 agent harness，想核实里面提到的 benchmark 和产品主张
+  - type: textarea
+    id: excerpts
+    attributes:
+      label: 补充摘录
+      description: 可选。如果后续微信全文抓取失败，你可以直接贴关键段落
+      placeholder: 粘贴 1 到 5 段关键原文

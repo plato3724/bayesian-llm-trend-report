@@ -1,0 +1,66 @@
+{
+  "article_id": "8f8f6c5c71fe",
+  "title": "国产免费2B开源语音模型征服《莽撞人》！复刻郭德纲最难贯口",
+  "url": "https://mp.weixin.qq.com/s/77mbsD2cSqW8_NIMW6LE2Q",
+  "ingested_from": "url.md",
+  "ingested_at": "2026-04-11T02:31:52+00:00",
+  "last_updated_at": "2026-04-11T02:56:08+00:00",
+  "content_state": {
+    "full_text_status": "acquired",
+    "canonical_text_source": "D:\\code\\tec_trade\\knowledge_state\\articles\\8f8f6c5c71fe\\canonical_text.txt",
+    "fetch_attempts": [
+      {
+        "attempted_at": "2026-04-11T02:32:11+00:00",
+        "status": "acquired",
+        "status_code": 200,
+        "final_url": "https://mp.weixin.qq.com/s/77mbsD2cSqW8_NIMW6LE2Q",
+        "content_type": "text/html",
+        "text_length": 3626,
+        "raw_path": "D:\\code\\tec_trade\\knowledge_state\\articles\\8f8f6c5c71fe\\raw\\fetch_20260411T023210Z.html",
+        "text_path": "D:\\code\\tec_trade\\knowledge_state\\articles\\8f8f6c5c71fe\\raw\\extract_20260411T023210Z.txt",
+        "note": "Full text looks sufficient for claim extraction."
+      },
+      {
+        "attempted_at": "2026-04-11T02:33:18+00:00",
+        "status": "acquired",
+        "status_code": 200,
+        "final_url": "https://mp.weixin.qq.com/s/77mbsD2cSqW8_NIMW6LE2Q",
+        "content_type": "text/html",
+        "text_length": 2866,
+        "raw_path": "D:\\code\\tec_trade\\knowledge_state\\articles\\8f8f6c5c71fe\\raw\\fetch_20260411T023315Z.html",
+        "text_path": "D:\\code\\tec_trade\\knowledge_state\\articles\\8f8f6c5c71fe\\raw\\extract_20260411T023315Z.txt",
+        "note": "Full text looks sufficient for claim extraction."
+      }
+    ],
+    "manual_artifacts": [],
+    "next_action": "monitor_for_new_evidence"
+  },
+  "analysis_state": {
+    "claim_extraction_status": "completed",
+    "verification_status": "completed",
+    "bayesian_status": "included"
+  },
+  "article_summary": {
+    "events": [],
+    "techniques": [
+      "VoxCPM2 在 Apache-2.0 下开源，并提供 Python API、CLI、Web Demo 与 Nano-vLLM 生产部署路径。"
+    ],
+    "tools": [
+      "VoxCPM2 是一个 2B tokenizer-free TTS 模型，支持 30 languages、9 Chinese dialects、Voice Design、Controllable Voice Cloning 和 48kHz 输出。"
+    ]
+  },
+  "hypothesis_impacts": [
+    {
+      "hypothesis_id": "speech_from_tts_to_scene_generation",
+      "status": "verified",
+      "weight": 0.85,
+      "likelihood_ratio": 3.2
+    },
+    {
+      "hypothesis_id": "speech_from_tts_to_scene_generation",
+      "status": "verified",
+      "weight": 0.7,
+      "likelihood_ratio": 2.4
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "article_id": "5c7678b0d4c9",
+  "title": "25年10x工程师经验一夜归零！Django创始人警告：3-8年的程序员受AI冲击最大",
+  "url": "https://mp.weixin.qq.com/s/njRxx7V_-MJrXn6sS7Hh8g",
+  "ingested_from": "url.md",
+  "ingested_at": "2026-04-11T02:31:52+00:00",
+  "last_updated_at": "2026-04-11T02:56:08+00:00",
+  "content_state": {
+    "full_text_status": "acquired",
+    "canonical_text_source": "D:\\code\\tec_trade\\knowledge_state\\articles\\5c7678b0d4c9\\canonical_text.txt",
+    "fetch_attempts": [
+      {
+        "attempted_at": "2026-04-11T02:32:07+00:00",
+        "status": "acquired",
+        "status_code": 200,
+        "final_url": "https://mp.weixin.qq.com/s/njRxx7V_-MJrXn6sS7Hh8g",
+        "content_type": "text/html",
+        "text_length": 4006,
+        "raw_path": "D:\\code\\tec_trade\\knowledge_state\\articles\\5c7678b0d4c9\\raw\\fetch_20260411T023206Z.html",
+        "text_path": "D:\\code\\tec_trade\\knowledge_state\\articles\\5c7678b0d4c9\\raw\\extract_20260411T023206Z.txt",
+        "note": "Full text looks sufficient for claim extraction."
+      },
+      {
+        "attempted_at": "2026-04-11T02:33:11+00:00",
+        "status": "acquired",
+        "status_code": 200,
+        "final_url": "https://mp.weixin.qq.com/s/njRxx7V_-MJrXn6sS7Hh8g",
+        "content_type": "text/html",
+        "text_length": 3242,
+        "raw_path": "D:\\code\\tec_trade\\knowledge_state\\articles\\5c7678b0d4c9\\raw\\fetch_20260411T023309Z.html",
+        "text_path": "D:\\code\\tec_trade\\knowledge_state\\articles\\5c7678b0d4c9\\raw\\extract_20260411T023309Z.txt",
+        "note": "Full text looks sufficient for claim extraction."
+      }
+    ],
+    "manual_artifacts": [],
+    "next_action": "monitor_for_new_evidence"
+  },
+  "analysis_state": {
+    "claim_extraction_status": "completed",
+    "verification_status": "completed",
+    "bayesian_status": "included"
+  },
+  "article_summary": {
+    "events": [
+      "Simon Willison 将 2025 年 11 月描述为 coding agents 的 inflection point：模型只是小幅变强，但跨过了‘基本都能按要求工作’的阈值。",
+      "Simon Willison 引述 ThoughtWorks 的讨论，认为最尴尬的位置是‘中间层工程师’，同时他自己也公开说对软件工时估算的旧经验已经失效。"
+    ],
+    "techniques": [
+      "Simon Willison 认为软件工程的新瓶颈已从实现转向 testing、proving 和选方案，因为原型和实现的速度大幅提升。"
+    ],
+    "tools": []
+  },
+  "hypothesis_impacts": [
+    {
+      "hypothesis_id": "software_engineering_shifts_to_orchestration_and_testing",
+      "status": "verified",
+      "weight": 0.85,
+      "likelihood_ratio": 4.0
+    },
+    {
+      "hypothesis_id": "software_engineering_shifts_to_orchestration_and_testing",
+      "status": "verified",
+      "weight": 0.8,
+      "likelihood_ratio": 3.4
+    },
+    {
+      "hypothesis_id": "software_engineering_shifts_to_orchestration_and_testing",
+      "status": "verified",
+      "weight": 0.7,
+      "likelihood_ratio": 2.7
+    }
+  ]
+}

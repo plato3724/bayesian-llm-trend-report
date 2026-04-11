@@ -1,0 +1,23 @@
+{
+  "article_id": "8f8f6c5c71fe",
+  "claim_extraction_status": "completed",
+  "extracted_at": "2026-04-11T03:16:00+00:00",
+  "claims": [
+    {
+      "id": "voxcpm2_capabilities",
+      "type": "tool",
+      "text": "VoxCPM2 是一个 2B tokenizer-free TTS 模型，支持 30 languages、9 Chinese dialects、Voice Design、Controllable Voice Cloning 和 48kHz 输出。",
+      "hypothesis_candidates": [
+        "speech_from_tts_to_scene_generation"
+      ]
+    },
+    {
+      "id": "voxcpm2_open_source_stack",
+      "type": "technique",
+      "text": "VoxCPM2 在 Apache-2.0 下开源，并提供 Python API、CLI、Web Demo 与 Nano-vLLM 生产部署路径。",
+      "hypothesis_candidates": [
+        "speech_from_tts_to_scene_generation"
+      ]
+    }
+  ]
+}

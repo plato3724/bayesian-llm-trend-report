@@ -1,0 +1,13 @@
+{
+  "article_id": "ecfdeb44e0ae",
+  "claim_extraction_status": "completed",
+  "extracted_at": "2026-04-11T03:16:00+00:00",
+  "claims": [
+    {
+      "id": "aitubiao_editable_chart_agent",
+      "type": "tool",
+      "text": "爱图表将自己定位为可编辑的图表智能体，而不是一次性出图工具。",
+      "hypothesis_candidates": []
+    }
+  ]
+}

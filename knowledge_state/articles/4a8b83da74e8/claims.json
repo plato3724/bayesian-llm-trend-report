@@ -1,0 +1,32 @@
+{
+  "article_id": "4a8b83da74e8",
+  "claim_extraction_status": "completed",
+  "extracted_at": "2026-04-11T03:14:00+00:00",
+  "claims": [
+    {
+      "id": "mempalace_store_everything",
+      "type": "tool",
+      "text": "MemPalace 采用“全部逐字保存，再做可导航检索”的长期记忆方案，而不是先让 AI 判断什么值得记。",
+      "hypothesis_candidates": [
+        "structured_external_memory"
+      ]
+    },
+    {
+      "id": "mempalace_structured_memory",
+      "type": "technique",
+      "text": "MemPalace 把长期记忆组织成 wings / rooms / halls / closets / drawers 的分层结构，并用 AAAK 做高压缩摘要。",
+      "hypothesis_candidates": [
+        "structured_external_memory",
+        "token_efficiency_as_architecture"
+      ]
+    },
+    {
+      "id": "mempalace_benchmark_claims",
+      "type": "event",
+      "text": "MemPalace 官方站点宣称其 LongMemEval raw 96.6%、hybrid 100%，同时承认 hybrid 分数和 AAAK 准确率存在方法学争议。",
+      "hypothesis_candidates": [
+        "token_efficiency_as_architecture"
+      ]
+    }
+  ]
+}

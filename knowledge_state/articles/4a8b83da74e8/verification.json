@@ -1,0 +1,51 @@
+{
+  "article_id": "4a8b83da74e8",
+  "verification_status": "completed",
+  "verified_at": "2026-04-11T03:18:00+00:00",
+  "items": [
+    {
+      "claim_id": "mempalace_store_everything",
+      "hypothesis_id": "structured_external_memory",
+      "status": "partially_verified",
+      "source_type": "official_project_page",
+      "source_title": "MemPalace — Milla Jovovich's AI Memory System",
+      "source_url": "https://www.mempalace.tech/",
+      "assessment": "官方项目页明确写出 store everything verbatim and use vector search later，这与传统摘要式 memory 工具形成对照。",
+      "weight": 0.8,
+      "likelihood_ratio": 3.5
+    },
+    {
+      "claim_id": "mempalace_structured_memory",
+      "hypothesis_id": "structured_external_memory",
+      "status": "partially_verified",
+      "source_type": "official_project_page",
+      "source_title": "MemPalace — Milla Jovovich's AI Memory System",
+      "source_url": "https://www.mempalace.tech/",
+      "assessment": "项目页给出了 wings/rooms/halls/closets/drawers 的显式结构，这支持“外部化且结构化”的记忆设计方向。",
+      "weight": 0.6,
+      "likelihood_ratio": 2.3
+    },
+    {
+      "claim_id": "mempalace_structured_memory",
+      "hypothesis_id": "token_efficiency_as_architecture",
+      "status": "partially_verified",
+      "source_type": "official_project_page",
+      "source_title": "MemPalace — Milla Jovovich's AI Memory System",
+      "source_url": "https://www.mempalace.tech/",
+      "assessment": "AAAK 30x compression、closet/drawer 双层存储和常驻/按需读取思路，把 token 成本控制写进了 memory architecture。",
+      "weight": 0.45,
+      "likelihood_ratio": 1.8
+    },
+    {
+      "claim_id": "mempalace_benchmark_claims",
+      "hypothesis_id": "token_efficiency_as_architecture",
+      "status": "partially_verified",
+      "source_type": "official_project_page",
+      "source_title": "MemPalace — Milla Jovovich's AI Memory System",
+      "source_url": "https://www.mempalace.tech/",
+      "assessment": "项目页自己披露了 96.6 raw / 100 hybrid，并同时列出 methodology caveats 和 AAAK 可能降到约 84.2% 的争议，因此这里只把它当成“效率与准确率 tradeoff 被显式产品化”的证据，不把满分营销当铁事实。",
+      "weight": 0.55,
+      "likelihood_ratio": 1.8
+    }
+  ]
+}

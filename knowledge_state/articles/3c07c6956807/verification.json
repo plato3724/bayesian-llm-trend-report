@@ -1,0 +1,27 @@
+{
+  "article_id": "3c07c6956807",
+  "verification_status": "completed",
+  "verified_at": "2026-04-11T03:18:00+00:00",
+  "items": [
+    {
+      "claim_id": "caveman_plugin_scope",
+      "hypothesis_id": null,
+      "status": "verified",
+      "source_type": "github_repo",
+      "source_title": "JuliusBrussee/caveman",
+      "source_url": "https://github.com/JuliusBrussee/caveman",
+      "assessment": "GitHub README 直接说明 caveman 是 Claude Code skill/plugin 和 Codex plugin。"
+    },
+    {
+      "claim_id": "caveman_token_savings",
+      "hypothesis_id": "token_efficiency_as_architecture",
+      "status": "partially_verified",
+      "source_type": "github_repo",
+      "source_title": "JuliusBrussee/caveman",
+      "source_url": "https://github.com/JuliusBrussee/caveman",
+      "assessment": "75%/45% token 节省来自项目 README，自陈性质较强，但它至少表明 coding-agent 生态开始把输出协议压缩当成独立产品能力。",
+      "weight": 0.6,
+      "likelihood_ratio": 2.2
+    }
+  ]
+}

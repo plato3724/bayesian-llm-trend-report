@@ -1,0 +1,23 @@
+{
+  "article_id": "7ffdcd4439dc",
+  "claim_extraction_status": "completed",
+  "extracted_at": "2026-04-11T03:15:00+00:00",
+  "claims": [
+    {
+      "id": "egotouch_dataset_scope",
+      "type": "tool",
+      "text": "EgoTouch 是面向 egocentric hand-object interaction 的大规模多视角触觉数据集，包含 302 tasks、4,530 episodes、3 camera views、42 joints 和 pressure maps。",
+      "hypothesis_candidates": [
+        "embodied_models_add_tactile_grounding"
+      ]
+    },
+    {
+      "id": "touchanything_architecture",
+      "type": "technique",
+      "text": "TouchAnything 使用 shared DINOv2 encoder、learnable view embeddings、cross-view attention 和 view dropout 做多视角触觉预测。",
+      "hypothesis_candidates": [
+        "embodied_models_add_tactile_grounding"
+      ]
+    }
+  ]
+}
