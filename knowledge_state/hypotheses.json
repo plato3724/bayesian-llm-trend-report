@@ -1,6 +1,6 @@
 {
   "created_at": "2026-04-11T02:31:52+00:00",
-  "last_recomputed_at": "2026-04-11T03:38:44+00:00",
+  "last_recomputed_at": "2026-04-11T09:55:48+00:00",
   "hypotheses": [
     {
       "id": "agent_harness_decoupling",
@@ -10,7 +10,7 @@
       "rationale": "这类系统把长时程任务的可靠性问题转成基础设施接口问题，而不是只靠提示词堆栈。",
       "posterior_log_odds": 4.658650574600081,
       "posterior_probability": 0.9906097670126264,
-      "last_recomputed_at": "2026-04-11T03:38:44+00:00",
+      "last_recomputed_at": "2026-04-11T09:55:48+00:00",
       "supporting_items": [
         {
           "article_id": "20fb29fec269",
@@ -47,7 +47,8 @@
           "weight": 0.55,
           "likelihood_ratio": 2.2
         }
-      ]
+      ],
+      "posterior_band": "very_likely"
     },
     {
       "id": "structured_external_memory",
@@ -57,7 +58,7 @@
       "rationale": "可恢复、可选择读取的外部上下文对象，比一次性塞满窗口更适合长期工作。",
       "posterior_log_odds": 3.2388430424104664,
       "posterior_probability": 0.962270127065804,
-      "last_recomputed_at": "2026-04-11T03:38:44+00:00",
+      "last_recomputed_at": "2026-04-11T09:55:48+00:00",
       "supporting_items": [
         {
           "article_id": "20fb29fec269",
@@ -94,7 +95,8 @@
           "weight": 0.65,
           "likelihood_ratio": 2.6
         }
-      ]
+      ],
+      "posterior_band": "very_likely"
     },
     {
       "id": "token_efficiency_as_architecture",
@@ -102,9 +104,9 @@
       "prior_log_odds": 0.0,
       "status": "active",
       "rationale": "成本、延迟与可扩展性都要求模型少看、少说，但不能盲目丢信息。",
-      "posterior_log_odds": 1.937795159067439,
-      "posterior_probability": 0.87410971862154,
-      "last_recomputed_at": "2026-04-11T03:38:44+00:00",
+      "posterior_log_odds": 2.297795159067439,
+      "posterior_probability": 0.9086942703203016,
+      "last_recomputed_at": "2026-04-11T09:55:48+00:00",
       "supporting_items": [
         {
           "article_id": "3c07c6956807",
@@ -128,13 +130,22 @@
           "likelihood_ratio": 1.8
         },
         {
+          "article_id": "59b86c15655e",
+          "claim_id": "a1_adaptive_early_exit",
+          "status": "verified",
+          "source_trust": "strong",
+          "evidence_direction": "support",
+          "evidence_strength": "slight"
+        },
+        {
           "article_id": "7bb7bc9e2b3e",
           "claim_id": "graphify_token_reduction",
           "status": "partially_verified",
           "weight": 0.7,
           "likelihood_ratio": 3.5
         }
-      ]
+      ],
+      "posterior_band": "very_likely"
     },
     {
       "id": "speech_from_tts_to_scene_generation",
@@ -144,7 +155,7 @@
       "rationale": "生成目标不再只是把字念清楚，而是统一控制角色、情绪、背景与长程连贯。",
       "posterior_log_odds": 3.401941791181004,
       "posterior_probability": 0.9677651659847331,
-      "last_recomputed_at": "2026-04-11T03:38:44+00:00",
+      "last_recomputed_at": "2026-04-11T09:55:48+00:00",
       "supporting_items": [
         {
           "article_id": "2f9fe8beb5ba",
@@ -181,7 +192,8 @@
           "weight": 0.7,
           "likelihood_ratio": 2.4
         }
-      ]
+      ],
+      "posterior_band": "very_likely"
     },
     {
       "id": "software_engineering_shifts_to_orchestration_and_testing",
@@ -191,7 +203,7 @@
       "rationale": "当实现速度大幅提升后，真正稀缺的是评估、取舍和把 agent 约束到正确轨道上的能力。",
       "posterior_log_odds": 3.233877742664768,
       "posterior_probability": 0.9620894408970607,
-      "last_recomputed_at": "2026-04-11T03:38:44+00:00",
+      "last_recomputed_at": "2026-04-11T09:55:48+00:00",
       "supporting_items": [
         {
           "article_id": "44f454b544d9",
@@ -221,7 +233,8 @@
           "weight": 0.7,
           "likelihood_ratio": 2.7
         }
-      ]
+      ],
+      "posterior_band": "very_likely"
     },
     {
       "id": "embodied_models_add_tactile_grounding",
@@ -231,7 +244,7 @@
       "rationale": "视觉和语言不足以表达接触稳定性、受力分布与精细操作反馈。",
       "posterior_log_odds": 1.7974393641323947,
       "posterior_probability": 0.8578369446320776,
-      "last_recomputed_at": "2026-04-11T03:38:44+00:00",
+      "last_recomputed_at": "2026-04-11T09:55:48+00:00",
       "supporting_items": [
         {
           "article_id": "7ffdcd4439dc",
@@ -247,7 +260,8 @@
           "weight": 0.6,
           "likelihood_ratio": 2.5
         }
-      ]
+      ],
+      "posterior_band": "very_likely"
     }
   ]
 }

@@ -148,6 +148,14 @@ def bootstrap_state_files() -> None:
         )
 
 
+def relpath_from_root(path: Path | str) -> str:
+    candidate = Path(path)
+    try:
+        return candidate.resolve().relative_to(ROOT).as_posix()
+    except ValueError:
+        return candidate.as_posix()
+
+
 def article_id_from_url(url: str) -> str:
     return hashlib.sha1(url.encode("utf-8")).hexdigest()[:12]
 
@@ -712,7 +720,7 @@ def fetch_pending(limit: int, force: bool = False) -> dict[str, Any]:
         if fetched.status in {"acquired", "partial"} and fetched.text_path:
             canonical_path = article_dir(record["article_id"]) / "canonical_text.txt"
             shutil.copyfile(fetched.text_path, canonical_path)
-            record["content_state"]["canonical_text_source"] = str(canonical_path)
+            record["content_state"]["canonical_text_source"] = relpath_from_root(canonical_path)
         elif fetched.status == "blocked":
             record["content_state"]["canonical_text_source"] = None
 
@@ -854,6 +862,17 @@ def refresh_record_states() -> dict[str, Any]:
 
 
 def recompute_posteriors() -> dict[str, Any]:
+    """Recompute posteriors from all articles' verification files.
+
+    Supports two evidence schemas in parallel:
+      - Ordinal (new): source_trust / evidence_direction / evidence_strength
+      - Legacy (old): weight / likelihood_ratio floats
+
+    Legacy items are kept readable so that pre-existing verification.json
+    files (written before the fuzzy refactor) continue to contribute to
+    posteriors without a full migration. New payloads are validated to
+    reject the legacy schema in validate_verification_payload.
+    """
     bootstrap_state_files()
     hypotheses = read_json(HYPOTHESES_PATH, default={"hypotheses": []})
     article_records = load_all_article_records()
@@ -872,28 +891,66 @@ def recompute_posteriors() -> dict[str, Any]:
                 if item.get("status") not in {"verified", "partially_verified"}:
                     continue
 
-                weight = float(item.get("weight", 0.0))
-                lr = float(item.get("likelihood_ratio", 1.0))
-                if lr <= 0:
-                    continue
-                posterior_log_odds += weight * math.log(lr)
-                supporting_items.append(
-                    {
-                        "article_id": record["article_id"],
-                        "claim_id": item.get("claim_id"),
-                        "status": item.get("status"),
-                        "weight": weight,
-                        "likelihood_ratio": lr,
-                    }
-                )
+                contribution = 0.0
+                supporting_entry: dict[str, Any] = {
+                    "article_id": record["article_id"],
+                    "claim_id": item.get("claim_id"),
+                    "status": item.get("status"),
+                }
+
+                if is_ordinal_item(item):
+                    try:
+                        contribution = ordinal_contribution(
+                            source_trust=item["source_trust"],
+                            evidence_direction=item["evidence_direction"],
+                            evidence_strength=item["evidence_strength"],
+                        )
+                    except KeyError:
+                        # Malformed ordinal item — skip it rather than
+                        # crash. validate_verification_payload should have
+                        # caught this upstream.
+                        continue
+                    supporting_entry.update(
+                        {
+                            "source_trust": item["source_trust"],
+                            "evidence_direction": item["evidence_direction"],
+                            "evidence_strength": item["evidence_strength"],
+                        }
+                    )
+                else:
+                    weight = float(item.get("weight", 0.0))
+                    lr = float(item.get("likelihood_ratio", 1.0))
+                    if lr <= 0:
+                        continue
+                    contribution = weight * math.log(lr)
+                    supporting_entry.update(
+                        {
+                            "weight": weight,
+                            "likelihood_ratio": lr,
+                        }
+                    )
+
+                posterior_log_odds += contribution
+                supporting_items.append(supporting_entry)
                 if record["article_id"] not in included_articles:
                     included_articles.append(record["article_id"])
 
         probability = 1 / (1 + math.exp(-posterior_log_odds))
         hypothesis["posterior_log_odds"] = posterior_log_odds
         hypothesis["posterior_probability"] = probability
+        hypothesis["posterior_band"] = posterior_band(probability)
         hypothesis["last_recomputed_at"] = utc_now()
         hypothesis["supporting_items"] = supporting_items
+
+    # Also fold in verified+null-hypothesis articles — they count as
+    # included evidence even though they don't touch any posterior.
+    for record in article_records:
+        verification = read_json(verification_path(record["article_id"]), default={"items": []})
+        for item in verification.get("items", []):
+            if item.get("status") in STRONG_VERIFICATION_STATUSES:
+                if record["article_id"] not in included_articles:
+                    included_articles.append(record["article_id"])
+                break
 
     hypotheses["last_recomputed_at"] = utc_now()
     write_json(HYPOTHESES_PATH, hypotheses)
@@ -906,6 +963,7 @@ def recompute_posteriors() -> dict[str, Any]:
             "id": item.get("id"),
             "statement": item.get("statement"),
             "posterior_probability": item.get("posterior_probability"),
+            "posterior_band": item.get("posterior_band"),
         }
         for item in hypotheses.get("hypotheses", [])
     ]
@@ -961,6 +1019,1067 @@ def attach_manual_file(article_id: str, source_file: Path) -> dict[str, Any]:
     return {"article_id": article_id, "destination": str(destination)}
 
 
+# ---------------------------------------------------------------------------
+# Phase 1 affordances: queue / next / save-* / state diff
+# ---------------------------------------------------------------------------
+
+
+CLAIM_TYPES = {"event", "technique", "tool"}
+VERIFICATION_STATUSES = {"verified", "partially_verified", "conflicted", "unverified"}
+STRONG_VERIFICATION_STATUSES = {"verified", "partially_verified"}
+
+
+# ---------------------------------------------------------------------------
+# Fuzzy (ordinal) Bayesian model
+# ---------------------------------------------------------------------------
+# Rationale: all four inputs to the old continuous weight formula were
+# subjective guesses, so producing posteriors like 0.8741 was false precision.
+# The new model keeps the Bayesian core (log-odds accumulation) but:
+#   - only exposes ordinal inputs to humans / LLMs
+#   - only exposes band names (plus a direction arrow) to the report
+# Continuous floats still exist internally as the single source of truth for
+# math, but they must never appear in user-visible output.
+#
+# An evidence item contributes to log-odds as:
+#     sign(direction) * trust_multiplier * strength_logit
+# All three factors are ordinal lookups (weak/moderate/strong, etc.)
+#
+# Legacy verification items using the old weight/likelihood_ratio floats are
+# still accepted by recompute_posteriors so we don't have to re-annotate every
+# existing hypothesis supporting_item. New verification payloads use the
+# ordinal schema exclusively.
+
+POSTERIOR_BANDS: list[tuple[str, float, float]] = [
+    ("very_unlikely", 0.00, 0.15),
+    ("unlikely", 0.15, 0.35),
+    ("uncertain", 0.35, 0.65),
+    ("likely", 0.65, 0.85),
+    ("very_likely", 0.85, 1.01),
+]
+
+POSTERIOR_BAND_LABELS: dict[str, str] = {
+    "very_unlikely": "几乎可以否定",
+    "unlikely": "证据偏弱",
+    "uncertain": "拿不准",
+    "likely": "证据偏强",
+    "very_likely": "几乎可以确认",
+    "unknown": "无数据",
+}
+
+SOURCE_TRUST_LEVELS: dict[str, float] = {
+    "weak": 0.3,
+    "moderate": 0.6,
+    "strong": 0.9,
+}
+
+EVIDENCE_STRENGTHS: dict[str, float] = {
+    "slight": 0.4,
+    "moderate": 1.0,
+    "strong": 1.8,
+}
+
+EVIDENCE_DIRECTIONS: dict[str, int] = {
+    "support": 1,
+    "against": -1,
+}
+
+# Minimum log-odds delta that still counts as "moved" when deciding whether
+# to draw an up/down arrow next to a band label.
+BAND_DIFF_EPSILON = 0.01
+
+
+def posterior_band(probability: float | None) -> str:
+    if probability is None:
+        return "unknown"
+    for name, low, high in POSTERIOR_BANDS:
+        if low <= probability < high:
+            return name
+    return POSTERIOR_BANDS[-1][0]
+
+
+def posterior_band_arrow(before: float | None, after: float | None) -> str:
+    if before is None or after is None:
+        return "·"
+    delta = after - before
+    if delta > BAND_DIFF_EPSILON:
+        return "↑"
+    if delta < -BAND_DIFF_EPSILON:
+        return "↓"
+    return "·"
+
+
+def format_band(probability: float | None) -> str:
+    """Return 'very_likely' style label for a probability, no number."""
+    return posterior_band(probability)
+
+
+def format_band_transition(before: float | None, after: float | None) -> str:
+    """Return 'likely → very_likely ↑' style transition string, no numbers."""
+    before_band = posterior_band(before)
+    after_band = posterior_band(after)
+    arrow = posterior_band_arrow(before, after)
+    if before_band == after_band:
+        return f"{after_band} {arrow}"
+    return f"{before_band} → {after_band} {arrow}"
+
+
+def ordinal_contribution(
+    source_trust: str,
+    evidence_direction: str,
+    evidence_strength: str,
+) -> float:
+    """Map an ordinal evidence tuple to a log-odds contribution.
+
+    Raises KeyError if any field is not in the allowed vocabulary; callers
+    should validate first using validate_verification_payload.
+    """
+    trust = SOURCE_TRUST_LEVELS[source_trust]
+    strength = EVIDENCE_STRENGTHS[evidence_strength]
+    sign = EVIDENCE_DIRECTIONS[evidence_direction]
+    return sign * trust * strength
+
+
+def is_ordinal_item(item: dict[str, Any]) -> bool:
+    """True when a verification item uses the new ordinal schema."""
+    return "evidence_strength" in item or "source_trust" in item
+
+
+def draft_verification_path(article_id: str) -> Path:
+    return article_dir(article_id) / "verification_draft.json"
+
+
+def approval_path(article_id: str) -> Path:
+    return article_dir(article_id) / "approval.json"
+
+
+def load_claims(article_id: str) -> dict[str, Any]:
+    return read_json(
+        claims_path(article_id),
+        default={"article_id": article_id, "claim_extraction_status": "not_started", "claims": []},
+    )
+
+
+def load_verification(article_id: str) -> dict[str, Any]:
+    return read_json(
+        verification_path(article_id),
+        default={"article_id": article_id, "verification_status": "not_started", "items": []},
+    )
+
+
+def load_hypothesis_index() -> dict[str, dict[str, Any]]:
+    hypotheses = read_json(HYPOTHESES_PATH, default={"hypotheses": []})
+    return {item["id"]: item for item in hypotheses.get("hypotheses", []) if item.get("id")}
+
+
+def snapshot_state() -> dict[str, Any]:
+    """Capture a lightweight snapshot for state diffs.
+
+    Stores raw probabilities internally because we need them to detect
+    sub-band motion, but format_state_diff should only ever print bands.
+    """
+    hypotheses = read_json(HYPOTHESES_PATH, default={"hypotheses": []})
+    synthesis = read_json(SYNTHESIS_PATH, default={})
+    return {
+        "hypotheses": {
+            item.get("id"): item.get("posterior_probability")
+            for item in hypotheses.get("hypotheses", [])
+            if item.get("id")
+        },
+        "included_articles": list(synthesis.get("included_articles", [])),
+    }
+
+
+def format_state_diff(before: dict[str, Any], after: dict[str, Any]) -> list[str]:
+    """Render a band-based diff.
+
+    Deliberately never shows a decimal probability. A hypothesis whose
+    underlying log-odds moved but stayed inside the same band shows only
+    the arrow (↑/↓/·); a band transition shows 'before → after arrow'.
+    """
+    lines: list[str] = []
+
+    before_hyp = before.get("hypotheses", {})
+    after_hyp = after.get("hypotheses", {})
+    for hypothesis_id in sorted(set(before_hyp) | set(after_hyp)):
+        before_val = before_hyp.get(hypothesis_id)
+        after_val = after_hyp.get(hypothesis_id)
+        if before_val is None and after_val is None:
+            continue
+        if before_val is None:
+            lines.append(f"{hypothesis_id}: (new) → {posterior_band(after_val)}")
+            continue
+        if after_val is None:
+            lines.append(f"{hypothesis_id}: {posterior_band(before_val)} → (removed)")
+            continue
+        arrow = posterior_band_arrow(before_val, after_val)
+        if arrow == "·":
+            # Stayed in place within its band and no meaningful sub-band
+            # motion either. Don't clutter the diff.
+            continue
+        lines.append(f"{hypothesis_id}: {format_band_transition(before_val, after_val)}")
+
+    before_set = set(before.get("included_articles") or [])
+    after_set = set(after.get("included_articles") or [])
+    added = sorted(after_set - before_set)
+    removed = sorted(before_set - after_set)
+    if added:
+        lines.append(f"included_articles +{len(added)}: {', '.join(added)}")
+    if removed:
+        lines.append(f"included_articles -{len(removed)}: {', '.join(removed)}")
+    if not added and not removed and len(before_set) != len(after_set):
+        lines.append(f"included_articles: {len(before_set)} → {len(after_set)}")
+
+    return lines
+
+
+def validate_claims_payload(payload: Any, article_id: str) -> list[str]:
+    errors: list[str] = []
+    if not isinstance(payload, dict):
+        return ["claims payload must be a JSON object"]
+
+    payload_article_id = payload.get("article_id")
+    if payload_article_id and payload_article_id != article_id:
+        errors.append(
+            f"article_id mismatch: payload says {payload_article_id!r}, target is {article_id!r}"
+        )
+
+    status = payload.get("claim_extraction_status")
+    if status and status != "completed":
+        errors.append(
+            f"claim_extraction_status must be 'completed' for save-claims (got {status!r})"
+        )
+
+    claims = payload.get("claims")
+    if not isinstance(claims, list):
+        errors.append("'claims' must be a list")
+        return errors
+    if not claims:
+        errors.append("'claims' list is empty; refuse to mark extraction completed with no claims")
+
+    hypothesis_ids = set(load_hypothesis_index().keys())
+    seen_ids: set[str] = set()
+
+    for index, claim in enumerate(claims):
+        prefix = f"claims[{index}]"
+        if not isinstance(claim, dict):
+            errors.append(f"{prefix} must be an object")
+            continue
+
+        claim_id = claim.get("id")
+        if not isinstance(claim_id, str) or not claim_id.strip():
+            errors.append(f"{prefix}.id must be a non-empty string")
+        elif claim_id in seen_ids:
+            errors.append(f"{prefix}.id duplicate: {claim_id!r}")
+        else:
+            seen_ids.add(claim_id)
+
+        claim_type = claim.get("type")
+        if claim_type not in CLAIM_TYPES:
+            errors.append(
+                f"{prefix}.type must be one of {sorted(CLAIM_TYPES)} (got {claim_type!r})"
+            )
+
+        text = claim.get("text")
+        if not isinstance(text, str) or not text.strip():
+            errors.append(f"{prefix}.text must be a non-empty string")
+
+        candidates = claim.get("hypothesis_candidates", [])
+        if not isinstance(candidates, list):
+            errors.append(f"{prefix}.hypothesis_candidates must be a list")
+        else:
+            for candidate in candidates:
+                if not isinstance(candidate, str):
+                    errors.append(
+                        f"{prefix}.hypothesis_candidates must contain strings (got {candidate!r})"
+                    )
+                elif candidate not in hypothesis_ids:
+                    errors.append(
+                        f"{prefix}.hypothesis_candidates references unknown hypothesis_id {candidate!r}"
+                    )
+
+    return errors
+
+
+def validate_verification_payload(
+    payload: Any,
+    article_id: str,
+    claims_doc: dict[str, Any],
+) -> list[str]:
+    """Validate a verification payload.
+
+    Rules:
+      - verified / partially_verified → source_url and source_title required
+        (regardless of whether a hypothesis is attached)
+      - hypothesis_id may be null for a 'verified orthogonal fact' claim that
+        doesn't update any hypothesis this round
+      - when hypothesis_id is non-null, the ordinal evidence triple
+        (source_trust, evidence_direction, evidence_strength) is required
+        and must be in the allowed vocabulary
+      - legacy items carrying weight/likelihood_ratio floats are rejected in
+        new payloads to prevent reintroducing false-precision schemas
+    """
+    errors: list[str] = []
+    if not isinstance(payload, dict):
+        return ["verification payload must be a JSON object"]
+
+    payload_article_id = payload.get("article_id")
+    if payload_article_id and payload_article_id != article_id:
+        errors.append(
+            f"article_id mismatch: payload says {payload_article_id!r}, target is {article_id!r}"
+        )
+
+    if claims_doc.get("claim_extraction_status") != "completed":
+        errors.append(
+            "cannot save verification before claim extraction is completed for this article"
+        )
+
+    status = payload.get("verification_status")
+    if status and status not in {"completed", "drafted"}:
+        errors.append(
+            f"verification_status must be 'completed' or 'drafted' (got {status!r})"
+        )
+
+    items = payload.get("items")
+    if not isinstance(items, list):
+        errors.append("'items' must be a list")
+        return errors
+
+    known_claim_ids = {claim.get("id") for claim in claims_doc.get("claims", []) if claim.get("id")}
+    hypothesis_ids = set(load_hypothesis_index().keys())
+
+    for index, item in enumerate(items):
+        prefix = f"items[{index}]"
+        if not isinstance(item, dict):
+            errors.append(f"{prefix} must be an object")
+            continue
+
+        # Reject legacy float-based schema outright for new payloads.
+        if "weight" in item or "likelihood_ratio" in item:
+            errors.append(
+                f"{prefix}: legacy 'weight'/'likelihood_ratio' floats are no longer accepted; "
+                f"use source_trust / evidence_direction / evidence_strength instead"
+            )
+
+        claim_id = item.get("claim_id")
+        if claim_id not in known_claim_ids:
+            errors.append(
+                f"{prefix}.claim_id {claim_id!r} not found in claims.json for {article_id}"
+            )
+
+        item_status = item.get("status")
+        if item_status not in VERIFICATION_STATUSES:
+            errors.append(
+                f"{prefix}.status must be one of {sorted(VERIFICATION_STATUSES)} (got {item_status!r})"
+            )
+
+        hypothesis_id = item.get("hypothesis_id")
+        if hypothesis_id is not None:
+            if not isinstance(hypothesis_id, str):
+                errors.append(f"{prefix}.hypothesis_id must be a string or null")
+            elif hypothesis_id not in hypothesis_ids:
+                errors.append(
+                    f"{prefix}.hypothesis_id {hypothesis_id!r} not found in hypotheses.json"
+                )
+
+        assessment = item.get("assessment")
+        if not isinstance(assessment, str) or not assessment.strip():
+            errors.append(f"{prefix}.assessment must be a non-empty string")
+
+        if item_status in STRONG_VERIFICATION_STATUSES:
+            source_url = item.get("source_url")
+            if not isinstance(source_url, str) or not source_url.strip():
+                errors.append(
+                    f"{prefix}.source_url is required when status is {item_status!r}"
+                )
+            source_title = item.get("source_title")
+            if not isinstance(source_title, str) or not source_title.strip():
+                errors.append(
+                    f"{prefix}.source_title is required when status is {item_status!r}"
+                )
+
+            if hypothesis_id:
+                # A claim attached to a hypothesis must supply the ordinal
+                # evidence triple; otherwise there's nothing to contribute
+                # to the posterior.
+                trust = item.get("source_trust")
+                if trust not in SOURCE_TRUST_LEVELS:
+                    errors.append(
+                        f"{prefix}.source_trust must be one of "
+                        f"{sorted(SOURCE_TRUST_LEVELS)} when hypothesis_id is set "
+                        f"(got {trust!r})"
+                    )
+                direction = item.get("evidence_direction")
+                if direction not in EVIDENCE_DIRECTIONS:
+                    errors.append(
+                        f"{prefix}.evidence_direction must be one of "
+                        f"{sorted(EVIDENCE_DIRECTIONS)} when hypothesis_id is set "
+                        f"(got {direction!r})"
+                    )
+                strength = item.get("evidence_strength")
+                if strength not in EVIDENCE_STRENGTHS:
+                    errors.append(
+                        f"{prefix}.evidence_strength must be one of "
+                        f"{sorted(EVIDENCE_STRENGTHS)} when hypothesis_id is set "
+                        f"(got {strength!r})"
+                    )
+            else:
+                # Orthogonal fact: shouldn't carry evidence fields because
+                # they wouldn't be used, and leaving them in would be
+                # misleading.
+                for stray in ("source_trust", "evidence_direction", "evidence_strength"):
+                    if stray in item and item.get(stray) is not None:
+                        errors.append(
+                            f"{prefix}.{stray} must be omitted when hypothesis_id is null"
+                        )
+
+    return errors
+
+
+def _load_save_payload(file_arg: str | None) -> Any:
+    if file_arg is None or file_arg == "-":
+        raw = sys.stdin.read()
+        origin = "<stdin>"
+    else:
+        source_path = Path(file_arg)
+        if not source_path.exists():
+            raise FileNotFoundError(source_path)
+        raw = source_path.read_text(encoding="utf-8")
+        origin = str(source_path)
+    if not raw.strip():
+        raise ValueError(f"No JSON payload supplied from {origin}")
+    try:
+        return json.loads(raw)
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"Invalid JSON from {origin}: {exc}") from exc
+
+
+def save_claims(article_id: str, payload: Any) -> dict[str, Any]:
+    bootstrap_state_files()
+    record = read_json(article_record_path(article_id), default=None)
+    if record is None:
+        raise ValueError(f"Unknown article_id: {article_id}")
+
+    errors = validate_claims_payload(payload, article_id)
+    if errors:
+        return {"ok": False, "article_id": article_id, "errors": errors}
+
+    before = snapshot_state()
+
+    normalized = {
+        "article_id": article_id,
+        "claim_extraction_status": "completed",
+        "extracted_at": utc_now(),
+        "claims": payload.get("claims", []),
+    }
+    save_default_article_files(article_id)
+    write_json(claims_path(article_id), normalized)
+
+    refresh_record_states()
+    recompute_posteriors()
+    after = snapshot_state()
+
+    append_jsonl(
+        CHANGE_LOG_PATH,
+        {
+            "timestamp": utc_now(),
+            "event": "save_claims",
+            "article_id": article_id,
+            "claim_count": len(normalized["claims"]),
+        },
+    )
+
+    next_task = get_next_task()
+    return {
+        "ok": True,
+        "article_id": article_id,
+        "claim_count": len(normalized["claims"]),
+        "state_diff": format_state_diff(before, after),
+        "next_task": next_task,
+    }
+
+
+def save_verification(article_id: str, payload: Any) -> dict[str, Any]:
+    bootstrap_state_files()
+    record = read_json(article_record_path(article_id), default=None)
+    if record is None:
+        raise ValueError(f"Unknown article_id: {article_id}")
+
+    claims_doc = load_claims(article_id)
+    errors = validate_verification_payload(payload, article_id, claims_doc)
+    if errors:
+        return {"ok": False, "article_id": article_id, "errors": errors}
+
+    before = snapshot_state()
+
+    normalized = {
+        "article_id": article_id,
+        "verification_status": "completed",
+        "verified_at": utc_now(),
+        "items": payload.get("items", []),
+    }
+    save_default_article_files(article_id)
+    write_json(verification_path(article_id), normalized)
+
+    refresh_record_states()
+    recompute_posteriors()
+    after = snapshot_state()
+
+    append_jsonl(
+        CHANGE_LOG_PATH,
+        {
+            "timestamp": utc_now(),
+            "event": "save_verification",
+            "article_id": article_id,
+            "item_count": len(normalized["items"]),
+        },
+    )
+
+    next_task = get_next_task()
+    return {
+        "ok": True,
+        "article_id": article_id,
+        "item_count": len(normalized["items"]),
+        "state_diff": format_state_diff(before, after),
+        "next_task": next_task,
+    }
+
+
+# ---------------------------------------------------------------------------
+# Staged approval workflow: stage → (LLM self-approve or human override) → apply
+# ---------------------------------------------------------------------------
+# The old save-verification path committed verification.json and recomputed
+# posteriors in one shot, which gave a human no window to intercept what the
+# LLM had decided. The staged workflow splits that into:
+#
+#   1. stage-verification  — writes verification_draft.json and approval.json
+#      to disk, prints both. No posterior change.
+#   2. (optional) override-approval — user rewrites approval.json to refuse,
+#      detach a claim, or mark for manual review.
+#   3. apply-verification  — reads draft + approval, refuses unless the
+#      approval decision is auto_approved / human_approved / human_overridden,
+#      then writes verification.json and recomputes.
+#
+# approval.json is the permanent record of who decided what. When the LLM
+# self-approves, it leaves a rationale the user can audit; when the human
+# overrides, the override is recorded alongside the original LLM proposal.
+
+
+APPROVAL_DECISIONS = {
+    "auto_approved",      # LLM drafted and LLM decided it was safe to apply
+    "needs_human",        # LLM explicitly wants the human to look before apply
+    "human_approved",     # Human read it and signed off
+    "human_overridden",   # Human changed the decision and/or draft
+}
+
+APPLY_ALLOWED_DECISIONS = {"auto_approved", "human_approved", "human_overridden"}
+
+
+def validate_approval_payload(
+    payload: Any,
+    article_id: str,
+    draft_items: list[dict[str, Any]],
+) -> list[str]:
+    errors: list[str] = []
+    if not isinstance(payload, dict):
+        return ["approval payload must be a JSON object"]
+
+    if payload.get("article_id") not in (None, article_id):
+        errors.append(
+            f"approval.article_id mismatch: payload says {payload.get('article_id')!r}, "
+            f"target is {article_id!r}"
+        )
+
+    decision = payload.get("decision")
+    if decision not in APPROVAL_DECISIONS:
+        errors.append(
+            f"approval.decision must be one of {sorted(APPROVAL_DECISIONS)} (got {decision!r})"
+        )
+
+    approver = payload.get("approver")
+    if not isinstance(approver, str) or not approver.strip():
+        errors.append("approval.approver must be a non-empty string (e.g. 'llm:claude' or 'human:byh21')")
+
+    overall = payload.get("overall_rationale")
+    if not isinstance(overall, str) or not overall.strip():
+        errors.append("approval.overall_rationale must be a non-empty string")
+
+    per_claim = payload.get("per_claim_decisions")
+    if not isinstance(per_claim, list):
+        errors.append("approval.per_claim_decisions must be a list")
+        return errors
+
+    draft_claim_ids = [item.get("claim_id") for item in draft_items]
+    seen_claim_ids: set[str] = set()
+    for index, entry in enumerate(per_claim):
+        prefix = f"per_claim_decisions[{index}]"
+        if not isinstance(entry, dict):
+            errors.append(f"{prefix} must be an object")
+            continue
+        claim_id = entry.get("claim_id")
+        if not isinstance(claim_id, str):
+            errors.append(f"{prefix}.claim_id must be a string")
+            continue
+        if claim_id not in draft_claim_ids:
+            errors.append(
+                f"{prefix}.claim_id {claim_id!r} not found in the staged verification draft"
+            )
+        if claim_id in seen_claim_ids:
+            errors.append(f"{prefix}.claim_id duplicate: {claim_id!r}")
+        seen_claim_ids.add(claim_id)
+        entry_decision = entry.get("decision")
+        if entry_decision not in {"accept", "accept_as_fact", "reject", "defer"}:
+            errors.append(
+                f"{prefix}.decision must be one of "
+                f"['accept', 'accept_as_fact', 'reject', 'defer'] (got {entry_decision!r})"
+            )
+        reasoning = entry.get("reasoning")
+        if not isinstance(reasoning, str) or not reasoning.strip():
+            errors.append(f"{prefix}.reasoning must be a non-empty string")
+
+    # Warn if the approval did not cover every draft claim. This is not a
+    # hard error so humans can override with a coarser rationale, but it
+    # catches the common LLM mistake of skipping claims silently.
+    missing = [cid for cid in draft_claim_ids if cid not in seen_claim_ids]
+    if missing:
+        errors.append(
+            f"approval does not cover draft claim ids: {missing}. "
+            f"Every staged claim needs a per-claim decision (accept/accept_as_fact/reject/defer)."
+        )
+
+    return errors
+
+
+def stage_verification(
+    article_id: str,
+    draft_payload: Any,
+    approval_payload: Any,
+) -> dict[str, Any]:
+    """Write verification_draft.json + approval.json, do NOT touch posteriors."""
+    bootstrap_state_files()
+    record = read_json(article_record_path(article_id), default=None)
+    if record is None:
+        raise ValueError(f"Unknown article_id: {article_id}")
+
+    claims_doc = load_claims(article_id)
+    draft_errors = validate_verification_payload(draft_payload, article_id, claims_doc)
+
+    if not isinstance(draft_payload, dict):
+        return {
+            "ok": False,
+            "article_id": article_id,
+            "stage": "verification_draft",
+            "errors": draft_errors or ["draft payload must be a JSON object"],
+        }
+
+    draft_items = draft_payload.get("items", []) if isinstance(draft_payload, dict) else []
+    approval_errors = validate_approval_payload(approval_payload, article_id, draft_items)
+
+    if draft_errors or approval_errors:
+        return {
+            "ok": False,
+            "article_id": article_id,
+            "stage": "verification_draft",
+            "errors": {
+                "verification_draft": draft_errors,
+                "approval": approval_errors,
+            },
+        }
+
+    normalized_draft = {
+        "article_id": article_id,
+        "verification_status": "drafted",
+        "drafted_at": utc_now(),
+        "items": draft_items,
+    }
+    normalized_approval = {
+        "article_id": article_id,
+        "timestamp": utc_now(),
+        "approver": approval_payload["approver"],
+        "decision": approval_payload["decision"],
+        "overall_rationale": approval_payload["overall_rationale"],
+        "per_claim_decisions": approval_payload["per_claim_decisions"],
+        "human_override": approval_payload.get("human_override"),
+    }
+
+    write_json(draft_verification_path(article_id), normalized_draft)
+    write_json(approval_path(article_id), normalized_approval)
+
+    append_jsonl(
+        CHANGE_LOG_PATH,
+        {
+            "timestamp": utc_now(),
+            "event": "stage_verification",
+            "article_id": article_id,
+            "approver": normalized_approval["approver"],
+            "decision": normalized_approval["decision"],
+            "item_count": len(draft_items),
+        },
+    )
+
+    return {
+        "ok": True,
+        "article_id": article_id,
+        "draft_path": relpath_from_root(draft_verification_path(article_id)),
+        "approval_path": relpath_from_root(approval_path(article_id)),
+        "decision": normalized_approval["decision"],
+        "approver": normalized_approval["approver"],
+        "item_count": len(draft_items),
+        "overall_rationale": normalized_approval["overall_rationale"],
+        "per_claim_decisions": normalized_approval["per_claim_decisions"],
+        "ready_to_apply": normalized_approval["decision"] in APPLY_ALLOWED_DECISIONS,
+        "next_step": (
+            "python scripts/bayesian_reader.py apply-verification "
+            f"--article-id {article_id}"
+            if normalized_approval["decision"] in APPLY_ALLOWED_DECISIONS
+            else (
+                "approval.decision is 'needs_human'; edit the files or call "
+                "override-approval before apply-verification"
+            )
+        ),
+    }
+
+
+def apply_verification(article_id: str) -> dict[str, Any]:
+    """Read staged draft + approval, commit to verification.json, recompute."""
+    bootstrap_state_files()
+    record = read_json(article_record_path(article_id), default=None)
+    if record is None:
+        raise ValueError(f"Unknown article_id: {article_id}")
+
+    draft_path = draft_verification_path(article_id)
+    approval_file = approval_path(article_id)
+    if not draft_path.exists() or not approval_file.exists():
+        return {
+            "ok": False,
+            "article_id": article_id,
+            "errors": [
+                "no staged verification draft found; run stage-verification first"
+            ],
+        }
+
+    draft = read_json(draft_path, default={})
+    approval = read_json(approval_file, default={})
+
+    decision = approval.get("decision")
+    if decision not in APPLY_ALLOWED_DECISIONS:
+        return {
+            "ok": False,
+            "article_id": article_id,
+            "decision": decision,
+            "errors": [
+                f"approval.decision is {decision!r}; apply requires one of "
+                f"{sorted(APPLY_ALLOWED_DECISIONS)}. Call override-approval to "
+                f"change it, or edit approval.json manually."
+            ],
+        }
+
+    claims_doc = load_claims(article_id)
+    draft_items = draft.get("items", [])
+    draft_errors = validate_verification_payload(
+        {
+            "article_id": article_id,
+            "verification_status": "completed",
+            "items": draft_items,
+        },
+        article_id,
+        claims_doc,
+    )
+    if draft_errors:
+        return {
+            "ok": False,
+            "article_id": article_id,
+            "errors": {"verification_draft": draft_errors},
+        }
+
+    before = snapshot_state()
+
+    normalized = {
+        "article_id": article_id,
+        "verification_status": "completed",
+        "verified_at": utc_now(),
+        "items": draft_items,
+        "approval_ref": {
+            "approver": approval.get("approver"),
+            "decision": decision,
+            "timestamp": approval.get("timestamp"),
+        },
+    }
+    save_default_article_files(article_id)
+    write_json(verification_path(article_id), normalized)
+
+    refresh_record_states()
+    recompute_posteriors()
+    after = snapshot_state()
+
+    append_jsonl(
+        CHANGE_LOG_PATH,
+        {
+            "timestamp": utc_now(),
+            "event": "apply_verification",
+            "article_id": article_id,
+            "item_count": len(draft_items),
+            "approver": approval.get("approver"),
+            "decision": decision,
+        },
+    )
+
+    next_task = get_next_task()
+    return {
+        "ok": True,
+        "article_id": article_id,
+        "item_count": len(draft_items),
+        "approver": approval.get("approver"),
+        "decision": decision,
+        "state_diff": format_state_diff(before, after),
+        "next_task": next_task,
+    }
+
+
+def override_approval(
+    article_id: str,
+    decision: str,
+    reason: str,
+    approver: str = "human:cli",
+    detach_claim_ids: list[str] | None = None,
+) -> dict[str, Any]:
+    """Rewrite an existing approval.json with a human override.
+
+    `detach_claim_ids` removes the hypothesis attachment of each listed claim
+    in verification_draft.json (setting hypothesis_id and the ordinal fields
+    to null), which is the most common override: "keep the fact, drop the
+    hypothesis mapping."
+    """
+    bootstrap_state_files()
+    if decision not in APPROVAL_DECISIONS:
+        raise ValueError(
+            f"decision must be one of {sorted(APPROVAL_DECISIONS)} (got {decision!r})"
+        )
+    if not reason.strip():
+        raise ValueError("override reason must be non-empty")
+
+    draft_path = draft_verification_path(article_id)
+    approval_file = approval_path(article_id)
+    if not draft_path.exists() or not approval_file.exists():
+        return {
+            "ok": False,
+            "article_id": article_id,
+            "errors": ["no staged verification draft to override"],
+        }
+
+    draft = read_json(draft_path, default={})
+    approval = read_json(approval_file, default={})
+
+    edits: list[dict[str, Any]] = []
+    if detach_claim_ids:
+        for item in draft.get("items", []):
+            if item.get("claim_id") in detach_claim_ids and item.get("hypothesis_id"):
+                edits.append(
+                    {
+                        "claim_id": item["claim_id"],
+                        "action": "detach_hypothesis",
+                        "previous_hypothesis_id": item.get("hypothesis_id"),
+                    }
+                )
+                item["hypothesis_id"] = None
+                for key in ("source_trust", "evidence_direction", "evidence_strength"):
+                    item.pop(key, None)
+        draft["verification_status"] = "drafted"
+        draft["last_modified_at"] = utc_now()
+        write_json(draft_path, draft)
+
+    approval["human_override"] = {
+        "timestamp": utc_now(),
+        "approver": approver,
+        "previous_decision": approval.get("decision"),
+        "reason": reason,
+        "edits": edits,
+    }
+    approval["decision"] = decision
+    approval["approver"] = approver
+    write_json(approval_file, approval)
+
+    append_jsonl(
+        CHANGE_LOG_PATH,
+        {
+            "timestamp": utc_now(),
+            "event": "override_approval",
+            "article_id": article_id,
+            "decision": decision,
+            "detach": detach_claim_ids or [],
+        },
+    )
+
+    return {
+        "ok": True,
+        "article_id": article_id,
+        "decision": decision,
+        "approver": approver,
+        "detached": detach_claim_ids or [],
+        "edits": edits,
+    }
+
+
+def _pending_record_sort_key(record: dict[str, Any]) -> str:
+    return str(record.get("ingested_at") or record.get("article_id") or "")
+
+
+def list_pending_tasks(stage: str | None = None) -> list[dict[str, Any]]:
+    records = load_all_article_records()
+    tasks: list[dict[str, Any]] = []
+
+    for record in sorted(records, key=_pending_record_sort_key):
+        article_id = record.get("article_id")
+        if not article_id:
+            continue
+        content_status = record.get("content_state", {}).get("full_text_status")
+        if content_status not in {"acquired", "partial"}:
+            continue
+
+        claims_doc = load_claims(article_id)
+        verification_doc = load_verification(article_id)
+        claim_status = claims_doc.get("claim_extraction_status", "not_started")
+        verification_status = verification_doc.get("verification_status", "not_started")
+
+        if claim_status != "completed":
+            task_stage = "extract_claims"
+        elif verification_status != "completed":
+            task_stage = "verify_claims"
+        else:
+            continue
+
+        if stage and task_stage != stage:
+            continue
+
+        tasks.append(
+            {
+                "article_id": article_id,
+                "stage": task_stage,
+                "title": record.get("title"),
+                "url": record.get("url"),
+                "content_status": content_status,
+                "ingested_at": record.get("ingested_at"),
+            }
+        )
+
+    return tasks
+
+
+def get_next_task(stage: str | None = None) -> dict[str, Any] | None:
+    tasks = list_pending_tasks(stage=stage)
+    return tasks[0] if tasks else None
+
+
+CLAIMS_SCHEMA_EXAMPLE = {
+    "article_id": "<same as target article_id>",
+    "claim_extraction_status": "completed",
+    "claims": [
+        {
+            "id": "<short_snake_case_id, unique within this file>",
+            "type": "event | technique | tool",
+            "text": "<one-sentence statement the article actually makes>",
+            "hypothesis_candidates": ["<hypothesis_id from hypotheses.json, or empty list>"],
+        }
+    ],
+}
+
+VERIFICATION_SCHEMA_EXAMPLE = {
+    "article_id": "<same as target article_id>",
+    "verification_status": "completed",
+    "items": [
+        {
+            "claim_id": "<id from claims.json>",
+            "hypothesis_id": "<hypothesis_id or null>",
+            "status": "verified | partially_verified | conflicted | unverified",
+            "source_type": "<free-form tag, e.g. official_engineering_post>",
+            "source_title": "<primary source title (required for verified/partially_verified)>",
+            "source_url": "<primary source url (required for verified/partially_verified)>",
+            "assessment": "<why this evidence supports or fails to support the hypothesis>",
+            "source_trust": "weak | moderate | strong (required iff hypothesis_id is set)",
+            "evidence_direction": "support | against (required iff hypothesis_id is set)",
+            "evidence_strength": "slight | moderate | strong (required iff hypothesis_id is set)",
+        }
+    ],
+}
+
+
+def build_next_task_payload(
+    article_id: str | None = None,
+    stage: str | None = None,
+    include_canonical_text: bool = True,
+) -> dict[str, Any]:
+    bootstrap_state_files()
+
+    if article_id is None:
+        task = get_next_task(stage=stage)
+        if task is None:
+            return {"pending": False, "reason": "no pending tasks"}
+        article_id = task["article_id"]
+        task_stage = task["stage"]
+    else:
+        task_candidates = [t for t in list_pending_tasks() if t["article_id"] == article_id]
+        if not task_candidates:
+            return {
+                "pending": False,
+                "article_id": article_id,
+                "reason": "article is not pending extraction or verification",
+            }
+        task_stage = task_candidates[0]["stage"]
+        if stage and stage != task_stage:
+            return {
+                "pending": False,
+                "article_id": article_id,
+                "reason": f"requested stage {stage!r} but current stage is {task_stage!r}",
+            }
+
+    record = read_json(article_record_path(article_id), default=None)
+    if record is None:
+        return {"pending": False, "article_id": article_id, "reason": "record not found"}
+
+    canonical_file = article_dir(article_id) / "canonical_text.txt"
+    canonical_text = ""
+    if include_canonical_text and canonical_file.exists():
+        canonical_text = canonical_file.read_text(encoding="utf-8")
+
+    hypothesis_index = load_hypothesis_index()
+    active_hypotheses = [
+        {
+            "id": item.get("id"),
+            "statement": item.get("statement"),
+            "rationale": item.get("rationale"),
+            "posterior_probability": item.get("posterior_probability"),
+        }
+        for item in hypothesis_index.values()
+        if item.get("status", "active") == "active"
+    ]
+
+    claims_doc = load_claims(article_id)
+    verification_doc = load_verification(article_id)
+
+    payload: dict[str, Any] = {
+        "pending": True,
+        "article_id": article_id,
+        "stage": task_stage,
+        "title": record.get("title"),
+        "url": record.get("url"),
+        "ingested_at": record.get("ingested_at"),
+        "content_status": record.get("content_state", {}).get("full_text_status"),
+        "canonical_text_path": relpath_from_root(canonical_file),
+        "canonical_text": canonical_text if include_canonical_text else None,
+        "active_hypotheses": active_hypotheses,
+        "existing_claims": claims_doc if task_stage == "verify_claims" else None,
+        "existing_verification": verification_doc if verification_doc.get("items") else None,
+        "write_command": (
+            f"python scripts/bayesian_reader.py save-claims --article-id {article_id} --file -"
+            if task_stage == "extract_claims"
+            else f"python scripts/bayesian_reader.py save-verification --article-id {article_id} --file -"
+        ),
+        "expected_schema_example": (
+            CLAIMS_SCHEMA_EXAMPLE if task_stage == "extract_claims" else VERIFICATION_SCHEMA_EXAMPLE
+        ),
+    }
+    return payload
+
+
 def print_json(payload: dict[str, Any]) -> None:
     print(json.dumps(payload, ensure_ascii=False, indent=2))
 
@@ -970,9 +2089,34 @@ def html_escape(value: Any) -> str:
 
 
 def probability_percent(value: float | None) -> str:
+    """Deprecated: kept only for backward-compat. Prefer band_label()."""
     if value is None:
         return "N/A"
     return f"{value * 100:.1f}%"
+
+
+def band_label(value: float | None) -> str:
+    """Return a bilingual band label for display in reports, e.g.
+    'very_likely · 几乎可以确认'. No numeric probability."""
+    band_name = posterior_band(value)
+    chinese = POSTERIOR_BAND_LABELS.get(band_name, "")
+    if chinese:
+        return f"{band_name} · {chinese}"
+    return band_name
+
+
+def band_fill_fraction(value: float | None) -> float:
+    """Return 0.0..1.0 fill fraction for the progress bar, snapped to the
+    midpoint of the enclosing band so the visual also coarsens."""
+    if value is None:
+        return 0.0
+    band_name = posterior_band(value)
+    for name, low, high in POSTERIOR_BANDS:
+        if name == band_name:
+            # Snap to midpoint, but clamp the last band (1.01) to 0.95
+            midpoint = (low + min(high, 1.0)) / 2
+            return max(0.0, min(1.0, midpoint))
+    return 0.0
 
 
 def card_list(items: list[str], empty_text: str = "暂无") -> str:
@@ -1009,11 +2153,20 @@ def build_article_detail_html(record: dict[str, Any], hypothesis_index: dict[str
         else:
             source_html = "<span class='muted'>无可展示来源</span>"
 
-        metrics = []
-        if item.get("weight") is not None:
-            metrics.append(f"weight {item['weight']}")
-        if item.get("likelihood_ratio") is not None:
-            metrics.append(f"LR {item['likelihood_ratio']}")
+        metrics: list[str] = []
+        if is_ordinal_item(item):
+            trust = item.get("source_trust")
+            direction = item.get("evidence_direction")
+            strength = item.get("evidence_strength")
+            if trust and strength and direction:
+                metrics.append(f"{direction}: {strength} from {trust} source")
+            elif not item.get("hypothesis_id"):
+                metrics.append("verified fact, no hypothesis attached")
+        else:
+            # Legacy float-based items: summarize without the raw numbers
+            # so the report still obeys the "no false precision" rule.
+            if item.get("weight") is not None or item.get("likelihood_ratio") is not None:
+                metrics.append("legacy weighted evidence")
 
         verified_rows.append(
             "".join(
@@ -1089,8 +2242,9 @@ def build_report_html() -> str:
             "".join(
                 [
                     "<article class='hypothesis-card'>",
-                    f"<div class='score' style='--pct:{max(0.0, min(100.0, (item.get('posterior_probability') or 0.0) * 100)):.1f}%'>",
-                    f"<span>{html_escape(probability_percent(item.get('posterior_probability')))}</span>",
+                    f"<div class='score' style='--pct:{band_fill_fraction(item.get('posterior_probability')) * 100:.1f}%'>",
+                    "<div class='score-bar'></div>",
+                    f"<span>{html_escape(band_label(item.get('posterior_probability')))}</span>",
                     "</div>",
                     f"<h3>{html_escape(item.get('statement', ''))}</h3>",
                     f"<p>{html_escape(item.get('rationale', ''))}</p>",
@@ -1317,13 +2471,16 @@ def build_report_html() -> str:
     }}
     .score {{
       position: relative;
+      margin-bottom: 14px;
+    }}
+    .score-bar {{
       height: 10px;
       background: #ebe5d8;
       border-radius: 999px;
       overflow: hidden;
-      margin-bottom: 14px;
+      position: relative;
     }}
-    .score::before {{
+    .score-bar::before {{
       content: "";
       position: absolute;
       inset: 0;
@@ -1332,11 +2489,11 @@ def build_report_html() -> str:
       border-radius: inherit;
     }}
     .score span {{
-      position: absolute;
-      right: 8px;
-      top: 14px;
-      font-size: 0.9rem;
+      display: block;
+      margin-top: 8px;
+      font-size: 0.85rem;
       color: var(--muted);
+      letter-spacing: 0.02em;
     }}
     .muted {{
       color: var(--muted);
@@ -1658,6 +2815,14 @@ def run_pipeline(
     report_result = build_report(output_path=output_path)
     status_result = summarize_status()
 
+    pending_tasks = list_pending_tasks()
+    pending_summary = {
+        "total": len(pending_tasks),
+        "extract_claims": sum(1 for t in pending_tasks if t["stage"] == "extract_claims"),
+        "verify_claims": sum(1 for t in pending_tasks if t["stage"] == "verify_claims"),
+        "next_task": pending_tasks[0] if pending_tasks else None,
+    }
+
     result = {
         "synced_issues": sync_result,
         "fetch": fetch_result,
@@ -1665,6 +2830,7 @@ def run_pipeline(
         "recompute": recompute_result,
         "report": report_result,
         "status": status_result,
+        "pending": pending_summary,
     }
 
     append_jsonl(
@@ -1723,8 +2889,101 @@ def build_parser() -> argparse.ArgumentParser:
 
     subparsers.add_parser("status", help="Show content acquisition status")
     subparsers.add_parser("list-articles", help="List imported articles and their workflow state")
-    subparsers.add_parser("refresh-records", help="Refresh article record states from claims and verification files")
+    refresh = subparsers.add_parser(
+        "refresh-records",
+        help="Refresh article record states from claims and verification files",
+    )
+    refresh.add_argument(
+        "--recompute",
+        action="store_true",
+        help="After refreshing record states, also recompute hypothesis posteriors.",
+    )
     subparsers.add_parser("recompute", help="Recompute hypothesis posteriors from verified claims")
+
+    next_cmd = subparsers.add_parser(
+        "next",
+        help="Print the next pending task (extract or verify) with full context",
+    )
+    next_cmd.add_argument("--stage", choices=["extract_claims", "verify_claims"])
+    next_cmd.add_argument("--article-id", help="Force a specific article instead of the queue head")
+    next_cmd.add_argument(
+        "--no-text",
+        action="store_true",
+        help="Omit canonical_text from the output (useful when piping to a listing)",
+    )
+
+    queue_cmd = subparsers.add_parser(
+        "queue",
+        help="List all pending extract/verify tasks (oldest first)",
+    )
+    queue_cmd.add_argument("--stage", choices=["extract_claims", "verify_claims"])
+
+    save_claims_cmd = subparsers.add_parser(
+        "save-claims",
+        help="Validate and write claims.json for an article, then cascade refresh+recompute",
+    )
+    save_claims_cmd.add_argument("--article-id", required=True)
+    save_claims_cmd.add_argument(
+        "--file",
+        help="Path to a JSON file, or '-' for stdin (default: stdin)",
+    )
+
+    save_verification_cmd = subparsers.add_parser(
+        "save-verification",
+        help="[advanced] Validate and write verification.json in one shot, skipping the approval stage",
+    )
+    save_verification_cmd.add_argument("--article-id", required=True)
+    save_verification_cmd.add_argument(
+        "--file",
+        help="Path to a JSON file, or '-' for stdin (default: stdin)",
+    )
+
+    stage_cmd = subparsers.add_parser(
+        "stage-verification",
+        help="Stage a verification draft + LLM approval record without touching posteriors",
+    )
+    stage_cmd.add_argument("--article-id", required=True)
+    stage_cmd.add_argument(
+        "--draft",
+        required=True,
+        help="Path to the verification draft JSON file, or '-' for stdin",
+    )
+    stage_cmd.add_argument(
+        "--approval",
+        required=True,
+        help="Path to the approval JSON file",
+    )
+
+    apply_cmd = subparsers.add_parser(
+        "apply-verification",
+        help="Read the staged draft + approval, write verification.json, recompute posteriors",
+    )
+    apply_cmd.add_argument("--article-id", required=True)
+
+    override_cmd = subparsers.add_parser(
+        "override-approval",
+        help="Human override of a staged LLM approval decision",
+    )
+    override_cmd.add_argument("--article-id", required=True)
+    override_cmd.add_argument(
+        "--decision",
+        required=True,
+        choices=sorted(APPROVAL_DECISIONS),
+    )
+    override_cmd.add_argument("--reason", required=True)
+    override_cmd.add_argument(
+        "--approver",
+        default="human:cli",
+        help="Identifier for the human performing the override (default: human:cli)",
+    )
+    override_cmd.add_argument(
+        "--detach",
+        action="append",
+        default=[],
+        metavar="CLAIM_ID",
+        help="Detach this claim's hypothesis attachment in the staged draft (repeatable)",
+    )
+
     report = subparsers.add_parser("build-report", help="Generate a readable static HTML report")
     report.add_argument("--output", default=str(REPORT_PATH))
     sync = subparsers.add_parser("sync-issues", help="Import article links from GitHub Issues")
@@ -1782,6 +3041,8 @@ def main(argv: list[str]) -> int:
 
     if args.command == "refresh-records":
         result = refresh_record_states()
+        if getattr(args, "recompute", False):
+            result["recompute"] = recompute_posteriors()
         print_json(result)
         return 0
 
@@ -1789,6 +3050,79 @@ def main(argv: list[str]) -> int:
         result = recompute_posteriors()
         print_json(result)
         return 0
+
+    if args.command == "next":
+        payload = build_next_task_payload(
+            article_id=args.article_id,
+            stage=args.stage,
+            include_canonical_text=not args.no_text,
+        )
+        print_json(payload)
+        return 0 if payload.get("pending") else 1
+
+    if args.command == "queue":
+        tasks = list_pending_tasks(stage=args.stage)
+        print_json({"pending_count": len(tasks), "tasks": tasks})
+        return 0
+
+    if args.command == "save-claims":
+        try:
+            payload = _load_save_payload(args.file)
+        except (FileNotFoundError, ValueError) as exc:
+            print_json({"ok": False, "error": str(exc)})
+            return 2
+        result = save_claims(article_id=args.article_id, payload=payload)
+        print_json(result)
+        return 0 if result.get("ok") else 2
+
+    if args.command == "save-verification":
+        try:
+            payload = _load_save_payload(args.file)
+        except (FileNotFoundError, ValueError) as exc:
+            print_json({"ok": False, "error": str(exc)})
+            return 2
+        result = save_verification(article_id=args.article_id, payload=payload)
+        print_json(result)
+        return 0 if result.get("ok") else 2
+
+    if args.command == "stage-verification":
+        try:
+            draft_payload = _load_save_payload(args.draft)
+            approval_file_arg = args.approval
+            if approval_file_arg == "-":
+                print_json({"ok": False, "error": "approval cannot come from stdin when draft also uses stdin"})
+                return 2
+            approval_payload = _load_save_payload(approval_file_arg)
+        except (FileNotFoundError, ValueError) as exc:
+            print_json({"ok": False, "error": str(exc)})
+            return 2
+        result = stage_verification(
+            article_id=args.article_id,
+            draft_payload=draft_payload,
+            approval_payload=approval_payload,
+        )
+        print_json(result)
+        return 0 if result.get("ok") else 2
+
+    if args.command == "apply-verification":
+        result = apply_verification(article_id=args.article_id)
+        print_json(result)
+        return 0 if result.get("ok") else 2
+
+    if args.command == "override-approval":
+        try:
+            result = override_approval(
+                article_id=args.article_id,
+                decision=args.decision,
+                reason=args.reason,
+                approver=args.approver,
+                detach_claim_ids=args.detach or None,
+            )
+        except ValueError as exc:
+            print_json({"ok": False, "error": str(exc)})
+            return 2
+        print_json(result)
+        return 0 if result.get("ok") else 2
 
     if args.command == "build-report":
         result = build_report(output_path=Path(args.output))

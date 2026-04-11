@@ -1,0 +1,35 @@
+{
+  "article_id": "59b86c15655e",
+  "timestamp": "2026-04-11T09:55:34+00:00",
+  "approver": "llm:claude-sonnet",
+  "decision": "auto_approved",
+  "overall_rationale": "Option C (split) applied: 4 of 5 claims verified as orthogonal facts with no hypothesis attachment, 1 claim (a1_adaptive_early_exit) attached to token_efficiency_as_architecture with slight strength from a strong source. Option A (attach the mechanism claim AND the FLOPs claim) was rejected because the FLOPs number is a downstream consequence of two mechanisms jointly, so attaching it would double-count with the mechanism claim. Option B (zero attachment) was rejected because the early-exit mechanism is a direct textbook match for 'token efficiency as architecture' and suppressing it would create a systematic conservative bias. The ordinal setting (slight/support/strong) down-weights directness on modality mismatch (VLA action tokens vs LLM text tokens, where this hypothesis was originally formed) while preserving the high source-trust of an arxiv primary with full open-source release. Expected posterior motion: token_efficiency_as_architecture stays in very_likely band with a small upward arrow (sub-band motion).",
+  "per_claim_decisions": [
+    {
+      "claim_id": "a1_model_release",
+      "decision": "accept_as_fact",
+      "reasoning": "Event claim. The arXiv paper metadata confirms the date, authors, and model name. No hypothesis match — this is release-timeline trivia, not architectural evidence."
+    },
+    {
+      "claim_id": "a1_fully_open_source",
+      "decision": "accept_as_fact",
+      "reasoning": "Release-practice claim. Verified on the paper page. Open-source status is not by itself evidence for any current hypothesis; it's a meta-fact about the paper, not about the model's design axis."
+    },
+    {
+      "claim_id": "a1_adaptive_early_exit",
+      "decision": "accept",
+      "reasoning": "Direct mechanism match on token_efficiency_as_architecture. Per-token dynamic exit computed from layer-to-layer action delta IS 'token efficiency built into the architecture'. Chose SLIGHT strength rather than moderate because (a) the modality is VLA/action tokens, adjacent to but not central to where the hypothesis was originally framed (LLM text generation), and (b) this is corroboration of an already-well-supported hypothesis, not a surprising result. STRONG trust because arxiv primary + full open source. This is the only claim that moves a posterior this round."
+    },
+    {
+      "claim_id": "a1_layered_truncated_flow_matching",
+      "decision": "accept_as_fact",
+      "reasoning": "Technique is real and verifiable on the paper. Explicitly NOT attached to token_efficiency_as_architecture: truncated flow matching reduces diffusion steps (a sampling-efficiency axis), not per-token compute. Attaching it would silently expand the hypothesis's scope from 'token efficiency' to 'inference efficiency in general', which is a hypothesis redefinition disguised as evidence update. Flagged for potential new-hypothesis formation if 2–3 more VLA-efficiency papers follow."
+    },
+    {
+      "claim_id": "a1_inference_cost_reduction",
+      "decision": "accept_as_fact",
+      "reasoning": "The 72% latency and 76.6% FLOPs numbers are confirmed in the paper. NOT attached to any hypothesis because these numbers are the JOINT downstream effect of both the early-exit mechanism and the truncated flow matching mechanism. Already crediting the early-exit mechanism via a1_adaptive_early_exit; also crediting the cost number would double-count the same underlying evidence. This is a Bayesian-hygiene refusal, not a denial of the facts."
+    }
+  ],
+  "human_override": null
+}

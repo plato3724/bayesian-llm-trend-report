@@ -35,3 +35,38 @@
 {"timestamp": "2026-04-11T03:38:44+00:00", "event": "recompute_posteriors", "included_articles": ["20fb29fec269", "44f454b544d9", "4a8b83da74e8", "7bb7bc9e2b3e", "3c07c6956807", "2f9fe8beb5ba", "8f8f6c5c71fe", "5c7678b0d4c9", "7ffdcd4439dc"], "hypothesis_count": 6}
 {"timestamp": "2026-04-11T03:38:44+00:00", "event": "build_report", "output_path": "D:\\code\\tec_trade\\docs\\index.html"}
 {"timestamp": "2026-04-11T03:38:44+00:00", "event": "run_pipeline", "repo": null, "label": null, "state": "open", "issue_limit": 20, "fetch_limit": 20, "force_fetch": false, "skip_sync_issues": false, "output_path": "D:\\code\\tec_trade\\docs\\index.html", "result_summary": {"synced": 1, "fetch_attempted": 0, "refreshed": 12, "included_articles": 9}}
+{"timestamp": "2026-04-11T05:13:41+00:00", "event": "refresh_record_states", "refreshed": 12}
+{"timestamp": "2026-04-11T05:13:41+00:00", "event": "recompute_posteriors", "included_articles": ["20fb29fec269", "44f454b544d9", "4a8b83da74e8", "7bb7bc9e2b3e", "3c07c6956807", "2f9fe8beb5ba", "8f8f6c5c71fe", "5c7678b0d4c9", "7ffdcd4439dc"], "hypothesis_count": 6}
+{"timestamp": "2026-04-11T05:13:41+00:00", "event": "save_claims", "article_id": "20fb29fec269", "claim_count": 4}
+{"timestamp": "2026-04-11T05:13:56+00:00", "event": "refresh_record_states", "refreshed": 12}
+{"timestamp": "2026-04-11T05:13:56+00:00", "event": "recompute_posteriors", "included_articles": ["20fb29fec269", "44f454b544d9", "4a8b83da74e8", "7bb7bc9e2b3e", "3c07c6956807", "2f9fe8beb5ba", "8f8f6c5c71fe", "5c7678b0d4c9", "7ffdcd4439dc"], "hypothesis_count": 6}
+{"timestamp": "2026-04-11T05:13:56+00:00", "event": "save_verification", "article_id": "20fb29fec269", "item_count": 5}
+{"timestamp": "2026-04-11T05:14:08+00:00", "event": "refresh_record_states", "refreshed": 12}
+{"timestamp": "2026-04-11T05:14:08+00:00", "event": "recompute_posteriors", "included_articles": ["20fb29fec269", "44f454b544d9", "4a8b83da74e8", "7bb7bc9e2b3e", "3c07c6956807", "2f9fe8beb5ba", "8f8f6c5c71fe", "5c7678b0d4c9", "7ffdcd4439dc"], "hypothesis_count": 6}
+{"timestamp": "2026-04-11T05:14:08+00:00", "event": "save_verification", "article_id": "20fb29fec269", "item_count": 4}
+{"timestamp": "2026-04-11T05:14:36+00:00", "event": "refresh_record_states", "refreshed": 12}
+{"timestamp": "2026-04-11T05:14:36+00:00", "event": "recompute_posteriors", "included_articles": ["20fb29fec269", "44f454b544d9", "4a8b83da74e8", "7bb7bc9e2b3e", "3c07c6956807", "2f9fe8beb5ba", "8f8f6c5c71fe", "5c7678b0d4c9", "7ffdcd4439dc"], "hypothesis_count": 6}
+{"timestamp": "2026-04-11T05:14:36+00:00", "event": "save_verification", "article_id": "20fb29fec269", "item_count": 5}
+{"timestamp": "2026-04-11T05:14:53+00:00", "event": "refresh_record_states", "refreshed": 12}
+{"timestamp": "2026-04-11T05:14:53+00:00", "event": "recompute_posteriors", "included_articles": ["20fb29fec269", "44f454b544d9", "4a8b83da74e8", "7bb7bc9e2b3e", "3c07c6956807", "2f9fe8beb5ba", "8f8f6c5c71fe", "5c7678b0d4c9", "7ffdcd4439dc"], "hypothesis_count": 6}
+{"timestamp": "2026-04-11T05:14:53+00:00", "event": "save_verification", "article_id": "20fb29fec269", "item_count": 4}
+{"timestamp": "2026-04-11T05:14:59+00:00", "event": "refresh_record_states", "refreshed": 12}
+{"timestamp": "2026-04-11T05:14:59+00:00", "event": "recompute_posteriors", "included_articles": ["20fb29fec269", "44f454b544d9", "4a8b83da74e8", "7bb7bc9e2b3e", "3c07c6956807", "2f9fe8beb5ba", "8f8f6c5c71fe", "5c7678b0d4c9", "7ffdcd4439dc"], "hypothesis_count": 6}
+{"timestamp": "2026-04-11T05:14:59+00:00", "event": "save_verification", "article_id": "20fb29fec269", "item_count": 5}
+{"timestamp": "2026-04-11T05:15:17+00:00", "event": "refresh_record_states", "refreshed": 12}
+{"timestamp": "2026-04-11T05:15:17+00:00", "event": "recompute_posteriors", "included_articles": ["20fb29fec269", "44f454b544d9", "4a8b83da74e8", "7bb7bc9e2b3e", "3c07c6956807", "2f9fe8beb5ba", "8f8f6c5c71fe", "5c7678b0d4c9", "7ffdcd4439dc"], "hypothesis_count": 6}
+{"timestamp": "2026-04-11T05:15:37+00:00", "event": "fetch_pending", "limit": 0, "force": false, "results": []}
+{"timestamp": "2026-04-11T05:15:37+00:00", "event": "refresh_record_states", "refreshed": 12}
+{"timestamp": "2026-04-11T05:15:37+00:00", "event": "recompute_posteriors", "included_articles": ["20fb29fec269", "44f454b544d9", "4a8b83da74e8", "7bb7bc9e2b3e", "3c07c6956807", "2f9fe8beb5ba", "8f8f6c5c71fe", "5c7678b0d4c9", "7ffdcd4439dc"], "hypothesis_count": 6}
+{"timestamp": "2026-04-11T05:15:37+00:00", "event": "build_report", "output_path": "D:\\code\\tec_trade\\docs\\index.html"}
+{"timestamp": "2026-04-11T05:15:37+00:00", "event": "run_pipeline", "repo": null, "label": null, "state": "open", "issue_limit": 100, "fetch_limit": 0, "force_fetch": false, "skip_sync_issues": true, "output_path": "D:\\code\\tec_trade\\docs\\index.html", "result_summary": {"synced": 0, "fetch_attempted": 0, "refreshed": 12, "included_articles": 9}}
+{"timestamp": "2026-04-11T05:24:36+00:00", "event": "refresh_record_states", "refreshed": 12}
+{"timestamp": "2026-04-11T05:24:36+00:00", "event": "recompute_posteriors", "included_articles": ["20fb29fec269", "44f454b544d9", "4a8b83da74e8", "7bb7bc9e2b3e", "3c07c6956807", "2f9fe8beb5ba", "8f8f6c5c71fe", "5c7678b0d4c9", "7ffdcd4439dc"], "hypothesis_count": 6}
+{"timestamp": "2026-04-11T05:24:36+00:00", "event": "save_claims", "article_id": "59b86c15655e", "claim_count": 5}
+{"timestamp": "2026-04-11T09:51:21+00:00", "event": "recompute_posteriors", "included_articles": ["20fb29fec269", "44f454b544d9", "4a8b83da74e8", "7bb7bc9e2b3e", "3c07c6956807", "2f9fe8beb5ba", "8f8f6c5c71fe", "5c7678b0d4c9", "7ffdcd4439dc"], "hypothesis_count": 6}
+{"timestamp": "2026-04-11T09:51:33+00:00", "event": "build_report", "output_path": "D:\\code\\tec_trade\\docs\\index.html"}
+{"timestamp": "2026-04-11T09:55:34+00:00", "event": "stage_verification", "article_id": "59b86c15655e", "approver": "llm:claude-sonnet", "decision": "auto_approved", "item_count": 5}
+{"timestamp": "2026-04-11T09:55:48+00:00", "event": "refresh_record_states", "refreshed": 12}
+{"timestamp": "2026-04-11T09:55:48+00:00", "event": "recompute_posteriors", "included_articles": ["20fb29fec269", "44f454b544d9", "4a8b83da74e8", "7bb7bc9e2b3e", "3c07c6956807", "59b86c15655e", "2f9fe8beb5ba", "8f8f6c5c71fe", "5c7678b0d4c9", "7ffdcd4439dc"], "hypothesis_count": 6}
+{"timestamp": "2026-04-11T09:55:48+00:00", "event": "apply_verification", "article_id": "59b86c15655e", "item_count": 5, "approver": "llm:claude-sonnet", "decision": "auto_approved"}
+{"timestamp": "2026-04-11T09:56:08+00:00", "event": "build_report", "output_path": "D:\\code\\tec_trade\\docs\\index.html"}

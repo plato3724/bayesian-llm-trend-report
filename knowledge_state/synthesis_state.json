@@ -1,12 +1,13 @@
 {
   "created_at": "2026-04-11T02:31:52+00:00",
-  "last_recomputed_at": "2026-04-11T03:38:44+00:00",
+  "last_recomputed_at": "2026-04-11T09:55:48+00:00",
   "included_articles": [
     "20fb29fec269",
     "44f454b544d9",
     "4a8b83da74e8",
     "7bb7bc9e2b3e",
     "3c07c6956807",
+    "59b86c15655e",
     "2f9fe8beb5ba",
     "8f8f6c5c71fe",
     "5c7678b0d4c9",
@@ -16,32 +17,38 @@
     {
       "id": "agent_harness_decoupling",
       "statement": "高价值 agent 系统正从单体 chat loop 转向 durable session、isolated sandbox 与 harness/runtime 解耦的架构。",
-      "posterior_probability": 0.9906097670126264
+      "posterior_probability": 0.9906097670126264,
+      "posterior_band": "very_likely"
     },
     {
       "id": "structured_external_memory",
       "statement": "长程记忆与知识管理正在从暴力扩上下文，转向结构化、可外部化、可查询的 memory / graph / session object。",
-      "posterior_probability": 0.962270127065804
+      "posterior_probability": 0.962270127065804,
+      "posterior_band": "very_likely"
     },
     {
       "id": "token_efficiency_as_architecture",
       "statement": "Token 效率正在从局部优化升级为架构级目标，表现为结构化压缩、查询式检索、简洁协议与多层记忆栈。",
-      "posterior_probability": 0.87410971862154
+      "posterior_probability": 0.9086942703203016,
+      "posterior_band": "very_likely"
     },
     {
       "id": "speech_from_tts_to_scene_generation",
       "statement": "语音模型正从句子级 TTS 走向场景级、长音频、可导演式的生成，并且小型开源模型的可用性在快速上升。",
-      "posterior_probability": 0.9677651659847331
+      "posterior_probability": 0.9677651659847331,
+      "posterior_band": "very_likely"
     },
     {
       "id": "software_engineering_shifts_to_orchestration_and_testing",
       "statement": "软件工程的瓶颈正从纯实现转向编排、验证、测试与方向判断，中间层工程师的优势会被重新洗牌。",
-      "posterior_probability": 0.9620894408970607
+      "posterior_probability": 0.9620894408970607,
+      "posterior_band": "very_likely"
     },
     {
       "id": "embodied_models_add_tactile_grounding",
       "statement": "具身系统的下一批关键增量证据来自触觉模态，尤其是与 egocentric video 对齐的 tactile grounding。",
-      "posterior_probability": 0.8578369446320776
+      "posterior_probability": 0.8578369446320776,
+      "posterior_band": "very_likely"
     }
   ],
   "retired_hypotheses": [],

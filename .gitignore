@@ -3,3 +3,4 @@ __pycache__/
 web_report/
 knowledge_state/articles/*/raw/
 knowledge_state/articles/*/manual/
+knowledge_state/articles/*/_proposed_*.json

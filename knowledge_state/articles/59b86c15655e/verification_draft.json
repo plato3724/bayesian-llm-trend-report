@@ -1,7 +1,7 @@
 {
   "article_id": "59b86c15655e",
-  "verification_status": "completed",
-  "verified_at": "2026-04-11T09:55:48+00:00",
+  "verification_status": "drafted",
+  "drafted_at": "2026-04-11T09:55:34+00:00",
   "items": [
     {
       "claim_id": "a1_model_release",
@@ -51,10 +51,5 @@
       "source_url": "https://arxiv.org/abs/2604.05672",
       "assessment": "The 72% latency and 76.6% FLOPs reduction numbers, and the 29.00% RoboChallenge score, are all confirmed in the paper's main result tables. These are DOWNSTREAM consequences of both the early-exit mechanism and the truncated flow matching mechanism jointly. Attaching the cost reduction to token_efficiency_as_architecture on top of the early-exit mechanism claim would double-count the same evidence, so this claim is recorded as fact only."
     }
-  ],
-  "approval_ref": {
-    "approver": "llm:claude-sonnet",
-    "decision": "auto_approved",
-    "timestamp": "2026-04-11T09:55:34+00:00"
-  }
+  ]
 }

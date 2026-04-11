@@ -4,7 +4,7 @@
   "url": "https://mp.weixin.qq.com/s/u1lUvNUZErK1AwiBpa-jeA",
   "ingested_from": "github_issue",
   "ingested_at": "2026-04-11T03:37:37+00:00",
-  "last_updated_at": "2026-04-11T03:38:44+00:00",
+  "last_updated_at": "2026-04-11T09:55:48+00:00",
   "content_state": {
     "full_text_status": "acquired",
     "canonical_text_source": "D:\\code\\tec_trade\\knowledge_state\\articles\\59b86c15655e\\canonical_text.txt",
@@ -22,19 +22,33 @@
       }
     ],
     "manual_artifacts": [],
-    "next_action": "extract_claims"
+    "next_action": "monitor_for_new_evidence"
   },
   "analysis_state": {
-    "claim_extraction_status": "not_started",
-    "verification_status": "not_started",
-    "bayesian_status": "excluded_until_verified"
+    "claim_extraction_status": "completed",
+    "verification_status": "completed",
+    "bayesian_status": "included"
   },
   "article_summary": {
-    "events": [],
-    "techniques": [],
+    "events": [
+      "2026 年 4 月，中山大学与 MBZUAI 联合发布 A₁——一款完全开源、自适应截断式的视觉-语言-动作（VLA）模型。",
+      "A₁ 的论文、代码、模型权重全面开源，且不依赖私有数据或闭源组件。"
+    ],
+    "techniques": [
+      "A₁ 使用预算感知自适应推理：训练时 VLM 每一层都接入共享动作头同步学习，推理时逐层输出动作并监测相邻层动作差异，足够小时提前终止前向传播。",
+      "A₁ 提出层间截断流匹配：让上一层动作头的输出作为下一层流匹配的热启动，避免每次提前退出时从随机噪声重新去噪，联合压缩主干与动作头的计算开销。",
+      "A₁ 在仿真与真机上实现推理时延最高降低 72%、计算量最高减少 76.6%，在 RoboChallenge 基准上平均成功率 29.00%，优于 π₀、X-VLA 等开源基线。"
+    ],
     "tools": []
   },
-  "hypothesis_impacts": [],
+  "hypothesis_impacts": [
+    {
+      "hypothesis_id": "token_efficiency_as_architecture",
+      "status": "verified",
+      "weight": null,
+      "likelihood_ratio": null
+    }
+  ],
   "ingest_sources": [
     {
       "source_name": "github_issue",
