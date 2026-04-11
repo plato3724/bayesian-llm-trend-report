@@ -4,13 +4,25 @@
   "url": "https://mp.weixin.qq.com/s/DdftSCeLD-gRKQpo2YOiJw",
   "ingested_from": "github_issue",
   "ingested_at": "2026-04-11T12:18:20+00:00",
-  "last_updated_at": "2026-04-11T12:18:20+00:00",
+  "last_updated_at": "2026-04-11T12:29:59+00:00",
   "content_state": {
-    "full_text_status": "missing",
-    "canonical_text_source": null,
-    "fetch_attempts": [],
+    "full_text_status": "acquired",
+    "canonical_text_source": "knowledge_state/articles/719a74e44194/canonical_text.txt",
+    "fetch_attempts": [
+      {
+        "attempted_at": "2026-04-11T12:19:11+00:00",
+        "status": "acquired",
+        "status_code": 200,
+        "final_url": "https://mp.weixin.qq.com/s/DdftSCeLD-gRKQpo2YOiJw",
+        "content_type": "text/html",
+        "text_length": 12214,
+        "raw_path": "D:\\code\\tec_trade\\knowledge_state\\articles\\719a74e44194\\raw\\fetch_20260411T121910Z.html",
+        "text_path": "D:\\code\\tec_trade\\knowledge_state\\articles\\719a74e44194\\raw\\extract_20260411T121910Z.txt",
+        "note": "Full text looks sufficient for claim extraction."
+      }
+    ],
     "manual_artifacts": [],
-    "next_action": "attempt_fetch"
+    "next_action": "extract_claims"
   },
   "analysis_state": {
     "claim_extraction_status": "not_started",
