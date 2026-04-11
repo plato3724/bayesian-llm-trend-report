@@ -1848,6 +1848,201 @@ APPROVAL_DECISIONS = {
 APPLY_ALLOWED_DECISIONS = {"auto_approved", "human_approved", "human_overridden"}
 
 
+def compute_phase_c_escalations(
+    draft_payload: dict[str, Any],
+    approval_payload: dict[str, Any],
+    hypothesis_index: dict[str, dict[str, Any]],
+) -> list[dict[str, Any]]:
+    """Return Phase C escalation triggers for an LLM-drafted (draft, approval).
+
+    Phase C is the automated verification drafter. Before a drafted
+    approval can stay at ``auto_approved``, two deterministic guards run:
+
+      A. cross_domain — any item whose effective domain differs from the
+         attached hypothesis's domain. The LLM was asked to leave such
+         attachments at ``hypothesis_id=null``, but Python enforces it.
+
+      B. band_crossing — simulate the additive log-odds update from every
+         verified / partially_verified item in the draft, grouped by
+         hypothesis_id. If the simulated posterior would land in a
+         different ``POSTERIOR_BANDS`` bucket than the current one, the
+         draft is flagged. This mirrors what ``recompute_posteriors``
+         would compute at apply time without any filesystem IO.
+
+    The function is pure: it reads nothing from disk, mutates none of its
+    inputs, and returns an empty list when the draft is safe to auto-apply.
+    Callers downgrade ``approval.decision`` to ``needs_human`` and append an
+    audit trail to ``overall_rationale`` when the list is non-empty.
+
+    Trigger shape:
+        {
+          "trigger": "cross_domain" | "band_crossing",
+          "hypothesis_id": <str>,
+          "detail": <human-readable string>,
+          # cross_domain-only:
+          "item_index": <int>,
+          "item_domain": <str>,
+          "hypothesis_domain": <str>,
+          # band_crossing-only:
+          "before_band": <str>,
+          "after_band": <str>,
+          "delta_log_odds": <float>,
+          "claim_ids": [<str>, ...],
+        }
+    """
+
+    triggers: list[dict[str, Any]] = []
+    if not isinstance(draft_payload, dict):
+        return triggers
+
+    items = draft_payload.get("items")
+    if not isinstance(items, list):
+        return triggers
+
+    payload_domain_raw = draft_payload.get("domain")
+    if isinstance(payload_domain_raw, str) and payload_domain_raw.strip():
+        payload_domain = payload_domain_raw.strip()
+    else:
+        payload_domain = DEFAULT_DOMAIN
+
+    # --- Trigger A: cross-domain attach -----------------------------------
+    for index, item in enumerate(items):
+        if not isinstance(item, dict):
+            continue
+        hypothesis_id = item.get("hypothesis_id")
+        if not isinstance(hypothesis_id, str):
+            continue
+        hypothesis = hypothesis_index.get(hypothesis_id)
+        if hypothesis is None:
+            continue
+
+        item_domain_raw = item.get("domain")
+        if isinstance(item_domain_raw, str) and item_domain_raw.strip():
+            effective_item_domain = item_domain_raw.strip()
+        else:
+            effective_item_domain = payload_domain
+
+        hypothesis_domain = item_domain(hypothesis)
+        if effective_item_domain != hypothesis_domain:
+            triggers.append(
+                {
+                    "trigger": "cross_domain",
+                    "hypothesis_id": hypothesis_id,
+                    "item_index": index,
+                    "item_domain": effective_item_domain,
+                    "hypothesis_domain": hypothesis_domain,
+                    "detail": (
+                        f"items[{index}] domain={effective_item_domain!r} "
+                        f"attached to hypothesis {hypothesis_id!r} "
+                        f"(domain={hypothesis_domain!r})"
+                    ),
+                }
+            )
+
+    # --- Trigger B: band-crossing simulation ------------------------------
+    # Group contributions per hypothesis_id. Only verified / partially
+    # verified items contribute, matching recompute_posteriors at line 906.
+    per_hypothesis_deltas: dict[str, float] = {}
+    per_hypothesis_claims: dict[str, list[str]] = {}
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        if item.get("status") not in STRONG_VERIFICATION_STATUSES:
+            continue
+        hypothesis_id = item.get("hypothesis_id")
+        if not isinstance(hypothesis_id, str):
+            continue
+        if hypothesis_id not in hypothesis_index:
+            continue
+        if not is_ordinal_item(item):
+            # Phase C payloads must be ordinal; anything else already
+            # failed validate_verification_payload. Skip defensively.
+            continue
+        try:
+            contribution = ordinal_contribution(
+                source_trust=item["source_trust"],
+                evidence_direction=item["evidence_direction"],
+                evidence_strength=item["evidence_strength"],
+            )
+        except KeyError:
+            continue
+        per_hypothesis_deltas[hypothesis_id] = (
+            per_hypothesis_deltas.get(hypothesis_id, 0.0) + contribution
+        )
+        claim_id = item.get("claim_id")
+        if isinstance(claim_id, str):
+            per_hypothesis_claims.setdefault(hypothesis_id, []).append(claim_id)
+
+    for hypothesis_id, delta in per_hypothesis_deltas.items():
+        hypothesis = hypothesis_index.get(hypothesis_id)
+        if hypothesis is None:
+            continue
+        try:
+            current_log_odds = float(hypothesis.get("posterior_log_odds", 0.0))
+        except (TypeError, ValueError):
+            current_log_odds = 0.0
+        try:
+            current_probability = float(hypothesis.get("posterior_probability", 0.5))
+        except (TypeError, ValueError):
+            current_probability = 1 / (1 + math.exp(-current_log_odds))
+
+        new_log_odds = current_log_odds + delta
+        new_probability = 1 / (1 + math.exp(-new_log_odds))
+
+        before_band = posterior_band(current_probability)
+        after_band = posterior_band(new_probability)
+        if before_band != after_band:
+            triggers.append(
+                {
+                    "trigger": "band_crossing",
+                    "hypothesis_id": hypothesis_id,
+                    "before_band": before_band,
+                    "after_band": after_band,
+                    "delta_log_odds": delta,
+                    "claim_ids": per_hypothesis_claims.get(hypothesis_id, []),
+                    "detail": (
+                        f"hypothesis {hypothesis_id!r} would move "
+                        f"{format_band_transition(current_probability, new_probability)} "
+                        f"(Δlog-odds={delta:+.3f}) via items "
+                        f"{per_hypothesis_claims.get(hypothesis_id, [])}"
+                    ),
+                }
+            )
+
+    # TODO: Phase D may add trigger D (per-run absolute Δlog-odds ceiling)
+    # as a backstop for the rare case where a big contribution stays inside
+    # one band but still represents more movement than one article should be
+    # allowed to cause without a human. Leaving unimplemented until a real
+    # run exposes the gap.
+
+    return triggers
+
+
+def format_phase_c_escalation_suffix(
+    triggers: list[dict[str, Any]],
+) -> str:
+    """Render escalation triggers as a plain-text suffix for overall_rationale.
+
+    The suffix is appended verbatim to ``approval.overall_rationale`` so the
+    audit trail survives ``stage_verification``'s field-filtering
+    normalization. Format is stable and grep-friendly.
+    """
+    if not triggers:
+        return ""
+    lines = [
+        "",
+        "",
+        "---",
+        "[PHASE_C_ESCALATION] Automatically downgraded from auto_approved to "
+        "needs_human by the Phase C guard. Triggers:",
+    ]
+    for entry in triggers:
+        kind = entry.get("trigger", "unknown")
+        detail = entry.get("detail", "")
+        lines.append(f"- {kind}: {detail}")
+    return "\n".join(lines)
+
+
 def validate_approval_payload(
     payload: Any,
     article_id: str,

@@ -11,10 +11,10 @@ every step locally the old way.
 |---|---|---|---|---|
 | A — ingest | `.github/workflows/ingest.yml` | No | `issues.labeled: article` or manual | Yes (ingest commit) |
 | B — draft claims | `.github/workflows/draft-claims.yml` | **OpenRouter** | Manual only | Yes (claims commit) |
-| C — draft verification + apply | (not built yet) | Yes | Manual | No (will stage only) |
+| C — draft + stage verification (+ optional apply) | `.github/workflows/draft-verification.yml` | **OpenRouter** | Manual only | Yes (stage commit; apply commit only when gate passes) |
 
-Phase C, D, E are designed in `docs/automation.md` but **not implemented**.
-Each phase is independently operable.
+Phase D and E are designed in this doc but **not implemented**. Each
+phase is independently operable.
 
 ## Phase A — ingest
 
@@ -82,6 +82,99 @@ The output is also re-validated server-side by `validate_claims_payload`
 drift causes the workflow to fail closed with
 `_proposed_claims.broken.json` saved for inspection.
 
+## Phase C — draft + stage verification (optional apply)
+
+**What it does**: given an article that Phase B has already drafted
+claims for (i.e. `claims.json` exists with
+`claim_extraction_status: completed`), this workflow:
+
+1. Calls `scripts/auto_draft_verification.py`, which:
+   - Reads `canonical_text.txt`, `claims.json`, and the active
+     hypotheses (including `domain`, `meta_tags`, `posterior_log_odds`,
+     and `supporting_item_count`, so the model can self-assess cold
+     starts and borderline hypotheses)
+   - Sends them to OpenRouter via `scripts/llm_client.py`
+   - Expects a single JSON object with two keys:
+     `verification_draft` and `approval`
+   - Re-validates both halves against
+     `bayesian_reader.validate_verification_payload` and
+     `validate_approval_payload` — the same validators
+     `stage-verification` uses, so anything that passes here will pass
+     staging
+   - Runs `compute_phase_c_escalations(draft, approval, hypotheses)`,
+     which deterministically checks for:
+     - **cross_domain**: any item whose domain differs from its
+       attached hypothesis's domain
+     - **band_crossing**: any hypothesis whose simulated posterior
+       (current `posterior_log_odds` plus the sum of ordinal
+       contributions from verified / partially_verified items) would
+       land in a different `POSTERIOR_BANDS` bucket
+   - If any trigger fires and `approval.decision` is `auto_approved`,
+     the script downgrades it to `needs_human` in place and appends a
+     plain-text audit suffix to `overall_rationale` so the audit trail
+     survives `stage-verification`'s field-filtering normalization
+   - Writes `_proposed_draft.json` and `_proposed_approval.json` to the
+     article folder (both gitignored under the `_proposed_*.json` glob)
+2. Runs `bayesian_reader.py stage-verification` to promote the scratch
+   pair into the tracked `verification_draft.json` and `approval.json`,
+   appending a `stage_verification` entry to `change_log.jsonl`
+3. Commits `verification_draft.json`, `approval.json`, `record.json`,
+   `change_log.jsonl`
+4. **Optionally**, if `auto_apply=true` AND the Phase C guard is clean
+   AND `approval.decision == auto_approved`, runs `apply-verification`
+   and rebuilds the HTML report, then commits `verification.json`,
+   `hypotheses.json`, `synthesis_state.json`, `change_log.jsonl`, and
+   `docs/index.html`
+5. Optionally posts a concise status comment on a triggering issue
+
+**Secrets needed**: `OPENROUTER_API_KEY`, same key as Phase B.
+
+**Trigger**: **manual only**. Actions tab → "draft-verification" →
+"Run workflow", with:
+- `article_id` (required)
+- `issue_number` (optional)
+- `model` (optional)
+- `commit_staged` (default `true`) — set to `false` to only produce the
+  gitignored scratch files without touching tracked state
+- `auto_apply` (default `false`) — opt-in to run apply-verification.
+  Even when set to `true`, the apply step is gated by the guard: it
+  only fires if the LLM marked the approval `auto_approved` AND the
+  Python guard returned zero triggers
+
+**LLM calls**: one per run. Phase C's prompt is longer than Phase B's
+(the verification draft carries more fields) so a typical run is
+roughly 2× the token cost of a Phase B call.
+
+**Why two gates on apply**: the Phase C guard is deterministic Python,
+and it has the last word. The LLM is allowed to self-select
+`needs_human`, and Python additionally enforces:
+
+1. **Cross-domain hard escalation** — catching the "grounding in AI
+   means sensor/causal grounding, not emotional grounding in an
+   economy article" class of failure. Phase 2 is still warn-only in
+   `verification_cross_domain_warnings`, but Phase C hardens it to a
+   forced downgrade for anything that went through the drafter.
+2. **Band-boundary crossing** — the project's posterior bands
+   (`very_unlikely` → `near_certain`) are the unit of editorial
+   judgment. A single run that would move a hypothesis across a band
+   boundary is always worth a human second look, even if the draft
+   looks clean on every individual item.
+
+## What Phase C still does NOT automate
+
+- Creating new hypotheses: always human
+- Picking `meta_tags` when a new hypothesis is created: always human
+- Overriding a `needs_human` decision: always human
+  (`override-approval` CLI remains local-only)
+- First-of-domain cold-start calibration: the prompt steers the LLM
+  toward `slight` and `partially_verified`, but a human should still
+  audit the first 2–3 claims in any brand-new domain
+- Phase D (review UI over staged approvals) and Phase E (auto-apply on
+  human re-approve) are still unbuilt
+
+The guardrails from the Phase 0–5 plan are all still in force. Phase C
+automation inherits the caution; it does not dissolve it.
+
 ## Setup: one-time steps
 
 ### 1. Create an OpenRouter account
@@ -129,31 +222,20 @@ spending any API credits. Once that looks right, run without
 
 ## Operational notes
 
-- **Concurrency**: both workflows use named concurrency groups so two
-  simultaneous runs on the same files can't race each other.
+- **Concurrency**: all three workflows use named concurrency groups so
+  two simultaneous runs on the same article can't race each other.
 - **Failure behavior**: Phase A tolerates fetch failures — the record
   still gets persisted with `fetch_failed` or `blocked` status and you
-  can recover via `attach-manual` locally. Phase B fails loud: if the
-  drafter returns invalid JSON or produces a schema-breaking draft,
-  the workflow exits non-zero and the broken draft is uploaded as an
-  artifact.
-- **Drift from manual runs**: both workflows commit straight to `main`
+  can recover via `attach-manual` locally. Phase B and Phase C fail
+  loud: if the drafter returns invalid JSON or produces a
+  schema-breaking draft, the workflow exits non-zero and the broken
+  draft is uploaded as an artifact
+  (`_proposed_claims.broken.json` for Phase B,
+  `_proposed_verification.broken.json` for Phase C).
+- **Drift from manual runs**: all workflows commit straight to `main`
   under the `github-actions[bot]` user. If you and the bot make
   conflicting changes, you'll get a normal merge conflict and resolve
   it the usual way.
-- **Cost ceiling**: Phase B is manual-only to keep the spend visible.
-  If you want a hard cap, create a low-budget API key on OpenRouter
-  (they support per-key limits) and use only that key.
-
-## What is explicitly NOT automated (yet)
-
-- Creating new hypotheses: always human
-- Choosing `meta_tags` for a new hypothesis: always human
-- First-of-domain cold-start calibration: always human
-- Cross-domain claim attachment: always human (Phase C will enforce
-  this as a hard escalation)
-- Running `apply-verification`: Phase C territory, still manual
-- Merging to main on any band-boundary crossing: Phase C territory
-
-These are the guardrails from the Phase 0–5 plan. Automation
-inherits the caution; it does not dissolve it.
+- **Cost ceiling**: Phase B and Phase C are manual-only to keep the
+  spend visible. If you want a hard cap, create a low-budget API key
+  on OpenRouter (they support per-key limits) and use only that key.
