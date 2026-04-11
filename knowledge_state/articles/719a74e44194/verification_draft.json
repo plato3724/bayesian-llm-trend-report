@@ -1,0 +1,82 @@
+{
+  "article_id": "719a74e44194",
+  "verification_status": "drafted",
+  "drafted_at": "2026-04-11T14:54:06+00:00",
+  "items": [
+    {
+      "claim_id": "hyperknow_iterations",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "verified",
+      "source_url": "https://mp.weixin.qq.com/s/DdftSCeLD-gRKQpo2YOiJw",
+      "source_title": "哥大休学创业：不要 Ask ChatGPT，Ask Hyperknow 3.0",
+      "assessment": "The claim about Hyperknow iterating five major versions and hundreds of minor versions since September last year is directly supported by the article, which provides a clear timeline of the product's development."
+    },
+    {
+      "claim_id": "hyperknow_official_release_date",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "verified",
+      "source_url": "https://mp.weixin.qq.com/s/DdftSCeLD-gRKQpo2YOiJw",
+      "source_title": "哥大休学创业：不要 Ask ChatGPT，Ask Hyperknow 3.0",
+      "assessment": "The article states that Hyperknow was officially released in November 2025, which is a definitive claim supported by the text."
+    },
+    {
+      "claim_id": "hyperknow_3_0_launch",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "verified",
+      "source_url": "https://mp.weixin.qq.com/s/DdftSCeLD-gRKQpo2YOiJw",
+      "source_title": "哥大休学创业：不要 Ask ChatGPT，Ask Hyperknow 3.0",
+      "assessment": "The claim regarding the launch of Hyperknow 3.0 three months after the official release is confirmed by the article, providing a clear timeline of events."
+    },
+    {
+      "claim_id": "hyperknow_learning_assistant",
+      "hypothesis_id": "agent_harness_decoupling",
+      "domain": "ai",
+      "status": "verified",
+      "source_url": "https://mp.weixin.qq.com/s/DdftSCeLD-gRKQpo2YOiJw",
+      "source_title": "哥大休学创业：不要 Ask ChatGPT，Ask Hyperknow 3.0",
+      "source_trust": "strong",
+      "evidence_direction": "support",
+      "evidence_strength": "strong",
+      "assessment": "The article describes the design of an 'All-Round Learning Assistant' in Hyperknow 3.0, which aligns well with the hypothesis about decoupling agent systems, providing strong support for this claim."
+    },
+    {
+      "claim_id": "hyperknow_deep_learn_sessions",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "verified",
+      "source_url": "https://mp.weixin.qq.com/s/DdftSCeLD-gRKQpo2YOiJw",
+      "source_title": "哥大休学创业：不要 Ask ChatGPT，Ask Hyperknow 3.0",
+      "assessment": "The introduction of 'Deep Learn Sessions' in Hyperknow 3.0 is explicitly mentioned in the article, confirming the claim."
+    },
+    {
+      "claim_id": "hyperknow_cheatsheet_function",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "verified",
+      "source_url": "https://mp.weixin.qq.com/s/DdftSCeLD-gRKQpo2YOiJw",
+      "source_title": "哥大休学创业：不要 Ask ChatGPT，Ask Hyperknow 3.0",
+      "assessment": "The article discusses how Hyperknow generates cheatsheets from a student's perspective, which verifies the claim about this function."
+    },
+    {
+      "claim_id": "hyperknow_user_feedback",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "verified",
+      "source_url": "https://mp.weixin.qq.com/s/DdftSCeLD-gRKQpo2YOiJw",
+      "source_title": "哥大休学创业：不要 Ask ChatGPT，Ask Hyperknow 3.0",
+      "assessment": "User feedback regarding the appreciation for Hyperknow's proactive questioning feature is mentioned in the article, confirming this claim."
+    },
+    {
+      "claim_id": "hyperknow_user_experience",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "verified",
+      "source_url": "https://mp.weixin.qq.com/s/DdftSCeLD-gRKQpo2YOiJw",
+      "source_title": "哥大休学创业：不要 Ask ChatGPT，Ask Hyperknow 3.0",
+      "assessment": "The article provides a specific user experience where Hyperknow explains R language in a relatable way, verifying this claim."
+    }
+  ]
+}
