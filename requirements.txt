@@ -1,0 +1,14 @@
+# Runtime dependencies.
+#
+# The core bayesian_reader.py CLI has ZERO external dependencies — it
+# only uses the Python standard library. Everything listed here is
+# optional and only needed by the automation scripts under scripts/.
+#
+# Install with:  pip install -r requirements.txt
+
+# OpenAI Python SDK, used in openai-compatible mode to talk to
+# OpenRouter (https://openrouter.ai/). OpenRouter exposes a unified
+# /v1/chat/completions endpoint that mirrors the OpenAI spec, so the
+# same SDK works for Claude, GPT-4, Gemini, Llama, DeepSeek, Qwen, etc.
+# by just changing the model string and base_url.
+openai>=1.40.0

@@ -1,0 +1,116 @@
+name: ingest-article
+
+# Phase A of the automation plan: when a new article issue is labeled,
+# pull it into the knowledge_state queue and try to fetch its canonical
+# text. This workflow deliberately does NOT call any LLM API and does
+# NOT touch claims / verification / hypotheses. Its only job is to
+# shorten the "I saw something on my phone → canonical_text.txt lives
+# in the repo" loop from "open Claude Code" to "paste a link on mobile".
+#
+# Triggers:
+#   - issues labeled `article` (matches the ISSUE_TEMPLATE default label)
+#   - manual workflow_dispatch for recovery / re-runs
+#
+# Output:
+#   - sync-issues imports the URL into knowledge_state/articles/<id>/record.json
+#   - fetch-pending attempts HTTP fetch and writes canonical_text.txt
+#   - all changes are committed to main with a bot signature
+#
+# Safety:
+#   - uses the built-in GITHUB_TOKEN (no external secrets yet)
+#   - if nothing actually changed, skips the commit
+#   - fetch failures are non-fatal: the record is persisted with
+#     content_state.full_text_status=fetch_failed/blocked and you can
+#     fall back to manual paste via attach-manual
+
+on:
+  issues:
+    types: [labeled]
+  workflow_dispatch:
+    inputs:
+      fetch_limit:
+        description: "How many pending articles to fetch in this run"
+        required: false
+        default: "20"
+
+# Only run the ingest job when the label that triggered us is `article`,
+# or when the workflow was dispatched manually.
+jobs:
+  ingest:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.label.name == 'article' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    concurrency:
+      # Serialize ingest runs so two simultaneous issue labels don't race
+      # on the same knowledge_state/*.json files.
+      group: ingest-knowledge-state
+      cancel-in-progress: false
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          # We need a real ref we can push back to.
+          ref: ${{ github.ref }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Sync GitHub issues into knowledge_state
+        env:
+          # `gh` CLI on ubuntu-latest is already installed; it just needs a token.
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/bayesian_reader.py sync-issues
+
+      - name: Fetch pending articles
+        run: |
+          LIMIT="${{ github.event.inputs.fetch_limit || '20' }}"
+          python scripts/bayesian_reader.py fetch-pending --limit "$LIMIT"
+
+      - name: Show acquisition status
+        run: python scripts/bayesian_reader.py status
+
+      - name: Commit and push if there are changes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Only stage the paths this workflow is allowed to modify.
+          # This keeps drift in unrelated files from leaking into an
+          # "ingest" commit, and makes the diff auditable.
+          git add knowledge_state/articles/ knowledge_state/change_log.jsonl || true
+
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          # Include the issue number when we know it, otherwise mark the
+          # commit as a manual dispatch.
+          if [ -n "${{ github.event.issue.number }}" ]; then
+            SUBJECT="chore(ingest): sync issue #${{ github.event.issue.number }}"
+          else
+            SUBJECT="chore(ingest): manual fetch-pending run"
+          fi
+
+          git commit -m "$SUBJECT" -m "Automated Phase A ingest: sync-issues + fetch-pending. No LLM involvement." -m "Co-Authored-By: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
+          git push
+
+      - name: Comment on the triggering issue
+        if: ${{ github.event_name == 'issues' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Give the human on the phone a quick confirmation so they
+          # know the bot saw the label and what state the article is in.
+          ARTICLE_INFO=$(python scripts/bayesian_reader.py status 2>/dev/null | tail -20 || echo "(status unavailable)")
+          gh issue comment "${{ github.event.issue.number }}" \
+            --body "$(printf 'Phase A ingest done.\n\n```\n%s\n```\n\nNext step: run the `draft-claims` workflow (or open Claude Code) to extract claims.' "$ARTICLE_INFO")" \
+            || echo "Comment failed (not fatal)."

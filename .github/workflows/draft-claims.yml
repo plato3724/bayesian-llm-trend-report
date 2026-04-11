@@ -1,0 +1,177 @@
+name: draft-claims
+
+# Phase B of the automation plan: call OpenRouter to draft a
+# _proposed_claims.json for an article that already has
+# canonical_text.txt in the repo (i.e. Phase A has already ingested
+# it). This workflow is deliberately MANUAL-TRIGGER ONLY:
+#
+#   - You pick the target article_id yourself, from the GitHub Actions
+#     tab → "draft-claims" → "Run workflow"
+#   - On mobile, open github.com/<repo>/actions/workflows/draft-claims.yml
+#     and tap the same button
+#
+# Why not auto-trigger on every ingest?
+#   - Phase B is the first step that spends money on API calls.
+#     Keeping it manual means a mis-labeled issue can't burn credits.
+#   - It also gives you a deliberate review loop: glance at
+#     canonical_text.txt, decide the article is worth drafting, then
+#     click "Run workflow".
+#
+# What this workflow does:
+#   1. checks out the repo at the current main
+#   2. installs openai + runs auto_draft_claims.py
+#   3. the script writes _proposed_claims.json (gitignored)
+#   4. runs save-claims to validate and commit claims.json
+#   5. posts the drafted claims as a comment on the originating issue,
+#      if one was provided
+#
+# What this workflow does NOT do:
+#   - write verification.json
+#   - touch hypothesis posteriors
+#   - create new hypotheses
+#
+# Guardrails:
+#   - OPENROUTER_API_KEY is a repo secret, never exposed in logs
+#   - the drafter cannot invent hypothesis IDs (hard-enforced by the
+#     prompt + post-validation)
+#   - save-claims re-validates the draft before it is allowed to
+#     overwrite claims.json
+#   - if validation fails, the broken draft is saved as
+#     _proposed_claims.broken.json for inspection and the workflow
+#     exits non-zero
+
+on:
+  workflow_dispatch:
+    inputs:
+      article_id:
+        description: "Article ID to draft claims for (e.g. 06eb3b8e8732). Find it in knowledge_state/articles/."
+        required: true
+      issue_number:
+        description: "Optional issue number to comment on after drafting"
+        required: false
+      model:
+        description: "Optional model override, e.g. anthropic/claude-3.5-sonnet or openai/gpt-4o-mini"
+        required: false
+      commit_claims:
+        description: "After drafting, run save-claims and commit claims.json. Set to 'false' to only write the gitignored draft."
+        required: false
+        default: "true"
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    concurrency:
+      group: draft-claims-${{ github.event.inputs.article_id }}
+      cancel-in-progress: false
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Confirm article is ready for claim drafting
+        run: |
+          ARTICLE_ID="${{ github.event.inputs.article_id }}"
+          RECORD="knowledge_state/articles/$ARTICLE_ID/record.json"
+          CANONICAL="knowledge_state/articles/$ARTICLE_ID/canonical_text.txt"
+          if [ ! -f "$RECORD" ]; then
+            echo "::error::record.json missing for $ARTICLE_ID — run Phase A (ingest) first."
+            exit 1
+          fi
+          if [ ! -f "$CANONICAL" ]; then
+            echo "::error::canonical_text.txt missing for $ARTICLE_ID — run Phase A (fetch-pending) first."
+            exit 1
+          fi
+          echo "Article $ARTICLE_ID looks ready for drafting."
+
+      - name: Draft claims with OpenRouter
+        id: draft
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENROUTER_REFERER: https://github.com/${{ github.repository }}
+          OPENROUTER_TITLE: "tec_trade draft-claims"
+          OPENROUTER_MODEL: ${{ github.event.inputs.model }}
+        run: |
+          set -euo pipefail
+          ARTICLE_ID="${{ github.event.inputs.article_id }}"
+          OUTPUT_FILE="knowledge_state/articles/$ARTICLE_ID/_proposed_claims.json"
+
+          python scripts/auto_draft_claims.py \
+            --article-id "$ARTICLE_ID" \
+            --output-file "$OUTPUT_FILE" \
+            | tee draft_summary.json
+
+          echo "output_file=$OUTPUT_FILE" >> "$GITHUB_OUTPUT"
+
+      - name: Validate and save claims
+        if: ${{ github.event.inputs.commit_claims != 'false' }}
+        run: |
+          set -euo pipefail
+          ARTICLE_ID="${{ github.event.inputs.article_id }}"
+          OUTPUT_FILE="${{ steps.draft.outputs.output_file }}"
+          python scripts/bayesian_reader.py save-claims \
+            --article-id "$ARTICLE_ID" \
+            --file "$OUTPUT_FILE"
+
+      - name: Commit claims.json if it changed
+        if: ${{ github.event.inputs.commit_claims != 'false' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          ARTICLE_ID="${{ github.event.inputs.article_id }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add "knowledge_state/articles/$ARTICLE_ID/claims.json" \
+                  "knowledge_state/articles/$ARTICLE_ID/record.json" \
+                  "knowledge_state/change_log.jsonl" || true
+
+          if git diff --staged --quiet; then
+            echo "No claim changes to commit."
+            exit 0
+          fi
+
+          git commit \
+            -m "chore(claims): auto-draft claims for $ARTICLE_ID" \
+            -m "Drafted by auto_draft_claims.py via OpenRouter. Validated by save-claims. No verification / hypothesis state was touched." \
+            -m "Co-Authored-By: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
+          git push
+
+      - name: Comment on triggering issue
+        if: ${{ github.event.inputs.issue_number != '' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          ARTICLE_ID="${{ github.event.inputs.article_id }}"
+          CLAIMS_FILE="knowledge_state/articles/$ARTICLE_ID/claims.json"
+          if [ -f "$CLAIMS_FILE" ]; then
+            BODY="$(printf 'Claims drafted for `%s`.\n\n```json\n%s\n```\n\nNext step: verify each claim (still manual for now, Phase C).' "$ARTICLE_ID" "$(cat "$CLAIMS_FILE")")"
+          else
+            BODY="Drafted but not committed. Check the workflow logs and the \`_proposed_claims.json\` artifact."
+          fi
+          gh issue comment "${{ github.event.inputs.issue_number }}" --body "$BODY" || echo "Issue comment failed (not fatal)."
+
+      - name: Upload draft artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: proposed-claims-${{ github.event.inputs.article_id }}
+          path: |
+            knowledge_state/articles/${{ github.event.inputs.article_id }}/_proposed_claims.json
+            knowledge_state/articles/${{ github.event.inputs.article_id }}/_proposed_claims.broken.json
+            draft_summary.json
+          if-no-files-found: warn
+          retention-days: 14
