@@ -4,7 +4,7 @@
   "url": "https://mp.weixin.qq.com/s/DdftSCeLD-gRKQpo2YOiJw",
   "ingested_from": "github_issue",
   "ingested_at": "2026-04-11T12:18:20+00:00",
-  "last_updated_at": "2026-04-11T12:29:59+00:00",
+  "last_updated_at": "2026-04-11T14:52:21+00:00",
   "content_state": {
     "full_text_status": "acquired",
     "canonical_text_source": "knowledge_state/articles/719a74e44194/canonical_text.txt",
@@ -22,16 +22,26 @@
       }
     ],
     "manual_artifacts": [],
-    "next_action": "extract_claims"
+    "next_action": "verify_claims"
   },
   "analysis_state": {
-    "claim_extraction_status": "not_started",
+    "claim_extraction_status": "completed",
     "verification_status": "not_started",
     "bayesian_status": "excluded_until_verified"
   },
   "article_summary": {
-    "events": [],
-    "techniques": [],
+    "events": [
+      "从去年 9 月至今，Hyperknow 已经迭代五个大版本，小版本累计数百次。",
+      "2025 年 11 月，通用学习智能体 Hyperknow 正式发布。",
+      "三个月后，Hyperknow 3.0 上线。",
+      "有不少用户反馈喜欢 Hyperknow 主动提问的功能。",
+      "用户反馈 Hyperknow 能给一个 80 岁的老奶奶用切菜做饭的方式来解释 R 语言。"
+    ],
+    "techniques": [
+      "Hyperknow 3.0 设计了一个「全包围式的学习助手」（All-Round Learning Assistant）。",
+      "在 Hyperknow 3.0 中，推出了「深度学习课堂」（Deep Learn Sessions）。",
+      "Hyperknow 生成的 cheatsheet（参考纸）能从学生真实使用视角出发。"
+    ],
     "tools": []
   },
   "hypothesis_impacts": [],
