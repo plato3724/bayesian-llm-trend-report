@@ -1,16 +1,21 @@
 {
   "created_at": "2026-04-11T02:31:52+00:00",
-  "last_recomputed_at": "2026-04-11T11:05:23+00:00",
+  "last_recomputed_at": "2026-04-11T11:48:28+00:00",
   "hypotheses": [
     {
       "id": "agent_harness_decoupling",
+      "domain": "ai",
+      "meta_tags": [
+        "externalization_as_pattern",
+        "durability_as_primary_concern"
+      ],
       "statement": "高价值 agent 系统正从单体 chat loop 转向 durable session、isolated sandbox 与 harness/runtime 解耦的架构。",
       "prior_log_odds": 0.0,
       "status": "active",
       "rationale": "这类系统把长时程任务的可靠性问题转成基础设施接口问题，而不是只靠提示词堆栈。",
       "posterior_log_odds": 4.658650574600081,
       "posterior_probability": 0.9906097670126264,
-      "last_recomputed_at": "2026-04-11T11:05:23+00:00",
+      "last_recomputed_at": "2026-04-11T11:48:28+00:00",
       "supporting_items": [
         {
           "article_id": "20fb29fec269",
@@ -52,13 +57,18 @@
     },
     {
       "id": "structured_external_memory",
+      "domain": "ai",
+      "meta_tags": [
+        "externalization_as_pattern",
+        "structure_over_volume"
+      ],
       "statement": "长程记忆与知识管理正在从暴力扩上下文，转向结构化、可外部化、可查询的 memory / graph / session object。",
       "prior_log_odds": 0.0,
       "status": "active",
       "rationale": "可恢复、可选择读取的外部上下文对象，比一次性塞满窗口更适合长期工作。",
       "posterior_log_odds": 3.2388430424104664,
       "posterior_probability": 0.962270127065804,
-      "last_recomputed_at": "2026-04-11T11:05:23+00:00",
+      "last_recomputed_at": "2026-04-11T11:48:28+00:00",
       "supporting_items": [
         {
           "article_id": "20fb29fec269",
@@ -100,13 +110,18 @@
     },
     {
       "id": "token_efficiency_as_architecture",
+      "domain": "ai",
+      "meta_tags": [
+        "efficiency_as_design_axis",
+        "structure_over_volume"
+      ],
       "statement": "Token 效率正在从局部优化升级为架构级目标，表现为结构化压缩、查询式检索、简洁协议与多层记忆栈。",
       "prior_log_odds": 0.0,
       "status": "active",
       "rationale": "成本、延迟与可扩展性都要求模型少看、少说，但不能盲目丢信息。",
       "posterior_log_odds": 2.297795159067439,
       "posterior_probability": 0.9086942703203016,
-      "last_recomputed_at": "2026-04-11T11:05:23+00:00",
+      "last_recomputed_at": "2026-04-11T11:48:28+00:00",
       "supporting_items": [
         {
           "article_id": "3c07c6956807",
@@ -149,13 +164,18 @@
     },
     {
       "id": "speech_from_tts_to_scene_generation",
+      "domain": "ai",
+      "meta_tags": [
+        "generation_scope_expansion",
+        "controllability_as_feature"
+      ],
       "statement": "语音模型正从句子级 TTS 走向场景级、长音频、可导演式的生成，并且小型开源模型的可用性在快速上升。",
       "prior_log_odds": 0.0,
       "status": "active",
       "rationale": "生成目标不再只是把字念清楚，而是统一控制角色、情绪、背景与长程连贯。",
       "posterior_log_odds": 3.401941791181004,
       "posterior_probability": 0.9677651659847331,
-      "last_recomputed_at": "2026-04-11T11:05:23+00:00",
+      "last_recomputed_at": "2026-04-11T11:48:28+00:00",
       "supporting_items": [
         {
           "article_id": "2f9fe8beb5ba",
@@ -197,13 +217,18 @@
     },
     {
       "id": "software_engineering_shifts_to_orchestration_and_testing",
+      "domain": "ai",
+      "meta_tags": [
+        "verifiability_as_bottleneck",
+        "orchestration_over_implementation"
+      ],
       "statement": "软件工程的瓶颈正从纯实现转向编排、验证、测试与方向判断，中间层工程师的优势会被重新洗牌。",
       "prior_log_odds": 0.0,
       "status": "active",
       "rationale": "当实现速度大幅提升后，真正稀缺的是评估、取舍和把 agent 约束到正确轨道上的能力。",
       "posterior_log_odds": 3.233877742664768,
       "posterior_probability": 0.9620894408970607,
-      "last_recomputed_at": "2026-04-11T11:05:23+00:00",
+      "last_recomputed_at": "2026-04-11T11:48:28+00:00",
       "supporting_items": [
         {
           "article_id": "44f454b544d9",
@@ -238,13 +263,18 @@
     },
     {
       "id": "embodied_models_add_tactile_grounding",
+      "domain": "ai",
+      "meta_tags": [
+        "modality_expansion",
+        "grounding_as_missing_layer"
+      ],
       "statement": "具身系统的下一批关键增量证据来自触觉模态，尤其是与 egocentric video 对齐的 tactile grounding。",
       "prior_log_odds": 0.0,
       "status": "active",
       "rationale": "视觉和语言不足以表达接触稳定性、受力分布与精细操作反馈。",
       "posterior_log_odds": 1.7974393641323947,
       "posterior_probability": 0.8578369446320776,
-      "last_recomputed_at": "2026-04-11T11:05:23+00:00",
+      "last_recomputed_at": "2026-04-11T11:48:28+00:00",
       "supporting_items": [
         {
           "article_id": "7ffdcd4439dc",

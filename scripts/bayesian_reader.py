@@ -1089,6 +1089,32 @@ EVIDENCE_DIRECTIONS: dict[str, int] = {
 # to draw an up/down arrow next to a band label.
 BAND_DIFF_EPSILON = 0.01
 
+# Default domain label used when a hypothesis, article, or verification item
+# was written before the multi-domain schema landed. Phase 0 adds the
+# `domain` field additively: read paths fall back to this default, so
+# existing files continue to work without migration.
+DEFAULT_DOMAIN = "ai"
+
+
+def item_domain(item: dict[str, Any]) -> str:
+    """Return the domain of a hypothesis / article / verification item.
+
+    Backward-compatible: items written before Phase 0 have no `domain`
+    field and are treated as belonging to the default domain.
+    """
+    value = item.get("domain") if isinstance(item, dict) else None
+    if isinstance(value, str) and value.strip():
+        return value.strip()
+    return DEFAULT_DOMAIN
+
+
+def item_meta_tags(item: dict[str, Any]) -> list[str]:
+    """Return the meta_tags list for a hypothesis, with backward-compat."""
+    value = item.get("meta_tags") if isinstance(item, dict) else None
+    if not isinstance(value, list):
+        return []
+    return [tag for tag in value if isinstance(tag, str) and tag.strip()]
+
 
 def posterior_band(probability: float | None) -> str:
     if probability is None:
@@ -1171,6 +1197,146 @@ def load_verification(article_id: str) -> dict[str, Any]:
 def load_hypothesis_index() -> dict[str, dict[str, Any]]:
     hypotheses = read_json(HYPOTHESES_PATH, default={"hypotheses": []})
     return {item["id"]: item for item in hypotheses.get("hypotheses", []) if item.get("id")}
+
+
+def meta_scan() -> dict[str, Any]:
+    """Read-only cross-hypothesis tag scan.
+
+    Groups active hypotheses by their `meta_tags` and reports:
+      - tag → list of (hypothesis_id, domain, band)
+      - clusters (tags shared by 2+ hypotheses)
+      - cross-domain clusters (tags that span multiple domains)
+      - singletons (tags used by only one hypothesis)
+
+    Phase 3-lite: this command NEVER writes to hypotheses.json,
+    synthesis_state.json, or change_log.jsonl. It is a pure describe-only
+    lens on the current state, safe to run at any time.
+    """
+    hypotheses_doc = read_json(HYPOTHESES_PATH, default={"hypotheses": []})
+    hypotheses = hypotheses_doc.get("hypotheses", [])
+
+    tag_to_members: dict[str, list[dict[str, Any]]] = {}
+    untagged: list[dict[str, Any]] = []
+    all_domains: set[str] = set()
+
+    for hypothesis in hypotheses:
+        if hypothesis.get("status") not in (None, "active"):
+            continue
+        hypothesis_id = hypothesis.get("id")
+        if not hypothesis_id:
+            continue
+
+        domain = item_domain(hypothesis)
+        all_domains.add(domain)
+        tags = item_meta_tags(hypothesis)
+
+        member = {
+            "hypothesis_id": hypothesis_id,
+            "domain": domain,
+            "band": hypothesis.get("posterior_band") or "unknown",
+            "statement": hypothesis.get("statement", ""),
+        }
+
+        if not tags:
+            untagged.append(member)
+            continue
+
+        for tag in tags:
+            tag_to_members.setdefault(tag, []).append(member)
+
+    clusters: list[dict[str, Any]] = []
+    singletons: list[dict[str, Any]] = []
+    cross_domain_clusters: list[dict[str, Any]] = []
+
+    for tag in sorted(tag_to_members):
+        members = tag_to_members[tag]
+        domains_in_tag = sorted({m["domain"] for m in members})
+        entry = {
+            "tag": tag,
+            "member_count": len(members),
+            "domains": domains_in_tag,
+            "cross_domain": len(domains_in_tag) > 1,
+            "members": members,
+        }
+        if len(members) >= 2:
+            clusters.append(entry)
+            if entry["cross_domain"]:
+                cross_domain_clusters.append(entry)
+        else:
+            singletons.append(entry)
+
+    clusters.sort(
+        key=lambda e: (not e["cross_domain"], -e["member_count"], e["tag"])
+    )
+
+    return {
+        "scanned_at": utc_now(),
+        "hypothesis_count": len(hypotheses),
+        "domain_count": len(all_domains),
+        "domains": sorted(all_domains),
+        "tag_count": len(tag_to_members),
+        "cluster_count": len(clusters),
+        "cross_domain_cluster_count": len(cross_domain_clusters),
+        "clusters": clusters,
+        "singletons": singletons,
+        "untagged_hypotheses": untagged,
+    }
+
+
+def format_meta_scan(report: dict[str, Any]) -> list[str]:
+    """Pretty-print a meta_scan report for console output.
+
+    Deliberately dense but readable. No probability numbers; only bands.
+    Uses ASCII-only output characters so the report prints cleanly on
+    Windows consoles that default to cp936/cp1252.
+    """
+    lines: list[str] = []
+    lines.append(
+        f"meta-scan: {report['hypothesis_count']} hypotheses | "
+        f"{report['domain_count']} domain(s) [{', '.join(report['domains'])}] | "
+        f"{report['tag_count']} tag(s) | "
+        f"{report['cluster_count']} cluster(s) "
+        f"({report['cross_domain_cluster_count']} cross-domain)"
+    )
+
+    if report["clusters"]:
+        lines.append("")
+        lines.append("-- clusters (tags shared by 2+ hypotheses) --")
+        for entry in report["clusters"]:
+            marker = " [CROSS-DOMAIN]" if entry["cross_domain"] else ""
+            lines.append(
+                f"  [{entry['tag']}] x {entry['member_count']}"
+                f" (domains: {', '.join(entry['domains'])}){marker}"
+            )
+            for member in entry["members"]:
+                lines.append(
+                    f"      - {member['hypothesis_id']}"
+                    f"  [{member['domain']} / {member['band']}]"
+                )
+    else:
+        lines.append("")
+        lines.append("-- no clusters yet (every tag is a singleton) --")
+
+    if report["singletons"]:
+        lines.append("")
+        lines.append("-- singleton tags --")
+        for entry in report["singletons"]:
+            member = entry["members"][0]
+            lines.append(
+                f"  [{entry['tag']}] -> {member['hypothesis_id']}"
+                f"  [{member['domain']} / {member['band']}]"
+            )
+
+    if report["untagged_hypotheses"]:
+        lines.append("")
+        lines.append("-- hypotheses with no meta_tags (candidates for tagging) --")
+        for member in report["untagged_hypotheses"]:
+            lines.append(
+                f"  - {member['hypothesis_id']}"
+                f"  [{member['domain']} / {member['band']}]"
+            )
+
+    return lines
 
 
 def snapshot_state() -> dict[str, Any]:
@@ -1341,6 +1507,12 @@ def validate_verification_payload(
             f"verification_status must be 'completed' or 'drafted' (got {status!r})"
         )
 
+    # Optional top-level domain (Phase 0, additive). Absent = default domain.
+    payload_domain = payload.get("domain")
+    if payload_domain is not None:
+        if not isinstance(payload_domain, str) or not payload_domain.strip():
+            errors.append("domain, if provided, must be a non-empty string")
+
     items = payload.get("items")
     if not isinstance(items, list):
         errors.append("'items' must be a list")
@@ -1361,6 +1533,15 @@ def validate_verification_payload(
                 f"{prefix}: legacy 'weight'/'likelihood_ratio' floats are no longer accepted; "
                 f"use source_trust / evidence_direction / evidence_strength instead"
             )
+
+        # Optional per-item domain (Phase 0, additive). Missing = inherit the
+        # payload-level domain, which itself falls back to DEFAULT_DOMAIN.
+        item_domain_value = item.get("domain")
+        if item_domain_value is not None:
+            if not isinstance(item_domain_value, str) or not item_domain_value.strip():
+                errors.append(
+                    f"{prefix}.domain, if provided, must be a non-empty string"
+                )
 
         claim_id = item.get("claim_id")
         if claim_id not in known_claim_ids:
@@ -1987,6 +2168,7 @@ CLAIMS_SCHEMA_EXAMPLE = {
 VERIFICATION_SCHEMA_EXAMPLE = {
     "article_id": "<same as target article_id>",
     "verification_status": "completed",
+    "domain": "<optional domain label, defaults to 'ai' if omitted>",
     "items": [
         {
             "claim_id": "<id from claims.json>",
@@ -1999,6 +2181,7 @@ VERIFICATION_SCHEMA_EXAMPLE = {
             "source_trust": "weak | moderate | strong (required iff hypothesis_id is set)",
             "evidence_direction": "support | against (required iff hypothesis_id is set)",
             "evidence_strength": "slight | moderate | strong (required iff hypothesis_id is set)",
+            "domain": "<optional, inherits the payload-level domain if omitted>",
         }
     ],
 }
@@ -3013,6 +3196,16 @@ def build_parser() -> argparse.ArgumentParser:
     attach.add_argument("--article-id", required=True)
     attach.add_argument("--file", required=True)
 
+    meta_scan_cmd = subparsers.add_parser(
+        "meta-scan",
+        help="Read-only cross-hypothesis meta_tag cluster scan (never writes state)",
+    )
+    meta_scan_cmd.add_argument(
+        "--json",
+        action="store_true",
+        help="Emit machine-readable JSON instead of the formatted text report",
+    )
+
     return parser
 
 
@@ -3169,6 +3362,15 @@ def main(argv: list[str]) -> int:
     if args.command == "attach-manual":
         result = attach_manual_file(article_id=args.article_id, source_file=Path(args.file))
         print_json(result)
+        return 0
+
+    if args.command == "meta-scan":
+        report = meta_scan()
+        if args.json:
+            print_json(report)
+        else:
+            for line in format_meta_scan(report):
+                print(line)
         return 0
 
     parser.print_help()
