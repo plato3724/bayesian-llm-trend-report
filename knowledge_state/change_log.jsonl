@@ -74,3 +74,7 @@
 {"timestamp": "2026-04-11T11:05:30+00:00", "event": "build_report", "output_path": "D:\\code\\tec_trade\\docs\\index.html"}
 {"timestamp": "2026-04-11T11:48:28+00:00", "event": "recompute_posteriors", "included_articles": ["20fb29fec269", "44f454b544d9", "4a8b83da74e8", "7bb7bc9e2b3e", "3c07c6956807", "59b86c15655e", "2f9fe8beb5ba", "8f8f6c5c71fe", "5c7678b0d4c9", "7ffdcd4439dc"], "hypothesis_count": 6}
 {"timestamp": "2026-04-11T11:48:39+00:00", "event": "build_report", "output_path": "D:\\code\\tec_trade\\docs\\index.html"}
+{"timestamp": "2026-04-11T12:06:14+00:00", "event": "sync_github_issues", "repo": "plato3724/bayesian-llm-trend-report", "label": "article", "state": "open", "fallback_used": false, "created": 0, "updated": 1, "skipped": 0}
+{"timestamp": "2026-04-11T12:15:08+00:00", "event": "sync_github_issues", "repo": "plato3724/bayesian-llm-trend-report", "label": "article", "state": "open", "fallback_used": false, "created": 0, "updated": 1, "skipped": 2}
+{"timestamp": "2026-04-11T12:18:13+00:00", "event": "recompute_posteriors", "included_articles": ["20fb29fec269", "44f454b544d9", "4a8b83da74e8", "7bb7bc9e2b3e", "3c07c6956807", "59b86c15655e", "2f9fe8beb5ba", "8f8f6c5c71fe", "5c7678b0d4c9", "7ffdcd4439dc"], "hypothesis_count": 6}
+{"timestamp": "2026-04-11T12:18:20+00:00", "event": "sync_github_issues", "repo": "plato3724/bayesian-llm-trend-report", "label": "article", "state": "open", "fallback_used": false, "created": 2, "updated": 1, "skipped": 0}

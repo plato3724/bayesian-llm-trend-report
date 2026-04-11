@@ -422,14 +422,29 @@ def sync_github_issues(
     skipped = 0
 
     for issue in issues:
-        urls = extract_urls(issue.get("body") or "")
+        # Accept URLs in either the issue body OR the title. Users frequently
+        # paste the URL into the title and use the body for a short domain
+        # hint (e.g. "怀旧经济"), so we must check both places and dedupe.
+        body_text = issue.get("body") or ""
+        title_text = issue.get("title") or ""
+        urls_seen: set[str] = set()
+        urls: list[str] = []
+        for url in extract_urls(body_text) + extract_urls(title_text):
+            if url not in urls_seen:
+                urls_seen.add(url)
+                urls.append(url)
         if not urls:
             skipped += 1
             continue
-        notes = issue.get("body", "").strip()
+        notes = body_text.strip()
         for url in urls:
+            # Prefer a title that isn't itself just the URL, otherwise fall
+            # back to the URL so upsert_article still has something to show.
+            display_title = title_text.strip()
+            if not display_title or display_title == url:
+                display_title = url
             article_id, was_created = upsert_article(
-                title=(issue.get("title") or url).strip(),
+                title=display_title,
                 url=url,
                 source_name="github_issue",
                 source_ref=issue.get("url"),
@@ -1199,7 +1214,7 @@ def load_hypothesis_index() -> dict[str, dict[str, Any]]:
     return {item["id"]: item for item in hypotheses.get("hypotheses", []) if item.get("id")}
 
 
-def meta_scan() -> dict[str, Any]:
+def meta_scan(domain_filter: str | None = None) -> dict[str, Any]:
     """Read-only cross-hypothesis tag scan.
 
     Groups active hypotheses by their `meta_tags` and reports:
@@ -1207,6 +1222,10 @@ def meta_scan() -> dict[str, Any]:
       - clusters (tags shared by 2+ hypotheses)
       - cross-domain clusters (tags that span multiple domains)
       - singletons (tags used by only one hypothesis)
+
+    When `domain_filter` is provided, only hypotheses in that domain are
+    included. `cross_domain_cluster_count` will therefore always be 0
+    under a domain filter — it's meaningless in a single-domain slice.
 
     Phase 3-lite: this command NEVER writes to hypotheses.json,
     synthesis_state.json, or change_log.jsonl. It is a pure describe-only
@@ -1227,6 +1246,8 @@ def meta_scan() -> dict[str, Any]:
             continue
 
         domain = item_domain(hypothesis)
+        if domain_filter is not None and domain != domain_filter:
+            continue
         all_domains.add(domain)
         tags = item_meta_tags(hypothesis)
 
@@ -1271,6 +1292,7 @@ def meta_scan() -> dict[str, Any]:
 
     return {
         "scanned_at": utc_now(),
+        "domain_filter": domain_filter,
         "hypothesis_count": len(hypotheses),
         "domain_count": len(all_domains),
         "domains": sorted(all_domains),
@@ -1291,8 +1313,13 @@ def format_meta_scan(report: dict[str, Any]) -> list[str]:
     Windows consoles that default to cp936/cp1252.
     """
     lines: list[str] = []
+    filter_tag = (
+        f" [filter: domain={report['domain_filter']}]"
+        if report.get("domain_filter")
+        else ""
+    )
     lines.append(
-        f"meta-scan: {report['hypothesis_count']} hypotheses | "
+        f"meta-scan{filter_tag}: {report['hypothesis_count']} hypotheses | "
         f"{report['domain_count']} domain(s) [{', '.join(report['domains'])}] | "
         f"{report['tag_count']} tag(s) | "
         f"{report['cluster_count']} cluster(s) "
@@ -1618,6 +1645,64 @@ def validate_verification_payload(
     return errors
 
 
+def verification_cross_domain_warnings(
+    payload: Any,
+    article_id: str,
+) -> list[str]:
+    """Return non-fatal warnings about cross-domain hypothesis attachments.
+
+    The goal is to surface — without blocking — cases where a verification
+    item attaches a claim to a hypothesis that lives in a different domain.
+    This is the earliest tripwire against 'metaphor collapse': if an economy
+    article tries to feed evidence into an AI hypothesis, we want a visible
+    flag in the staging output even though the save itself still succeeds.
+
+    Phase 2: warn only, never fail. Phase 4 (meta-hypothesis layer) may
+    tighten this into a hard error that requires an explicit
+    `allow_cross_domain_attach: true` opt-in per item.
+    """
+    warnings: list[str] = []
+    if not isinstance(payload, dict):
+        return warnings
+
+    payload_domain = payload.get("domain")
+    if not isinstance(payload_domain, str) or not payload_domain.strip():
+        payload_domain = DEFAULT_DOMAIN
+
+    hypothesis_index = load_hypothesis_index()
+    items = payload.get("items", [])
+    if not isinstance(items, list):
+        return warnings
+
+    for index, item in enumerate(items):
+        if not isinstance(item, dict):
+            continue
+        hypothesis_id = item.get("hypothesis_id")
+        if not isinstance(hypothesis_id, str):
+            continue
+        hypothesis = hypothesis_index.get(hypothesis_id)
+        if hypothesis is None:
+            continue
+
+        item_domain_value = item.get("domain")
+        if isinstance(item_domain_value, str) and item_domain_value.strip():
+            effective_item_domain = item_domain_value.strip()
+        else:
+            effective_item_domain = payload_domain
+
+        hypothesis_domain = item_domain(hypothesis)
+        if effective_item_domain != hypothesis_domain:
+            warnings.append(
+                f"items[{index}]: cross-domain attach — claim domain "
+                f"{effective_item_domain!r} but hypothesis {hypothesis_id!r} "
+                f"lives in domain {hypothesis_domain!r}. This is allowed for "
+                f"Phase 2 but flagged as a potential metaphor-collapse risk. "
+                f"Review the assessment before apply."
+            )
+
+    return warnings
+
+
 def _load_save_payload(file_arg: str | None) -> Any:
     if file_arg is None or file_arg == "-":
         raw = sys.stdin.read()
@@ -1692,6 +1777,8 @@ def save_verification(article_id: str, payload: Any) -> dict[str, Any]:
     if errors:
         return {"ok": False, "article_id": article_id, "errors": errors}
 
+    warnings = verification_cross_domain_warnings(payload, article_id)
+
     before = snapshot_state()
 
     normalized = {
@@ -1714,17 +1801,21 @@ def save_verification(article_id: str, payload: Any) -> dict[str, Any]:
             "event": "save_verification",
             "article_id": article_id,
             "item_count": len(normalized["items"]),
+            "cross_domain_warnings": warnings,
         },
     )
 
     next_task = get_next_task()
-    return {
+    response: dict[str, Any] = {
         "ok": True,
         "article_id": article_id,
         "item_count": len(normalized["items"]),
         "state_diff": format_state_diff(before, after),
         "next_task": next_task,
     }
+    if warnings:
+        response["warnings"] = warnings
+    return response
 
 
 # ---------------------------------------------------------------------------
@@ -1868,6 +1959,8 @@ def stage_verification(
             },
         }
 
+    cross_domain_warnings = verification_cross_domain_warnings(draft_payload, article_id)
+
     normalized_draft = {
         "article_id": article_id,
         "verification_status": "drafted",
@@ -1899,7 +1992,7 @@ def stage_verification(
         },
     )
 
-    return {
+    response: dict[str, Any] = {
         "ok": True,
         "article_id": article_id,
         "draft_path": relpath_from_root(draft_verification_path(article_id)),
@@ -1920,6 +2013,9 @@ def stage_verification(
             )
         ),
     }
+    if cross_domain_warnings:
+        response["warnings"] = cross_domain_warnings
+    return response
 
 
 def apply_verification(article_id: str) -> dict[str, Any]:
@@ -1958,12 +2054,16 @@ def apply_verification(article_id: str) -> dict[str, Any]:
 
     claims_doc = load_claims(article_id)
     draft_items = draft.get("items", [])
+    draft_domain = draft.get("domain")
+    revalidation_payload = {
+        "article_id": article_id,
+        "verification_status": "completed",
+        "items": draft_items,
+    }
+    if isinstance(draft_domain, str) and draft_domain.strip():
+        revalidation_payload["domain"] = draft_domain.strip()
     draft_errors = validate_verification_payload(
-        {
-            "article_id": article_id,
-            "verification_status": "completed",
-            "items": draft_items,
-        },
+        revalidation_payload,
         article_id,
         claims_doc,
     )
@@ -1973,6 +2073,13 @@ def apply_verification(article_id: str) -> dict[str, Any]:
             "article_id": article_id,
             "errors": {"verification_draft": draft_errors},
         }
+
+    # Run cross-domain warnings at apply time too, not just stage time. A
+    # user who stages on Monday and applies on Friday should still see the
+    # metaphor-collapse tripwire fire before the posterior actually moves.
+    cross_domain_warnings = verification_cross_domain_warnings(
+        revalidation_payload, article_id
+    )
 
     before = snapshot_state()
 
@@ -1987,6 +2094,8 @@ def apply_verification(article_id: str) -> dict[str, Any]:
             "timestamp": approval.get("timestamp"),
         },
     }
+    if isinstance(draft_domain, str) and draft_domain.strip():
+        normalized["domain"] = draft_domain.strip()
     save_default_article_files(article_id)
     write_json(verification_path(article_id), normalized)
 
@@ -2003,11 +2112,12 @@ def apply_verification(article_id: str) -> dict[str, Any]:
             "item_count": len(draft_items),
             "approver": approval.get("approver"),
             "decision": decision,
+            "cross_domain_warnings": cross_domain_warnings,
         },
     )
 
     next_task = get_next_task()
-    return {
+    response: dict[str, Any] = {
         "ok": True,
         "article_id": article_id,
         "item_count": len(draft_items),
@@ -2016,6 +2126,9 @@ def apply_verification(article_id: str) -> dict[str, Any]:
         "state_diff": format_state_diff(before, after),
         "next_task": next_task,
     }
+    if cross_domain_warnings:
+        response["warnings"] = cross_domain_warnings
+    return response
 
 
 def override_approval(
@@ -3205,6 +3318,10 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Emit machine-readable JSON instead of the formatted text report",
     )
+    meta_scan_cmd.add_argument(
+        "--domain",
+        help="Restrict the scan to a single domain (e.g. 'ai'). Omit to scan all domains.",
+    )
 
     return parser
 
@@ -3365,7 +3482,7 @@ def main(argv: list[str]) -> int:
         return 0
 
     if args.command == "meta-scan":
-        report = meta_scan()
+        report = meta_scan(domain_filter=args.domain)
         if args.json:
             print_json(report)
         else:

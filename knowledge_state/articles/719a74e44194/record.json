@@ -1,0 +1,34 @@
+{
+  "article_id": "719a74e44194",
+  "title": "https://mp.weixin.qq.com/s/DdftSCeLD-gRKQpo2YOiJw",
+  "url": "https://mp.weixin.qq.com/s/DdftSCeLD-gRKQpo2YOiJw",
+  "ingested_from": "github_issue",
+  "ingested_at": "2026-04-11T12:18:20+00:00",
+  "last_updated_at": "2026-04-11T12:18:20+00:00",
+  "content_state": {
+    "full_text_status": "missing",
+    "canonical_text_source": null,
+    "fetch_attempts": [],
+    "manual_artifacts": [],
+    "next_action": "attempt_fetch"
+  },
+  "analysis_state": {
+    "claim_extraction_status": "not_started",
+    "verification_status": "not_started",
+    "bayesian_status": "excluded_until_verified"
+  },
+  "article_summary": {
+    "events": [],
+    "techniques": [],
+    "tools": []
+  },
+  "hypothesis_impacts": [],
+  "ingest_sources": [
+    {
+      "source_name": "github_issue",
+      "source_ref": "https://github.com/plato3724/bayesian-llm-trend-report/issues/2",
+      "source_note": "",
+      "ingested_at": "2026-04-11T12:18:20+00:00"
+    }
+  ]
+}
