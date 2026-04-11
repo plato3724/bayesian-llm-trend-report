@@ -334,6 +334,8 @@ def run_gh_json(args: list[str]) -> Any:
         ["gh", *args],
         cwd=ROOT,
         text=True,
+        encoding="utf-8",
+        errors="replace",
         capture_output=True,
         check=False,
     )
@@ -385,7 +387,7 @@ def sync_github_issues(
 ) -> dict[str, Any]:
     repo_slug = resolve_repo_slug(repo)
     effective_label = label if label is not None else read_github_config().get("issue_label")
-    command = [
+    base_command = [
         "issue",
         "list",
         "--repo",
@@ -397,10 +399,15 @@ def sync_github_issues(
         "--json",
         "number,title,body,url,labels,createdAt",
     ]
+    fallback_used = False
     if effective_label:
-        command.extend(["--label", str(effective_label)])
-
-    issues = run_gh_json(command)
+        command = [*base_command, "--label", str(effective_label)]
+        issues = run_gh_json(command)
+        if not issues:
+            issues = run_gh_json(base_command)
+            fallback_used = True
+    else:
+        issues = run_gh_json(base_command)
     imported: list[dict[str, Any]] = []
     created = 0
     updated = 0
@@ -445,6 +452,7 @@ def sync_github_issues(
             "repo": repo_slug,
             "label": effective_label,
             "state": state,
+            "fallback_used": fallback_used,
             "created": created,
             "updated": updated,
             "skipped": skipped,
@@ -453,6 +461,7 @@ def sync_github_issues(
     return {
         "repo": repo_slug,
         "label": effective_label,
+        "fallback_used": fallback_used,
         "created": created,
         "updated": updated,
         "skipped": skipped,
@@ -794,7 +803,10 @@ def refresh_record_states() -> dict[str, Any]:
         techniques = [claim["text"] for claim in claims.get("claims", []) if claim.get("type") == "technique"]
         tools = [claim["text"] for claim in claims.get("claims", []) if claim.get("type") == "tool"]
 
-        if verified_items:
+        if claim_status != "completed":
+            bayesian_status = "excluded_until_verified"
+            next_action = "extract_claims"
+        elif verified_items:
             bayesian_status = "included"
             next_action = "monitor_for_new_evidence"
         elif verification_status == "completed":
@@ -1058,6 +1070,12 @@ def build_report_html() -> str:
     hypothesis_index = {item["id"]: item for item in hypotheses.get("hypotheses", [])}
     included_ids = set(synthesis.get("included_articles", []))
     included_records = [record for record in records if record.get("article_id") in included_ids]
+    pending_records = [
+        record
+        for record in records
+        if record.get("article_id") not in included_ids
+        and record.get("analysis_state", {}).get("claim_extraction_status") != "completed"
+    ]
     excluded_records = [record for record in records if record.get("article_id") not in included_ids]
 
     active_hypotheses = sorted(
@@ -1122,6 +1140,11 @@ def build_report_html() -> str:
         for record in sorted(included_records, key=lambda item: item.get("title", ""))
     )
 
+    pending_articles_html = "".join(
+        build_article_detail_html(record, hypothesis_index)
+        for record in sorted(pending_records, key=lambda item: item.get("title", ""))
+    )
+
     excluded_articles_html = "".join(
         build_article_detail_html(record, hypothesis_index)
         for record in sorted(excluded_records, key=lambda item: item.get("title", ""))
@@ -1138,6 +1161,7 @@ def build_report_html() -> str:
 
     summary_stats = [
         ("纳入文章", len(included_records)),
+        ("待处理文章", len(pending_records)),
         ("排除文章", len(synthesis.get("excluded_articles", []))),
         ("活跃趋势", len(active_hypotheses)),
         ("最近更新", synthesis.get("last_recomputed_at", "N/A")),
@@ -1489,6 +1513,7 @@ def build_report_html() -> str:
         <a href="#trends">核心趋势</a>
         <a href="#narrative">本轮结论</a>
         <a href="#tools">工具索引</a>
+        <a href="#pending">待处理</a>
         <a href="#articles">文章证据</a>
         <a href="#excluded">排除项</a>
       </div>
@@ -1514,6 +1539,12 @@ def build_report_html() -> str:
     <section class="section" id="tools">
       <h2>工具与项目索引</h2>
       <div class="tool-grid">{tool_cards}</div>
+    </section>
+
+    <section class="section" id="pending">
+      <h2>待处理文章</h2>
+      <p class="muted">这里展示已经进入状态库、且全文已抓到或等待后续处理的文章。它们还没有进入趋势判断。</p>
+      {pending_articles_html if pending_articles_html else "<p class='muted'>暂无</p>"}
     </section>
 
     <section class="section" id="articles">

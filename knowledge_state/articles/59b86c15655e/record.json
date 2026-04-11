@@ -1,0 +1,46 @@
+{
+  "article_id": "59b86c15655e",
+  "title": "解决VLA模型落地难，普通硬件也能跑！全透明全开源的高效VLA模型把推理成本砍掉76%",
+  "url": "https://mp.weixin.qq.com/s/u1lUvNUZErK1AwiBpa-jeA",
+  "ingested_from": "github_issue",
+  "ingested_at": "2026-04-11T03:37:37+00:00",
+  "last_updated_at": "2026-04-11T03:38:44+00:00",
+  "content_state": {
+    "full_text_status": "acquired",
+    "canonical_text_source": "D:\\code\\tec_trade\\knowledge_state\\articles\\59b86c15655e\\canonical_text.txt",
+    "fetch_attempts": [
+      {
+        "attempted_at": "2026-04-11T03:37:38+00:00",
+        "status": "acquired",
+        "status_code": 200,
+        "final_url": "https://mp.weixin.qq.com/s/u1lUvNUZErK1AwiBpa-jeA",
+        "content_type": "text/html",
+        "text_length": 2416,
+        "raw_path": "D:\\code\\tec_trade\\knowledge_state\\articles\\59b86c15655e\\raw\\fetch_20260411T033737Z.html",
+        "text_path": "D:\\code\\tec_trade\\knowledge_state\\articles\\59b86c15655e\\raw\\extract_20260411T033737Z.txt",
+        "note": "Full text looks sufficient for claim extraction."
+      }
+    ],
+    "manual_artifacts": [],
+    "next_action": "extract_claims"
+  },
+  "analysis_state": {
+    "claim_extraction_status": "not_started",
+    "verification_status": "not_started",
+    "bayesian_status": "excluded_until_verified"
+  },
+  "article_summary": {
+    "events": [],
+    "techniques": [],
+    "tools": []
+  },
+  "hypothesis_impacts": [],
+  "ingest_sources": [
+    {
+      "source_name": "github_issue",
+      "source_ref": "https://github.com/plato3724/bayesian-llm-trend-report/issues/1",
+      "source_note": "https://mp.weixin.qq.com/s/u1lUvNUZErK1AwiBpa-jeA",
+      "ingested_at": "2026-04-11T03:37:37+00:00"
+    }
+  ]
+}
