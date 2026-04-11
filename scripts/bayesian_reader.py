@@ -1020,7 +1020,7 @@ def build_article_detail_html(record: dict[str, Any], hypothesis_index: dict[str
 
     return "".join(
         [
-            "<details class='article-card'>",
+            f"<details class='article-card' data-status='{html_escape(record.get('analysis_state', {}).get('bayesian_status', 'unknown'))}' data-article-id='{html_escape(record['article_id'])}'>",
             f"<summary><span>{html_escape(record['title'])}</span><span class='status status-{html_escape(record.get('analysis_state', {}).get('bayesian_status', 'unknown'))}'>{html_escape(record.get('analysis_state', {}).get('bayesian_status', 'unknown'))}</span></summary>",
             "<div class='article-body'>",
             f"<p><a href='{html_escape(record['url'])}' target='_blank' rel='noreferrer'>{html_escape(record['url'])}</a></p>",
@@ -1154,11 +1154,17 @@ def build_report_html() -> str:
             "</p>"
         )
     repo_link_html = ""
+    issue_link_html = ""
     if github_config.get("repo"):
         repo_url = f"https://github.com/{github_config['repo']}"
         repo_link_html = (
             "<p class='muted'>GitHub 仓库："
             f"<a href='{html_escape(repo_url)}' target='_blank' rel='noreferrer'>{html_escape(github_config['repo'])}</a>"
+            "</p>"
+        )
+        issue_link_html = (
+            "<p class='muted'>手机投递入口："
+            f"<a href='{html_escape(repo_url + '/issues/new/choose')}' target='_blank' rel='noreferrer'>新建文章 Issue</a>"
             "</p>"
         )
 
@@ -1181,7 +1187,7 @@ def build_report_html() -> str:
       --shadow: 0 10px 30px rgba(31, 36, 48, 0.08);
       --radius: 18px;
     }}
-    * {{ box-sizing: border-box; }}
+    * {{ box-sizing: border-box; scroll-behavior: smooth; }}
     body {{
       margin: 0;
       font-family: "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
@@ -1222,7 +1228,7 @@ def build_report_html() -> str:
     }}
     .hero p {{
       max-width: 68ch;
-      margin: 0;
+      margin: 0 0 6px;
     }}
     .section {{
       margin-top: 28px;
@@ -1232,6 +1238,28 @@ def build_report_html() -> str:
       padding: 22px;
       box-shadow: var(--shadow);
       backdrop-filter: blur(8px);
+    }}
+    .section-nav {{
+      position: sticky;
+      top: 12px;
+      z-index: 20;
+      padding: 14px 16px;
+    }}
+    .nav-row {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }}
+    .nav-row a {{
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--ink);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      font-size: 0.92rem;
     }}
     .stats,
     .hypothesis-grid,
@@ -1295,6 +1323,38 @@ def build_report_html() -> str:
     }}
     .tool-grid {{
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }}
+    .controls {{
+      display: grid;
+      gap: 12px;
+      margin: 14px 0 18px;
+    }}
+    .controls input {{
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font: inherit;
+      background: var(--paper);
+    }}
+    .filter-row {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }}
+    .filter-btn {{
+      border: 1px solid var(--line);
+      background: var(--paper);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font: inherit;
+      cursor: pointer;
+      color: var(--ink);
+    }}
+    .filter-btn.is-active {{
+      background: var(--accent-soft);
+      border-color: #7dd3c8;
+      color: #0b5b55;
     }}
     .article-card {{
       border: 1px solid var(--line);
@@ -1406,6 +1466,9 @@ def build_report_html() -> str:
         flex-direction: column;
         align-items: flex-start;
       }}
+      .section-nav {{
+        top: 8px;
+      }}
     }}
   </style>
 </head>
@@ -1416,17 +1479,28 @@ def build_report_html() -> str:
       <h1>现代大模型趋势核实报告</h1>
       <p>这不是文章摘要页，而是“全文抓取 -> 命题提取 -> 主源核实 -> 贝叶斯更新”后的阅读版结果。未核实内容不会直接进入趋势判断。</p>
       {repo_link_html}
+      {issue_link_html}
       {pages_link_html}
       <div class="stats">{stats_html}</div>
     </section>
 
-    <section class="section">
+    <nav class="section section-nav">
+      <div class="nav-row">
+        <a href="#trends">核心趋势</a>
+        <a href="#narrative">本轮结论</a>
+        <a href="#tools">工具索引</a>
+        <a href="#articles">文章证据</a>
+        <a href="#excluded">排除项</a>
+      </div>
+    </nav>
+
+    <section class="section" id="trends">
       <h2>核心趋势</h2>
       <p class="muted">后验概率越高，说明当前证据越支持这个趋势；不是“绝对为真”，而是“在现有样本下更值得作为默认判断”。</p>
       <div class="hypothesis-grid">{hypothesis_cards}</div>
     </section>
 
-    <section class="section split">
+    <section class="section split" id="narrative">
       <div>
         <h2>本轮结论</h2>
         <ol>{narrative_html}</ol>
@@ -1437,18 +1511,26 @@ def build_report_html() -> str:
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="tools">
       <h2>工具与项目索引</h2>
       <div class="tool-grid">{tool_cards}</div>
     </section>
 
-    <section class="section">
-      <h2>纳入后验的文章</h2>
+    <section class="section" id="articles">
+      <h2>文章证据</h2>
       <p class="muted">每篇文章只保留高价值、可被核实的 claim。营销语句和弱来源内容会被保留在原始快照里，但不会进入趋势更新。</p>
+      <div class="controls">
+        <input id="articleSearch" type="search" placeholder="搜索文章标题、事件、技术、工具">
+        <div class="filter-row">
+          <button type="button" class="filter-btn is-active" data-filter="all">全部</button>
+          <button type="button" class="filter-btn" data-filter="included">已纳入</button>
+          <button type="button" class="filter-btn" data-filter="excluded_after_verification">已排除</button>
+        </div>
+      </div>
       {included_articles_html}
     </section>
 
-    <section class="section split">
+    <section class="section split" id="excluded">
       <div>
         <h2>已排除文章</h2>
         {excluded_html if excluded_html else "<p class='muted'>暂无</p>"}
@@ -1464,6 +1546,35 @@ def build_report_html() -> str:
       <ol>{note_html}</ol>
     </section>
   </main>
+  <script>
+    (() => {{
+      const cards = [...document.querySelectorAll('.article-card')];
+      const search = document.getElementById('articleSearch');
+      const buttons = [...document.querySelectorAll('.filter-btn')];
+      let activeFilter = 'all';
+
+      function applyFilters() {{
+        const q = (search?.value || '').trim().toLowerCase();
+        cards.forEach((card) => {{
+          const text = card.textContent.toLowerCase();
+          const status = card.dataset.status || '';
+          const matchesQuery = !q || text.includes(q);
+          const matchesFilter = activeFilter === 'all' || status === activeFilter;
+          card.style.display = matchesQuery && matchesFilter ? '' : 'none';
+        }});
+      }}
+
+      search?.addEventListener('input', applyFilters);
+      buttons.forEach((button) => {{
+        button.addEventListener('click', () => {{
+          activeFilter = button.dataset.filter || 'all';
+          buttons.forEach((node) => node.classList.toggle('is-active', node === button));
+          applyFilters();
+        }});
+      }});
+      applyFilters();
+    }})();
+  </script>
 </body>
 </html>
 """
@@ -1485,6 +1596,68 @@ def build_report(output_path: Path = REPORT_PATH) -> dict[str, Any]:
         },
     )
     return {"output_path": str(output_path)}
+
+
+def run_pipeline(
+    repo: str | None = None,
+    label: str | None = None,
+    state: str = "open",
+    issue_limit: int = 100,
+    fetch_limit: int = 20,
+    force_fetch: bool = False,
+    output_path: Path = REPORT_PATH,
+    skip_sync_issues: bool = False,
+    write_config_flag: bool = False,
+) -> dict[str, Any]:
+    bootstrap_state_files()
+
+    sync_result: dict[str, Any] | None = None
+    if not skip_sync_issues:
+        sync_result = sync_github_issues(
+            repo=repo,
+            label=label,
+            state=state,
+            limit=issue_limit,
+            write_config_flag=write_config_flag,
+        )
+
+    fetch_result = fetch_pending(limit=fetch_limit, force=force_fetch)
+    refresh_result = refresh_record_states()
+    recompute_result = recompute_posteriors()
+    report_result = build_report(output_path=output_path)
+    status_result = summarize_status()
+
+    result = {
+        "synced_issues": sync_result,
+        "fetch": fetch_result,
+        "refresh": refresh_result,
+        "recompute": recompute_result,
+        "report": report_result,
+        "status": status_result,
+    }
+
+    append_jsonl(
+        CHANGE_LOG_PATH,
+        {
+            "timestamp": utc_now(),
+            "event": "run_pipeline",
+            "repo": repo,
+            "label": label,
+            "state": state,
+            "issue_limit": issue_limit,
+            "fetch_limit": fetch_limit,
+            "force_fetch": force_fetch,
+            "skip_sync_issues": skip_sync_issues,
+            "output_path": str(output_path),
+            "result_summary": {
+                "synced": 0 if sync_result is None else len(sync_result.get("imported", [])),
+                "fetch_attempted": fetch_result.get("attempted"),
+                "refreshed": refresh_result.get("refreshed"),
+                "included_articles": len(recompute_result.get("included_articles", [])),
+            },
+        },
+    )
+    return result
 
 
 def set_github_config(
@@ -1529,6 +1702,16 @@ def build_parser() -> argparse.ArgumentParser:
     sync.add_argument("--state", default="open")
     sync.add_argument("--limit", type=int, default=100)
     sync.add_argument("--write-config", action="store_true")
+    pipeline = subparsers.add_parser("run-pipeline", help="Run issue sync, fetch, recompute, and report build in one step")
+    pipeline.add_argument("--repo")
+    pipeline.add_argument("--label")
+    pipeline.add_argument("--state", default="open")
+    pipeline.add_argument("--issue-limit", type=int, default=100)
+    pipeline.add_argument("--fetch-limit", type=int, default=20)
+    pipeline.add_argument("--force-fetch", action="store_true")
+    pipeline.add_argument("--output", default=str(REPORT_PATH))
+    pipeline.add_argument("--skip-sync-issues", action="store_true")
+    pipeline.add_argument("--write-config", action="store_true")
     config = subparsers.add_parser("set-github-config", help="Persist repo and Pages settings")
     config.add_argument("--repo", required=True)
     config.add_argument("--pages-url")
@@ -1587,6 +1770,21 @@ def main(argv: list[str]) -> int:
             label=args.label,
             state=args.state,
             limit=args.limit,
+            write_config_flag=args.write_config,
+        )
+        print_json(result)
+        return 0
+
+    if args.command == "run-pipeline":
+        result = run_pipeline(
+            repo=args.repo,
+            label=args.label,
+            state=args.state,
+            issue_limit=args.issue_limit,
+            fetch_limit=args.fetch_limit,
+            force_fetch=args.force_fetch,
+            output_path=Path(args.output),
+            skip_sync_issues=args.skip_sync_issues,
             write_config_flag=args.write_config,
         )
         print_json(result)
