@@ -1,0 +1,50 @@
+{
+  "article_id": "d668b6dcda22",
+  "timestamp": "2026-04-12T09:20:28+00:00",
+  "approver": "llm:openai/gpt-5.4",
+  "decision": "needs_human",
+  "overall_rationale": "This draft is mostly factual and orthogonal to the active AI hypotheses, so all items are left unattached. Several claims rely on project repositories rather than primary implementation/spec or benchmark evidence, and one historical claim is unverified, so conservative human review is appropriate before application.",
+  "per_claim_decisions": [
+    {
+      "claim_id": "html_in_canvas_is_experimental_rendering_method",
+      "decision": "accept_as_fact",
+      "reasoning": "Broadly supported by the linked WICG project, but not hypothesis-relevant."
+    },
+    {
+      "claim_id": "html_in_canvas_enters_w3c_wicg_proposal_process",
+      "decision": "accept_as_fact",
+      "reasoning": "Directly supported by the WICG repository and remains orthogonal to the active hypotheses."
+    },
+    {
+      "claim_id": "html_in_canvas_idea_was_proposed_in_2016",
+      "decision": "defer",
+      "reasoning": "Historical timeline and vendor-revival narrative are not adequately sourced in the article."
+    },
+    {
+      "claim_id": "chrome_flag_canvas_draw_element_enables_feature",
+      "decision": "accept_as_fact",
+      "reasoning": "Likely true but only partially verified without direct Chrome or Chromium documentation."
+    },
+    {
+      "claim_id": "draw_element_image_used_to_render_canvas_children",
+      "decision": "accept_as_fact",
+      "reasoning": "Directionally supported by the linked proposal, though implementation details were not fully checked."
+    },
+    {
+      "claim_id": "pretext_is_open_source_tool_by_midjourney_engineer",
+      "decision": "accept_as_fact",
+      "reasoning": "Open-source status is supported, but employer attribution is not fully checked; still orthogonal fact."
+    },
+    {
+      "claim_id": "pretext_claimed_hundreds_times_faster_layout",
+      "decision": "defer",
+      "reasoning": "Performance multiple is a quantitative claim lacking independent benchmark verification here."
+    },
+    {
+      "claim_id": "pretext_post_and_github_popularity_claim",
+      "decision": "defer",
+      "reasoning": "Popularity metrics are time-sensitive and the social-view count is not backed by a primary source in the article."
+    }
+  ],
+  "human_override": null
+}
