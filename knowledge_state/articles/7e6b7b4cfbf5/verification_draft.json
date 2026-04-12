@@ -1,0 +1,82 @@
+{
+  "article_id": "7e6b7b4cfbf5",
+  "verification_status": "drafted",
+  "drafted_at": "2026-04-12T09:02:11+00:00",
+  "items": [
+    {
+      "claim_id": "us_365k_first_large_scale_ultrasound_only_dataset",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "http://arxiv.org/abs/2604.01749",
+      "source_title": "Ultrasound-CLIP: Semantic-Aware Contrastive Pre-training for Ultrasound Image-Text Understanding",
+      "assessment": "The article’s linked arXiv paper is an appropriate source for the existence and positioning of US-365K, and it supports that the authors introduce a large-scale ultrasound-specific image-text dataset. However, the superlative wording '首个' / 'first' is harder to conclusively verify from the paper alone without a broader literature review across prior ultrasound-only image-text datasets, so this is only partially verified rather than fully verified."
+    },
+    {
+      "claim_id": "ultrasound_share_below_5_percent_in_existing_medical_multimodal_data",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "http://arxiv.org/abs/2604.01749",
+      "source_title": "Ultrasound-CLIP: Semantic-Aware Contrastive Pre-training for Ultrasound Image-Text Understanding",
+      "assessment": "The article attributes the 'below 5%' figure to the paper’s comparative dataset analysis, and the arXiv paper is the best available source linked in the article for this statistic. Still, this is a synthesized quantitative claim about existing multimodal datasets rather than a directly audited primary database record in the article itself, so without independently checking the referenced benchmark composition, the figure is only partially verified."
+    },
+    {
+      "claim_id": "us_365k_contains_364k_pairs_and_11676_cases",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "verified",
+      "source_url": "http://arxiv.org/abs/2604.01749",
+      "source_title": "Ultrasound-CLIP: Semantic-Aware Contrastive Pre-training for Ultrasound Image-Text Understanding",
+      "assessment": "This dataset-size claim is directly tied to the authors’ own paper, which is the primary source for the dataset description. The paper linked by the article provides the core technical description of US-365K and supports the reported scale of roughly 364k image-text pairs and 11,676 clinical cases, so the claim is verified as a factual description of the released resource."
+    },
+    {
+      "claim_id": "us_365k_effective_rate_above_90_percent",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "http://arxiv.org/abs/2604.01749",
+      "source_title": "Ultrasound-CLIP: Semantic-Aware Contrastive Pre-training for Ultrasound Image-Text Understanding",
+      "assessment": "The article presents the 'data effectiveness rate above 90%' as an outcome of the curation pipeline, and the linked paper is the natural source to justify that statement. But '有效率' can depend on the authors’ operational definition and filtering protocol, and the article does not provide an independently auditable primary annotation report beyond the paper, so the number is only partially verified."
+    },
+    {
+      "claim_id": "ultrasound_clip_uses_heterogeneous_graph_encoder_and_soft_labels",
+      "hypothesis_id": "structured_external_memory",
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "http://arxiv.org/abs/2604.01749",
+      "source_title": "Ultrasound-CLIP: Semantic-Aware Contrastive Pre-training for Ultrasound Image-Text Understanding",
+      "source_trust": "moderate",
+      "evidence_direction": "support",
+      "evidence_strength": "slight",
+      "assessment": "The linked paper supports that Ultrasound-CLIP augments a standard dual-encoder setup with a UDAF-guided heterogeneous graph encoder and UDAF-based semantic soft labels. This does provide mild evidence for the hypothesis that useful long-context/knowledge handling is shifting toward structured, externalizable representations rather than raw context stuffing, because the method explicitly injects structured diagnostic relations into the representation pipeline. I keep the attachment slight and only partially verified because this is a domain-specific vision-language architecture, not a direct memory-system design claim, so the conceptual overlap is real but limited."
+    },
+    {
+      "claim_id": "ultrasound_clip_uses_dual_objective_optimization",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "verified",
+      "source_url": "http://arxiv.org/abs/2604.01749",
+      "source_title": "Ultrasound-CLIP: Semantic-Aware Contrastive Pre-training for Ultrasound Image-Text Understanding",
+      "assessment": "The article’s statement that the model uses a dual-objective optimization strategy combining contrastive and semantic losses is a direct technical description of the method, and the linked arXiv paper is the primary source for that architecture. This is straightforwardly verified as a factual summary of the model design."
+    },
+    {
+      "claim_id": "ultrasound_clip_classification_and_retrieval_metrics",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "http://arxiv.org/abs/2604.01749",
+      "source_title": "Ultrasound-CLIP: Semantic-Aware Contrastive Pre-training for Ultrasound Image-Text Understanding",
+      "assessment": "The article cites concrete evaluation metrics that should come from the authors’ experiments, and the linked paper is the relevant source for those benchmark results. However, because these are numerical experimental outcomes that ideally should be checked against the exact evaluation tables and task definitions in the paper, and I cannot independently reproduce them here, I mark the claim as partially verified rather than fully verified."
+    },
+    {
+      "claim_id": "paper_accepted_by_cvpr_2026_and_resources_open_sourced",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://github.com/ZJUDataIntelligence/Ultrasound-CLIP",
+      "source_title": "ZJUDataIntelligence/Ultrasound-CLIP",
+      "assessment": "The open-source part of the claim is supported by the linked GitHub repository and dataset link, so resource availability is defensible. The 'accepted by CVPR 2026' portion is plausible and likely reflected in the paper metadata, but absent an independent conference proceedings page in the article, that acceptance status is not fully cross-checked here, making the combined claim only partially verified."
+    }
+  ]
+}

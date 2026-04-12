@@ -1,0 +1,50 @@
+{
+  "article_id": "7e6b7b4cfbf5",
+  "timestamp": "2026-04-12T09:02:11+00:00",
+  "approver": "llm:openai/gpt-5.4",
+  "decision": "needs_human",
+  "overall_rationale": "Most claims are factual descriptions that are at best paper-level verified rather than independently cross-checked against stronger primary sources. One claim is attached to an active hypothesis only weakly and by analogy to structured representation rather than explicit memory systems, so conservative human review is appropriate.",
+  "per_claim_decisions": [
+    {
+      "claim_id": "us_365k_first_large_scale_ultrasound_only_dataset",
+      "decision": "accept_as_fact",
+      "reasoning": "Likely correct at the paper-description level, but the 'first' superlative needs broader literature checking."
+    },
+    {
+      "claim_id": "ultrasound_share_below_5_percent_in_existing_medical_multimodal_data",
+      "decision": "defer",
+      "reasoning": "Quantitative ecosystem statistic is not independently audited beyond the linked paper context."
+    },
+    {
+      "claim_id": "us_365k_contains_364k_pairs_and_11676_cases",
+      "decision": "accept_as_fact",
+      "reasoning": "Core dataset-size numbers are directly attributable to the authors’ paper."
+    },
+    {
+      "claim_id": "us_365k_effective_rate_above_90_percent",
+      "decision": "defer",
+      "reasoning": "Depends on the authors’ definition of data validity and would benefit from checking the exact methodology."
+    },
+    {
+      "claim_id": "ultrasound_clip_uses_heterogeneous_graph_encoder_and_soft_labels",
+      "decision": "defer",
+      "reasoning": "The technical claim is likely right, but the hypothesis attachment to structured external memory is conceptually adjacent rather than direct."
+    },
+    {
+      "claim_id": "ultrasound_clip_uses_dual_objective_optimization",
+      "decision": "accept_as_fact",
+      "reasoning": "Straightforward technical description supported by the linked paper."
+    },
+    {
+      "claim_id": "ultrasound_clip_classification_and_retrieval_metrics",
+      "decision": "defer",
+      "reasoning": "Specific experimental metrics should be checked against the paper tables before application."
+    },
+    {
+      "claim_id": "paper_accepted_by_cvpr_2026_and_resources_open_sourced",
+      "decision": "defer",
+      "reasoning": "Open-source status is supported, but conference acceptance is not independently verified from proceedings metadata here."
+    }
+  ],
+  "human_override": null
+}

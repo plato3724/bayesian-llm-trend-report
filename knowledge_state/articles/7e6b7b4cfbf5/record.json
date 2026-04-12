@@ -4,7 +4,7 @@
   "url": "https://mp.weixin.qq.com/s/IHKYn-mpoLyT6R00Jy6YxQ",
   "ingested_from": "github_issue",
   "ingested_at": "2026-04-12T09:00:49+00:00",
-  "last_updated_at": "2026-04-12T09:01:24+00:00",
+  "last_updated_at": "2026-04-12T09:02:11+00:00",
   "content_state": {
     "full_text_status": "acquired",
     "canonical_text_source": "knowledge_state/articles/7e6b7b4cfbf5/canonical_text.txt",
@@ -22,12 +22,12 @@
       }
     ],
     "manual_artifacts": [],
-    "next_action": "verify_claims"
+    "next_action": "review_staged_verification"
   },
   "analysis_state": {
     "claim_extraction_status": "completed",
-    "verification_status": "not_started",
-    "bayesian_status": "excluded_until_verified"
+    "verification_status": "drafted",
+    "bayesian_status": "held_for_review"
   },
   "article_summary": {
     "events": [
