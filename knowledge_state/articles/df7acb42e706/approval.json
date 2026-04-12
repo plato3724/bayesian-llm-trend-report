@@ -1,0 +1,60 @@
+{
+  "article_id": "df7acb42e706",
+  "timestamp": "2026-04-12T02:04:20+00:00",
+  "approver": "llm:openai/gpt-5.4",
+  "decision": "needs_human",
+  "overall_rationale": "Most items are manufacturer-relayed specifications or performance claims reported by a secondary article without primary-source links. The few hypothesis attachments are conceptually in-domain, but the target hypothesis is cold-start and the evidence is only partially verified, so human review is safer before application.",
+  "per_claim_decisions": [
+    {
+      "claim_id": "revo_3_is_latest_dexterous_hand_product",
+      "decision": "accept_as_fact",
+      "reasoning": "Acceptable as an article-level fact report, but not tied to an active hypothesis."
+    },
+    {
+      "claim_id": "revo_3_has_21_dof_and_tactile_features",
+      "decision": "defer",
+      "reasoning": "Relevant to tactile grounding, but relies on unlinked primary specs and the hypothesis is cold-start."
+    },
+    {
+      "claim_id": "brainco_calls_revo_3_first_open_ecosystem_hand",
+      "decision": "defer",
+      "reasoning": "The attribution is clear, but the 'world's first' superlative is not independently substantiated."
+    },
+    {
+      "claim_id": "brainco_tested_performance_jump_from_20_to_21_dof",
+      "decision": "accept_as_fact",
+      "reasoning": "Can be kept as a reported company-testing claim, but not safely elevated beyond that."
+    },
+    {
+      "claim_id": "revo_3_uses_direct_drive_backdrivable_joints",
+      "decision": "accept_as_fact",
+      "reasoning": "Reasonable article-reported hardware description with no posterior attachment."
+    },
+    {
+      "claim_id": "article_says_backdrivability_helps_sim_to_real",
+      "decision": "accept_as_fact",
+      "reasoning": "This is a technical explanation presented in the article, but not independently benchmarked here."
+    },
+    {
+      "claim_id": "revo_3_combines_palm_tactile_and_fingertip_vision",
+      "decision": "defer",
+      "reasoning": "Good conceptual fit for the tactile-grounding hypothesis, yet still based only on secondary reporting."
+    },
+    {
+      "claim_id": "revo_3_adapts_to_major_simulation_platforms",
+      "decision": "accept_as_fact",
+      "reasoning": "Concrete ecosystem claim, but not tied to a listed hypothesis and not independently source-checked."
+    },
+    {
+      "claim_id": "revo_2_appeared_in_unitree_public_dataset",
+      "decision": "defer",
+      "reasoning": "Specific external claim that should ideally be checked against the actual dataset before use."
+    },
+    {
+      "claim_id": "brainco_raised_2_billion_rmb_in_january",
+      "decision": "defer",
+      "reasoning": "Funding amount and 'largest' ranking need primary or reliable third-party financial confirmation."
+    }
+  ],
+  "human_override": null
+}

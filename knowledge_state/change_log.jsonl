@@ -99,3 +99,6 @@
 {"timestamp": "2026-04-12T02:03:19+00:00", "event": "recompute_posteriors", "included_articles": ["20fb29fec269", "44f454b544d9", "4a8b83da74e8", "7bb7bc9e2b3e", "3c07c6956807", "59b86c15655e", "2f9fe8beb5ba", "8f8f6c5c71fe", "5c7678b0d4c9", "06eb3b8e8732", "7ffdcd4439dc"], "hypothesis_count": 7}
 {"timestamp": "2026-04-12T02:03:19+00:00", "event": "save_claims", "article_id": "df7acb42e706", "claim_count": 10}
 {"timestamp": "2026-04-12T02:03:19+00:00", "event": "build_report", "output_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/docs/index.html"}
+{"timestamp": "2026-04-12T02:04:20+00:00", "event": "stage_verification", "article_id": "df7acb42e706", "approver": "llm:openai/gpt-5.4", "decision": "needs_human", "item_count": 10}
+{"timestamp": "2026-04-12T02:04:20+00:00", "event": "refresh_record_states", "refreshed": 15}
+{"timestamp": "2026-04-12T02:04:20+00:00", "event": "build_report", "output_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/docs/index.html"}
