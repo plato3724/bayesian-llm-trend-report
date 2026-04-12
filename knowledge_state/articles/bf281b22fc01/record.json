@@ -1,0 +1,46 @@
+{
+  "article_id": "bf281b22fc01",
+  "title": "19岁，常青藤辍学，这群中国年轻人重构了AI记忆",
+  "url": "https://mp.weixin.qq.com/s/6vRe448c-xxwPQoID0oUGA",
+  "ingested_from": "github_issue",
+  "ingested_at": "2026-04-12T10:33:45+00:00",
+  "last_updated_at": "2026-04-12T10:33:50+00:00",
+  "content_state": {
+    "full_text_status": "acquired",
+    "canonical_text_source": "knowledge_state/articles/bf281b22fc01/canonical_text.txt",
+    "fetch_attempts": [
+      {
+        "attempted_at": "2026-04-12T10:33:49+00:00",
+        "status": "acquired",
+        "status_code": 200,
+        "final_url": "https://mp.weixin.qq.com/s/6vRe448c-xxwPQoID0oUGA",
+        "content_type": "text/html",
+        "text_length": 5441,
+        "raw_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/knowledge_state/articles/bf281b22fc01/raw/fetch_20260412T103346Z.html",
+        "text_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/knowledge_state/articles/bf281b22fc01/raw/extract_20260412T103346Z.txt",
+        "note": "Full text looks sufficient for claim extraction."
+      }
+    ],
+    "manual_artifacts": [],
+    "next_action": "extract_claims"
+  },
+  "analysis_state": {
+    "claim_extraction_status": "not_started",
+    "verification_status": "not_started",
+    "bayesian_status": "excluded_until_verified"
+  },
+  "article_summary": {
+    "events": [],
+    "techniques": [],
+    "tools": []
+  },
+  "hypothesis_impacts": [],
+  "ingest_sources": [
+    {
+      "source_name": "github_issue",
+      "source_ref": "https://github.com/plato3724/bayesian-llm-trend-report/issues/7",
+      "source_note": "https://mp.weixin.qq.com/s/6vRe448c-xxwPQoID0oUGA",
+      "ingested_at": "2026-04-12T10:33:45+00:00"
+    }
+  ]
+}
