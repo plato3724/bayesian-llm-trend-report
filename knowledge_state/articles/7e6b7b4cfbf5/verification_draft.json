@@ -41,14 +41,11 @@
     },
     {
       "claim_id": "ultrasound_clip_uses_heterogeneous_graph_encoder_and_soft_labels",
-      "hypothesis_id": "structured_external_memory",
+      "hypothesis_id": null,
       "domain": "ai",
       "status": "partially_verified",
       "source_url": "http://arxiv.org/abs/2604.01749",
       "source_title": "Ultrasound-CLIP: Semantic-Aware Contrastive Pre-training for Ultrasound Image-Text Understanding",
-      "source_trust": "moderate",
-      "evidence_direction": "support",
-      "evidence_strength": "slight",
       "assessment": "The linked paper supports that Ultrasound-CLIP augments a standard dual-encoder setup with a UDAF-guided heterogeneous graph encoder and UDAF-based semantic soft labels. This does provide mild evidence for the hypothesis that useful long-context/knowledge handling is shifting toward structured, externalizable representations rather than raw context stuffing, because the method explicitly injects structured diagnostic relations into the representation pipeline. I keep the attachment slight and only partially verified because this is a domain-specific vision-language architecture, not a direct memory-system design claim, so the conceptual overlap is real but limited."
     },
     {
@@ -78,5 +75,6 @@
       "source_title": "ZJUDataIntelligence/Ultrasound-CLIP",
       "assessment": "The open-source part of the claim is supported by the linked GitHub repository and dataset link, so resource availability is defensible. The 'accepted by CVPR 2026' portion is plausible and likely reflected in the paper metadata, but absent an independent conference proceedings page in the article, that acceptance status is not fully cross-checked here, making the combined claim only partially verified."
     }
-  ]
+  ],
+  "last_modified_at": "2026-04-12T09:08:20+00:00"
 }
