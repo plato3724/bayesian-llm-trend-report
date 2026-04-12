@@ -150,3 +150,7 @@
 {"timestamp": "2026-04-12T10:33:49+00:00", "event": "fetch_pending", "limit": 20, "force": false, "results": [{"article_id": "bf281b22fc01", "title": "19岁，常青藤辍学，这群中国年轻人重构了AI记忆", "status": "acquired", "final_url": "https://mp.weixin.qq.com/s/6vRe448c-xxwPQoID0oUGA", "text_length": 5441, "note": "Full text looks sufficient for claim extraction."}]}
 {"timestamp": "2026-04-12T10:33:50+00:00", "event": "refresh_record_states", "refreshed": 18}
 {"timestamp": "2026-04-12T10:33:50+00:00", "event": "build_report", "output_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/docs/index.html"}
+{"timestamp": "2026-04-12T10:33:57+00:00", "event": "sync_github_issues", "repo": "plato3724/bayesian-llm-trend-report", "label": "article", "state": "open", "fallback_used": false, "created": 0, "updated": 7, "skipped": 0}
+{"timestamp": "2026-04-12T10:33:57+00:00", "event": "fetch_pending", "limit": 20, "force": false, "results": []}
+{"timestamp": "2026-04-12T10:33:57+00:00", "event": "refresh_record_states", "refreshed": 18}
+{"timestamp": "2026-04-12T10:33:57+00:00", "event": "build_report", "output_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/docs/index.html"}
