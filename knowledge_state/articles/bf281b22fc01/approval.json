@@ -1,0 +1,50 @@
+{
+  "article_id": "bf281b22fc01",
+  "timestamp": "2026-04-12T10:35:12+00:00",
+  "approver": "llm:openai/gpt-5.4",
+  "decision": "needs_human",
+  "overall_rationale": "本草稿多数条目只能做到部分核验，尤其多条 benchmark 百分比与“业内首个”类主张缺少 primary source 或独立复核。虽然整体方向与结构化外部记忆假说同域，但量化性能表述主要依赖文章自身，因此应交由人工复审后再决定是否应用。",
+  "per_claim_decisions": [
+    {
+      "claim_id": "m_flow_tool_exists",
+      "decision": "accept",
+      "reasoning": "有公开 GitHub 仓库支撑项目存在性，可作为弱支持信号应用。"
+    },
+    {
+      "claim_id": "m_flow_bundle_search_architecture",
+      "decision": "defer",
+      "reasoning": "架构方向可信，但技术细节未在当前输入中与源码或正式文档逐条核对。"
+    },
+    {
+      "claim_id": "m_flow_outperforms_mem0_locomo_36",
+      "decision": "defer",
+      "reasoning": "量化 benchmark claim 缺少 primary source 与独立复核，不宜自动应用。"
+    },
+    {
+      "claim_id": "m_flow_outperforms_graphiti_longmemeval_16",
+      "decision": "defer",
+      "reasoning": "同属未独立核验的量化对比，需人工检查原始结果。"
+    },
+    {
+      "claim_id": "m_flow_evolvingevents_leads_cognee_7_graphiti_20",
+      "decision": "defer",
+      "reasoning": "包含具体领先幅度，但无可审计实验来源，需人工复核。"
+    },
+    {
+      "claim_id": "m_flow_retrieval_without_llm_millisecond_response",
+      "decision": "defer",
+      "reasoning": "非 LLM 检索方向合理，但“毫秒级响应”缺性能证据，自动应用风险偏高。"
+    },
+    {
+      "claim_id": "m_flow_supports_coreference_resolution_claim",
+      "decision": "defer",
+      "reasoning": "“业内首个”属于高门槛首创性判断，现有材料不足。"
+    },
+    {
+      "claim_id": "m_flow_one_line_docker_integration_claim",
+      "decision": "accept_as_fact",
+      "reasoning": "可作为与假说无关的产品部署便利性事实保留，但不更新后验。"
+    }
+  ],
+  "human_override": null
+}

@@ -1,0 +1,35 @@
+{
+  "ok": true,
+  "article_id": "bf281b22fc01",
+  "draft_path": "knowledge_state/articles/bf281b22fc01/_proposed_draft.json",
+  "approval_path": "knowledge_state/articles/bf281b22fc01/_proposed_approval.json",
+  "model": "openai/gpt-5.4",
+  "attempts": 1,
+  "item_count": 8,
+  "decision": "needs_human",
+  "downgraded_by_guard": false,
+  "escalation_triggers": [
+    {
+      "trigger": "band_crossing",
+      "hypothesis_id": "structured_external_memory",
+      "before_band": "very_likely",
+      "after_band": "near_certain",
+      "delta_log_odds": 0.96,
+      "claim_ids": [
+        "m_flow_tool_exists",
+        "m_flow_bundle_search_architecture",
+        "m_flow_outperforms_mem0_locomo_36",
+        "m_flow_outperforms_graphiti_longmemeval_16",
+        "m_flow_evolvingevents_leads_cognee_7_graphiti_20",
+        "m_flow_supports_coreference_resolution_claim"
+      ],
+      "detail": "hypothesis 'structured_external_memory' would move very_likely → near_certain ↑ (Δlog-odds=+0.960) via items ['m_flow_tool_exists', 'm_flow_bundle_search_architecture', 'm_flow_outperforms_mem0_locomo_36', 'm_flow_outperforms_graphiti_longmemeval_16', 'm_flow_evolvingevents_leads_cognee_7_graphiti_20', 'm_flow_supports_coreference_resolution_claim']"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 8138,
+    "completion_tokens": 2201,
+    "total_tokens": 10339
+  },
+  "next_step": "python scripts/bayesian_reader.py stage-verification --article-id bf281b22fc01 --draft knowledge_state/articles/bf281b22fc01/_proposed_draft.json --approval knowledge_state/articles/bf281b22fc01/_proposed_approval.json"
+}
