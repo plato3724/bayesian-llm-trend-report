@@ -1,5 +1,71 @@
 {
   "article_id": "bf281b22fc01",
-  "claim_extraction_status": "not_started",
-  "claims": []
+  "claim_extraction_status": "completed",
+  "extracted_at": "2026-04-12T10:34:15+00:00",
+  "claims": [
+    {
+      "id": "m_flow_tool_exists",
+      "type": "tool",
+      "text": "文章称，心流元素团队开发了名为 M-FLOW 的 AI 记忆引擎。",
+      "hypothesis_candidates": [
+        "structured_external_memory"
+      ]
+    },
+    {
+      "id": "m_flow_bundle_search_architecture",
+      "type": "technique",
+      "text": "文章称，M-FLOW 采用自研的图路由 Bundle Search 架构来组织和检索记忆。",
+      "hypothesis_candidates": [
+        "structured_external_memory",
+        "token_efficiency_as_architecture"
+      ]
+    },
+    {
+      "id": "m_flow_outperforms_mem0_locomo_36",
+      "type": "event",
+      "text": "文章称，在对齐 Mem0 官网 benchmark 测试的 LoCoMo 上，M-FLOW 领先 Mem0 36%。",
+      "hypothesis_candidates": [
+        "structured_external_memory"
+      ]
+    },
+    {
+      "id": "m_flow_outperforms_graphiti_longmemeval_16",
+      "type": "event",
+      "text": "文章称，在对齐 Graphiti 官网 benchmark 测试的 LongMemEval 上，M-FLOW 领先 Graphiti 16%。",
+      "hypothesis_candidates": [
+        "structured_external_memory"
+      ]
+    },
+    {
+      "id": "m_flow_evolvingevents_leads_cognee_7_graphiti_20",
+      "type": "event",
+      "text": "文章称，在长期事件演变测试 EvolvingEvents 中，M-FLOW 领先 Cognee 7%，领先 Graphiti 20%。",
+      "hypothesis_candidates": [
+        "structured_external_memory"
+      ]
+    },
+    {
+      "id": "m_flow_retrieval_without_llm_millisecond_response",
+      "type": "technique",
+      "text": "文章称，M-FLOW 的检索环节不依赖 LLM，能够实现毫秒级响应。",
+      "hypothesis_candidates": [
+        "structured_external_memory",
+        "token_efficiency_as_architecture"
+      ]
+    },
+    {
+      "id": "m_flow_supports_coreference_resolution_claim",
+      "type": "event",
+      "text": "文章称，M-FLOW 是业内首个支持指代消解的记忆引擎。",
+      "hypothesis_candidates": [
+        "structured_external_memory"
+      ]
+    },
+    {
+      "id": "m_flow_one_line_docker_integration_claim",
+      "type": "tool",
+      "text": "文章称，M-FLOW 在具备 Docker 环境时只需要一行代码就能完成接入。",
+      "hypothesis_candidates": []
+    }
+  ]
 }
