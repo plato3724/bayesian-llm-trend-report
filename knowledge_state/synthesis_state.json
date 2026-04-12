@@ -1,6 +1,6 @@
 {
   "created_at": "2026-04-11T02:31:52+00:00",
-  "last_recomputed_at": "2026-04-11T12:29:59+00:00",
+  "last_recomputed_at": "2026-04-12T03:12:21+00:00",
   "included_articles": [
     "20fb29fec269",
     "44f454b544d9",
@@ -12,7 +12,8 @@
     "8f8f6c5c71fe",
     "5c7678b0d4c9",
     "06eb3b8e8732",
-    "7ffdcd4439dc"
+    "7ffdcd4439dc",
+    "df7acb42e706"
   ],
   "active_hypotheses": [
     {
@@ -54,7 +55,7 @@
     {
       "id": "embodied_models_add_tactile_grounding",
       "statement": "具身系统的下一批关键增量证据来自触觉模态，尤其是与 egocentric video 对齐的 tactile grounding。",
-      "posterior_probability": 0.8578369446320776,
+      "posterior_probability": 0.9253553770670908,
       "posterior_band": "likely"
     }
   ],

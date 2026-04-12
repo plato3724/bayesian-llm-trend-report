@@ -1,5 +1,111 @@
 {
   "article_id": "df7acb42e706",
-  "verification_status": "not_started",
-  "items": []
+  "verification_status": "completed",
+  "verified_at": "2026-04-12T03:12:21+00:00",
+  "items": [
+    {
+      "claim_id": "revo_3_is_latest_dexterous_hand_product",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://mp.weixin.qq.com/s/m1P0KXuGzgrS-D0K7Z1Bug",
+      "source_title": "超越人手！中国第一家脑机接口独角兽，要把仿生手带给机器人",
+      "assessment": "The article itself clearly identifies the demo hand as BrainCo's newest dexterous-hand product called Revo 3, but no independent primary product page, launch announcement, or manufacturer specification was provided in the materials here to cross-check that release status. This supports a partial rather than full verification as an article-level factual statement."
+    },
+    {
+      "claim_id": "revo_3_has_21_dof_and_tactile_features",
+      "hypothesis_id": "embodied_models_add_tactile_grounding",
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://mp.weixin.qq.com/s/m1P0KXuGzgrS-D0K7Z1Bug",
+      "source_title": "超越人手！中国第一家脑机接口独角兽，要把仿生手带给机器人",
+      "source_trust": "moderate",
+      "evidence_direction": "support",
+      "evidence_strength": "slight",
+      "assessment": "The article explicitly states the bundle of hardware features: 21 DoF per hand, direct-drive and backdrivable design, whole-palm tactile sensing, fingertip visuotactile sensing, and 70N grip force. However, these are manufacturer-relayed performance/specification claims presented through a secondary article, and no primary spec sheet or benchmark source is included here. Because the claim directly concerns adding tactile and visuotactile sensing to embodied manipulation, it is relevant supportive evidence for the tactile-grounding hypothesis, but only at slight strength given the cold-start state of the hypothesis and lack of primary-source confirmation."
+    },
+    {
+      "claim_id": "brainco_calls_revo_3_first_open_ecosystem_hand",
+      "hypothesis_id": "embodied_models_add_tactile_grounding",
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://mp.weixin.qq.com/s/m1P0KXuGzgrS-D0K7Z1Bug",
+      "source_title": "超越人手！中国第一家脑机接口独角兽，要把仿生手带给机器人",
+      "source_trust": "moderate",
+      "evidence_direction": "support",
+      "evidence_strength": "slight",
+      "assessment": "The article does present the 'world's first' characterization in exactly this feature cluster, so the article-level attribution to BrainCo can be partially verified. But the superlative itself is not independently substantiated with a comparative market survey or primary documentation, so the underlying exclusivity claim remains unconfirmed. It still slightly supports the embodied tactile-grounding hypothesis because it signals market movement toward tactile-plus-visuotactile dexterous platforms, though the evidence is weakly grounded."
+    },
+    {
+      "claim_id": "brainco_tested_performance_jump_from_20_to_21_dof",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://mp.weixin.qq.com/s/m1P0KXuGzgrS-D0K7Z1Bug",
+      "source_title": "超越人手！中国第一家脑机接口独角兽，要把仿生手带给机器人",
+      "assessment": "The article explicitly attributes this result to BrainCo's own system testing, including the linear improvement from 11 to 20 DoF and a noticeable jump from 20 to 21 DoF. However, no test protocol, paper, benchmark table, or primary experimental report is linked in the provided content, so the performance result cannot be independently validated beyond confirming that the article reports BrainCo making this claim."
+    },
+    {
+      "claim_id": "revo_3_uses_direct_drive_backdrivable_joints",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://mp.weixin.qq.com/s/m1P0KXuGzgrS-D0K7Z1Bug",
+      "source_title": "超越人手！中国第一家脑机接口独角兽，要把仿生手带给机器人",
+      "assessment": "This engineering description is stated directly in the article, including the use of integrated direct-drive micro-joints, self-developed motors and reducers, and the claimed reduction in wear and lag from removing complex transmission chains. Yet without a primary technical document, teardown, or manufacturer datasheet in the provided materials, the design description can only be treated as partially verified from the article's reporting."
+    },
+    {
+      "claim_id": "article_says_backdrivability_helps_sim_to_real",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://mp.weixin.qq.com/s/m1P0KXuGzgrS-D0K7Z1Bug",
+      "source_title": "超越人手！中国第一家脑机接口独角兽，要把仿生手带给机器人",
+      "assessment": "The article clearly advances the explanation that backdrivability helps bridge sim-to-real by allowing joints to yield under contact and provide force-responsive behavior. That is a plausible technical argument and is accurately represented as the article's position, but no linked primary study or benchmark is available here to verify the magnitude or generality of the effect, so partial verification is the most defensible status."
+    },
+    {
+      "claim_id": "revo_3_combines_palm_tactile_and_fingertip_vision",
+      "hypothesis_id": "embodied_models_add_tactile_grounding",
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://mp.weixin.qq.com/s/m1P0KXuGzgrS-D0K7Z1Bug",
+      "source_title": "超越人手！中国第一家脑机接口独角兽，要把仿生手带给机器人",
+      "source_trust": "moderate",
+      "evidence_direction": "support",
+      "evidence_strength": "slight",
+      "assessment": "The article directly describes a combination of whole-palm tactile sensing for contour, compliance, and slip information with fingertip visual sensing for sub-millimeter pre-grasp alignment. This is strongly on-topic for the hypothesis that embodied systems gain important capability from tactile grounding aligned with local perception. Still, because the claim is only supported by the article text and lacks a primary source or benchmark evidence in the supplied materials, it should be treated as partially verified and only slight support."
+    },
+    {
+      "claim_id": "revo_3_adapts_to_major_simulation_platforms",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://mp.weixin.qq.com/s/m1P0KXuGzgrS-D0K7Z1Bug",
+      "source_title": "超越人手！中国第一家脑机接口独角兽，要把仿生手带给机器人",
+      "assessment": "The article states that Revo 3 is already adapted to MuJoCo, Isaac Gym, and NVIDIA Omniverse and that a 21-DoF teleoperation collection stack is planned. These are concrete ecosystem claims, but they are not backed here by SDK repositories, platform integration pages, or primary product documentation. Accordingly, the claim is partially verified as a reported statement, not fully verified as independently established fact."
+    },
+    {
+      "claim_id": "revo_2_appeared_in_unitree_public_dataset",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://mp.weixin.qq.com/s/m1P0KXuGzgrS-D0K7Z1Bug",
+      "source_title": "超越人手！中国第一家脑机接口独角兽，要把仿生手带给机器人",
+      "assessment": "The article says Revo 2 appeared in Unitree's public dataset and completed tasks across medical, rehabilitation, and home scenarios, but the actual dataset or task records are not linked in the provided content. Because the statement is specific yet unsupported by a primary dataset reference here, it can only be partially verified as an article-reported claim."
+    },
+    {
+      "claim_id": "brainco_raised_2_billion_rmb_in_january",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://mp.weixin.qq.com/s/m1P0KXuGzgrS-D0K7Z1Bug",
+      "source_title": "超越人手！中国第一家脑机接口独角兽，要把仿生手带给机器人",
+      "assessment": "The article reports that BrainCo raised 2 billion RMB in January led by IDG Capital and Walden International and adds a largest-deal superlative for the BCI sector excluding Neuralink. No financing announcement, investor release, or reliable third-party funding database is included in the supplied materials, so neither the amount nor the ranking can be independently confirmed here. Partial verification is appropriate because the article plainly makes the claim, but the underlying fact was not cross-checked against a primary source."
+    }
+  ],
+  "approval_ref": {
+    "approver": "human:github/plato3724",
+    "decision": "human_approved",
+    "timestamp": "2026-04-12T02:04:20+00:00"
+  }
 }
