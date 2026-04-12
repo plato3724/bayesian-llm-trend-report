@@ -1,0 +1,46 @@
+{
+  "article_id": "7e6b7b4cfbf5",
+  "title": "36.4万超声图文对！中国团队构建首个大规模超声专属数据集，让AI真正读懂临床诊断语义",
+  "url": "https://mp.weixin.qq.com/s/IHKYn-mpoLyT6R00Jy6YxQ",
+  "ingested_from": "github_issue",
+  "ingested_at": "2026-04-12T09:00:49+00:00",
+  "last_updated_at": "2026-04-12T09:00:56+00:00",
+  "content_state": {
+    "full_text_status": "acquired",
+    "canonical_text_source": "knowledge_state/articles/7e6b7b4cfbf5/canonical_text.txt",
+    "fetch_attempts": [
+      {
+        "attempted_at": "2026-04-12T09:00:56+00:00",
+        "status": "acquired",
+        "status_code": 200,
+        "final_url": "https://mp.weixin.qq.com/s/IHKYn-mpoLyT6R00Jy6YxQ",
+        "content_type": "text/html",
+        "text_length": 3878,
+        "raw_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/knowledge_state/articles/7e6b7b4cfbf5/raw/fetch_20260412T090049Z.html",
+        "text_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/knowledge_state/articles/7e6b7b4cfbf5/raw/extract_20260412T090049Z.txt",
+        "note": "Full text looks sufficient for claim extraction."
+      }
+    ],
+    "manual_artifacts": [],
+    "next_action": "extract_claims"
+  },
+  "analysis_state": {
+    "claim_extraction_status": "not_started",
+    "verification_status": "not_started",
+    "bayesian_status": "excluded_until_verified"
+  },
+  "article_summary": {
+    "events": [],
+    "techniques": [],
+    "tools": []
+  },
+  "hypothesis_impacts": [],
+  "ingest_sources": [
+    {
+      "source_name": "github_issue",
+      "source_ref": "https://github.com/plato3724/bayesian-llm-trend-report/issues/5",
+      "source_note": "https://mp.weixin.qq.com/s/IHKYn-mpoLyT6R00Jy6YxQ",
+      "ingested_at": "2026-04-12T09:00:49+00:00"
+    }
+  ]
+}

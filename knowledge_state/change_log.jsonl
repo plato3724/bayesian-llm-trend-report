@@ -108,3 +108,7 @@
 {"timestamp": "2026-04-12T03:12:21+00:00", "event": "apply_verification", "article_id": "df7acb42e706", "item_count": 10, "approver": "human:github/plato3724", "decision": "human_approved", "cross_domain_warnings": []}
 {"timestamp": "2026-04-12T03:12:21+00:00", "event": "refresh_record_states", "refreshed": 15}
 {"timestamp": "2026-04-12T03:12:22+00:00", "event": "build_report", "output_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/docs/index.html"}
+{"timestamp": "2026-04-12T09:00:49+00:00", "event": "sync_github_issues", "repo": "plato3724/bayesian-llm-trend-report", "label": "article", "state": "open", "fallback_used": false, "created": 1, "updated": 4, "skipped": 0}
+{"timestamp": "2026-04-12T09:00:56+00:00", "event": "fetch_pending", "limit": 20, "force": false, "results": [{"article_id": "7e6b7b4cfbf5", "title": "36.4万超声图文对！中国团队构建首个大规模超声专属数据集，让AI真正读懂临床诊断语义", "status": "acquired", "final_url": "https://mp.weixin.qq.com/s/IHKYn-mpoLyT6R00Jy6YxQ", "text_length": 3878, "note": "Full text looks sufficient for claim extraction."}]}
+{"timestamp": "2026-04-12T09:00:56+00:00", "event": "refresh_record_states", "refreshed": 16}
+{"timestamp": "2026-04-12T09:00:56+00:00", "event": "build_report", "output_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/docs/index.html"}
