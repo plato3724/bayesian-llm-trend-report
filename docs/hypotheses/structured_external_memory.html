@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>长程记忆与知识管理正在从暴力扩上下文，转向结构化、可外部化、可查询的 memory / graph / session object。</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5efe5;
+      --paper: rgba(255, 252, 246, 0.94);
+      --line: #d7c8b1;
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --accent: #d97706;
+      --accent-soft: rgba(217, 119, 6, 0.12);
+      --radius: 24px;
+      --shadow: 0 20px 45px rgba(94, 71, 38, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(217,119,6,0.12), transparent 32%),
+        linear-gradient(180deg, #fbf7ef 0%, var(--bg) 100%);
+      color: var(--ink);
+    }
+    .page {
+      width: min(980px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 24px 0 48px;
+    }
+    .panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      margin-top: 18px;
+    }
+    .back-link {
+      display: inline-flex;
+      text-decoration: none;
+      color: #92400e;
+      margin-bottom: 10px;
+    }
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin: 18px 0;
+    }
+    .meta-card {
+      background: #fffaf1;
+      border: 1px solid #ead9bc;
+      border-radius: 16px;
+      padding: 14px;
+    }
+    .meta-label, .muted { color: var(--muted); }
+    .meta-label { margin: 0 0 6px; font-size: 0.9rem; }
+    .meta-value { margin: 0; font-weight: 700; }
+    .evidence-row {
+      border-top: 1px solid #eee5d6;
+      padding: 14px 0;
+    }
+    .evidence-row:first-of-type {
+      border-top: 0;
+      padding-top: 0;
+    }
+    .evidence-top {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      border: 1px solid transparent;
+    }
+    .status-verified {
+      background: #dcfce7;
+      color: #166534;
+      border-color: #bbf7d0;
+    }
+    .status-partially_verified {
+      background: #fef3c7;
+      color: #92400e;
+      border-color: #fde68a;
+    }
+    .claim { font-weight: 600; margin: 0 0 8px; }
+    .pill-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .pill-list li {
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: #f1ece1;
+      border: 1px solid #e3d9c8;
+      font-size: 0.92rem;
+    }
+    .mini-link { color: #92400e; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="panel">
+      <a class="back-link" href="../index.html#trends">返回核心趋势</a>
+      <p class="muted">假设详情</p>
+      <h1>长程记忆与知识管理正在从暴力扩上下文，转向结构化、可外部化、可查询的 memory / graph / session object。</h1>
+      <p>可恢复、可选择读取的外部上下文对象，比一次性塞满窗口更适合长期工作。</p>
+      <div class="meta">
+        <article class="meta-card">
+          <p class="meta-label">当前后验</p>
+          <p class="meta-value">very_likely · 证据很强</p>
+        </article>
+        <article class="meta-card">
+          <p class="meta-label">概率</p>
+          <p class="meta-value">96.2%</p>
+        </article>
+        <article class="meta-card">
+          <p class="meta-label">证据条数</p>
+          <p class="meta-value">5</p>
+        </article>
+        <article class="meta-card">
+          <p class="meta-label">最近证据时间</p>
+          <p class="meta-value">暂无</p>
+        </article>
+      </div>
+      <h2>理论展开</h2>
+      <p>这条假设关注的是长期记忆从“更大上下文窗口”转向“结构化外部对象”的范式变化。单纯扩大窗口会同时放大成本、延迟、噪声和检索困难，而 memory object、graph、session state 允许系统只读取当前任务真正需要的片段。它的意义不只是省 token，而是把记忆变成一个可维护、可选择、可审计的独立层。若该方向成立，未来长程 agent 和知识系统会更像数据库与工作内存的组合，而不是一个一次性吞下全部历史的巨型 prompt。</p>
+      <h2>Meta Tags</h2>
+      <ul class='pill-list'><li>externalization_as_pattern</li><li>structure_over_volume</li></ul>
+    </section>
+    <section class="panel">
+      <h2>支撑证据</h2>
+      <div class='evidence-row'><div class='evidence-top'><span class='status status-verified'>已核实</span><a href='#article-20fb29fec269'>Anthropic发布Managed Agents，才发现这支硅谷华人团队早就押对了赌注</a><a class='mini-link' href='#article-20fb29fec269'>查看文章</a></div><p class='claim'>Managed Agents 将 agent 运行时虚拟化为 session、harness、sandbox 三个可独立替换的接口。</p><p class='muted'>Anthropic 将 session 明确建模为 context object outside Claude&#x27;s context window，这支持外部化上下文对象的趋势。</p></div><div class='evidence-row'><div class='evidence-top'><span class='status status-partially_verified'>部分核实</span><a href='#article-4a8b83da74e8'>《生化危机》女主演跨界AI拿SOTA了！打造免费“AI记忆系统”爆火GitHub</a><a class='mini-link' href='#article-4a8b83da74e8'>查看文章</a></div><p class='claim'>MemPalace 采用“全部逐字保存，再做可导航检索”的长期记忆方案，而不是先让 AI 判断什么值得记。</p><p class='muted'>官方项目页明确写出 store everything verbatim and use vector search later，这与传统摘要式 memory 工具形成对照。</p></div><div class='evidence-row'><div class='evidence-top'><span class='status status-partially_verified'>部分核实</span><a href='#article-4a8b83da74e8'>《生化危机》女主演跨界AI拿SOTA了！打造免费“AI记忆系统”爆火GitHub</a><a class='mini-link' href='#article-4a8b83da74e8'>查看文章</a></div><p class='claim'>MemPalace 把长期记忆组织成 wings / rooms / halls / closets / drawers 的分层结构，并用 AAAK 做高压缩摘要。</p><p class='muted'>AAAK 30x compression、closet/drawer 双层存储和常驻/按需读取思路，把 token 成本控制写进了 memory architecture。</p></div><div class='evidence-row'><div class='evidence-top'><span class='status status-partially_verified'>部分核实</span><a href='#article-7bb7bc9e2b3e'>卡帕西没做完的，开源社区48小时搞定了！完全体知识库，token省70倍</a><a class='mini-link' href='#article-7bb7bc9e2b3e'>查看文章</a></div><p class='claim'>Graphify 是一个面向 AI coding assistants 的多模态知识图谱构建工具，可将代码、文档、论文和图示变成可查询 graph。</p><p class='muted'>官方站点明确给出 multi-modal knowledge graph builder 的定位与输入模态范围。</p></div><div class='evidence-row'><div class='evidence-top'><span class='status status-partially_verified'>部分核实</span><a href='#article-7bb7bc9e2b3e'>卡帕西没做完的，开源社区48小时搞定了！完全体知识库，token省70倍</a><a class='mini-link' href='#article-7bb7bc9e2b3e'>查看文章</a></div><p class='claim'>Graphify 将 Tree-sitter 静态分析与 LLM 语义提取组合起来构图，并明确写出 no vector embeddings required。</p><p class='muted'>站点明确写出 Tree-sitter + LLM semantic extraction，以及 no vector embeddings required。</p></div>
+    </section>
+  </main>
+</body>
+</html>

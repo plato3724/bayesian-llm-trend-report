@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>具身系统的下一批关键增量证据来自触觉模态，尤其是与 egocentric video 对齐的 tactile grounding。</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5efe5;
+      --paper: rgba(255, 252, 246, 0.94);
+      --line: #d7c8b1;
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --accent: #d97706;
+      --accent-soft: rgba(217, 119, 6, 0.12);
+      --radius: 24px;
+      --shadow: 0 20px 45px rgba(94, 71, 38, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(217,119,6,0.12), transparent 32%),
+        linear-gradient(180deg, #fbf7ef 0%, var(--bg) 100%);
+      color: var(--ink);
+    }
+    .page {
+      width: min(980px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 24px 0 48px;
+    }
+    .panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      margin-top: 18px;
+    }
+    .back-link {
+      display: inline-flex;
+      text-decoration: none;
+      color: #92400e;
+      margin-bottom: 10px;
+    }
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin: 18px 0;
+    }
+    .meta-card {
+      background: #fffaf1;
+      border: 1px solid #ead9bc;
+      border-radius: 16px;
+      padding: 14px;
+    }
+    .meta-label, .muted { color: var(--muted); }
+    .meta-label { margin: 0 0 6px; font-size: 0.9rem; }
+    .meta-value { margin: 0; font-weight: 700; }
+    .evidence-row {
+      border-top: 1px solid #eee5d6;
+      padding: 14px 0;
+    }
+    .evidence-row:first-of-type {
+      border-top: 0;
+      padding-top: 0;
+    }
+    .evidence-top {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      border: 1px solid transparent;
+    }
+    .status-verified {
+      background: #dcfce7;
+      color: #166534;
+      border-color: #bbf7d0;
+    }
+    .status-partially_verified {
+      background: #fef3c7;
+      color: #92400e;
+      border-color: #fde68a;
+    }
+    .claim { font-weight: 600; margin: 0 0 8px; }
+    .pill-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .pill-list li {
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: #f1ece1;
+      border: 1px solid #e3d9c8;
+      font-size: 0.92rem;
+    }
+    .mini-link { color: #92400e; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="panel">
+      <a class="back-link" href="../index.html#trends">返回核心趋势</a>
+      <p class="muted">假设详情</p>
+      <h1>具身系统的下一批关键增量证据来自触觉模态，尤其是与 egocentric video 对齐的 tactile grounding。</h1>
+      <p>视觉和语言不足以表达接触稳定性、受力分布与精细操作反馈。</p>
+      <div class="meta">
+        <article class="meta-card">
+          <p class="meta-label">当前后验</p>
+          <p class="meta-value">likely · 证据偏强</p>
+        </article>
+        <article class="meta-card">
+          <p class="meta-label">概率</p>
+          <p class="meta-value">92.5%</p>
+        </article>
+        <article class="meta-card">
+          <p class="meta-label">证据条数</p>
+          <p class="meta-value">5</p>
+        </article>
+        <article class="meta-card">
+          <p class="meta-label">最近证据时间</p>
+          <p class="meta-value">暂无</p>
+        </article>
+      </div>
+      <h2>理论展开</h2>
+      <p>这条假设关注具身系统中长期被忽视的一层：触觉 grounding。视觉可以告诉系统物体的大致位置和外观，语言可以提供任务语义，但真正决定抓取是否稳定、接触是否滑移、受力是否合适的信号，往往发生在接触面上。只要机器人任务继续向精细 manipulation 发展，触觉就会从可选传感器变成关键增量证据来源，尤其是在与 egocentric video、局部视觉和动作状态联合建模时。若该方向成立，未来具身模型的进展会越来越依赖多模态接触反馈，而不只是更强的视觉 backbone。</p>
+      <h2>Meta Tags</h2>
+      <ul class='pill-list'><li>modality_expansion</li><li>grounding_as_missing_layer</li></ul>
+    </section>
+    <section class="panel">
+      <h2>支撑证据</h2>
+      <div class='evidence-row'><div class='evidence-top'><span class='status status-verified'>已核实</span><a href='#article-7ffdcd4439dc'>补全具身智能「触觉」拼图！哈工深发布EgoTouch：300项操作任务，百万帧视觉触觉同步对齐</a><a class='mini-link' href='#article-7ffdcd4439dc'>查看文章</a></div><p class='claim'>EgoTouch 是面向 egocentric hand-object interaction 的大规模多视角触觉数据集，包含 302 tasks、4,530 episodes、3 camera views、42 joints 和 pressure maps。</p><p class='muted'>官方项目页直接给出 302 tasks、4,530 episodes、multi-view video、42 joints 与 pressure maps 的数据集规格。</p></div><div class='evidence-row'><div class='evidence-top'><span class='status status-verified'>已核实</span><a href='#article-7ffdcd4439dc'>补全具身智能「触觉」拼图！哈工深发布EgoTouch：300项操作任务，百万帧视觉触觉同步对齐</a><a class='mini-link' href='#article-7ffdcd4439dc'>查看文章</a></div><p class='claim'>TouchAnything 使用 shared DINOv2 encoder、learnable view embeddings、cross-view attention 和 view dropout 做多视角触觉预测。</p><p class='muted'>项目页明确列出 shared DINOv2 encoder、learnable view embeddings、cross-view attention 和 view dropout。</p></div><div class='evidence-row'><div class='evidence-top'><span class='status status-partially_verified'>部分核实</span><a href='#article-df7acb42e706'>https://mp.weixin.qq.com/s/m1P0KXuGzgrS-D0K7Z1Bug</a><a class='mini-link' href='#article-df7acb42e706'>查看文章</a></div><p class='claim'>The article states that Revo 3 has 21 degrees of freedom in one hand, uses a new direct-drive and backdrivable design, includes whole-palm tactile sensing and fingertip visuotactile sensing, and reaches 70N whole-hand grip force.</p><p class='muted'>The article explicitly states the bundle of hardware features: 21 DoF per hand, direct-drive and backdrivable design, whole-palm tactile sensing, fingertip visuotactile sensing, and 70N grip force. However, these are manufacturer-relayed performance/specification claims presented through a secondary article, and no primary spec sheet or benchmark source is included here. Because the claim directly concerns adding tactile and visuotactile sensing to embodied manipulation, it is relevant supportive evidence for the tactile-grounding hypothesis, but only at slight strength given the cold-start state of the hypothesis and lack of primary-source confirmation.</p></div><div class='evidence-row'><div class='evidence-top'><span class='status status-partially_verified'>部分核实</span><a href='#article-df7acb42e706'>https://mp.weixin.qq.com/s/m1P0KXuGzgrS-D0K7Z1Bug</a><a class='mini-link' href='#article-df7acb42e706'>查看文章</a></div><p class='claim'>The article claims that Revo 3 is the world&#x27;s first dexterous hand with 20+ degrees of freedom, whole-palm tactile sensing, visuotactile sensing, and an open ecosystem.</p><p class='muted'>The article does present the &#x27;world&#x27;s first&#x27; characterization in exactly this feature cluster, so the article-level attribution to BrainCo can be partially verified. But the superlative itself is not independently substantiated with a comparative market survey or primary documentation, so the underlying exclusivity claim remains unconfirmed. It still slightly supports the embodied tactile-grounding hypothesis because it signals market movement toward tactile-plus-visuotactile dexterous platforms, though the evidence is weakly grounded.</p></div><div class='evidence-row'><div class='evidence-top'><span class='status status-partially_verified'>部分核实</span><a href='#article-df7acb42e706'>https://mp.weixin.qq.com/s/m1P0KXuGzgrS-D0K7Z1Bug</a><a class='mini-link' href='#article-df7acb42e706'>查看文章</a></div><p class='claim'>The article states that Revo 3 combines a whole-palm tactile array for sensing object contour, softness-hardness, and slip direction with fingertip visual sensors for sub-millimeter pre-grasp alignment.</p><p class='muted'>The article directly describes a combination of whole-palm tactile sensing for contour, compliance, and slip information with fingertip visual sensing for sub-millimeter pre-grasp alignment. This is strongly on-topic for the hypothesis that embodied systems gain important capability from tactile grounding aligned with local perception. Still, because the claim is only supported by the article text and lacks a primary source or benchmark evidence in the supplied materials, it should be treated as partially verified and only slight support.</p></div>
+    </section>
+  </main>
+</body>
+</html>

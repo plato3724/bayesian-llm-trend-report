@@ -25,6 +25,7 @@ STATE_DIR = ROOT / "knowledge_state"
 ARTICLES_DIR = STATE_DIR / "articles"
 REPORT_DIR = ROOT / "docs"
 REPORT_PATH = REPORT_DIR / "index.html"
+HYPOTHESIS_DETAIL_DIR = REPORT_DIR / "hypotheses"
 FRAMEWORK_PATH = STATE_DIR / "framework.json"
 HYPOTHESES_PATH = STATE_DIR / "hypotheses.json"
 SYNTHESIS_PATH = STATE_DIR / "synthesis_state.json"
@@ -60,6 +61,23 @@ def append_jsonl(path: Path, payload: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("a", encoding="utf-8") as handle:
         handle.write(json.dumps(payload, ensure_ascii=False) + "\n")
+
+
+def read_jsonl(path: Path) -> list[dict[str, Any]]:
+    if not path.exists():
+        return []
+    entries: list[dict[str, Any]] = []
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            payload = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if isinstance(payload, dict):
+            entries.append(payload)
+    return entries
 
 
 def bootstrap_state_files() -> None:
@@ -914,9 +932,11 @@ def recompute_posteriors() -> dict[str, Any]:
         prior_log_odds = float(hypothesis.get("prior_log_odds", 0.0))
         posterior_log_odds = prior_log_odds
         supporting_items: list[dict[str, Any]] = []
+        max_verified_at: str | None = None
 
         for record in article_records:
             verification = read_json(verification_path(record["article_id"]), default={"items": []})
+            article_verified_at = verification.get("verified_at")
             for item in verification.get("items", []):
                 if item.get("hypothesis_id") != hypothesis.get("id"):
                     continue
@@ -966,6 +986,10 @@ def recompute_posteriors() -> dict[str, Any]:
                 supporting_items.append(supporting_entry)
                 if record["article_id"] not in included_articles:
                     included_articles.append(record["article_id"])
+                if article_verified_at and (
+                    max_verified_at is None or article_verified_at > max_verified_at
+                ):
+                    max_verified_at = article_verified_at
 
         probability = 1 / (1 + math.exp(-posterior_log_odds))
         hypothesis["posterior_log_odds"] = posterior_log_odds
@@ -973,6 +997,7 @@ def recompute_posteriors() -> dict[str, Any]:
         hypothesis["posterior_band"] = posterior_band(probability)
         hypothesis["last_recomputed_at"] = utc_now()
         hypothesis["supporting_items"] = supporting_items
+        hypothesis["newest_evidence_at"] = max_verified_at
 
     # Also fold in verified+null-hypothesis articles — they count as
     # included evidence even though they don't touch any posterior.
@@ -2913,6 +2938,30 @@ def band_fill_fraction(value: float | None) -> float:
     return 0.0
 
 
+def parse_iso_datetime(value: str | None) -> datetime | None:
+    if not value:
+        return None
+    try:
+        return datetime.fromisoformat(value)
+    except ValueError:
+        return None
+
+
+def hypothesis_theory_text(item: dict[str, Any]) -> str:
+    theory = (item.get("theory") or "").strip()
+    if theory:
+        return theory
+    rationale = (item.get("rationale") or "").strip()
+    statement = (item.get("statement") or "").strip()
+    if rationale and statement:
+        return f"{statement}\n\n{rationale}"
+    return rationale or statement
+
+
+def hypothesis_detail_href(hypothesis_id: str) -> str:
+    return f"hypotheses/{hypothesis_id}.html"
+
+
 REPORT_STATUS_LABELS = {
     "included": "已纳入",
     "excluded_until_verified": "待提取/待核实",
@@ -3101,6 +3150,430 @@ def build_article_detail_html(record: dict[str, Any], hypothesis_index: dict[str
     )
 
 
+RECENCY_WINDOW_HOURS = 24
+
+
+def _build_evidence_lookup_maps(
+    records: list[dict[str, Any]],
+) -> tuple[
+    dict[str, str],
+    dict[str, str],
+    dict[str, str],
+    dict[tuple[str, str], str],
+    dict[tuple[str, str], dict[str, Any]],
+]:
+    """Build lookup tables for hypothesis card evidence drill-down.
+
+    Returns
+    (
+        article_title_map,
+        article_url_map,
+        article_verified_at_map,
+        claim_text_map,
+        verification_map,
+    ).
+    """
+    article_title_map: dict[str, str] = {}
+    article_url_map: dict[str, str] = {}
+    article_verified_at_map: dict[str, str] = {}
+    claim_text_map: dict[tuple[str, str], str] = {}
+    verification_map: dict[tuple[str, str], dict[str, Any]] = {}
+
+    for record in records:
+        aid = record.get("article_id")
+        if not aid:
+            continue
+        article_title_map[aid] = record.get("title") or aid
+        article_url_map[aid] = record.get("url") or ""
+
+        claims_doc = read_json(claims_path(aid), default={"claims": []})
+        for claim in claims_doc.get("claims", []):
+            cid = claim.get("id")
+            if cid:
+                claim_text_map[(aid, cid)] = claim.get("text", "")
+
+        verif = read_json(verification_path(aid), default={"items": []})
+        verified_at = verif.get("verified_at")
+        if verified_at:
+            article_verified_at_map[aid] = verified_at
+        for item in verif.get("items", []):
+            cid = item.get("claim_id")
+            if cid:
+                verification_map[(aid, cid)] = item
+
+    return (
+        article_title_map,
+        article_url_map,
+        article_verified_at_map,
+        claim_text_map,
+        verification_map,
+    )
+
+
+def latest_applied_article_batch() -> tuple[str | None, set[str]]:
+    latest_timestamp: str | None = None
+    latest_article_ids: set[str] = set()
+    for entry in read_jsonl(CHANGE_LOG_PATH):
+        if entry.get("event") != "apply_verification":
+            continue
+        timestamp = entry.get("timestamp")
+        article_id = entry.get("article_id")
+        if not timestamp or not article_id:
+            continue
+        if latest_timestamp is None or timestamp > latest_timestamp:
+            latest_timestamp = timestamp
+            latest_article_ids = {article_id}
+        elif timestamp == latest_timestamp:
+            latest_article_ids.add(article_id)
+    return latest_timestamp, latest_article_ids
+
+
+def build_hypothesis_evidence_rows(
+    supporting: list[dict[str, Any]],
+    *,
+    article_title_map: dict[str, str],
+    article_url_map: dict[str, str],
+    claim_text_map: dict[tuple[str, str], str],
+    verification_map: dict[tuple[str, str], dict[str, Any]],
+    truncate_assessment: bool,
+) -> list[str]:
+    rows: list[str] = []
+    for si in supporting:
+        aid = si.get("article_id", "")
+        cid = si.get("claim_id", "")
+        title = html_escape(article_title_map.get(aid, aid))
+        article_url = article_url_map.get(aid, "")
+        claim_text = html_escape(claim_text_map.get((aid, cid), cid))
+        status = si.get("status", "unknown")
+        status_label = evidence_status_label(status)
+
+        verif_item = verification_map.get((aid, cid), {})
+        assessment = (verif_item.get("assessment") or "").strip()
+        if truncate_assessment and assessment and len(assessment) > 120:
+            cut = assessment.find("。")
+            if cut > 0 and cut < 200:
+                assessment = assessment[: cut + 1]
+            else:
+                assessment = assessment[:120] + "…"
+
+        source_html = (
+            f"<a href='#article-{html_escape(aid)}'>{title}</a>"
+            if article_url
+            else f"<span>{title}</span>"
+        )
+        open_html = (
+            f"<a class='mini-link' href='#article-{html_escape(aid)}'>查看文章</a>"
+            if article_url
+            else ""
+        )
+
+        rows.append(
+            "<div class='evidence-row'>"
+            f"<div class='evidence-top'>"
+            f"<span class='status status-{html_escape(status)}'>{html_escape(status_label)}</span>"
+            f"{source_html}"
+            f"{open_html}"
+            "</div>"
+            f"<p class='claim'>{claim_text}</p>"
+            f"<p class='muted'>{html_escape(assessment or '暂无核实说明')}</p>"
+            "</div>"
+        )
+    return rows
+
+
+def build_hypothesis_card_html(
+    item: dict[str, Any],
+    *,
+    article_title_map: dict[str, str],
+    article_url_map: dict[str, str],
+    claim_text_map: dict[tuple[str, str], str],
+    verification_map: dict[tuple[str, str], dict[str, Any]],
+    highlighted_article_ids: set[str],
+) -> str:
+    """Render a single hypothesis card with evidence drill-down, new-badge, and theory."""
+    supporting = item.get("supporting_items") or []
+    latest_supporting = [
+        si for si in supporting if si.get("article_id") in highlighted_article_ids
+    ]
+    is_recent = bool(latest_supporting)
+
+    card_class = "hypothesis-card has-new-evidence" if is_recent else "hypothesis-card"
+    new_badge = "<span class='new-badge'>本次新增</span>" if is_recent else ""
+
+    # --- Score bar ---
+    pct = band_fill_fraction(item.get("posterior_probability")) * 100
+    label = band_label(item.get("posterior_probability"))
+    score_html = (
+        f"<div class='score' style='--pct:{pct:.1f}%'>"
+        "<div class='score-bar'></div>"
+        f"<span>{html_escape(label)}</span>"
+        "</div>"
+    )
+
+    # --- Theory expand (改动 3) ---
+    theory_text = hypothesis_theory_text(item)
+    theory_preview = ""
+    if theory_text:
+        theory_preview = theory_text.splitlines()[0].strip()
+    if len(theory_preview) > 110:
+        theory_preview = theory_preview[:110].rstrip() + "…"
+    detail_href = html_escape(hypothesis_detail_href(item.get("id", "")))
+    theory_preview_html = ""
+    if theory_preview:
+        theory_preview_html = (
+            f"<p class='muted theory-preview'>{html_escape(theory_preview)}</p>"
+        )
+    theory_html = (
+        "<div class='hypothesis-links'>"
+        f"<a class='detail-link' href='{detail_href}'>查看理论</a>"
+        f"{theory_preview_html}"
+        "</div>"
+    )
+
+    # --- Evidence drill-down (改动 1) ---
+    evidence_rows = build_hypothesis_evidence_rows(
+        supporting,
+        article_title_map=article_title_map,
+        article_url_map=article_url_map,
+        claim_text_map=claim_text_map,
+        verification_map=verification_map,
+        truncate_assessment=True,
+    )
+
+    recent_titles: list[str] = []
+    for si in latest_supporting:
+        aid = si.get("article_id", "")
+        title = article_title_map.get(aid, aid)
+        if title and title not in recent_titles:
+            recent_titles.append(title)
+
+    recent_html = ""
+    if recent_titles:
+        preview = "；".join(html_escape(title) for title in recent_titles[:2])
+        extra = ""
+        if len(recent_titles) > 2:
+            extra = f" 等 {len(recent_titles)} 篇"
+        recent_html = (
+            "<p class='recent-evidence'>"
+            f"本次新增证据来自：{preview}{extra}"
+            "</p>"
+        )
+
+    evidence_body = "".join(evidence_rows) if evidence_rows else "<p class='muted'>暂无证据条目</p>"
+    evidence_html = (
+        "<details class='hyp-evidence'>"
+        f"<summary>证据条数: {len(supporting)} — 查看支撑证据</summary>"
+        f"<div class='hyp-evidence-body'>{evidence_body}</div>"
+        "</details>"
+    )
+
+    return (
+        f"<article class='{card_class}'>"
+        f"{new_badge}"
+        f"{score_html}"
+        f"<h3>{html_escape(item.get('statement', ''))}</h3>"
+        f"<p>{html_escape(item.get('rationale', ''))}</p>"
+        f"{recent_html}"
+        f"{theory_html}"
+        f"{evidence_html}"
+        "</article>"
+    )
+
+
+def build_hypothesis_detail_html(
+    item: dict[str, Any],
+    *,
+    article_title_map: dict[str, str],
+    article_url_map: dict[str, str],
+    claim_text_map: dict[tuple[str, str], str],
+    verification_map: dict[tuple[str, str], dict[str, Any]],
+) -> str:
+    supporting = item.get("supporting_items") or []
+    evidence_rows = build_hypothesis_evidence_rows(
+        supporting,
+        article_title_map=article_title_map,
+        article_url_map=article_url_map,
+        claim_text_map=claim_text_map,
+        verification_map=verification_map,
+        truncate_assessment=False,
+    )
+    theory_text = hypothesis_theory_text(item)
+    theory_html = "".join(
+        f"<p>{html_escape(paragraph)}</p>"
+        for paragraph in theory_text.splitlines()
+        if paragraph.strip()
+    ) or "<p class='muted'>暂无更详细的理论说明。</p>"
+    tags = item.get("meta_tags") or []
+    tags_html = (
+        "<ul class='pill-list'>"
+        + "".join(f"<li>{html_escape(tag)}</li>" for tag in tags)
+        + "</ul>"
+        if tags
+        else "<p class='muted'>暂无 meta tags</p>"
+    )
+    statement = html_escape(item.get("statement", ""))
+    rationale = html_escape(item.get("rationale", ""))
+    posterior = html_escape(band_label(item.get("posterior_probability")))
+    probability = item.get("posterior_probability")
+    probability_html = f"{probability * 100:.1f}%" if isinstance(probability, (int, float)) else "N/A"
+    newest = item.get("newest_evidence_at")
+    newest_html = html_escape(newest) if newest else "暂无"
+    evidence_html = "".join(evidence_rows) if evidence_rows else "<p class='muted'>暂无支撑证据。</p>"
+
+    return f"""<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{statement}</title>
+  <style>
+    :root {{
+      color-scheme: light;
+      --bg: #f5efe5;
+      --paper: rgba(255, 252, 246, 0.94);
+      --line: #d7c8b1;
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --accent: #d97706;
+      --accent-soft: rgba(217, 119, 6, 0.12);
+      --radius: 24px;
+      --shadow: 0 20px 45px rgba(94, 71, 38, 0.12);
+    }}
+    * {{ box-sizing: border-box; }}
+    body {{
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(217,119,6,0.12), transparent 32%),
+        linear-gradient(180deg, #fbf7ef 0%, var(--bg) 100%);
+      color: var(--ink);
+    }}
+    .page {{
+      width: min(980px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 24px 0 48px;
+    }}
+    .panel {{
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      margin-top: 18px;
+    }}
+    .back-link {{
+      display: inline-flex;
+      text-decoration: none;
+      color: #92400e;
+      margin-bottom: 10px;
+    }}
+    .meta {{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin: 18px 0;
+    }}
+    .meta-card {{
+      background: #fffaf1;
+      border: 1px solid #ead9bc;
+      border-radius: 16px;
+      padding: 14px;
+    }}
+    .meta-label, .muted {{ color: var(--muted); }}
+    .meta-label {{ margin: 0 0 6px; font-size: 0.9rem; }}
+    .meta-value {{ margin: 0; font-weight: 700; }}
+    .evidence-row {{
+      border-top: 1px solid #eee5d6;
+      padding: 14px 0;
+    }}
+    .evidence-row:first-of-type {{
+      border-top: 0;
+      padding-top: 0;
+    }}
+    .evidence-top {{
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }}
+    .status {{
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      border: 1px solid transparent;
+    }}
+    .status-verified {{
+      background: #dcfce7;
+      color: #166534;
+      border-color: #bbf7d0;
+    }}
+    .status-partially_verified {{
+      background: #fef3c7;
+      color: #92400e;
+      border-color: #fde68a;
+    }}
+    .claim {{ font-weight: 600; margin: 0 0 8px; }}
+    .pill-list {{
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }}
+    .pill-list li {{
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: #f1ece1;
+      border: 1px solid #e3d9c8;
+      font-size: 0.92rem;
+    }}
+    .mini-link {{ color: #92400e; text-decoration: none; }}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="panel">
+      <a class="back-link" href="../index.html#trends">返回核心趋势</a>
+      <p class="muted">假设详情</p>
+      <h1>{statement}</h1>
+      <p>{rationale}</p>
+      <div class="meta">
+        <article class="meta-card">
+          <p class="meta-label">当前后验</p>
+          <p class="meta-value">{posterior}</p>
+        </article>
+        <article class="meta-card">
+          <p class="meta-label">概率</p>
+          <p class="meta-value">{probability_html}</p>
+        </article>
+        <article class="meta-card">
+          <p class="meta-label">证据条数</p>
+          <p class="meta-value">{len(supporting)}</p>
+        </article>
+        <article class="meta-card">
+          <p class="meta-label">最近证据时间</p>
+          <p class="meta-value">{newest_html}</p>
+        </article>
+      </div>
+      <h2>理论展开</h2>
+      {theory_html}
+      <h2>Meta Tags</h2>
+      {tags_html}
+    </section>
+    <section class="panel">
+      <h2>支撑证据</h2>
+      {evidence_html}
+    </section>
+  </main>
+</body>
+</html>
+"""
+
+
 def build_report_html() -> str:
     framework = read_json(FRAMEWORK_PATH, default={})
     hypotheses = read_json(HYPOTHESES_PATH, default={"hypotheses": []})
@@ -3130,6 +3603,15 @@ def build_report_html() -> str:
         and record.get("analysis_state", {}).get("bayesian_status") == "excluded_after_verification"
     ]
 
+    (
+        article_title_map,
+        article_url_map,
+        _article_verified_at_map,
+        claim_text_map,
+        verification_map,
+    ) = _build_evidence_lookup_maps(records)
+    _latest_apply_timestamp, latest_article_ids = latest_applied_article_batch()
+
     active_hypotheses = sorted(
         hypotheses.get("hypotheses", []),
         key=lambda item: item.get("posterior_probability", 0.0),
@@ -3137,22 +3619,15 @@ def build_report_html() -> str:
     )
 
     hypothesis_cards = "".join(
-        [
-            "".join(
-                [
-                    "<article class='hypothesis-card'>",
-                    f"<div class='score' style='--pct:{band_fill_fraction(item.get('posterior_probability')) * 100:.1f}%'>",
-                    "<div class='score-bar'></div>",
-                    f"<span>{html_escape(band_label(item.get('posterior_probability')))}</span>",
-                    "</div>",
-                    f"<h3>{html_escape(item.get('statement', ''))}</h3>",
-                    f"<p>{html_escape(item.get('rationale', ''))}</p>",
-                    f"<p class='muted'>证据条数: {len(item.get('supporting_items', []))}</p>",
-                    "</article>",
-                ]
-            )
-            for item in active_hypotheses
-        ]
+        build_hypothesis_card_html(
+            item,
+            article_title_map=article_title_map,
+            article_url_map=article_url_map,
+            claim_text_map=claim_text_map,
+            verification_map=verification_map,
+            highlighted_article_ids=latest_article_ids,
+        )
+        for item in active_hypotheses
     )
 
     narrative_html = "".join(
@@ -3367,6 +3842,27 @@ def build_report_html() -> str:
     .hypothesis-grid {{
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }}
+    .hypothesis-card {{
+      position: relative;
+    }}
+    .has-new-evidence {{
+      border-color: #f59e0b;
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+    }}
+    .new-badge {{
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: #f59e0b;
+      color: #fffaf0;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }}
     .score {{
       position: relative;
       margin-bottom: 14px;
@@ -3395,6 +3891,38 @@ def build_report_html() -> str:
     }}
     .muted {{
       color: var(--muted);
+    }}
+    .recent-evidence {{
+      margin: 0 0 10px;
+      color: #92400e;
+      font-weight: 600;
+    }}
+    .hypothesis-links {{
+      margin: 12px 0;
+    }}
+    .detail-link, .mini-link {{
+      color: #92400e;
+      text-decoration: none;
+      font-weight: 600;
+    }}
+    .detail-link:hover, .mini-link:hover {{
+      text-decoration: underline;
+    }}
+    .theory-preview {{
+      margin: 8px 0 0;
+    }}
+    .hyp-evidence {{
+      margin-top: 14px;
+      border-top: 1px solid #e7dece;
+      padding-top: 12px;
+    }}
+    .hyp-evidence summary {{
+      cursor: pointer;
+      font-weight: 700;
+      color: #7c4a12;
+    }}
+    .hyp-evidence-body {{
+      margin-top: 12px;
     }}
     ol, ul {{
       margin: 0;
@@ -3690,6 +4218,31 @@ def build_report(output_path: Path = REPORT_PATH) -> dict[str, Any]:
     output_path.parent.mkdir(parents=True, exist_ok=True)
     html_content = build_report_html()
     output_path.write_text(html_content, encoding="utf-8")
+
+    hypotheses_doc = read_json(HYPOTHESES_PATH, default={"hypotheses": []})
+    records = load_all_article_records()
+    (
+        article_title_map,
+        article_url_map,
+        _article_verified_at_map,
+        claim_text_map,
+        verification_map,
+    ) = _build_evidence_lookup_maps(records)
+    HYPOTHESIS_DETAIL_DIR.mkdir(parents=True, exist_ok=True)
+    for old_file in HYPOTHESIS_DETAIL_DIR.glob("*.html"):
+        old_file.unlink()
+    for item in hypotheses_doc.get("hypotheses", []):
+        hypothesis_id = item.get("id")
+        if not hypothesis_id:
+            continue
+        detail_html = build_hypothesis_detail_html(
+            item,
+            article_title_map=article_title_map,
+            article_url_map=article_url_map,
+            claim_text_map=claim_text_map,
+            verification_map=verification_map,
+        )
+        (HYPOTHESIS_DETAIL_DIR / f"{hypothesis_id}.html").write_text(detail_html, encoding="utf-8")
 
     append_jsonl(
         CHANGE_LOG_PATH,

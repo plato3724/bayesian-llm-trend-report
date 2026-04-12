@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>语音模型正从句子级 TTS 走向场景级、长音频、可导演式的生成，并且小型开源模型的可用性在快速上升。</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5efe5;
+      --paper: rgba(255, 252, 246, 0.94);
+      --line: #d7c8b1;
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --accent: #d97706;
+      --accent-soft: rgba(217, 119, 6, 0.12);
+      --radius: 24px;
+      --shadow: 0 20px 45px rgba(94, 71, 38, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(217,119,6,0.12), transparent 32%),
+        linear-gradient(180deg, #fbf7ef 0%, var(--bg) 100%);
+      color: var(--ink);
+    }
+    .page {
+      width: min(980px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 24px 0 48px;
+    }
+    .panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      margin-top: 18px;
+    }
+    .back-link {
+      display: inline-flex;
+      text-decoration: none;
+      color: #92400e;
+      margin-bottom: 10px;
+    }
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin: 18px 0;
+    }
+    .meta-card {
+      background: #fffaf1;
+      border: 1px solid #ead9bc;
+      border-radius: 16px;
+      padding: 14px;
+    }
+    .meta-label, .muted { color: var(--muted); }
+    .meta-label { margin: 0 0 6px; font-size: 0.9rem; }
+    .meta-value { margin: 0; font-weight: 700; }
+    .evidence-row {
+      border-top: 1px solid #eee5d6;
+      padding: 14px 0;
+    }
+    .evidence-row:first-of-type {
+      border-top: 0;
+      padding-top: 0;
+    }
+    .evidence-top {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      border: 1px solid transparent;
+    }
+    .status-verified {
+      background: #dcfce7;
+      color: #166534;
+      border-color: #bbf7d0;
+    }
+    .status-partially_verified {
+      background: #fef3c7;
+      color: #92400e;
+      border-color: #fde68a;
+    }
+    .claim { font-weight: 600; margin: 0 0 8px; }
+    .pill-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .pill-list li {
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: #f1ece1;
+      border: 1px solid #e3d9c8;
+      font-size: 0.92rem;
+    }
+    .mini-link { color: #92400e; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="panel">
+      <a class="back-link" href="../index.html#trends">返回核心趋势</a>
+      <p class="muted">假设详情</p>
+      <h1>语音模型正从句子级 TTS 走向场景级、长音频、可导演式的生成，并且小型开源模型的可用性在快速上升。</h1>
+      <p>生成目标不再只是把字念清楚，而是统一控制角色、情绪、背景与长程连贯。</p>
+      <div class="meta">
+        <article class="meta-card">
+          <p class="meta-label">当前后验</p>
+          <p class="meta-value">very_likely · 证据很强</p>
+        </article>
+        <article class="meta-card">
+          <p class="meta-label">概率</p>
+          <p class="meta-value">96.8%</p>
+        </article>
+        <article class="meta-card">
+          <p class="meta-label">证据条数</p>
+          <p class="meta-value">5</p>
+        </article>
+        <article class="meta-card">
+          <p class="meta-label">最近证据时间</p>
+          <p class="meta-value">暂无</p>
+        </article>
+      </div>
+      <h2>理论展开</h2>
+      <p>这条假设认为语音生成的单位正在从单句朗读扩展到完整场景。传统 TTS 主要解决发音准确和音色稳定，但新的语音系统开始显式处理角色切换、情绪走向、背景氛围、长音频连续性和导演式控制。也就是说，语音模型正在更接近“声学场景生成器”，而不是一个把文本念出来的朗读器。若这个趋势持续，语音产品的差异化将更多体现在可控性、长程结构和多角色编排，而不是单点音色模仿。</p>
+      <h2>Meta Tags</h2>
+      <ul class='pill-list'><li>generation_scope_expansion</li><li>controllability_as_feature</li></ul>
+    </section>
+    <section class="panel">
+      <h2>支撑证据</h2>
+      <div class='evidence-row'><div class='evidence-top'><span class='status status-partially_verified'>部分核实</span><a href='#article-2f9fe8beb5ba'>小米AI语音新框架：人人都能当声音导演</a><a class='mini-link' href='#article-2f9fe8beb5ba'>查看文章</a></div><p class='claim'>Any2Speech 将自己定义为 Native Agentic 的无边界长音频合成框架。</p><p class='muted'>项目官方页明确把产品定位成 Native Agentic、borderless long audio synthesis；这是团队自述，未另找第三方评测，因此记为 partially verified。</p></div><div class='evidence-row'><div class='evidence-top'><span class='status status-partially_verified'>部分核实</span><a href='#article-2f9fe8beb5ba'>小米AI语音新框架：人人都能当声音导演</a><a class='mini-link' href='#article-2f9fe8beb5ba'>查看文章</a></div><p class='claim'>Any2Speech 使用 GST(Global-Sentence-Token) 分层 schema，作为 LLM Agent 与合成引擎之间的结构化语义接口。</p><p class='muted'>官方项目页给出了 GST schema、Structured Semantic Interface 与 Agent-&gt;Synthesis Engine 的接口描述。</p></div><div class='evidence-row'><div class='evidence-top'><span class='status status-partially_verified'>部分核实</span><a href='#article-2f9fe8beb5ba'>小米AI语音新框架：人人都能当声音导演</a><a class='mini-link' href='#article-2f9fe8beb5ba'>查看文章</a></div><p class='claim'>Any2Speech 将文本、视频、网页、音频、剧本等任意输入转成结构化生成指令，目标是长上下文连贯、多角色交互和完整声学场景。</p><p class='muted'>官方页展示了任意模态输入、长音频、多人交互与完整声学场景的目标能力，但目前主要是项目自陈。</p></div><div class='evidence-row'><div class='evidence-top'><span class='status status-verified'>已核实</span><a href='#article-8f8f6c5c71fe'>国产免费2B开源语音模型征服《莽撞人》！复刻郭德纲最难贯口</a><a class='mini-link' href='#article-8f8f6c5c71fe'>查看文章</a></div><p class='claim'>VoxCPM2 是一个 2B tokenizer-free TTS 模型，支持 30 languages、9 Chinese dialects、Voice Design、Controllable Voice Cloning 和 48kHz 输出。</p><p class='muted'>GitHub README 明确给出 VoxCPM2 的 2B 参数规模、30 语言、9 种中文方言、Voice Design、Controllable Voice Cloning 与 48kHz 输出。</p></div><div class='evidence-row'><div class='evidence-top'><span class='status status-verified'>已核实</span><a href='#article-8f8f6c5c71fe'>国产免费2B开源语音模型征服《莽撞人》！复刻郭德纲最难贯口</a><a class='mini-link' href='#article-8f8f6c5c71fe'>查看文章</a></div><p class='claim'>VoxCPM2 在 Apache-2.0 下开源，并提供 Python API、CLI、Web Demo 与 Nano-vLLM 生产部署路径。</p><p class='muted'>README 明确写出 Apache-2.0 许可、Python API、CLI、Web Demo 与 Nano-vLLM deployment path。</p></div>
+    </section>
+  </main>
+</body>
+</html>

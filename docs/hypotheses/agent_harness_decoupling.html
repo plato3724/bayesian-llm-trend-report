@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>高价值 agent 系统正从单体 chat loop 转向 durable session、isolated sandbox 与 harness/runtime 解耦的架构。</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5efe5;
+      --paper: rgba(255, 252, 246, 0.94);
+      --line: #d7c8b1;
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --accent: #d97706;
+      --accent-soft: rgba(217, 119, 6, 0.12);
+      --radius: 24px;
+      --shadow: 0 20px 45px rgba(94, 71, 38, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(217,119,6,0.12), transparent 32%),
+        linear-gradient(180deg, #fbf7ef 0%, var(--bg) 100%);
+      color: var(--ink);
+    }
+    .page {
+      width: min(980px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 24px 0 48px;
+    }
+    .panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      margin-top: 18px;
+    }
+    .back-link {
+      display: inline-flex;
+      text-decoration: none;
+      color: #92400e;
+      margin-bottom: 10px;
+    }
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin: 18px 0;
+    }
+    .meta-card {
+      background: #fffaf1;
+      border: 1px solid #ead9bc;
+      border-radius: 16px;
+      padding: 14px;
+    }
+    .meta-label, .muted { color: var(--muted); }
+    .meta-label { margin: 0 0 6px; font-size: 0.9rem; }
+    .meta-value { margin: 0; font-weight: 700; }
+    .evidence-row {
+      border-top: 1px solid #eee5d6;
+      padding: 14px 0;
+    }
+    .evidence-row:first-of-type {
+      border-top: 0;
+      padding-top: 0;
+    }
+    .evidence-top {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      border: 1px solid transparent;
+    }
+    .status-verified {
+      background: #dcfce7;
+      color: #166534;
+      border-color: #bbf7d0;
+    }
+    .status-partially_verified {
+      background: #fef3c7;
+      color: #92400e;
+      border-color: #fde68a;
+    }
+    .claim { font-weight: 600; margin: 0 0 8px; }
+    .pill-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .pill-list li {
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: #f1ece1;
+      border: 1px solid #e3d9c8;
+      font-size: 0.92rem;
+    }
+    .mini-link { color: #92400e; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="panel">
+      <a class="back-link" href="../index.html#trends">返回核心趋势</a>
+      <p class="muted">假设详情</p>
+      <h1>高价值 agent 系统正从单体 chat loop 转向 durable session、isolated sandbox 与 harness/runtime 解耦的架构。</h1>
+      <p>这类系统把长时程任务的可靠性问题转成基础设施接口问题，而不是只靠提示词堆栈。</p>
+      <div class="meta">
+        <article class="meta-card">
+          <p class="meta-label">当前后验</p>
+          <p class="meta-value">near_certain · 几乎可以确认</p>
+        </article>
+        <article class="meta-card">
+          <p class="meta-label">概率</p>
+          <p class="meta-value">99.1%</p>
+        </article>
+        <article class="meta-card">
+          <p class="meta-label">证据条数</p>
+          <p class="meta-value">5</p>
+        </article>
+        <article class="meta-card">
+          <p class="meta-label">最近证据时间</p>
+          <p class="meta-value">暂无</p>
+        </article>
+      </div>
+      <h2>理论展开</h2>
+      <p>这条假设的核心不是“模型更聪明了”，而是高价值 agent 系统开始把长期任务拆成可治理的运行时层。过去的 chat loop 假设一次上下文就能承载计划、执行、凭证、文件系统和恢复逻辑，但真实生产环境里最先暴露的问题其实是 session 持久化、隔离执行、失败恢复和权限边界。于是 durable session、sandbox、harness、tool runtime 逐渐从隐含实现细节变成显式架构层。只要这个方向继续成立，未来 agent 产品的竞争点就不会只是模型回答质量，而会越来越落在运行时接口、状态恢复、审计能力和安全编排上。</p>
+      <h2>Meta Tags</h2>
+      <ul class='pill-list'><li>externalization_as_pattern</li><li>durability_as_primary_concern</li></ul>
+    </section>
+    <section class="panel">
+      <h2>支撑证据</h2>
+      <div class='evidence-row'><div class='evidence-top'><span class='status status-verified'>已核实</span><a href='#article-20fb29fec269'>Anthropic发布Managed Agents，才发现这支硅谷华人团队早就押对了赌注</a><a class='mini-link' href='#article-20fb29fec269'>查看文章</a></div><p class='claim'>Anthropic 发布了面向长时程 agent 工作的托管服务 Managed Agents。</p><p class='muted'>Anthropic 明确将 Managed Agents 描述为 its hosted service for long-horizon agent work。</p></div><div class='evidence-row'><div class='evidence-top'><span class='status status-verified'>已核实</span><a href='#article-20fb29fec269'>Anthropic发布Managed Agents，才发现这支硅谷华人团队早就押对了赌注</a><a class='mini-link' href='#article-20fb29fec269'>查看文章</a></div><p class='claim'>Managed Agents 将 agent 运行时虚拟化为 session、harness、sandbox 三个可独立替换的接口。</p><p class='muted'>Anthropic 将 session 明确建模为 context object outside Claude&#x27;s context window，这支持外部化上下文对象的趋势。</p></div><div class='evidence-row'><div class='evidence-top'><span class='status status-verified'>已核实</span><a href='#article-20fb29fec269'>Anthropic发布Managed Agents，才发现这支硅谷华人团队早就押对了赌注</a><a class='mini-link' href='#article-20fb29fec269'>查看文章</a></div><p class='claim'>Anthropic 将 brain、hands、session 解耦后，用 durable session log 与 sandbox 外置凭证改善了延迟与安全边界。</p><p class='muted'>官方文档给出 decoupling 后 p50 TTFT roughly 60% down、p95 over 90% down，并解释了将凭证隔离在 sandbox 外的安全边界设计。</p></div><div class='evidence-row'><div class='evidence-top'><span class='status status-partially_verified'>部分核实</span><a href='#article-44f454b544d9'>Claude Code Harness+龙虾科研团来了！金字塔分层架构+多智能体讨论，单人也能跑出「实验室」科研</a><a class='mini-link' href='#article-44f454b544d9'>查看文章</a></div><p class='claim'>Claw AI Lab 将自己定义为 autonomous multi-agent research team，并给出了 5-layer hierarchical pipeline。</p><p class='muted'>官方站点明确展示了 multi-agent research team 和 5-layer hierarchical pipeline，但这仍是项目自述。</p></div><div class='evidence-row'><div class='evidence-top'><span class='status status-partially_verified'>部分核实</span><a href='#article-44f454b544d9'>Claude Code Harness+龙虾科研团来了！金字塔分层架构+多智能体讨论，单人也能跑出「实验室」科研</a><a class='mini-link' href='#article-44f454b544d9'>查看文章</a></div><p class='claim'>Claw-Code Harness 提供 isolated runs、log capture，并把 verified results 回灌给 agent loop。</p><p class='muted'>官方站点直接描述了 Claw-Code Harness 的 isolated runs、capture logs 和 verified results feedback。</p></div>
+    </section>
+  </main>
+</body>
+</html>

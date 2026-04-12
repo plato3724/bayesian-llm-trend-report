@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Token 效率正在从局部优化升级为架构级目标，表现为结构化压缩、查询式检索、简洁协议与多层记忆栈。</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5efe5;
+      --paper: rgba(255, 252, 246, 0.94);
+      --line: #d7c8b1;
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --accent: #d97706;
+      --accent-soft: rgba(217, 119, 6, 0.12);
+      --radius: 24px;
+      --shadow: 0 20px 45px rgba(94, 71, 38, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(217,119,6,0.12), transparent 32%),
+        linear-gradient(180deg, #fbf7ef 0%, var(--bg) 100%);
+      color: var(--ink);
+    }
+    .page {
+      width: min(980px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 24px 0 48px;
+    }
+    .panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      margin-top: 18px;
+    }
+    .back-link {
+      display: inline-flex;
+      text-decoration: none;
+      color: #92400e;
+      margin-bottom: 10px;
+    }
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin: 18px 0;
+    }
+    .meta-card {
+      background: #fffaf1;
+      border: 1px solid #ead9bc;
+      border-radius: 16px;
+      padding: 14px;
+    }
+    .meta-label, .muted { color: var(--muted); }
+    .meta-label { margin: 0 0 6px; font-size: 0.9rem; }
+    .meta-value { margin: 0; font-weight: 700; }
+    .evidence-row {
+      border-top: 1px solid #eee5d6;
+      padding: 14px 0;
+    }
+    .evidence-row:first-of-type {
+      border-top: 0;
+      padding-top: 0;
+    }
+    .evidence-top {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      border: 1px solid transparent;
+    }
+    .status-verified {
+      background: #dcfce7;
+      color: #166534;
+      border-color: #bbf7d0;
+    }
+    .status-partially_verified {
+      background: #fef3c7;
+      color: #92400e;
+      border-color: #fde68a;
+    }
+    .claim { font-weight: 600; margin: 0 0 8px; }
+    .pill-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .pill-list li {
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: #f1ece1;
+      border: 1px solid #e3d9c8;
+      font-size: 0.92rem;
+    }
+    .mini-link { color: #92400e; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="panel">
+      <a class="back-link" href="../index.html#trends">返回核心趋势</a>
+      <p class="muted">假设详情</p>
+      <h1>Token 效率正在从局部优化升级为架构级目标，表现为结构化压缩、查询式检索、简洁协议与多层记忆栈。</h1>
+      <p>成本、延迟与可扩展性都要求模型少看、少说，但不能盲目丢信息。</p>
+      <div class="meta">
+        <article class="meta-card">
+          <p class="meta-label">当前后验</p>
+          <p class="meta-value">likely · 证据偏强</p>
+        </article>
+        <article class="meta-card">
+          <p class="meta-label">概率</p>
+          <p class="meta-value">90.9%</p>
+        </article>
+        <article class="meta-card">
+          <p class="meta-label">证据条数</p>
+          <p class="meta-value">5</p>
+        </article>
+        <article class="meta-card">
+          <p class="meta-label">最近证据时间</p>
+          <p class="meta-value">暂无</p>
+        </article>
+      </div>
+      <h2>理论展开</h2>
+      <p>这条假设认为 token efficiency 不再只是推理侧的小修小补，而正在上升为架构层面的设计目标。其关键不是“压缩得越狠越好”，而是把哪些信息必须保留、哪些信息可以结构化表示、哪些交互可以改成查询式协议，变成系统级决策。随着 agent 调用频率、上下文长度和多轮操作成本持续上升，token 已经像数据库查询成本一样，开始反向塑造产品形态。未来真正稳定的系统会在协议、记忆栈、检索方式和输出格式上同时为 token 成本服务，而不是只在模型末端做后处理。</p>
+      <h2>Meta Tags</h2>
+      <ul class='pill-list'><li>efficiency_as_design_axis</li><li>structure_over_volume</li></ul>
+    </section>
+    <section class="panel">
+      <h2>支撑证据</h2>
+      <div class='evidence-row'><div class='evidence-top'><span class='status status-partially_verified'>部分核实</span><a href='#article-3c07c6956807'>省token神器3天狂揽4.1k星！19岁小哥开发，信息无损最高省87%</a><a class='mini-link' href='#article-3c07c6956807'>查看文章</a></div><p class='claim'>caveman README 声称通过更简洁的响应风格可减少约 75% 输出 token，并配套压缩工具减少约 45% 输入 token。</p><p class='muted'>75%/45% token 节省来自项目 README，自陈性质较强，但它至少表明 coding-agent 生态开始把输出协议压缩当成独立产品能力。</p></div><div class='evidence-row'><div class='evidence-top'><span class='status status-partially_verified'>部分核实</span><a href='#article-4a8b83da74e8'>《生化危机》女主演跨界AI拿SOTA了！打造免费“AI记忆系统”爆火GitHub</a><a class='mini-link' href='#article-4a8b83da74e8'>查看文章</a></div><p class='claim'>MemPalace 把长期记忆组织成 wings / rooms / halls / closets / drawers 的分层结构，并用 AAAK 做高压缩摘要。</p><p class='muted'>AAAK 30x compression、closet/drawer 双层存储和常驻/按需读取思路，把 token 成本控制写进了 memory architecture。</p></div><div class='evidence-row'><div class='evidence-top'><span class='status status-partially_verified'>部分核实</span><a href='#article-4a8b83da74e8'>《生化危机》女主演跨界AI拿SOTA了！打造免费“AI记忆系统”爆火GitHub</a><a class='mini-link' href='#article-4a8b83da74e8'>查看文章</a></div><p class='claim'>MemPalace 官方站点宣称其 LongMemEval raw 96.6%、hybrid 100%，同时承认 hybrid 分数和 AAAK 准确率存在方法学争议。</p><p class='muted'>项目页自己披露了 96.6 raw / 100 hybrid，并同时列出 methodology caveats 和 AAAK 可能降到约 84.2% 的争议，因此这里只把它当成“效率与准确率 tradeoff 被显式产品化”的证据，不把满分营销当铁事实。</p></div><div class='evidence-row'><div class='evidence-top'><span class='status status-verified'>已核实</span><a href='#article-59b86c15655e'>解决VLA模型落地难，普通硬件也能跑！全透明全开源的高效VLA模型把推理成本砍掉76%</a><a class='mini-link' href='#article-59b86c15655e'>查看文章</a></div><p class='claim'>A₁ 使用预算感知自适应推理：训练时 VLM 每一层都接入共享动作头同步学习，推理时逐层输出动作并监测相邻层动作差异，足够小时提前终止前向传播。</p><p class='muted'>Adaptive per-token early exit — training all VLM layers with a shared action head, then monitoring layer-to-layer action-delta at inference to halt forward propagation — is a textbook realization of &#x27;token efficiency as architecture&#x27;. Attached with SLIGHT evidence strength (not moderate) because the modality is VLA/action tokens rather than the LLM text-generation context where this hypothesis originated. Trust = STRONG because it&#x27;s an arXiv primary source with full open-source release.</p></div><div class='evidence-row'><div class='evidence-top'><span class='status status-partially_verified'>部分核实</span><a href='#article-7bb7bc9e2b3e'>卡帕西没做完的，开源社区48小时搞定了！完全体知识库，token省70倍</a><a class='mini-link' href='#article-7bb7bc9e2b3e'>查看文章</a></div><p class='claim'>Graphify 官方站点声称可以带来 71.5× token reduction，并输出 graph.html、graph.json 和 GRAPH_REPORT.md。</p><p class='muted'>71.5× token reduction 来自项目官方站点，自陈色彩较强，但足以作为“token efficiency 已上升为产品卖点”的中等强度证据。</p></div>
+    </section>
+  </main>
+</body>
+</html>

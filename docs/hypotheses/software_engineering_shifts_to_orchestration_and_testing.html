@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>软件工程的瓶颈正从纯实现转向编排、验证、测试与方向判断，中间层工程师的优势会被重新洗牌。</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5efe5;
+      --paper: rgba(255, 252, 246, 0.94);
+      --line: #d7c8b1;
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --accent: #d97706;
+      --accent-soft: rgba(217, 119, 6, 0.12);
+      --radius: 24px;
+      --shadow: 0 20px 45px rgba(94, 71, 38, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(217,119,6,0.12), transparent 32%),
+        linear-gradient(180deg, #fbf7ef 0%, var(--bg) 100%);
+      color: var(--ink);
+    }
+    .page {
+      width: min(980px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 24px 0 48px;
+    }
+    .panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      margin-top: 18px;
+    }
+    .back-link {
+      display: inline-flex;
+      text-decoration: none;
+      color: #92400e;
+      margin-bottom: 10px;
+    }
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin: 18px 0;
+    }
+    .meta-card {
+      background: #fffaf1;
+      border: 1px solid #ead9bc;
+      border-radius: 16px;
+      padding: 14px;
+    }
+    .meta-label, .muted { color: var(--muted); }
+    .meta-label { margin: 0 0 6px; font-size: 0.9rem; }
+    .meta-value { margin: 0; font-weight: 700; }
+    .evidence-row {
+      border-top: 1px solid #eee5d6;
+      padding: 14px 0;
+    }
+    .evidence-row:first-of-type {
+      border-top: 0;
+      padding-top: 0;
+    }
+    .evidence-top {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      border: 1px solid transparent;
+    }
+    .status-verified {
+      background: #dcfce7;
+      color: #166534;
+      border-color: #bbf7d0;
+    }
+    .status-partially_verified {
+      background: #fef3c7;
+      color: #92400e;
+      border-color: #fde68a;
+    }
+    .claim { font-weight: 600; margin: 0 0 8px; }
+    .pill-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .pill-list li {
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: #f1ece1;
+      border: 1px solid #e3d9c8;
+      font-size: 0.92rem;
+    }
+    .mini-link { color: #92400e; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="panel">
+      <a class="back-link" href="../index.html#trends">返回核心趋势</a>
+      <p class="muted">假设详情</p>
+      <h1>软件工程的瓶颈正从纯实现转向编排、验证、测试与方向判断，中间层工程师的优势会被重新洗牌。</h1>
+      <p>当实现速度大幅提升后，真正稀缺的是评估、取舍和把 agent 约束到正确轨道上的能力。</p>
+      <div class="meta">
+        <article class="meta-card">
+          <p class="meta-label">当前后验</p>
+          <p class="meta-value">very_likely · 证据很强</p>
+        </article>
+        <article class="meta-card">
+          <p class="meta-label">概率</p>
+          <p class="meta-value">96.2%</p>
+        </article>
+        <article class="meta-card">
+          <p class="meta-label">证据条数</p>
+          <p class="meta-value">4</p>
+        </article>
+        <article class="meta-card">
+          <p class="meta-label">最近证据时间</p>
+          <p class="meta-value">暂无</p>
+        </article>
+      </div>
+      <h2>理论展开</h2>
+      <p>这条假设并不是说软件实现本身不重要，而是说实现速度提升后，价值瓶颈正在迁移。以前工程产能主要受写代码速度限制，现在更多受限于如何拆任务、如何验证输出、如何设计测试闭环、如何在大量可行方案中选对方向。中间层工程师过去依赖的信息整合和实现协调能力，会被更自动化的生成工具压缩；相反，能定义边界、评估风险、建立验证机制的人会更稀缺。若该假设持续成立，软件工程会逐步从“实现中心”转向“编排与验证中心”。</p>
+      <h2>Meta Tags</h2>
+      <ul class='pill-list'><li>verifiability_as_bottleneck</li><li>orchestration_over_implementation</li></ul>
+    </section>
+    <section class="panel">
+      <h2>支撑证据</h2>
+      <div class='evidence-row'><div class='evidence-top'><span class='status status-partially_verified'>部分核实</span><a href='#article-44f454b544d9'>Claude Code Harness+龙虾科研团来了！金字塔分层架构+多智能体讨论，单人也能跑出「实验室」科研</a><a class='mini-link' href='#article-44f454b544d9'>查看文章</a></div><p class='claim'>Claw AI Lab 在关键阶段提供 human-in-the-loop 质量闸门和 rollback。</p><p class='muted'>官方站点明确写了 quality gates with rollback；这支持“工程瓶颈转向验证与编排”的假设，但证据仍来自项目方自述。</p></div><div class='evidence-row'><div class='evidence-top'><span class='status status-verified'>已核实</span><a href='#article-5c7678b0d4c9'>25年10x工程师经验一夜归零！Django创始人警告：3-8年的程序员受AI冲击最大</a><a class='mini-link' href='#article-5c7678b0d4c9'>查看文章</a></div><p class='claim'>Simon Willison 将 2025 年 11 月描述为 coding agents 的 inflection point：模型只是小幅变强，但跨过了‘基本都能按要求工作’的阈值。</p><p class='muted'>这是 Simon 本人对播客内容的整理，一手确认了他关于 2025 年 11 月 inflection point 的判断。</p></div><div class='evidence-row'><div class='evidence-top'><span class='status status-verified'>已核实</span><a href='#article-5c7678b0d4c9'>25年10x工程师经验一夜归零！Django创始人警告：3-8年的程序员受AI冲击最大</a><a class='mini-link' href='#article-5c7678b0d4c9'>查看文章</a></div><p class='claim'>Simon Willison 认为软件工程的新瓶颈已从实现转向 testing、proving 和选方案，因为原型和实现的速度大幅提升。</p><p class='muted'>Simon 在自己的总结中明确写出 bottleneck has moved to testing，并解释了为什么先做多个 prototype 再验证成为新常态。</p></div><div class='evidence-row'><div class='evidence-top'><span class='status status-verified'>已核实</span><a href='#article-5c7678b0d4c9'>25年10x工程师经验一夜归零！Django创始人警告：3-8年的程序员受AI冲击最大</a><a class='mini-link' href='#article-5c7678b0d4c9'>查看文章</a></div><p class='claim'>Simon Willison 引述 ThoughtWorks 的讨论，认为最尴尬的位置是‘中间层工程师’，同时他自己也公开说对软件工时估算的旧经验已经失效。</p><p class='muted'>同一篇一手总结里同时出现了 &#x27;my ability to estimate software is broken&#x27; 和 &#x27;the people in the middle&#x27; 的判断。</p></div>
+    </section>
+  </main>
+</body>
+</html>
