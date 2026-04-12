@@ -1,5 +1,73 @@
 {
   "article_id": "df7acb42e706",
-  "claim_extraction_status": "not_started",
-  "claims": []
+  "claim_extraction_status": "completed",
+  "extracted_at": "2026-04-12T02:03:19+00:00",
+  "claims": [
+    {
+      "id": "revo_3_is_latest_dexterous_hand_product",
+      "type": "tool",
+      "text": "The article states that the hand shown in the demo is BrainCo's latest dexterous hand product, Revo 3.",
+      "hypothesis_candidates": []
+    },
+    {
+      "id": "revo_3_has_21_dof_and_tactile_features",
+      "type": "tool",
+      "text": "The article states that Revo 3 has 21 degrees of freedom in one hand, uses a new direct-drive and backdrivable design, includes whole-palm tactile sensing and fingertip visuotactile sensing, and reaches 70N whole-hand grip force.",
+      "hypothesis_candidates": [
+        "embodied_models_add_tactile_grounding"
+      ]
+    },
+    {
+      "id": "brainco_calls_revo_3_first_open_ecosystem_hand",
+      "type": "tool",
+      "text": "The article claims that Revo 3 is the world's first dexterous hand with 20+ degrees of freedom, whole-palm tactile sensing, visuotactile sensing, and an open ecosystem.",
+      "hypothesis_candidates": [
+        "embodied_models_add_tactile_grounding"
+      ]
+    },
+    {
+      "id": "brainco_tested_performance_jump_from_20_to_21_dof",
+      "type": "event",
+      "text": "The article states that according to BrainCo's system tests, manipulation performance improved linearly from 11 to 20 degrees of freedom, and showed a clear jump from 20 to 21 degrees of freedom.",
+      "hypothesis_candidates": []
+    },
+    {
+      "id": "revo_3_uses_direct_drive_backdrivable_joints",
+      "type": "technique",
+      "text": "The article states that Revo 3 uses fully direct-driven integrated micro-joints with backdrivability, together with self-developed high-density motors and reducers, to reduce transmission-chain wear and lag.",
+      "hypothesis_candidates": []
+    },
+    {
+      "id": "article_says_backdrivability_helps_sim_to_real",
+      "type": "technique",
+      "text": "The article states that backdrivability is one of the key ways to bridge the sim-to-real gap because each joint can yield to external force and provide force feedback during contact.",
+      "hypothesis_candidates": []
+    },
+    {
+      "id": "revo_3_combines_palm_tactile_and_fingertip_vision",
+      "type": "technique",
+      "text": "The article states that Revo 3 combines a whole-palm tactile array for sensing object contour, softness-hardness, and slip direction with fingertip visual sensors for sub-millimeter pre-grasp alignment.",
+      "hypothesis_candidates": [
+        "embodied_models_add_tactile_grounding"
+      ]
+    },
+    {
+      "id": "revo_3_adapts_to_major_simulation_platforms",
+      "type": "tool",
+      "text": "The article states that Revo 3 has been adapted to major simulation platforms including MuJoCo, Isaac Gym, and NVIDIA Omniverse, and that BrainCo plans to release a teleoperation data-collection solution supporting full 21-DoF action capture.",
+      "hypothesis_candidates": []
+    },
+    {
+      "id": "revo_2_appeared_in_unitree_public_dataset",
+      "type": "event",
+      "text": "The article states that the Revo second-generation hand has appeared in Unitree's public dataset and completed tasks in medical care, rehabilitation, and home scenarios.",
+      "hypothesis_candidates": []
+    },
+    {
+      "id": "brainco_raised_2_billion_rmb_in_january",
+      "type": "event",
+      "text": "The article states that in January this year, BrainCo raised 2 billion yuan led by IDG Capital and Walden International, which it describes as the largest single financing in the global brain-computer interface field excluding Neuralink.",
+      "hypothesis_candidates": []
+    }
+  ]
 }
