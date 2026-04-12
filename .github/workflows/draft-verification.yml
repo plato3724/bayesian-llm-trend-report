@@ -328,15 +328,27 @@ jobs:
 
           if [[ " $APPLIED " == *" $ARTICLE_ID "* ]]; then
             STATUS_LINE="Phase C auto-applied (posteriors recomputed)."
+            BODY="$(printf 'Phase C run for `%s`:\n\n- %s\n' "$ARTICLE_ID" "$STATUS_LINE")"
           elif [[ " $HELD " == *" $ARTICLE_ID "* ]]; then
-            STATUS_LINE="Phase C drafted and staged. Held for human review (see approval.json). The report was refreshed to show the held state."
+            BODY="$(ARTICLE_ID="$ARTICLE_ID" python - <<'PY'
+          import sys
+          import os
+          from pathlib import Path
+
+          sys.path.insert(0, str(Path("scripts").resolve()))
+          import bayesian_reader as br  # type: ignore
+
+          print(br.build_held_issue_comment(os.environ["ARTICLE_ID"]))
+          PY
+          )"
           elif [[ " $STAGED " == *" $ARTICLE_ID "* ]]; then
             STATUS_LINE="Phase C drafted and staged. The report was refreshed to show the pending apply state."
+            BODY="$(printf 'Phase C run for `%s`:\n\n- %s\n' "$ARTICLE_ID" "$STATUS_LINE")"
           else
             STATUS_LINE="Phase C failed — check workflow logs and the broken-draft artifact."
+            BODY="$(printf 'Phase C run for `%s`:\n\n- %s\n' "$ARTICLE_ID" "$STATUS_LINE")"
           fi
 
-          BODY="$(printf 'Phase C run for \`%s\`:\n\n- %s\n' "$ARTICLE_ID" "$STATUS_LINE")"
           gh issue comment "${{ github.event.inputs.issue_number }}" --body "$BODY" || echo "Issue comment failed (not fatal)."
 
       - name: Comment on linked issues in chained mode
@@ -353,7 +365,11 @@ jobs:
           import os
           import re
           import subprocess
+          import sys
           from pathlib import Path
+
+          sys.path.insert(0, str(Path("scripts").resolve()))
+          import bayesian_reader as br  # type: ignore
 
           root = Path("knowledge_state/articles")
 
@@ -396,16 +412,7 @@ jobs:
           for article_id in filter(None, os.environ.get("HELD", "").split()):
               issue_number = issue_number_for(article_id)
               if issue_number:
-                  comment(
-                      issue_number,
-                      (
-                          f"Phase C held `{article_id}` for human review.\n\n"
-                          "- `verification_draft.json` and `approval.json` were staged.\n"
-                          "- The guard or approver blocked auto-apply, so posterior state was not updated.\n"
-                          "- The report was refreshed to show the held state.\n"
-                          "- Check the workflow artifacts and staged approval rationale.\n"
-                      ),
-                  )
+                  comment(issue_number, br.build_held_issue_comment(article_id))
 
           for article_id in filter(None, os.environ.get("FAILED", "").split()):
               issue_number = issue_number_for(article_id)

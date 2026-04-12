@@ -1863,6 +1863,7 @@ APPROVAL_DECISIONS = {
 }
 
 APPLY_ALLOWED_DECISIONS = {"auto_approved", "human_approved", "human_overridden"}
+REVIEW_ACTIONS = {"approve", "approve-safe", "reject"}
 
 
 def compute_phase_c_escalations(
@@ -2427,6 +2428,289 @@ def override_approval(
     }
 
 
+def github_issue_url_for_record(record: dict[str, Any]) -> str | None:
+    for source in reversed(record.get("ingest_sources", [])):
+        if source.get("source_name") != "github_issue":
+            continue
+        source_ref = source.get("source_ref")
+        if isinstance(source_ref, str) and source_ref.strip():
+            return source_ref.strip()
+    return None
+
+
+def find_article_id_by_issue_number(issue_number: int | str) -> str | None:
+    issue_suffix = f"/issues/{issue_number}"
+    for record in load_all_article_records():
+        issue_url = github_issue_url_for_record(record)
+        if issue_url and issue_url.endswith(issue_suffix):
+            article_id = record.get("article_id")
+            if isinstance(article_id, str) and article_id:
+                return article_id
+    return None
+
+
+def article_summary_lines(record: dict[str, Any], limit: int = 4) -> list[str]:
+    summary = record.get("article_summary", {})
+    grouped_items = [
+        ("事件", summary.get("events", [])),
+        ("技术", summary.get("techniques", [])),
+        ("产品", summary.get("tools", [])),
+    ]
+    lines: list[str] = []
+    offsets = [0 for _ in grouped_items]
+    while len(lines) < limit:
+        appended = False
+        for index, (label, items) in enumerate(grouped_items):
+            if offsets[index] >= len(items):
+                continue
+            lines.append(f"{label}: {items[offsets[index]]}")
+            offsets[index] += 1
+            appended = True
+            if len(lines) >= limit:
+                break
+        if not appended:
+            break
+    return lines
+
+
+def held_review_guidance(article_id: str) -> dict[str, Any]:
+    bootstrap_state_files()
+    record = read_json(article_record_path(article_id), default=None)
+    if record is None:
+        raise ValueError(f"Unknown article_id: {article_id}")
+
+    draft = read_json(
+        draft_verification_path(article_id),
+        default={"items": [], "verification_status": "not_started"},
+    )
+    approval = read_json(approval_path(article_id), default={})
+    hypotheses = read_json(HYPOTHESES_PATH, default={"hypotheses": []})
+    hypothesis_index = {
+        item["id"]: item
+        for item in hypotheses.get("hypotheses", [])
+        if isinstance(item, dict) and isinstance(item.get("id"), str)
+    }
+
+    triggers = compute_phase_c_escalations(draft, approval, hypothesis_index)
+    per_claim = approval.get("per_claim_decisions", [])
+    if not isinstance(per_claim, list):
+        per_claim = []
+    decisions = [
+        entry.get("decision")
+        for entry in per_claim
+        if isinstance(entry, dict) and isinstance(entry.get("decision"), str)
+    ]
+    overall_rationale = approval.get("overall_rationale")
+    overall_text = overall_rationale.lower() if isinstance(overall_rationale, str) else ""
+
+    reasons: list[dict[str, str]] = []
+    seen_codes: set[str] = set()
+
+    def add_reason(code: str, detail: str) -> None:
+        if code in seen_codes:
+            return
+        reasons.append({"code": code, "detail": detail})
+        seen_codes.add(code)
+
+    if any(entry.get("trigger") == "cross_domain" for entry in triggers):
+        add_reason("cross_domain", "存在跨领域的 hypothesis 挂接，不能直接放行。")
+    if any(entry.get("trigger") == "band_crossing" for entry in triggers):
+        add_reason("band_crossing", "这次 apply 会把趋势推过一个 posterior 档位，值得人工确认。")
+    if any(decision == "reject" for decision in decisions):
+        add_reason("draft_conflict", "草稿里有至少一条 claim 被明确标记为 reject。")
+    elif any(decision == "defer" for decision in decisions):
+        add_reason("draft_conflict", "草稿里有至少一条关键 claim 被标记为 defer。")
+    if any(decision == "accept_as_fact" for decision in decisions):
+        add_reason("mapping_risk", "有些内容更适合作为事实保留，而不是直接推动 hypothesis。")
+    if any(
+        token in overall_text
+        for token in (
+            "manufacturer",
+            "secondary article",
+            "secondary-source",
+            "secondary source",
+            "primary-source",
+            "primary source",
+            "specification",
+            "specifications",
+            "superlative",
+            "not independently substantiated",
+        )
+    ):
+        add_reason("source_risk", "当前依据更像厂商口径或二手转述，独立主源支撑不够强。")
+    if "cold-start" in overall_text or "cold start" in overall_text:
+        add_reason("mapping_risk", "这次挂接的 hypothesis 仍处于冷启动阶段，直接 apply 风险偏高。")
+
+    accept_count = sum(decision == "accept" for decision in decisions)
+    accept_fact_count = sum(decision == "accept_as_fact" for decision in decisions)
+    reject_count = sum(decision == "reject" for decision in decisions)
+    defer_count = sum(decision == "defer" for decision in decisions)
+
+    recommended_action = "approve"
+    why = "当前 hold 更像模型保守处理；没有明显的结构性风险，可以人工放行。"
+    if reject_count > 0 or (not triggers and accept_count == 0 and accept_fact_count == 0):
+        recommended_action = "reject"
+        why = "关键 claim 本身不够稳，直接 apply 的收益低于误判风险。"
+    elif triggers or accept_fact_count > 0 or defer_count > 0 or "source_risk" in seen_codes or "mapping_risk" in seen_codes:
+        recommended_action = "approve-safe"
+        why = "事实可以保留，但当前不适合把 hypothesis 挂接一并放进 posterior。"
+
+    return {
+        "article_id": article_id,
+        "issue_url": github_issue_url_for_record(record),
+        "summary_lines": article_summary_lines(record),
+        "reasons": reasons,
+        "recommended_action": recommended_action,
+        "why": why,
+        "overall_rationale": approval.get("overall_rationale", ""),
+        "decision": approval.get("decision"),
+        "trigger_count": len(triggers),
+    }
+
+
+def build_held_issue_comment(article_id: str) -> str:
+    guidance = held_review_guidance(article_id)
+    lines = [
+        f"Phase C held `{article_id}` for human review.",
+        "",
+        "Article summary:",
+    ]
+    summary_lines = guidance.get("summary_lines") or []
+    if summary_lines:
+        lines.extend(f"- {line}" for line in summary_lines)
+    else:
+        lines.append("- 暂无可展示摘要")
+    lines.extend(["", "Held reason:"])
+    reasons = guidance.get("reasons") or []
+    if reasons:
+        for entry in reasons:
+            lines.append(f"- `{entry['code']}`: {entry['detail']}")
+    else:
+        lines.append("- `manual_review`: 模型没有自动放行，建议人工确认后再决定。")
+    lines.extend(
+        [
+            "",
+            "Recommended action:",
+            f"- `/{guidance['recommended_action']}`",
+            "",
+            "Why:",
+            f"- {guidance['why']}",
+            "",
+            "Reply with one command:",
+            "- `/approve` — apply the staged verification",
+            "- `/approve-safe` — apply only factual verification and detach all hypothesis links",
+            "- `/reject` — keep this article held and do not apply",
+        ]
+    )
+    return "\n".join(lines)
+
+
+def review_held(
+    article_id: str,
+    action: str,
+    approver: str = "human:github",
+    reason: str | None = None,
+) -> dict[str, Any]:
+    bootstrap_state_files()
+    if action not in REVIEW_ACTIONS:
+        raise ValueError(f"action must be one of {sorted(REVIEW_ACTIONS)} (got {action!r})")
+
+    draft = read_json(
+        draft_verification_path(article_id),
+        default={"items": [], "verification_status": "not_started"},
+    )
+    approval = read_json(approval_path(article_id), default={})
+    if draft.get("verification_status") != "drafted" or not approval:
+        return {
+            "ok": False,
+            "article_id": article_id,
+            "action": action,
+            "errors": ["no held/staged verification draft found for this article"],
+        }
+
+    verification = read_json(
+        verification_path(article_id),
+        default={"items": [], "verification_status": "not_started"},
+    )
+    if verification.get("verification_status") == "completed":
+        return {
+            "ok": False,
+            "article_id": article_id,
+            "action": action,
+            "errors": ["verification has already been applied for this article"],
+        }
+
+    before = snapshot_state()
+    detached_claim_ids: list[str] = []
+    if action == "approve":
+        override_reason = reason or "Approved from GitHub issue review command."
+        override_result = override_approval(
+            article_id=article_id,
+            decision="human_approved",
+            reason=override_reason,
+            approver=approver,
+        )
+        if not override_result.get("ok"):
+            return {**override_result, "action": action}
+        apply_result = apply_verification(article_id=article_id)
+        return {
+            **apply_result,
+            "action": action,
+            "applied": bool(apply_result.get("ok")),
+            "detached_claim_ids": detached_claim_ids,
+        }
+
+    if action == "approve-safe":
+        detached_claim_ids = [
+            item["claim_id"]
+            for item in draft.get("items", [])
+            if isinstance(item, dict)
+            and isinstance(item.get("claim_id"), str)
+            and item.get("hypothesis_id")
+        ]
+        override_reason = reason or (
+            "Applied from GitHub issue review command after detaching all hypothesis links."
+        )
+        override_result = override_approval(
+            article_id=article_id,
+            decision="human_overridden",
+            reason=override_reason,
+            approver=approver,
+            detach_claim_ids=detached_claim_ids,
+        )
+        if not override_result.get("ok"):
+            return {**override_result, "action": action}
+        apply_result = apply_verification(article_id=article_id)
+        return {
+            **apply_result,
+            "action": action,
+            "applied": bool(apply_result.get("ok")),
+            "detached_claim_ids": detached_claim_ids,
+        }
+
+    override_reason = reason or "Rejected from GitHub issue review command; keeping article held."
+    override_result = override_approval(
+        article_id=article_id,
+        decision="needs_human",
+        reason=override_reason,
+        approver=approver,
+    )
+    if not override_result.get("ok"):
+        return {**override_result, "action": action}
+    refresh_record_states()
+    after = snapshot_state()
+    return {
+        "ok": True,
+        "article_id": article_id,
+        "action": action,
+        "applied": False,
+        "decision": "needs_human",
+        "detached_claim_ids": detached_claim_ids,
+        "state_diff": format_state_diff(before, after),
+        "next_step": "kept_held_for_review",
+    }
+
+
 def _pending_record_sort_key(record: dict[str, Any]) -> str:
     return str(record.get("ingested_at") or record.get("article_id") or "")
 
@@ -2714,6 +2998,12 @@ def build_article_detail_html(record: dict[str, Any], hypothesis_index: dict[str
         decision_label = approval_decision_label(approval.get("decision"))
         if decision_label:
             state_notes.append(f"审批结论：{decision_label}")
+        if bayesian_status == "held_for_review":
+            issue_url = github_issue_url_for_record(record)
+            if issue_url:
+                state_notes.append(
+                    "可在对应 GitHub issue 中回复 /approve、/approve-safe 或 /reject 继续处理。"
+                )
         overall_rationale = approval.get("overall_rationale")
         if overall_rationale:
             state_notes.append(f"审批说明：{overall_rationale}")
@@ -3610,6 +3900,26 @@ def build_parser() -> argparse.ArgumentParser:
         help="Detach this claim's hypothesis attachment in the staged draft (repeatable)",
     )
 
+    review_cmd = subparsers.add_parser(
+        "review-held",
+        help="Apply a one-shot human review action for a held/staged verification draft",
+    )
+    review_cmd.add_argument("--article-id", required=True)
+    review_cmd.add_argument(
+        "--action",
+        required=True,
+        choices=sorted(REVIEW_ACTIONS),
+    )
+    review_cmd.add_argument(
+        "--approver",
+        default="human:github",
+        help="Identifier for the human review actor (default: human:github)",
+    )
+    review_cmd.add_argument(
+        "--reason",
+        help="Optional human review rationale; defaults to a built-in message per action",
+    )
+
     report = subparsers.add_parser("build-report", help="Generate a readable static HTML report")
     report.add_argument("--output", default=str(REPORT_PATH))
     sync = subparsers.add_parser("sync-issues", help="Import article links from GitHub Issues")
@@ -3757,6 +4067,20 @@ def main(argv: list[str]) -> int:
                 reason=args.reason,
                 approver=args.approver,
                 detach_claim_ids=args.detach or None,
+            )
+        except ValueError as exc:
+            print_json({"ok": False, "error": str(exc)})
+            return 2
+        print_json(result)
+        return 0 if result.get("ok") else 2
+
+    if args.command == "review-held":
+        try:
+            result = review_held(
+                article_id=args.article_id,
+                action=args.action,
+                approver=args.approver,
+                reason=args.reason,
             )
         except ValueError as exc:
             print_json({"ok": False, "error": str(exc)})

@@ -1,6 +1,6 @@
 # Automation: GitHub Actions + OpenRouter
 
-This document describes the two GitHub Actions workflows that automate
+This document describes the GitHub Actions workflows that automate
 the Bayesian reader pipeline and how to set them up. Everything here
 is **additive** to the manual Claude Code flow — you can still run
 every step locally the old way.
@@ -9,16 +9,18 @@ every step locally the old way.
 
 | Phase | Workflow | LLM used? | Triggered how | Writes to main? |
 |---|---|---|---|---|
-| A — ingest | `.github/workflows/ingest.yml` | No | `issues.labeled: article` or manual | Yes (ingest commit) |
+| A — ingest | `.github/workflows/ingest.yml` | No | `issues.opened/edited/reopened/labeled` with `article`; also manual | Yes (ingest commit) |
 | B — draft claims | `.github/workflows/draft-claims.yml` | **OpenRouter** | **Auto**: `workflow_run` after ingest; also manual dispatch | Yes (claims commit) |
 | C — draft + stage + apply verification | `.github/workflows/draft-verification.yml` | **OpenRouter** | **Auto**: `workflow_run` after draft-claims; also manual dispatch | Yes (stage + apply commit when guard passes) |
+| Review held draft | `.github/workflows/review-held.yml` | No | Issue comment `/approve`, `/approve-safe`, `/reject` | Yes (review/apply commit) |
 
 All three phases chain automatically end-to-end: labeling an issue on
 mobile kicks off `ingest` → on success `draft-claims` → on success
 `draft-verification`. Each phase is also independently operable via
 manual `workflow_dispatch` for re-runs, backfills, or model overrides.
 
-Phase D and E are designed in this doc but **not implemented**.
+The previous “held 后必须本地 CLI” requirement is no longer the
+intended UX; issue comments are now the primary human review path.
 
 ## Phase A — ingest
 
@@ -145,12 +147,23 @@ claims for (i.e. `claims.json` exists with
    and rebuilds the HTML report, then commits `verification.json`,
    `hypotheses.json`, `synthesis_state.json`, `change_log.jsonl`, and
    `docs/index.html`
-5. Optionally posts a concise status comment on a triggering issue
+5. Posts a status comment on the triggering issue. If the article is
+   held, the comment includes:
+   - a short article summary
+   - the hold reasons
+   - a recommended action
+   - the one-line commands `/approve`, `/approve-safe`, `/reject`
 
 **Secrets needed**: `OPENROUTER_API_KEY`, same key as Phase B.
 
-**Trigger**: **manual only**. Actions tab → "draft-verification" →
-"Run workflow", with:
+**Triggers**:
+
+- **Auto (chained)** — runs after a successful `draft-claims`
+  workflow. In chained mode it scans the `verify_claims` queue and
+  processes every waiting article.
+- **Manual dispatch** — Actions tab → `draft-verification` → `Run workflow`
+
+**Manual inputs**:
 - `article_id` (required)
 - `issue_number` (optional)
 - `model` (optional)
@@ -180,12 +193,38 @@ and it has the last word. The LLM is allowed to self-select
    boundary is always worth a human second look, even if the draft
    looks clean on every individual item.
 
+## Review held drafts in GitHub
+
+When Phase C decides `needs_human`, the issue comment now tells you:
+
+- what the article is about
+- why it was held
+- which action is recommended
+- which one-line command you can reply with
+
+Available commands:
+
+- `/approve`
+  - Human-approve the current staged draft and run `apply-verification`
+- `/approve-safe`
+  - Apply only the factual verification, automatically detaching every
+    `hypothesis_id` before apply so the article does not move posterior state
+- `/reject`
+  - Keep the article in held state and record a human rejection note
+
+The workflow that handles these commands is
+`.github/workflows/review-held.yml`. It only reacts when:
+
+- the target issue has the `article` label
+- the commenter is `OWNER`, `MEMBER`, or `COLLABORATOR`
+- the comment starts with one of the supported commands
+
 ## What Phase C still does NOT automate
 
 - Creating new hypotheses: always human
 - Picking `meta_tags` when a new hypothesis is created: always human
-- Overriding a `needs_human` decision: always human
-  (`override-approval` CLI remains local-only)
+- Fine-grained claim-by-claim detach selection inside GitHub comments
+- Editing the staged draft payload itself from GitHub comments
 - First-of-domain cold-start calibration: the prompt steers the LLM
   toward `slight` and `partially_verified`, but a human should still
   audit the first 2–3 claims in any brand-new domain
@@ -245,6 +284,8 @@ spending any API credits. Once that looks right, run without
 
 - **Concurrency**: all three workflows use named concurrency groups so
   two simultaneous runs on the same article can't race each other.
+- **Review permissions**: the issue-comment review flow ignores
+  commands from users who are not `OWNER`, `MEMBER`, or `COLLABORATOR`.
 - **Failure behavior**: Phase A tolerates fetch failures — the record
   still gets persisted with `fetch_failed` or `blocked` status and you
   can recover via `attach-manual` locally. Phase B and Phase C fail

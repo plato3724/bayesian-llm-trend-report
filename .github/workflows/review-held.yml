@@ -1,0 +1,205 @@
+name: review-held
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  review:
+    if: ${{ github.event.issue.pull_request == null && contains(github.event.issue.labels.*.name, 'article') && (startsWith(github.event.comment.body, '/approve-safe') || startsWith(github.event.comment.body, '/approve') || startsWith(github.event.comment.body, '/reject')) && (github.event.comment.author_association == 'OWNER' || github.event.comment.author_association == 'MEMBER' || github.event.comment.author_association == 'COLLABORATOR') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    concurrency:
+      group: review-held-${{ github.event.issue.number }}
+      cancel-in-progress: false
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Resolve article and review action
+        id: resolve
+        env:
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          COMMENT_BODY: ${{ github.event.comment.body }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import os
+          import sys
+          from pathlib import Path
+
+          sys.path.insert(0, str(Path("scripts").resolve()))
+          import bayesian_reader as br  # type: ignore
+
+          issue_number = os.environ["ISSUE_NUMBER"]
+          body = os.environ["COMMENT_BODY"].strip()
+          lines = body.splitlines()
+          first_line = lines[0].strip() if lines else ""
+          action = ""
+          inline_reason = ""
+          for command in ("/approve-safe", "/approve", "/reject"):
+              if first_line.startswith(command):
+                  action = command[1:]
+                  inline_reason = first_line[len(command):].strip()
+                  break
+          remaining = "\n".join(line.strip() for line in lines[1:] if line.strip())
+          reason = "\n".join(part for part in (inline_reason, remaining) if part).strip()
+          article_id = br.find_article_id_by_issue_number(issue_number) or ""
+
+          output_path = Path(os.environ["GITHUB_OUTPUT"])
+          with output_path.open("a", encoding="utf-8") as fh:
+              fh.write(f"action={action}\n")
+              fh.write(f"article_id={article_id}\n")
+              fh.write("reason<<EOF\n")
+              fh.write(reason)
+              fh.write("\nEOF\n")
+          print({"issue_number": issue_number, "article_id": article_id, "action": action})
+          PY
+
+      - name: Run review-held action
+        id: review
+        if: ${{ steps.resolve.outputs.article_id != '' && steps.resolve.outputs.action != '' }}
+        env:
+          ARTICLE_ID: ${{ steps.resolve.outputs.article_id }}
+          ACTION: ${{ steps.resolve.outputs.action }}
+          REASON: ${{ steps.resolve.outputs.reason }}
+          APPROVER: human:github/${{ github.event.comment.user.login }}
+        run: |
+          set -euo pipefail
+          ARGS=(
+            --article-id "$ARTICLE_ID"
+            --action "$ACTION"
+            --approver "$APPROVER"
+          )
+          if [ -n "$REASON" ]; then
+            ARGS+=(--reason "$REASON")
+          fi
+          python scripts/bayesian_reader.py review-held "${ARGS[@]}" | tee review_result.json
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          result = json.loads(Path("review_result.json").read_text(encoding="utf-8"))
+          output_path = Path(os.environ["GITHUB_OUTPUT"])
+          with output_path.open("a", encoding="utf-8") as fh:
+              fh.write(f"ok={'true' if result.get('ok') else 'false'}\n")
+              fh.write(f"applied={'true' if result.get('applied') else 'false'}\n")
+              fh.write(f"decision={result.get('decision', '')}\n")
+              fh.write("detached<<EOF\n")
+              fh.write(" ".join(result.get("detached_claim_ids", [])))
+              fh.write("\nEOF\n")
+          PY
+
+      - name: Refresh record states
+        if: ${{ steps.review.outputs.ok == 'true' }}
+        run: python scripts/bayesian_reader.py refresh-records
+
+      - name: Rebuild report HTML
+        if: ${{ steps.review.outputs.ok == 'true' }}
+        run: python scripts/bayesian_reader.py build-report
+
+      - name: Commit reviewed changes
+        if: ${{ steps.review.outputs.ok == 'true' }}
+        env:
+          ACTION: ${{ steps.resolve.outputs.action }}
+          ARTICLE_ID: ${{ steps.resolve.outputs.article_id }}
+          DETACHED: ${{ steps.review.outputs.detached }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            knowledge_state/articles/ \
+            knowledge_state/hypotheses.json \
+            knowledge_state/synthesis_state.json \
+            knowledge_state/change_log.jsonl \
+            docs/index.html || true
+
+          if git diff --staged --quiet; then
+            echo "No held-review changes to commit."
+            exit 0
+          fi
+
+          git commit \
+            -m "chore(review): ${ACTION} held draft [$ARTICLE_ID]" \
+            -m "GitHub issue review command applied. detached=[$DETACHED]" \
+            -m "Co-Authored-By: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
+          git push
+
+      - name: Comment review result on issue
+        if: ${{ always() }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ARTICLE_ID: ${{ steps.resolve.outputs.article_id }}
+          ACTION: ${{ steps.resolve.outputs.action }}
+          OK: ${{ steps.review.outputs.ok }}
+          APPLIED: ${{ steps.review.outputs.applied }}
+          DETACHED: ${{ steps.review.outputs.detached }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import os
+          import subprocess
+
+          issue_number = os.environ["ISSUE_NUMBER"]
+          article_id = os.environ.get("ARTICLE_ID", "")
+          action = os.environ.get("ACTION", "")
+          ok = os.environ.get("OK", "")
+          applied = os.environ.get("APPLIED", "")
+          detached = os.environ.get("DETACHED", "").split()
+
+          if not article_id or not action:
+              body = "Held review command was ignored because no staged article could be resolved from this issue."
+          elif ok != "true":
+              body = (
+                  f"Review command `/{action}` for `{article_id}` did not complete.\n\n"
+                  "- Check the `review-held` workflow logs for details.\n"
+              )
+          elif action == "approve":
+              body = (
+                  f"Human review applied `{article_id}`.\n\n"
+                  "- `verification.json` was written.\n"
+                  "- Hypothesis posteriors were recomputed.\n"
+                  "- The report was rebuilt and updated.\n"
+              )
+          elif action == "approve-safe":
+              detached_line = (
+                  f"- Detached hypothesis links for: `{', '.join(detached)}`.\n"
+                  if detached
+                  else "- No hypothesis links needed detaching.\n"
+              )
+              body = (
+                  f"Human review safely applied `{article_id}`.\n\n"
+                  "- Factual verification was preserved.\n"
+                  f"{detached_line}"
+                  "- The report was rebuilt and updated.\n"
+              )
+          else:
+              body = (
+                  f"Human review kept `{article_id}` in held state.\n\n"
+                  "- No apply was performed.\n"
+                  "- The report was refreshed to keep the held state visible.\n"
+              )
+
+          subprocess.run(
+              ["gh", "issue", "comment", issue_number, "--body", body],
+              check=False,
+          )
+          PY
