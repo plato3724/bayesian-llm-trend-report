@@ -33,9 +33,10 @@ Usage:
 
 Environment:
     OPENROUTER_API_KEY   required, see scripts/llm_client.py
-    OPENROUTER_MODEL     optional, overrides the default model chain
-                          to a single model id, e.g.
-                          'anthropic/claude-3.5-sonnet'
+    OPENROUTER_DEFAULT_MODEL
+                          optional, changes the repository-wide default
+                          model (defaults to 'openai/gpt-5.4')
+    OPENROUTER_MODEL     optional, one-off override for this run
 """
 
 from __future__ import annotations
@@ -55,7 +56,7 @@ sys.path.insert(0, str(SCRIPT_DIR))
 # NOTE: importing bayesian_reader touches the knowledge_state directory
 # via its bootstrap. That's fine — we're a read-only consumer here.
 import bayesian_reader as br  # noqa: E402
-from llm_client import complete_json, DEFAULT_MODEL_CHAIN  # noqa: E402
+from llm_client import complete_json, DEFAULT_MODEL  # noqa: E402
 
 
 PROMPT_PATH = SCRIPT_DIR / "prompts" / "auto_draft_claims.md"
@@ -171,9 +172,9 @@ def main() -> int:
     parser.add_argument(
         "--model",
         help=(
-            "Override the default model chain with a single model id "
-            "(e.g. 'anthropic/claude-3.5-sonnet' or 'openai/gpt-4o-mini'). "
-            "Also readable from the OPENROUTER_MODEL env var."
+            "Override the configured default model with a single model id "
+            "(e.g. 'openai/gpt-5.4'). Also readable from the "
+            "OPENROUTER_MODEL env var."
         ),
     )
     args = parser.parse_args()
@@ -220,12 +221,12 @@ def main() -> int:
         print(user_message)
         return 0
 
-    # Resolve the model chain: CLI flag > env var > built-in default.
+    # Resolve the model: CLI flag > env var > configured repository default.
     model_override = args.model or os.environ.get("OPENROUTER_MODEL")
     if model_override:
         model_chain = ((model_override, model_override),)
     else:
-        model_chain = DEFAULT_MODEL_CHAIN
+        model_chain = ((DEFAULT_MODEL, DEFAULT_MODEL),)
 
     completion = complete_json(
         system=system_prompt,

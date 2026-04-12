@@ -16,12 +16,15 @@ The wrapper exists for three reasons:
    strips any markdown fences the model accidentally leaks, and
    returns parsed Python data. This removes every script's need to
    re-implement JSON-from-LLM plumbing.
-3. Keep a narrow retry/fallback surface so a transient 429 or a single
-   model outage doesn't break an automation run.
+3. Keep a narrow retry surface so a transient 429 does not break an
+   automation run.
 
 Environment variables this module reads:
 
     OPENROUTER_API_KEY   required, your sk-or-... key
+    OPENROUTER_DEFAULT_MODEL
+                          optional, repository-wide default model id;
+                          defaults to 'openai/gpt-5.4'
     OPENROUTER_REFERER   optional, OpenRouter uses this for attribution
                           and leaderboard stats; defaults to the repo URL
     OPENROUTER_TITLE     optional, displayed in OpenRouter activity log;
@@ -52,20 +55,30 @@ except ImportError as exc:  # pragma: no cover
 
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 
-# Curated default model list. Each entry is (model_id, display_name).
-# The first is tried first; subsequent entries are fallbacks if the
-# primary fails with a retryable error. Keep this list short — we want
-# predictability, not roulette.
-#
-# Rationale for the default:
-#   - anthropic/claude-3.5-sonnet  : strong at structured JSON under
-#     strict schemas, long context for canonical_text + hypotheses
-#   - openai/gpt-4o-mini           : cheap, reliable fallback
-#   - google/gemini-flash-1.5      : extremely cheap second fallback
+# Default to a single model for predictable automation behavior. The
+# repository can still override it via OPENROUTER_DEFAULT_MODEL, and
+# callers can still pass a one-off OPENROUTER_MODEL / --model override.
+DEFAULT_MODEL_FALLBACK = "openai/gpt-5.4"
+
+
+def _configured_default_model() -> str:
+    """Return the configured default model id.
+
+    Priority:
+      1. OPENROUTER_DEFAULT_MODEL
+      2. built-in fallback (`openai/gpt-5.4`)
+    """
+
+    value = (os.environ.get("OPENROUTER_DEFAULT_MODEL") or "").strip()
+    return value or DEFAULT_MODEL_FALLBACK
+
+
+DEFAULT_MODEL = _configured_default_model()
+
+# The client now defaults to a single model. We keep the tuple shape so
+# callers can still pass a custom chain explicitly if they want to.
 DEFAULT_MODEL_CHAIN: tuple[tuple[str, str], ...] = (
-    ("anthropic/claude-3.5-sonnet", "Claude 3.5 Sonnet"),
-    ("openai/gpt-4o-mini", "GPT-4o mini"),
-    ("google/gemini-flash-1.5", "Gemini Flash 1.5"),
+    (DEFAULT_MODEL, DEFAULT_MODEL),
 )
 
 
@@ -286,6 +299,7 @@ def complete_json(
 
 
 __all__ = [
+    "DEFAULT_MODEL",
     "DEFAULT_MODEL_CHAIN",
     "CompletionResult",
     "build_client",

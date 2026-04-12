@@ -809,9 +809,19 @@ def refresh_record_states() -> dict[str, Any]:
         article_id = record["article_id"]
         claims = read_json(claims_path(article_id), default={"claims": [], "claim_extraction_status": "not_started"})
         verification = read_json(verification_path(article_id), default={"items": [], "verification_status": "not_started"})
+        verification_draft = read_json(
+            draft_verification_path(article_id),
+            default={"items": [], "verification_status": "not_started"},
+        )
+        approval = read_json(approval_path(article_id), default={})
 
         claim_status = claims.get("claim_extraction_status", "not_started")
         verification_status = verification.get("verification_status", "not_started")
+        draft_status = verification_draft.get("verification_status", "not_started")
+        approval_decision = approval.get("decision")
+
+        if verification_status != "completed" and draft_status == "drafted":
+            verification_status = "drafted"
 
         verified_items = [
             item for item in verification.get("items", [])
@@ -832,6 +842,13 @@ def refresh_record_states() -> dict[str, Any]:
         elif verified_items:
             bayesian_status = "included"
             next_action = "monitor_for_new_evidence"
+        elif verification_status == "drafted":
+            if approval_decision == "auto_approved":
+                bayesian_status = "verification_staged"
+                next_action = "apply_staged_verification"
+            else:
+                bayesian_status = "held_for_review"
+                next_action = "review_staged_verification"
         elif verification_status == "completed":
             bayesian_status = "excluded_after_verification"
             next_action = "wait_for_stronger_sources"
@@ -2612,6 +2629,57 @@ def band_fill_fraction(value: float | None) -> float:
     return 0.0
 
 
+REPORT_STATUS_LABELS = {
+    "included": "已纳入",
+    "excluded_until_verified": "待提取/待核实",
+    "verification_staged": "待应用",
+    "held_for_review": "待人工复核",
+    "held_out_pending_better_evidence": "待更强证据",
+    "excluded_after_verification": "已排除",
+}
+
+REPORT_STATUS_DESCRIPTIONS = {
+    "included": "该文章的核实结果已经进入当前趋势判断。",
+    "excluded_until_verified": "文章已入库，但还没有完成 claim 提取或主源核实，暂不进入趋势判断。",
+    "verification_staged": "核实草稿已暂存并通过自动门禁，等待写入 verification.json 后才会影响后验。",
+    "held_for_review": "核实草稿已暂存，但审批结论或 Guard 要求人工复核，当前不会自动改写后验。",
+    "held_out_pending_better_evidence": "已发现部分冲突或证据不足，当前保留记录，等待更强来源。",
+    "excluded_after_verification": "文章已完成核实，但当前证据不足以支持任何趋势更新，因此被排除在后验之外。",
+}
+
+EVIDENCE_STATUS_LABELS = {
+    "verified": "已核实",
+    "partially_verified": "部分核实",
+    "conflicted": "存在冲突",
+    "unverified": "未核实",
+}
+
+APPROVAL_DECISION_LABELS = {
+    "auto_approved": "自动通过",
+    "needs_human": "需要人工确认",
+    "human_approved": "人工通过",
+    "human_overridden": "人工改写后通过",
+}
+
+
+def report_status_label(status: str | None) -> str:
+    if not status:
+        return "未知状态"
+    return REPORT_STATUS_LABELS.get(status, status)
+
+
+def evidence_status_label(status: str | None) -> str:
+    if not status:
+        return "未知"
+    return EVIDENCE_STATUS_LABELS.get(status, status)
+
+
+def approval_decision_label(decision: str | None) -> str:
+    if not decision:
+        return ""
+    return APPROVAL_DECISION_LABELS.get(decision, decision)
+
+
 def card_list(items: list[str], empty_text: str = "暂无") -> str:
     if not items:
         return f"<p class='muted'>{html_escape(empty_text)}</p>"
@@ -2624,9 +2692,43 @@ def build_article_detail_html(record: dict[str, Any], hypothesis_index: dict[str
     article_id = record["article_id"]
     claims = read_json(claims_path(article_id), default={"claims": []})
     verification = read_json(verification_path(article_id), default={"items": []})
+    verification_draft = read_json(
+        draft_verification_path(article_id),
+        default={"items": [], "verification_status": "not_started"},
+    )
+    approval = read_json(approval_path(article_id), default={})
+    bayesian_status = record.get("analysis_state", {}).get("bayesian_status", "unknown")
+    rendered_verification = verification
+    evidence_heading = "核实结果"
+    evidence_empty_text = "暂无核实条目"
+    if not verification.get("items") and verification_draft.get("verification_status") == "drafted":
+        rendered_verification = verification_draft
+        evidence_heading = "核实草稿"
+        evidence_empty_text = "暂无核实草稿"
+
+    state_notes: list[str] = []
+    status_description = REPORT_STATUS_DESCRIPTIONS.get(bayesian_status)
+    if status_description:
+        state_notes.append(status_description)
+    if verification_draft.get("verification_status") == "drafted":
+        decision_label = approval_decision_label(approval.get("decision"))
+        if decision_label:
+            state_notes.append(f"审批结论：{decision_label}")
+        overall_rationale = approval.get("overall_rationale")
+        if overall_rationale:
+            state_notes.append(f"审批说明：{overall_rationale}")
+        human_override = approval.get("human_override") or {}
+        if human_override.get("reason"):
+            state_notes.append(f"人工修订：{human_override['reason']}")
+
+    state_note_html = ""
+    if state_notes:
+        state_note_html = "<div class='status-note'>" + "".join(
+            f"<p>{html_escape(line)}</p>" for line in state_notes
+        ) + "</div>"
 
     verified_rows: list[str] = []
-    for item in verification.get("items", []):
+    for item in rendered_verification.get("items", []):
         claim_text = next(
             (claim["text"] for claim in claims.get("claims", []) if claim.get("id") == item.get("claim_id")),
             item.get("claim_id", ""),
@@ -2654,18 +2756,20 @@ def build_article_detail_html(record: dict[str, Any], hypothesis_index: dict[str
             if trust and strength and direction:
                 metrics.append(f"{direction}: {strength} from {trust} source")
             elif not item.get("hypothesis_id"):
-                metrics.append("verified fact, no hypothesis attached")
+                metrics.append("已核实事实，未挂接趋势假设")
         else:
             # Legacy float-based items: summarize without the raw numbers
             # so the report still obeys the "no false precision" rule.
             if item.get("weight") is not None or item.get("likelihood_ratio") is not None:
-                metrics.append("legacy weighted evidence")
+                metrics.append("历史证据权重（旧格式）")
+
+        item_status = item.get("status", "unknown")
 
         verified_rows.append(
             "".join(
                 [
                     "<div class='evidence-row'>",
-                    f"<div class='evidence-top'><span class='status status-{html_escape(item.get('status', 'unknown'))}'>{html_escape(item.get('status', 'unknown'))}</span>",
+                    f"<div class='evidence-top'><span class='status status-{html_escape(item_status)}'>{html_escape(evidence_status_label(item_status))}</span>",
                     f"<span class='muted'>{html_escape(' · '.join(metrics))}</span></div>",
                     f"<p class='claim'>{html_escape(claim_text)}</p>",
                     f"<p class='muted'>{html_escape(hypothesis_statement) if hypothesis_statement else '未映射到趋势假设'}</p>",
@@ -2678,10 +2782,11 @@ def build_article_detail_html(record: dict[str, Any], hypothesis_index: dict[str
 
     return "".join(
         [
-            f"<details class='article-card' data-status='{html_escape(record.get('analysis_state', {}).get('bayesian_status', 'unknown'))}' data-article-id='{html_escape(record['article_id'])}'>",
-            f"<summary><span>{html_escape(record['title'])}</span><span class='status status-{html_escape(record.get('analysis_state', {}).get('bayesian_status', 'unknown'))}'>{html_escape(record.get('analysis_state', {}).get('bayesian_status', 'unknown'))}</span></summary>",
+            f"<details class='article-card' data-status='{html_escape(bayesian_status)}' data-article-id='{html_escape(record['article_id'])}'>",
+            f"<summary><span>{html_escape(record['title'])}</span><span class='status status-{html_escape(bayesian_status)}'>{html_escape(report_status_label(bayesian_status))}</span></summary>",
             "<div class='article-body'>",
             f"<p><a href='{html_escape(record['url'])}' target='_blank' rel='noreferrer'>{html_escape(record['url'])}</a></p>",
+            state_note_html,
             "<div class='article-grid'>",
             "<section>",
             "<h4>事件</h4>",
@@ -2697,8 +2802,8 @@ def build_article_detail_html(record: dict[str, Any], hypothesis_index: dict[str
             "</section>",
             "</div>",
             "<section>",
-            "<h4>核实结果</h4>",
-            "".join(verified_rows) if verified_rows else "<p class='muted'>暂无核实条目</p>",
+            f"<h4>{html_escape(evidence_heading)}</h4>",
+            "".join(verified_rows) if verified_rows else f"<p class='muted'>{html_escape(evidence_empty_text)}</p>",
             "</section>",
             "</div>",
             "</details>",
@@ -2716,13 +2821,24 @@ def build_report_html() -> str:
     hypothesis_index = {item["id"]: item for item in hypotheses.get("hypotheses", [])}
     included_ids = set(synthesis.get("included_articles", []))
     included_records = [record for record in records if record.get("article_id") in included_ids]
+    pending_statuses = {
+        "excluded_until_verified",
+        "verification_staged",
+        "held_for_review",
+        "held_out_pending_better_evidence",
+    }
     pending_records = [
         record
         for record in records
         if record.get("article_id") not in included_ids
-        and record.get("analysis_state", {}).get("claim_extraction_status") != "completed"
+        and record.get("analysis_state", {}).get("bayesian_status") in pending_statuses
     ]
-    excluded_records = [record for record in records if record.get("article_id") not in included_ids]
+    excluded_records = [
+        record
+        for record in records
+        if record.get("article_id") not in included_ids
+        and record.get("analysis_state", {}).get("bayesian_status") == "excluded_after_verification"
+    ]
 
     active_hypotheses = sorted(
         hypotheses.get("hypotheses", []),
@@ -2795,7 +2911,6 @@ def build_report_html() -> str:
     excluded_articles_html = "".join(
         build_article_detail_html(record, hypothesis_index)
         for record in sorted(excluded_records, key=lambda item: item.get("title", ""))
-        if record.get("analysis_state", {}).get("claim_extraction_status") == "completed"
     )
 
     principles_html = "".join(
@@ -3107,15 +3222,33 @@ def build_report_html() -> str:
       color: #92400e;
       border-color: #fde68a;
     }}
+    .status-verification_staged {{
+      background: #fef3c7;
+      color: #92400e;
+      border-color: #fde68a;
+    }}
     .status-unverified, .status-excluded_after_verification {{
       background: #fee2e2;
       color: #991b1b;
       border-color: #fecaca;
     }}
-    .status-held_out_pending_better_evidence, .status-excluded_until_verified {{
+    .status-held_for_review, .status-held_out_pending_better_evidence, .status-excluded_until_verified {{
       background: #e0e7ff;
       color: #3730a3;
       border-color: #c7d2fe;
+    }}
+    .status-note {{
+      margin: 0 0 18px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid #eadcc7;
+      background: #f7f2e8;
+    }}
+    .status-note p {{
+      margin: 0 0 6px;
+    }}
+    .status-note p:last-child {{
+      margin-bottom: 0;
     }}
     .claim {{
       font-weight: 600;
@@ -3193,7 +3326,7 @@ def build_report_html() -> str:
 
     <section class="section" id="pending">
       <h2>待处理文章</h2>
-      <p class="muted">这里展示已经进入状态库、且全文已抓到或等待后续处理的文章。它们还没有进入趋势判断。</p>
+      <p class="muted">这里展示已经入库、但尚未进入后验的文章，包括待提取、待核实、已暂存待应用、以及等待人工复核的状态。</p>
       {pending_articles_html if pending_articles_html else "<p class='muted'>暂无</p>"}
     </section>
 

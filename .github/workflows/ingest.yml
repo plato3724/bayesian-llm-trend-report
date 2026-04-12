@@ -8,7 +8,8 @@ name: ingest-article
 # in the repo" loop from "open Claude Code" to "paste a link on mobile".
 #
 # Triggers:
-#   - issues labeled `article` (matches the ISSUE_TEMPLATE default label)
+#   - issue lifecycle events for issues carrying the `article` label
+#     (`opened`, `edited`, `reopened`, `labeled`)
 #   - manual workflow_dispatch for recovery / re-runs
 #
 # Output:
@@ -25,7 +26,7 @@ name: ingest-article
 
 on:
   issues:
-    types: [labeled]
+    types: [opened, edited, reopened, labeled]
   workflow_dispatch:
     inputs:
       fetch_limit:
@@ -33,11 +34,12 @@ on:
         required: false
         default: "20"
 
-# Only run the ingest job when the label that triggered us is `article`,
-# or when the workflow was dispatched manually.
+# Only run the ingest job when the issue currently carries the `article`
+# label (or the label event itself was `article`), or when the workflow
+# was dispatched manually.
 jobs:
   ingest:
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.label.name == 'article' }}
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.label.name == 'article' || contains(github.event.issue.labels.*.name, 'article') }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -75,6 +77,12 @@ jobs:
       - name: Show acquisition status
         run: python scripts/bayesian_reader.py status
 
+      - name: Refresh article workflow states
+        run: python scripts/bayesian_reader.py refresh-records
+
+      - name: Rebuild report HTML
+        run: python scripts/bayesian_reader.py build-report
+
       - name: Commit and push if there are changes
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -85,7 +93,7 @@ jobs:
           # Only stage the paths this workflow is allowed to modify.
           # This keeps drift in unrelated files from leaking into an
           # "ingest" commit, and makes the diff auditable.
-          git add knowledge_state/articles/ knowledge_state/change_log.jsonl || true
+          git add knowledge_state/articles/ knowledge_state/change_log.jsonl docs/index.html || true
 
           if git diff --staged --quiet; then
             echo "No changes to commit."
@@ -112,5 +120,5 @@ jobs:
           # know the bot saw the label and what state the article is in.
           ARTICLE_INFO=$(python scripts/bayesian_reader.py status 2>/dev/null | tail -20 || echo "(status unavailable)")
           gh issue comment "${{ github.event.issue.number }}" \
-            --body "$(printf 'Phase A ingest done.\n\n```\n%s\n```\n\nNext step: run the `draft-claims` workflow (or open Claude Code) to extract claims.' "$ARTICLE_INFO")" \
+            --body "$(printf 'Phase A ingest done.\n\n```\n%s\n```\n\nThe report was refreshed with the latest pending state. If full text was acquired, Phase B and Phase C will continue automatically. If fetch failed or the text is incomplete, add excerpts to this issue or attach the article manually.' "$ARTICLE_INFO")" \
             || echo "Comment failed (not fatal)."

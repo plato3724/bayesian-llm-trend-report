@@ -3,27 +3,30 @@ name: draft-claims
 # Phase B of the automation plan: call OpenRouter to draft a
 # _proposed_claims.json for an article that already has
 # canonical_text.txt in the repo (i.e. Phase A has already ingested
-# it). This workflow is deliberately MANUAL-TRIGGER ONLY:
+# it).
 #
-#   - You pick the target article_id yourself, from the GitHub Actions
-#     tab → "draft-claims" → "Run workflow"
-#   - On mobile, open github.com/<repo>/actions/workflows/draft-claims.yml
-#     and tap the same button
+# This workflow runs in two modes:
 #
-# Why not auto-trigger on every ingest?
-#   - Phase B is the first step that spends money on API calls.
-#     Keeping it manual means a mis-labeled issue can't burn credits.
-#   - It also gives you a deliberate review loop: glance at
-#     canonical_text.txt, decide the article is worth drafting, then
-#     click "Run workflow".
+#   1. workflow_dispatch (manual) — you pick a single article_id from
+#      the Actions tab. Useful for re-runs, backfills, or drafting
+#      against a specific model override.
 #
-# What this workflow does:
-#   1. checks out the repo at the current main
-#   2. installs openai + runs auto_draft_claims.py
-#   3. the script writes _proposed_claims.json (gitignored)
-#   4. runs save-claims to validate and commit claims.json
-#   5. posts the drafted claims as a comment on the originating issue,
-#      if one was provided
+#   2. workflow_run (chained) — fires automatically after a successful
+#      ingest-article run. Discovers EVERY article currently at stage
+#      extract_claims via `bayesian_reader.py queue --stage
+#      extract_claims` and drafts them one at a time. This is what
+#      makes the mobile loop (label an issue → claims committed to
+#      main) hands-free.
+#
+# Why run Phase B automatically now instead of leaving it manual?
+#   - The Phase C guard (cross_domain + band_crossing) is the new
+#     spend-safety net: a mis-labeled article can at worst burn one
+#     Phase B call and then stall at Phase C when its claims cannot be
+#     cleanly attached to any active hypothesis. No posterior can move
+#     without passing the guard. That makes the prior "manual-only to
+#     keep spend visible" caveat redundant.
+#   - Spend is still visible via the workflow run list and the
+#     draft_summary.json artifacts.
 #
 # What this workflow does NOT do:
 #   - write verification.json
@@ -36,9 +39,11 @@ name: draft-claims
 #     prompt + post-validation)
 #   - save-claims re-validates the draft before it is allowed to
 #     overwrite claims.json
-#   - if validation fails, the broken draft is saved as
-#     _proposed_claims.broken.json for inspection and the workflow
-#     exits non-zero
+#   - if validation fails on any article in a chained batch, that
+#     article's broken draft is uploaded as an artifact, the workflow
+#     records the failure, and the batch CONTINUES with the next
+#     article (so one bad issue does not stall the whole queue)
+#   - manual dispatch keeps fail-fast semantics for predictability
 
 on:
   workflow_dispatch:
@@ -50,26 +55,43 @@ on:
         description: "Optional issue number to comment on after drafting"
         required: false
       model:
-        description: "Optional model override, e.g. anthropic/claude-3.5-sonnet or openai/gpt-4o-mini"
+        description: "Optional one-off model override, e.g. openai/gpt-5.4"
         required: false
       commit_claims:
         description: "After drafting, run save-claims and commit claims.json. Set to 'false' to only write the gitignored draft."
         required: false
         default: "true"
+  workflow_run:
+    workflows: ["ingest-article"]
+    types: [completed]
+    branches: [main]
 
 jobs:
   draft:
+    # workflow_run fires on every completion (success or failure); only
+    # chain forward if the ingest run itself succeeded. Manual dispatch
+    # is unconditional.
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
       issues: write
     concurrency:
-      group: draft-claims-${{ github.event.inputs.article_id }}
+      # Keyed so manual single-article runs cannot race each other on
+      # the same article, and chained batch runs cannot race another
+      # chained batch run. They CAN run alongside each other (different
+      # groups), but the batch loop is tolerant of concurrent writes
+      # because each article touches a disjoint folder.
+      group: draft-claims-${{ github.event.inputs.article_id || 'chain' }}
       cancel-in-progress: false
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
+          # workflow_run runs on the default branch by default; pin
+          # explicitly for clarity. The chain always reads and writes
+          # main.
+          ref: main
           fetch-depth: 0
 
       - name: Set up Python
@@ -82,96 +104,225 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Confirm article is ready for claim drafting
+      - name: Resolve target article IDs
+        id: targets
         run: |
-          ARTICLE_ID="${{ github.event.inputs.article_id }}"
-          RECORD="knowledge_state/articles/$ARTICLE_ID/record.json"
-          CANONICAL="knowledge_state/articles/$ARTICLE_ID/canonical_text.txt"
-          if [ ! -f "$RECORD" ]; then
-            echo "::error::record.json missing for $ARTICLE_ID — run Phase A (ingest) first."
-            exit 1
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            IDS="${{ github.event.inputs.article_id }}"
+            MODE="manual"
+          else
+            # Chained run: discover all articles that currently need
+            # Phase B. queue returns JSON; extract the ids.
+            IDS="$(python scripts/bayesian_reader.py queue --stage extract_claims \
+              | python -c "import json,sys; d=json.load(sys.stdin); print(' '.join(t['article_id'] for t in d.get('tasks',[])))")"
+            MODE="chain"
           fi
-          if [ ! -f "$CANONICAL" ]; then
-            echo "::error::canonical_text.txt missing for $ARTICLE_ID — run Phase A (fetch-pending) first."
-            exit 1
+          echo "mode=$MODE" >> "$GITHUB_OUTPUT"
+          echo "ids=$IDS" >> "$GITHUB_OUTPUT"
+          if [ -z "$IDS" ]; then
+            echo "No articles ready for claim drafting."
+          else
+            echo "Target article ids: $IDS"
           fi
-          echo "Article $ARTICLE_ID looks ready for drafting."
 
       - name: Draft claims with OpenRouter
         id: draft
+        if: ${{ steps.targets.outputs.ids != '' }}
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENROUTER_DEFAULT_MODEL: ${{ vars.OPENROUTER_DEFAULT_MODEL }}
           OPENROUTER_REFERER: https://github.com/${{ github.repository }}
           OPENROUTER_TITLE: "tec_trade draft-claims"
           OPENROUTER_MODEL: ${{ github.event.inputs.model }}
+          MODE: ${{ steps.targets.outputs.mode }}
+          COMMIT_CLAIMS: ${{ github.event.inputs.commit_claims || 'true' }}
         run: |
-          set -euo pipefail
-          ARTICLE_ID="${{ github.event.inputs.article_id }}"
-          OUTPUT_FILE="knowledge_state/articles/$ARTICLE_ID/_proposed_claims.json"
+          set -uo pipefail
+          IDS="${{ steps.targets.outputs.ids }}"
+          FAILED=""
+          SUCCEEDED=""
+          : > draft_batch.log
 
-          python scripts/auto_draft_claims.py \
-            --article-id "$ARTICLE_ID" \
-            --output-file "$OUTPUT_FILE" \
-            | tee draft_summary.json
+          for ARTICLE_ID in $IDS; do
+            ARTICLE_DIR="knowledge_state/articles/$ARTICLE_ID"
+            RECORD="$ARTICLE_DIR/record.json"
+            CANONICAL="$ARTICLE_DIR/canonical_text.txt"
+            OUTPUT_FILE="$ARTICLE_DIR/_proposed_claims.json"
 
-          echo "output_file=$OUTPUT_FILE" >> "$GITHUB_OUTPUT"
+            echo "=== [$MODE] $ARTICLE_ID ===" | tee -a draft_batch.log
 
-      - name: Validate and save claims
-        if: ${{ github.event.inputs.commit_claims != 'false' }}
-        run: |
-          set -euo pipefail
-          ARTICLE_ID="${{ github.event.inputs.article_id }}"
-          OUTPUT_FILE="${{ steps.draft.outputs.output_file }}"
-          python scripts/bayesian_reader.py save-claims \
-            --article-id "$ARTICLE_ID" \
-            --file "$OUTPUT_FILE"
+            if [ ! -f "$RECORD" ] || [ ! -f "$CANONICAL" ]; then
+              echo "::error::record.json or canonical_text.txt missing for $ARTICLE_ID — skipping."
+              FAILED="$FAILED $ARTICLE_ID"
+              if [ "$MODE" = "manual" ]; then exit 1; fi
+              continue
+            fi
 
-      - name: Commit claims.json if it changed
-        if: ${{ github.event.inputs.commit_claims != 'false' }}
+            if ! python scripts/auto_draft_claims.py \
+                --article-id "$ARTICLE_ID" \
+                --output-file "$OUTPUT_FILE" \
+                | tee -a draft_batch.log; then
+              echo "::warning::auto_draft_claims failed for $ARTICLE_ID."
+              FAILED="$FAILED $ARTICLE_ID"
+              if [ "$MODE" = "manual" ]; then exit 1; fi
+              continue
+            fi
+
+            if [ "$COMMIT_CLAIMS" != "false" ]; then
+              if ! python scripts/bayesian_reader.py save-claims \
+                  --article-id "$ARTICLE_ID" \
+                  --file "$OUTPUT_FILE"; then
+                echo "::warning::save-claims failed for $ARTICLE_ID."
+                FAILED="$FAILED $ARTICLE_ID"
+                if [ "$MODE" = "manual" ]; then exit 1; fi
+                continue
+              fi
+            fi
+
+            SUCCEEDED="$SUCCEEDED $ARTICLE_ID"
+          done
+
+          # Normalize whitespace for the outputs.
+          SUCCEEDED="$(echo $SUCCEEDED)"
+          FAILED="$(echo $FAILED)"
+          echo "succeeded=$SUCCEEDED" >> "$GITHUB_OUTPUT"
+          echo "failed=$FAILED" >> "$GITHUB_OUTPUT"
+          echo "Batch summary: succeeded='$SUCCEEDED' failed='$FAILED'"
+
+          # Manual mode already exited on the first failure; in chain
+          # mode we only exit non-zero if NOTHING succeeded, so a
+          # partial batch still commits what worked.
+          if [ -z "$SUCCEEDED" ] && [ -n "$FAILED" ]; then
+            exit 1
+          fi
+
+      - name: Rebuild report HTML if any claims were saved
+        if: ${{ steps.draft.outputs.succeeded != '' && (github.event.inputs.commit_claims || 'true') != 'false' }}
+        run: python scripts/bayesian_reader.py build-report
+
+      - name: Commit batched claims if anything changed
+        if: ${{ steps.targets.outputs.ids != '' && (github.event.inputs.commit_claims || 'true') != 'false' }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MODE: ${{ steps.targets.outputs.mode }}
+          SUCCEEDED: ${{ steps.draft.outputs.succeeded }}
+          FAILED: ${{ steps.draft.outputs.failed }}
         run: |
           set -euo pipefail
-          ARTICLE_ID="${{ github.event.inputs.article_id }}"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add "knowledge_state/articles/$ARTICLE_ID/claims.json" \
-                  "knowledge_state/articles/$ARTICLE_ID/record.json" \
-                  "knowledge_state/change_log.jsonl" || true
+          # Only stage paths this phase is allowed to touch.
+          git add knowledge_state/articles/ knowledge_state/change_log.jsonl docs/index.html || true
 
           if git diff --staged --quiet; then
             echo "No claim changes to commit."
             exit 0
           fi
 
+          if [ "$MODE" = "chain" ]; then
+            SUBJECT="chore(claims): auto-draft claims (chained batch)"
+            DETAIL="Drafted via workflow_run from ingest-article. succeeded=[$SUCCEEDED] failed=[$FAILED]"
+          else
+            SUBJECT="chore(claims): auto-draft claims for $SUCCEEDED"
+            DETAIL="Drafted manually via workflow_dispatch."
+          fi
+
           git commit \
-            -m "chore(claims): auto-draft claims for $ARTICLE_ID" \
-            -m "Drafted by auto_draft_claims.py via OpenRouter. Validated by save-claims. No verification / hypothesis state was touched." \
+            -m "$SUBJECT" \
+            -m "$DETAIL Validated by save-claims. No verification / hypothesis state touched." \
             -m "Co-Authored-By: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
           git push
 
       - name: Comment on triggering issue
-        if: ${{ github.event.inputs.issue_number != '' }}
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.issue_number != '' }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           ARTICLE_ID="${{ github.event.inputs.article_id }}"
           CLAIMS_FILE="knowledge_state/articles/$ARTICLE_ID/claims.json"
           if [ -f "$CLAIMS_FILE" ]; then
-            BODY="$(printf 'Claims drafted for `%s`.\n\n```json\n%s\n```\n\nNext step: verify each claim (still manual for now, Phase C).' "$ARTICLE_ID" "$(cat "$CLAIMS_FILE")")"
+            BODY="$(printf 'Phase B complete for `%s`.\n\n```json\n%s\n```\n\nThe report was refreshed with the latest pending state. Phase C (`draft-verification`) will continue automatically after this workflow succeeds.' "$ARTICLE_ID" "$(cat "$CLAIMS_FILE")")"
           else
             BODY="Drafted but not committed. Check the workflow logs and the \`_proposed_claims.json\` artifact."
           fi
           gh issue comment "${{ github.event.inputs.issue_number }}" --body "$BODY" || echo "Issue comment failed (not fatal)."
 
-      - name: Upload draft artifact
+      - name: Comment on linked issues in chained mode
+        if: ${{ github.event_name == 'workflow_run' && steps.targets.outputs.ids != '' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SUCCEEDED: ${{ steps.draft.outputs.succeeded }}
+          FAILED: ${{ steps.draft.outputs.failed }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          import os
+          import re
+          import subprocess
+          from pathlib import Path
+
+          root = Path("knowledge_state/articles")
+
+          def issue_number_for(article_id: str) -> str | None:
+              record_path = root / article_id / "record.json"
+              if not record_path.exists():
+                  return None
+              try:
+                  record = json.loads(record_path.read_text(encoding="utf-8"))
+              except Exception:
+                  return None
+              for source in reversed(record.get("ingest_sources", [])):
+                  if source.get("source_name") != "github_issue":
+                      continue
+                  ref = source.get("source_ref") or ""
+                  match = re.search(r"/issues/(\d+)$", ref)
+                  if match:
+                      return match.group(1)
+              return None
+
+          def comment(issue_number: str, body: str) -> None:
+              subprocess.run(
+                  ["gh", "issue", "comment", issue_number, "--body", body],
+                  check=False,
+              )
+
+          for article_id in filter(None, os.environ.get("SUCCEEDED", "").split()):
+              issue_number = issue_number_for(article_id)
+              if issue_number:
+                  comment(
+                      issue_number,
+                      (
+                          f"Phase B complete for `{article_id}`.\n\n"
+                          "- Claims were drafted and saved to `claims.json`.\n"
+                          "- The report was refreshed with the latest pending state.\n"
+                          "- Phase C (`draft-verification`) will continue automatically.\n"
+                      ),
+                  )
+
+          for article_id in filter(None, os.environ.get("FAILED", "").split()):
+              issue_number = issue_number_for(article_id)
+              if issue_number:
+                  comment(
+                      issue_number,
+                      (
+                          f"Phase B failed for `{article_id}`.\n\n"
+                          "- The article stayed in the extract queue.\n"
+                          "- Check the `draft-claims` workflow logs and uploaded artifacts.\n"
+                      ),
+                  )
+          PY
+
+      - name: Upload draft artifacts
+        if: ${{ always() && steps.targets.outputs.ids != '' }}
         uses: actions/upload-artifact@v4
         with:
-          name: proposed-claims-${{ github.event.inputs.article_id }}
+          name: proposed-claims-${{ github.run_id }}
           path: |
-            knowledge_state/articles/${{ github.event.inputs.article_id }}/_proposed_claims.json
-            knowledge_state/articles/${{ github.event.inputs.article_id }}/_proposed_claims.broken.json
-            draft_summary.json
+            knowledge_state/articles/*/_proposed_claims.json
+            knowledge_state/articles/*/_proposed_claims.broken.json
+            draft_batch.log
           if-no-files-found: warn
           retention-days: 14

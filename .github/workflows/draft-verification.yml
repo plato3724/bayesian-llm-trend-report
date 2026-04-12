@@ -3,46 +3,41 @@ name: draft-verification
 # Phase C of the automation plan: call OpenRouter to draft a
 # (verification_draft, approval) pair for an article whose claims.json
 # has already been produced by Phase B. Then stage the pair via
-# bayesian_reader.py stage-verification, and — only if explicitly
-# opted in AND the Phase C guard did not force needs_human — run
-# apply-verification to update posteriors.
+# bayesian_reader.py stage-verification, and — when the Phase C guard
+# is clean — run apply-verification to update posteriors.
 #
-# This workflow is MANUAL-TRIGGER ONLY for the same reasons as
-# draft-claims: it spends API credits and it touches the most sensitive
-# state in the project (posteriors). Keeping it on an explicit button
-# means a mis-labeled issue cannot blow through credits or corrupt a
-# hypothesis.
+# This workflow runs in two modes:
 #
-# What this workflow does:
-#   1. checks out the repo at the current main
-#   2. installs openai + runs auto_draft_verification.py
-#   3. the script writes _proposed_draft.json and
-#      _proposed_approval.json (both gitignored)
-#   4. runs stage-verification to promote the pair into
-#      verification_draft.json and approval.json (tracked)
-#   5. (optional, gated) runs apply-verification to write
-#      verification.json and recompute posteriors
-#   6. commits the tracked files and pushes
-#   7. posts a concise status comment on the triggering issue
+#   1. workflow_dispatch (manual) — you pick a single article_id and
+#      explicitly choose whether to auto_apply. Useful for re-runs,
+#      debugging, or running without the chain's auto-apply default.
 #
-# What this workflow does NOT do on its own:
+#   2. workflow_run (chained) — fires automatically after a successful
+#      draft-claims run. Discovers every article currently at stage
+#      verify_claims via `bayesian_reader.py queue --stage
+#      verify_claims`, skipping any article whose verification is
+#      already in the `drafted` limbo state (i.e. a human opted out of
+#      auto-apply on a previous run and we must not silently overrule
+#      their choice). Auto-applies anything that clears the Phase C
+#      guard.
+#
+# Two gates on apply (both modes):
+#   1. approval.decision must be auto_approved. The LLM self-selects
+#      needs_human when uncertain, and the prompt requires that.
+#   2. compute_phase_c_escalations() must return zero triggers. The
+#      guard catches cross-domain attach and band-boundary crossing
+#      deterministically, regardless of what the LLM said.
+#
+# If EITHER gate fails, the stage step still commits the draft +
+# approval (so the audit trail is visible in main), but apply-
+# verification is skipped and the article is left in `drafted` state
+# for a human to resolve with `override-approval`.
+#
+# What this workflow does NOT do:
 #   - create new hypotheses
 #   - override the Phase C guard
-#   - run apply-verification when approval.decision is needs_human or
-#     when any escalation trigger fired (those cases are always manual)
-#
-# Guardrails:
-#   - OPENROUTER_API_KEY is a repo secret, never exposed in logs
-#   - auto_draft_verification.py validates both halves against the same
-#     schemas the CLI uses (validate_verification_payload +
-#     validate_approval_payload) and fails closed on drift
-#   - compute_phase_c_escalations runs before stage, and downgrades
-#     approval.decision to needs_human on cross-domain attach or
-#     band-boundary crossing
-#   - stage-verification re-runs the same validators at promotion time
-#   - apply-verification only runs if BOTH auto_apply=true AND the
-#     staged approval is in APPLY_ALLOWED_DECISIONS AND no triggers
-#     fired — enforced by a jq check on draft_summary.json
+#   - re-draft an article whose verification was already staged (the
+#     chain treats that as a human-in-the-loop checkpoint)
 
 on:
   workflow_dispatch:
@@ -54,30 +49,36 @@ on:
         description: "Optional issue number to comment on after drafting"
         required: false
       model:
-        description: "Optional model override, e.g. anthropic/claude-3.5-sonnet or openai/gpt-4o-mini"
+        description: "Optional one-off model override, e.g. openai/gpt-5.4"
         required: false
       commit_staged:
         description: "After drafting, run stage-verification and commit verification_draft.json + approval.json. Set to 'false' to only produce gitignored scratch files."
         required: false
         default: "true"
       auto_apply:
-        description: "After a clean stage, run apply-verification. Only fires when approval.decision is auto_approved AND no Phase C escalation triggered. Default 'false' keeps the human in the loop."
+        description: "After a clean stage, run apply-verification. Only fires when approval.decision is auto_approved AND no Phase C escalation triggered. Default 'false' in manual mode keeps the human in the loop."
         required: false
         default: "false"
+  workflow_run:
+    workflows: ["draft-claims"]
+    types: [completed]
+    branches: [main]
 
 jobs:
   draft:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
       issues: write
     concurrency:
-      group: draft-verification-${{ github.event.inputs.article_id }}
+      group: draft-verification-${{ github.event.inputs.article_id || 'chain' }}
       cancel-in-progress: false
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 0
 
       - name: Set up Python
@@ -90,202 +91,346 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Confirm article is ready for verification drafting
+      - name: Resolve target article IDs
+        id: targets
         run: |
           set -euo pipefail
-          ARTICLE_ID="${{ github.event.inputs.article_id }}"
-          ARTICLE_DIR="knowledge_state/articles/$ARTICLE_ID"
-          RECORD="$ARTICLE_DIR/record.json"
-          CANONICAL="$ARTICLE_DIR/canonical_text.txt"
-          CLAIMS="$ARTICLE_DIR/claims.json"
-          if [ ! -f "$RECORD" ]; then
-            echo "::error::record.json missing for $ARTICLE_ID — run Phase A (ingest) first."
-            exit 1
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            IDS="${{ github.event.inputs.article_id }}"
+            MODE="manual"
+            # Manual default for auto_apply is whatever the caller set.
+            AUTO_APPLY="${{ github.event.inputs.auto_apply }}"
+          else
+            # Chained run: discover all verify_claims-stage articles
+            # whose verification_draft.json does NOT already exist.
+            # An existing draft means "human opted out of auto-apply
+            # already" and the chain must leave it alone.
+            IDS="$(python -c '
+          import json, sys
+          from pathlib import Path
+          sys.path.insert(0, "scripts")
+          import bayesian_reader as br  # type: ignore
+          picked = []
+          for t in br.list_pending_tasks(stage="verify_claims"):
+              article_id = t["article_id"]
+              draft_path = br.article_dir(article_id) / "verification_draft.json"
+              if draft_path.exists():
+                  continue
+              picked.append(article_id)
+          print(" ".join(picked))
+          ')"
+            MODE="chain"
+            # Chained default: auto_apply is on. The Phase C guard is
+            # still load-bearing — it will block anything that tries
+            # to cross a band boundary or attach across domains.
+            AUTO_APPLY="true"
           fi
-          if [ ! -f "$CANONICAL" ]; then
-            echo "::error::canonical_text.txt missing for $ARTICLE_ID — run Phase A (fetch-pending) first."
-            exit 1
+          echo "mode=$MODE" >> "$GITHUB_OUTPUT"
+          echo "ids=$IDS" >> "$GITHUB_OUTPUT"
+          echo "auto_apply=$AUTO_APPLY" >> "$GITHUB_OUTPUT"
+          if [ -z "$IDS" ]; then
+            echo "No articles ready for verification drafting."
+          else
+            echo "Target article ids: $IDS"
+            echo "Auto-apply: $AUTO_APPLY (mode=$MODE)"
           fi
-          if [ ! -f "$CLAIMS" ]; then
-            echo "::error::claims.json missing for $ARTICLE_ID — run Phase B (draft-claims) first."
-            exit 1
-          fi
-          CLAIM_STATUS="$(python -c "import json,sys; print(json.load(open(sys.argv[1],encoding='utf-8')).get('claim_extraction_status',''))" "$CLAIMS")"
-          if [ "$CLAIM_STATUS" != "completed" ]; then
-            echo "::error::claims.json for $ARTICLE_ID has status '$CLAIM_STATUS' (expected 'completed'). Run Phase B first."
-            exit 1
-          fi
-          echo "Article $ARTICLE_ID looks ready for verification drafting."
 
       - name: Draft verification with OpenRouter
         id: draft
+        if: ${{ steps.targets.outputs.ids != '' }}
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENROUTER_DEFAULT_MODEL: ${{ vars.OPENROUTER_DEFAULT_MODEL }}
           OPENROUTER_REFERER: https://github.com/${{ github.repository }}
           OPENROUTER_TITLE: "tec_trade draft-verification"
           OPENROUTER_MODEL: ${{ github.event.inputs.model }}
+          MODE: ${{ steps.targets.outputs.mode }}
+          COMMIT_STAGED: ${{ github.event.inputs.commit_staged || 'true' }}
+          AUTO_APPLY: ${{ steps.targets.outputs.auto_apply }}
         run: |
-          set -euo pipefail
-          ARTICLE_ID="${{ github.event.inputs.article_id }}"
-          ARTICLE_DIR="knowledge_state/articles/$ARTICLE_ID"
-          DRAFT_FILE="$ARTICLE_DIR/_proposed_draft.json"
-          APPROVAL_FILE="$ARTICLE_DIR/_proposed_approval.json"
+          set -uo pipefail
+          IDS="${{ steps.targets.outputs.ids }}"
+          STAGED=""
+          APPLIED=""
+          HELD=""
+          FAILED=""
+          : > draft_batch.log
+          : > apply_batch.log
 
-          python scripts/auto_draft_verification.py \
-            --article-id "$ARTICLE_ID" \
-            --output-draft "$DRAFT_FILE" \
-            --output-approval "$APPROVAL_FILE" \
-            | tee draft_summary.json
+          for ARTICLE_ID in $IDS; do
+            ARTICLE_DIR="knowledge_state/articles/$ARTICLE_ID"
+            RECORD="$ARTICLE_DIR/record.json"
+            CANONICAL="$ARTICLE_DIR/canonical_text.txt"
+            CLAIMS="$ARTICLE_DIR/claims.json"
+            DRAFT_FILE="$ARTICLE_DIR/_proposed_draft.json"
+            APPROVAL_FILE="$ARTICLE_DIR/_proposed_approval.json"
+            SUMMARY_FILE="$ARTICLE_DIR/_draft_summary.json"
 
-          echo "draft_file=$DRAFT_FILE" >> "$GITHUB_OUTPUT"
-          echo "approval_file=$APPROVAL_FILE" >> "$GITHUB_OUTPUT"
+            echo "=== [$MODE] $ARTICLE_ID ===" | tee -a draft_batch.log
 
-      - name: Extract guard status from draft summary
-        id: guard
-        run: |
-          set -euo pipefail
-          DECISION="$(python -c "import json; print(json.load(open('draft_summary.json',encoding='utf-8')).get('decision',''))")"
-          DOWNGRADED="$(python -c "import json; print(str(json.load(open('draft_summary.json',encoding='utf-8')).get('downgraded_by_guard',False)).lower())")"
-          TRIGGERS="$(python -c "import json; print(len(json.load(open('draft_summary.json',encoding='utf-8')).get('escalation_triggers',[]) or []))")"
-          echo "decision=$DECISION" >> "$GITHUB_OUTPUT"
-          echo "downgraded=$DOWNGRADED" >> "$GITHUB_OUTPUT"
-          echo "trigger_count=$TRIGGERS" >> "$GITHUB_OUTPUT"
-          echo "Phase C guard — decision=$DECISION downgraded=$DOWNGRADED triggers=$TRIGGERS"
+            # Preconditions: Phase A + Phase B must have left the
+            # article in a usable state for Phase C.
+            if [ ! -f "$RECORD" ] || [ ! -f "$CANONICAL" ] || [ ! -f "$CLAIMS" ]; then
+              echo "::error::record/canonical/claims missing for $ARTICLE_ID — skipping."
+              FAILED="$FAILED $ARTICLE_ID"
+              if [ "$MODE" = "manual" ]; then exit 1; fi
+              continue
+            fi
+            CLAIM_STATUS="$(python -c "import json,sys; print(json.load(open(sys.argv[1],encoding='utf-8')).get('claim_extraction_status',''))" "$CLAIMS")"
+            if [ "$CLAIM_STATUS" != "completed" ]; then
+              echo "::error::claims.json for $ARTICLE_ID has status '$CLAIM_STATUS' (expected 'completed'). Skipping."
+              FAILED="$FAILED $ARTICLE_ID"
+              if [ "$MODE" = "manual" ]; then exit 1; fi
+              continue
+            fi
 
-      - name: Stage verification (promote scratch files to tracked)
-        id: stage
-        if: ${{ github.event.inputs.commit_staged != 'false' }}
-        run: |
-          set -euo pipefail
-          ARTICLE_ID="${{ github.event.inputs.article_id }}"
-          DRAFT_FILE="${{ steps.draft.outputs.draft_file }}"
-          APPROVAL_FILE="${{ steps.draft.outputs.approval_file }}"
-          python scripts/bayesian_reader.py stage-verification \
-            --article-id "$ARTICLE_ID" \
-            --draft "$DRAFT_FILE" \
-            --approval "$APPROVAL_FILE"
+            # 1. Call the drafter. It validates draft + approval, runs
+            #    the Phase C guard, and prints a summary JSON to stdout.
+            if ! python scripts/auto_draft_verification.py \
+                --article-id "$ARTICLE_ID" \
+                --output-draft "$DRAFT_FILE" \
+                --output-approval "$APPROVAL_FILE" \
+                > "$SUMMARY_FILE"; then
+              echo "::warning::auto_draft_verification failed for $ARTICLE_ID."
+              cat "$SUMMARY_FILE" 2>/dev/null | tee -a draft_batch.log || true
+              FAILED="$FAILED $ARTICLE_ID"
+              if [ "$MODE" = "manual" ]; then exit 1; fi
+              continue
+            fi
+            cat "$SUMMARY_FILE" | tee -a draft_batch.log
 
-      - name: Commit staged verification if it changed
-        if: ${{ github.event.inputs.commit_staged != 'false' }}
+            DECISION="$(python -c "import json,sys; print(json.load(open(sys.argv[1],encoding='utf-8')).get('decision',''))" "$SUMMARY_FILE")"
+            TRIGGER_COUNT="$(python -c "import json,sys; print(len(json.load(open(sys.argv[1],encoding='utf-8')).get('escalation_triggers',[]) or []))" "$SUMMARY_FILE")"
+
+            # 2. Stage the scratch files into tracked state.
+            if [ "$COMMIT_STAGED" = "false" ]; then
+              echo "commit_staged=false — scratch files left in place, not staging."
+              HELD="$HELD $ARTICLE_ID"
+              continue
+            fi
+
+            if ! python scripts/bayesian_reader.py stage-verification \
+                --article-id "$ARTICLE_ID" \
+                --draft "$DRAFT_FILE" \
+                --approval "$APPROVAL_FILE"; then
+              echo "::warning::stage-verification failed for $ARTICLE_ID."
+              FAILED="$FAILED $ARTICLE_ID"
+              if [ "$MODE" = "manual" ]; then exit 1; fi
+              continue
+            fi
+            STAGED="$STAGED $ARTICLE_ID"
+
+            # 3. Gate the apply step. Both decision and trigger count
+            #    must be safe; auto_apply must be on.
+            if [ "$AUTO_APPLY" != "true" ]; then
+              echo "auto_apply=false — staged $ARTICLE_ID but not applying."
+              HELD="$HELD $ARTICLE_ID"
+              continue
+            fi
+            if [ "$DECISION" != "auto_approved" ]; then
+              echo "::notice::$ARTICLE_ID decision is '$DECISION'. Staged but not applied."
+              HELD="$HELD $ARTICLE_ID"
+              continue
+            fi
+            if [ "$TRIGGER_COUNT" != "0" ]; then
+              echo "::notice::$ARTICLE_ID has $TRIGGER_COUNT Phase C guard trigger(s). Staged but not applied."
+              HELD="$HELD $ARTICLE_ID"
+              continue
+            fi
+
+            # 4. Apply. This rewrites verification.json, hypotheses.json,
+            #    synthesis_state.json, and change_log.jsonl for this
+            #    article.
+            if ! python scripts/bayesian_reader.py apply-verification \
+                --article-id "$ARTICLE_ID" | tee -a apply_batch.log; then
+              echo "::warning::apply-verification failed for $ARTICLE_ID."
+              FAILED="$FAILED $ARTICLE_ID"
+              if [ "$MODE" = "manual" ]; then exit 1; fi
+              continue
+            fi
+            APPLIED="$APPLIED $ARTICLE_ID"
+          done
+
+          # Normalize whitespace.
+          STAGED="$(echo $STAGED)"
+          APPLIED="$(echo $APPLIED)"
+          HELD="$(echo $HELD)"
+          FAILED="$(echo $FAILED)"
+          echo "staged=$STAGED" >> "$GITHUB_OUTPUT"
+          echo "applied=$APPLIED" >> "$GITHUB_OUTPUT"
+          echo "held=$HELD" >> "$GITHUB_OUTPUT"
+          echo "failed=$FAILED" >> "$GITHUB_OUTPUT"
+          echo "Batch summary: staged='$STAGED' applied='$APPLIED' held='$HELD' failed='$FAILED'"
+
+          if [ -z "$STAGED" ] && [ -z "$APPLIED" ] && [ -n "$FAILED" ]; then
+            exit 1
+          fi
+
+      - name: Refresh record states after staging
+        if: ${{ steps.draft.outputs.staged != '' }}
+        run: python scripts/bayesian_reader.py refresh-records
+
+      - name: Rebuild report HTML if anything was staged
+        if: ${{ steps.draft.outputs.staged != '' }}
+        run: python scripts/bayesian_reader.py build-report
+
+      - name: Commit staged + applied verification changes
+        if: ${{ steps.targets.outputs.ids != '' && (github.event.inputs.commit_staged || 'true') != 'false' }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MODE: ${{ steps.targets.outputs.mode }}
+          STAGED: ${{ steps.draft.outputs.staged }}
+          APPLIED: ${{ steps.draft.outputs.applied }}
+          HELD: ${{ steps.draft.outputs.held }}
+          FAILED: ${{ steps.draft.outputs.failed }}
         run: |
           set -euo pipefail
-          ARTICLE_ID="${{ github.event.inputs.article_id }}"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add "knowledge_state/articles/$ARTICLE_ID/verification_draft.json" \
-                  "knowledge_state/articles/$ARTICLE_ID/approval.json" \
-                  "knowledge_state/articles/$ARTICLE_ID/record.json" \
-                  "knowledge_state/change_log.jsonl" || true
+          # Allowed write paths for Phase C. Includes everything apply-
+          # verification might touch.
+          git add \
+            knowledge_state/articles/ \
+            knowledge_state/hypotheses.json \
+            knowledge_state/synthesis_state.json \
+            knowledge_state/change_log.jsonl \
+            docs/index.html || true
 
           if git diff --staged --quiet; then
-            echo "No staged verification changes to commit."
+            echo "No verification changes to commit."
             exit 0
           fi
+
+          if [ -n "$APPLIED" ]; then
+            SUBJECT="chore(verification): Phase C stage+apply [$APPLIED]"
+          else
+            SUBJECT="chore(verification): Phase C stage [$STAGED]"
+          fi
+          DETAIL="mode=$MODE staged=[$STAGED] applied=[$APPLIED] held=[$HELD] failed=[$FAILED]"
 
           git commit \
-            -m "chore(verification): stage Phase C draft for $ARTICLE_ID" \
-            -m "Drafted by auto_draft_verification.py via OpenRouter. Validated by stage-verification. Posteriors untouched." \
-            -m "Co-Authored-By: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
-          git push
-
-      - name: Evaluate whether auto-apply is allowed
-        id: apply_gate
-        if: ${{ github.event.inputs.auto_apply == 'true' && github.event.inputs.commit_staged != 'false' }}
-        run: |
-          set -euo pipefail
-          DECISION="${{ steps.guard.outputs.decision }}"
-          TRIGGERS="${{ steps.guard.outputs.trigger_count }}"
-          if [ "$DECISION" != "auto_approved" ]; then
-            echo "::notice::auto_apply requested but approval.decision is '$DECISION'. Skipping apply-verification."
-            echo "allowed=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          if [ "$TRIGGERS" != "0" ]; then
-            echo "::notice::auto_apply requested but Phase C guard fired $TRIGGERS trigger(s). Skipping apply-verification."
-            echo "allowed=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          echo "Phase C guard is clean and decision is auto_approved — apply-verification will run."
-          echo "allowed=true" >> "$GITHUB_OUTPUT"
-
-      - name: Apply verification (recompute posteriors)
-        if: ${{ steps.apply_gate.outputs.allowed == 'true' }}
-        run: |
-          set -euo pipefail
-          ARTICLE_ID="${{ github.event.inputs.article_id }}"
-          python scripts/bayesian_reader.py apply-verification \
-            --article-id "$ARTICLE_ID"
-
-      - name: Build report HTML after apply
-        if: ${{ steps.apply_gate.outputs.allowed == 'true' }}
-        run: |
-          set -euo pipefail
-          python scripts/bayesian_reader.py build-report
-
-      - name: Commit applied verification if it changed
-        if: ${{ steps.apply_gate.outputs.allowed == 'true' }}
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          set -euo pipefail
-          ARTICLE_ID="${{ github.event.inputs.article_id }}"
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add "knowledge_state/articles/$ARTICLE_ID/verification.json" \
-                  "knowledge_state/articles/$ARTICLE_ID/record.json" \
-                  "knowledge_state/hypotheses.json" \
-                  "knowledge_state/synthesis_state.json" \
-                  "knowledge_state/change_log.jsonl" \
-                  "docs/index.html" || true
-
-          if git diff --staged --quiet; then
-            echo "No applied verification changes to commit."
-            exit 0
-          fi
-
-          git commit \
-            -m "chore(verification): apply Phase C for $ARTICLE_ID" \
-            -m "auto_approved by Phase C guard, no cross-domain or band-crossing triggers. Posteriors recomputed." \
+            -m "$SUBJECT" \
+            -m "$DETAIL Drafted by auto_draft_verification.py via OpenRouter. Phase C guard enforced on every item." \
             -m "Co-Authored-By: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
           git push
 
       - name: Comment on triggering issue
-        if: ${{ github.event.inputs.issue_number != '' }}
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.issue_number != '' }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
           ARTICLE_ID="${{ github.event.inputs.article_id }}"
-          DECISION="${{ steps.guard.outputs.decision }}"
-          DOWNGRADED="${{ steps.guard.outputs.downgraded }}"
-          TRIGGERS="${{ steps.guard.outputs.trigger_count }}"
-          APPLIED="${{ steps.apply_gate.outputs.allowed }}"
+          STAGED="${{ steps.draft.outputs.staged }}"
+          APPLIED="${{ steps.draft.outputs.applied }}"
+          HELD="${{ steps.draft.outputs.held }}"
 
-          if [ "$APPLIED" = "true" ]; then
+          if [[ " $APPLIED " == *" $ARTICLE_ID "* ]]; then
             STATUS_LINE="Phase C auto-applied (posteriors recomputed)."
-          elif [ "$DOWNGRADED" = "true" ]; then
-            STATUS_LINE="Phase C guard downgraded approval to needs_human ($TRIGGERS trigger(s)). Staged but not applied — human review required."
-          elif [ "$DECISION" = "auto_approved" ]; then
-            STATUS_LINE="Phase C drafted and staged cleanly (auto_approved, no triggers). apply-verification was not opted in; run it manually or re-dispatch with auto_apply=true."
+          elif [[ " $HELD " == *" $ARTICLE_ID "* ]]; then
+            STATUS_LINE="Phase C drafted and staged. Held for human review (see approval.json). The report was refreshed to show the held state."
+          elif [[ " $STAGED " == *" $ARTICLE_ID "* ]]; then
+            STATUS_LINE="Phase C drafted and staged. The report was refreshed to show the pending apply state."
           else
-            STATUS_LINE="Phase C drafted with decision '$DECISION'. Staged but not applied — human review required."
+            STATUS_LINE="Phase C failed — check workflow logs and the broken-draft artifact."
           fi
 
-          BODY="$(printf 'Phase C run for \`%s\`:\n\n- %s\n\nSee `draft_summary.json` in the workflow artifacts for the full guard output.' "$ARTICLE_ID" "$STATUS_LINE")"
+          BODY="$(printf 'Phase C run for \`%s\`:\n\n- %s\n' "$ARTICLE_ID" "$STATUS_LINE")"
           gh issue comment "${{ github.event.inputs.issue_number }}" --body "$BODY" || echo "Issue comment failed (not fatal)."
 
-      - name: Upload draft artifact
+      - name: Comment on linked issues in chained mode
+        if: ${{ github.event_name == 'workflow_run' && steps.targets.outputs.ids != '' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          APPLIED: ${{ steps.draft.outputs.applied }}
+          HELD: ${{ steps.draft.outputs.held }}
+          FAILED: ${{ steps.draft.outputs.failed }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          import os
+          import re
+          import subprocess
+          from pathlib import Path
+
+          root = Path("knowledge_state/articles")
+
+          def issue_number_for(article_id: str) -> str | None:
+              record_path = root / article_id / "record.json"
+              if not record_path.exists():
+                  return None
+              try:
+                  record = json.loads(record_path.read_text(encoding="utf-8"))
+              except Exception:
+                  return None
+              for source in reversed(record.get("ingest_sources", [])):
+                  if source.get("source_name") != "github_issue":
+                      continue
+                  ref = source.get("source_ref") or ""
+                  match = re.search(r"/issues/(\d+)$", ref)
+                  if match:
+                      return match.group(1)
+              return None
+
+          def comment(issue_number: str, body: str) -> None:
+              subprocess.run(
+                  ["gh", "issue", "comment", issue_number, "--body", body],
+                  check=False,
+              )
+
+          for article_id in filter(None, os.environ.get("APPLIED", "").split()):
+              issue_number = issue_number_for(article_id)
+              if issue_number:
+                  comment(
+                      issue_number,
+                      (
+                          f"Phase C auto-applied for `{article_id}`.\n\n"
+                          "- Verification was written to `verification.json`.\n"
+                          "- Hypothesis posteriors were recomputed.\n"
+                          "- The report was rebuilt and updated on the site.\n"
+                      ),
+                  )
+
+          for article_id in filter(None, os.environ.get("HELD", "").split()):
+              issue_number = issue_number_for(article_id)
+              if issue_number:
+                  comment(
+                      issue_number,
+                      (
+                          f"Phase C held `{article_id}` for human review.\n\n"
+                          "- `verification_draft.json` and `approval.json` were staged.\n"
+                          "- The guard or approver blocked auto-apply, so posterior state was not updated.\n"
+                          "- The report was refreshed to show the held state.\n"
+                          "- Check the workflow artifacts and staged approval rationale.\n"
+                      ),
+                  )
+
+          for article_id in filter(None, os.environ.get("FAILED", "").split()):
+              issue_number = issue_number_for(article_id)
+              if issue_number:
+                  comment(
+                      issue_number,
+                      (
+                          f"Phase C failed for `{article_id}`.\n\n"
+                          "- Verification was not fully applied.\n"
+                          "- Check the `draft-verification` workflow logs and uploaded artifacts.\n"
+                      ),
+                  )
+          PY
+
+      - name: Upload draft artifacts
+        if: ${{ always() && steps.targets.outputs.ids != '' }}
         uses: actions/upload-artifact@v4
         with:
-          name: proposed-verification-${{ github.event.inputs.article_id }}
+          name: proposed-verification-${{ github.run_id }}
           path: |
-            knowledge_state/articles/${{ github.event.inputs.article_id }}/_proposed_draft.json
-            knowledge_state/articles/${{ github.event.inputs.article_id }}/_proposed_approval.json
-            knowledge_state/articles/${{ github.event.inputs.article_id }}/_proposed_verification.broken.json
-            draft_summary.json
+            knowledge_state/articles/*/_proposed_draft.json
+            knowledge_state/articles/*/_proposed_approval.json
+            knowledge_state/articles/*/_proposed_verification.broken.json
+            knowledge_state/articles/*/_draft_summary.json
+            draft_batch.log
+            apply_batch.log
           if-no-files-found: warn
           retention-days: 14

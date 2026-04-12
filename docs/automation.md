@@ -10,11 +10,15 @@ every step locally the old way.
 | Phase | Workflow | LLM used? | Triggered how | Writes to main? |
 |---|---|---|---|---|
 | A — ingest | `.github/workflows/ingest.yml` | No | `issues.labeled: article` or manual | Yes (ingest commit) |
-| B — draft claims | `.github/workflows/draft-claims.yml` | **OpenRouter** | Manual only | Yes (claims commit) |
-| C — draft + stage verification (+ optional apply) | `.github/workflows/draft-verification.yml` | **OpenRouter** | Manual only | Yes (stage commit; apply commit only when gate passes) |
+| B — draft claims | `.github/workflows/draft-claims.yml` | **OpenRouter** | **Auto**: `workflow_run` after ingest; also manual dispatch | Yes (claims commit) |
+| C — draft + stage + apply verification | `.github/workflows/draft-verification.yml` | **OpenRouter** | **Auto**: `workflow_run` after draft-claims; also manual dispatch | Yes (stage + apply commit when guard passes) |
 
-Phase D and E are designed in this doc but **not implemented**. Each
-phase is independently operable.
+All three phases chain automatically end-to-end: labeling an issue on
+mobile kicks off `ingest` → on success `draft-claims` → on success
+`draft-verification`. Each phase is also independently operable via
+manual `workflow_dispatch` for re-runs, backfills, or model overrides.
+
+Phase D and E are designed in this doc but **not implemented**.
 
 ## Phase A — ingest
 
@@ -40,7 +44,11 @@ button on the ingest workflow for a manual dispatch.
 **What it does**: given an article that Phase A has already ingested
 (i.e. `canonical_text.txt` exists), this workflow:
 
-1. Calls `scripts/auto_draft_claims.py`, which:
+1. **Resolves targets** — either the single `article_id` from a manual
+   dispatch, or every article currently at stage `extract_claims`
+   (returned by `bayesian_reader.py queue --stage extract_claims`) on
+   a chained run
+2. For each target, calls `scripts/auto_draft_claims.py`, which:
    - Reads `canonical_text.txt` and the active hypotheses (including
      `domain` and `meta_tags`)
    - Sends them to OpenRouter via `scripts/llm_client.py`
@@ -48,24 +56,36 @@ button on the ingest workflow for a manual dispatch.
    - Re-validates the draft against `bayesian_reader.validate_claims_payload`
    - Writes it to `knowledge_state/articles/<id>/_proposed_claims.json`
      (a gitignored scratch file)
-2. Runs `bayesian_reader.py save-claims` to promote the draft into the
+3. Runs `bayesian_reader.py save-claims` to promote the draft into the
    tracked `claims.json`
-3. Commits `claims.json` + `record.json` + `change_log.jsonl`
-4. Optionally posts the claims as a comment on an issue you specify
+4. After the loop, commits the batch (`claims.json` + `record.json` +
+   `change_log.jsonl`) under `github-actions[bot]`
 
 **Secrets needed**: `OPENROUTER_API_KEY`. See setup below.
 
-**Trigger**: **manual only**. You go to the Actions tab, pick
-"draft-claims", click "Run workflow", and fill in:
+**Triggers**:
+
+- **Auto (chained)** — a `workflow_run` trigger fires this workflow
+  whenever the `ingest-article` workflow completes successfully. In
+  chained mode the workflow scans the queue and drafts claims for
+  *every* article waiting at `extract_claims`, one at a time. A single
+  failing article is logged as a warning and the batch continues; the
+  workflow only exits non-zero if nothing succeeded.
+- **Manual dispatch** — you can still pick a single `article_id`
+  yourself from the Actions tab for re-runs or model overrides.
+  Manual mode fails fast on the first error.
+
+**Manual inputs**:
 - `article_id` (required, e.g. `06eb3b8e8732`)
 - `issue_number` (optional, for the post-draft comment)
-- `model` (optional, e.g. `anthropic/claude-3.5-sonnet`; defaults to
-  the model chain in `llm_client.py`)
+- `model` (optional, e.g. `openai/gpt-5.4`; overrides the configured
+  default model for this run only)
 - `commit_claims` (optional, set to `false` to only produce the
   gitignored draft without running `save-claims`)
 
-**LLM calls**: one per run. Cost varies by model; Claude 3.5 Sonnet
-on a typical article is roughly $0.01–0.03.
+**LLM calls**: one per article. Cost varies by model. A chained batch
+spends one call per queued article, so the ceiling is bounded by how
+many articles you label in a given window.
 
 **Anti-metaphor-collapse**: hard-enforced by `scripts/prompts/auto_draft_claims.md`:
 - the drafter must only pick `hypothesis_candidates` from the list
@@ -195,15 +215,16 @@ automation inherits the caution; it does not dissolve it.
 
 That's the only secret Phase B needs.
 
-### 3. (Optional) Adjust the model chain
+### 3. (Optional) Adjust the default model
 
-Edit `scripts/llm_client.py` → `DEFAULT_MODEL_CHAIN`. The default is:
-- `anthropic/claude-3.5-sonnet`
-- `openai/gpt-4o-mini` (fallback)
-- `google/gemini-flash-1.5` (fallback)
+The repository default is `openai/gpt-5.4`.
 
-You can also override per-run by passing the `model` input to the
-workflow, which becomes `OPENROUTER_MODEL` inside the script.
+To change it globally in GitHub Actions without editing code, create a
+repository variable named `OPENROUTER_DEFAULT_MODEL`.
+
+For one-off runs, pass the `model` input to the workflow; this becomes
+`OPENROUTER_MODEL` inside the script and overrides the default only for
+that run.
 
 ### 4. (Optional) Local smoke test
 

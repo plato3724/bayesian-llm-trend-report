@@ -23,9 +23,10 @@ Usage:
 
 Environment:
     OPENROUTER_API_KEY   required, see scripts/llm_client.py
-    OPENROUTER_MODEL     optional, overrides the default model chain
-                          to a single model id, e.g.
-                          'anthropic/claude-3.5-sonnet'
+    OPENROUTER_DEFAULT_MODEL
+                          optional, changes the repository-wide default
+                          model (defaults to 'openai/gpt-5.4')
+    OPENROUTER_MODEL     optional, one-off override for this run
 """
 
 from __future__ import annotations
@@ -42,7 +43,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPT_DIR))
 
 import bayesian_reader as br  # noqa: E402
-from llm_client import complete_json, DEFAULT_MODEL_CHAIN  # noqa: E402
+from llm_client import complete_json, DEFAULT_MODEL  # noqa: E402
 
 
 PROMPT_PATH = SCRIPT_DIR / "prompts" / "auto_draft_verification.md"
@@ -194,9 +195,9 @@ def main() -> int:
     parser.add_argument(
         "--model",
         help=(
-            "Override the default model chain with a single model id "
-            "(e.g. 'anthropic/claude-3.5-sonnet'). Also readable from "
-            "the OPENROUTER_MODEL env var."
+            "Override the configured default model with a single model id "
+            "(e.g. 'openai/gpt-5.4'). Also readable from the "
+            "OPENROUTER_MODEL env var."
         ),
     )
     args = parser.parse_args()
@@ -246,8 +247,8 @@ def main() -> int:
         model_chain = ((model_override, model_override),)
         model_id_for_prompt = model_override
     else:
-        model_chain = DEFAULT_MODEL_CHAIN
-        model_id_for_prompt = DEFAULT_MODEL_CHAIN[0][0]
+        model_chain = ((DEFAULT_MODEL, DEFAULT_MODEL),)
+        model_id_for_prompt = DEFAULT_MODEL
 
     system_prompt = load_system_prompt()
     active_hypotheses = collect_active_hypotheses()
