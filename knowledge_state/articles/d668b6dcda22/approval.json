@@ -1,8 +1,8 @@
 {
   "article_id": "d668b6dcda22",
   "timestamp": "2026-04-12T09:20:28+00:00",
-  "approver": "llm:openai/gpt-5.4",
-  "decision": "needs_human",
+  "approver": "human:github/plato3724",
+  "decision": "human_approved",
   "overall_rationale": "This draft is mostly factual and orthogonal to the active AI hypotheses, so all items are left unattached. Several claims rely on project repositories rather than primary implementation/spec or benchmark evidence, and one historical claim is unverified, so conservative human review is appropriate before application.",
   "per_claim_decisions": [
     {
@@ -46,5 +46,11 @@
       "reasoning": "Popularity metrics are time-sensitive and the social-view count is not backed by a primary source in the article."
     }
   ],
-  "human_override": null
+  "human_override": {
+    "timestamp": "2026-04-12T09:21:46+00:00",
+    "approver": "human:github/plato3724",
+    "previous_decision": "needs_human",
+    "reason": "Approved from GitHub issue review command.",
+    "edits": []
+  }
 }

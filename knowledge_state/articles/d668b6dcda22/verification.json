@@ -1,5 +1,82 @@
 {
   "article_id": "d668b6dcda22",
-  "verification_status": "not_started",
-  "items": []
+  "verification_status": "completed",
+  "verified_at": "2026-04-12T09:21:46+00:00",
+  "items": [
+    {
+      "claim_id": "html_in_canvas_is_experimental_rendering_method",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://github.com/WICG/html-in-canvas",
+      "source_title": "WICG/html-in-canvas",
+      "assessment": "The cited WICG repository supports the basic characterization that HTML-in-Canvas is an experimental web-platform approach for rendering HTML content into canvas, which matches the article's high-level description of 'putting HTML into Canvas.' However, the article's wording is simplified and promotional rather than a formal technical definition, so this is best marked partially verified rather than fully verified."
+    },
+    {
+      "claim_id": "html_in_canvas_enters_w3c_wicg_proposal_process",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "verified",
+      "source_url": "https://github.com/WICG/html-in-canvas",
+      "source_title": "WICG/html-in-canvas",
+      "assessment": "This claim is directly supported by the linked WICG repository, which indicates the work is being discussed within the WICG proposal/incubation process. That supports the article's statement that the feature is experimental and has entered the W3C/WICG ecosystem as a proposal candidate, even if eventual standardization remains uncertain."
+    },
+    {
+      "claim_id": "html_in_canvas_idea_was_proposed_in_2016",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "unverified",
+      "assessment": "The article asserts historical details about a similar idea being proposed in 2016, then shelved by browser vendors, and recently revived by Google, but the provided article text does not include a primary historical source for that timeline and no directly cited archival proposal is available in the article body beyond the current WICG repository. Without a verifiable primary or well-attributed secondary source for the 2016-origin and shelving narrative, this claim cannot be confidently checked here."
+    },
+    {
+      "claim_id": "chrome_flag_canvas_draw_element_enables_feature",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://github.com/WICG/html-in-canvas",
+      "source_title": "WICG/html-in-canvas",
+      "assessment": "The article gives a concrete Chrome flag path, and the linked WICG repository is consistent with an experimental browser-gated implementation path for the feature. However, without direct inspection of a Chrome build, chromium flag listing, or implementation documentation specifically confirming the exact flag string 'chrome://flags/#canvas-draw-element,' this is only partially verified."
+    },
+    {
+      "claim_id": "draw_element_image_used_to_render_canvas_children",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://github.com/WICG/html-in-canvas",
+      "source_title": "WICG/html-in-canvas",
+      "assessment": "The WICG repository supports the existence of an API concept around drawing DOM/layout content into canvas and the article's explanation is directionally aligned with that proposal. Still, the exact sequence involving the layoutsubtree attribute plus a 2D context call to drawElementImage is implementation-specific and not fully cross-checked against a formal spec excerpt here, so partial verification is the safest status."
+    },
+    {
+      "claim_id": "pretext_is_open_source_tool_by_midjourney_engineer",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://github.com/chenglou92/pretext",
+      "source_title": "chenglou92/pretext",
+      "assessment": "The claim that Pretext is an open-source frontend tool is supported by the existence of the public GitHub repository. The attribution to Cheng Lou is also consistent with the repository ownership, but the article's additional description of him specifically as a 'Midjourney engineer' is not verified from the repository alone, so the overall claim is only partially verified."
+    },
+    {
+      "claim_id": "pretext_claimed_hundreds_times_faster_layout",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://github.com/chenglou92/pretext",
+      "source_title": "chenglou92/pretext",
+      "assessment": "The repository and project framing support that Pretext is pursuing an alternative text/layout approach outside conventional browser DOM layout. However, the quantitative statement that it is 'hundreds of times faster than traditional methods' is a performance claim that requires benchmark context and a primary measurement source; without independently checking those benchmarks, the claim can only be partially verified."
+    },
+    {
+      "claim_id": "pretext_post_and_github_popularity_claim",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://github.com/chenglou92/pretext",
+      "source_title": "chenglou92/pretext",
+      "assessment": "The GitHub repository can support the broad popularity claim if it indeed shows a large star count, but the article's specific numbers—tens of millions of views for the author's post and 40,000+ GitHub stars—are time-sensitive metrics and the article does not provide a durable primary record for the social-post view count. Because one part is likely checkable and the other is not robustly sourced in the article, partial verification is appropriate."
+    }
+  ],
+  "approval_ref": {
+    "approver": "human:github/plato3724",
+    "decision": "human_approved",
+    "timestamp": "2026-04-12T09:20:28+00:00"
+  }
 }
