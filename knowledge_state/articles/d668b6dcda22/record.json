@@ -4,7 +4,7 @@
   "url": "https://mp.weixin.qq.com/s/1sHFs1JKXC0Kta6fd3zGBQ",
   "ingested_from": "github_issue",
   "ingested_at": "2026-04-12T09:19:16+00:00",
-  "last_updated_at": "2026-04-12T09:19:29+00:00",
+  "last_updated_at": "2026-04-12T09:19:47+00:00",
   "content_state": {
     "full_text_status": "acquired",
     "canonical_text_source": "knowledge_state/articles/d668b6dcda22/canonical_text.txt",
@@ -22,17 +22,28 @@
       }
     ],
     "manual_artifacts": [],
-    "next_action": "extract_claims"
+    "next_action": "verify_claims"
   },
   "analysis_state": {
-    "claim_extraction_status": "not_started",
+    "claim_extraction_status": "completed",
     "verification_status": "not_started",
     "bayesian_status": "excluded_until_verified"
   },
   "article_summary": {
-    "events": [],
-    "techniques": [],
-    "tools": []
+    "events": [
+      "The article states that HTML-in-Canvas is currently an experimental feature and has entered the W3C/WICG system as a proposal.",
+      "The article states that a similar HTML-in-Canvas idea was proposed in 2016, was shelved by browser vendors at the time, and has recently been revived and advanced by Google.",
+      "The article states that Pretext bypasses the browser's DOM layout system, uses pure mathematical calculation for text layout, and is claimed to be hundreds of times faster than traditional methods.",
+      "The article states that Pretext became very popular, with the author's post receiving tens of millions of views and its GitHub repository quickly gaining more than 40,000 stars."
+    ],
+    "techniques": [
+      "The article states that HTML-in-Canvas is a method that renders HTML by putting it into Canvas.",
+      "The article states that after adding the layoutsubtree attribute to a canvas tag, developers can call drawElementImage through a 2D canvas context to draw child elements into the canvas."
+    ],
+    "tools": [
+      "The article states that in Chrome, users can enable the HTML-in-Canvas experimental feature through the flag at chrome://flags/#canvas-draw-element.",
+      "The article states that Pretext is an open-source frontend tool created by Midjourney engineer Cheng Lou."
+    ]
   },
   "hypothesis_impacts": [],
   "ingest_sources": [
