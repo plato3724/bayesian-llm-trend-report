@@ -129,3 +129,7 @@
 {"timestamp": "2026-04-12T09:19:20+00:00", "event": "fetch_pending", "limit": 20, "force": false, "results": [{"article_id": "d668b6dcda22", "title": "HTML-in-Canvas引爆前端！AI时代互联网视觉效果完全不一样了", "status": "acquired", "final_url": "https://mp.weixin.qq.com/s/1sHFs1JKXC0Kta6fd3zGBQ", "text_length": 3605, "note": "Full text looks sufficient for claim extraction."}]}
 {"timestamp": "2026-04-12T09:19:21+00:00", "event": "refresh_record_states", "refreshed": 17}
 {"timestamp": "2026-04-12T09:19:21+00:00", "event": "build_report", "output_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/docs/index.html"}
+{"timestamp": "2026-04-12T09:19:29+00:00", "event": "sync_github_issues", "repo": "plato3724/bayesian-llm-trend-report", "label": "article", "state": "open", "fallback_used": false, "created": 0, "updated": 6, "skipped": 0}
+{"timestamp": "2026-04-12T09:19:29+00:00", "event": "fetch_pending", "limit": 20, "force": false, "results": []}
+{"timestamp": "2026-04-12T09:19:29+00:00", "event": "refresh_record_states", "refreshed": 17}
+{"timestamp": "2026-04-12T09:19:29+00:00", "event": "build_report", "output_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/docs/index.html"}
