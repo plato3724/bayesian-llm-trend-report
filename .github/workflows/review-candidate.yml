@@ -1,0 +1,200 @@
+name: review-candidate
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  review:
+    if: ${{ github.event.issue.pull_request == null && (startsWith(github.event.comment.body, '/promote-candidate') || startsWith(github.event.comment.body, '/reject-candidate')) && (github.event.comment.author_association == 'OWNER' || github.event.comment.author_association == 'MEMBER' || github.event.comment.author_association == 'COLLABORATOR') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    concurrency:
+      group: review-candidate-${{ github.event.issue.number }}
+      cancel-in-progress: false
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Resolve candidate review command
+        id: resolve
+        env:
+          COMMENT_BODY: ${{ github.event.comment.body }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import os
+          from pathlib import Path
+
+          body = os.environ["COMMENT_BODY"].strip()
+          lines = body.splitlines()
+          first_line = lines[0].strip() if lines else ""
+          action = ""
+          candidate_id = ""
+          inline_reason = ""
+
+          for command, action_name in (
+              ("/promote-candidate", "promote"),
+              ("/reject-candidate", "reject"),
+          ):
+              if first_line.startswith(command):
+                  action = action_name
+                  remainder = first_line[len(command):].strip()
+                  parts = remainder.split(maxsplit=1)
+                  candidate_id = parts[0] if parts else ""
+                  inline_reason = parts[1] if len(parts) > 1 else ""
+                  break
+
+          remaining = "\n".join(line.strip() for line in lines[1:] if line.strip())
+          reason = "\n".join(part for part in (inline_reason, remaining) if part).strip()
+
+          output_path = Path(os.environ["GITHUB_OUTPUT"])
+          with output_path.open("a", encoding="utf-8") as fh:
+              fh.write(f"action={action}\n")
+              fh.write(f"candidate_id={candidate_id}\n")
+              fh.write("reason<<EOF\n")
+              fh.write(reason)
+              fh.write("\nEOF\n")
+          print({"action": action, "candidate_id": candidate_id})
+          PY
+
+      - name: Run candidate review action
+        id: review
+        if: ${{ steps.resolve.outputs.action != '' && steps.resolve.outputs.candidate_id != '' }}
+        env:
+          ACTION: ${{ steps.resolve.outputs.action }}
+          CANDIDATE_ID: ${{ steps.resolve.outputs.candidate_id }}
+          REASON: ${{ steps.resolve.outputs.reason }}
+          APPROVER: human:github/${{ github.event.comment.user.login }}
+        run: |
+          set -euo pipefail
+          CMD_ARGS=(
+            --candidate-id "$CANDIDATE_ID"
+            --approver "$APPROVER"
+          )
+          if [ -n "$REASON" ]; then
+            CMD_ARGS+=(--reason "$REASON")
+          fi
+
+          if [ "$ACTION" = "promote" ]; then
+            python scripts/bayesian_reader.py promote-candidate "${CMD_ARGS[@]}" | tee candidate_review_result.json
+          else
+            python scripts/bayesian_reader.py reject-candidate "${CMD_ARGS[@]}" | tee candidate_review_result.json
+          fi
+
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          result = json.loads(Path("candidate_review_result.json").read_text(encoding="utf-8"))
+          output_path = Path(os.environ["GITHUB_OUTPUT"])
+          with output_path.open("a", encoding="utf-8") as fh:
+              fh.write(f"ok={'true' if result.get('ok') else 'false'}\n")
+              fh.write(f"status={result.get('status', '')}\n")
+              fh.write(f"hypothesis_id={result.get('hypothesis_id', '')}\n")
+          PY
+
+      - name: Rebuild candidates and report
+        if: ${{ steps.review.outputs.ok == 'true' }}
+        run: |
+          python scripts/bayesian_reader.py build-candidates
+          python scripts/bayesian_reader.py build-report
+
+      - name: Commit candidate review changes
+        if: ${{ steps.review.outputs.ok == 'true' }}
+        env:
+          ACTION: ${{ steps.resolve.outputs.action }}
+          CANDIDATE_ID: ${{ steps.resolve.outputs.candidate_id }}
+          HYPOTHESIS_ID: ${{ steps.review.outputs.hypothesis_id }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            knowledge_state/candidate_hypotheses.json \
+            knowledge_state/hypotheses.json \
+            knowledge_state/synthesis_state.json \
+            knowledge_state/change_log.jsonl \
+            knowledge_state/articles/ \
+            docs/index.html \
+            docs/hypotheses/ \
+            .github/workflows/review-candidate.yml \
+            docs/automation.md || true
+
+          if git diff --staged --quiet; then
+            echo "No candidate-review changes to commit."
+            exit 0
+          fi
+
+          git commit \
+            -m "chore(candidate): ${ACTION} candidate [$CANDIDATE_ID]" \
+            -m "hypothesis=[$HYPOTHESIS_ID]" \
+            -m "Co-Authored-By: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
+          git push
+
+      - name: Comment candidate review result
+        if: ${{ always() }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ACTION: ${{ steps.resolve.outputs.action }}
+          CANDIDATE_ID: ${{ steps.resolve.outputs.candidate_id }}
+          OK: ${{ steps.review.outputs.ok }}
+          STATUS: ${{ steps.review.outputs.status }}
+          HYPOTHESIS_ID: ${{ steps.review.outputs.hypothesis_id }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import os
+          import subprocess
+
+          issue_number = os.environ.get("ISSUE_NUMBER", "")
+          action = os.environ.get("ACTION", "")
+          candidate_id = os.environ.get("CANDIDATE_ID", "")
+          ok = os.environ.get("OK", "")
+          status = os.environ.get("STATUS", "")
+          hypothesis_id = os.environ.get("HYPOTHESIS_ID", "")
+
+          if not action or not candidate_id:
+              body = "Candidate review command was ignored because no candidate_id could be resolved."
+          elif ok != "true":
+              body = (
+                  f"Candidate review command for `{candidate_id}` did not complete.\n\n"
+                  "- Check the `review-candidate` workflow logs for details.\n"
+              )
+          elif action == "promote":
+              body = (
+                  f"Candidate `{candidate_id}` was promoted.\n\n"
+                  f"- New hypothesis: `{hypothesis_id}`\n"
+                  "- Candidate evidence was attached to the new hypothesis.\n"
+                  "- Posteriors and report were rebuilt.\n"
+              )
+          else:
+              body = (
+                  f"Candidate `{candidate_id}` was rejected.\n\n"
+                  "- It has been removed from the open candidate queue.\n"
+                  "- Formal hypotheses were left unchanged.\n"
+                  "- The report was rebuilt.\n"
+              )
+
+          subprocess.run(
+              ["gh", "issue", "comment", issue_number, "--body", body],
+              check=False,
+          )
+          PY

@@ -28,6 +28,7 @@ REPORT_PATH = REPORT_DIR / "index.html"
 HYPOTHESIS_DETAIL_DIR = REPORT_DIR / "hypotheses"
 FRAMEWORK_PATH = STATE_DIR / "framework.json"
 HYPOTHESES_PATH = STATE_DIR / "hypotheses.json"
+CANDIDATE_HYPOTHESES_PATH = STATE_DIR / "candidate_hypotheses.json"
 SYNTHESIS_PATH = STATE_DIR / "synthesis_state.json"
 CHANGE_LOG_PATH = STATE_DIR / "change_log.jsonl"
 GITHUB_CONFIG_PATH = STATE_DIR / "github_config.json"
@@ -133,6 +134,16 @@ def bootstrap_state_files() -> None:
                 "created_at": utc_now(),
                 "last_recomputed_at": None,
                 "hypotheses": [],
+            },
+        )
+
+    if not CANDIDATE_HYPOTHESES_PATH.exists():
+        write_json(
+            CANDIDATE_HYPOTHESES_PATH,
+            {
+                "created_at": utc_now(),
+                "last_built_at": None,
+                "candidates": [],
             },
         )
 
@@ -1024,6 +1035,10 @@ def recompute_posteriors() -> dict[str, Any]:
         }
         for item in hypotheses.get("hypotheses", [])
     ]
+    synthesis["tool_index"] = build_tool_index(
+        article_records,
+        existing_items=synthesis.get("tool_index", []),
+    )
     write_json(SYNTHESIS_PATH, synthesis)
 
     append_jsonl(
@@ -3228,6 +3243,680 @@ def latest_applied_article_batch() -> tuple[str | None, set[str]]:
     return latest_timestamp, latest_article_ids
 
 
+TOOL_CATEGORY_BY_HYPOTHESIS = {
+    "agent_harness_decoupling": "agent_runtime",
+    "structured_external_memory": "memory_system",
+    "token_efficiency_as_architecture": "token_compression",
+    "speech_from_tts_to_scene_generation": "speech_generation",
+    "software_engineering_shifts_to_orchestration_and_testing": "developer_tool",
+    "nostalgia_economy_mainstreaming": "consumer_product",
+    "embodied_models_add_tactile_grounding": "embodied_tactile",
+}
+
+
+def normalize_tool_name(value: str) -> str:
+    value = re.sub(r"\s+", " ", value).strip()
+    return value.strip("“”\"'`.,;:，。：；（）()[]")
+
+
+def infer_tool_name_from_claim(text: str) -> str | None:
+    working = normalize_tool_name(text)
+    if not working:
+        return None
+
+    prefixes = [
+        "The article states that ",
+        "The article claims that ",
+        "The article says that ",
+        "The article describes ",
+        "文章称",
+        "文章指出",
+        "文章提到",
+    ]
+    lower_working = working.lower()
+    for prefix in prefixes:
+        if lower_working.startswith(prefix.lower()):
+            working = working[len(prefix) :].strip()
+            break
+
+    candidates: list[str] = []
+    delimiters = [
+        " 是",
+        " is ",
+        " 将",
+        " uses ",
+        " 使用",
+        " has ",
+        " combines ",
+        " has been adapted",
+        " adopts ",
+        " supports ",
+        " 提供",
+        " 支持",
+    ]
+    for delimiter in delimiters:
+        if delimiter in working:
+            candidates.append(normalize_tool_name(working.split(delimiter, 1)[0]))
+
+    regex_patterns = [
+        r"\b([A-Z][A-Za-z0-9.+/_-]*(?:\s+[A-Z0-9][A-Za-z0-9.+/_-]*){0,3})\b",
+        r"\b([A-Za-z][A-Za-z0-9.+/_-]*\s\d(?:\.\d+)?)\b",
+    ]
+    for pattern in regex_patterns:
+        for match in re.finditer(pattern, working):
+            candidates.append(normalize_tool_name(match.group(1)))
+
+    generic = {
+        "",
+        "the article",
+        "the hand shown in the demo",
+        "this article",
+        "article",
+    }
+
+    def score(candidate: str) -> int:
+        lower = candidate.lower()
+        if lower in generic:
+            return -100
+        if candidate.startswith("the "):
+            return -50
+        value = 0
+        if re.search(r"[A-Z]", candidate):
+            value += 2
+        if any(ch.isdigit() for ch in candidate):
+            value += 2
+        if len(candidate.split()) <= 4:
+            value += 1
+        if len(candidate) <= 32:
+            value += 1
+        return value
+
+    ranked = sorted(
+        ((score(candidate), candidate) for candidate in candidates if candidate),
+        key=lambda item: (item[0], len(item[1])),
+        reverse=True,
+    )
+    if not ranked or ranked[0][0] <= 0:
+        return None
+    return ranked[0][1]
+
+
+def infer_tool_category(claim: dict[str, Any], verification_item: dict[str, Any]) -> str:
+    hypothesis_ids = [
+        verification_item.get("hypothesis_id"),
+        *(claim.get("hypothesis_candidates") or []),
+    ]
+    for hypothesis_id in hypothesis_ids:
+        if hypothesis_id in TOOL_CATEGORY_BY_HYPOTHESIS:
+            return TOOL_CATEGORY_BY_HYPOTHESIS[hypothesis_id]
+
+    text = (claim.get("text") or "").lower()
+    if "dataset" in text:
+        return "dataset"
+    if "assistant" in text or "agent" in text:
+        return "agent"
+    if "speech" in text or "tts" in text or "voice" in text:
+        return "speech_generation"
+    if "simulation" in text or "platform" in text:
+        return "simulation_tool"
+    return "tooling"
+
+
+def build_tool_index(
+    records: list[dict[str, Any]],
+    *,
+    existing_items: list[dict[str, Any]] | None = None,
+) -> list[dict[str, Any]]:
+    manual_items = [
+        dict(item)
+        for item in (existing_items or [])
+        if item.get("source") != "auto"
+    ]
+    manual_article_ids = {
+        item.get("source_article_id")
+        for item in manual_items
+        if item.get("source_article_id")
+    }
+    auto_items: list[dict[str, Any]] = []
+    seen_keys = {
+        (
+            item.get("source_article_id"),
+            normalize_tool_name(item.get("name", "")),
+            item.get("url", ""),
+        )
+        for item in manual_items
+    }
+
+    records_by_time = sorted(
+        records,
+        key=lambda record: (
+            read_json(verification_path(record["article_id"]), default={}).get("verified_at") or "",
+            record.get("article_id", ""),
+        ),
+        reverse=True,
+    )
+
+    for record in records_by_time:
+        article_id = record.get("article_id")
+        if not article_id or article_id in manual_article_ids:
+            continue
+
+        claims_doc = read_json(claims_path(article_id), default={"claims": []})
+        claims_by_id = {
+            claim.get("id"): claim
+            for claim in claims_doc.get("claims", [])
+            if claim.get("id")
+        }
+        verification_doc = read_json(verification_path(article_id), default={"items": []})
+
+        for verification_item in verification_doc.get("items", []):
+            if verification_item.get("status") not in STRONG_VERIFICATION_STATUSES:
+                continue
+            claim = claims_by_id.get(verification_item.get("claim_id"))
+            if not claim or claim.get("type") != "tool":
+                continue
+
+            tool_name = infer_tool_name_from_claim(claim.get("text", ""))
+            if not tool_name:
+                continue
+            url = verification_item.get("source_url") or record.get("url") or ""
+            key = (article_id, normalize_tool_name(tool_name), url)
+            if key in seen_keys:
+                continue
+            seen_keys.add(key)
+            auto_items.append(
+                {
+                    "name": tool_name,
+                    "category": infer_tool_category(claim, verification_item),
+                    "source_article_id": article_id,
+                    "source_claim_id": claim.get("id"),
+                    "url": url,
+                    "source": "auto",
+                }
+            )
+
+    return manual_items + auto_items
+
+
+_CANDIDATE_STOPWORDS = {
+    "the",
+    "and",
+    "that",
+    "with",
+    "from",
+    "this",
+    "article",
+    "claims",
+    "claim",
+    "states",
+    "shows",
+    "using",
+    "into",
+    "for",
+    "its",
+    "their",
+    "have",
+    "has",
+    "are",
+    "was",
+    "were",
+    "will",
+    "can",
+    "said",
+    "says",
+    "which",
+    "about",
+    "through",
+    "based",
+    "system",
+    "model",
+    "models",
+    "paper",
+    "dataset",
+    "company",
+    "product",
+    "platform",
+}
+
+CANDIDATE_VISIBLE_STATUSES = {"observed", "emerging"}
+CANDIDATE_TERMINAL_STATUSES = {"promoted", "rejected"}
+CANDIDATE_REVIEWABLE_STATUSES = CANDIDATE_VISIBLE_STATUSES
+
+
+def slugify(value: str) -> str:
+    text = re.sub(r"[^a-z0-9]+", "_", value.lower()).strip("_")
+    return text or "cluster"
+
+
+def candidate_cluster_keywords(claim_text: str, claim_type: str) -> list[str]:
+    text = normalize_tool_name(claim_text)
+    if not text:
+        return []
+
+    keywords: list[str] = []
+    if claim_type == "tool":
+        tool_name = infer_tool_name_from_claim(text)
+        if tool_name:
+            keywords.append(tool_name)
+
+    phrase_patterns = [
+        r"\b([A-Z][A-Za-z0-9.+/_-]*(?:\s+[A-Z0-9][A-Za-z0-9.+/_-]*){0,3})\b",
+        r"\b([A-Za-z][A-Za-z0-9.+/_-]*\s\d(?:\.\d+)?)\b",
+        r"\b([A-Za-z]+(?:-[A-Za-z0-9]+)+)\b",
+    ]
+    for pattern in phrase_patterns:
+        for match in re.finditer(pattern, text):
+            candidate = normalize_tool_name(match.group(1))
+            if candidate and candidate not in keywords:
+                keywords.append(candidate)
+
+    tokens = re.findall(r"[A-Za-z][A-Za-z0-9.+/_-]{2,}", text.lower())
+    for token in tokens:
+        if token in _CANDIDATE_STOPWORDS:
+            continue
+        if any(ch.isdigit() for ch in token) or "-" in token or len(token) >= 8:
+            if token not in keywords:
+                keywords.append(token)
+
+    generic_words = {
+        "the",
+        "this",
+        "that",
+        "these",
+        "those",
+        "article",
+        "brainco",
+        "according",
+    }
+
+    def score(keyword: str) -> tuple[int, int]:
+        lower = keyword.lower()
+        score_value = 0
+        if lower in generic_words or lower in _CANDIDATE_STOPWORDS:
+            score_value -= 5
+        if any(ch.isdigit() for ch in keyword):
+            score_value += 3
+        if "-" in keyword or "/" in keyword:
+            score_value += 2
+        if len(keyword) >= 10:
+            score_value += 2
+        if len(keyword.split()) >= 2:
+            score_value += 2
+        elif re.search(r"[A-Z]", keyword) and len(keyword) >= 4:
+            score_value += 1
+        return (score_value, len(keyword))
+
+    ranked = sorted(
+        {keyword for keyword in keywords if keyword and keyword.lower() not in _CANDIDATE_STOPWORDS},
+        key=score,
+        reverse=True,
+    )
+    return ranked[:5]
+
+
+def candidate_keywords_from_claim_id(claim_id: str) -> list[str]:
+    keywords: list[str] = []
+    for token in claim_id.split("_"):
+        token = token.strip().lower()
+        if not token or token in _CANDIDATE_STOPWORDS:
+            continue
+        if len(token) <= 2 and not any(ch.isdigit() for ch in token):
+            continue
+        keywords.append(token)
+    return keywords[:5]
+
+
+def fallback_candidate_cluster_label(claim_text: str, claim_id: str | None = None) -> str:
+    if claim_id:
+        claim_id_keywords = candidate_keywords_from_claim_id(claim_id)
+        if claim_id_keywords:
+            return "_".join(claim_id_keywords[:3])
+    tokens = re.findall(r"[a-z0-9]+", claim_text.lower())
+    filtered = [token for token in tokens if token not in _CANDIDATE_STOPWORDS and len(token) >= 4]
+    if filtered:
+        return "_".join(filtered[:3])
+    return "unmapped_signal"
+
+
+def candidate_statement(domain: str, top_keyword: str) -> str:
+    return f"围绕 {top_keyword} 的一组重复出现、已核实但未映射证据，可能代表一个新的 {domain} 趋势簇。"
+
+
+def candidate_rationale(
+    *,
+    article_count: int,
+    support_count: int,
+    seed_keywords: list[str],
+) -> str:
+    keyword_text = "、".join(seed_keywords[:3]) if seed_keywords else "同一组反复出现的主题"
+    return (
+        f"当前已有 {article_count} 篇文章、{support_count} 条已核实证据反复指向 {keyword_text}，"
+        "但这些证据尚未被现有 hypothesis 吸收，因此先作为候选趋势持续观察。"
+    )
+
+
+def candidate_sort_key(item: dict[str, Any]) -> tuple[int, int, str]:
+    return (
+        int(item.get("article_count", 0)),
+        int(item.get("support_count", 0)),
+        item.get("last_supported_at") or "",
+    )
+
+
+def load_candidate_hypotheses_doc() -> dict[str, Any]:
+    bootstrap_state_files()
+    return read_json(
+        CANDIDATE_HYPOTHESES_PATH,
+        default={"created_at": utc_now(), "last_built_at": None, "candidates": []},
+    )
+
+
+def write_candidate_hypotheses_doc(payload: dict[str, Any]) -> None:
+    payload.setdefault("created_at", utc_now())
+    payload.setdefault("last_built_at", None)
+    payload.setdefault("candidates", [])
+    write_json(CANDIDATE_HYPOTHESES_PATH, payload)
+
+
+def find_candidate_entry(candidate_id: str) -> tuple[dict[str, Any], int, dict[str, Any]]:
+    payload = load_candidate_hypotheses_doc()
+    candidates = payload.get("candidates", [])
+    if not isinstance(candidates, list):
+        raise ValueError("candidate_hypotheses.json is malformed: candidates must be a list")
+    for index, item in enumerate(candidates):
+        if isinstance(item, dict) and item.get("id") == candidate_id:
+            return payload, index, item
+    raise ValueError(f"Unknown candidate_id: {candidate_id}")
+
+
+def candidate_hypothesis_id(candidate_id: str) -> str:
+    if candidate_id.startswith("candidate_"):
+        return candidate_id[len("candidate_") :]
+    return candidate_id
+
+
+def ensure_unique_hypothesis_id(base_id: str, hypotheses_doc: dict[str, Any]) -> str:
+    hypothesis_ids = {
+        item.get("id")
+        for item in hypotheses_doc.get("hypotheses", [])
+        if isinstance(item, dict) and isinstance(item.get("id"), str)
+    }
+    if base_id not in hypothesis_ids:
+        return base_id
+    suffix = 2
+    while f"{base_id}_{suffix}" in hypothesis_ids:
+        suffix += 1
+    return f"{base_id}_{suffix}"
+
+
+def candidate_review_ref(action: str, approver: str, reason: str | None) -> dict[str, Any]:
+    return {
+        "action": action,
+        "reviewed_at": utc_now(),
+        "reviewed_by": approver,
+        "reason": reason or "",
+    }
+
+
+def build_candidate_hypotheses(records: list[dict[str, Any]] | None = None) -> dict[str, Any]:
+    bootstrap_state_files()
+    article_records = records or load_all_article_records()
+    existing_payload = load_candidate_hypotheses_doc()
+    existing_candidates = existing_payload.get("candidates", [])
+    existing_by_id = {
+        item.get("id"): item
+        for item in existing_candidates
+        if isinstance(item, dict) and isinstance(item.get("id"), str)
+    }
+
+    clusters: dict[tuple[str, str], dict[str, Any]] = {}
+    for record in article_records:
+        article_id = record.get("article_id")
+        if not article_id:
+            continue
+
+        verification_doc = read_json(verification_path(article_id), default={"items": []})
+        claims_doc = read_json(claims_path(article_id), default={"claims": []})
+        claims_by_id = {
+            claim.get("id"): claim
+            for claim in claims_doc.get("claims", [])
+            if claim.get("id")
+        }
+        verified_at = verification_doc.get("verified_at")
+
+        for item in verification_doc.get("items", []):
+            if item.get("status") not in STRONG_VERIFICATION_STATUSES:
+                continue
+            if item.get("hypothesis_id"):
+                continue
+
+            claim = claims_by_id.get(item.get("claim_id"))
+            if not claim:
+                continue
+            claim_type = claim.get("type")
+            if claim_type not in CLAIM_TYPES:
+                continue
+
+            claim_text = (claim.get("text") or "").strip()
+            if not claim_text:
+                continue
+
+            domain = item_domain(item)
+            claim_id = claim.get("id")
+            seed_keywords = candidate_cluster_keywords(claim_text, claim_type)
+            claim_id_keywords = candidate_keywords_from_claim_id(claim_id or "")
+            for keyword in claim_id_keywords:
+                if keyword not in seed_keywords:
+                    seed_keywords.append(keyword)
+            cluster_label = (
+                slugify(seed_keywords[0].lower())
+                if seed_keywords
+                else fallback_candidate_cluster_label(claim_text, claim_id)
+            )
+            cluster_key = (domain, cluster_label)
+            cluster = clusters.setdefault(
+                cluster_key,
+                {
+                    "domain": domain,
+                    "cluster_label": cluster_label,
+                    "seed_keywords": [],
+                    "support_article_ids": [],
+                    "support_claim_ids": [],
+                    "source_urls": [],
+                    "evidence_items": [],
+                    "last_supported_at": None,
+                },
+            )
+
+            for keyword in seed_keywords:
+                if keyword not in cluster["seed_keywords"]:
+                    cluster["seed_keywords"].append(keyword)
+
+            if article_id not in cluster["support_article_ids"]:
+                cluster["support_article_ids"].append(article_id)
+            if claim_id and claim_id not in cluster["support_claim_ids"]:
+                cluster["support_claim_ids"].append(claim_id)
+
+            source_url = item.get("source_url") or record.get("url") or ""
+            if source_url and source_url not in cluster["source_urls"]:
+                cluster["source_urls"].append(source_url)
+
+            cluster["evidence_items"].append(
+                {
+                    "article_id": article_id,
+                    "claim_id": claim_id,
+                    "claim_type": claim_type,
+                    "status": item.get("status"),
+                    "claim_text": claim_text,
+                    "assessment": item.get("assessment") or "",
+                    "source_url": source_url,
+                    "source_title": item.get("source_title") or record.get("title") or "",
+                    "verified_at": verified_at,
+                }
+            )
+
+            if verified_at and (
+                cluster["last_supported_at"] is None or verified_at > cluster["last_supported_at"]
+            ):
+                cluster["last_supported_at"] = verified_at
+
+    candidates: list[dict[str, Any]] = []
+    for cluster in clusters.values():
+        support_count = len(cluster["evidence_items"])
+        if support_count < 2:
+            continue
+
+        article_count = len(cluster["support_article_ids"])
+        seed_keywords = cluster["seed_keywords"][:5]
+        top_keyword = seed_keywords[0] if seed_keywords else cluster["cluster_label"].replace("_", " ")
+        status = "emerging" if article_count >= 2 else "observed"
+        candidate_id = f"candidate_{cluster['domain']}_{slugify(top_keyword)}"
+        candidate_id = candidate_id[:80]
+        existing_item = existing_by_id.get(candidate_id)
+        if existing_item and existing_item.get("status") in CANDIDATE_TERMINAL_STATUSES:
+            candidates.append(dict(existing_item))
+            continue
+        generated_item = {
+            "id": candidate_id,
+            "domain": cluster["domain"],
+            "status": status,
+            "statement": candidate_statement(cluster["domain"], top_keyword),
+            "rationale": candidate_rationale(
+                article_count=article_count,
+                support_count=support_count,
+                seed_keywords=seed_keywords,
+            ),
+            "theory": "",
+            "seed_keywords": seed_keywords,
+            "support_article_ids": cluster["support_article_ids"],
+            "support_claim_ids": cluster["support_claim_ids"],
+            "support_count": support_count,
+            "article_count": article_count,
+            "source_diversity": len(cluster["source_urls"]),
+            "last_supported_at": cluster["last_supported_at"],
+            "evidence_items": sorted(
+                cluster["evidence_items"],
+                key=lambda item: (item.get("verified_at") or "", item.get("article_id") or ""),
+                reverse=True,
+            ),
+        }
+        if existing_item and existing_item.get("status") in CANDIDATE_VISIBLE_STATUSES:
+            if existing_item.get("theory"):
+                generated_item["theory"] = existing_item["theory"]
+            if existing_item.get("review_ref"):
+                generated_item["review_ref"] = existing_item["review_ref"]
+        candidates.append(generated_item)
+
+    candidates.sort(key=candidate_sort_key, reverse=True)
+    seen_ids = {
+        item.get("id")
+        for item in candidates
+        if isinstance(item, dict) and isinstance(item.get("id"), str)
+    }
+    for existing_item in existing_candidates:
+        if not isinstance(existing_item, dict):
+            continue
+        candidate_id = existing_item.get("id")
+        if (
+            isinstance(candidate_id, str)
+            and candidate_id not in seen_ids
+            and existing_item.get("status") in CANDIDATE_TERMINAL_STATUSES
+        ):
+            candidates.append(dict(existing_item))
+
+    candidates.sort(key=candidate_sort_key, reverse=True)
+    payload = existing_payload
+    payload["last_built_at"] = utc_now()
+    payload["candidates"] = candidates
+    write_candidate_hypotheses_doc(payload)
+
+    visible_count = sum(
+        1
+        for item in candidates
+        if isinstance(item, dict) and item.get("status") in CANDIDATE_VISIBLE_STATUSES
+    )
+    append_jsonl(
+        CHANGE_LOG_PATH,
+        {
+            "timestamp": utc_now(),
+            "event": "build_candidate_hypotheses",
+            "candidate_count": visible_count,
+            "candidate_total_count": len(candidates),
+        },
+    )
+    return {
+        "candidate_count": visible_count,
+        "candidate_total_count": len(candidates),
+        "candidates": candidates,
+    }
+
+
+def build_candidate_evidence_rows(
+    candidate: dict[str, Any],
+    *,
+    article_title_map: dict[str, str],
+) -> list[str]:
+    rows: list[str] = []
+    for item in candidate.get("evidence_items", []):
+        article_id = item.get("article_id", "")
+        title = html_escape(article_title_map.get(article_id, article_id))
+        source_html = f"<a href='#article-{html_escape(article_id)}'>{title}</a>"
+        rows.append(
+            "<div class='evidence-row'>"
+            "<div class='evidence-top'>"
+            f"<span class='status status-{html_escape(item.get('status', 'unknown'))}'>"
+            f"{html_escape(evidence_status_label(item.get('status', 'unknown')))}"
+            "</span>"
+            f"{source_html}"
+            f"<span class='muted'>{html_escape(item.get('claim_type', ''))}</span>"
+            "</div>"
+            f"<p class='claim'>{html_escape(item.get('claim_text', ''))}</p>"
+            f"<p class='muted'>{html_escape(item.get('assessment') or '暂无核实说明')}</p>"
+            "</div>"
+        )
+    return rows
+
+
+def build_candidate_card_html(
+    candidate: dict[str, Any],
+    *,
+    article_title_map: dict[str, str],
+) -> str:
+    seed_keywords = candidate.get("seed_keywords") or []
+    keywords_html = (
+        "<ul class='pill-list'>"
+        + "".join(f"<li>{html_escape(keyword)}</li>" for keyword in seed_keywords)
+        + "</ul>"
+        if seed_keywords
+        else "<p class='muted'>暂无关键词</p>"
+    )
+    evidence_rows = build_candidate_evidence_rows(candidate, article_title_map=article_title_map)
+    evidence_html = "".join(evidence_rows) if evidence_rows else "<p class='muted'>暂无证据条目</p>"
+    status = candidate.get("status", "observed")
+    status_label = "跨文章浮现" if status == "emerging" else "持续观察"
+    return (
+        "<article class='candidate-card'>"
+        f"<p class='candidate-status'>{html_escape(status_label)}</p>"
+        f"<h3>{html_escape(candidate.get('statement', ''))}</h3>"
+        f"<p class='muted'>candidate_id: <code>{html_escape(candidate.get('id', ''))}</code></p>"
+        f"<p>{html_escape(candidate.get('rationale', ''))}</p>"
+        "<div class='candidate-metrics'>"
+        f"<span>支持文章: {html_escape(candidate.get('article_count', 0))}</span>"
+        f"<span>证据条数: {html_escape(candidate.get('support_count', 0))}</span>"
+        f"<span>来源多样性: {html_escape(candidate.get('source_diversity', 0))}</span>"
+        "</div>"
+        f"{keywords_html}"
+        "<details class='hyp-evidence'>"
+        f"<summary>查看候选证据 ({html_escape(candidate.get('support_count', 0))})</summary>"
+        "<div class='hyp-evidence-body'>"
+        "<p class='muted'>这些证据已核实，但尚未并入正式趋势假设，也不参与当前后验计算。</p>"
+        f"{evidence_html}"
+        "</div>"
+        "</details>"
+        "</article>"
+    )
+
+
 def build_hypothesis_evidence_rows(
     supporting: list[dict[str, Any]],
     *,
@@ -3577,6 +4266,7 @@ def build_hypothesis_detail_html(
 def build_report_html() -> str:
     framework = read_json(FRAMEWORK_PATH, default={})
     hypotheses = read_json(HYPOTHESES_PATH, default={"hypotheses": []})
+    candidate_doc = read_json(CANDIDATE_HYPOTHESES_PATH, default={"candidates": []})
     synthesis = read_json(SYNTHESIS_PATH, default={})
     github_config = read_github_config()
     records = load_all_article_records()
@@ -3617,6 +4307,19 @@ def build_report_html() -> str:
         key=lambda item: item.get("posterior_probability", 0.0),
         reverse=True,
     )
+    candidate_hypotheses = sorted(
+        [
+            item
+            for item in candidate_doc.get("candidates", [])
+            if isinstance(item, dict) and item.get("status") in CANDIDATE_VISIBLE_STATUSES
+        ],
+        key=candidate_sort_key,
+        reverse=True,
+    )
+    tool_index = build_tool_index(
+        records,
+        existing_items=synthesis.get("tool_index", []),
+    )
 
     hypothesis_cards = "".join(
         build_hypothesis_card_html(
@@ -3628,6 +4331,13 @@ def build_report_html() -> str:
             highlighted_article_ids=latest_article_ids,
         )
         for item in active_hypotheses
+    )
+    candidate_cards = "".join(
+        build_candidate_card_html(
+            item,
+            article_title_map=article_title_map,
+        )
+        for item in candidate_hypotheses
     )
 
     narrative_html = "".join(
@@ -3645,7 +4355,7 @@ def build_report_html() -> str:
                     "</article>",
                 ]
             )
-            for item in synthesis.get("tool_index", [])
+            for item in tool_index
         ]
     )
 
@@ -3691,6 +4401,7 @@ def build_report_html() -> str:
         ("待处理文章", len(pending_records)),
         ("排除文章", len(synthesis.get("excluded_articles", []))),
         ("活跃趋势", len(active_hypotheses)),
+        ("候选假设", len(candidate_hypotheses)),
         ("最近更新", synthesis.get("last_recomputed_at", "N/A")),
     ]
     stats_html = "".join(
@@ -3823,7 +4534,7 @@ def build_report_html() -> str:
       grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
       margin-top: 22px;
     }}
-    .stat-card, .hypothesis-card, .tool-card, .excluded-card {{
+    .stat-card, .hypothesis-card, .tool-card, .excluded-card, .candidate-card {{
       background: var(--paper);
       border: 1px solid var(--line);
       border-radius: 16px;
@@ -3844,6 +4555,30 @@ def build_report_html() -> str:
     }}
     .hypothesis-card {{
       position: relative;
+    }}
+    .candidate-card {{
+      border-style: dashed;
+      background: rgba(255, 251, 243, 0.92);
+    }}
+    .candidate-status {{
+      margin: 0 0 8px;
+      color: #92400e;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }}
+    .candidate-metrics {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }}
+    .candidate-metrics span {{
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #f7efe1;
+      border: 1px solid #eadcc7;
     }}
     .has-new-evidence {{
       border-color: #f59e0b;
@@ -4112,6 +4847,7 @@ def build_report_html() -> str:
     <nav class="section section-nav">
       <div class="nav-row">
         <a href="#trends">核心趋势</a>
+        <a href="#candidates">候选假设</a>
         <a href="#narrative">本轮结论</a>
         <a href="#tools">工具索引</a>
         <a href="#pending">待处理</a>
@@ -4124,6 +4860,12 @@ def build_report_html() -> str:
       <h2>核心趋势</h2>
       <p class="muted">后验概率越高，说明当前证据越支持这个趋势；不是“绝对为真”，而是“在现有样本下更值得作为默认判断”。</p>
       <div class="hypothesis-grid">{hypothesis_cards}</div>
+    </section>
+
+    <section class="section" id="candidates">
+      <h2>候选假设</h2>
+      <p class="muted">这里汇总的是“已核实、但尚未映射到正式 hypothesis”的重复证据簇。它们不会进入当前后验计算，只用于提示框架可能需要生长。</p>
+      <div class="hypothesis-grid">{candidate_cards if candidate_cards else "<p class='muted'>暂无候选假设</p>"}</div>
     </section>
 
     <section class="section split" id="narrative">
@@ -4253,6 +4995,136 @@ def build_report(output_path: Path = REPORT_PATH) -> dict[str, Any]:
         },
     )
     return {"output_path": str(output_path)}
+
+
+def build_candidates() -> dict[str, Any]:
+    bootstrap_state_files()
+    result = build_candidate_hypotheses(load_all_article_records())
+    return {
+        "candidate_count": result.get("candidate_count", 0),
+        "candidate_path": str(CANDIDATE_HYPOTHESES_PATH),
+    }
+
+
+def promote_candidate(
+    candidate_id: str,
+    *,
+    approver: str = "human:github",
+    reason: str | None = None,
+) -> dict[str, Any]:
+    payload, index, candidate = find_candidate_entry(candidate_id)
+    status = candidate.get("status")
+    if status not in CANDIDATE_REVIEWABLE_STATUSES:
+        return {
+            "ok": False,
+            "candidate_id": candidate_id,
+            "error": f"candidate status must be one of {sorted(CANDIDATE_REVIEWABLE_STATUSES)} (got {status!r})",
+        }
+
+    hypotheses_doc = read_json(HYPOTHESES_PATH, default={"hypotheses": []})
+    hypothesis_id = ensure_unique_hypothesis_id(candidate_hypothesis_id(candidate_id), hypotheses_doc)
+    new_hypothesis = {
+        "id": hypothesis_id,
+        "domain": candidate.get("domain") or DEFAULT_DOMAIN,
+        "meta_tags": [],
+        "statement": candidate.get("statement", ""),
+        "prior_log_odds": 0.0,
+        "status": "active",
+        "rationale": candidate.get("rationale", ""),
+        "theory": candidate.get("theory") or candidate.get("rationale", ""),
+        "posterior_log_odds": 0.0,
+        "posterior_probability": 0.5,
+        "posterior_band": posterior_band(0.5),
+        "last_recomputed_at": None,
+        "supporting_items": [],
+        "newest_evidence_at": None,
+    }
+    hypotheses_doc.setdefault("hypotheses", []).append(new_hypothesis)
+    write_json(HYPOTHESES_PATH, hypotheses_doc)
+
+    updated_items = 0
+    touched_articles: set[str] = set()
+    for evidence_item in candidate.get("evidence_items", []):
+        article_id = evidence_item.get("article_id")
+        claim_id = evidence_item.get("claim_id")
+        if not isinstance(article_id, str) or not isinstance(claim_id, str):
+            continue
+        verification_doc = read_json(verification_path(article_id), default={"items": []})
+        changed = False
+        for item in verification_doc.get("items", []):
+            if item.get("claim_id") != claim_id:
+                continue
+            if item.get("status") not in STRONG_VERIFICATION_STATUSES:
+                continue
+            if item.get("hypothesis_id"):
+                continue
+            item["hypothesis_id"] = hypothesis_id
+            changed = True
+            updated_items += 1
+        if changed:
+            write_json(verification_path(article_id), verification_doc)
+            touched_articles.add(article_id)
+
+    payload["candidates"][index]["status"] = "promoted"
+    payload["candidates"][index]["promoted_hypothesis_id"] = hypothesis_id
+    payload["candidates"][index]["review_ref"] = candidate_review_ref("promote", approver, reason)
+    write_candidate_hypotheses_doc(payload)
+
+    refresh_record_states()
+    recompute_posteriors()
+    append_jsonl(
+        CHANGE_LOG_PATH,
+        {
+            "timestamp": utc_now(),
+            "event": "promote_candidate",
+            "candidate_id": candidate_id,
+            "hypothesis_id": hypothesis_id,
+            "updated_items": updated_items,
+            "approver": approver,
+        },
+    )
+    return {
+        "ok": True,
+        "candidate_id": candidate_id,
+        "hypothesis_id": hypothesis_id,
+        "updated_items": updated_items,
+        "touched_articles": sorted(touched_articles),
+        "status": "promoted",
+    }
+
+
+def reject_candidate(
+    candidate_id: str,
+    *,
+    approver: str = "human:github",
+    reason: str | None = None,
+) -> dict[str, Any]:
+    payload, index, candidate = find_candidate_entry(candidate_id)
+    status = candidate.get("status")
+    if status not in CANDIDATE_REVIEWABLE_STATUSES:
+        return {
+            "ok": False,
+            "candidate_id": candidate_id,
+            "error": f"candidate status must be one of {sorted(CANDIDATE_REVIEWABLE_STATUSES)} (got {status!r})",
+        }
+
+    payload["candidates"][index]["status"] = "rejected"
+    payload["candidates"][index]["review_ref"] = candidate_review_ref("reject", approver, reason)
+    write_candidate_hypotheses_doc(payload)
+    append_jsonl(
+        CHANGE_LOG_PATH,
+        {
+            "timestamp": utc_now(),
+            "event": "reject_candidate",
+            "candidate_id": candidate_id,
+            "approver": approver,
+        },
+    )
+    return {
+        "ok": True,
+        "candidate_id": candidate_id,
+        "status": "rejected",
+    }
 
 
 def run_pipeline(
@@ -4473,6 +5345,26 @@ def build_parser() -> argparse.ArgumentParser:
         help="Optional human review rationale; defaults to a built-in message per action",
     )
 
+    subparsers.add_parser(
+        "build-candidates",
+        help="Build candidate hypotheses from verified but unmapped evidence",
+    )
+    promote_candidate_cmd = subparsers.add_parser(
+        "promote-candidate",
+        help="Promote a candidate hypothesis into a formal hypothesis and attach its evidence",
+    )
+    promote_candidate_cmd.add_argument("--candidate-id", required=True)
+    promote_candidate_cmd.add_argument("--approver", default="human:github")
+    promote_candidate_cmd.add_argument("--reason")
+
+    reject_candidate_cmd = subparsers.add_parser(
+        "reject-candidate",
+        help="Reject a candidate hypothesis and remove it from the open candidate queue",
+    )
+    reject_candidate_cmd.add_argument("--candidate-id", required=True)
+    reject_candidate_cmd.add_argument("--approver", default="human:github")
+    reject_candidate_cmd.add_argument("--reason")
+
     report = subparsers.add_parser("build-report", help="Generate a readable static HTML report")
     report.add_argument("--output", default=str(REPORT_PATH))
     sync = subparsers.add_parser("sync-issues", help="Import article links from GitHub Issues")
@@ -4645,6 +5537,37 @@ def main(argv: list[str]) -> int:
         result = build_report(output_path=Path(args.output))
         print_json(result)
         return 0
+
+    if args.command == "build-candidates":
+        result = build_candidates()
+        print_json(result)
+        return 0
+
+    if args.command == "promote-candidate":
+        try:
+            result = promote_candidate(
+                candidate_id=args.candidate_id,
+                approver=args.approver,
+                reason=args.reason,
+            )
+        except ValueError as exc:
+            print_json({"ok": False, "error": str(exc)})
+            return 2
+        print_json(result)
+        return 0 if result.get("ok") else 2
+
+    if args.command == "reject-candidate":
+        try:
+            result = reject_candidate(
+                candidate_id=args.candidate_id,
+                approver=args.approver,
+                reason=args.reason,
+            )
+        except ValueError as exc:
+            print_json({"ok": False, "error": str(exc)})
+            return 2
+        print_json(result)
+        return 0 if result.get("ok") else 2
 
     if args.command == "sync-issues":
         result = sync_github_issues(

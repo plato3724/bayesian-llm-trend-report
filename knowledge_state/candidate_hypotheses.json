@@ -1,0 +1,304 @@
+{
+  "created_at": "2026-04-12T11:35:50+00:00",
+  "last_built_at": "2026-04-13T00:51:55+00:00",
+  "candidates": [
+    {
+      "id": "candidate_ai_us_365k",
+      "domain": "ai",
+      "status": "observed",
+      "statement": "围绕 US-365K 的一组重复出现、已核实但未映射证据，可能代表一个新的 ai 趋势簇。",
+      "rationale": "当前已有 1 篇文章、4 条已核实证据反复指向 US-365K、us-365k、365k，但这些证据尚未被现有 hypothesis 吸收，因此先作为候选趋势持续观察。",
+      "theory": "",
+      "seed_keywords": [
+        "US-365K",
+        "us-365k",
+        "365k",
+        "first",
+        "large"
+      ],
+      "support_article_ids": [
+        "7e6b7b4cfbf5"
+      ],
+      "support_claim_ids": [
+        "us_365k_first_large_scale_ultrasound_only_dataset",
+        "us_365k_contains_364k_pairs_and_11676_cases",
+        "us_365k_effective_rate_above_90_percent",
+        "paper_accepted_by_cvpr_2026_and_resources_open_sourced"
+      ],
+      "support_count": 4,
+      "article_count": 1,
+      "source_diversity": 2,
+      "last_supported_at": "2026-04-12T09:08:20+00:00",
+      "evidence_items": [
+        {
+          "article_id": "7e6b7b4cfbf5",
+          "claim_id": "us_365k_first_large_scale_ultrasound_only_dataset",
+          "claim_type": "tool",
+          "status": "partially_verified",
+          "claim_text": "文章称，团队构建了首个大规模、100%专用于超声影像的图像-文本数据集 US-365K。",
+          "assessment": "The article’s linked arXiv paper is an appropriate source for the existence and positioning of US-365K, and it supports that the authors introduce a large-scale ultrasound-specific image-text dataset. However, the superlative wording '首个' / 'first' is harder to conclusively verify from the paper alone without a broader literature review across prior ultrasound-only image-text datasets, so this is only partially verified rather than fully verified.",
+          "source_url": "http://arxiv.org/abs/2604.01749",
+          "source_title": "Ultrasound-CLIP: Semantic-Aware Contrastive Pre-training for Ultrasound Image-Text Understanding",
+          "verified_at": "2026-04-12T09:08:20+00:00"
+        },
+        {
+          "article_id": "7e6b7b4cfbf5",
+          "claim_id": "us_365k_contains_364k_pairs_and_11676_cases",
+          "claim_type": "event",
+          "status": "verified",
+          "claim_text": "文章称，US-365K 包含 36.4 万对超声图像-文本样本和 11676 个临床真实病例。",
+          "assessment": "This dataset-size claim is directly tied to the authors’ own paper, which is the primary source for the dataset description. The paper linked by the article provides the core technical description of US-365K and supports the reported scale of roughly 364k image-text pairs and 11,676 clinical cases, so the claim is verified as a factual description of the released resource.",
+          "source_url": "http://arxiv.org/abs/2604.01749",
+          "source_title": "Ultrasound-CLIP: Semantic-Aware Contrastive Pre-training for Ultrasound Image-Text Understanding",
+          "verified_at": "2026-04-12T09:08:20+00:00"
+        },
+        {
+          "article_id": "7e6b7b4cfbf5",
+          "claim_id": "us_365k_effective_rate_above_90_percent",
+          "claim_type": "event",
+          "status": "partially_verified",
+          "claim_text": "文章称，US-365K 的数据有效率超过 90%。",
+          "assessment": "The article presents the 'data effectiveness rate above 90%' as an outcome of the curation pipeline, and the linked paper is the natural source to justify that statement. But '有效率' can depend on the authors’ operational definition and filtering protocol, and the article does not provide an independently auditable primary annotation report beyond the paper, so the number is only partially verified.",
+          "source_url": "http://arxiv.org/abs/2604.01749",
+          "source_title": "Ultrasound-CLIP: Semantic-Aware Contrastive Pre-training for Ultrasound Image-Text Understanding",
+          "verified_at": "2026-04-12T09:08:20+00:00"
+        },
+        {
+          "article_id": "7e6b7b4cfbf5",
+          "claim_id": "paper_accepted_by_cvpr_2026_and_resources_open_sourced",
+          "claim_type": "event",
+          "status": "partially_verified",
+          "claim_text": "文章称，该成果已被 CVPR 2026 接收，相关代码和 US-365K 数据集已开源。",
+          "assessment": "The open-source part of the claim is supported by the linked GitHub repository and dataset link, so resource availability is defensible. The 'accepted by CVPR 2026' portion is plausible and likely reflected in the paper metadata, but absent an independent conference proceedings page in the article, that acceptance status is not fully cross-checked here, making the combined claim only partially verified.",
+          "source_url": "https://github.com/ZJUDataIntelligence/Ultrasound-CLIP",
+          "source_title": "ZJUDataIntelligence/Ultrasound-CLIP",
+          "verified_at": "2026-04-12T09:08:20+00:00"
+        }
+      ]
+    },
+    {
+      "id": "candidate_ai_ultrasound_clip",
+      "domain": "ai",
+      "status": "observed",
+      "statement": "围绕 Ultrasound-CLIP 的一组重复出现、已核实但未映射证据，可能代表一个新的 ai 趋势簇。",
+      "rationale": "当前已有 1 篇文章、3 条已核实证据反复指向 Ultrasound-CLIP、ultrasound-clip、UDAF，但这些证据尚未被现有 hypothesis 吸收，因此先作为候选趋势持续观察。",
+      "theory": "",
+      "seed_keywords": [
+        "Ultrasound-CLIP",
+        "ultrasound-clip",
+        "UDAF",
+        "ultrasound",
+        "clip"
+      ],
+      "support_article_ids": [
+        "7e6b7b4cfbf5"
+      ],
+      "support_claim_ids": [
+        "ultrasound_clip_uses_heterogeneous_graph_encoder_and_soft_labels",
+        "ultrasound_clip_uses_dual_objective_optimization",
+        "ultrasound_clip_classification_and_retrieval_metrics"
+      ],
+      "support_count": 3,
+      "article_count": 1,
+      "source_diversity": 1,
+      "last_supported_at": "2026-04-12T09:08:20+00:00",
+      "evidence_items": [
+        {
+          "article_id": "7e6b7b4cfbf5",
+          "claim_id": "ultrasound_clip_uses_heterogeneous_graph_encoder_and_soft_labels",
+          "claim_type": "technique",
+          "status": "partially_verified",
+          "claim_text": "文章称，Ultrasound-CLIP 在双编码器基础上引入了 UDAF 引导的异质图编码器和基于 UDAF 的语义软标签两大模块。",
+          "assessment": "The linked paper supports that Ultrasound-CLIP augments a standard dual-encoder setup with a UDAF-guided heterogeneous graph encoder and UDAF-based semantic soft labels. This does provide mild evidence for the hypothesis that useful long-context/knowledge handling is shifting toward structured, externalizable representations rather than raw context stuffing, because the method explicitly injects structured diagnostic relations into the representation pipeline. I keep the attachment slight and only partially verified because this is a domain-specific vision-language architecture, not a direct memory-system design claim, so the conceptual overlap is real but limited.",
+          "source_url": "http://arxiv.org/abs/2604.01749",
+          "source_title": "Ultrasound-CLIP: Semantic-Aware Contrastive Pre-training for Ultrasound Image-Text Understanding",
+          "verified_at": "2026-04-12T09:08:20+00:00"
+        },
+        {
+          "article_id": "7e6b7b4cfbf5",
+          "claim_id": "ultrasound_clip_uses_dual_objective_optimization",
+          "claim_type": "technique",
+          "status": "verified",
+          "claim_text": "文章称，Ultrasound-CLIP 采用对比损失与语义损失结合的双目标优化策略。",
+          "assessment": "The article’s statement that the model uses a dual-objective optimization strategy combining contrastive and semantic losses is a direct technical description of the method, and the linked arXiv paper is the primary source for that architecture. This is straightforwardly verified as a factual summary of the model design.",
+          "source_url": "http://arxiv.org/abs/2604.01749",
+          "source_title": "Ultrasound-CLIP: Semantic-Aware Contrastive Pre-training for Ultrasound Image-Text Understanding",
+          "verified_at": "2026-04-12T09:08:20+00:00"
+        },
+        {
+          "article_id": "7e6b7b4cfbf5",
+          "claim_id": "ultrasound_clip_classification_and_retrieval_metrics",
+          "claim_type": "event",
+          "status": "partially_verified",
+          "claim_text": "文章称，在实验中 Ultrasound-CLIP 的多任务分类平均准确率达到 59.61%，图像到文本检索 I2T@10 达到 37.45%，文本到图像检索 T2I@50 达到 80.22%。",
+          "assessment": "The article cites concrete evaluation metrics that should come from the authors’ experiments, and the linked paper is the relevant source for those benchmark results. However, because these are numerical experimental outcomes that ideally should be checked against the exact evaluation tables and task definitions in the paper, and I cannot independently reproduce them here, I mark the claim as partially verified rather than fully verified.",
+          "source_url": "http://arxiv.org/abs/2604.01749",
+          "source_title": "Ultrasound-CLIP: Semantic-Aware Contrastive Pre-training for Ultrasound Image-Text Understanding",
+          "verified_at": "2026-04-12T09:08:20+00:00"
+        }
+      ]
+    },
+    {
+      "id": "candidate_ai_revo_3",
+      "domain": "ai",
+      "status": "observed",
+      "statement": "围绕 Revo 3 的一组重复出现、已核实但未映射证据，可能代表一个新的 ai 趋势簇。",
+      "rationale": "当前已有 1 篇文章、3 条已核实证据反复指向 Revo 3、dexterous、BrainCo，但这些证据尚未被现有 hypothesis 吸收，因此先作为候选趋势持续观察。",
+      "theory": "",
+      "seed_keywords": [
+        "Revo 3",
+        "dexterous",
+        "BrainCo",
+        "revo",
+        "3"
+      ],
+      "support_article_ids": [
+        "df7acb42e706"
+      ],
+      "support_claim_ids": [
+        "revo_3_is_latest_dexterous_hand_product",
+        "revo_3_uses_direct_drive_backdrivable_joints",
+        "revo_3_adapts_to_major_simulation_platforms"
+      ],
+      "support_count": 3,
+      "article_count": 1,
+      "source_diversity": 1,
+      "last_supported_at": "2026-04-12T03:12:21+00:00",
+      "evidence_items": [
+        {
+          "article_id": "df7acb42e706",
+          "claim_id": "revo_3_is_latest_dexterous_hand_product",
+          "claim_type": "tool",
+          "status": "partially_verified",
+          "claim_text": "The article states that the hand shown in the demo is BrainCo's latest dexterous hand product, Revo 3.",
+          "assessment": "The article itself clearly identifies the demo hand as BrainCo's newest dexterous-hand product called Revo 3, but no independent primary product page, launch announcement, or manufacturer specification was provided in the materials here to cross-check that release status. This supports a partial rather than full verification as an article-level factual statement.",
+          "source_url": "https://mp.weixin.qq.com/s/m1P0KXuGzgrS-D0K7Z1Bug",
+          "source_title": "超越人手！中国第一家脑机接口独角兽，要把仿生手带给机器人",
+          "verified_at": "2026-04-12T03:12:21+00:00"
+        },
+        {
+          "article_id": "df7acb42e706",
+          "claim_id": "revo_3_uses_direct_drive_backdrivable_joints",
+          "claim_type": "technique",
+          "status": "partially_verified",
+          "claim_text": "The article states that Revo 3 uses fully direct-driven integrated micro-joints with backdrivability, together with self-developed high-density motors and reducers, to reduce transmission-chain wear and lag.",
+          "assessment": "This engineering description is stated directly in the article, including the use of integrated direct-drive micro-joints, self-developed motors and reducers, and the claimed reduction in wear and lag from removing complex transmission chains. Yet without a primary technical document, teardown, or manufacturer datasheet in the provided materials, the design description can only be treated as partially verified from the article's reporting.",
+          "source_url": "https://mp.weixin.qq.com/s/m1P0KXuGzgrS-D0K7Z1Bug",
+          "source_title": "超越人手！中国第一家脑机接口独角兽，要把仿生手带给机器人",
+          "verified_at": "2026-04-12T03:12:21+00:00"
+        },
+        {
+          "article_id": "df7acb42e706",
+          "claim_id": "revo_3_adapts_to_major_simulation_platforms",
+          "claim_type": "tool",
+          "status": "partially_verified",
+          "claim_text": "The article states that Revo 3 has been adapted to major simulation platforms including MuJoCo, Isaac Gym, and NVIDIA Omniverse, and that BrainCo plans to release a teleoperation data-collection solution supporting full 21-DoF action capture.",
+          "assessment": "The article states that Revo 3 is already adapted to MuJoCo, Isaac Gym, and NVIDIA Omniverse and that a 21-DoF teleoperation collection stack is planned. These are concrete ecosystem claims, but they are not backed here by SDK repositories, platform integration pages, or primary product documentation. Accordingly, the claim is partially verified as a reported statement, not fully verified as independently established fact.",
+          "source_url": "https://mp.weixin.qq.com/s/m1P0KXuGzgrS-D0K7Z1Bug",
+          "source_title": "超越人手！中国第一家脑机接口独角兽，要把仿生手带给机器人",
+          "verified_at": "2026-04-12T03:12:21+00:00"
+        }
+      ]
+    },
+    {
+      "id": "candidate_ai_html_in_canvas",
+      "domain": "ai",
+      "status": "observed",
+      "statement": "围绕 HTML-in-Canvas 的一组重复出现、已核实但未映射证据，可能代表一个新的 ai 趋势簇。",
+      "rationale": "当前已有 1 篇文章、2 条已核实证据反复指向 HTML-in-Canvas、html-in-canvas、Canvas，但这些证据尚未被现有 hypothesis 吸收，因此先作为候选趋势持续观察。",
+      "theory": "",
+      "seed_keywords": [
+        "HTML-in-Canvas",
+        "html-in-canvas",
+        "Canvas",
+        "HTML",
+        "html"
+      ],
+      "support_article_ids": [
+        "d668b6dcda22"
+      ],
+      "support_claim_ids": [
+        "html_in_canvas_is_experimental_rendering_method",
+        "chrome_flag_canvas_draw_element_enables_feature"
+      ],
+      "support_count": 2,
+      "article_count": 1,
+      "source_diversity": 1,
+      "last_supported_at": "2026-04-12T09:21:46+00:00",
+      "evidence_items": [
+        {
+          "article_id": "d668b6dcda22",
+          "claim_id": "html_in_canvas_is_experimental_rendering_method",
+          "claim_type": "technique",
+          "status": "partially_verified",
+          "claim_text": "The article states that HTML-in-Canvas is a method that renders HTML by putting it into Canvas.",
+          "assessment": "The cited WICG repository supports the basic characterization that HTML-in-Canvas is an experimental web-platform approach for rendering HTML content into canvas, which matches the article's high-level description of 'putting HTML into Canvas.' However, the article's wording is simplified and promotional rather than a formal technical definition, so this is best marked partially verified rather than fully verified.",
+          "source_url": "https://github.com/WICG/html-in-canvas",
+          "source_title": "WICG/html-in-canvas",
+          "verified_at": "2026-04-12T09:21:46+00:00"
+        },
+        {
+          "article_id": "d668b6dcda22",
+          "claim_id": "chrome_flag_canvas_draw_element_enables_feature",
+          "claim_type": "tool",
+          "status": "partially_verified",
+          "claim_text": "The article states that in Chrome, users can enable the HTML-in-Canvas experimental feature through the flag at chrome://flags/#canvas-draw-element.",
+          "assessment": "The article gives a concrete Chrome flag path, and the linked WICG repository is consistent with an experimental browser-gated implementation path for the feature. However, without direct inspection of a Chrome build, chromium flag listing, or implementation documentation specifically confirming the exact flag string 'chrome://flags/#canvas-draw-element,' this is only partially verified.",
+          "source_url": "https://github.com/WICG/html-in-canvas",
+          "source_title": "WICG/html-in-canvas",
+          "verified_at": "2026-04-12T09:21:46+00:00"
+        }
+      ]
+    },
+    {
+      "id": "candidate_ai_a1",
+      "domain": "ai",
+      "status": "observed",
+      "statement": "围绕 a1 的一组重复出现、已核实但未映射证据，可能代表一个新的 ai 趋势簇。",
+      "rationale": "当前已有 1 篇文章、2 条已核实证据反复指向 a1、fully、open，但这些证据尚未被现有 hypothesis 吸收，因此先作为候选趋势持续观察。",
+      "theory": "",
+      "seed_keywords": [
+        "a1",
+        "fully",
+        "open",
+        "source",
+        "layered"
+      ],
+      "support_article_ids": [
+        "59b86c15655e"
+      ],
+      "support_claim_ids": [
+        "a1_fully_open_source",
+        "a1_layered_truncated_flow_matching"
+      ],
+      "support_count": 2,
+      "article_count": 1,
+      "source_diversity": 1,
+      "last_supported_at": "2026-04-11T09:55:48+00:00",
+      "evidence_items": [
+        {
+          "article_id": "59b86c15655e",
+          "claim_id": "a1_fully_open_source",
+          "claim_type": "event",
+          "status": "verified",
+          "claim_text": "A₁ 的论文、代码、模型权重全面开源，且不依赖私有数据或闭源组件。",
+          "assessment": "The paper's release page lists code, weights, and training data as openly available. No hypothesis attachment: 'fully open source' is an orthogonal fact about release practice, not direct evidence for any current hypothesis about model architecture trends.",
+          "source_url": "https://arxiv.org/abs/2604.05672",
+          "source_title": "A₁: A VLA with Adaptive Early Exit and Layered Truncated Flow Matching (arXiv 2604.05672)",
+          "verified_at": "2026-04-11T09:55:48+00:00"
+        },
+        {
+          "article_id": "59b86c15655e",
+          "claim_id": "a1_layered_truncated_flow_matching",
+          "claim_type": "technique",
+          "status": "verified",
+          "claim_text": "A₁ 提出层间截断流匹配：让上一层动作头的输出作为下一层流匹配的热启动，避免每次提前退出时从随机噪声重新去噪，联合压缩主干与动作头的计算开销。",
+          "assessment": "Layered truncated flow matching reduces denoising steps, not tokens. That is a sibling efficiency axis (sampling-step efficiency), not 'token efficiency'. Attaching it to token_efficiency_as_architecture would silently rewrite that hypothesis's scope, so we keep it as a pure technique fact without hypothesis attachment for this round. Revisit if 2–3 more VLA papers expose the same pattern — that would justify a new hypothesis.",
+          "source_url": "https://arxiv.org/abs/2604.05672",
+          "source_title": "A₁: A VLA with Adaptive Early Exit and Layered Truncated Flow Matching (arXiv 2604.05672)",
+          "verified_at": "2026-04-11T09:55:48+00:00"
+        }
+      ]
+    }
+  ]
+}

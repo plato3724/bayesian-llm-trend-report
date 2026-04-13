@@ -13,6 +13,7 @@ every step locally the old way.
 | B — draft claims | `.github/workflows/draft-claims.yml` | **OpenRouter** | **Auto**: `workflow_run` after ingest; also manual dispatch | Yes (claims commit) |
 | C — draft + stage + apply verification | `.github/workflows/draft-verification.yml` | **OpenRouter** | **Auto**: `workflow_run` after draft-claims; also manual dispatch | Yes (stage + apply commit when guard passes) |
 | Review held draft | `.github/workflows/review-held.yml` | No | Issue comment `/approve`, `/approve-safe`, `/reject` | Yes (review/apply commit) |
+| Review candidate hypothesis | `.github/workflows/review-candidate.yml` | No | Issue comment `/promote-candidate <id>`, `/reject-candidate <id>` | Yes |
 
 All three phases chain automatically end-to-end: labeling an issue on
 mobile kicks off `ingest` → on success `draft-claims` → on success
@@ -219,6 +220,35 @@ The workflow that handles these commands is
 - the commenter is `OWNER`, `MEMBER`, or `COLLABORATOR`
 - the comment starts with one of the supported commands
 
+## Review candidate hypotheses in GitHub
+
+Candidate hypotheses are built from verified-but-unmapped evidence via:
+
+```bash
+python scripts/bayesian_reader.py build-candidates
+```
+
+They are rendered into the report's `候选假设` section and each card now
+shows its `candidate_id`.
+
+Available GitHub commands:
+
+- `/promote-candidate <candidate_id>`
+  - Create a new formal hypothesis in `knowledge_state/hypotheses.json`
+  - Attach the candidate's evidence items to that new `hypothesis_id`
+  - Recompute posteriors and rebuild the report
+- `/reject-candidate <candidate_id>`
+  - Mark the candidate as rejected
+  - Remove it from the open candidate queue
+  - Leave formal hypotheses unchanged
+
+These commands are handled by `.github/workflows/review-candidate.yml`.
+The workflow only reacts when:
+
+- the commenter is `OWNER`, `MEMBER`, or `COLLABORATOR`
+- the comment starts with one of the supported commands
+- the comment targets a normal issue (not a pull request thread)
+
 ## What Phase C still does NOT automate
 
 - Creating new hypotheses: always human
@@ -228,8 +258,7 @@ The workflow that handles these commands is
 - First-of-domain cold-start calibration: the prompt steers the LLM
   toward `slight` and `partially_verified`, but a human should still
   audit the first 2–3 claims in any brand-new domain
-- Phase D (review UI over staged approvals) and Phase E (auto-apply on
-  human re-approve) are still unbuilt
+- `/merge-candidate <id> into <hypothesis_id>` is still unbuilt
 
 The guardrails from the Phase 0–5 plan are all still in force. Phase C
 automation inherits the caution; it does not dissolve it.
