@@ -196,3 +196,7 @@
 {"timestamp": "2026-04-13T13:33:15+00:00", "event": "fetch_pending", "limit": 20, "force": false, "results": []}
 {"timestamp": "2026-04-13T13:33:16+00:00", "event": "refresh_record_states", "refreshed": 20}
 {"timestamp": "2026-04-13T13:33:16+00:00", "event": "build_report", "output_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/docs/index.html"}
+{"timestamp": "2026-04-13T13:33:35+00:00", "event": "refresh_record_states", "refreshed": 20}
+{"timestamp": "2026-04-13T13:33:35+00:00", "event": "recompute_posteriors", "included_articles": ["20fb29fec269", "44f454b544d9", "d11e99337c97", "4a8b83da74e8", "7bb7bc9e2b3e", "bf281b22fc01", "3c07c6956807", "59b86c15655e", "2f9fe8beb5ba", "8f8f6c5c71fe", "5c7678b0d4c9", "06eb3b8e8732", "7ffdcd4439dc", "df7acb42e706", "7e6b7b4cfbf5", "d668b6dcda22"], "hypothesis_count": 7}
+{"timestamp": "2026-04-13T13:33:35+00:00", "event": "save_claims", "article_id": "03f809cb0476", "claim_count": 8}
+{"timestamp": "2026-04-13T13:33:35+00:00", "event": "build_report", "output_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/docs/index.html"}

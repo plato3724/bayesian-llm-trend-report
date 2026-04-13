@@ -4,7 +4,7 @@
   "url": "https://mp.weixin.qq.com/s/z6ZXj_p6Z9fIvFifkAvP9A",
   "ingested_from": "github_issue",
   "ingested_at": "2026-04-13T13:32:56+00:00",
-  "last_updated_at": "2026-04-13T13:33:16+00:00",
+  "last_updated_at": "2026-04-13T13:33:35+00:00",
   "content_state": {
     "full_text_status": "acquired",
     "canonical_text_source": "knowledge_state/articles/03f809cb0476/canonical_text.txt",
@@ -22,16 +22,26 @@
       }
     ],
     "manual_artifacts": [],
-    "next_action": "extract_claims"
+    "next_action": "verify_claims"
   },
   "analysis_state": {
-    "claim_extraction_status": "not_started",
+    "claim_extraction_status": "completed",
     "verification_status": "not_started",
     "bayesian_status": "excluded_until_verified"
   },
   "article_summary": {
-    "events": [],
-    "techniques": [],
+    "events": [
+      "文章称 Steve Yegge 表示，使用 AI 编程代理的人比今天使用 Cursor 和聊天的工程师生产效率高 10 倍到 100 倍。",
+      "文章称 Steve Yegge 表示，使用 AI 编程代理的人比 2005 年时的谷歌员工生产效率高约 1000 倍。",
+      "文章称 Garry Tan 分享其 CLAUDE.md 文件曾膨胀到 20,000 行，后来删减后最终修复方案只有大约 200 行，而且主要是指向不同文档的指针。"
+    ],
+    "techniques": [
+      "文章称 Garry Tan 认为，实现 10 倍、100 倍甚至 1000 倍生产力的秘密不在模型，而在于包裹模型的 harness。",
+      "文章称，实时仓库上下文、提示缓存、专门构建的工具、上下文冗余最小化、结构化会话记忆和并行子代理并不会让模型更聪明，而是为模型在恰当时间提供恰当上下文并避免噪音干扰。",
+      "文章称 Garry Tan 对 harness 的回答是“瘦外壳 + 胖技能”，即 harness 应保持轻量简单，只负责基本调度和管理，而 Skills 应内容丰富且可复用。",
+      "文章称 Resolver 是上下文的路由表，会在需要的时候按需加载正确文档，从而避免污染上下文窗口。",
+      "文章称，这套方法形成三层架构：顶层是厚技能 Markdown 流程，中间是约 200 行代码的薄 CLI harness，底层是 QueryDB、ReadDoc、Search、Timeline 等确定性应用程序。"
+    ],
     "tools": []
   },
   "hypothesis_impacts": [],
