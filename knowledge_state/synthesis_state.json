@@ -1,11 +1,12 @@
 {
   "created_at": "2026-04-11T02:31:52+00:00",
-  "last_recomputed_at": "2026-04-12T09:21:46+00:00",
+  "last_recomputed_at": "2026-04-13T04:25:00+00:00",
   "included_articles": [
     "20fb29fec269",
     "44f454b544d9",
     "4a8b83da74e8",
     "7bb7bc9e2b3e",
+    "bf281b22fc01",
     "3c07c6956807",
     "59b86c15655e",
     "2f9fe8beb5ba",
@@ -27,13 +28,13 @@
     {
       "id": "structured_external_memory",
       "statement": "长程记忆与知识管理正在从暴力扩上下文，转向结构化、可外部化、可查询的 memory / graph / session object。",
-      "posterior_probability": 0.962270127065804,
-      "posterior_band": "very_likely"
+      "posterior_probability": 0.9852091184527023,
+      "posterior_band": "near_certain"
     },
     {
       "id": "token_efficiency_as_architecture",
       "statement": "Token 效率正在从局部优化升级为架构级目标，表现为结构化压缩、查询式检索、简洁协议与多层记忆栈。",
-      "posterior_probability": 0.9086942703203016,
+      "posterior_probability": 0.9267492916182445,
       "posterior_band": "likely"
     },
     {
@@ -128,6 +129,46 @@
       "category": "embodied_tactile",
       "source_article_id": "7ffdcd4439dc",
       "url": "https://jianyi2004.github.io/TouchAnything-Website/"
+    },
+    {
+      "name": "M-FLOW",
+      "category": "memory_system",
+      "source_article_id": "bf281b22fc01",
+      "source_claim_id": "m_flow_tool_exists",
+      "url": "https://github.com/FlowElement-ai/m_flow",
+      "source": "auto"
+    },
+    {
+      "name": "HTML-in-Canvas",
+      "category": "tooling",
+      "source_article_id": "d668b6dcda22",
+      "source_claim_id": "chrome_flag_canvas_draw_element_enables_feature",
+      "url": "https://github.com/WICG/html-in-canvas",
+      "source": "auto"
+    },
+    {
+      "name": "Midjourney",
+      "category": "tooling",
+      "source_article_id": "d668b6dcda22",
+      "source_claim_id": "pretext_is_open_source_tool_by_midjourney_engineer",
+      "url": "https://github.com/chenglou92/pretext",
+      "source": "auto"
+    },
+    {
+      "name": "US-365K",
+      "category": "tooling",
+      "source_article_id": "7e6b7b4cfbf5",
+      "source_claim_id": "us_365k_first_large_scale_ultrasound_only_dataset",
+      "url": "http://arxiv.org/abs/2604.01749",
+      "source": "auto"
+    },
+    {
+      "name": "Revo 3",
+      "category": "tooling",
+      "source_article_id": "df7acb42e706",
+      "source_claim_id": "revo_3_is_latest_dexterous_hand_product",
+      "url": "https://mp.weixin.qq.com/s/m1P0KXuGzgrS-D0K7Z1Bug",
+      "source": "auto"
     }
   ],
   "notes": [

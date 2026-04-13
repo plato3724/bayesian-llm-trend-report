@@ -1,5 +1,105 @@
 {
   "article_id": "bf281b22fc01",
-  "verification_status": "not_started",
-  "items": []
+  "verification_status": "completed",
+  "verified_at": "2026-04-13T04:25:00+00:00",
+  "items": [
+    {
+      "claim_id": "m_flow_tool_exists",
+      "hypothesis_id": "structured_external_memory",
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://github.com/FlowElement-ai/m_flow",
+      "source_title": "FlowElement-ai/m_flow",
+      "source_trust": "moderate",
+      "evidence_direction": "support",
+      "evidence_strength": "slight",
+      "assessment": "该 claim 可被部分核验：文章末尾给出了公开 GitHub 仓库，能够支持“存在名为 M-FLOW 的项目/记忆引擎实现”这一点，且与文中描述的团队/产品名称一致。但仅凭仓库与文章文本，难以独立确认更强的公司背景、团队身份与完整产品定位，因此适合标为 partially_verified。作为证据，它支持“结构化外部记忆正在成为方向”的假说，但只是一个项目存在性信号，强度应为 slight。"
+    },
+    {
+      "claim_id": "m_flow_bundle_search_architecture",
+      "hypothesis_id": "structured_external_memory",
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://github.com/FlowElement-ai/m_flow",
+      "source_title": "FlowElement-ai/m_flow",
+      "source_trust": "moderate",
+      "evidence_direction": "support",
+      "evidence_strength": "slight",
+      "assessment": "该 claim 与文章核心技术描述一致，且文章提供了项目仓库作为可追溯来源，因此可以部分核验其“采用 Bundle Search/图路由式结构化检索架构”的存在性主张。不过当前输入未提供仓库内具体 README、论文或技术文档片段，无法逐条交叉核对文章中对四层图、路径代价传播等细节是否完全准确，因此不宜标为 fully verified。它与“记忆从平坦上下文转向结构化、可查询对象”高度同域，方向为 support，但基于单一项目来源，证据强度保守记为 slight。"
+    },
+    {
+      "claim_id": "m_flow_outperforms_mem0_locomo_36",
+      "hypothesis_id": "structured_external_memory",
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://mp.weixin.qq.com/s/6vRe448c-xxwPQoID0oUGA",
+      "source_title": "19岁，常青藤辍学，这群中国年轻人重构了AI记忆",
+      "source_trust": "weak",
+      "evidence_direction": "support",
+      "evidence_strength": "slight",
+      "assessment": "这是定量 benchmark 优势 claim，但在当前材料中只有文章本身陈述，未给出可直接审阅的原始测试报告、可复现实验结果页面或第三方独立验证链接。由于缺少 primary source cross-check，不能标记为 verified；最多只能认定为文章声称存在该结果，因此为 partially_verified。该结果若属实会支持结构化记忆架构有效，但因来源单薄且未独立复核，source_trust 仅能给 weak，证据强度也应降为 slight。"
+    },
+    {
+      "claim_id": "m_flow_outperforms_graphiti_longmemeval_16",
+      "hypothesis_id": "structured_external_memory",
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://mp.weixin.qq.com/s/6vRe448c-xxwPQoID0oUGA",
+      "source_title": "19岁，常青藤辍学，这群中国年轻人重构了AI记忆",
+      "source_trust": "weak",
+      "evidence_direction": "support",
+      "evidence_strength": "slight",
+      "assessment": "该项为另一条具体 benchmark 对比数字，但当前输入没有提供 Graphiti 官方 benchmark 页、M-FLOW 自己的结果表或复现实验仓库作为 primary source。因而只能确认“文章作出了这一声称”，不能独立确认数字本身准确无误，所以状态应为 partially_verified。它仍可作为对 structured_external_memory 的弱支持信号，但由于缺乏独立来源，可信度和可用于更新后验的力度都必须保守处理。"
+    },
+    {
+      "claim_id": "m_flow_evolvingevents_leads_cognee_7_graphiti_20",
+      "hypothesis_id": "structured_external_memory",
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://mp.weixin.qq.com/s/6vRe448c-xxwPQoID0oUGA",
+      "source_title": "19岁，常青藤辍学，这群中国年轻人重构了AI记忆",
+      "source_trust": "weak",
+      "evidence_direction": "support",
+      "evidence_strength": "slight",
+      "assessment": "该 claim 含两组百分比领先幅度，属于需要原始实验表、数据集说明和复现条件支撑的量化陈述。当前可见文本未提供足够的 primary source 链接或可审计材料，因此只能部分核验为“文章如此陈述”，不能将数字视为已独立证实。若为真，它支持结构化外部记忆在长期事件建模上的优势，但证据来源不足，故应维持 weak/slight 的保守判定。"
+    },
+    {
+      "claim_id": "m_flow_retrieval_without_llm_millisecond_response",
+      "hypothesis_id": "token_efficiency_as_architecture",
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://github.com/FlowElement-ai/m_flow",
+      "source_title": "FlowElement-ai/m_flow",
+      "source_trust": "moderate",
+      "evidence_direction": "support",
+      "evidence_strength": "slight",
+      "assessment": "文章明确声称 M-FLOW 检索阶段不依赖 LLM 且能达到毫秒级响应；结合其公开项目仓库，这一架构方向具有一定可核验性，尤其“不把 LLM 放在检索热路径”本身与文章详细机制叙述一致。但当前输入没有提供性能基准、延迟测试环境或源码细节，故无法独立证实“毫秒级”这一性能指标，只能部分核验。该 claim 更直接支持“token 效率成为架构目标”的假说，因为它描述的是通过架构避免在线 LLM 调用来换取延迟/成本优势；不过基于单项目且无完整基准，应仅记 slight。"
+    },
+    {
+      "claim_id": "m_flow_supports_coreference_resolution_claim",
+      "hypothesis_id": "structured_external_memory",
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://mp.weixin.qq.com/s/6vRe448c-xxwPQoID0oUGA",
+      "source_title": "19岁，常青藤辍学，这群中国年轻人重构了AI记忆",
+      "source_trust": "weak",
+      "evidence_direction": "support",
+      "evidence_strength": "slight",
+      "assessment": "“业内首个支持指代消解的记忆引擎”属于强比较型首创 claim，需要广泛行业扫描或官方技术文档明确说明才能成立。当前材料至多支持文章宣称 M-FLOW 具备指代消解相关能力，但无法独立验证“业内首个”这一排他性判断，因此只能 partially_verified。就假说关系而言，它可弱支持结构化记忆系统在语义组织层面继续深化，但因缺乏独立交叉验证，证据权重应保持很低。"
+    },
+    {
+      "claim_id": "m_flow_one_line_docker_integration_claim",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://github.com/FlowElement-ai/m_flow",
+      "source_title": "FlowElement-ai/m_flow",
+      "assessment": "该 claim 具有较强可核验潜力，因为文章给出了公开仓库，而“一行代码接入”通常可在 README 或安装说明中找到对应命令。不过当前输入没有展开仓库安装文档内容，因此无法直接确认其确实只需一行 Docker 命令完成接入，只能部分核验为存在可追溯实现来源。此项更像部署便利性的产品事实，与当前激活假说列表没有稳定对应关系，因此保持 hypothesis_id 为 null。"
+    }
+  ],
+  "approval_ref": {
+    "approver": "human:github/plato3724",
+    "decision": "human_approved",
+    "timestamp": "2026-04-12T10:35:12+00:00"
+  }
 }
