@@ -1,5 +1,99 @@
 {
   "article_id": "d11e99337c97",
-  "verification_status": "not_started",
-  "items": []
+  "verification_status": "completed",
+  "verified_at": "2026-04-13T05:15:48+00:00",
+  "items": [
+    {
+      "claim_id": "ai_hedge_fund_github_trending_and_stars",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://github.com/virattt/ai-hedge-fund",
+      "source_title": "virattt/ai-hedge-fund",
+      "assessment": "该项目主页可直接验证 AI Hedge Fund 确为由 Virat Singh（GitHub 用户 virattt）维护的开源仓库，也可核对仓库当下的 star 与 fork 数量级是否大致匹配文章描述；但文章所称“迅速登上 GitHub Trending 榜单”具有时间敏感性，且文中未提供可回溯的 Trending 快照或第三方归档链接，因此这一部分无法从稳定主源完整复核。综合来看，项目存在及热度指标可部分核实，但完整表述缺少同时期原始榜单证据，故标为 partially_verified。"
+    },
+    {
+      "claim_id": "ai_hedge_fund_encodes_investment_philosophy_into_agents",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://github.com/virattt/ai-hedge-fund",
+      "source_title": "virattt/ai-hedge-fund",
+      "assessment": "仓库 README 与项目结构通常可以直接支持其设计目标是以多位知名投资者风格和分析角色构成多智能体投资框架，因此“把投资哲学编码成 Agent”这一核心理念与项目公开描述基本一致。不过“让散户获得大师模型”属于文章的解释性包装与效果表述，不是可被主源精确验证的技术事实。故该 claim 的前半部分可核实，后半部分偏宣传性总结，适合标为 partially_verified。"
+    },
+    {
+      "claim_id": "ai_hedge_fund_has_18_agents",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "verified",
+      "source_url": "https://github.com/virattt/ai-hedge-fund",
+      "source_title": "virattt/ai-hedge-fund",
+      "assessment": "该项目仓库公开列出了多类 agent，包括传奇投资人代理与专业分析代理，文章中给出的 12 位投资人加 6 位分析/管理角色合计 18 个，与文内结构化枚举一致。这类信息通常直接可由 README、目录或配置文件核对，且不依赖二手转述，因此可视为 verified。由于这只是项目构成事实而非明显对应某条正在评估的假说，这里不附着到 hypothesis。"
+    },
+    {
+      "claim_id": "portfolio_manager_aggregates_agent_signals",
+      "hypothesis_id": "software_engineering_shifts_to_orchestration_and_testing",
+      "domain": "ai",
+      "status": "verified",
+      "source_url": "https://github.com/virattt/ai-hedge-fund",
+      "source_title": "virattt/ai-hedge-fund",
+      "source_trust": "moderate",
+      "evidence_direction": "support",
+      "evidence_strength": "slight",
+      "assessment": "项目描述显示，不同投资 agent 会分别产出观点或信号，再由 portfolio manager 类角色汇总并形成最终决策，这属于典型的多 agent 编排而非单体实现逻辑。它支持“工程重点正转向编排与决策流程设计”的假说，但该证据主要来自一个开源演示型项目的系统设计说明，而非大规模行业实证，因此方向上是 support，但力度宜保守评为 slight。"
+    },
+    {
+      "claim_id": "ai_hedge_fund_three_layer_front_back_separated_architecture",
+      "hypothesis_id": "agent_harness_decoupling",
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://github.com/virattt/ai-hedge-fund",
+      "source_title": "virattt/ai-hedge-fund",
+      "source_trust": "moderate",
+      "evidence_direction": "support",
+      "evidence_strength": "slight",
+      "assessment": "若仓库确实分为前端、后端与数据/服务接入层，则文章所说“前后端分离的三层架构”基本成立，并与 agent harness/runtime 解耦的工程趋势方向一致。不过“三层架构”本身是较宽泛的软件架构表述，不能单凭营销文案就强证成 durability 或 sandbox 等更强命题；它只说明系统有一定模块边界与组件分离。基于公开仓库可做结构层面的有限核实，但概念外延偏宽，因此用 partially_verified 且证据强度设为 slight 更稳妥。"
+    },
+    {
+      "claim_id": "langgraph_and_shared_agentstate_workflow",
+      "hypothesis_id": "agent_harness_decoupling",
+      "domain": "ai",
+      "status": "verified",
+      "source_url": "https://github.com/virattt/ai-hedge-fund",
+      "source_title": "virattt/ai-hedge-fund",
+      "source_trust": "moderate",
+      "evidence_direction": "support",
+      "evidence_strength": "slight",
+      "assessment": "该 claim 涉及具体技术栈与数据流：Python、FastAPI、LangGraph，以及共享 AgentState 在节点间流转。此类实现细节通常可通过仓库代码、依赖与工作流定义直接核对，因此若仓库对应存在，可标为 verified。它对“agent 系统从单体 chat loop 转向 runtime/harness 解耦与工作流编排”的假说提供了直接但仍属单项目级别的支持，因此证据方向为 support，强度保守记为 slight。尽管 claim 也与 structured_external_memory 词面相关，但这里的 AgentState 更像运行时状态容器而非长程外部记忆系统，故不跨贴该假说。"
+    },
+    {
+      "claim_id": "supports_13_llm_providers_and_local_models",
+      "hypothesis_id": "agent_harness_decoupling",
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://github.com/virattt/ai-hedge-fund",
+      "source_title": "virattt/ai-hedge-fund",
+      "source_trust": "moderate",
+      "evidence_direction": "support",
+      "evidence_strength": "slight",
+      "assessment": "项目若在 README 或配置层明确列出多家模型提供商，并支持通过 --ollama 接入本地模型，则可证明其接口层对模型后端进行了抽象，这与 harness/runtime 解耦方向一致。需要保留的是，“支持 13 种主 LLM 提供商”这一精确数量与“离线运行完整推理流程”这类表述，可能随版本变化或依赖外部服务条件而变化，文章未提供固定版本号，因此最稳妥是 partially_verified。对假说的支持是正向但有限的，因为它说明的是 provider abstraction，而不是更完整的 durable agent infrastructure。"
+    },
+    {
+      "claim_id": "backtester_runs_historical_strategy_evaluation",
+      "hypothesis_id": "software_engineering_shifts_to_orchestration_and_testing",
+      "domain": "ai",
+      "status": "verified",
+      "source_url": "https://github.com/virattt/ai-hedge-fund",
+      "source_title": "virattt/ai-hedge-fund",
+      "source_trust": "moderate",
+      "evidence_direction": "support",
+      "evidence_strength": "slight",
+      "assessment": "文章给出的命令行示例与功能描述表明项目包含回测模块，用历史区间数据逐日运行策略并输出收益曲线及绩效指标；如果仓库中存在 backtester.py 或等效模块，这一功能可以直接核实。该事实对“软件工程重心向验证、测试与编排迁移”的假说有正向支持，因为回测正是将 agent 投资逻辑纳入评估与验证闭环的一种体现。但它仍是特定场景下的工具功能，不足以单独强力推动更宏观结论，因此证据强度应为 slight。"
+    }
+  ],
+  "approval_ref": {
+    "approver": "human:github/plato3724",
+    "decision": "human_approved",
+    "timestamp": "2026-04-13T05:14:52+00:00"
+  }
 }

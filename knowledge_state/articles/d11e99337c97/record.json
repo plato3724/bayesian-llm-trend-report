@@ -4,7 +4,7 @@
   "url": "https://mp.weixin.qq.com/s/4umG7Vx_cWr0FwWc1YLuWQ",
   "ingested_from": "github_issue",
   "ingested_at": "2026-04-13T05:13:26+00:00",
-  "last_updated_at": "2026-04-13T05:14:52+00:00",
+  "last_updated_at": "2026-04-13T05:15:48+00:00",
   "content_state": {
     "full_text_status": "acquired",
     "canonical_text_source": "knowledge_state/articles/d11e99337c97/canonical_text.txt",
@@ -22,12 +22,12 @@
       }
     ],
     "manual_artifacts": [],
-    "next_action": "review_staged_verification"
+    "next_action": "monitor_for_new_evidence"
   },
   "analysis_state": {
     "claim_extraction_status": "completed",
-    "verification_status": "drafted",
-    "bayesian_status": "held_for_review"
+    "verification_status": "completed",
+    "bayesian_status": "included"
   },
   "article_summary": {
     "events": [],
@@ -44,7 +44,38 @@
       "文章称，AI Hedge Fund 内置回测模块，可对历史区间内的股票逐日研判并输出策略历史收益曲线与关键绩效指标。"
     ]
   },
-  "hypothesis_impacts": [],
+  "hypothesis_impacts": [
+    {
+      "hypothesis_id": "software_engineering_shifts_to_orchestration_and_testing",
+      "status": "verified",
+      "weight": null,
+      "likelihood_ratio": null
+    },
+    {
+      "hypothesis_id": "agent_harness_decoupling",
+      "status": "partially_verified",
+      "weight": null,
+      "likelihood_ratio": null
+    },
+    {
+      "hypothesis_id": "agent_harness_decoupling",
+      "status": "verified",
+      "weight": null,
+      "likelihood_ratio": null
+    },
+    {
+      "hypothesis_id": "agent_harness_decoupling",
+      "status": "partially_verified",
+      "weight": null,
+      "likelihood_ratio": null
+    },
+    {
+      "hypothesis_id": "software_engineering_shifts_to_orchestration_and_testing",
+      "status": "verified",
+      "weight": null,
+      "likelihood_ratio": null
+    }
+  ],
   "ingest_sources": [
     {
       "source_name": "github_issue",
