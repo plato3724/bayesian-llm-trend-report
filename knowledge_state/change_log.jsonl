@@ -192,3 +192,7 @@
 {"timestamp": "2026-04-13T13:33:02+00:00", "event": "fetch_pending", "limit": 20, "force": false, "results": [{"article_id": "03f809cb0476", "title": "YC内部AI架构曝光！YC总裁Garry亲证：比谷歌员工效率高1000倍的秘密，不在模型，而在“Harness”", "status": "acquired", "final_url": "https://mp.weixin.qq.com/s/z6ZXj_p6Z9fIvFifkAvP9A", "text_length": 6227, "note": "Full text looks sufficient for claim extraction."}]}
 {"timestamp": "2026-04-13T13:33:03+00:00", "event": "refresh_record_states", "refreshed": 20}
 {"timestamp": "2026-04-13T13:33:03+00:00", "event": "build_report", "output_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/docs/index.html"}
+{"timestamp": "2026-04-13T13:33:15+00:00", "event": "sync_github_issues", "repo": "plato3724/bayesian-llm-trend-report", "label": "article", "state": "open", "fallback_used": false, "created": 0, "updated": 9, "skipped": 0}
+{"timestamp": "2026-04-13T13:33:15+00:00", "event": "fetch_pending", "limit": 20, "force": false, "results": []}
+{"timestamp": "2026-04-13T13:33:16+00:00", "event": "refresh_record_states", "refreshed": 20}
+{"timestamp": "2026-04-13T13:33:16+00:00", "event": "build_report", "output_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/docs/index.html"}
