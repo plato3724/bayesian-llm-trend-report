@@ -1,0 +1,50 @@
+{
+  "ok": true,
+  "article_id": "03f809cb0476",
+  "draft_path": "knowledge_state/articles/03f809cb0476/_proposed_draft.json",
+  "approval_path": "knowledge_state/articles/03f809cb0476/_proposed_approval.json",
+  "model": "openai/gpt-5.4",
+  "attempts": 1,
+  "item_count": 8,
+  "decision": "needs_human",
+  "downgraded_by_guard": false,
+  "escalation_triggers": [
+    {
+      "trigger": "band_crossing",
+      "hypothesis_id": "software_engineering_shifts_to_orchestration_and_testing",
+      "before_band": "very_likely",
+      "after_band": "near_certain",
+      "delta_log_odds": 0.24,
+      "claim_ids": [
+        "steve_yegge_productivity_claim_10x_100x",
+        "steve_yegge_productivity_claim_1000x_vs_2005_google"
+      ],
+      "detail": "hypothesis 'software_engineering_shifts_to_orchestration_and_testing' would move very_likely → near_certain · (Δlog-odds=+0.240) via items ['steve_yegge_productivity_claim_10x_100x', 'steve_yegge_productivity_claim_1000x_vs_2005_google']"
+    },
+    {
+      "trigger": "band_crossing",
+      "hypothesis_id": "token_efficiency_as_architecture",
+      "before_band": "likely",
+      "after_band": "very_likely",
+      "delta_log_odds": 0.42,
+      "claim_ids": [
+        "harness_provides_context_and_reduces_noise",
+        "claude_md_reduced_from_20000_to_200_lines"
+      ],
+      "detail": "hypothesis 'token_efficiency_as_architecture' would move likely → very_likely ↑ (Δlog-odds=+0.420) via items ['harness_provides_context_and_reduces_noise', 'claude_md_reduced_from_20000_to_200_lines']"
+    }
+  ],
+  "source_context_count": 0,
+  "source_context_status_summary": {
+    "acquired": 0,
+    "partial": 0,
+    "blocked": 0,
+    "failed": 0
+  },
+  "usage": {
+    "prompt_tokens": 8717,
+    "completion_tokens": 2689,
+    "total_tokens": 11406
+  },
+  "next_step": "python scripts/bayesian_reader.py stage-verification --article-id 03f809cb0476 --draft knowledge_state/articles/03f809cb0476/_proposed_draft.json --approval knowledge_state/articles/03f809cb0476/_proposed_approval.json"
+}

@@ -1,0 +1,50 @@
+{
+  "article_id": "03f809cb0476",
+  "timestamp": "2026-04-13T13:34:35+00:00",
+  "approver": "llm:openai/gpt-5.4",
+  "decision": "needs_human",
+  "overall_rationale": "本稿所有条目都只能做到文章级或转述级部分验证，因为 source_context 为空，且文章未提供可核查的一手材料。尽管大部分技术主张与现有 AI 域假说概念上匹配，但若直接应用，实质是在用二手媒体转述推动已较高后验的假说，因此应交由人工复核。",
+  "per_claim_decisions": [
+    {
+      "claim_id": "steve_yegge_productivity_claim_10x_100x",
+      "decision": "defer",
+      "reasoning": "倍数主张缺少一手来源，夸张且可能影响判断，应人工核对原帖或演讲。"
+    },
+    {
+      "claim_id": "steve_yegge_productivity_claim_1000x_vs_2005_google",
+      "decision": "defer",
+      "reasoning": "超大数量级断言仅见二手转述，缺主来源，不宜自动纳入。"
+    },
+    {
+      "claim_id": "garry_tan_harness_not_model",
+      "decision": "defer",
+      "reasoning": "与假说高度相关，但仍是无主来源的二手概括，需人工确认原始语境。"
+    },
+    {
+      "claim_id": "harness_provides_context_and_reduces_noise",
+      "decision": "defer",
+      "reasoning": "技术方向合理且相关，但无源码或文档支撑，只能在人工复核后决定是否采用。"
+    },
+    {
+      "claim_id": "thin_shell_fat_skills_architecture",
+      "decision": "defer",
+      "reasoning": "核心架构观点与假说一致，但来源仅为文章转述，建议先核原文。"
+    },
+    {
+      "claim_id": "resolver_loads_context_on_demand",
+      "decision": "defer",
+      "reasoning": "机制描述具体但没有一手材料，人工确认后再决定是否入库。"
+    },
+    {
+      "claim_id": "claude_md_reduced_from_20000_to_200_lines",
+      "decision": "defer",
+      "reasoning": "具体数字型轶事缺乏原始出处，自动采用风险较高。"
+    },
+    {
+      "claim_id": "three_layer_architecture_skills_harness_tools",
+      "decision": "defer",
+      "reasoning": "结构性总结有用，但目前只是二手文章概括，适合人工审后使用。"
+    }
+  ],
+  "human_override": null
+}
