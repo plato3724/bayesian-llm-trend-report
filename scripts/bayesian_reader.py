@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import html
+import http.cookiejar
 import json
 import math
 import re
@@ -551,6 +552,43 @@ class HTMLTextExtractor(HTMLParser):
         return raw.strip()
 
 
+class HTMLLinkExtractor(HTMLParser):
+    def __init__(self, base_url: str) -> None:
+        super().__init__()
+        self.base_url = base_url
+        self.links: list[dict[str, str]] = []
+        self._current_href: str | None = None
+        self._current_parts: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag != "a":
+            return
+        attr_map = {key.lower(): value for key, value in attrs}
+        href = attr_map.get("href")
+        if not href:
+            return
+        self._current_href = href
+        self._current_parts = []
+
+    def handle_data(self, data: str) -> None:
+        if self._current_href is not None:
+            self._current_parts.append(data)
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag != "a" or self._current_href is None:
+            return
+        anchor_text = re.sub(r"\s+", " ", "".join(self._current_parts)).strip()
+        resolved = urllib.parse.urljoin(self.base_url, self._current_href)
+        self.links.append(
+            {
+                "url": resolved,
+                "anchor_text": anchor_text,
+            }
+        )
+        self._current_href = None
+        self._current_parts = []
+
+
 @dataclass
 class FetchResult:
     status: str
@@ -589,6 +627,186 @@ def extract_text_from_html(payload: str) -> str:
     return parser.text()
 
 
+def extract_title_from_html(payload: str) -> str:
+    match = re.search(r"<title[^>]*>(.*?)</title>", payload, re.IGNORECASE | re.DOTALL)
+    if not match:
+        return ""
+    title = html.unescape(match.group(1))
+    return re.sub(r"\s+", " ", title).strip()
+
+
+def normalize_source_url(url: str) -> str:
+    parsed = urllib.parse.urlparse(url)
+    normalized = parsed._replace(fragment="")
+    return urllib.parse.urlunparse(normalized)
+
+
+def guess_source_type(url: str, anchor_text: str = "", context_snippet: str = "") -> str:
+    parsed = urllib.parse.urlparse(url)
+    host = (parsed.netloc or "").lower()
+    path = (parsed.path or "").lower()
+    hint = f"{anchor_text} {context_snippet}".lower()
+    if any(token in host for token in ("arxiv.org", "doi.org", "openreview.net", "aclanthology.org")):
+        return "paper"
+    if "github.com" in host:
+        return "github"
+    if (
+        host.startswith("docs.")
+        or "readthedocs" in host
+        or "developer." in host
+        or "/docs" in path
+        or "documentation" in path
+    ):
+        return "docs"
+    if any(token in hint for token in ("paper", "preprint", "arxiv", "doi")):
+        return "paper"
+    if any(token in hint for token in ("github", "repo", "repository")):
+        return "github"
+    if any(token in hint for token in ("docs", "documentation", "guide", "api")):
+        return "docs"
+    if any(token in hint for token in ("product", "launch", "release", "official")):
+        return "product"
+    return "unknown"
+
+
+def should_keep_source_link(url: str, article_url: str) -> bool:
+    parsed = urllib.parse.urlparse(url)
+    if parsed.scheme not in {"http", "https"} or not parsed.netloc:
+        return False
+    if normalize_source_url(url) == normalize_source_url(article_url):
+        return False
+
+    host = parsed.netloc.lower()
+    path = parsed.path.lower()
+    if any(host.endswith(blocked) for blocked in ("twitter.com", "x.com", "facebook.com", "linkedin.com")):
+        return False
+    if any(token in path for token in ("/share", "/login", "/signup", "/subscribe", "/privacy", "/terms")):
+        return False
+    return True
+
+
+def latest_raw_fetch_html(article_id: str) -> Path | None:
+    raw_dir = article_dir(article_id) / "raw"
+    candidates = sorted(raw_dir.glob("fetch_*.html"))
+    return candidates[-1] if candidates else None
+
+
+def extract_article_source_links(article_id: str) -> dict[str, Any]:
+    record = read_json(article_record_path(article_id), default=None)
+    if record is None:
+        raise ValueError(f"Unknown article_id: {article_id}")
+
+    article_url = record.get("url") or ""
+    links: list[dict[str, Any]] = []
+    seen_urls: set[str] = set()
+
+    raw_html = latest_raw_fetch_html(article_id)
+    if raw_html is not None:
+        payload = raw_html.read_text(encoding="utf-8", errors="replace")
+        parser = HTMLLinkExtractor(base_url=article_url)
+        parser.feed(payload)
+        for entry in parser.links:
+            normalized_url = normalize_source_url(entry["url"])
+            if normalized_url in seen_urls:
+                continue
+            if not should_keep_source_link(normalized_url, article_url):
+                continue
+            seen_urls.add(normalized_url)
+            anchor_text = entry.get("anchor_text", "")
+            links.append(
+                {
+                    "url": normalized_url,
+                    "anchor_text": anchor_text,
+                    "context_snippet": anchor_text,
+                    "link_type_guess": guess_source_type(normalized_url, anchor_text, anchor_text),
+                    "selected_for_fetch": False,
+                }
+            )
+
+    canonical_file = article_dir(article_id) / "canonical_text.txt"
+    if canonical_file.exists():
+        canonical_text = canonical_file.read_text(encoding="utf-8")
+        for extracted_url in extract_urls(canonical_text):
+            normalized_url = normalize_source_url(extracted_url)
+            if normalized_url in seen_urls:
+                continue
+            if not should_keep_source_link(normalized_url, article_url):
+                continue
+            seen_urls.add(normalized_url)
+            links.append(
+                {
+                    "url": normalized_url,
+                    "anchor_text": "",
+                    "context_snippet": "",
+                    "link_type_guess": guess_source_type(normalized_url),
+                    "selected_for_fetch": False,
+                }
+            )
+
+    return {
+        "article_id": article_id,
+        "extracted_at": utc_now(),
+        "source_html_path": relpath_from_root(raw_html) if raw_html else None,
+        "links": links,
+    }
+
+
+def source_type_priority(source_type: str) -> int:
+    priorities = {
+        "paper": 0,
+        "github": 1,
+        "docs": 2,
+        "product": 3,
+        "news": 4,
+        "unknown": 5,
+    }
+    return priorities.get(source_type, 9)
+
+
+def _extract_input_value(payload: str, input_id: str) -> str | None:
+    pattern = (
+        r"<input\b[^>]*\bid=[\"']"
+        + re.escape(input_id)
+        + r"[\"'][^>]*\bvalue=[\"'](.*?)[\"'][^>]*>"
+    )
+    match = re.search(pattern, payload, re.IGNORECASE | re.DOTALL)
+    if not match:
+        return None
+    return html.unescape(match.group(1))
+
+
+def extract_text_from_embedded_state(payload: str) -> str:
+    """Best-effort extraction for SPA/H5 pages whose meaningful text lives in embedded JSON."""
+    snippets: list[str] = []
+
+    init_data_raw = _extract_input_value(payload, "initData")
+    if init_data_raw:
+        try:
+            init_data = json.loads(init_data_raw)
+        except json.JSONDecodeError:
+            init_data = None
+        if isinstance(init_data, dict):
+            goods_data_raw = init_data.get("goods_data")
+            if isinstance(goods_data_raw, str):
+                try:
+                    goods_data = json.loads(goods_data_raw)
+                except json.JSONDecodeError:
+                    goods_data = None
+                if isinstance(goods_data, dict):
+                    for key in ("goods_name", "goods_brief_text"):
+                        value = goods_data.get(key)
+                        if isinstance(value, str) and value.strip():
+                            snippets.append(value.strip())
+                    detail_html = goods_data.get("goods_detail_text")
+                    if isinstance(detail_html, str) and detail_html.strip():
+                        detail_text = extract_text_from_html(detail_html)
+                        if detail_text:
+                            snippets.append(detail_text)
+
+    combined = "\n\n".join(part for part in snippets if part)
+    return clean_extracted_text(combined)
+
+
 def clean_extracted_text(text: str) -> str:
     blocked_exact = {
         "在小说阅读器读本章",
@@ -625,14 +843,22 @@ def detect_blocked_fetch(url: str, text: str) -> bool:
     )
 
 
-def fetch_url(url: str, destination_dir: Path) -> FetchResult:
+def fetch_url(
+    url: str,
+    destination_dir: Path,
+    *,
+    acquired_threshold: int = 1200,
+    partial_threshold: int = 250,
+) -> FetchResult:
+    cookie_jar = http.cookiejar.CookieJar()
+    opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cookie_jar))
     request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     raw_path: Path | None = None
     text_path: Path | None = None
 
     try:
-        with urllib.request.urlopen(request, timeout=25) as response:
+        with opener.open(request, timeout=25) as response:
             body = response.read()
             final_url = response.geturl()
             content_type = response.headers.get_content_type()
@@ -642,6 +868,10 @@ def fetch_url(url: str, destination_dir: Path) -> FetchResult:
             raw_path.write_text(decoded, encoding="utf-8")
 
             extracted = extract_text_from_html(decoded) if content_type == "text/html" else decoded
+            if content_type == "text/html" and len(extracted.strip()) < 250:
+                embedded_text = extract_text_from_embedded_state(decoded)
+                if len(embedded_text) > len(extracted):
+                    extracted = embedded_text
             extracted = clean_extracted_text(extracted)
             blocked = detect_blocked_fetch(final_url, extracted)
 
@@ -661,10 +891,10 @@ def fetch_url(url: str, destination_dir: Path) -> FetchResult:
                     note="Fetch hit a WeChat captcha or equivalent block page.",
                 )
 
-            if len(extracted) >= 1200:
+            if len(extracted) >= acquired_threshold:
                 status = "acquired"
                 note = "Full text looks sufficient for claim extraction."
-            elif len(extracted) >= 250:
+            elif len(extracted) >= partial_threshold:
                 status = "partial"
                 note = "Text was fetched but looks incomplete. Verify manually before analysis."
             else:
@@ -792,6 +1022,122 @@ def fetch_pending(limit: int, force: bool = False) -> dict[str, Any]:
     )
 
     return {"attempted": len(results), "results": results}
+
+
+def build_source_context(
+    article_id: str,
+    limit: int = 5,
+    excerpt_chars: int = 3000,
+) -> dict[str, Any]:
+    bootstrap_state_files()
+    record = read_json(article_record_path(article_id), default=None)
+    if record is None:
+        raise ValueError(f"Unknown article_id: {article_id}")
+
+    links_doc = extract_article_source_links(article_id)
+    links = links_doc.get("links", [])
+    prioritized_links = sorted(
+        links,
+        key=lambda item: (
+            source_type_priority(str(item.get("link_type_guess") or "unknown")),
+            str(item.get("url") or ""),
+        ),
+    )
+    selected = prioritized_links[: max(limit, 0)]
+    selected_urls = {entry.get("url") for entry in selected}
+    for entry in links:
+        entry["selected_for_fetch"] = entry.get("url") in selected_urls
+
+    write_json(source_links_path(article_id), links_doc)
+
+    sources_dir = article_sources_dir(article_id)
+    raw_dir = sources_dir / "raw"
+    text_dir = sources_dir / "text"
+    raw_dir.mkdir(parents=True, exist_ok=True)
+    text_dir.mkdir(parents=True, exist_ok=True)
+
+    sources: list[dict[str, Any]] = []
+    status_summary = {"acquired": 0, "partial": 0, "blocked": 0, "failed": 0}
+
+    for entry in selected:
+        url = str(entry.get("url") or "").strip()
+        if not url:
+            continue
+        fetched = fetch_url(
+            url,
+            raw_dir,
+            acquired_threshold=300,
+            partial_threshold=80,
+        )
+        title = entry.get("anchor_text") or entry.get("context_snippet") or url
+        text_path_value = fetched.text_path
+        excerpt = ""
+        if text_path_value:
+            fetched_text_path = Path(text_path_value)
+            if fetched_text_path.exists():
+                target_path = text_dir / f"{fetched_text_path.stem}_{len(sources) + 1}.txt"
+                shutil.copyfile(fetched_text_path, target_path)
+                text_path_value = str(target_path)
+                source_text = target_path.read_text(encoding="utf-8")
+                excerpt = source_text[:excerpt_chars].strip()
+
+        raw_path_value = fetched.raw_path
+        if raw_path_value:
+            raw_path = Path(raw_path_value)
+            if raw_path.exists() and raw_path.suffix.lower() == ".html":
+                html_payload = raw_path.read_text(encoding="utf-8", errors="replace")
+                html_title = extract_title_from_html(html_payload)
+                if html_title:
+                    title = html_title
+
+        status_key = fetched.status if fetched.status in status_summary else "failed"
+        status_summary[status_key] += 1
+        sources.append(
+            {
+                "url": url,
+                "title": title,
+                "source_type": entry.get("link_type_guess") or "unknown",
+                "status": fetched.status,
+                "raw_path": raw_path_value,
+                "text_path": text_path_value,
+                "text_length": fetched.text_length,
+                "text_excerpt": excerpt,
+                "content_type": fetched.content_type,
+                "note": fetched.note,
+            }
+        )
+
+    context_doc = {
+        "article_id": article_id,
+        "built_at": utc_now(),
+        "selected_limit": limit,
+        "source_html_path": links_doc.get("source_html_path"),
+        "sources": sources,
+        "status_summary": status_summary,
+    }
+    write_json(source_context_path(article_id), context_doc)
+    append_jsonl(
+        CHANGE_LOG_PATH,
+        {
+            "timestamp": utc_now(),
+            "event": "build_source_context",
+            "article_id": article_id,
+            "link_count": len(links),
+            "selected_count": len(selected),
+            "source_count": len(sources),
+            "status_summary": status_summary,
+        },
+    )
+    return {
+        "ok": True,
+        "article_id": article_id,
+        "link_count": len(links),
+        "selected_count": len(selected),
+        "source_count": len(sources),
+        "source_links_path": relpath_from_root(source_links_path(article_id)),
+        "source_context_path": relpath_from_root(source_context_path(article_id)),
+        "status_summary": status_summary,
+    }
 
 
 def summarize_status() -> dict[str, Any]:
@@ -1252,6 +1598,18 @@ def approval_path(article_id: str) -> Path:
     return article_dir(article_id) / "approval.json"
 
 
+def article_sources_dir(article_id: str) -> Path:
+    return article_dir(article_id) / "sources"
+
+
+def source_links_path(article_id: str) -> Path:
+    return article_dir(article_id) / "source_links.json"
+
+
+def source_context_path(article_id: str) -> Path:
+    return article_dir(article_id) / "source_context.json"
+
+
 def load_claims(article_id: str) -> dict[str, Any]:
     return read_json(
         claims_path(article_id),
@@ -1263,6 +1621,13 @@ def load_verification(article_id: str) -> dict[str, Any]:
     return read_json(
         verification_path(article_id),
         default={"article_id": article_id, "verification_status": "not_started", "items": []},
+    )
+
+
+def load_source_context(article_id: str) -> dict[str, Any]:
+    return read_json(
+        source_context_path(article_id),
+        default={"article_id": article_id, "built_at": None, "sources": [], "status_summary": {}},
     )
 
 
@@ -5707,6 +6072,13 @@ def build_parser() -> argparse.ArgumentParser:
         help="Optional human review rationale; defaults to a built-in message per action",
     )
 
+    source_context_cmd = subparsers.add_parser(
+        "build-source-context",
+        help="Extract cited source links from article HTML and fetch a small source context cache",
+    )
+    source_context_cmd.add_argument("--article-id", required=True)
+    source_context_cmd.add_argument("--limit", type=int, default=5)
+
     subparsers.add_parser(
         "build-candidates",
         help="Build candidate hypotheses from verified but unmapped evidence",
@@ -5888,6 +6260,18 @@ def main(argv: list[str]) -> int:
                 action=args.action,
                 approver=args.approver,
                 reason=args.reason,
+            )
+        except ValueError as exc:
+            print_json({"ok": False, "error": str(exc)})
+            return 2
+        print_json(result)
+        return 0 if result.get("ok") else 2
+
+    if args.command == "build-source-context":
+        try:
+            result = build_source_context(
+                article_id=args.article_id,
+                limit=args.limit,
             )
         except ValueError as exc:
             print_json({"ok": False, "error": str(exc)})

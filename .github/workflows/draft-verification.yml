@@ -184,6 +184,14 @@ jobs:
               continue
             fi
 
+            # Build a cached source-context bundle from links already
+            # present in the fetched article HTML. This is additive:
+            # failure or zero sources must not block Phase C.
+            if ! python scripts/bayesian_reader.py build-source-context \
+                --article-id "$ARTICLE_ID"; then
+              echo "::warning::build-source-context failed for $ARTICLE_ID; continuing with article-only verification context."
+            fi
+
             # 1. Call the drafter. It validates draft + approval, runs
             #    the Phase C guard, and prints a summary JSON to stdout.
             if ! python scripts/auto_draft_verification.py \
@@ -437,6 +445,9 @@ jobs:
             knowledge_state/articles/*/_proposed_approval.json
             knowledge_state/articles/*/_proposed_verification.broken.json
             knowledge_state/articles/*/_draft_summary.json
+            knowledge_state/articles/*/source_links.json
+            knowledge_state/articles/*/source_context.json
+            knowledge_state/articles/*/sources/**
             draft_batch.log
             apply_batch.log
           if-no-files-found: warn

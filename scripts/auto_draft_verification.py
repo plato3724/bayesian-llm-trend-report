@@ -95,6 +95,7 @@ def build_user_message(
     record: dict[str, Any],
     canonical_text: str,
     claims_doc: dict[str, Any],
+    source_context: dict[str, Any],
     active_hypotheses: list[dict[str, Any]],
     model_id: str,
 ) -> str:
@@ -115,6 +116,7 @@ def build_user_message(
         "model_id": model_id,
         "canonical_text": canonical_text,
         "claims": claims_doc.get("claims", []),
+        "source_context": source_context,
         "active_hypotheses": active_hypotheses,
         "instructions": (
             "Return a JSON object with exactly two top-level keys: "
@@ -233,6 +235,29 @@ def main() -> int:
             file=sys.stderr,
         )
         return 2
+
+    raw_source_context = br.load_source_context(article_id)
+    source_entries = raw_source_context.get("sources", []) if isinstance(raw_source_context, dict) else []
+    trimmed_sources: list[dict[str, Any]] = []
+    for entry in source_entries[:5]:
+        if not isinstance(entry, dict):
+            continue
+        trimmed_sources.append(
+            {
+                "url": entry.get("url"),
+                "title": entry.get("title"),
+                "source_type": entry.get("source_type"),
+                "status": entry.get("status"),
+                "text_length": entry.get("text_length"),
+                "text_excerpt": entry.get("text_excerpt"),
+                "note": entry.get("note"),
+            }
+        )
+    source_context = {
+        "built_at": raw_source_context.get("built_at") if isinstance(raw_source_context, dict) else None,
+        "status_summary": raw_source_context.get("status_summary", {}) if isinstance(raw_source_context, dict) else {},
+        "sources": trimmed_sources,
+    }
     if not claims_doc.get("claims"):
         print(
             f"claims.json for {article_id!r} has no claims to verify.",
@@ -257,6 +282,7 @@ def main() -> int:
         record=record,
         canonical_text=canonical_text,
         claims_doc=claims_doc,
+        source_context=source_context,
         active_hypotheses=active_hypotheses,
         model_id=model_id_for_prompt,
     )
@@ -402,6 +428,8 @@ def main() -> int:
         "decision": approval.get("decision"),
         "downgraded_by_guard": downgraded,
         "escalation_triggers": triggers,
+        "source_context_count": len(trimmed_sources),
+        "source_context_status_summary": source_context.get("status_summary", {}),
         "usage": completion.usage,
         "next_step": (
             f"python scripts/bayesian_reader.py stage-verification "
