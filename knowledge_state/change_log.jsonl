@@ -173,3 +173,7 @@
 {"timestamp": "2026-04-13T05:13:31+00:00", "event": "fetch_pending", "limit": 20, "force": false, "results": [{"article_id": "d11e99337c97", "title": "有人把巴菲特芒格炼化成Agent，然后开源了", "status": "acquired", "final_url": "https://mp.weixin.qq.com/s/4umG7Vx_cWr0FwWc1YLuWQ", "text_length": 3409, "note": "Full text looks sufficient for claim extraction."}]}
 {"timestamp": "2026-04-13T05:13:31+00:00", "event": "refresh_record_states", "refreshed": 19}
 {"timestamp": "2026-04-13T05:13:32+00:00", "event": "build_report", "output_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/docs/index.html"}
+{"timestamp": "2026-04-13T05:14:00+00:00", "event": "refresh_record_states", "refreshed": 19}
+{"timestamp": "2026-04-13T05:14:00+00:00", "event": "recompute_posteriors", "included_articles": ["20fb29fec269", "44f454b544d9", "4a8b83da74e8", "7bb7bc9e2b3e", "bf281b22fc01", "3c07c6956807", "59b86c15655e", "2f9fe8beb5ba", "8f8f6c5c71fe", "5c7678b0d4c9", "06eb3b8e8732", "7ffdcd4439dc", "df7acb42e706", "7e6b7b4cfbf5", "d668b6dcda22"], "hypothesis_count": 7}
+{"timestamp": "2026-04-13T05:14:00+00:00", "event": "save_claims", "article_id": "d11e99337c97", "claim_count": 8}
+{"timestamp": "2026-04-13T05:14:00+00:00", "event": "build_report", "output_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/docs/index.html"}

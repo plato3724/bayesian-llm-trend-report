@@ -1,5 +1,66 @@
 {
   "article_id": "d11e99337c97",
-  "claim_extraction_status": "not_started",
-  "claims": []
+  "claim_extraction_status": "completed",
+  "extracted_at": "2026-04-13T05:14:00+00:00",
+  "claims": [
+    {
+      "id": "ai_hedge_fund_github_trending_and_stars",
+      "type": "tool",
+      "text": "文章称，由独立开发者 Virat Singh 打造的开源项目 AI Hedge Fund 迅速登上 GitHub Trending 榜单，并获得 51.7k Star 和 9k+ Fork。",
+      "hypothesis_candidates": []
+    },
+    {
+      "id": "ai_hedge_fund_encodes_investment_philosophy_into_agents",
+      "type": "technique",
+      "text": "文章称，AI Hedge Fund 的核心理念是把投资哲学编码成 Agent，让散户获得“大师模型”。",
+      "hypothesis_candidates": []
+    },
+    {
+      "id": "ai_hedge_fund_has_18_agents",
+      "type": "tool",
+      "text": "文章称，AI Hedge Fund 目前内置 18 个专职 Agent，分为传奇投资人 Agent 和专业分析 Agent 两类。",
+      "hypothesis_candidates": []
+    },
+    {
+      "id": "portfolio_manager_aggregates_agent_signals",
+      "type": "technique",
+      "text": "文章称，各投资大师 Agent 会对同一只股票给出独立判断，最终由投资组合经理 Agent 汇总裁决并输出买入、卖出或持有信号。",
+      "hypothesis_candidates": [
+        "software_engineering_shifts_to_orchestration_and_testing"
+      ]
+    },
+    {
+      "id": "ai_hedge_fund_three_layer_front_back_separated_architecture",
+      "type": "technique",
+      "text": "文章称，AI Hedge Fund 采用前后端分离的三层架构设计。",
+      "hypothesis_candidates": [
+        "agent_harness_decoupling"
+      ]
+    },
+    {
+      "id": "langgraph_and_shared_agentstate_workflow",
+      "type": "technique",
+      "text": "文章称，后端由 Python 和 FastAPI 驱动，并使用 LangGraph 编排多智能体工作流，所有 Agent 共享同一个 AgentState 数据字典在节点间传递信息。",
+      "hypothesis_candidates": [
+        "agent_harness_decoupling",
+        "structured_external_memory"
+      ]
+    },
+    {
+      "id": "supports_13_llm_providers_and_local_models",
+      "type": "tool",
+      "text": "文章称，整套系统支持 13 种主 LLM 提供商，也可通过 --ollama 参数接入本地大模型并离线运行完整推理流程。",
+      "hypothesis_candidates": [
+        "agent_harness_decoupling"
+      ]
+    },
+    {
+      "id": "backtester_runs_historical_strategy_evaluation",
+      "type": "tool",
+      "text": "文章称，AI Hedge Fund 内置回测模块，可对历史区间内的股票逐日研判并输出策略历史收益曲线与关键绩效指标。",
+      "hypothesis_candidates": [
+        "software_engineering_shifts_to_orchestration_and_testing"
+      ]
+    }
+  ]
 }
