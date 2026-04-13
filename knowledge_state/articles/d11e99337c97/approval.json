@@ -1,0 +1,50 @@
+{
+  "article_id": "d11e99337c97",
+  "timestamp": "2026-04-13T05:14:52+00:00",
+  "approver": "llm:openai/gpt-5.4",
+  "decision": "needs_human",
+  "overall_rationale": "大部分 claim 可从项目 GitHub 仓库进行一定程度核对，但多项表述依赖版本时点或项目自述，尤其是 GitHub Trending 与精确热度数字缺少可回溯原始快照。涉及假说的 attach 基本同域且方向合理，但证据多为单个开源项目的轻量支持，适合保守处理并交由人工复核。",
+  "per_claim_decisions": [
+    {
+      "claim_id": "ai_hedge_fund_github_trending_and_stars",
+      "decision": "defer",
+      "reasoning": "项目存在与热度量级可查，但 Trending 排名与当时 star/fork 数缺少稳定时点证据。"
+    },
+    {
+      "claim_id": "ai_hedge_fund_encodes_investment_philosophy_into_agents",
+      "decision": "accept_as_fact",
+      "reasoning": "可作为项目理念层面的事实描述，但带有一定宣传性，不用于更新假说。"
+    },
+    {
+      "claim_id": "ai_hedge_fund_has_18_agents",
+      "decision": "accept_as_fact",
+      "reasoning": "仓库结构与角色列表应可直接核对，属于正交事实。"
+    },
+    {
+      "claim_id": "portfolio_manager_aggregates_agent_signals",
+      "decision": "accept",
+      "reasoning": "这是典型的多 agent 编排模式，对编排重于单点实现的假说有轻度支持。"
+    },
+    {
+      "claim_id": "ai_hedge_fund_three_layer_front_back_separated_architecture",
+      "decision": "defer",
+      "reasoning": "与解耦假说相关，但“三层架构”过于宽泛，需人工判断其证据价值。"
+    },
+    {
+      "claim_id": "langgraph_and_shared_agentstate_workflow",
+      "decision": "accept",
+      "reasoning": "具体实现细节较可核实，且对 harness/runtime 编排化趋势有直接轻度支持。"
+    },
+    {
+      "claim_id": "supports_13_llm_providers_and_local_models",
+      "decision": "accept",
+      "reasoning": "若仓库配置支持多 provider 与本地模型接入，则可作为接口抽象与解耦的轻度证据。"
+    },
+    {
+      "claim_id": "backtester_runs_historical_strategy_evaluation",
+      "decision": "accept",
+      "reasoning": "回测模块体现了验证与测试闭环，对相关软件工程假说有轻度支持。"
+    }
+  ],
+  "human_override": null
+}
