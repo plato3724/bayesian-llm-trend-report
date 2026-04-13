@@ -1,0 +1,131 @@
+有人把巴菲特芒格炼化成Agent，然后开源了…
+关注前沿科技
+量子位
+henry 发自 凹非寺
+量子位 | 公众号 QbitAI
+一不小心，查理芒格和巴菲特就被炼化，个个加入投资Agent军团，人人可用了。
+这就是最近Github最热的项目之一AI Hedge Fund。
+12位世界级投资大佬，现在随时在线帮你分析股票、完善你的交易策略；6位分析师汇总观点，最终拍板，下单。
+这支由传奇投资人“炼化”的Agent军团不光能实时分析，还内置了回测模块。
+可以让先拿历史数据把策略跑一遍，再决定要不要上真钱。
+相当全面。
+在部署上，项目门槛也很低，兼容OpenAI、Anthropic、Groq、DeepSeek等13种大模型，本地跑也没问题。
+目前，这个由独立开发者Virat Singh打造的项目，开源后迅速登上GitHub Trending榜单，斩获51.7k Star、9k+Fork。
+有网友看完直接下了定论：能不能赚，不知道。但起码学了点 Agent 框架知识。
+赚钱与否吗？兴许能少亏点。
+让传奇投资人”重出江湖”
+实话说，大部分散户的体量，远没到让顶级投资人亲自操盘的程度，而量化模型又重度依赖数据和算力，普通人也很难玩得转。
+AI Hedge Fund的核心理念，就是把投资哲学编码成Agent，让小散有了「大师模型」。
+每个投资大师Agent都被注入了对应人物标志性的选股逻辑与风险偏好，在面对同一只股票时，各自给出独立判断，最终由投资组合经理Agent汇总裁决，输出买入、卖出或持有信号。
+目前系统共内置18个专职Agent，分为两大类型：
+首先是，传奇投资人Agent军团：
+Warren Buffett（巴菲特）——奥马哈先知，寻找护城河宽阔、价格合理的优质企业。
+Charlie Munger（芒格）——巴菲特的黄金搭档，只在合理价格买入卓越生意，重视管理层质量与可预测性。
+Ben Graham——价值投资鼻祖，严守安全边际，专猎被低估的隐藏明珠。
+Bill Ackman——激进主义投资人，敢于重仓押注、推动企业变革。
+Cathie Wood（木头姐）——成长投资女王，笃信颠覆式创新与科技变革。
+Michael Burry——《大空头》原型，逆向思维猎手，专注深度价值挖掘。
+Peter Lynch——平民投资大师，在日常生活中发现十倍股。
+Phil Fisher——成长股精研者，以深度闲聊调研法（Scuttlebutt）著称。
+Stanley Druckenmiller——宏观传奇，专寻高度不对称的进攻机会。
+Mohnish Pabrai——Dhandho投资人，低风险博弈高赔率。
+Nassim Taleb——《黑天鹅》作者，聚焦尾部风险与反脆弱性。
+Aswath Damodaran——估值大师，以严谨的财务建模定价一切资产。
+然后是，专业分析Agent团队：
+Valuation Agent：计算内在价值，生成估值交易信号
+Fundamentals Agent：解读财务数据，生成基本面信号
+Technicals Agent：分析技术指标，捕捉趋势与动量
+Sentiment Agent：追踪市场情绪，量化多空博弈
+Risk Manager：测算风险敞口，设定仓位上限。
+Portfolio Manager：汇总所有信号，拍板最终交易决策。
+12位大师各执己见，6位分析师冷静把关。一支华尔街梦之队，就这么拉起来了。
+技术架构
+在技术架构方面，AI Hedge Fund采用前后端分离的三层架构设计。
+前端基于React 18 + TypeScript构建，核心亮点是集成了React Flow可视化流程编辑器。
+用户可以像搭积木一样，把不同的Agent节点拖拽连接成一套投资策略图谱，直观设计属于自己的投资委员会。
+后端由Python + FastAPI驱动，以LangGraph编排多智能体工作流。
+所有Agent 共享同一个AgentState数据字典，信息在节点间流转传递，既保证了状态一致，也让各 Agent 的分析结果可以被下游节点动态引用。
+数据层对接多路外部API，支持实时行情、财务报表、市场情绪等数据的统一接入，也可通过
+FINANCIAL_DATASETS_API_KEY
+接入专业金融数据源。
+整套系统支持13种主LLM提供商，也可通过 —ollama参数接入本地大模型，无需联网即可运行完整推理流程。
+前面提到的回测模块，一行命令即可启动：
+poetry run python src/backtester.py —ticker AAPL,MSFT,NVDA
+系统会自动调用各Agent对历史区间内的股票逐日研判，最终输出策略的历史收益曲线与关键绩效指标。
+如何部署
+在部署方面，AI Hedge Fund提供命令行与Web应用两种方式。
+我们先来看命令行方式：
+第一步，克隆仓库：
+git clone https://github.com/virattt/ai-hedge-fund.git cd ai-hedge-fund
+第二步，安装依赖（使用 Poetry）：
+curl -sSL https://install.python-poetry.org | python3 - poetry install
+第三步，配置 API Key：
+复制 .env.example 为 .env，填入至少一个 LLM 服务的密钥，例如：
+OPENAI_API_KEY=your_key_here FINANCIAL_DATASETS_API_KEY=your_key_here
+第四步，启动分析：
+poetry run python src/main.py —ticker AAPL,MSFT,NVDA
+如需使用本地大模型，加上 —ollama 参数即可。
+启动后，他的示例是这样的。
+而对于命令行不太熟悉的朋友，Web应用提供可视化操作界面。
+首先，启动后端服务：
+cd app/backend poetry run uvicorn main:app —reload
+然后，启动前端界面（另开终端）：
+cd app/frontend pnpm install pnpm dev
+最后，访问http://localhost:3000，即可进入可视化Agent流程编辑器，拖拽搭建你的专属AI投资委员会。
+One more thing
+有一说一，最近这类“炼化大师”的投资Agent还真不少。
+比如李诞的“虾”就发了自己的巴菲特-呼兰投资skill，把段永平、巴菲特、芒格和呼兰的投资策略统统塞了进去。
+而像AI Hedge Fund这样整合各大家投资方法论的开源项目也越来越多，投资大师Agent化正在成为一个小趋势。
+不过值得注意的是，大部分框架都还没有确切的投资回报率，也没实盘过，想尝试的小散千万还得牢记风险。
+对此，网友的评价也很真实。
+有人直接开怼：木头姐拉——
+很多人想成为的是西蒙斯，拿稳定收入。
+也有人抛出了灵魂一问：
+如果大师们的观点是冲突的，我们该听谁的？
+但说到底，Agent能复刻的是投资哲学，不是投资结果。
+12位大师坐在同一张桌子上，本来就不可能意见统一——
+但也许，这恰恰是它最有价值的地方：你听到的不是一个声音，而是一场辩论。
+项目主页：https://github.com/virattt/ai-hedge-fund
+一键三连「点赞」「转发」「小心心」
+欢迎在评论区留下你的想法！
+— 完 —
+🔹 谁会代表2026年的AI？
+龙虾爆火，带动一波Agent与衍生产品浪潮。
+但真正值得长期关注的AI公司和产品，或许不止于此。
+如果你正在做，或见证着这些变化，欢迎申报。
+让更多人看见你。👉 https://wj.qq.com/s2/25829730/09xz/
+一键关注 👇 点亮星标
+科技前沿进展每日见
+预览时标签不可点
+微信扫一扫
+关注该公众号
+继续滑动看下一个
+轻触阅读原文
+量子位
+向上滑动看下一个
+知道了
+微信扫一扫
+使用小程序
+取消
+允许
+取消
+允许
+取消
+允许
+×
+分析
+微信扫一扫可打开此内容，
+使用完整服务
+：
+，
+。
+视频
+小程序
+赞
+，轻点两下取消赞
+在看
+，轻点两下取消在看
+分享
+留言
+收藏
+听过

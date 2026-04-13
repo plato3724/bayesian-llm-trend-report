@@ -169,3 +169,7 @@
 {"timestamp": "2026-04-13T04:25:00+00:00", "event": "apply_verification", "article_id": "bf281b22fc01", "item_count": 8, "approver": "human:github/plato3724", "decision": "human_approved", "cross_domain_warnings": []}
 {"timestamp": "2026-04-13T04:25:01+00:00", "event": "refresh_record_states", "refreshed": 18}
 {"timestamp": "2026-04-13T04:25:01+00:00", "event": "build_report", "output_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/docs/index.html"}
+{"timestamp": "2026-04-13T05:13:26+00:00", "event": "sync_github_issues", "repo": "plato3724/bayesian-llm-trend-report", "label": "article", "state": "open", "fallback_used": false, "created": 1, "updated": 7, "skipped": 0}
+{"timestamp": "2026-04-13T05:13:31+00:00", "event": "fetch_pending", "limit": 20, "force": false, "results": [{"article_id": "d11e99337c97", "title": "有人把巴菲特芒格炼化成Agent，然后开源了", "status": "acquired", "final_url": "https://mp.weixin.qq.com/s/4umG7Vx_cWr0FwWc1YLuWQ", "text_length": 3409, "note": "Full text looks sufficient for claim extraction."}]}
+{"timestamp": "2026-04-13T05:13:31+00:00", "event": "refresh_record_states", "refreshed": 19}
+{"timestamp": "2026-04-13T05:13:32+00:00", "event": "build_report", "output_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/docs/index.html"}
