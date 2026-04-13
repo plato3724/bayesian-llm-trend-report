@@ -1,5 +1,108 @@
 {
   "article_id": "03f809cb0476",
-  "verification_status": "not_started",
-  "items": []
+  "verification_status": "completed",
+  "verified_at": "2026-04-13T13:41:24+00:00",
+  "items": [
+    {
+      "claim_id": "steve_yegge_productivity_claim_10x_100x",
+      "hypothesis_id": "software_engineering_shifts_to_orchestration_and_testing",
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://mp.weixin.qq.com/s/z6ZXj_p6Z9fIvFifkAvP9A",
+      "source_title": "YC内部AI架构曝光！YC总裁Garry亲证：比谷歌员工效率高1000倍的秘密，不在模型，而在“Harness”",
+      "source_trust": "weak",
+      "evidence_direction": "support",
+      "evidence_strength": "slight",
+      "assessment": "文章正文明确陈述了 Steve Yegge 的这句生产力对比，并称 Garry Tan 也转述并认可这一判断，因此可以确认“文章确实声称过这件事”。但当前没有提供 X 帖子、访谈原文或其他一手来源，source_context 也为空，所以无法把该数字主张交叉核验到原始出处，只能定为部分验证。该说法若为真，方向上支持软件工程重心从纯实现转向更高层编排与代理使用，但这是强烈修辞性的倍数断言，且缺少主来源，因此仅给弱信任、轻微支持。"
+    },
+    {
+      "claim_id": "steve_yegge_productivity_claim_1000x_vs_2005_google",
+      "hypothesis_id": "software_engineering_shifts_to_orchestration_and_testing",
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://mp.weixin.qq.com/s/z6ZXj_p6Z9fIvFifkAvP9A",
+      "source_title": "YC内部AI架构曝光！YC总裁Garry亲证：比谷歌员工效率高1000倍的秘密，不在模型，而在“Harness”",
+      "source_trust": "weak",
+      "evidence_direction": "support",
+      "evidence_strength": "slight",
+      "assessment": "文章中清楚写到 Steve Yegge 认为，使用 AI 编程代理的人相较 2005 年谷歌员工生产效率高约 1000 倍，因此对“文章是否作此陈述”可做文章级确认。但该数字异常夸张，且没有一手来源链接可供核查，source_context 也没有任何辅助材料，所以只能给部分验证而不能视为已证实事实。作为假说证据，它大体支持软件工程价值向代理编排和高层判断迁移，但因缺少原始出处与可重复测量依据，只应作轻微支持。"
+    },
+    {
+      "claim_id": "garry_tan_harness_not_model",
+      "hypothesis_id": "agent_harness_decoupling",
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://mp.weixin.qq.com/s/z6ZXj_p6Z9fIvFifkAvP9A",
+      "source_title": "YC内部AI架构曝光！YC总裁Garry亲证：比谷歌员工效率高1000倍的秘密，不在模型，而在“Harness”",
+      "source_trust": "weak",
+      "evidence_direction": "support",
+      "evidence_strength": "moderate",
+      "assessment": "文中反复明确归纳 Garry Tan 的核心观点：高倍生产力的秘密不在底层模型，而在包裹模型的 harness。这一归纳在文章内部是一致的，因此可部分验证为文章准确转述了该观点。但由于没有提供 Garry Tan 的原帖或演讲原文，仍无法交叉核验其语境和准确措辞，所以不宜给到完全验证。该内容与 agent_harness_decoupling 假说高度同域且概念空间一致，直接支持“价值从单体 chat loop 转向 harness/runtime 架构层”的判断，不过考虑其来源仍是二手转述，证据强度以中等为宜。"
+    },
+    {
+      "claim_id": "harness_provides_context_and_reduces_noise",
+      "hypothesis_id": "token_efficiency_as_architecture",
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://mp.weixin.qq.com/s/z6ZXj_p6Z9fIvFifkAvP9A",
+      "source_title": "YC内部AI架构曝光！YC总裁Garry亲证：比谷歌员工效率高1000倍的秘密，不在模型，而在“Harness”",
+      "source_trust": "weak",
+      "evidence_direction": "support",
+      "evidence_strength": "moderate",
+      "assessment": "文章列举了实时仓库上下文、提示缓存、专用工具、冗余最小化、结构化会话记忆和并行子代理，并明确解释这些机制的作用不是“让模型更聪明”，而是“在正确时间提供正确上下文并减少噪音”。这使该技术性概括在文章层面可以成立，但没有原始技术文档或源码上下文来核实这些设计是否准确描述 Claude Code 或 Garry Tan 的原始论点，因此只能算部分验证。就假说映射而言，它更直接落在 token_efficiency_as_architecture：重点是通过架构设计减少无效上下文和噪音，而不是单纯扩窗，因此提供中等支持。"
+    },
+    {
+      "claim_id": "thin_shell_fat_skills_architecture",
+      "hypothesis_id": "agent_harness_decoupling",
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://mp.weixin.qq.com/s/z6ZXj_p6Z9fIvFifkAvP9A",
+      "source_title": "YC内部AI架构曝光！YC总裁Garry亲证：比谷歌员工效率高1000倍的秘密，不在模型，而在“Harness”",
+      "source_trust": "weak",
+      "evidence_direction": "support",
+      "evidence_strength": "moderate",
+      "assessment": "文章明确把 Garry Tan 的架构口号总结为“瘦外壳 + 胖技能”，并进一步解释 harness 仅负责调度与管理，Skills 承担丰富、可复用的过程知识。该表述在文内具有高度一致性，所以文章层面的转述可以部分成立；但缺少 Garry Tan 原始帖子、演讲或文档链接，不能确认是否存在转译或抽象过度，因此不宜给完全验证。该主张与 agent_harness_decoupling 高度一致，直接支持把价值和复杂性从运行壳层迁移到外部化技能层的架构趋势。"
+    },
+    {
+      "claim_id": "resolver_loads_context_on_demand",
+      "hypothesis_id": "structured_external_memory",
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://mp.weixin.qq.com/s/z6ZXj_p6Z9fIvFifkAvP9A",
+      "source_title": "YC内部AI架构曝光！YC总裁Garry亲证：比谷歌员工效率高1000倍的秘密，不在模型，而在“Harness”",
+      "source_trust": "weak",
+      "evidence_direction": "support",
+      "evidence_strength": "moderate",
+      "assessment": "文中对 Resolver 的描述相当具体：它作为上下文路由表，根据任务类型按需加载文档，以避免把所有信息直接塞进上下文窗口。由于文章内部提供了作用机制和例子，因此可以部分验证这确实是文章所述方法的一部分；但因为没有任何一手源码、产品文档或原帖支撑，无法确认该机制在现实系统中的准确实现程度。该说法更贴近 structured_external_memory，因为核心不是单纯省 token，而是把知识外部化、按条件读取和查询式调入，因此可作为中等支持。"
+    },
+    {
+      "claim_id": "claude_md_reduced_from_20000_to_200_lines",
+      "hypothesis_id": "token_efficiency_as_architecture",
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://mp.weixin.qq.com/s/z6ZXj_p6Z9fIvFifkAvP9A",
+      "source_title": "YC内部AI架构曝光！YC总裁Garry亲证：比谷歌员工效率高1000倍的秘密，不在模型，而在“Harness”",
+      "source_trust": "weak",
+      "evidence_direction": "support",
+      "evidence_strength": "slight",
+      "assessment": "文章给出了一个具体轶事：Garry Tan 的 CLAUDE.md 曾膨胀到 20000 行，后经压缩变成约 200 行指针式内容。这在文章内表述清晰，因此可确认文章确有此说；但这是高度具体的个人经验数字，没有任何提供的一手来源可核验，也无 source_context 可支撑，所以只能给部分验证。该案例方向上支持将 token 效率视为架构问题而非局部提示词问题，不过它本质上是单一 anecdote，且无法核查原始语境，所以证据仅为轻微支持。"
+    },
+    {
+      "claim_id": "three_layer_architecture_skills_harness_tools",
+      "hypothesis_id": "agent_harness_decoupling",
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://mp.weixin.qq.com/s/z6ZXj_p6Z9fIvFifkAvP9A",
+      "source_title": "YC内部AI架构曝光！YC总裁Garry亲证：比谷歌员工效率高1000倍的秘密，不在模型，而在“Harness”",
+      "source_trust": "weak",
+      "evidence_direction": "support",
+      "evidence_strength": "moderate",
+      "assessment": "文章对三层架构的描述较完整：顶层是厚技能 Markdown 流程，中间是约 200 行的薄 CLI harness，底层是确定性工具与应用。这种结构性陈述在文章内前后呼应，说明该总结至少忠实于作者当前叙述框架；但缺少外部主来源、技术文档或代码资料，无法确认其是否为 Garry Tan 或相关系统的精确原始定义，因此仍只是部分验证。概念上它直接支持 agent_harness_decoupling，因为核心就是把智能性与业务知识上移到 skills，把执行可靠性下沉到确定性工具，并保持中间 runtime/harness 解耦而轻薄。"
+    }
+  ],
+  "approval_ref": {
+    "approver": "human:github/plato3724",
+    "decision": "human_approved",
+    "timestamp": "2026-04-13T13:34:35+00:00"
+  }
 }
