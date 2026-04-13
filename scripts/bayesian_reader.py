@@ -3481,6 +3481,86 @@ _CANDIDATE_STOPWORDS = {
 CANDIDATE_VISIBLE_STATUSES = {"observed", "emerging"}
 CANDIDATE_TERMINAL_STATUSES = {"promoted", "rejected"}
 CANDIDATE_REVIEWABLE_STATUSES = CANDIDATE_VISIBLE_STATUSES
+CANDIDATE_MIN_SUPPORT_COUNT = 3
+CANDIDATE_MIN_ARTICLE_COUNT = 2
+CANDIDATE_MIN_SOURCE_DIVERSITY = 2
+
+CANDIDATE_THEME_LIBRARY: dict[str, dict[str, Any]] = {
+    "medical_vertical_semantic_alignment": {
+        "statement": "医疗垂直视觉语言模型正在从通用图文对齐转向强领域语义对齐与专用数据资源驱动。",
+        "rationale_template": "多篇文章中的未映射证据都在强调医疗垂直场景里的专用数据集、语义软标签、异质关系建模和临床语义对齐，这比“某个项目发布了”更像同一类方法论迁移。",
+        "theory": "如果这条候选成立，说明多模态模型在医疗等高语义密度行业里，竞争焦点会从通用图文预训练迁移到更强的领域语义约束、结构化关系建模和专用数据闭环。那时真正有价值的不是“把医学图像也喂给通用 VLM”，而是让模型在临床语义空间里建立稳定对齐。",
+        "cluster_signal_template": "以 {top_keyword} 为代表的证据显示，医疗垂直多模态系统开始依赖专用数据和更强领域语义对齐，而不是沿用通用图文预训练范式。",
+        "cluster_rationale_template": "这里的关键信号不是单个项目存在，而是数据集建设、语义软标签和结构化临床关系建模被同时拉进同一条方法链。",
+        "theme_keywords": ["医疗", "超声", "语义对齐", "专用数据", "垂直VLM"],
+        "match_keywords": [
+            "ultrasound",
+            "clinical",
+            "semantic",
+            "image-text",
+            "graph encoder",
+            "soft labels",
+            "diagnostic",
+            "medical",
+        ],
+        "min_hits": 2,
+    },
+    "embodied_hardware_stack_productization": {
+        "statement": "具身硬件正在把灵巧手本体、触觉感知、仿真适配和数据采集栈一起产品化，而不是只卖单点部件。",
+        "rationale_template": "这类未映射证据反复指向的不是单一硬件参数，而是具身硬件开始把本体设计、触觉、仿真平台兼容和采数链路打包成完整交付栈。",
+        "theory": "如果这条候选成立，具身领域下一阶段的竞争将不只发生在机械结构或单个传感器指标上，而会转向谁能把硬件、感知、仿真和数据回流组成更完整的训练闭环。产品化边界会从“部件能力”上移到“整套具身基础设施能力”。",
+        "cluster_signal_template": "以 {top_keyword} 为代表的证据显示，具身硬件正在从单点部件能力转向硬件、触觉、仿真和采数链路一体化交付。",
+        "cluster_rationale_template": "这些事实放在一起时，强调的不再是某个机械参数，而是整套具身训练基础设施开始被当成产品边界来定义。",
+        "theme_keywords": ["具身硬件", "触觉", "仿真适配", "数据采集", "产品化"],
+        "match_keywords": [
+            "tactile",
+            "visuotactile",
+            "teleoperation",
+            "simulation",
+            "mujoco",
+            "isaac",
+            "omniverse",
+            "dexterous",
+            "direct-drive",
+        ],
+        "min_hits": 2,
+    },
+    "browser_rendering_runtime_shift": {
+        "statement": "浏览器前端渲染正在从传统 DOM 路径外溢到更靠近图形运行时的混合渲染栈。",
+        "rationale_template": "这些未映射证据共同描述的不是某个前端技巧，而是浏览器开始把 HTML 能力延伸到 canvas/图形运行时边界，意味着渲染模型本身在发生变化。",
+        "theory": "如果这条候选成立，未来前端视觉体验的差异化会越来越多地来自浏览器图形运行时和渲染管线层，而不是单纯的组件层样式堆叠。Web 页面会更像一个可编排图形场景，而不是传统 DOM 树的静态排布。",
+        "cluster_signal_template": "以 {top_keyword} 为代表的证据显示，浏览器渲染能力正在突破传统 DOM 边界，开始向更接近图形运行时的混合模型延伸。",
+        "cluster_rationale_template": "这些信号共同指向的是渲染模型在变化，而不是某个前端技巧本身在流行。",
+        "theme_keywords": ["浏览器运行时", "混合渲染", "Canvas", "前端图形化"],
+        "match_keywords": [
+            "html-in-canvas",
+            "canvas",
+            "browser",
+            "rendering",
+            "chrome flag",
+            "wicg",
+            "draw-element",
+        ],
+        "min_hits": 2,
+    },
+    "open_embodied_release_practice": {
+        "statement": "具身模型发布正在从单纯论文公开转向代码、权重和训练要素一并开放的完整 release practice。",
+        "rationale_template": "这类未映射证据指向的不是单个模型能力，而是具身方向开始把开放发布当成可复现和可落地的一部分工程规范。",
+        "theory": "如果这条候选成立，具身领域的竞争门槛会越来越体现为谁能提供完整可复现的 release stack，包括权重、代码、训练细节和部署路径，而不只是论文中的模型指标。",
+        "cluster_signal_template": "以 {top_keyword} 为代表的证据显示，具身方向开始把代码、权重和训练要素一并开放，形成更完整的 release practice。",
+        "cluster_rationale_template": "这里的重点不是某个模型开源了，而是开放交付本身正在变成具身项目的工程规范。",
+        "theme_keywords": ["具身开源", "权重开放", "可复现", "release practice"],
+        "match_keywords": [
+            "fully open source",
+            "weights",
+            "open source",
+            "release page",
+            "training data",
+            "code",
+        ],
+        "min_hits": 2,
+    },
+}
 
 
 def slugify(value: str) -> str:
@@ -3578,24 +3658,107 @@ def fallback_candidate_cluster_label(claim_text: str, claim_id: str | None = Non
     return "unmapped_signal"
 
 
-def candidate_statement(domain: str, top_keyword: str) -> str:
-    return f"围绕 {top_keyword} 的一组重复出现、已核实但未映射证据，可能代表一个新的 {domain} 趋势簇。"
+def candidate_theme_matches(text: str) -> dict[str, int]:
+    lower = text.lower()
+    matches: dict[str, int] = {}
+    for theme_id, config in CANDIDATE_THEME_LIBRARY.items():
+        keywords = config.get("match_keywords", [])
+        hit_count = sum(1 for keyword in keywords if keyword in lower)
+        if hit_count >= int(config.get("min_hits", 2)):
+            matches[theme_id] = hit_count
+    return matches
+
+
+def candidate_theme_keywords(theme_id: str) -> list[str]:
+    config = CANDIDATE_THEME_LIBRARY.get(theme_id, {})
+    keywords = config.get("theme_keywords", [])
+    return keywords[:5] if isinstance(keywords, list) else []
+
+
+def candidate_primary_theme(theme_scores: dict[str, int]) -> str | None:
+    if not theme_scores:
+        return None
+    return max(theme_scores.items(), key=lambda entry: entry[1])[0]
+
+
+def candidate_statement(theme_id: str, domain: str, fallback_keyword: str) -> str:
+    config = CANDIDATE_THEME_LIBRARY.get(theme_id)
+    if config and config.get("statement"):
+        return str(config["statement"])
+    return f"{domain} 方向围绕 {fallback_keyword} 的未映射证据正在汇成一个新的趋势命题。"
+
+
+def candidate_cluster_statement(theme_id: str | None, top_keyword: str, domain: str) -> str:
+    if theme_id:
+        config = CANDIDATE_THEME_LIBRARY.get(theme_id, {})
+        template = config.get("cluster_signal_template")
+        if template:
+            return str(template).format(top_keyword=top_keyword)
+    return f"以 {top_keyword} 为代表的一组 {domain} 未映射证据，显示这里可能存在尚未被正式 hypothesis 吸收的结构性变化。"
+
+
+def candidate_cluster_rationale(
+    *,
+    theme_id: str | None,
+    support_count: int,
+    article_count: int,
+    source_diversity: int,
+) -> str:
+    if theme_id:
+        config = CANDIDATE_THEME_LIBRARY.get(theme_id, {})
+        template = config.get("cluster_rationale_template")
+        if template:
+            base = str(template)
+        else:
+            base = "这些证据共享同一类更高层变化方向。"
+    else:
+        base = "这些证据虽然尚未能并入现有 hypothesis，但它们之间已经出现了初步的内容共性。"
+    return f"{base} 当前簇内已有 {article_count} 篇文章、{support_count} 条证据、{source_diversity} 个来源。"
 
 
 def candidate_rationale(
     *,
+    theme_id: str,
     article_count: int,
     support_count: int,
-    seed_keywords: list[str],
+    source_cluster_labels: list[str],
+    source_cluster_statements: list[str] | None = None,
 ) -> str:
-    keyword_text = "、".join(seed_keywords[:3]) if seed_keywords else "同一组反复出现的主题"
+    config = CANDIDATE_THEME_LIBRARY.get(theme_id, {})
+    base = str(config.get("rationale_template", "这些未映射证据在更高层上共享同一个变化方向。"))
+    cluster_text = "、".join(source_cluster_labels[:3]) if source_cluster_labels else "多个来源簇"
+    statement_text = ""
+    if source_cluster_statements:
+        statement_text = " ".join(source_cluster_statements[:2])
+    if statement_text:
+        return (
+            f"{base} {statement_text} 当前已汇聚 {article_count} 篇文章、{support_count} 条证据，"
+            f"底层来源簇包括 {cluster_text}。"
+        )
+    return f"{base} 当前已汇聚 {article_count} 篇文章、{support_count} 条证据，底层来源簇包括 {cluster_text}。"
+
+
+def candidate_theory(theme_id: str) -> str:
+    config = CANDIDATE_THEME_LIBRARY.get(theme_id, {})
+    return str(config.get("theory", ""))
+
+
+def candidate_confidence_note(article_count: int, source_diversity: int) -> str:
+    if article_count >= 3 and source_diversity >= 3:
+        return "该候选已具备跨文章、跨来源的初步稳定性，适合进入优先评审。"
+    return "该候选已跨过单篇文章层，但当前仍属于早期信号，适合继续观察或人工审阅。"
+
+
+def candidate_sort_key(item: dict[str, Any]) -> tuple[int, int, int, str]:
     return (
-        f"当前已有 {article_count} 篇文章、{support_count} 条已核实证据反复指向 {keyword_text}，"
-        "但这些证据尚未被现有 hypothesis 吸收，因此先作为候选趋势持续观察。"
+        int(item.get("source_diversity", 0)),
+        int(item.get("article_count", 0)),
+        int(item.get("support_count", 0)),
+        item.get("last_supported_at") or "",
     )
 
 
-def candidate_sort_key(item: dict[str, Any]) -> tuple[int, int, str]:
+def candidate_cluster_sort_key(item: dict[str, Any]) -> tuple[int, int, str]:
     return (
         int(item.get("article_count", 0)),
         int(item.get("support_count", 0)),
@@ -3607,13 +3770,14 @@ def load_candidate_hypotheses_doc() -> dict[str, Any]:
     bootstrap_state_files()
     return read_json(
         CANDIDATE_HYPOTHESES_PATH,
-        default={"created_at": utc_now(), "last_built_at": None, "candidates": []},
+        default={"created_at": utc_now(), "last_built_at": None, "clusters": [], "candidates": []},
     )
 
 
 def write_candidate_hypotheses_doc(payload: dict[str, Any]) -> None:
     payload.setdefault("created_at", utc_now())
     payload.setdefault("last_built_at", None)
+    payload.setdefault("clusters", [])
     payload.setdefault("candidates", [])
     write_json(CANDIDATE_HYPOTHESES_PATH, payload)
 
@@ -3669,7 +3833,7 @@ def build_candidate_hypotheses(records: list[dict[str, Any]] | None = None) -> d
         if isinstance(item, dict) and isinstance(item.get("id"), str)
     }
 
-    clusters: dict[tuple[str, str], dict[str, Any]] = {}
+    base_clusters: dict[tuple[str, str], dict[str, Any]] = {}
     for record in article_records:
         article_id = record.get("article_id")
         if not article_id:
@@ -3714,7 +3878,7 @@ def build_candidate_hypotheses(records: list[dict[str, Any]] | None = None) -> d
                 else fallback_candidate_cluster_label(claim_text, claim_id)
             )
             cluster_key = (domain, cluster_label)
-            cluster = clusters.setdefault(
+            cluster = base_clusters.setdefault(
                 cluster_key,
                 {
                     "domain": domain,
@@ -3760,42 +3924,155 @@ def build_candidate_hypotheses(records: list[dict[str, Any]] | None = None) -> d
             ):
                 cluster["last_supported_at"] = verified_at
 
-    candidates: list[dict[str, Any]] = []
-    for cluster in clusters.values():
+    cluster_rows: list[dict[str, Any]] = []
+    theme_groups: dict[tuple[str, str], dict[str, Any]] = {}
+    for cluster in base_clusters.values():
         support_count = len(cluster["evidence_items"])
         if support_count < 2:
             continue
 
         article_count = len(cluster["support_article_ids"])
+        source_diversity = len(cluster["source_urls"])
         seed_keywords = cluster["seed_keywords"][:5]
         top_keyword = seed_keywords[0] if seed_keywords else cluster["cluster_label"].replace("_", " ")
-        status = "emerging" if article_count >= 2 else "observed"
-        candidate_id = f"candidate_{cluster['domain']}_{slugify(top_keyword)}"
-        candidate_id = candidate_id[:80]
-        existing_item = existing_by_id.get(candidate_id)
-        if existing_item and existing_item.get("status") in CANDIDATE_TERMINAL_STATUSES:
-            candidates.append(dict(existing_item))
-            continue
-        generated_item = {
-            "id": candidate_id,
+        theme_scores: dict[str, int] = {}
+        for item in cluster["evidence_items"]:
+            text = " ".join(
+                [
+                    item.get("claim_text") or "",
+                    item.get("assessment") or "",
+                    item.get("source_title") or "",
+                ]
+            )
+            for theme_id, score in candidate_theme_matches(text).items():
+                theme_scores[theme_id] = theme_scores.get(theme_id, 0) + score
+
+        matched_themes = [
+            theme_id
+            for theme_id, _score in sorted(theme_scores.items(), key=lambda entry: entry[1], reverse=True)
+        ]
+        primary_theme = candidate_primary_theme(theme_scores)
+        cluster_row = {
+            "id": f"cluster_{cluster['domain']}_{slugify(cluster['cluster_label'])}"[:80],
             "domain": cluster["domain"],
-            "status": status,
-            "statement": candidate_statement(cluster["domain"], top_keyword),
-            "rationale": candidate_rationale(
-                article_count=article_count,
-                support_count=support_count,
-                seed_keywords=seed_keywords,
-            ),
-            "theory": "",
+            "cluster_label": cluster["cluster_label"],
+            "top_keyword": top_keyword,
             "seed_keywords": seed_keywords,
             "support_article_ids": cluster["support_article_ids"],
             "support_claim_ids": cluster["support_claim_ids"],
             "support_count": support_count,
             "article_count": article_count,
-            "source_diversity": len(cluster["source_urls"]),
+            "source_diversity": source_diversity,
+            "matched_themes": matched_themes,
+            "primary_theme": primary_theme,
+            "theme_scores": theme_scores,
+            "abstract_statement": candidate_cluster_statement(primary_theme, top_keyword, cluster["domain"]),
+            "abstract_rationale": candidate_cluster_rationale(
+                theme_id=primary_theme,
+                support_count=support_count,
+                article_count=article_count,
+                source_diversity=source_diversity,
+            ),
+            "theme_keywords": candidate_theme_keywords(primary_theme) if primary_theme else seed_keywords,
             "last_supported_at": cluster["last_supported_at"],
+            "source_urls": cluster["source_urls"],
             "evidence_items": sorted(
                 cluster["evidence_items"],
+                key=lambda item: (item.get("verified_at") or "", item.get("article_id") or ""),
+                reverse=True,
+            ),
+        }
+        cluster_rows.append(cluster_row)
+
+        for theme_id in matched_themes:
+            group_key = (cluster["domain"], theme_id)
+            group = theme_groups.setdefault(
+                group_key,
+                {
+                    "domain": cluster["domain"],
+                    "theme_id": theme_id,
+                    "source_cluster_ids": [],
+                    "source_cluster_labels": [],
+                    "source_cluster_statements": [],
+                    "support_article_ids": [],
+                    "support_claim_ids": [],
+                    "source_urls": [],
+                    "evidence_items": [],
+                    "last_supported_at": None,
+                    "theme_keywords": candidate_theme_keywords(theme_id),
+                },
+            )
+            if cluster_row["id"] not in group["source_cluster_ids"]:
+                group["source_cluster_ids"].append(cluster_row["id"])
+            if top_keyword not in group["source_cluster_labels"]:
+                group["source_cluster_labels"].append(top_keyword)
+            cluster_statement = cluster_row["abstract_statement"]
+            if cluster_statement not in group["source_cluster_statements"]:
+                group["source_cluster_statements"].append(cluster_statement)
+            for article_id in cluster["support_article_ids"]:
+                if article_id not in group["support_article_ids"]:
+                    group["support_article_ids"].append(article_id)
+            for claim_id in cluster["support_claim_ids"]:
+                if claim_id not in group["support_claim_ids"]:
+                    group["support_claim_ids"].append(claim_id)
+            for source_url in cluster["source_urls"]:
+                if source_url and source_url not in group["source_urls"]:
+                    group["source_urls"].append(source_url)
+            group["evidence_items"].extend(cluster_row["evidence_items"])
+            last_supported_at = cluster["last_supported_at"]
+            if last_supported_at and (
+                group["last_supported_at"] is None or last_supported_at > group["last_supported_at"]
+            ):
+                group["last_supported_at"] = last_supported_at
+
+    candidates: list[dict[str, Any]] = []
+    for group in theme_groups.values():
+        support_count = len(group["evidence_items"])
+        article_count = len(group["support_article_ids"])
+        source_diversity = len(group["source_urls"])
+        if support_count < CANDIDATE_MIN_SUPPORT_COUNT:
+            continue
+        if article_count < CANDIDATE_MIN_ARTICLE_COUNT:
+            continue
+        if source_diversity < CANDIDATE_MIN_SOURCE_DIVERSITY:
+            continue
+
+        theme_id = group["theme_id"]
+        status = "emerging" if article_count >= 3 and source_diversity >= 3 else "observed"
+        candidate_id = f"candidate_{group['domain']}_{theme_id}"[:80]
+        existing_item = existing_by_id.get(candidate_id)
+        if existing_item and existing_item.get("status") in CANDIDATE_TERMINAL_STATUSES:
+            candidates.append(dict(existing_item))
+            continue
+
+        fallback_keyword = group["source_cluster_labels"][0] if group["source_cluster_labels"] else theme_id
+        generated_item = {
+            "id": candidate_id,
+            "domain": group["domain"],
+            "status": status,
+            "theme_id": theme_id,
+            "statement": candidate_statement(theme_id, group["domain"], fallback_keyword),
+            "rationale": candidate_rationale(
+                theme_id=theme_id,
+                article_count=article_count,
+                support_count=support_count,
+                source_cluster_labels=group["source_cluster_labels"],
+                source_cluster_statements=group["source_cluster_statements"],
+            ),
+            "theory": candidate_theory(theme_id),
+            "theme_keywords": group["theme_keywords"],
+            "source_cluster_ids": group["source_cluster_ids"],
+            "source_cluster_labels": group["source_cluster_labels"],
+            "source_cluster_statements": group["source_cluster_statements"],
+            "support_article_ids": group["support_article_ids"],
+            "support_claim_ids": group["support_claim_ids"],
+            "support_count": support_count,
+            "article_count": article_count,
+            "source_diversity": source_diversity,
+            "last_supported_at": group["last_supported_at"],
+            "confidence_note": candidate_confidence_note(article_count, source_diversity),
+            "evidence_items": sorted(
+                group["evidence_items"],
                 key=lambda item: (item.get("verified_at") or "", item.get("article_id") or ""),
                 reverse=True,
             ),
@@ -3808,6 +4085,7 @@ def build_candidate_hypotheses(records: list[dict[str, Any]] | None = None) -> d
         candidates.append(generated_item)
 
     candidates.sort(key=candidate_sort_key, reverse=True)
+    cluster_rows.sort(key=candidate_cluster_sort_key, reverse=True)
     seen_ids = {
         item.get("id")
         for item in candidates
@@ -3827,6 +4105,7 @@ def build_candidate_hypotheses(records: list[dict[str, Any]] | None = None) -> d
     candidates.sort(key=candidate_sort_key, reverse=True)
     payload = existing_payload
     payload["last_built_at"] = utc_now()
+    payload["clusters"] = cluster_rows
     payload["candidates"] = candidates
     write_candidate_hypotheses_doc(payload)
 
@@ -3840,13 +4119,16 @@ def build_candidate_hypotheses(records: list[dict[str, Any]] | None = None) -> d
         {
             "timestamp": utc_now(),
             "event": "build_candidate_hypotheses",
+            "cluster_count": len(cluster_rows),
             "candidate_count": visible_count,
             "candidate_total_count": len(candidates),
         },
     )
     return {
         "candidate_count": visible_count,
+        "cluster_count": len(cluster_rows),
         "candidate_total_count": len(candidates),
+        "clusters": cluster_rows,
         "candidates": candidates,
     }
 
@@ -3882,39 +4164,95 @@ def build_candidate_card_html(
     *,
     article_title_map: dict[str, str],
 ) -> str:
-    seed_keywords = candidate.get("seed_keywords") or []
+    theme_keywords = candidate.get("theme_keywords") or candidate.get("seed_keywords") or []
     keywords_html = (
         "<ul class='pill-list'>"
-        + "".join(f"<li>{html_escape(keyword)}</li>" for keyword in seed_keywords)
+        + "".join(f"<li>{html_escape(keyword)}</li>" for keyword in theme_keywords)
         + "</ul>"
-        if seed_keywords
+        if theme_keywords
         else "<p class='muted'>暂无关键词</p>"
     )
     evidence_rows = build_candidate_evidence_rows(candidate, article_title_map=article_title_map)
     evidence_html = "".join(evidence_rows) if evidence_rows else "<p class='muted'>暂无证据条目</p>"
     status = candidate.get("status", "observed")
     status_label = "跨文章浮现" if status == "emerging" else "持续观察"
-    return (
-        "<article class='candidate-card'>"
-        f"<p class='candidate-status'>{html_escape(status_label)}</p>"
-        f"<h3>{html_escape(candidate.get('statement', ''))}</h3>"
-        f"<p class='muted'>candidate_id: <code>{html_escape(candidate.get('id', ''))}</code></p>"
-        f"<p>{html_escape(candidate.get('rationale', ''))}</p>"
-        "<div class='candidate-metrics'>"
-        f"<span>支持文章: {html_escape(candidate.get('article_count', 0))}</span>"
-        f"<span>证据条数: {html_escape(candidate.get('support_count', 0))}</span>"
-        f"<span>来源多样性: {html_escape(candidate.get('source_diversity', 0))}</span>"
-        "</div>"
-        f"{keywords_html}"
-        "<details class='hyp-evidence'>"
-        f"<summary>查看候选证据 ({html_escape(candidate.get('support_count', 0))})</summary>"
-        "<div class='hyp-evidence-body'>"
-        "<p class='muted'>这些证据已核实，但尚未并入正式趋势假设，也不参与当前后验计算。</p>"
-        f"{evidence_html}"
-        "</div>"
-        "</details>"
-        "</article>"
+    source_clusters = candidate.get("source_cluster_labels") or []
+    source_cluster_text = "、".join(str(item) for item in source_clusters[:4]) if source_clusters else "暂无"
+    confidence_note = candidate.get("confidence_note") or ""
+    theory = candidate.get("theory") or ""
+    parts = [
+        "<article class='candidate-card'>",
+        f"<p class='candidate-status'>{html_escape(status_label)}</p>",
+        f"<h3>{html_escape(candidate.get('statement', ''))}</h3>",
+        f"<p class='muted'>candidate_id: <code>{html_escape(candidate.get('id', ''))}</code></p>",
+        f"<p>{html_escape(candidate.get('rationale', ''))}</p>",
+        f"<p class='muted'>来源簇: {html_escape(source_cluster_text)}</p>",
+        "<div class='candidate-metrics'>",
+        f"<span>支持文章: {html_escape(candidate.get('article_count', 0))}</span>",
+        f"<span>证据条数: {html_escape(candidate.get('support_count', 0))}</span>",
+        f"<span>来源多样性: {html_escape(candidate.get('source_diversity', 0))}</span>",
+        "</div>",
+        keywords_html,
+    ]
+    if confidence_note:
+        parts.append(f"<p class='muted'>{html_escape(confidence_note)}</p>")
+    if theory:
+        parts.append(f"<p>{html_escape(theory)}</p>")
+    parts.extend(
+        [
+            "<details class='hyp-evidence'>",
+            f"<summary>查看候选证据 ({html_escape(candidate.get('support_count', 0))})</summary>",
+            "<div class='hyp-evidence-body'>",
+            "<p class='muted'>这些证据已被归纳成一个候选趋势命题，但尚未并入正式 hypothesis，也不参与当前后验计算。</p>",
+            evidence_html,
+            "</div>",
+            "</details>",
+            "</article>",
+        ]
     )
+    return "".join(parts)
+
+
+def build_cluster_card_html(
+    cluster: dict[str, Any],
+    *,
+    article_title_map: dict[str, str],
+) -> str:
+    theme_keywords = cluster.get("theme_keywords") or cluster.get("seed_keywords") or []
+    keywords_html = (
+        "<ul class='pill-list'>"
+        + "".join(f"<li>{html_escape(keyword)}</li>" for keyword in theme_keywords)
+        + "</ul>"
+        if theme_keywords
+        else "<p class='muted'>暂无关键词</p>"
+    )
+    evidence_rows = build_candidate_evidence_rows(cluster, article_title_map=article_title_map)
+    evidence_html = "".join(evidence_rows) if evidence_rows else "<p class='muted'>暂无证据条目</p>"
+    matched_themes = cluster.get("matched_themes") or []
+    theme_text = "、".join(str(item) for item in matched_themes[:3]) if matched_themes else "未识别稳定主题"
+    parts = [
+        "<article class='candidate-card'>",
+        "<p class='candidate-status'>潜在主题簇</p>",
+        f"<h3>{html_escape(cluster.get('abstract_statement', ''))}</h3>",
+        f"<p class='muted'>cluster_id: <code>{html_escape(cluster.get('id', ''))}</code></p>",
+        f"<p>{html_escape(cluster.get('abstract_rationale', ''))}</p>",
+        f"<p class='muted'>主题识别: {html_escape(theme_text)}</p>",
+        "<div class='candidate-metrics'>",
+        f"<span>支持文章: {html_escape(cluster.get('article_count', 0))}</span>",
+        f"<span>证据条数: {html_escape(cluster.get('support_count', 0))}</span>",
+        f"<span>来源多样性: {html_escape(cluster.get('source_diversity', 0))}</span>",
+        "</div>",
+        keywords_html,
+        "<details class='hyp-evidence'>",
+        f"<summary>查看底层证据簇 ({html_escape(cluster.get('support_count', 0))})</summary>",
+        "<div class='hyp-evidence-body'>",
+        "<p class='muted'>这些内容已经出现清晰的主题方向，但目前仍停留在单篇或弱独立性的早期阶段，因此只展示为潜在主题簇。</p>",
+        evidence_html,
+        "</div>",
+        "</details>",
+        "</article>",
+    ]
+    return "".join(parts)
 
 
 def build_hypothesis_evidence_rows(
@@ -4316,6 +4654,15 @@ def build_report_html() -> str:
         key=candidate_sort_key,
         reverse=True,
     )
+    potential_clusters = sorted(
+        [
+            item
+            for item in candidate_doc.get("clusters", [])
+            if isinstance(item, dict) and item.get("primary_theme")
+        ],
+        key=candidate_cluster_sort_key,
+        reverse=True,
+    )
     tool_index = build_tool_index(
         records,
         existing_items=synthesis.get("tool_index", []),
@@ -4338,6 +4685,13 @@ def build_report_html() -> str:
             article_title_map=article_title_map,
         )
         for item in candidate_hypotheses
+    )
+    cluster_cards = "".join(
+        build_cluster_card_html(
+            item,
+            article_title_map=article_title_map,
+        )
+        for item in potential_clusters
     )
 
     narrative_html = "".join(
@@ -4402,6 +4756,7 @@ def build_report_html() -> str:
         ("排除文章", len(synthesis.get("excluded_articles", []))),
         ("活跃趋势", len(active_hypotheses)),
         ("候选假设", len(candidate_hypotheses)),
+        ("潜在主题簇", len(potential_clusters)),
         ("最近更新", synthesis.get("last_recomputed_at", "N/A")),
     ]
     stats_html = "".join(
@@ -4848,6 +5203,7 @@ def build_report_html() -> str:
       <div class="nav-row">
         <a href="#trends">核心趋势</a>
         <a href="#candidates">候选假设</a>
+        <a href="#clusters">潜在主题簇</a>
         <a href="#narrative">本轮结论</a>
         <a href="#tools">工具索引</a>
         <a href="#pending">待处理</a>
@@ -4864,8 +5220,14 @@ def build_report_html() -> str:
 
     <section class="section" id="candidates">
       <h2>候选假设</h2>
-      <p class="muted">这里汇总的是“已核实、但尚未映射到正式 hypothesis”的重复证据簇。它们不会进入当前后验计算，只用于提示框架可能需要生长。</p>
+      <p class="muted">这里展示的是从多篇、相对独立的未映射证据中抽象出来的候选趋势命题。它们不会进入当前后验计算，只用于提示框架可能需要生长。</p>
       <div class="hypothesis-grid">{candidate_cards if candidate_cards else "<p class='muted'>暂无候选假设</p>"}</div>
+    </section>
+
+    <section class="section" id="clusters">
+      <h2>潜在主题簇</h2>
+      <p class="muted">这里展示的是已经出现明确主题方向、但尚未跨过 candidate 门槛的早期信号。它们通常仍偏单篇或弱独立性，因此先作为观察层，不进入 posterior，也不开放 promote/reject。</p>
+      <div class="hypothesis-grid">{cluster_cards if cluster_cards else "<p class='muted'>暂无潜在主题簇</p>"}</div>
     </section>
 
     <section class="section split" id="narrative">

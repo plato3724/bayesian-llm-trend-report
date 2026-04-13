@@ -1,14 +1,13 @@
 {
   "created_at": "2026-04-12T11:35:50+00:00",
-  "last_built_at": "2026-04-13T00:51:55+00:00",
-  "candidates": [
+  "last_built_at": "2026-04-13T07:32:15+00:00",
+  "candidates": [],
+  "clusters": [
     {
-      "id": "candidate_ai_us_365k",
+      "id": "cluster_ai_us_365k",
       "domain": "ai",
-      "status": "observed",
-      "statement": "围绕 US-365K 的一组重复出现、已核实但未映射证据，可能代表一个新的 ai 趋势簇。",
-      "rationale": "当前已有 1 篇文章、4 条已核实证据反复指向 US-365K、us-365k、365k，但这些证据尚未被现有 hypothesis 吸收，因此先作为候选趋势持续观察。",
-      "theory": "",
+      "cluster_label": "us_365k",
+      "top_keyword": "US-365K",
       "seed_keywords": [
         "US-365K",
         "us-365k",
@@ -28,7 +27,27 @@
       "support_count": 4,
       "article_count": 1,
       "source_diversity": 2,
+      "matched_themes": [
+        "medical_vertical_semantic_alignment"
+      ],
+      "primary_theme": "medical_vertical_semantic_alignment",
+      "theme_scores": {
+        "medical_vertical_semantic_alignment": 10
+      },
+      "abstract_statement": "以 US-365K 为代表的证据显示，医疗垂直多模态系统开始依赖专用数据和更强领域语义对齐，而不是沿用通用图文预训练范式。",
+      "abstract_rationale": "这里的关键信号不是单个项目存在，而是数据集建设、语义软标签和结构化临床关系建模被同时拉进同一条方法链。 当前簇内已有 1 篇文章、4 条证据、2 个来源。",
+      "theme_keywords": [
+        "医疗",
+        "超声",
+        "语义对齐",
+        "专用数据",
+        "垂直VLM"
+      ],
       "last_supported_at": "2026-04-12T09:08:20+00:00",
+      "source_urls": [
+        "http://arxiv.org/abs/2604.01749",
+        "https://github.com/ZJUDataIntelligence/Ultrasound-CLIP"
+      ],
       "evidence_items": [
         {
           "article_id": "7e6b7b4cfbf5",
@@ -77,12 +96,10 @@
       ]
     },
     {
-      "id": "candidate_ai_ultrasound_clip",
+      "id": "cluster_ai_ultrasound_clip",
       "domain": "ai",
-      "status": "observed",
-      "statement": "围绕 Ultrasound-CLIP 的一组重复出现、已核实但未映射证据，可能代表一个新的 ai 趋势簇。",
-      "rationale": "当前已有 1 篇文章、3 条已核实证据反复指向 Ultrasound-CLIP、ultrasound-clip、UDAF，但这些证据尚未被现有 hypothesis 吸收，因此先作为候选趋势持续观察。",
-      "theory": "",
+      "cluster_label": "ultrasound_clip",
+      "top_keyword": "Ultrasound-CLIP",
       "seed_keywords": [
         "Ultrasound-CLIP",
         "ultrasound-clip",
@@ -101,7 +118,26 @@
       "support_count": 3,
       "article_count": 1,
       "source_diversity": 1,
+      "matched_themes": [
+        "medical_vertical_semantic_alignment"
+      ],
+      "primary_theme": "medical_vertical_semantic_alignment",
+      "theme_scores": {
+        "medical_vertical_semantic_alignment": 12
+      },
+      "abstract_statement": "以 Ultrasound-CLIP 为代表的证据显示，医疗垂直多模态系统开始依赖专用数据和更强领域语义对齐，而不是沿用通用图文预训练范式。",
+      "abstract_rationale": "这里的关键信号不是单个项目存在，而是数据集建设、语义软标签和结构化临床关系建模被同时拉进同一条方法链。 当前簇内已有 1 篇文章、3 条证据、1 个来源。",
+      "theme_keywords": [
+        "医疗",
+        "超声",
+        "语义对齐",
+        "专用数据",
+        "垂直VLM"
+      ],
       "last_supported_at": "2026-04-12T09:08:20+00:00",
+      "source_urls": [
+        "http://arxiv.org/abs/2604.01749"
+      ],
       "evidence_items": [
         {
           "article_id": "7e6b7b4cfbf5",
@@ -139,12 +175,10 @@
       ]
     },
     {
-      "id": "candidate_ai_revo_3",
+      "id": "cluster_ai_revo_3",
       "domain": "ai",
-      "status": "observed",
-      "statement": "围绕 Revo 3 的一组重复出现、已核实但未映射证据，可能代表一个新的 ai 趋势簇。",
-      "rationale": "当前已有 1 篇文章、3 条已核实证据反复指向 Revo 3、dexterous、BrainCo，但这些证据尚未被现有 hypothesis 吸收，因此先作为候选趋势持续观察。",
-      "theory": "",
+      "cluster_label": "revo_3",
+      "top_keyword": "Revo 3",
       "seed_keywords": [
         "Revo 3",
         "dexterous",
@@ -163,7 +197,26 @@
       "support_count": 3,
       "article_count": 1,
       "source_diversity": 1,
+      "matched_themes": [
+        "embodied_hardware_stack_productization"
+      ],
+      "primary_theme": "embodied_hardware_stack_productization",
+      "theme_scores": {
+        "embodied_hardware_stack_productization": 5
+      },
+      "abstract_statement": "以 Revo 3 为代表的证据显示，具身硬件正在从单点部件能力转向硬件、触觉、仿真和采数链路一体化交付。",
+      "abstract_rationale": "这些事实放在一起时，强调的不再是某个机械参数，而是整套具身训练基础设施开始被当成产品边界来定义。 当前簇内已有 1 篇文章、3 条证据、1 个来源。",
+      "theme_keywords": [
+        "具身硬件",
+        "触觉",
+        "仿真适配",
+        "数据采集",
+        "产品化"
+      ],
       "last_supported_at": "2026-04-12T03:12:21+00:00",
+      "source_urls": [
+        "https://mp.weixin.qq.com/s/m1P0KXuGzgrS-D0K7Z1Bug"
+      ],
       "evidence_items": [
         {
           "article_id": "df7acb42e706",
@@ -201,12 +254,73 @@
       ]
     },
     {
-      "id": "candidate_ai_html_in_canvas",
+      "id": "cluster_ai_ai_hedge_fund",
       "domain": "ai",
-      "status": "observed",
-      "statement": "围绕 HTML-in-Canvas 的一组重复出现、已核实但未映射证据，可能代表一个新的 ai 趋势簇。",
-      "rationale": "当前已有 1 篇文章、2 条已核实证据反复指向 HTML-in-Canvas、html-in-canvas、Canvas，但这些证据尚未被现有 hypothesis 吸收，因此先作为候选趋势持续观察。",
-      "theory": "",
+      "cluster_label": "ai_hedge_fund",
+      "top_keyword": "AI Hedge Fund",
+      "seed_keywords": [
+        "AI Hedge Fund",
+        "Agent",
+        "hedge",
+        "fund",
+        "encodes"
+      ],
+      "support_article_ids": [
+        "d11e99337c97"
+      ],
+      "support_claim_ids": [
+        "ai_hedge_fund_encodes_investment_philosophy_into_agents",
+        "ai_hedge_fund_has_18_agents"
+      ],
+      "support_count": 2,
+      "article_count": 1,
+      "source_diversity": 1,
+      "matched_themes": [],
+      "primary_theme": null,
+      "theme_scores": {},
+      "abstract_statement": "以 AI Hedge Fund 为代表的一组 ai 未映射证据，显示这里可能存在尚未被正式 hypothesis 吸收的结构性变化。",
+      "abstract_rationale": "这些证据虽然尚未能并入现有 hypothesis，但它们之间已经出现了初步的内容共性。 当前簇内已有 1 篇文章、2 条证据、1 个来源。",
+      "theme_keywords": [
+        "AI Hedge Fund",
+        "Agent",
+        "hedge",
+        "fund",
+        "encodes"
+      ],
+      "last_supported_at": "2026-04-13T05:15:48+00:00",
+      "source_urls": [
+        "https://github.com/virattt/ai-hedge-fund"
+      ],
+      "evidence_items": [
+        {
+          "article_id": "d11e99337c97",
+          "claim_id": "ai_hedge_fund_encodes_investment_philosophy_into_agents",
+          "claim_type": "technique",
+          "status": "partially_verified",
+          "claim_text": "文章称，AI Hedge Fund 的核心理念是把投资哲学编码成 Agent，让散户获得“大师模型”。",
+          "assessment": "仓库 README 与项目结构通常可以直接支持其设计目标是以多位知名投资者风格和分析角色构成多智能体投资框架，因此“把投资哲学编码成 Agent”这一核心理念与项目公开描述基本一致。不过“让散户获得大师模型”属于文章的解释性包装与效果表述，不是可被主源精确验证的技术事实。故该 claim 的前半部分可核实，后半部分偏宣传性总结，适合标为 partially_verified。",
+          "source_url": "https://github.com/virattt/ai-hedge-fund",
+          "source_title": "virattt/ai-hedge-fund",
+          "verified_at": "2026-04-13T05:15:48+00:00"
+        },
+        {
+          "article_id": "d11e99337c97",
+          "claim_id": "ai_hedge_fund_has_18_agents",
+          "claim_type": "tool",
+          "status": "verified",
+          "claim_text": "文章称，AI Hedge Fund 目前内置 18 个专职 Agent，分为传奇投资人 Agent 和专业分析 Agent 两类。",
+          "assessment": "该项目仓库公开列出了多类 agent，包括传奇投资人代理与专业分析代理，文章中给出的 12 位投资人加 6 位分析/管理角色合计 18 个，与文内结构化枚举一致。这类信息通常直接可由 README、目录或配置文件核对，且不依赖二手转述，因此可视为 verified。由于这只是项目构成事实而非明显对应某条正在评估的假说，这里不附着到 hypothesis。",
+          "source_url": "https://github.com/virattt/ai-hedge-fund",
+          "source_title": "virattt/ai-hedge-fund",
+          "verified_at": "2026-04-13T05:15:48+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cluster_ai_html_in_canvas",
+      "domain": "ai",
+      "cluster_label": "html_in_canvas",
+      "top_keyword": "HTML-in-Canvas",
       "seed_keywords": [
         "HTML-in-Canvas",
         "html-in-canvas",
@@ -224,7 +338,25 @@
       "support_count": 2,
       "article_count": 1,
       "source_diversity": 1,
+      "matched_themes": [
+        "browser_rendering_runtime_shift"
+      ],
+      "primary_theme": "browser_rendering_runtime_shift",
+      "theme_scores": {
+        "browser_rendering_runtime_shift": 10
+      },
+      "abstract_statement": "以 HTML-in-Canvas 为代表的证据显示，浏览器渲染能力正在突破传统 DOM 边界，开始向更接近图形运行时的混合模型延伸。",
+      "abstract_rationale": "这些信号共同指向的是渲染模型在变化，而不是某个前端技巧本身在流行。 当前簇内已有 1 篇文章、2 条证据、1 个来源。",
+      "theme_keywords": [
+        "浏览器运行时",
+        "混合渲染",
+        "Canvas",
+        "前端图形化"
+      ],
       "last_supported_at": "2026-04-12T09:21:46+00:00",
+      "source_urls": [
+        "https://github.com/WICG/html-in-canvas"
+      ],
       "evidence_items": [
         {
           "article_id": "d668b6dcda22",
@@ -251,12 +383,10 @@
       ]
     },
     {
-      "id": "candidate_ai_a1",
+      "id": "cluster_ai_a1",
       "domain": "ai",
-      "status": "observed",
-      "statement": "围绕 a1 的一组重复出现、已核实但未映射证据，可能代表一个新的 ai 趋势簇。",
-      "rationale": "当前已有 1 篇文章、2 条已核实证据反复指向 a1、fully、open，但这些证据尚未被现有 hypothesis 吸收，因此先作为候选趋势持续观察。",
-      "theory": "",
+      "cluster_label": "a1",
+      "top_keyword": "a1",
       "seed_keywords": [
         "a1",
         "fully",
@@ -274,7 +404,25 @@
       "support_count": 2,
       "article_count": 1,
       "source_diversity": 1,
+      "matched_themes": [
+        "open_embodied_release_practice"
+      ],
+      "primary_theme": "open_embodied_release_practice",
+      "theme_scores": {
+        "open_embodied_release_practice": 6
+      },
+      "abstract_statement": "以 a1 为代表的证据显示，具身方向开始把代码、权重和训练要素一并开放，形成更完整的 release practice。",
+      "abstract_rationale": "这里的重点不是某个模型开源了，而是开放交付本身正在变成具身项目的工程规范。 当前簇内已有 1 篇文章、2 条证据、1 个来源。",
+      "theme_keywords": [
+        "具身开源",
+        "权重开放",
+        "可复现",
+        "release practice"
+      ],
       "last_supported_at": "2026-04-11T09:55:48+00:00",
+      "source_urls": [
+        "https://arxiv.org/abs/2604.05672"
+      ],
       "evidence_items": [
         {
           "article_id": "59b86c15655e",
