@@ -1,5 +1,59 @@
 {
   "article_id": "0e7891dac0bb",
-  "claim_extraction_status": "not_started",
-  "claims": []
+  "claim_extraction_status": "completed",
+  "extracted_at": "2026-04-14T05:45:00+00:00",
+  "claims": [
+    {
+      "id": "stanford_report_claims_china_us_gap_effectively_closed",
+      "type": "event",
+      "text": "文章称，斯坦福HAI最新发布的《2026年AI指数报告》认为中美AI模型性能差距已基本消除（effectively closed）。",
+      "hypothesis_candidates": []
+    },
+    {
+      "id": "frontier_models_exceed_human_baselines_2025",
+      "type": "event",
+      "text": "文章称，2025年业界生产了超过90%的知名前沿模型，其中多个模型在博士级科学问题、多模态推理和竞赛数学方面已达到或超越人类基线。",
+      "hypothesis_candidates": []
+    },
+    {
+      "id": "swe_bench_verified_near_100",
+      "type": "event",
+      "text": "文章称，在SWE-bench Verified编码基准测试上，模型性能在一年内从60%提升至接近100%。",
+      "hypothesis_candidates": [
+        "software_engineering_shifts_to_orchestration_and_testing"
+      ]
+    },
+    {
+      "id": "deepseek_r1_briefly_matched_us_models",
+      "type": "tool",
+      "text": "文章称，2025年2月，DeepSeek-R1横空出世，短暂追平美国顶尖模型。",
+      "hypothesis_candidates": []
+    },
+    {
+      "id": "anthropic_lead_narrowed_to_2_7_percent",
+      "type": "event",
+      "text": "文章称，截至2026年3月，Anthropic的顶尖模型仍保持领先，但优势已收窄至仅2.7%。",
+      "hypothesis_candidates": []
+    },
+    {
+      "id": "osworld_agent_success_rises_to_66",
+      "type": "event",
+      "text": "文章称，在OSWorld这一覆盖多操作系统真实任务的测试中，AI Agent任务成功率从12%跃升至约66%。",
+      "hypothesis_candidates": [
+        "agent_harness_decoupling"
+      ]
+    },
+    {
+      "id": "ai_incidents_rose_to_362",
+      "type": "event",
+      "text": "文章称，被记录在案的AI事件数量从2024年的233起上升到了362起。",
+      "hypothesis_candidates": []
+    },
+    {
+      "id": "genai_reached_53_percent_in_three_years",
+      "type": "event",
+      "text": "文章称，仅用三年时间，生成式AI就触达了53%的人口，普及速度明显快于PC和互联网。",
+      "hypothesis_candidates": []
+    }
+  ]
 }
