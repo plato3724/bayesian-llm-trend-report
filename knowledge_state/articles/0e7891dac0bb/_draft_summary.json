@@ -1,0 +1,25 @@
+{
+  "ok": true,
+  "article_id": "0e7891dac0bb",
+  "draft_path": "knowledge_state/articles/0e7891dac0bb/_proposed_draft.json",
+  "approval_path": "knowledge_state/articles/0e7891dac0bb/_proposed_approval.json",
+  "model": "openai/gpt-5.4",
+  "attempts": 1,
+  "item_count": 8,
+  "decision": "needs_human",
+  "downgraded_by_guard": false,
+  "escalation_triggers": [],
+  "source_context_count": 2,
+  "source_context_status_summary": {
+    "acquired": 1,
+    "partial": 0,
+    "blocked": 0,
+    "failed": 1
+  },
+  "usage": {
+    "prompt_tokens": 8282,
+    "completion_tokens": 2304,
+    "total_tokens": 10586
+  },
+  "next_step": "python scripts/bayesian_reader.py stage-verification --article-id 0e7891dac0bb --draft knowledge_state/articles/0e7891dac0bb/_proposed_draft.json --approval knowledge_state/articles/0e7891dac0bb/_proposed_approval.json"
+}
