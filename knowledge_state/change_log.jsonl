@@ -210,3 +210,7 @@
 {"timestamp": "2026-04-13T13:41:25+00:00", "event": "apply_verification", "article_id": "03f809cb0476", "item_count": 8, "approver": "human:github/plato3724", "decision": "human_approved", "cross_domain_warnings": []}
 {"timestamp": "2026-04-13T13:41:25+00:00", "event": "refresh_record_states", "refreshed": 20}
 {"timestamp": "2026-04-13T13:41:25+00:00", "event": "build_report", "output_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/docs/index.html"}
+{"timestamp": "2026-04-14T05:44:30+00:00", "event": "sync_github_issues", "repo": "plato3724/bayesian-llm-trend-report", "label": "article", "state": "open", "fallback_used": false, "created": 1, "updated": 9, "skipped": 0}
+{"timestamp": "2026-04-14T05:44:34+00:00", "event": "fetch_pending", "limit": 20, "force": false, "results": [{"article_id": "0e7891dac0bb", "title": "斯坦福年度结论：中美大模型已没差距", "status": "acquired", "final_url": "https://mp.weixin.qq.com/s/5E8nVOZ3KI2LFfsIa41EpA", "text_length": 4123, "note": "Full text looks sufficient for claim extraction."}]}
+{"timestamp": "2026-04-14T05:44:35+00:00", "event": "refresh_record_states", "refreshed": 21}
+{"timestamp": "2026-04-14T05:44:35+00:00", "event": "build_report", "output_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/docs/index.html"}
