@@ -1,8 +1,9 @@
 {
   "created_at": "2026-04-11T02:31:52+00:00",
-  "last_recomputed_at": "2026-04-13T13:41:25+00:00",
+  "last_recomputed_at": "2026-04-14T05:49:35+00:00",
   "included_articles": [
     "03f809cb0476",
+    "0e7891dac0bb",
     "20fb29fec269",
     "44f454b544d9",
     "d11e99337c97",
@@ -24,7 +25,7 @@
     {
       "id": "agent_harness_decoupling",
       "statement": "高价值 agent 系统正从单体 chat loop 转向 durable session、isolated sandbox 与 harness/runtime 解耦的架构。",
-      "posterior_probability": 0.9981275822102749,
+      "posterior_probability": 0.9986929185278485,
       "posterior_band": "near_certain"
     },
     {
@@ -48,7 +49,7 @@
     {
       "id": "software_engineering_shifts_to_orchestration_and_testing",
       "statement": "软件工程的瓶颈正从纯实现转向编排、验证、测试与方向判断，中间层工程师的优势会被重新洗牌。",
-      "posterior_probability": 0.9811807745852861,
+      "posterior_probability": 0.9867951429537521,
       "posterior_band": "near_certain"
     },
     {
@@ -131,6 +132,14 @@
       "category": "embodied_tactile",
       "source_article_id": "7ffdcd4439dc",
       "url": "https://jianyi2004.github.io/TouchAnything-Website/"
+    },
+    {
+      "name": "DeepSeek-",
+      "category": "tooling",
+      "source_article_id": "0e7891dac0bb",
+      "source_claim_id": "deepseek_r1_briefly_matched_us_models",
+      "url": "https://hai.stanford.edu/ai-index/2026-ai-index-report",
+      "source": "auto"
     },
     {
       "name": "GitHub Trending",

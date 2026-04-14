@@ -1,5 +1,90 @@
 {
   "article_id": "0e7891dac0bb",
-  "verification_status": "not_started",
-  "items": []
+  "verification_status": "completed",
+  "verified_at": "2026-04-14T05:49:35+00:00",
+  "items": [
+    {
+      "claim_id": "stanford_report_claims_china_us_gap_effectively_closed",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://hai.stanford.edu/ai-index/2026-ai-index-report",
+      "source_title": "The 2026 AI Index Report | Stanford HAI",
+      "assessment": "文章明确把“中美AI模型性能差距已基本消除（effectively closed）”归因于斯坦福 HAI《2026 AI Index Report》，且提供了报告链接，来源链条可核实到 Stanford HAI 官方页面，因此可部分核实“该报告确实被作为来源并承载该结论”。但给定的 source_context 只有报告主页摘录而非完整正文中对应图表/原句，无法直接逐字交叉核对“effectively closed”这一具体措辞与方法定义，所以保守标为 partially_verified；该项更像报告内容转述，不直接对应现有活跃假说，故不附着假说。"
+    },
+    {
+      "claim_id": "frontier_models_exceed_human_baselines_2025",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://hai.stanford.edu/ai-index/2026-ai-index-report",
+      "source_title": "The 2026 AI Index Report | Stanford HAI",
+      "assessment": "该断言被文章明确归于 Stanford HAI 2026 AI Index Report，并与报告“技术表现/研究发展”类结论相符；来源页面真实存在，说明文章并非凭空捏造报告。但当前 source_context 未提供报告正文中关于“2025年业界生产了超过90%的知名前沿模型”及“多个模型在博士级科学问题、多模态推理和竞赛数学达到或超过人类基线”的原始表述或数据表，无法完成逐项原文核对，因此仅能给出 partially_verified。该信息为一般性行业状态描述，与现有假说没有安全且直接的概念对应，故 hypothesis_id 置空。"
+    },
+    {
+      "claim_id": "swe_bench_verified_near_100",
+      "hypothesis_id": "software_engineering_shifts_to_orchestration_and_testing",
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://hai.stanford.edu/ai-index/2026-ai-index-report",
+      "source_title": "The 2026 AI Index Report | Stanford HAI",
+      "source_trust": "strong",
+      "evidence_direction": "support",
+      "evidence_strength": "slight",
+      "assessment": "文章将“SWE-bench Verified 在一年内从60%提升至接近100%”归于 Stanford HAI 2026 AI Index Report，且给出了官方报告链接，因此至少可确认其为可追溯的二手转述；但 source_context 没有报告正文中该基准曲线或具体页码内容，无法对数值本身做完整原文交叉核验，所以标记为 partially_verified。就假说关系而言，软件工程基准上模型能力的急速提升，支持“纯实现不再是唯一瓶颈、验证测试与编排更重要”的方向，但这只是间接证据，且该假说已有较高后验，因此强度应保守设为 slight/support。"
+    },
+    {
+      "claim_id": "deepseek_r1_briefly_matched_us_models",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://hai.stanford.edu/ai-index/2026-ai-index-report",
+      "source_title": "The 2026 AI Index Report | Stanford HAI",
+      "assessment": "文章声称“2025年2月，DeepSeek-R1 短暂追平美国顶尖模型”，并将整体中美差距判断归于 Stanford HAI 报告。由于文章给出了官方报告链接，这一说法至少具有可追溯来源背景；但现有 source_context 未包含报告中关于 DeepSeek-R1 相对美国顶尖模型的具体比较图或时间点描述，无法精确核实“2025年2月”“短暂追平”这两个关键限定，因此只能部分核实。该项未与现有活跃假说形成明确、非牵强的证据连接，故不附着假说。"
+    },
+    {
+      "claim_id": "anthropic_lead_narrowed_to_2_7_percent",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://hai.stanford.edu/ai-index/2026-ai-index-report",
+      "source_title": "The 2026 AI Index Report | Stanford HAI",
+      "assessment": "该说法被文章明确作为 Stanford HAI 2026 AI Index Report 的结论转述，且官方报告链接可访问，因此来源归属本身可核实。但 source_context 只有报告站点摘录，没有出现“截至2026年3月”“Anthropic 顶尖模型仍领先”“优势仅2.7%”这些具体数字和比较对象的原始文本，无法完成定量层面的严格核对，所以状态应为 partially_verified。此项是竞争态势描述，不宜硬连到现有假说。"
+    },
+    {
+      "claim_id": "osworld_agent_success_rises_to_66",
+      "hypothesis_id": "agent_harness_decoupling",
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://hai.stanford.edu/ai-index/2026-ai-index-report",
+      "source_title": "The 2026 AI Index Report | Stanford HAI",
+      "source_trust": "strong",
+      "evidence_direction": "support",
+      "evidence_strength": "slight",
+      "assessment": "文章把 OSWorld 上 AI Agent 任务成功率从 12% 升至约 66% 归于 Stanford HAI 报告，并提供了官方链接，因此可确认这是有明确出处的报告型断言；不过当前 source_context 未提供 OSWorld 对应章节或图表的可见正文，无法对起点、终点和时间跨度做精确交叉核对，所以保守定为 partially_verified。该结果对“高价值 agent 系统正走向 durable session、sandbox 与 harness/runtime 解耦”只有间接支持：真实任务 agent 能力提升说明 agent 工程栈在成熟，但并不单独证明特定架构模式，因此证据方向为 support，强度仅 slight。"
+    },
+    {
+      "claim_id": "ai_incidents_rose_to_362",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://hai.stanford.edu/ai-index/2026-ai-index-report",
+      "source_title": "The 2026 AI Index Report | Stanford HAI",
+      "assessment": "文章称记录在案的 AI 事件数量从 2024 年的 233 起上升到 362 起，并明确将该结论归于 Stanford HAI 2026 AI Index Report。官方来源页面可访问，使该说法具备可追溯性；但 source_context 没有 Responsible AI 章节中对应统计表、数据来源定义或原句，无法完全确认这两个数字及其口径，因此只能标记为 partially_verified。该信息虽重要，但与当前活跃假说列表没有直接且安全的附着对象。"
+    },
+    {
+      "claim_id": "genai_reached_53_percent_in_three_years",
+      "hypothesis_id": null,
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://hai.stanford.edu/ai-index/2026-ai-index-report",
+      "source_title": "The 2026 AI Index Report | Stanford HAI",
+      "assessment": "文章将“生成式 AI 三年触达 53% 人口，普及速度快于 PC 和互联网”表述为 Stanford HAI 2026 AI Index Report 的结论，并给出官方报告链接，这使来源归属可以部分核实。但 source_context 并未展示相关章节中的调查方法、样本范围或原始比较图，无法严格确认 53% 这一比例及与 PC/互联网的比较口径，因此应为 partially_verified 而非 verified。该断言属于宏观普及事实，和当前假说集合没有明显一一对应关系，故不附着假说。"
+    }
+  ],
+  "approval_ref": {
+    "approver": "human:github/plato3724",
+    "decision": "human_approved",
+    "timestamp": "2026-04-14T05:46:03+00:00"
+  }
 }
