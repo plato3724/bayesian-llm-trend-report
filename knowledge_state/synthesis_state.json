@@ -1,6 +1,6 @@
 {
   "created_at": "2026-04-11T02:31:52+00:00",
-  "last_recomputed_at": "2026-04-14T05:49:35+00:00",
+  "last_recomputed_at": "2026-04-20T16:24:30+00:00",
   "included_articles": [
     "03f809cb0476",
     "0e7891dac0bb",
@@ -12,6 +12,7 @@
     "bf281b22fc01",
     "3c07c6956807",
     "59b86c15655e",
+    "a36d7f67197d",
     "2f9fe8beb5ba",
     "8f8f6c5c71fe",
     "5c7678b0d4c9",
@@ -37,8 +38,8 @@
     {
       "id": "token_efficiency_as_architecture",
       "statement": "Token 效率正在从局部优化升级为架构级目标，表现为结构化压缩、查询式检索、简洁协议与多层记忆栈。",
-      "posterior_probability": 0.9506306189735709,
-      "posterior_band": "very_likely"
+      "posterior_probability": 0.9986654093202955,
+      "posterior_band": "near_certain"
     },
     {
       "id": "speech_from_tts_to_scene_generation",

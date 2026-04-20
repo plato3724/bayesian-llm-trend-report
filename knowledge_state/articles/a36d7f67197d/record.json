@@ -4,7 +4,7 @@
   "url": "https://mp.weixin.qq.com/s/V4bP5sWmqObOCboFJ7Imvw",
   "ingested_from": "github_issue",
   "ingested_at": "2026-04-20T15:24:08+00:00",
-  "last_updated_at": "2026-04-20T15:25:45+00:00",
+  "last_updated_at": "2026-04-20T16:24:30+00:00",
   "content_state": {
     "full_text_status": "acquired",
     "canonical_text_source": "knowledge_state/articles/a36d7f67197d/canonical_text.txt",
@@ -22,12 +22,12 @@
       }
     ],
     "manual_artifacts": [],
-    "next_action": "review_staged_verification"
+    "next_action": "monitor_for_new_evidence"
   },
   "analysis_state": {
     "claim_extraction_status": "completed",
-    "verification_status": "drafted",
-    "bayesian_status": "held_for_review"
+    "verification_status": "completed",
+    "bayesian_status": "included"
   },
   "article_summary": {
     "events": [
@@ -44,7 +44,56 @@
     ],
     "tools": []
   },
-  "hypothesis_impacts": [],
+  "hypothesis_impacts": [
+    {
+      "hypothesis_id": "token_efficiency_as_architecture",
+      "status": "verified",
+      "weight": null,
+      "likelihood_ratio": null
+    },
+    {
+      "hypothesis_id": "token_efficiency_as_architecture",
+      "status": "verified",
+      "weight": null,
+      "likelihood_ratio": null
+    },
+    {
+      "hypothesis_id": "token_efficiency_as_architecture",
+      "status": "partially_verified",
+      "weight": null,
+      "likelihood_ratio": null
+    },
+    {
+      "hypothesis_id": "token_efficiency_as_architecture",
+      "status": "partially_verified",
+      "weight": null,
+      "likelihood_ratio": null
+    },
+    {
+      "hypothesis_id": "token_efficiency_as_architecture",
+      "status": "partially_verified",
+      "weight": null,
+      "likelihood_ratio": null
+    },
+    {
+      "hypothesis_id": "token_efficiency_as_architecture",
+      "status": "verified",
+      "weight": null,
+      "likelihood_ratio": null
+    },
+    {
+      "hypothesis_id": "token_efficiency_as_architecture",
+      "status": "partially_verified",
+      "weight": null,
+      "likelihood_ratio": null
+    },
+    {
+      "hypothesis_id": "token_efficiency_as_architecture",
+      "status": "partially_verified",
+      "weight": null,
+      "likelihood_ratio": null
+    }
+  ],
   "ingest_sources": [
     {
       "source_name": "github_issue",
