@@ -1,0 +1,50 @@
+{
+  "article_id": "a36d7f67197d",
+  "timestamp": "2026-04-20T15:25:45+00:00",
+  "approver": "llm:openai/gpt-5.4",
+  "decision": "needs_human",
+  "overall_rationale": "Several central qualitative claims are well supported by the linked arXiv paper, but multiple quantitative figures in the article cannot be fully cross-checked from the provided primary-source excerpt and therefore remain only partially verified. Because these numbers could influence posterior updates and the article is the sole accessible source for some exact metrics, this draft should receive human review before application.",
+  "per_claim_decisions": [
+    {
+      "claim_id": "prfaas_proposed_as_cross_datacenter_inference_architecture",
+      "decision": "accept",
+      "reasoning": "Directly verified in the linked arXiv abstract and safely attached within the same AI systems concept space."
+    },
+    {
+      "claim_id": "prfaas_decouples_prefill_and_decode_across_heterogeneous_clusters",
+      "decision": "accept",
+      "reasoning": "Directly supported by the paper's description of selective prefill offloading and heterogeneous cluster decoupling."
+    },
+    {
+      "claim_id": "hybrid_attention_reduces_kv_growth_behavior",
+      "decision": "defer",
+      "reasoning": "Directionally supported, but the exact mechanistic wording is more specific than the accessible primary excerpt."
+    },
+    {
+      "claim_id": "mimo_v2_flash_kv_throughput_466gbps_at_32k",
+      "decision": "defer",
+      "reasoning": "Exact quantitative figure not independently verifiable from provided primary-source text."
+    },
+    {
+      "claim_id": "qwen35_397b_kv_throughput_825gbps_at_32k",
+      "decision": "defer",
+      "reasoning": "Exact quantitative figure not independently verifiable from provided primary-source text."
+    },
+    {
+      "claim_id": "prfaas_pd_throughput_up_54_percent_vs_homogeneous_pd",
+      "decision": "accept",
+      "reasoning": "Primary-source abstract directly confirms the 54% throughput improvement."
+    },
+    {
+      "claim_id": "prfaas_pd_p90_ttft_down_64_percent",
+      "decision": "defer",
+      "reasoning": "Latency improvement is plausible but not visible in the accessible primary-source excerpt."
+    },
+    {
+      "claim_id": "prfaas_average_egress_bandwidth_13gbps_on_100gbps_link",
+      "decision": "defer",
+      "reasoning": "The paper supports modest bandwidth usage, but the exact 13Gbps figure and Ethernet sufficiency claim are not fully cross-checked in the supplied excerpt."
+    }
+  ],
+  "human_override": null
+}

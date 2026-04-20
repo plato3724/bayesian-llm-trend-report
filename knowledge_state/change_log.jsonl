@@ -236,3 +236,7 @@
 {"timestamp": "2026-04-20T15:24:45+00:00", "event": "recompute_posteriors", "included_articles": ["03f809cb0476", "0e7891dac0bb", "20fb29fec269", "44f454b544d9", "d11e99337c97", "4a8b83da74e8", "7bb7bc9e2b3e", "bf281b22fc01", "3c07c6956807", "59b86c15655e", "2f9fe8beb5ba", "8f8f6c5c71fe", "5c7678b0d4c9", "06eb3b8e8732", "7ffdcd4439dc", "df7acb42e706", "7e6b7b4cfbf5", "d668b6dcda22"], "hypothesis_count": 7}
 {"timestamp": "2026-04-20T15:24:45+00:00", "event": "save_claims", "article_id": "a36d7f67197d", "claim_count": 8}
 {"timestamp": "2026-04-20T15:24:45+00:00", "event": "build_report", "output_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/docs/index.html"}
+{"timestamp": "2026-04-20T15:25:08+00:00", "event": "build_source_context", "article_id": "a36d7f67197d", "link_count": 2, "selected_count": 2, "source_count": 2, "status_summary": {"acquired": 2, "partial": 0, "blocked": 0, "failed": 0}}
+{"timestamp": "2026-04-20T15:25:45+00:00", "event": "stage_verification", "article_id": "a36d7f67197d", "approver": "llm:openai/gpt-5.4", "decision": "needs_human", "item_count": 8}
+{"timestamp": "2026-04-20T15:25:45+00:00", "event": "refresh_record_states", "refreshed": 22}
+{"timestamp": "2026-04-20T15:25:46+00:00", "event": "build_report", "output_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/docs/index.html"}

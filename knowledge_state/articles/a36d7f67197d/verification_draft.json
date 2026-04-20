@@ -1,0 +1,103 @@
+{
+  "article_id": "a36d7f67197d",
+  "verification_status": "drafted",
+  "drafted_at": "2026-04-20T15:25:45+00:00",
+  "items": [
+    {
+      "claim_id": "prfaas_proposed_as_cross_datacenter_inference_architecture",
+      "hypothesis_id": "token_efficiency_as_architecture",
+      "domain": "ai",
+      "status": "verified",
+      "source_url": "https://arxiv.org/abs/2604.15039",
+      "source_title": "[2604.15039] Prefill-as-a-Service: KVCache of Next-Generation Models Could Go Cross-Datacenter",
+      "source_trust": "strong",
+      "evidence_direction": "support",
+      "evidence_strength": "moderate",
+      "assessment": "The arXiv paper abstract directly states that the authors present Prefill-as-a-Service (PrfaaS) as a cross-datacenter serving architecture for large-model inference, selectively offloading long-context prefill to standalone clusters and transferring KVCache to local PD clusters for decode. This is a close match to the article's claim and is verified against the primary source rather than relying only on the article. It supports the hypothesis that token efficiency is becoming an architectural design axis, because the system architecture is explicitly built around reducing and exploiting lower KV transfer costs rather than treating efficiency as a local optimization."
+    },
+    {
+      "claim_id": "prfaas_decouples_prefill_and_decode_across_heterogeneous_clusters",
+      "hypothesis_id": "token_efficiency_as_architecture",
+      "domain": "ai",
+      "status": "verified",
+      "source_url": "https://arxiv.org/abs/2604.15039",
+      "source_title": "[2604.15039] Prefill-as-a-Service: KVCache of Next-Generation Models Could Go Cross-Datacenter",
+      "source_trust": "strong",
+      "evidence_direction": "support",
+      "evidence_strength": "moderate",
+      "assessment": "The primary paper says conventional dense-attention models keep prefill and decode tightly coupled within a single high-bandwidth domain, and that PrfaaS removes the requirement that heterogeneous accelerators share the same low-latency RDMA fabric by selectively offloading prefill and transferring KVCache over commodity Ethernet to local decode clusters. That substantiates the article's claim that PrFaaS enables cross-datacenter KVCache transfer and decouples prefill and decode across heterogeneous clusters. I attach this to token_efficiency_as_architecture rather than agent_harness_decoupling because this is an inference-systems efficiency claim, not evidence about durable agent runtimes or harness separation in the agent sense."
+    },
+    {
+      "claim_id": "hybrid_attention_reduces_kv_growth_behavior",
+      "hypothesis_id": "token_efficiency_as_architecture",
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://arxiv.org/abs/2604.15039",
+      "source_title": "[2604.15039] Prefill-as-a-Service: KVCache of Next-Generation Models Could Go Cross-Datacenter",
+      "source_trust": "strong",
+      "evidence_direction": "support",
+      "evidence_strength": "slight",
+      "assessment": "The paper abstract clearly supports the broader point that recent hybrid-attention architectures substantially reduce KVCache size and make cross-cluster transport more plausible, but the provided source excerpt does not include the full mechanistic detail quoted in the article about linear-attention layers producing fixed-size recurrent states while only full-attention layers generate length-dependent KV cache. Because the article's wording is more specific than the excerpted primary source text available here, this should be treated as only partially verified. It still supports the token-efficiency hypothesis, but only slightly because the evidence is mechanistic background rather than a direct architectural outcome metric."
+    },
+    {
+      "claim_id": "mimo_v2_flash_kv_throughput_466gbps_at_32k",
+      "hypothesis_id": "token_efficiency_as_architecture",
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://mp.weixin.qq.com/s/V4bP5sWmqObOCboFJ7Imvw",
+      "source_title": "Kimi新论文：把KVCache玩成新商业模式了",
+      "source_trust": "weak",
+      "evidence_direction": "support",
+      "evidence_strength": "slight",
+      "assessment": "The article gives the concrete number that MiMo-V2-Flash reaches 4.66Gbps KV throughput at 32K context and is 13x lower than MiniMax-M2.5, but the provided source_context does not include enough paper text to independently confirm that exact benchmark figure. Since the article links the paper but the usable primary excerpt available here does not expose this table or result, the numeric claim can only be partially verified at article level. Because it is a single quantitative comparison without direct primary cross-check in the available context, it should be treated as weak, slight support at most."
+    },
+    {
+      "claim_id": "qwen35_397b_kv_throughput_825gbps_at_32k",
+      "hypothesis_id": "token_efficiency_as_architecture",
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://mp.weixin.qq.com/s/V4bP5sWmqObOCboFJ7Imvw",
+      "source_title": "Kimi新论文：把KVCache玩成新商业模式了",
+      "source_trust": "weak",
+      "evidence_direction": "support",
+      "evidence_strength": "slight",
+      "assessment": "The article states the exact quantitative comparison for Qwen3.5-397B at 32K context, but the supplied arXiv excerpt does not contain the table or detailed measurement text needed to independently verify the 8.25Gbps versus 33.35Gbps numbers. That means the claim is only partially verified from the article's reporting and paper linkage, not fully cross-checked against accessible primary evidence in source_context. It is relevant to the token-efficiency hypothesis because it points to architecture-level KV reduction, but the inability to verify the exact figures keeps the support weak and slight."
+    },
+    {
+      "claim_id": "prfaas_pd_throughput_up_54_percent_vs_homogeneous_pd",
+      "hypothesis_id": "token_efficiency_as_architecture",
+      "domain": "ai",
+      "status": "verified",
+      "source_url": "https://arxiv.org/abs/2604.15039",
+      "source_title": "[2604.15039] Prefill-as-a-Service: KVCache of Next-Generation Models Could Go Cross-Datacenter",
+      "source_trust": "strong",
+      "evidence_direction": "support",
+      "evidence_strength": "moderate",
+      "assessment": "This performance claim is directly supported by the paper abstract, which states that in a case study using an internal 1T-parameter hybrid model, a PrfaaS-augmented heterogeneous deployment achieves 54% higher serving throughput than a homogeneous PD baseline. That is sufficient primary-source confirmation of the central throughput number reported in the article. The claim supports the hypothesis at moderate strength because it shows token/KV efficiency being operationalized into a higher-level serving architecture with measurable system gains, not merely a micro-optimization."
+    },
+    {
+      "claim_id": "prfaas_pd_p90_ttft_down_64_percent",
+      "hypothesis_id": "token_efficiency_as_architecture",
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://mp.weixin.qq.com/s/V4bP5sWmqObOCboFJ7Imvw",
+      "source_title": "Kimi新论文：把KVCache玩成新商业模式了",
+      "source_trust": "weak",
+      "evidence_direction": "support",
+      "evidence_strength": "slight",
+      "assessment": "The article reports a 64% reduction in P90 TTFT, but the available arXiv excerpt provided in source_context confirms throughput improvements and modest bandwidth consumption without exposing this specific latency statistic. Since I cannot verify the exact 64% P90 TTFT number against the accessible primary-source text, the safest status is partially verified using the article itself as the quoted source. The claim is directionally supportive of architecture-level efficiency, but because the exact quantitative result is not cross-checked in the supplied primary text, the evidence should remain weak and slight."
+    },
+    {
+      "claim_id": "prfaas_average_egress_bandwidth_13gbps_on_100gbps_link",
+      "hypothesis_id": "token_efficiency_as_architecture",
+      "domain": "ai",
+      "status": "partially_verified",
+      "source_url": "https://arxiv.org/abs/2604.15039",
+      "source_title": "[2604.15039] Prefill-as-a-Service: KVCache of Next-Generation Models Could Go Cross-Datacenter",
+      "source_trust": "moderate",
+      "evidence_direction": "support",
+      "evidence_strength": "slight",
+      "assessment": "The paper abstract does confirm that the system consumes only modest cross-datacenter bandwidth, which supports the broad engineering-feasibility point, but the provided excerpt does not contain the exact 13Gbps-on-100Gbps figure or the stronger article gloss that ordinary commercial Ethernet could stably support KVCache transfer without RDMA in this setup. Because the exact numeric bandwidth claim is not visible in the accessible primary excerpt, this is only partially verified. It still supports the token-efficiency hypothesis, though only slightly, since the specific quantitative margin cannot be fully checked here."
+    }
+  ]
+}
