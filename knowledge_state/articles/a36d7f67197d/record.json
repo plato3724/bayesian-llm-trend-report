@@ -4,7 +4,7 @@
   "url": "https://mp.weixin.qq.com/s/V4bP5sWmqObOCboFJ7Imvw",
   "ingested_from": "github_issue",
   "ingested_at": "2026-04-20T15:24:08+00:00",
-  "last_updated_at": "2026-04-20T15:24:12+00:00",
+  "last_updated_at": "2026-04-20T15:24:45+00:00",
   "content_state": {
     "full_text_status": "acquired",
     "canonical_text_source": "knowledge_state/articles/a36d7f67197d/canonical_text.txt",
@@ -22,16 +22,26 @@
       }
     ],
     "manual_artifacts": [],
-    "next_action": "extract_claims"
+    "next_action": "verify_claims"
   },
   "analysis_state": {
-    "claim_extraction_status": "not_started",
+    "claim_extraction_status": "completed",
     "verification_status": "not_started",
     "bayesian_status": "excluded_until_verified"
   },
   "article_summary": {
-    "events": [],
-    "techniques": [],
+    "events": [
+      "The article states that at 32K context, MiMo-V2-Flash has KV throughput of only 4.66Gbps, which is 13 times lower than MiniMax-M2.5.",
+      "The article states that at 32K context, Qwen3.5-397B has KV throughput of 8.25Gbps versus 33.35Gbps for a comparable dense model, a 4x reduction.",
+      "The article states that in tests on an internal 1T-parameter hybrid-attention model, the PrFaaS-PD architecture increased service throughput by 54% compared with a homogeneous PD cluster of the same hardware scale.",
+      "The article states that in the same experiments, the PrFaaS-PD architecture reduced P90 TTFT by 64%.",
+      "The article states that the PrFaaS cluster's average egress bandwidth was only 13Gbps on a 100Gbps cross-cluster link, and that ordinary commercial Ethernet could stably support KV Cache transfer without RDMA in this setup."
+    ],
+    "techniques": [
+      "The article states that the team proposed Prefill-as-a-Service (PrFaaS), a cross-data-center large-model inference service architecture.",
+      "The article states that PrFaaS enables KV Cache transmission across data centers and completely decouples Prefill and Decode onto different heterogeneous clusters.",
+      "The article states that in a hybrid architecture combining linear attention and full attention, linear layers produce fixed-size recurrent states that do not grow with context length, while only full-attention layers generate length-dependent KV Cache."
+    ],
     "tools": []
   },
   "hypothesis_impacts": [],

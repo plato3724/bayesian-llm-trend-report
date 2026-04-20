@@ -1,5 +1,73 @@
 {
   "article_id": "a36d7f67197d",
-  "claim_extraction_status": "not_started",
-  "claims": []
+  "claim_extraction_status": "completed",
+  "extracted_at": "2026-04-20T15:24:45+00:00",
+  "claims": [
+    {
+      "id": "prfaas_proposed_as_cross_datacenter_inference_architecture",
+      "type": "technique",
+      "text": "The article states that the team proposed Prefill-as-a-Service (PrFaaS), a cross-data-center large-model inference service architecture.",
+      "hypothesis_candidates": [
+        "token_efficiency_as_architecture"
+      ]
+    },
+    {
+      "id": "prfaas_decouples_prefill_and_decode_across_heterogeneous_clusters",
+      "type": "technique",
+      "text": "The article states that PrFaaS enables KV Cache transmission across data centers and completely decouples Prefill and Decode onto different heterogeneous clusters.",
+      "hypothesis_candidates": [
+        "agent_harness_decoupling",
+        "token_efficiency_as_architecture"
+      ]
+    },
+    {
+      "id": "hybrid_attention_reduces_kv_growth_behavior",
+      "type": "technique",
+      "text": "The article states that in a hybrid architecture combining linear attention and full attention, linear layers produce fixed-size recurrent states that do not grow with context length, while only full-attention layers generate length-dependent KV Cache.",
+      "hypothesis_candidates": [
+        "token_efficiency_as_architecture",
+        "structured_external_memory"
+      ]
+    },
+    {
+      "id": "mimo_v2_flash_kv_throughput_466gbps_at_32k",
+      "type": "event",
+      "text": "The article states that at 32K context, MiMo-V2-Flash has KV throughput of only 4.66Gbps, which is 13 times lower than MiniMax-M2.5.",
+      "hypothesis_candidates": [
+        "token_efficiency_as_architecture"
+      ]
+    },
+    {
+      "id": "qwen35_397b_kv_throughput_825gbps_at_32k",
+      "type": "event",
+      "text": "The article states that at 32K context, Qwen3.5-397B has KV throughput of 8.25Gbps versus 33.35Gbps for a comparable dense model, a 4x reduction.",
+      "hypothesis_candidates": [
+        "token_efficiency_as_architecture"
+      ]
+    },
+    {
+      "id": "prfaas_pd_throughput_up_54_percent_vs_homogeneous_pd",
+      "type": "event",
+      "text": "The article states that in tests on an internal 1T-parameter hybrid-attention model, the PrFaaS-PD architecture increased service throughput by 54% compared with a homogeneous PD cluster of the same hardware scale.",
+      "hypothesis_candidates": [
+        "token_efficiency_as_architecture"
+      ]
+    },
+    {
+      "id": "prfaas_pd_p90_ttft_down_64_percent",
+      "type": "event",
+      "text": "The article states that in the same experiments, the PrFaaS-PD architecture reduced P90 TTFT by 64%.",
+      "hypothesis_candidates": [
+        "token_efficiency_as_architecture"
+      ]
+    },
+    {
+      "id": "prfaas_average_egress_bandwidth_13gbps_on_100gbps_link",
+      "type": "event",
+      "text": "The article states that the PrFaaS cluster's average egress bandwidth was only 13Gbps on a 100Gbps cross-cluster link, and that ordinary commercial Ethernet could stably support KV Cache transfer without RDMA in this setup.",
+      "hypothesis_candidates": [
+        "token_efficiency_as_architecture"
+      ]
+    }
+  ]
 }
