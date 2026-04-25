@@ -1,0 +1,40 @@
+{
+  "article_id": "271ba75686b0",
+  "concept_status": "drafted",
+  "generated_at": "2026-04-25T15:26:10+00:00",
+  "method": "tag_to_concept_mvp",
+  "matched_concepts": [
+    "agent_runtime",
+    "codebase_rewrite",
+    "developer_workflow",
+    "distribution_advantage",
+    "internal_incentives",
+    "open_model_strategy",
+    "org_behavior",
+    "semi_open_source",
+    "token_consumption",
+    "token_economics"
+  ],
+  "created_concepts": [
+    "token_economics",
+    "internal_incentives",
+    "codebase_rewrite",
+    "developer_workflow",
+    "open_model_strategy",
+    "semi_open_source",
+    "distribution_advantage",
+    "token_consumption",
+    "org_behavior"
+  ],
+  "candidate_concepts": [],
+  "source_trace": {
+    "classification_path": "knowledge_state/articles/271ba75686b0/classification.json",
+    "extraction_path": "knowledge_state/articles/271ba75686b0/extraction.json"
+  },
+  "article_entities": [
+    "QbitAI",
+    "Token Legend",
+    "Anthropic",
+    "AI 100"
+  ]
+}

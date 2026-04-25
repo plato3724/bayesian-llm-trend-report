@@ -1,0 +1,54 @@
+{
+  "article_id": "7ffdcd4439dc",
+  "extraction_status": "completed",
+  "generated_at": "2026-04-25T15:27:07+00:00",
+  "method": "deterministic_mvp",
+  "summary": "TouchAnything 使用 shared DINOv2 encoder、learnable view embeddings、cross-view attention 和 view dropout 做多视角触觉预测。 EgoTouch 是面向 egocentric hand-object interaction 的大规模多视角触觉数据集，包含 302 tasks、4,530 episodes、3 camera views、42 joints 和 pressure maps。",
+  "main_points": [
+    "TouchAnything 使用 shared DINOv2 encoder、learnable view embeddings、cross-view attention 和 view dropout 做多视角触觉预测。",
+    "EgoTouch 是面向 egocentric hand-object interaction 的大规模多视角触觉数据集，包含 302 tasks、4,530 episodes、3 camera views、42 joints 和 pressure maps。"
+  ],
+  "entities": [
+    "QbitAI",
+    "Ego",
+    "TouchAnything",
+    "A Dataset",
+    "Framework",
+    "Bimanual Tactile Estimation",
+    "Egocentric Video",
+    "Jianyi Zhou",
+    "Ziteng Gao",
+    "Feiyang Hong",
+    "Zirui Liu",
+    "Guannan Zhang",
+    "Weisheng Dai",
+    "Ruichen Zhen",
+    "Haotian Wu",
+    "Yinian Mao",
+    "Xushi Wang",
+    "Yuxiang Jiang",
+    "Shuo Yang",
+    "M-PAI Lab"
+  ],
+  "claims": [
+    {
+      "id": "egotouch_dataset_scope",
+      "type": "tool",
+      "text": "EgoTouch 是面向 egocentric hand-object interaction 的大规模多视角触觉数据集，包含 302 tasks、4,530 episodes、3 camera views、42 joints 和 pressure maps。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "touchanything_architecture",
+      "type": "technique",
+      "text": "TouchAnything 使用 shared DINOv2 encoder、learnable view embeddings、cross-view attention 和 view dropout 做多视角触觉预测。",
+      "source": "legacy_claims_json"
+    }
+  ],
+  "important_quotes": [],
+  "open_questions": [],
+  "source_trace": {
+    "record_path": "knowledge_state/articles/7ffdcd4439dc/record.json",
+    "canonical_text_path": "knowledge_state/articles/7ffdcd4439dc/canonical_text.txt",
+    "legacy_claims_path": "knowledge_state/articles/7ffdcd4439dc/claims.json"
+  }
+}

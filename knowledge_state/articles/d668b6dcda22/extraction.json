@@ -1,0 +1,86 @@
+{
+  "article_id": "d668b6dcda22",
+  "extraction_status": "completed",
+  "generated_at": "2026-04-25T15:27:31+00:00",
+  "method": "deterministic_mvp",
+  "summary": "文章称，HTML-in-Canvas is currently an experimental feature and has entered the W3C/WICG system as a proposal. 文章称，a similar HTML-in-Canvas idea was proposed in 2016, was shelved by browser vendors at the time, and has recently been revived and advanced by Google. 文章称，Pretext bypasses the browser's DOM layout system, uses pure mathematical calculation for text layout, and is claimed to be hundreds of times faster than traditional methods.",
+  "main_points": [
+    "文章称，HTML-in-Canvas is currently an experimental feature and has entered the W3C/WICG system as a proposal.",
+    "文章称，a similar HTML-in-Canvas idea was proposed in 2016, was shelved by browser vendors at the time, and has recently been revived and advanced by Google.",
+    "文章称，Pretext bypasses the browser's DOM layout system, uses pure mathematical calculation for text layout, and is claimed to be hundreds of times faster than traditional methods.",
+    "文章称，Pretext became very popular, with the author's post receiving tens of millions of views and its GitHub repository quickly gaining more than 40,000 stars.",
+    "文章称，HTML-in-Canvas is a method that renders HTML by putting it into Canvas.",
+    "文章称，after adding the layoutsubtree attribute to a canvas tag, developers can call drawElementImage through a 2D canvas context to draw child elements into the canvas.",
+    "文章称，in Chrome, users can enable the HTML-in-Canvas experimental feature through the flag at chrome://flags/#canvas-draw-element.",
+    "文章称，Pretext is an open-source frontend tool created by Midjourney engineer Cheng Lou."
+  ],
+  "entities": [
+    "HTML",
+    "Canvas",
+    "WICG",
+    "QbitAI",
+    "API",
+    "Doom",
+    "CSS",
+    "JS",
+    "WebGPU",
+    "AI"
+  ],
+  "claims": [
+    {
+      "id": "html_in_canvas_is_experimental_rendering_method",
+      "type": "technique",
+      "text": "文章称，HTML-in-Canvas is a method that renders HTML by putting it into Canvas.",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "html_in_canvas_enters_w3c_wicg_proposal_process",
+      "type": "event",
+      "text": "文章称，HTML-in-Canvas is currently an experimental feature and has entered the W3C/WICG system as a proposal.",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "html_in_canvas_idea_was_proposed_in_2016",
+      "type": "event",
+      "text": "文章称，a similar HTML-in-Canvas idea was proposed in 2016, was shelved by browser vendors at the time, and has recently been revived and advanced by Google.",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "chrome_flag_canvas_draw_element_enables_feature",
+      "type": "tool",
+      "text": "文章称，in Chrome, users can enable the HTML-in-Canvas experimental feature through the flag at chrome://flags/#canvas-draw-element.",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "draw_element_image_used_to_render_canvas_children",
+      "type": "technique",
+      "text": "文章称，after adding the layoutsubtree attribute to a canvas tag, developers can call drawElementImage through a 2D canvas context to draw child elements into the canvas.",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "pretext_is_open_source_tool_by_midjourney_engineer",
+      "type": "tool",
+      "text": "文章称，Pretext is an open-source frontend tool created by Midjourney engineer Cheng Lou.",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "pretext_claimed_hundreds_times_faster_layout",
+      "type": "event",
+      "text": "文章称，Pretext bypasses the browser's DOM layout system, uses pure mathematical calculation for text layout, and is claimed to be hundreds of times faster than traditional methods.",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "pretext_post_and_github_popularity_claim",
+      "type": "event",
+      "text": "文章称，Pretext became very popular, with the author's post receiving tens of millions of views and its GitHub repository quickly gaining more than 40,000 stars.",
+      "source": "legacy_claims_json"
+    }
+  ],
+  "important_quotes": [],
+  "open_questions": [],
+  "source_trace": {
+    "record_path": "knowledge_state/articles/d668b6dcda22/record.json",
+    "canonical_text_path": "knowledge_state/articles/d668b6dcda22/canonical_text.txt",
+    "legacy_claims_path": "knowledge_state/articles/d668b6dcda22/claims.json"
+  }
+}

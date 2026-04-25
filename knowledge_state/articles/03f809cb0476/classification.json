@@ -1,0 +1,57 @@
+{
+  "article_id": "03f809cb0476",
+  "classification_status": "drafted",
+  "generated_at": "2026-04-25T16:46:17+00:00",
+  "method": "llm_openrouter",
+  "llm_model": "openai/gpt-5.4",
+  "llm_attempts": 1,
+  "primary_category": "ai_agent",
+  "secondary_categories": [
+    "memory_context",
+    "developer_tools",
+    "ai_infrastructure"
+  ],
+  "tags": [
+    "agent-runtime",
+    "workflow-orchestration",
+    "context-engineering",
+    "structured-memory",
+    "tool-routing",
+    "thin-harness-fat-skills",
+    "coding-agent",
+    "repo-context",
+    "deterministic-tools",
+    "cli-harness"
+  ],
+  "source_type": "media",
+  "importance": "high",
+  "rationale": "文章核心在于讨论围绕 LLM 构建 AI 编程代理的系统设计方法，重点是 harness、skills、resolver、并行子代理、确定性工具分层等代理运行机制，属于典型的 Agent 工作流与运行时架构。虽然文中大量涉及上下文管理、结构化记忆和按需加载文档，这些与记忆/Context Engineering 强相关，但它们在本文中是服务于代理系统整体执行的组成部件，而非单独讨论记忆技术本身。因此主分类应归入 AI Agent。次分类可补充 memory_context，因为 resolver、上下文路由、上下文冗余最小化是重要机制；developer_tools 因文章场景集中在 AI 编程与仓库工作流；ai_infrastructure 因其也涉及 CLI harness、工具层和运行时分层。",
+  "category_scores": {
+    "ai_agent": 18,
+    "ai_infrastructure": 3,
+    "memory_context": 20,
+    "developer_tools": 19,
+    "multimodal_ai": 0,
+    "robotics_embodied_ai": 0,
+    "consumer_economy": 3,
+    "research_benchmark": 3,
+    "open_source_ecosystem": 3,
+    "policy_regulation": 0,
+    "product_business": 3
+  },
+  "fallback_suggestion": {
+    "primary_category": "memory_context",
+    "secondary_categories": [
+      "developer_tools",
+      "ai_agent"
+    ],
+    "tags": [
+      "agent-runtime",
+      "context-engineering",
+      "developer-experience",
+      "long-term-memory",
+      "software-engineering",
+      "workflow-orchestration"
+    ]
+  }
+}

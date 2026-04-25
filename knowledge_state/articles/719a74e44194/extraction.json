@@ -1,0 +1,96 @@
+{
+  "article_id": "719a74e44194",
+  "extraction_status": "completed",
+  "generated_at": "2026-04-25T15:26:47+00:00",
+  "method": "deterministic_mvp",
+  "summary": "从去年 9 月至今，Hyperknow 已经迭代五个大版本，小版本累计数百次。 2025 年 11 月，通用学习智能体 Hyperknow 正式发布。 三个月后，Hyperknow 3.0 上线。",
+  "main_points": [
+    "从去年 9 月至今，Hyperknow 已经迭代五个大版本，小版本累计数百次。",
+    "2025 年 11 月，通用学习智能体 Hyperknow 正式发布。",
+    "三个月后，Hyperknow 3.0 上线。",
+    "有不少用户反馈喜欢 Hyperknow 主动提问的功能。",
+    "用户反馈 Hyperknow 能给一个 80 岁的老奶奶用切菜做饭的方式来解释 R 语言。",
+    "Hyperknow 3.0 设计了一个「全包围式的学习助手」（All-Round Learning Assistant）。",
+    "在 Hyperknow 3.0 中，推出了「深度学习课堂」（Deep Learn Sessions）。",
+    "Hyperknow 生成的 cheatsheet（参考纸）能从学生真实使用视角出发。"
+  ],
+  "entities": [
+    "Hyperknow",
+    "Agent",
+    "AI",
+    "ChatGPT",
+    "PPT",
+    "Hyperknow 3",
+    "GPT",
+    "AI Workspace",
+    "Discord",
+    "RAG",
+    "Cindy",
+    "DdftSCeLD",
+    "Ask ChatGPT",
+    "Ask Hyperknow 3",
+    "YouTube",
+    "Gap",
+    "Science",
+    "Sakana AI",
+    "AI Scientist",
+    "Hyperknow Agent"
+  ],
+  "claims": [
+    {
+      "id": "hyperknow_iterations",
+      "type": "event",
+      "text": "从去年 9 月至今，Hyperknow 已经迭代五个大版本，小版本累计数百次。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "hyperknow_official_release_date",
+      "type": "event",
+      "text": "2025 年 11 月，通用学习智能体 Hyperknow 正式发布。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "hyperknow_3_0_launch",
+      "type": "event",
+      "text": "三个月后，Hyperknow 3.0 上线。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "hyperknow_learning_assistant",
+      "type": "technique",
+      "text": "Hyperknow 3.0 设计了一个「全包围式的学习助手」（All-Round Learning Assistant）。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "hyperknow_deep_learn_sessions",
+      "type": "technique",
+      "text": "在 Hyperknow 3.0 中，推出了「深度学习课堂」（Deep Learn Sessions）。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "hyperknow_cheatsheet_function",
+      "type": "technique",
+      "text": "Hyperknow 生成的 cheatsheet（参考纸）能从学生真实使用视角出发。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "hyperknow_user_feedback",
+      "type": "event",
+      "text": "有不少用户反馈喜欢 Hyperknow 主动提问的功能。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "hyperknow_user_experience",
+      "type": "event",
+      "text": "用户反馈 Hyperknow 能给一个 80 岁的老奶奶用切菜做饭的方式来解释 R 语言。",
+      "source": "legacy_claims_json"
+    }
+  ],
+  "important_quotes": [],
+  "open_questions": [],
+  "source_trace": {
+    "record_path": "knowledge_state/articles/719a74e44194/record.json",
+    "canonical_text_path": "knowledge_state/articles/719a74e44194/canonical_text.txt",
+    "legacy_claims_path": "knowledge_state/articles/719a74e44194/claims.json"
+  }
+}

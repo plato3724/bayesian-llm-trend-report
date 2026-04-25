@@ -1,0 +1,38 @@
+{
+  "article_id": "06eb3b8e8732",
+  "concept_status": "drafted",
+  "generated_at": "2026-04-25T15:25:58+00:00",
+  "method": "tag_to_concept_mvp",
+  "matched_concepts": [
+    "collectibles_demand",
+    "consumer_behavior",
+    "market_signal",
+    "nostalgia_economy",
+    "offline_immersive_experience",
+    "retro_ip",
+    "secondhand_market",
+    "social_commerce_trend"
+  ],
+  "created_concepts": [
+    "nostalgia_economy",
+    "consumer_behavior",
+    "market_signal",
+    "secondhand_market",
+    "retro_ip",
+    "collectibles_demand",
+    "offline_immersive_experience",
+    "social_commerce_trend"
+  ],
+  "candidate_concepts": [],
+  "source_trace": {
+    "classification_path": "knowledge_state/articles/06eb3b8e8732/classification.json",
+    "extraction_path": "knowledge_state/articles/06eb3b8e8732/extraction.json"
+  },
+  "article_entities": [
+    "CCD",
+    "X2RHU8KKA5yBYNCmkE8ZFA",
+    "NBA",
+    "DV",
+    "VCG"
+  ]
+}

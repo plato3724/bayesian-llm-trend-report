@@ -1,0 +1,55 @@
+{
+  "article_id": "df7acb42e706",
+  "classification_status": "drafted",
+  "generated_at": "2026-04-25T15:27:43+00:00",
+  "method": "llm_openrouter",
+  "llm_model": "openai/gpt-5.4",
+  "llm_attempts": 1,
+  "primary_category": "robotics_embodied_ai",
+  "secondary_categories": [
+    "product_business",
+    "open_source_ecosystem",
+    "multimodal_ai"
+  ],
+  "tags": [
+    "dexterous-hand",
+    "embodied-ai",
+    "physical-grounding",
+    "tactile-sensing",
+    "visuotactile-sensing",
+    "direct-drive",
+    "backdrivability",
+    "sim-to-real",
+    "teleoperation-data",
+    "robot-hand"
+  ],
+  "source_type": "media",
+  "importance": "high",
+  "rationale": "文章核心在于介绍 BrainCo 的灵巧手 Revo 3 的机械设计、触觉与视触觉感知、可反驱控制以及其在具身操作中的作用，重点讨论的是机器人末端执行器如何提升真实世界操作能力，并明确关联 sim-to-real、遥操作数采和医疗/康养/家庭等机器人场景，因此主分类应归入机器人/具身智能。文中虽然也涉及融资、价格、生态开放和商业叙事，但这些更像围绕该具身硬件产品落地的次要信息，而不是文章最核心的比较维度。",
+  "category_scores": {
+    "ai_agent": 0,
+    "ai_infrastructure": 0,
+    "memory_context": 0,
+    "developer_tools": 4,
+    "multimodal_ai": 2,
+    "robotics_embodied_ai": 33,
+    "consumer_economy": 5,
+    "research_benchmark": 3,
+    "open_source_ecosystem": 4,
+    "policy_regulation": 0,
+    "product_business": 20
+  },
+  "fallback_suggestion": {
+    "primary_category": "robotics_embodied_ai",
+    "secondary_categories": [
+      "product_business"
+    ],
+    "tags": [
+      "business-model",
+      "ecosystem",
+      "embodied-ai",
+      "physical-grounding",
+      "product-launch"
+    ]
+  }
+}

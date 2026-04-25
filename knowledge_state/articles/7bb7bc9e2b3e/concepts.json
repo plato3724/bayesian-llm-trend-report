@@ -1,0 +1,48 @@
+{
+  "article_id": "7bb7bc9e2b3e",
+  "concept_status": "drafted",
+  "generated_at": "2026-04-25T15:27:00+00:00",
+  "method": "tag_to_concept_mvp",
+  "matched_concepts": [
+    "ai_coding_assistant",
+    "ast_parsing",
+    "context_engineering",
+    "graph_based_retrieval",
+    "incremental_update",
+    "knowledge_graph",
+    "multimodal_ingestion",
+    "no_vector_embeddings",
+    "open_source",
+    "token_reduction",
+    "tree_sitter"
+  ],
+  "created_concepts": [
+    "knowledge_graph",
+    "token_reduction",
+    "tree_sitter",
+    "ast_parsing",
+    "multimodal_ingestion",
+    "ai_coding_assistant",
+    "graph_based_retrieval",
+    "no_vector_embeddings",
+    "incremental_update",
+    "open_source"
+  ],
+  "candidate_concepts": [],
+  "source_trace": {
+    "classification_path": "knowledge_state/articles/7bb7bc9e2b3e/classification.json",
+    "extraction_path": "knowledge_state/articles/7bb7bc9e2b3e/extraction.json"
+  },
+  "article_entities": [
+    "Graphify",
+    "QbitAI",
+    "Star",
+    "Vision",
+    "Claude Code",
+    "Codex",
+    "OpenClaw",
+    "One More Thing",
+    "README",
+    "CN"
+  ]
+}

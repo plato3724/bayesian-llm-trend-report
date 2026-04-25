@@ -1,0 +1,313 @@
+{
+  "created_at": "2026-04-25T15:25:50+00:00",
+  "last_updated_at": "2026-04-25T15:25:50+00:00",
+  "version": 1,
+  "tags": [
+    {
+      "id": "agent-runtime",
+      "label": "Agent Runtime",
+      "keywords": [
+        "agent",
+        "runtime",
+        "harness",
+        "session",
+        "sandbox",
+        "智能体",
+        "运行时",
+        "沙箱"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "benchmark",
+      "label": "Benchmark",
+      "keywords": [
+        "benchmark",
+        "evaluation",
+        "accuracy",
+        "leaderboard",
+        "评测",
+        "准确率",
+        "排行榜",
+        "基准"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "business-model",
+      "label": "Business Model",
+      "keywords": [
+        "pricing",
+        "business",
+        "revenue",
+        "commercial",
+        "enterprise",
+        "定价",
+        "商业",
+        "收入",
+        "企业"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "consumer-behavior",
+      "label": "Consumer Behavior",
+      "keywords": [
+        "consumer",
+        "user",
+        "market",
+        "brand",
+        "消费",
+        "用户",
+        "品牌",
+        "怀旧",
+        "复古"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "context-engineering",
+      "label": "Context Engineering",
+      "keywords": [
+        "context",
+        "token",
+        "compression",
+        "retrieval",
+        "上下文",
+        "token",
+        "压缩",
+        "检索"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "developer-experience",
+      "label": "Developer Experience",
+      "keywords": [
+        "developer",
+        "coding",
+        "debug",
+        "ide",
+        "github",
+        "开发者",
+        "编程",
+        "调试",
+        "程序员"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "ecosystem",
+      "label": "Ecosystem",
+      "keywords": [
+        "community",
+        "maintainer",
+        "release",
+        "ecosystem",
+        "社区",
+        "维护者",
+        "发布",
+        "生态"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "embodied-ai",
+      "label": "Embodied Ai",
+      "keywords": [
+        "robot",
+        "robotics",
+        "embodied",
+        "egocentric",
+        "机器人",
+        "具身",
+        "第一人称"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "governance",
+      "label": "Governance",
+      "keywords": [
+        "governance",
+        "safety",
+        "compliance",
+        "standard",
+        "治理",
+        "安全",
+        "标准"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "long-term-memory",
+      "label": "Long Term Memory",
+      "keywords": [
+        "memory",
+        "long-term",
+        "session state",
+        "graph memory",
+        "记忆",
+        "长期记忆",
+        "图记忆"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "market-signal",
+      "label": "Market Signal",
+      "keywords": [
+        "market",
+        "growth",
+        "economy",
+        "revenue",
+        "市场",
+        "增长",
+        "经济",
+        "收入",
+        "规模"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "multimodal",
+      "label": "Multimodal",
+      "keywords": [
+        "multimodal",
+        "vision",
+        "image",
+        "video",
+        "audio",
+        "多模态",
+        "视觉",
+        "图像",
+        "视频",
+        "音频"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "open-source",
+      "label": "Open Source",
+      "keywords": [
+        "open source",
+        "open-source",
+        "github",
+        "repository",
+        "stars",
+        "开源",
+        "仓库",
+        "星标"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "physical-grounding",
+      "label": "Physical Grounding",
+      "keywords": [
+        "tactile",
+        "touch",
+        "sensor",
+        "grounding",
+        "触觉",
+        "传感器",
+        "物理",
+        "grounding"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "policy",
+      "label": "Policy",
+      "keywords": [
+        "policy",
+        "regulation",
+        "law",
+        "legal",
+        "政策",
+        "监管",
+        "法律",
+        "合规"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "product-launch",
+      "label": "Product Launch",
+      "keywords": [
+        "launch",
+        "released",
+        "product",
+        "service",
+        "发布",
+        "产品",
+        "服务",
+        "上线"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "research-result",
+      "label": "Research Result",
+      "keywords": [
+        "paper",
+        "arxiv",
+        "dataset",
+        "experiment",
+        "cvpr",
+        "论文",
+        "数据集",
+        "实验",
+        "研究"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "software-engineering",
+      "label": "Software Engineering",
+      "keywords": [
+        "software engineering",
+        "testing",
+        "ci",
+        "repository",
+        "软件工程",
+        "测试",
+        "代码仓库"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "speech-generation",
+      "label": "Speech Generation",
+      "keywords": [
+        "speech",
+        "voice",
+        "tts",
+        "audio",
+        "语音",
+        "声音",
+        "音色",
+        "音频"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "workflow-orchestration",
+      "label": "Workflow Orchestration",
+      "keywords": [
+        "workflow",
+        "orchestration",
+        "multi-agent",
+        "pipeline",
+        "工作流",
+        "编排",
+        "多智能体"
+      ],
+      "status": "active"
+    }
+  ],
+  "governance": {
+    "rule": "标签主要是检索入口。只有稳定、反复出现的标签才应提升为概念。",
+    "cleanup": "人审时合并别名，清理一次性措辞。"
+  }
+}

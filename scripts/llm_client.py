@@ -41,6 +41,7 @@ import os
 import re
 import time
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Any, Iterable
 
 try:
@@ -54,6 +55,38 @@ except ImportError as exc:  # pragma: no cover
 
 
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
+
+
+def load_project_env() -> list[str]:
+    """Load simple KEY=VALUE pairs from local .env files if present.
+
+    This intentionally avoids an extra python-dotenv dependency. Existing
+    process environment variables win over file values.
+    """
+
+    candidates = [
+        Path.cwd() / ".env",
+        Path(__file__).resolve().parent.parent / ".env",
+        Path(__file__).resolve().parent.parent.parent / ".env",
+    ]
+    loaded: list[str] = []
+    for path in candidates:
+        if not path.exists() or not path.is_file():
+            continue
+        for raw_line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+            line = raw_line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, value = line.split("=", 1)
+            key = key.strip()
+            value = value.strip().strip('"').strip("'")
+            if key and key not in os.environ:
+                os.environ[key] = value
+        loaded.append(str(path))
+    return loaded
+
+
+load_project_env()
 
 # Default to a single model for predictable automation behavior. The
 # repository can still override it via OPENROUTER_DEFAULT_MODEL, and

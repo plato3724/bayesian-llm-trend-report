@@ -1,0 +1,58 @@
+{
+  "article_id": "20fb29fec269",
+  "extraction_status": "completed",
+  "generated_at": "2026-04-25T15:25:58+00:00",
+  "method": "deterministic_mvp",
+  "summary": "Anthropic 发布了面向长时程 agent 工作的托管服务 Managed Agents。 CREAO 是全球第一个真正面向普通用户的 AI Agent Harness。 Managed Agents 将 agent 运行时虚拟化为 session、harness、sandbox 三个可独立替换的接口。",
+  "main_points": [
+    "Anthropic 发布了面向长时程 agent 工作的托管服务 Managed Agents。",
+    "CREAO 是全球第一个真正面向普通用户的 AI Agent Harness。",
+    "Managed Agents 将 agent 运行时虚拟化为 session、harness、sandbox 三个可独立替换的接口。",
+    "Anthropic 将 brain、hands、session 解耦后，用 durable session log 与 sandbox 外置凭证改善了延迟与安全边界。"
+  ],
+  "entities": [
+    "Agent Harness",
+    "Agents",
+    "AI",
+    "QbitAI",
+    "Chatbot",
+    "Agent",
+    "CREAO",
+    "Key",
+    "Harness",
+    "What"
+  ],
+  "claims": [
+    {
+      "id": "managed_agents_service",
+      "type": "event",
+      "text": "Anthropic 发布了面向长时程 agent 工作的托管服务 Managed Agents。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "virtualized_agent_interfaces",
+      "type": "technique",
+      "text": "Managed Agents 将 agent 运行时虚拟化为 session、harness、sandbox 三个可独立替换的接口。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "decoupling_improves_latency_and_security",
+      "type": "technique",
+      "text": "Anthropic 将 brain、hands、session 解耦后，用 durable session log 与 sandbox 外置凭证改善了延迟与安全边界。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "creao_first_consumer_harness",
+      "type": "event",
+      "text": "CREAO 是全球第一个真正面向普通用户的 AI Agent Harness。",
+      "source": "legacy_claims_json"
+    }
+  ],
+  "important_quotes": [],
+  "open_questions": [],
+  "source_trace": {
+    "record_path": "knowledge_state/articles/20fb29fec269/record.json",
+    "canonical_text_path": "knowledge_state/articles/20fb29fec269/canonical_text.txt",
+    "legacy_claims_path": "knowledge_state/articles/20fb29fec269/claims.json"
+  }
+}

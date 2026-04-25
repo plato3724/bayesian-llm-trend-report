@@ -1,0 +1,50 @@
+{
+  "article_id": "5c7678b0d4c9",
+  "extraction_status": "completed",
+  "generated_at": "2026-04-25T15:26:41+00:00",
+  "method": "deterministic_mvp",
+  "summary": "Simon Willison 将 2025 年 11 月描述为 coding agents 的 inflection point：模型只是小幅变强，但跨过了‘基本都能按要求工作’的阈值。 Simon Willison 引述 ThoughtWorks 的讨论，认为最尴尬的位置是‘中间层工程师’，同时他自己也公开说对软件工时估算的旧经验已经失效。 Simon Willison 认为软件工程的新瓶颈已从实现转向 testing、proving 和选方案，因为原型和实现的速度大幅提升。",
+  "main_points": [
+    "Simon Willison 将 2025 年 11 月描述为 coding agents 的 inflection point：模型只是小幅变强，但跨过了‘基本都能按要求工作’的阈值。",
+    "Simon Willison 引述 ThoughtWorks 的讨论，认为最尴尬的位置是‘中间层工程师’，同时他自己也公开说对软件工时估算的旧经验已经失效。",
+    "Simon Willison 认为软件工程的新瓶颈已从实现转向 testing、proving 和选方案，因为原型和实现的速度大幅提升。"
+  ],
+  "entities": [
+    "Vibe",
+    "Engineering",
+    "QbitAI",
+    "Willison",
+    "GPT 5",
+    "Opus 4",
+    "ThoughtWorks",
+    "Hello World",
+    "AI 100"
+  ],
+  "claims": [
+    {
+      "id": "simon_inflection_point",
+      "type": "event",
+      "text": "Simon Willison 将 2025 年 11 月描述为 coding agents 的 inflection point：模型只是小幅变强，但跨过了‘基本都能按要求工作’的阈值。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "software_bottleneck_testing",
+      "type": "technique",
+      "text": "Simon Willison 认为软件工程的新瓶颈已从实现转向 testing、proving 和选方案，因为原型和实现的速度大幅提升。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "middle_engineers_disrupted",
+      "type": "event",
+      "text": "Simon Willison 引述 ThoughtWorks 的讨论，认为最尴尬的位置是‘中间层工程师’，同时他自己也公开说对软件工时估算的旧经验已经失效。",
+      "source": "legacy_claims_json"
+    }
+  ],
+  "important_quotes": [],
+  "open_questions": [],
+  "source_trace": {
+    "record_path": "knowledge_state/articles/5c7678b0d4c9/record.json",
+    "canonical_text_path": "knowledge_state/articles/5c7678b0d4c9/canonical_text.txt",
+    "legacy_claims_path": "knowledge_state/articles/5c7678b0d4c9/claims.json"
+  }
+}

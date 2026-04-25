@@ -1,0 +1,59 @@
+{
+  "article_id": "3c07c6956807",
+  "classification_status": "drafted",
+  "generated_at": "2026-04-25T15:26:23+00:00",
+  "method": "llm_openrouter",
+  "llm_model": "openai/gpt-5.4",
+  "llm_attempts": 1,
+  "primary_category": "developer_tools",
+  "secondary_categories": [
+    "memory_context",
+    "open_source_ecosystem",
+    "ai_agent"
+  ],
+  "tags": [
+    "coding-agent-plugin",
+    "token-compression",
+    "prompt-compression",
+    "context-engineering",
+    "developer-workflow",
+    "claude-code",
+    "codex",
+    "skills-plugin",
+    "open-source-adoption"
+  ],
+  "source_type": "media",
+  "importance": "medium",
+  "rationale": "文章核心是在介绍一个面向 Claude Code、Codex 等 AI 编程工具的 skill/plugin，其主要价值落点是开发场景中的编码助手使用体验与成本优化，属于开发者工具范畴。虽然内容涉及记忆文件压缩和上下文 token 节省，可归入记忆 / Context Engineering 作为次级分类，但文章主线不是通用记忆架构，而是一个给 coding agent 使用的插件产品及其开发工作流集成方式。同时文中强调 GitHub 爆火和 stars 增长，具备开源生态信号；也与 AI Agent 的输出风格控制有关，但这些都不如“AI 编程工具插件”这一核心机制更适合作为主分类。",
+  "category_scores": {
+    "ai_agent": 16,
+    "ai_infrastructure": 1,
+    "memory_context": 32,
+    "developer_tools": 22,
+    "multimodal_ai": 0,
+    "robotics_embodied_ai": 0,
+    "consumer_economy": 3,
+    "research_benchmark": 5,
+    "open_source_ecosystem": 5,
+    "policy_regulation": 0,
+    "product_business": 9
+  },
+  "fallback_suggestion": {
+    "primary_category": "memory_context",
+    "secondary_categories": [
+      "developer_tools",
+      "ai_agent",
+      "product_business"
+    ],
+    "tags": [
+      "agent-runtime",
+      "business-model",
+      "context-engineering",
+      "developer-experience",
+      "long-term-memory",
+      "product-launch",
+      "software-engineering",
+      "workflow-orchestration"
+    ]
+  }
+}

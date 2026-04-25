@@ -1,0 +1,96 @@
+{
+  "article_id": "03f809cb0476",
+  "extraction_status": "completed",
+  "generated_at": "2026-04-25T16:46:09+00:00",
+  "method": "deterministic_mvp",
+  "summary": "文章称 Steve Yegge 表示，使用 AI 编程代理的人比今天使用 Cursor 和聊天的工程师生产效率高 10 倍到 100 倍。 文章称 Steve Yegge 表示，使用 AI 编程代理的人比 2005 年时的谷歌员工生产效率高约 1000 倍。 文章称 Garry Tan 分享其 CLAUDE.md 文件曾膨胀到 20,000 行，后来删减后最终修复方案只有大约 200 行，而且主要是指向不同文档的指针。",
+  "main_points": [
+    "文章称 Steve Yegge 表示，使用 AI 编程代理的人比今天使用 Cursor 和聊天的工程师生产效率高 10 倍到 100 倍。",
+    "文章称 Steve Yegge 表示，使用 AI 编程代理的人比 2005 年时的谷歌员工生产效率高约 1000 倍。",
+    "文章称 Garry Tan 分享其 CLAUDE.md 文件曾膨胀到 20,000 行，后来删减后最终修复方案只有大约 200 行，而且主要是指向不同文档的指针。",
+    "文章称 Garry Tan 认为，实现 10 倍、100 倍甚至 1000 倍生产力的秘密不在模型，而在于包裹模型的 harness。",
+    "文章称，实时仓库上下文、提示缓存、专门构建的工具、上下文冗余最小化、结构化会话记忆和并行子代理并不会让模型更聪明，而是为模型在恰当时间提供恰当上下文并避免噪音干扰。",
+    "文章称 Garry Tan 对 harness 的回答是“瘦外壳 + 胖技能”，即 harness 应保持轻量简单，只负责基本调度和管理，而 Skills 应内容丰富且可复用。",
+    "文章称 Resolver 是上下文的路由表，会在需要的时候按需加载正确文档，从而避免污染上下文窗口。",
+    "文章称，这套方法形成三层架构：顶层是厚技能 Markdown 流程，中间是约 200 行代码的薄 CLI harness，底层是 QueryDB、ReadDoc、Search、Timeline 等确定性应用程序。"
+  ],
+  "entities": [
+    "Garry Tan",
+    "Skill",
+    "AI",
+    "Harness",
+    "Markdown",
+    "Diarization",
+    "Claude Code",
+    "Resolver",
+    "CLI",
+    "GitHub",
+    "Steve Yegge",
+    "YC",
+    "Garry",
+    "SQL",
+    "Santos",
+    "Oram",
+    "Kim",
+    "OK",
+    "Cursor",
+    "Yegge"
+  ],
+  "claims": [
+    {
+      "id": "steve_yegge_productivity_claim_10x_100x",
+      "type": "event",
+      "text": "文章称 Steve Yegge 表示，使用 AI 编程代理的人比今天使用 Cursor 和聊天的工程师生产效率高 10 倍到 100 倍。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "steve_yegge_productivity_claim_1000x_vs_2005_google",
+      "type": "event",
+      "text": "文章称 Steve Yegge 表示，使用 AI 编程代理的人比 2005 年时的谷歌员工生产效率高约 1000 倍。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "garry_tan_harness_not_model",
+      "type": "technique",
+      "text": "文章称 Garry Tan 认为，实现 10 倍、100 倍甚至 1000 倍生产力的秘密不在模型，而在于包裹模型的 harness。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "harness_provides_context_and_reduces_noise",
+      "type": "technique",
+      "text": "文章称，实时仓库上下文、提示缓存、专门构建的工具、上下文冗余最小化、结构化会话记忆和并行子代理并不会让模型更聪明，而是为模型在恰当时间提供恰当上下文并避免噪音干扰。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "thin_shell_fat_skills_architecture",
+      "type": "technique",
+      "text": "文章称 Garry Tan 对 harness 的回答是“瘦外壳 + 胖技能”，即 harness 应保持轻量简单，只负责基本调度和管理，而 Skills 应内容丰富且可复用。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "resolver_loads_context_on_demand",
+      "type": "technique",
+      "text": "文章称 Resolver 是上下文的路由表，会在需要的时候按需加载正确文档，从而避免污染上下文窗口。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "claude_md_reduced_from_20000_to_200_lines",
+      "type": "event",
+      "text": "文章称 Garry Tan 分享其 CLAUDE.md 文件曾膨胀到 20,000 行，后来删减后最终修复方案只有大约 200 行，而且主要是指向不同文档的指针。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "three_layer_architecture_skills_harness_tools",
+      "type": "technique",
+      "text": "文章称，这套方法形成三层架构：顶层是厚技能 Markdown 流程，中间是约 200 行代码的薄 CLI harness，底层是 QueryDB、ReadDoc、Search、Timeline 等确定性应用程序。",
+      "source": "legacy_claims_json"
+    }
+  ],
+  "important_quotes": [],
+  "open_questions": [],
+  "source_trace": {
+    "record_path": "knowledge_state/articles/03f809cb0476/record.json",
+    "canonical_text_path": "knowledge_state/articles/03f809cb0476/canonical_text.txt",
+    "legacy_claims_path": "knowledge_state/articles/03f809cb0476/claims.json"
+  }
+}

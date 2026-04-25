@@ -1,0 +1,55 @@
+{
+  "article_id": "719a74e44194",
+  "concept_status": "drafted",
+  "generated_at": "2026-04-25T15:26:55+00:00",
+  "method": "tag_to_concept_mvp",
+  "matched_concepts": [
+    "agent_runtime",
+    "context_aware_agent",
+    "course_knowledge_base",
+    "deep_research",
+    "learning_agent",
+    "long_term_memory",
+    "personalized_learning",
+    "proactive_assistance",
+    "student_workflow",
+    "tool_use"
+  ],
+  "created_concepts": [
+    "learning_agent",
+    "proactive_assistance",
+    "personalized_learning",
+    "context_aware_agent",
+    "student_workflow",
+    "tool_use",
+    "deep_research",
+    "course_knowledge_base"
+  ],
+  "candidate_concepts": [],
+  "source_trace": {
+    "classification_path": "knowledge_state/articles/719a74e44194/classification.json",
+    "extraction_path": "knowledge_state/articles/719a74e44194/extraction.json"
+  },
+  "article_entities": [
+    "Hyperknow",
+    "Agent",
+    "AI",
+    "ChatGPT",
+    "PPT",
+    "Hyperknow 3",
+    "GPT",
+    "AI Workspace",
+    "Discord",
+    "RAG",
+    "Cindy",
+    "DdftSCeLD",
+    "Ask ChatGPT",
+    "Ask Hyperknow 3",
+    "YouTube",
+    "Gap",
+    "Science",
+    "Sakana AI",
+    "AI Scientist",
+    "Hyperknow Agent"
+  ]
+}

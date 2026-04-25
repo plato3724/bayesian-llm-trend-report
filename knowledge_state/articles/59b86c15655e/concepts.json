@@ -1,0 +1,47 @@
+{
+  "article_id": "59b86c15655e",
+  "concept_status": "drafted",
+  "generated_at": "2026-04-25T15:26:41+00:00",
+  "method": "tag_to_concept_mvp",
+  "matched_concepts": [
+    "adaptive_inference",
+    "early_exit",
+    "embodied_ai",
+    "flow_matching",
+    "open_source_model",
+    "real_world_robotics",
+    "robot_benchmark",
+    "robot_control",
+    "vision_language_action",
+    "vla_model"
+  ],
+  "created_concepts": [
+    "vla_model",
+    "vision_language_action",
+    "embodied_ai",
+    "robot_control",
+    "adaptive_inference",
+    "early_exit",
+    "flow_matching",
+    "real_world_robotics",
+    "robot_benchmark",
+    "open_source_model"
+  ],
+  "candidate_concepts": [],
+  "source_trace": {
+    "classification_path": "knowledge_state/articles/59b86c15655e/classification.json",
+    "extraction_path": "knowledge_state/articles/59b86c15655e/extraction.json"
+  },
+  "article_entities": [
+    "QbitAI",
+    "Vision-Language",
+    "VLM",
+    "AgiBot",
+    "OpenArm",
+    "Dobot",
+    "A Fully Transparent Open-Source",
+    "Adaptive",
+    "Efficient Truncated Vision-Language-Action",
+    "Model"
+  ]
+}

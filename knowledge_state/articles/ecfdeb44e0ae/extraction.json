@@ -1,0 +1,33 @@
+{
+  "article_id": "ecfdeb44e0ae",
+  "extraction_status": "completed",
+  "generated_at": "2026-04-25T15:27:43+00:00",
+  "method": "deterministic_mvp",
+  "summary": "爱图表将自己定位为可编辑的图表智能体，而不是一次性出图工具。",
+  "main_points": [
+    "爱图表将自己定位为可编辑的图表智能体，而不是一次性出图工具。"
+  ],
+  "entities": [
+    "QbitAI",
+    "Aitubiao",
+    "Excel",
+    "Aily",
+    "Lobster",
+    "QClaw"
+  ],
+  "claims": [
+    {
+      "id": "aitubiao_editable_chart_agent",
+      "type": "tool",
+      "text": "爱图表将自己定位为可编辑的图表智能体，而不是一次性出图工具。",
+      "source": "legacy_claims_json"
+    }
+  ],
+  "important_quotes": [],
+  "open_questions": [],
+  "source_trace": {
+    "record_path": "knowledge_state/articles/ecfdeb44e0ae/record.json",
+    "canonical_text_path": "knowledge_state/articles/ecfdeb44e0ae/canonical_text.txt",
+    "legacy_claims_path": "knowledge_state/articles/ecfdeb44e0ae/claims.json"
+  }
+}

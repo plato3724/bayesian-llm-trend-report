@@ -1,0 +1,57 @@
+{
+  "article_id": "20fb29fec269",
+  "classification_status": "drafted",
+  "generated_at": "2026-04-25T15:26:04+00:00",
+  "method": "llm_openrouter",
+  "llm_model": "openai/gpt-5.4",
+  "llm_attempts": 1,
+  "primary_category": "ai_agent",
+  "secondary_categories": [
+    "ai_infrastructure",
+    "product_business",
+    "consumer_economy"
+  ],
+  "tags": [
+    "managed-agents",
+    "agent-harness",
+    "agent-runtime",
+    "workflow-orchestration",
+    "sandboxed-execution",
+    "durable-session",
+    "tool-integration",
+    "consumer-agent",
+    "deterministic-execution",
+    "cloud-agent"
+  ],
+  "source_type": "media",
+  "importance": "medium",
+  "rationale": "文章核心讨论的是 AI Agent 的运行机制与产品形态，重点围绕 Managed Agents、Agent Harness、session、sandbox、工具调用、长时程任务执行等能力展开，核心机制是如何让 agent 持续、可靠、自主地完成工作，因此主分类应归入 AI Agent。文中也涉及运行时虚拟化、沙箱、安全边界等平台层内容，可作为 AI 基础设施的次分类；同时大量讨论消费级产品定位、普通用户门槛和市场扩张，适合作为产品商业与消费经济的补充分类。",
+  "category_scores": {
+    "ai_agent": 63,
+    "ai_infrastructure": 13,
+    "memory_context": 1,
+    "developer_tools": 7,
+    "multimodal_ai": 1,
+    "robotics_embodied_ai": 0,
+    "consumer_economy": 25,
+    "research_benchmark": 3,
+    "open_source_ecosystem": 7,
+    "policy_regulation": 0,
+    "product_business": 25
+  },
+  "fallback_suggestion": {
+    "primary_category": "ai_agent",
+    "secondary_categories": [
+      "product_business",
+      "consumer_economy"
+    ],
+    "tags": [
+      "agent-runtime",
+      "business-model",
+      "consumer-behavior",
+      "market-signal",
+      "product-launch",
+      "workflow-orchestration"
+    ]
+  }
+}

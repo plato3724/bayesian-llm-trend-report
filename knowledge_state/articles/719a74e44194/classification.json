@@ -1,0 +1,60 @@
+{
+  "article_id": "719a74e44194",
+  "classification_status": "drafted",
+  "generated_at": "2026-04-25T15:26:55+00:00",
+  "method": "llm_openrouter",
+  "llm_model": "openai/gpt-5.4",
+  "llm_attempts": 1,
+  "primary_category": "ai_agent",
+  "secondary_categories": [
+    "product_business",
+    "memory_context",
+    "consumer_economy"
+  ],
+  "tags": [
+    "learning-agent",
+    "proactive-assistance",
+    "agent-runtime",
+    "personalized-learning",
+    "context-aware-agent",
+    "student-workflow",
+    "long-term-memory",
+    "tool-use",
+    "deep-research",
+    "course-knowledge-base"
+  ],
+  "source_type": "media",
+  "importance": "high",
+  "rationale": "文章核心不是单纯报道创业故事或市场传播，而是在详细描述 Hyperknow 作为“通用学习智能体”的工作机制：主动提问、主动规划下一步、接入教学系统、围绕学习任务调用搜索与资料处理能力，并从被动问答工具演进为可持续陪伴的学习 Agent。产品发布和用户反馈是外层叙事，但可复用、可比较的核心证据线索在于 Agent 的自主性、任务流设计、工具调用和场景化执行，因此主分类应归入 AI Agent。其次，文中也明显涉及产品迭代与商业化验证，可作为产品 / 商业的次分类；同时强调学习上下文、用户画像、记忆体系和课程知识库，适合补充记忆 / Context Engineering。",
+  "category_scores": {
+    "ai_agent": 9,
+    "ai_infrastructure": 0,
+    "memory_context": 4,
+    "developer_tools": 3,
+    "multimodal_ai": 2,
+    "robotics_embodied_ai": 0,
+    "consumer_economy": 10,
+    "research_benchmark": 0,
+    "open_source_ecosystem": 5,
+    "policy_regulation": 0,
+    "product_business": 17
+  },
+  "fallback_suggestion": {
+    "primary_category": "product_business",
+    "secondary_categories": [
+      "consumer_economy",
+      "ai_agent",
+      "open_source_ecosystem"
+    ],
+    "tags": [
+      "agent-runtime",
+      "business-model",
+      "consumer-behavior",
+      "ecosystem",
+      "market-signal",
+      "open-source",
+      "product-launch",
+      "workflow-orchestration"
+    ]
+  }
+}

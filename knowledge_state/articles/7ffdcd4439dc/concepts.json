@@ -1,0 +1,52 @@
+{
+  "article_id": "7ffdcd4439dc",
+  "concept_status": "drafted",
+  "generated_at": "2026-04-25T15:27:13+00:00",
+  "method": "tag_to_concept_mvp",
+  "matched_concepts": [
+    "bimanual_manipulation",
+    "egocentric_video",
+    "embodied_ai",
+    "multimodal_dataset",
+    "physical_grounding",
+    "tactile_prediction",
+    "tactile_sensing",
+    "vision_tactile_alignment"
+  ],
+  "created_concepts": [
+    "tactile_sensing",
+    "egocentric_video",
+    "vision_tactile_alignment",
+    "bimanual_manipulation",
+    "physical_grounding",
+    "multimodal_dataset",
+    "tactile_prediction"
+  ],
+  "candidate_concepts": [],
+  "source_trace": {
+    "classification_path": "knowledge_state/articles/7ffdcd4439dc/classification.json",
+    "extraction_path": "knowledge_state/articles/7ffdcd4439dc/extraction.json"
+  },
+  "article_entities": [
+    "QbitAI",
+    "Ego",
+    "TouchAnything",
+    "A Dataset",
+    "Framework",
+    "Bimanual Tactile Estimation",
+    "Egocentric Video",
+    "Jianyi Zhou",
+    "Ziteng Gao",
+    "Feiyang Hong",
+    "Zirui Liu",
+    "Guannan Zhang",
+    "Weisheng Dai",
+    "Ruichen Zhen",
+    "Haotian Wu",
+    "Yinian Mao",
+    "Xushi Wang",
+    "Yuxiang Jiang",
+    "Shuo Yang",
+    "M-PAI Lab"
+  ]
+}

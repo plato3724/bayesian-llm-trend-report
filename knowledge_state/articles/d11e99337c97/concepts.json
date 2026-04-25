@@ -1,0 +1,58 @@
+{
+  "article_id": "d11e99337c97",
+  "concept_status": "drafted",
+  "generated_at": "2026-04-25T15:27:31+00:00",
+  "method": "tag_to_concept_mvp",
+  "matched_concepts": [
+    "agent_runtime",
+    "agent_state",
+    "backtesting",
+    "github_trending",
+    "investment_agent",
+    "langgraph",
+    "local_llm",
+    "multi_agent_system",
+    "ollama",
+    "open_source",
+    "react_flow",
+    "workflow_orchestration"
+  ],
+  "created_concepts": [
+    "multi_agent_system",
+    "langgraph",
+    "agent_state",
+    "investment_agent",
+    "backtesting",
+    "github_trending",
+    "local_llm",
+    "ollama",
+    "react_flow"
+  ],
+  "candidate_concepts": [],
+  "source_trace": {
+    "classification_path": "knowledge_state/articles/d11e99337c97/classification.json",
+    "extraction_path": "knowledge_state/articles/d11e99337c97/extraction.json"
+  },
+  "article_entities": [
+    "AI Hedge",
+    "Agent",
+    "AAPL",
+    "MSFT",
+    "NVDA",
+    "QbitAI",
+    "Hedge Fund",
+    "Anthropic",
+    "Groq",
+    "Star",
+    "Fork",
+    "Warren Buffett",
+    "Charlie Munger",
+    "Ben Graham",
+    "Bill Ackman",
+    "Cathie Wood",
+    "Michael Burry",
+    "Peter Lynch",
+    "Phil Fisher",
+    "Scuttlebutt"
+  ]
+}

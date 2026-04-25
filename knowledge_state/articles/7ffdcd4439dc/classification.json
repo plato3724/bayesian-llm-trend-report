@@ -1,0 +1,54 @@
+{
+  "article_id": "7ffdcd4439dc",
+  "classification_status": "drafted",
+  "generated_at": "2026-04-25T15:27:13+00:00",
+  "method": "llm_openrouter",
+  "llm_model": "openai/gpt-5.4",
+  "llm_attempts": 1,
+  "primary_category": "robotics_embodied_ai",
+  "secondary_categories": [
+    "research_benchmark",
+    "multimodal_ai"
+  ],
+  "tags": [
+    "embodied-ai",
+    "tactile-sensing",
+    "egocentric-video",
+    "vision-tactile-alignment",
+    "bimanual-manipulation",
+    "physical-grounding",
+    "multimodal-dataset",
+    "tactile-prediction"
+  ],
+  "source_type": "media",
+  "importance": "medium",
+  "rationale": "文章核心在于具身智能中的触觉建模与操作任务：围绕第一人称手物交互、双手操作、触觉采集与触觉预测展开，目标是提升机器人对物理接触和精细操作的理解与执行能力，因此主分类应归入机器人/具身智能。虽然内容同时包含大规模数据集与基准模型，具备明显研究和 benchmark 属性，也涉及视觉-触觉多模态融合，但这些都是服务于具身操作这一核心机制。",
+  "category_scores": {
+    "ai_agent": 0,
+    "ai_infrastructure": 0,
+    "memory_context": 0,
+    "developer_tools": 1,
+    "multimodal_ai": 17,
+    "robotics_embodied_ai": 53,
+    "consumer_economy": 0,
+    "research_benchmark": 24,
+    "open_source_ecosystem": 3,
+    "policy_regulation": 0,
+    "product_business": 2
+  },
+  "fallback_suggestion": {
+    "primary_category": "robotics_embodied_ai",
+    "secondary_categories": [
+      "research_benchmark",
+      "multimodal_ai"
+    ],
+    "tags": [
+      "benchmark",
+      "cross-modal",
+      "embodied-ai",
+      "multimodal",
+      "physical-grounding",
+      "research-result"
+    ]
+  }
+}

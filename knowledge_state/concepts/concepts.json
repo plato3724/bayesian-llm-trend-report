@@ -1,0 +1,4647 @@
+{
+  "created_at": "2026-04-25T15:25:50+00:00",
+  "last_updated_at": "2026-04-25T16:46:31+00:00",
+  "version": 1,
+  "concepts": [
+    {
+      "concept_id": "nostalgia_economy",
+      "name": "Nostalgia Economy",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "nostalgia-economy"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:25:58+00:00",
+      "last_updated_at": "2026-04-25T15:25:58+00:00",
+      "related_categories": [
+        "consumer_economy",
+        "product_business"
+      ],
+      "related_tags": [
+        "nostalgia-economy"
+      ],
+      "supporting_articles": [
+        "06eb3b8e8732"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "consumer_behavior",
+      "name": "Consumer Behavior",
+      "definition": "用户、消费者或文化群体采用产品、分配注意力和支出的行为模式。",
+      "aliases": [
+        "consumer-behavior"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:25:58+00:00",
+      "last_updated_at": "2026-04-25T15:25:58+00:00",
+      "related_categories": [
+        "consumer_economy",
+        "product_business"
+      ],
+      "related_tags": [
+        "consumer-behavior"
+      ],
+      "supporting_articles": [
+        "06eb3b8e8732"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "market_signal",
+      "name": "Market Signal",
+      "definition": "显示某个市场、品类或用户行为可能变化的可测量或反复出现的信号。",
+      "aliases": [
+        "market-signal"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:25:58+00:00",
+      "last_updated_at": "2026-04-25T15:25:58+00:00",
+      "related_categories": [
+        "consumer_economy",
+        "product_business"
+      ],
+      "related_tags": [
+        "market-signal"
+      ],
+      "supporting_articles": [
+        "06eb3b8e8732"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "secondhand_market",
+      "name": "Secondhand Market",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "secondhand-market"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:25:58+00:00",
+      "last_updated_at": "2026-04-25T15:25:58+00:00",
+      "related_categories": [
+        "consumer_economy",
+        "product_business"
+      ],
+      "related_tags": [
+        "secondhand-market"
+      ],
+      "supporting_articles": [
+        "06eb3b8e8732"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "retro_ip",
+      "name": "Retro Ip",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "retro-ip"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:25:58+00:00",
+      "last_updated_at": "2026-04-25T15:25:58+00:00",
+      "related_categories": [
+        "consumer_economy",
+        "product_business"
+      ],
+      "related_tags": [
+        "retro-ip"
+      ],
+      "supporting_articles": [
+        "06eb3b8e8732"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "collectibles_demand",
+      "name": "Collectibles Demand",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "collectibles-demand"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:25:58+00:00",
+      "last_updated_at": "2026-04-25T15:25:58+00:00",
+      "related_categories": [
+        "consumer_economy",
+        "product_business"
+      ],
+      "related_tags": [
+        "collectibles-demand"
+      ],
+      "supporting_articles": [
+        "06eb3b8e8732"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "offline_immersive_experience",
+      "name": "Offline Immersive Experience",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "offline-immersive-experience"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:25:58+00:00",
+      "last_updated_at": "2026-04-25T15:25:58+00:00",
+      "related_categories": [
+        "consumer_economy",
+        "product_business"
+      ],
+      "related_tags": [
+        "offline-immersive-experience"
+      ],
+      "supporting_articles": [
+        "06eb3b8e8732"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "social_commerce_trend",
+      "name": "Social Commerce Trend",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "social-commerce-trend"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:25:58+00:00",
+      "last_updated_at": "2026-04-25T15:25:58+00:00",
+      "related_categories": [
+        "consumer_economy",
+        "product_business"
+      ],
+      "related_tags": [
+        "social-commerce-trend"
+      ],
+      "supporting_articles": [
+        "06eb3b8e8732"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "managed_agents",
+      "name": "Managed Agents",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "managed-agents"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:04+00:00",
+      "last_updated_at": "2026-04-25T15:26:04+00:00",
+      "related_categories": [
+        "ai_agent",
+        "ai_infrastructure",
+        "product_business",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "managed-agents"
+      ],
+      "supporting_articles": [
+        "20fb29fec269"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "agent_harness",
+      "name": "Agent Harness",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "agent-harness"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:04+00:00",
+      "last_updated_at": "2026-04-25T15:26:04+00:00",
+      "related_categories": [
+        "ai_agent",
+        "ai_infrastructure",
+        "product_business",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "agent-harness"
+      ],
+      "supporting_articles": [
+        "20fb29fec269"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "agent_runtime",
+      "name": "Agent Runtime",
+      "definition": "面向 agent 的持久执行层，包括 session、工具、沙箱、恢复机制和审计轨迹。",
+      "aliases": [
+        "agent-runtime"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:04+00:00",
+      "last_updated_at": "2026-04-25T16:46:17+00:00",
+      "related_categories": [
+        "ai_agent",
+        "ai_infrastructure",
+        "product_business",
+        "consumer_economy",
+        "developer_tools",
+        "open_source_ecosystem",
+        "research_benchmark",
+        "memory_context"
+      ],
+      "related_tags": [
+        "agent-runtime"
+      ],
+      "supporting_articles": [
+        "20fb29fec269",
+        "271ba75686b0",
+        "44f454b544d9",
+        "719a74e44194",
+        "d11e99337c97",
+        "03f809cb0476"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "workflow_orchestration",
+      "name": "Workflow Orchestration",
+      "definition": "组织工具、模型、agent 和状态之间多步骤工作的协调层。",
+      "aliases": [
+        "workflow-orchestration"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:04+00:00",
+      "last_updated_at": "2026-04-25T16:46:17+00:00",
+      "related_categories": [
+        "ai_agent",
+        "ai_infrastructure",
+        "product_business",
+        "consumer_economy",
+        "developer_tools",
+        "research_benchmark",
+        "open_source_ecosystem",
+        "memory_context"
+      ],
+      "related_tags": [
+        "workflow-orchestration"
+      ],
+      "supporting_articles": [
+        "20fb29fec269",
+        "44f454b544d9",
+        "d11e99337c97",
+        "03f809cb0476"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "sandboxed_execution",
+      "name": "Sandboxed Execution",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "sandboxed-execution"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:04+00:00",
+      "last_updated_at": "2026-04-25T15:26:04+00:00",
+      "related_categories": [
+        "ai_agent",
+        "ai_infrastructure",
+        "product_business",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "sandboxed-execution"
+      ],
+      "supporting_articles": [
+        "20fb29fec269"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "durable_session",
+      "name": "Durable Session",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "durable-session"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:04+00:00",
+      "last_updated_at": "2026-04-25T15:26:04+00:00",
+      "related_categories": [
+        "ai_agent",
+        "ai_infrastructure",
+        "product_business",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "durable-session"
+      ],
+      "supporting_articles": [
+        "20fb29fec269"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "tool_integration",
+      "name": "Tool Integration",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "tool-integration"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:04+00:00",
+      "last_updated_at": "2026-04-25T15:26:04+00:00",
+      "related_categories": [
+        "ai_agent",
+        "ai_infrastructure",
+        "product_business",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "tool-integration"
+      ],
+      "supporting_articles": [
+        "20fb29fec269"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "consumer_agent",
+      "name": "Consumer Agent",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "consumer-agent"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:04+00:00",
+      "last_updated_at": "2026-04-25T15:26:04+00:00",
+      "related_categories": [
+        "ai_agent",
+        "ai_infrastructure",
+        "product_business",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "consumer-agent"
+      ],
+      "supporting_articles": [
+        "20fb29fec269"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "deterministic_execution",
+      "name": "Deterministic Execution",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "deterministic-execution"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:04+00:00",
+      "last_updated_at": "2026-04-25T15:26:04+00:00",
+      "related_categories": [
+        "ai_agent",
+        "ai_infrastructure",
+        "product_business",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "deterministic-execution"
+      ],
+      "supporting_articles": [
+        "20fb29fec269"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "cloud_agent",
+      "name": "Cloud Agent",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "cloud-agent"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:04+00:00",
+      "last_updated_at": "2026-04-25T15:26:04+00:00",
+      "related_categories": [
+        "ai_agent",
+        "ai_infrastructure",
+        "product_business",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "cloud-agent"
+      ],
+      "supporting_articles": [
+        "20fb29fec269"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "token_economics",
+      "name": "Token Economics",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "token-economics"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:10+00:00",
+      "last_updated_at": "2026-04-25T15:26:10+00:00",
+      "related_categories": [
+        "product_business",
+        "ai_agent",
+        "developer_tools",
+        "open_source_ecosystem"
+      ],
+      "related_tags": [
+        "token-economics"
+      ],
+      "supporting_articles": [
+        "271ba75686b0"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "internal_incentives",
+      "name": "Internal Incentives",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "internal-incentives"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:10+00:00",
+      "last_updated_at": "2026-04-25T15:26:10+00:00",
+      "related_categories": [
+        "product_business",
+        "ai_agent",
+        "developer_tools",
+        "open_source_ecosystem"
+      ],
+      "related_tags": [
+        "internal-incentives"
+      ],
+      "supporting_articles": [
+        "271ba75686b0"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "codebase_rewrite",
+      "name": "Codebase Rewrite",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "codebase-rewrite"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:10+00:00",
+      "last_updated_at": "2026-04-25T15:26:10+00:00",
+      "related_categories": [
+        "product_business",
+        "ai_agent",
+        "developer_tools",
+        "open_source_ecosystem"
+      ],
+      "related_tags": [
+        "codebase-rewrite"
+      ],
+      "supporting_articles": [
+        "271ba75686b0"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "developer_workflow",
+      "name": "Developer Workflow",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "developer-workflow"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:10+00:00",
+      "last_updated_at": "2026-04-25T15:26:23+00:00",
+      "related_categories": [
+        "product_business",
+        "ai_agent",
+        "developer_tools",
+        "open_source_ecosystem",
+        "memory_context"
+      ],
+      "related_tags": [
+        "developer-workflow"
+      ],
+      "supporting_articles": [
+        "271ba75686b0",
+        "3c07c6956807"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "open_model_strategy",
+      "name": "Open Model Strategy",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "open-model-strategy"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:10+00:00",
+      "last_updated_at": "2026-04-25T15:26:10+00:00",
+      "related_categories": [
+        "product_business",
+        "ai_agent",
+        "developer_tools",
+        "open_source_ecosystem"
+      ],
+      "related_tags": [
+        "open-model-strategy"
+      ],
+      "supporting_articles": [
+        "271ba75686b0"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "semi_open_source",
+      "name": "Semi Open Source",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "semi-open-source"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:10+00:00",
+      "last_updated_at": "2026-04-25T15:26:10+00:00",
+      "related_categories": [
+        "product_business",
+        "ai_agent",
+        "developer_tools",
+        "open_source_ecosystem"
+      ],
+      "related_tags": [
+        "semi-open-source"
+      ],
+      "supporting_articles": [
+        "271ba75686b0"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "distribution_advantage",
+      "name": "Distribution Advantage",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "distribution-advantage"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:10+00:00",
+      "last_updated_at": "2026-04-25T15:26:10+00:00",
+      "related_categories": [
+        "product_business",
+        "ai_agent",
+        "developer_tools",
+        "open_source_ecosystem"
+      ],
+      "related_tags": [
+        "distribution-advantage"
+      ],
+      "supporting_articles": [
+        "271ba75686b0"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "token_consumption",
+      "name": "Token Consumption",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "token-consumption"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:10+00:00",
+      "last_updated_at": "2026-04-25T15:26:10+00:00",
+      "related_categories": [
+        "product_business",
+        "ai_agent",
+        "developer_tools",
+        "open_source_ecosystem"
+      ],
+      "related_tags": [
+        "token-consumption"
+      ],
+      "supporting_articles": [
+        "271ba75686b0"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "org_behavior",
+      "name": "Org Behavior",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "org-behavior"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:10+00:00",
+      "last_updated_at": "2026-04-25T15:26:10+00:00",
+      "related_categories": [
+        "product_business",
+        "ai_agent",
+        "developer_tools",
+        "open_source_ecosystem"
+      ],
+      "related_tags": [
+        "org-behavior"
+      ],
+      "supporting_articles": [
+        "271ba75686b0"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "speech_generation",
+      "name": "Speech Generation",
+      "definition": "生成语音、声音、音频场景或可控口语内容的系统。",
+      "aliases": [
+        "speech-generation"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:17+00:00",
+      "last_updated_at": "2026-04-25T15:27:19+00:00",
+      "related_categories": [
+        "multimodal_ai",
+        "ai_agent",
+        "memory_context",
+        "product_business",
+        "open_source_ecosystem",
+        "ai_infrastructure"
+      ],
+      "related_tags": [
+        "speech-generation"
+      ],
+      "supporting_articles": [
+        "2f9fe8beb5ba",
+        "8f8f6c5c71fe"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "audio_synthesis",
+      "name": "Audio Synthesis",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "audio-synthesis"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:17+00:00",
+      "last_updated_at": "2026-04-25T15:27:19+00:00",
+      "related_categories": [
+        "multimodal_ai",
+        "ai_agent",
+        "memory_context",
+        "product_business",
+        "open_source_ecosystem",
+        "ai_infrastructure"
+      ],
+      "related_tags": [
+        "audio-synthesis"
+      ],
+      "supporting_articles": [
+        "2f9fe8beb5ba",
+        "8f8f6c5c71fe"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "long_form_audio",
+      "name": "Long Form Audio",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "long-form-audio"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:17+00:00",
+      "last_updated_at": "2026-04-25T15:26:17+00:00",
+      "related_categories": [
+        "multimodal_ai",
+        "ai_agent",
+        "memory_context",
+        "product_business"
+      ],
+      "related_tags": [
+        "long-form-audio"
+      ],
+      "supporting_articles": [
+        "2f9fe8beb5ba"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "structured_generation",
+      "name": "Structured Generation",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "structured-generation"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:17+00:00",
+      "last_updated_at": "2026-04-25T15:26:17+00:00",
+      "related_categories": [
+        "multimodal_ai",
+        "ai_agent",
+        "memory_context",
+        "product_business"
+      ],
+      "related_tags": [
+        "structured-generation"
+      ],
+      "supporting_articles": [
+        "2f9fe8beb5ba"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "cross_modal_input",
+      "name": "Cross Modal Input",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "cross-modal-input"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:17+00:00",
+      "last_updated_at": "2026-04-25T15:26:17+00:00",
+      "related_categories": [
+        "multimodal_ai",
+        "ai_agent",
+        "memory_context",
+        "product_business"
+      ],
+      "related_tags": [
+        "cross-modal-input"
+      ],
+      "supporting_articles": [
+        "2f9fe8beb5ba"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "gst_schema",
+      "name": "Gst Schema",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "gst-schema"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:17+00:00",
+      "last_updated_at": "2026-04-25T15:26:17+00:00",
+      "related_categories": [
+        "multimodal_ai",
+        "ai_agent",
+        "memory_context",
+        "product_business"
+      ],
+      "related_tags": [
+        "gst-schema"
+      ],
+      "supporting_articles": [
+        "2f9fe8beb5ba"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "agent_compatible",
+      "name": "Agent Compatible",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "agent-compatible"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:17+00:00",
+      "last_updated_at": "2026-04-25T15:26:17+00:00",
+      "related_categories": [
+        "multimodal_ai",
+        "ai_agent",
+        "memory_context",
+        "product_business"
+      ],
+      "related_tags": [
+        "agent-compatible"
+      ],
+      "supporting_articles": [
+        "2f9fe8beb5ba"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "context_engineering",
+      "name": "Context Engineering",
+      "definition": "设计哪些信息进入模型上下文、何时检索、如何压缩和组织。",
+      "aliases": [
+        "context-engineering"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:17+00:00",
+      "last_updated_at": "2026-04-25T16:46:17+00:00",
+      "related_categories": [
+        "multimodal_ai",
+        "ai_agent",
+        "memory_context",
+        "product_business",
+        "developer_tools",
+        "open_source_ecosystem",
+        "research_benchmark",
+        "ai_infrastructure"
+      ],
+      "related_tags": [
+        "context-engineering"
+      ],
+      "supporting_articles": [
+        "2f9fe8beb5ba",
+        "3c07c6956807",
+        "4a8b83da74e8",
+        "7bb7bc9e2b3e",
+        "bf281b22fc01",
+        "03f809cb0476"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "multi_speaker_dialogue",
+      "name": "Multi Speaker Dialogue",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "multi-speaker-dialogue"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:17+00:00",
+      "last_updated_at": "2026-04-25T15:26:17+00:00",
+      "related_categories": [
+        "multimodal_ai",
+        "ai_agent",
+        "memory_context",
+        "product_business"
+      ],
+      "related_tags": [
+        "multi-speaker-dialogue"
+      ],
+      "supporting_articles": [
+        "2f9fe8beb5ba"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "acoustic_scene_modeling",
+      "name": "Acoustic Scene Modeling",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "acoustic-scene-modeling"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:17+00:00",
+      "last_updated_at": "2026-04-25T15:26:17+00:00",
+      "related_categories": [
+        "multimodal_ai",
+        "ai_agent",
+        "memory_context",
+        "product_business"
+      ],
+      "related_tags": [
+        "acoustic-scene-modeling"
+      ],
+      "supporting_articles": [
+        "2f9fe8beb5ba"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "coding_agent_plugin",
+      "name": "Coding Agent Plugin",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "coding-agent-plugin"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:23+00:00",
+      "last_updated_at": "2026-04-25T15:26:23+00:00",
+      "related_categories": [
+        "developer_tools",
+        "memory_context",
+        "open_source_ecosystem",
+        "ai_agent"
+      ],
+      "related_tags": [
+        "coding-agent-plugin"
+      ],
+      "supporting_articles": [
+        "3c07c6956807"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "token_compression",
+      "name": "Token Compression",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "token-compression"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:23+00:00",
+      "last_updated_at": "2026-04-25T15:26:23+00:00",
+      "related_categories": [
+        "developer_tools",
+        "memory_context",
+        "open_source_ecosystem",
+        "ai_agent"
+      ],
+      "related_tags": [
+        "token-compression"
+      ],
+      "supporting_articles": [
+        "3c07c6956807"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "prompt_compression",
+      "name": "Prompt Compression",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "prompt-compression"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:23+00:00",
+      "last_updated_at": "2026-04-25T15:26:23+00:00",
+      "related_categories": [
+        "developer_tools",
+        "memory_context",
+        "open_source_ecosystem",
+        "ai_agent"
+      ],
+      "related_tags": [
+        "prompt-compression"
+      ],
+      "supporting_articles": [
+        "3c07c6956807"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "claude_code",
+      "name": "Claude Code",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "claude-code"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:23+00:00",
+      "last_updated_at": "2026-04-25T15:26:23+00:00",
+      "related_categories": [
+        "developer_tools",
+        "memory_context",
+        "open_source_ecosystem",
+        "ai_agent"
+      ],
+      "related_tags": [
+        "claude-code"
+      ],
+      "supporting_articles": [
+        "3c07c6956807"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "codex",
+      "name": "Codex",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "codex"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:23+00:00",
+      "last_updated_at": "2026-04-25T15:26:23+00:00",
+      "related_categories": [
+        "developer_tools",
+        "memory_context",
+        "open_source_ecosystem",
+        "ai_agent"
+      ],
+      "related_tags": [
+        "codex"
+      ],
+      "supporting_articles": [
+        "3c07c6956807"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "skills_plugin",
+      "name": "Skills Plugin",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "skills-plugin"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:23+00:00",
+      "last_updated_at": "2026-04-25T15:26:23+00:00",
+      "related_categories": [
+        "developer_tools",
+        "memory_context",
+        "open_source_ecosystem",
+        "ai_agent"
+      ],
+      "related_tags": [
+        "skills-plugin"
+      ],
+      "supporting_articles": [
+        "3c07c6956807"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "open_source_adoption",
+      "name": "Open Source Adoption",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "open-source-adoption"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:23+00:00",
+      "last_updated_at": "2026-04-25T15:27:37+00:00",
+      "related_categories": [
+        "developer_tools",
+        "memory_context",
+        "open_source_ecosystem",
+        "ai_agent",
+        "product_business"
+      ],
+      "related_tags": [
+        "open-source-adoption"
+      ],
+      "supporting_articles": [
+        "3c07c6956807",
+        "d668b6dcda22"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "multi_agent_research_workflow",
+      "name": "Multi Agent Research Workflow",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "multi-agent-research-workflow"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:30+00:00",
+      "last_updated_at": "2026-04-25T15:26:30+00:00",
+      "related_categories": [
+        "ai_agent",
+        "ai_infrastructure",
+        "developer_tools",
+        "research_benchmark"
+      ],
+      "related_tags": [
+        "multi-agent-research-workflow"
+      ],
+      "supporting_articles": [
+        "44f454b544d9"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "hierarchical_agent_architecture",
+      "name": "Hierarchical Agent Architecture",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "hierarchical-agent-architecture"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:30+00:00",
+      "last_updated_at": "2026-04-25T15:26:30+00:00",
+      "related_categories": [
+        "ai_agent",
+        "ai_infrastructure",
+        "developer_tools",
+        "research_benchmark"
+      ],
+      "related_tags": [
+        "hierarchical-agent-architecture"
+      ],
+      "supporting_articles": [
+        "44f454b544d9"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "experiment_harness",
+      "name": "Experiment Harness",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "experiment-harness"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:30+00:00",
+      "last_updated_at": "2026-04-25T15:26:30+00:00",
+      "related_categories": [
+        "ai_agent",
+        "ai_infrastructure",
+        "developer_tools",
+        "research_benchmark"
+      ],
+      "related_tags": [
+        "experiment-harness"
+      ],
+      "supporting_articles": [
+        "44f454b544d9"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "isolated_runs",
+      "name": "Isolated Runs",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "isolated-runs"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:30+00:00",
+      "last_updated_at": "2026-04-25T15:26:30+00:00",
+      "related_categories": [
+        "ai_agent",
+        "ai_infrastructure",
+        "developer_tools",
+        "research_benchmark"
+      ],
+      "related_tags": [
+        "isolated-runs"
+      ],
+      "supporting_articles": [
+        "44f454b544d9"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "human_in_the_loop",
+      "name": "Human In The Loop",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "human-in-the-loop"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:30+00:00",
+      "last_updated_at": "2026-04-25T15:27:49+00:00",
+      "related_categories": [
+        "ai_agent",
+        "ai_infrastructure",
+        "developer_tools",
+        "research_benchmark",
+        "product_business",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "human-in-the-loop"
+      ],
+      "supporting_articles": [
+        "44f454b544d9",
+        "ecfdeb44e0ae"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "rollback_control",
+      "name": "Rollback Control",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "rollback-control"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:30+00:00",
+      "last_updated_at": "2026-04-25T15:26:30+00:00",
+      "related_categories": [
+        "ai_agent",
+        "ai_infrastructure",
+        "developer_tools",
+        "research_benchmark"
+      ],
+      "related_tags": [
+        "rollback-control"
+      ],
+      "supporting_articles": [
+        "44f454b544d9"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "verified_results_feedback",
+      "name": "Verified Results Feedback",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "verified-results-feedback"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:30+00:00",
+      "last_updated_at": "2026-04-25T15:26:30+00:00",
+      "related_categories": [
+        "ai_agent",
+        "ai_infrastructure",
+        "developer_tools",
+        "research_benchmark"
+      ],
+      "related_tags": [
+        "verified-results-feedback"
+      ],
+      "supporting_articles": [
+        "44f454b544d9"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "research_automation",
+      "name": "Research Automation",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "research-automation"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:30+00:00",
+      "last_updated_at": "2026-04-25T15:26:30+00:00",
+      "related_categories": [
+        "ai_agent",
+        "ai_infrastructure",
+        "developer_tools",
+        "research_benchmark"
+      ],
+      "related_tags": [
+        "research-automation"
+      ],
+      "supporting_articles": [
+        "44f454b544d9"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "long_term_memory",
+      "name": "Long-Term Memory",
+      "definition": "让 AI 系统能跨任务或 session 保存、检索有用状态的外部化记忆。",
+      "aliases": [
+        "long-term-memory"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:36+00:00",
+      "last_updated_at": "2026-04-25T15:27:26+00:00",
+      "related_categories": [
+        "memory_context",
+        "open_source_ecosystem",
+        "research_benchmark",
+        "ai_agent",
+        "product_business",
+        "consumer_economy",
+        "developer_tools"
+      ],
+      "related_tags": [
+        "long-term-memory"
+      ],
+      "supporting_articles": [
+        "4a8b83da74e8",
+        "719a74e44194",
+        "bf281b22fc01"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "memory_palace",
+      "name": "Memory Palace",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "memory-palace"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:36+00:00",
+      "last_updated_at": "2026-04-25T15:26:36+00:00",
+      "related_categories": [
+        "memory_context",
+        "open_source_ecosystem",
+        "research_benchmark",
+        "ai_agent"
+      ],
+      "related_tags": [
+        "memory-palace"
+      ],
+      "supporting_articles": [
+        "4a8b83da74e8"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "hierarchical_retrieval",
+      "name": "Hierarchical Retrieval",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "hierarchical-retrieval"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:36+00:00",
+      "last_updated_at": "2026-04-25T15:26:36+00:00",
+      "related_categories": [
+        "memory_context",
+        "open_source_ecosystem",
+        "research_benchmark",
+        "ai_agent"
+      ],
+      "related_tags": [
+        "hierarchical-retrieval"
+      ],
+      "supporting_articles": [
+        "4a8b83da74e8"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "navigable_memory",
+      "name": "Navigable Memory",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "navigable-memory"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:36+00:00",
+      "last_updated_at": "2026-04-25T15:26:36+00:00",
+      "related_categories": [
+        "memory_context",
+        "open_source_ecosystem",
+        "research_benchmark",
+        "ai_agent"
+      ],
+      "related_tags": [
+        "navigable-memory"
+      ],
+      "supporting_articles": [
+        "4a8b83da74e8"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "local_first",
+      "name": "Local First",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "local-first"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:36+00:00",
+      "last_updated_at": "2026-04-25T15:26:36+00:00",
+      "related_categories": [
+        "memory_context",
+        "open_source_ecosystem",
+        "research_benchmark",
+        "ai_agent"
+      ],
+      "related_tags": [
+        "local-first"
+      ],
+      "supporting_articles": [
+        "4a8b83da74e8"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "longmemeval",
+      "name": "Longmemeval",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "longmemeval"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:36+00:00",
+      "last_updated_at": "2026-04-25T15:26:36+00:00",
+      "related_categories": [
+        "memory_context",
+        "open_source_ecosystem",
+        "research_benchmark",
+        "ai_agent"
+      ],
+      "related_tags": [
+        "longmemeval"
+      ],
+      "supporting_articles": [
+        "4a8b83da74e8"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "aaak_compression",
+      "name": "Aaak Compression",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "aaak-compression"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:36+00:00",
+      "last_updated_at": "2026-04-25T15:26:36+00:00",
+      "related_categories": [
+        "memory_context",
+        "open_source_ecosystem",
+        "research_benchmark",
+        "ai_agent"
+      ],
+      "related_tags": [
+        "aaak-compression"
+      ],
+      "supporting_articles": [
+        "4a8b83da74e8"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "mcp_tool_calling",
+      "name": "Mcp Tool Calling",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "mcp-tool-calling"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:36+00:00",
+      "last_updated_at": "2026-04-25T15:26:36+00:00",
+      "related_categories": [
+        "memory_context",
+        "open_source_ecosystem",
+        "research_benchmark",
+        "ai_agent"
+      ],
+      "related_tags": [
+        "mcp-tool-calling"
+      ],
+      "supporting_articles": [
+        "4a8b83da74e8"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "github_stars",
+      "name": "Github Stars",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "github-stars"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:36+00:00",
+      "last_updated_at": "2026-04-25T15:26:36+00:00",
+      "related_categories": [
+        "memory_context",
+        "open_source_ecosystem",
+        "research_benchmark",
+        "ai_agent"
+      ],
+      "related_tags": [
+        "github-stars"
+      ],
+      "supporting_articles": [
+        "4a8b83da74e8"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "vla_model",
+      "name": "Vla Model",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "vla-model"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:41+00:00",
+      "last_updated_at": "2026-04-25T15:26:41+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "research_benchmark",
+        "open_source_ecosystem",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "vla-model"
+      ],
+      "supporting_articles": [
+        "59b86c15655e"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "vision_language_action",
+      "name": "Vision Language Action",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "vision-language-action"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:41+00:00",
+      "last_updated_at": "2026-04-25T15:26:41+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "research_benchmark",
+        "open_source_ecosystem",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "vision-language-action"
+      ],
+      "supporting_articles": [
+        "59b86c15655e"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "embodied_ai",
+      "name": "Embodied AI",
+      "definition": "植根于物理世界行动、感知、机器人或第一人称交互的 AI 系统。",
+      "aliases": [
+        "embodied-ai"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:41+00:00",
+      "last_updated_at": "2026-04-25T15:27:43+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "research_benchmark",
+        "open_source_ecosystem",
+        "multimodal_ai",
+        "product_business"
+      ],
+      "related_tags": [
+        "embodied-ai"
+      ],
+      "supporting_articles": [
+        "59b86c15655e",
+        "7ffdcd4439dc",
+        "df7acb42e706"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "robot_control",
+      "name": "Robot Control",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "robot-control"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:41+00:00",
+      "last_updated_at": "2026-04-25T15:26:41+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "research_benchmark",
+        "open_source_ecosystem",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "robot-control"
+      ],
+      "supporting_articles": [
+        "59b86c15655e"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "adaptive_inference",
+      "name": "Adaptive Inference",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "adaptive-inference"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:41+00:00",
+      "last_updated_at": "2026-04-25T15:26:41+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "research_benchmark",
+        "open_source_ecosystem",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "adaptive-inference"
+      ],
+      "supporting_articles": [
+        "59b86c15655e"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "early_exit",
+      "name": "Early Exit",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "early-exit"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:41+00:00",
+      "last_updated_at": "2026-04-25T15:26:41+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "research_benchmark",
+        "open_source_ecosystem",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "early-exit"
+      ],
+      "supporting_articles": [
+        "59b86c15655e"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "flow_matching",
+      "name": "Flow Matching",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "flow-matching"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:41+00:00",
+      "last_updated_at": "2026-04-25T15:26:41+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "research_benchmark",
+        "open_source_ecosystem",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "flow-matching"
+      ],
+      "supporting_articles": [
+        "59b86c15655e"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "real_world_robotics",
+      "name": "Real World Robotics",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "real-world-robotics"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:41+00:00",
+      "last_updated_at": "2026-04-25T15:26:41+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "research_benchmark",
+        "open_source_ecosystem",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "real-world-robotics"
+      ],
+      "supporting_articles": [
+        "59b86c15655e"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "robot_benchmark",
+      "name": "Robot Benchmark",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "robot-benchmark"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:41+00:00",
+      "last_updated_at": "2026-04-25T15:26:41+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "research_benchmark",
+        "open_source_ecosystem",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "robot-benchmark"
+      ],
+      "supporting_articles": [
+        "59b86c15655e"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "open_source_model",
+      "name": "Open Source Model",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "open-source-model"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:41+00:00",
+      "last_updated_at": "2026-04-25T15:26:41+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "research_benchmark",
+        "open_source_ecosystem",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "open-source-model"
+      ],
+      "supporting_articles": [
+        "59b86c15655e"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "coding_agents",
+      "name": "Coding Agents",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "coding-agents"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:47+00:00",
+      "last_updated_at": "2026-04-25T15:26:47+00:00",
+      "related_categories": [
+        "developer_tools",
+        "ai_agent",
+        "product_business"
+      ],
+      "related_tags": [
+        "coding-agents"
+      ],
+      "supporting_articles": [
+        "5c7678b0d4c9"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "agentic_engineering",
+      "name": "Agentic Engineering",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "agentic-engineering"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:47+00:00",
+      "last_updated_at": "2026-04-25T15:26:47+00:00",
+      "related_categories": [
+        "developer_tools",
+        "ai_agent",
+        "product_business"
+      ],
+      "related_tags": [
+        "agentic-engineering"
+      ],
+      "supporting_articles": [
+        "5c7678b0d4c9"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "software_engineering",
+      "name": "Software Engineering Shift",
+      "definition": "软件规划、实现、测试、评审和运行方式的变化。",
+      "aliases": [
+        "software-engineering"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:47+00:00",
+      "last_updated_at": "2026-04-25T15:26:47+00:00",
+      "related_categories": [
+        "developer_tools",
+        "ai_agent",
+        "product_business"
+      ],
+      "related_tags": [
+        "software-engineering"
+      ],
+      "supporting_articles": [
+        "5c7678b0d4c9"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "developer_experience",
+      "name": "Developer Experience",
+      "definition": "工具如何降低构建、测试、调试和维护软件的摩擦。",
+      "aliases": [
+        "developer-experience"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:47+00:00",
+      "last_updated_at": "2026-04-25T15:27:37+00:00",
+      "related_categories": [
+        "developer_tools",
+        "ai_agent",
+        "product_business",
+        "open_source_ecosystem"
+      ],
+      "related_tags": [
+        "developer-experience"
+      ],
+      "supporting_articles": [
+        "5c7678b0d4c9",
+        "d668b6dcda22"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "testing_and_verification",
+      "name": "Testing And Verification",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "testing-and-verification"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:47+00:00",
+      "last_updated_at": "2026-04-25T15:26:47+00:00",
+      "related_categories": [
+        "developer_tools",
+        "ai_agent",
+        "product_business"
+      ],
+      "related_tags": [
+        "testing-and-verification"
+      ],
+      "supporting_articles": [
+        "5c7678b0d4c9"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "prototype_generation",
+      "name": "Prototype Generation",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "prototype-generation"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:47+00:00",
+      "last_updated_at": "2026-04-25T15:26:47+00:00",
+      "related_categories": [
+        "developer_tools",
+        "ai_agent",
+        "product_business"
+      ],
+      "related_tags": [
+        "prototype-generation"
+      ],
+      "supporting_articles": [
+        "5c7678b0d4c9"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "engineering_productivity",
+      "name": "Engineering Productivity",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "engineering-productivity"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:47+00:00",
+      "last_updated_at": "2026-04-25T15:26:47+00:00",
+      "related_categories": [
+        "developer_tools",
+        "ai_agent",
+        "product_business"
+      ],
+      "related_tags": [
+        "engineering-productivity"
+      ],
+      "supporting_articles": [
+        "5c7678b0d4c9"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "career_impact",
+      "name": "Career Impact",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "career-impact"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:47+00:00",
+      "last_updated_at": "2026-04-25T15:26:47+00:00",
+      "related_categories": [
+        "developer_tools",
+        "ai_agent",
+        "product_business"
+      ],
+      "related_tags": [
+        "career-impact"
+      ],
+      "supporting_articles": [
+        "5c7678b0d4c9"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "learning_agent",
+      "name": "Learning Agent",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "learning-agent"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:55+00:00",
+      "last_updated_at": "2026-04-25T15:26:55+00:00",
+      "related_categories": [
+        "ai_agent",
+        "product_business",
+        "memory_context",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "learning-agent"
+      ],
+      "supporting_articles": [
+        "719a74e44194"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "proactive_assistance",
+      "name": "Proactive Assistance",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "proactive-assistance"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:55+00:00",
+      "last_updated_at": "2026-04-25T15:26:55+00:00",
+      "related_categories": [
+        "ai_agent",
+        "product_business",
+        "memory_context",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "proactive-assistance"
+      ],
+      "supporting_articles": [
+        "719a74e44194"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "personalized_learning",
+      "name": "Personalized Learning",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "personalized-learning"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:55+00:00",
+      "last_updated_at": "2026-04-25T15:26:55+00:00",
+      "related_categories": [
+        "ai_agent",
+        "product_business",
+        "memory_context",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "personalized-learning"
+      ],
+      "supporting_articles": [
+        "719a74e44194"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "context_aware_agent",
+      "name": "Context Aware Agent",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "context-aware-agent"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:55+00:00",
+      "last_updated_at": "2026-04-25T15:26:55+00:00",
+      "related_categories": [
+        "ai_agent",
+        "product_business",
+        "memory_context",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "context-aware-agent"
+      ],
+      "supporting_articles": [
+        "719a74e44194"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "student_workflow",
+      "name": "Student Workflow",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "student-workflow"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:55+00:00",
+      "last_updated_at": "2026-04-25T15:26:55+00:00",
+      "related_categories": [
+        "ai_agent",
+        "product_business",
+        "memory_context",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "student-workflow"
+      ],
+      "supporting_articles": [
+        "719a74e44194"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "tool_use",
+      "name": "Tool Use",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "tool-use"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:55+00:00",
+      "last_updated_at": "2026-04-25T15:26:55+00:00",
+      "related_categories": [
+        "ai_agent",
+        "product_business",
+        "memory_context",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "tool-use"
+      ],
+      "supporting_articles": [
+        "719a74e44194"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "deep_research",
+      "name": "Deep Research",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "deep-research"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:55+00:00",
+      "last_updated_at": "2026-04-25T15:26:55+00:00",
+      "related_categories": [
+        "ai_agent",
+        "product_business",
+        "memory_context",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "deep-research"
+      ],
+      "supporting_articles": [
+        "719a74e44194"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "course_knowledge_base",
+      "name": "Course Knowledge Base",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "course-knowledge-base"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:26:55+00:00",
+      "last_updated_at": "2026-04-25T15:26:55+00:00",
+      "related_categories": [
+        "ai_agent",
+        "product_business",
+        "memory_context",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "course-knowledge-base"
+      ],
+      "supporting_articles": [
+        "719a74e44194"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "knowledge_graph",
+      "name": "Knowledge Graph",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "knowledge-graph"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:00+00:00",
+      "last_updated_at": "2026-04-25T15:27:00+00:00",
+      "related_categories": [
+        "memory_context",
+        "developer_tools",
+        "open_source_ecosystem",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "knowledge-graph"
+      ],
+      "supporting_articles": [
+        "7bb7bc9e2b3e"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "token_reduction",
+      "name": "Token Reduction",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "token-reduction"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:00+00:00",
+      "last_updated_at": "2026-04-25T15:27:00+00:00",
+      "related_categories": [
+        "memory_context",
+        "developer_tools",
+        "open_source_ecosystem",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "token-reduction"
+      ],
+      "supporting_articles": [
+        "7bb7bc9e2b3e"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "tree_sitter",
+      "name": "Tree Sitter",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "tree-sitter"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:00+00:00",
+      "last_updated_at": "2026-04-25T15:27:00+00:00",
+      "related_categories": [
+        "memory_context",
+        "developer_tools",
+        "open_source_ecosystem",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "tree-sitter"
+      ],
+      "supporting_articles": [
+        "7bb7bc9e2b3e"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "ast_parsing",
+      "name": "Ast Parsing",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "ast-parsing"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:00+00:00",
+      "last_updated_at": "2026-04-25T15:27:00+00:00",
+      "related_categories": [
+        "memory_context",
+        "developer_tools",
+        "open_source_ecosystem",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "ast-parsing"
+      ],
+      "supporting_articles": [
+        "7bb7bc9e2b3e"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "multimodal_ingestion",
+      "name": "Multimodal Ingestion",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "multimodal-ingestion"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:00+00:00",
+      "last_updated_at": "2026-04-25T15:27:00+00:00",
+      "related_categories": [
+        "memory_context",
+        "developer_tools",
+        "open_source_ecosystem",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "multimodal-ingestion"
+      ],
+      "supporting_articles": [
+        "7bb7bc9e2b3e"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "ai_coding_assistant",
+      "name": "Ai Coding Assistant",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "ai-coding-assistant"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:00+00:00",
+      "last_updated_at": "2026-04-25T15:27:00+00:00",
+      "related_categories": [
+        "memory_context",
+        "developer_tools",
+        "open_source_ecosystem",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "ai-coding-assistant"
+      ],
+      "supporting_articles": [
+        "7bb7bc9e2b3e"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "graph_based_retrieval",
+      "name": "Graph Based Retrieval",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "graph-based-retrieval"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:00+00:00",
+      "last_updated_at": "2026-04-25T15:27:00+00:00",
+      "related_categories": [
+        "memory_context",
+        "developer_tools",
+        "open_source_ecosystem",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "graph-based-retrieval"
+      ],
+      "supporting_articles": [
+        "7bb7bc9e2b3e"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "no_vector_embeddings",
+      "name": "No Vector Embeddings",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "no-vector-embeddings"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:00+00:00",
+      "last_updated_at": "2026-04-25T15:27:00+00:00",
+      "related_categories": [
+        "memory_context",
+        "developer_tools",
+        "open_source_ecosystem",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "no-vector-embeddings"
+      ],
+      "supporting_articles": [
+        "7bb7bc9e2b3e"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "incremental_update",
+      "name": "Incremental Update",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "incremental-update"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:00+00:00",
+      "last_updated_at": "2026-04-25T15:27:00+00:00",
+      "related_categories": [
+        "memory_context",
+        "developer_tools",
+        "open_source_ecosystem",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "incremental-update"
+      ],
+      "supporting_articles": [
+        "7bb7bc9e2b3e"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "open_source",
+      "name": "Open Source Signal",
+      "definition": "来自公开仓库、发布、采用、贡献者或可审查实现的证据。",
+      "aliases": [
+        "open-source"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:00+00:00",
+      "last_updated_at": "2026-04-25T15:27:31+00:00",
+      "related_categories": [
+        "memory_context",
+        "developer_tools",
+        "open_source_ecosystem",
+        "multimodal_ai",
+        "ai_agent",
+        "product_business"
+      ],
+      "related_tags": [
+        "open-source"
+      ],
+      "supporting_articles": [
+        "7bb7bc9e2b3e",
+        "d11e99337c97"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "medical_vlm",
+      "name": "Medical Vlm",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "medical-vlm"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:07+00:00",
+      "last_updated_at": "2026-04-25T15:27:07+00:00",
+      "related_categories": [
+        "research_benchmark",
+        "multimodal_ai",
+        "open_source_ecosystem"
+      ],
+      "related_tags": [
+        "medical-vlm"
+      ],
+      "supporting_articles": [
+        "7e6b7b4cfbf5"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "ultrasound_imaging",
+      "name": "Ultrasound Imaging",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "ultrasound-imaging"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:07+00:00",
+      "last_updated_at": "2026-04-25T15:27:07+00:00",
+      "related_categories": [
+        "research_benchmark",
+        "multimodal_ai",
+        "open_source_ecosystem"
+      ],
+      "related_tags": [
+        "ultrasound-imaging"
+      ],
+      "supporting_articles": [
+        "7e6b7b4cfbf5"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "image_text_dataset",
+      "name": "Image Text Dataset",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "image-text-dataset"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:07+00:00",
+      "last_updated_at": "2026-04-25T15:27:07+00:00",
+      "related_categories": [
+        "research_benchmark",
+        "multimodal_ai",
+        "open_source_ecosystem"
+      ],
+      "related_tags": [
+        "image-text-dataset"
+      ],
+      "supporting_articles": [
+        "7e6b7b4cfbf5"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "multimodal_benchmark",
+      "name": "Multimodal Benchmark",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "multimodal-benchmark"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:07+00:00",
+      "last_updated_at": "2026-04-25T15:27:07+00:00",
+      "related_categories": [
+        "research_benchmark",
+        "multimodal_ai",
+        "open_source_ecosystem"
+      ],
+      "related_tags": [
+        "multimodal-benchmark"
+      ],
+      "supporting_articles": [
+        "7e6b7b4cfbf5"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "clip_style_pretraining",
+      "name": "Clip Style Pretraining",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "clip-style-pretraining"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:07+00:00",
+      "last_updated_at": "2026-04-25T15:27:07+00:00",
+      "related_categories": [
+        "research_benchmark",
+        "multimodal_ai",
+        "open_source_ecosystem"
+      ],
+      "related_tags": [
+        "clip-style-pretraining"
+      ],
+      "supporting_articles": [
+        "7e6b7b4cfbf5"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "semantic_alignment",
+      "name": "Semantic Alignment",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "semantic-alignment"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:07+00:00",
+      "last_updated_at": "2026-04-25T15:27:07+00:00",
+      "related_categories": [
+        "research_benchmark",
+        "multimodal_ai",
+        "open_source_ecosystem"
+      ],
+      "related_tags": [
+        "semantic-alignment"
+      ],
+      "supporting_articles": [
+        "7e6b7b4cfbf5"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "cross_modal_retrieval",
+      "name": "Cross Modal Retrieval",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "cross-modal-retrieval"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:07+00:00",
+      "last_updated_at": "2026-04-25T15:27:07+00:00",
+      "related_categories": [
+        "research_benchmark",
+        "multimodal_ai",
+        "open_source_ecosystem"
+      ],
+      "related_tags": [
+        "cross-modal-retrieval"
+      ],
+      "supporting_articles": [
+        "7e6b7b4cfbf5"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "clinical_report_understanding",
+      "name": "Clinical Report Understanding",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "clinical-report-understanding"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:07+00:00",
+      "last_updated_at": "2026-04-25T15:27:07+00:00",
+      "related_categories": [
+        "research_benchmark",
+        "multimodal_ai",
+        "open_source_ecosystem"
+      ],
+      "related_tags": [
+        "clinical-report-understanding"
+      ],
+      "supporting_articles": [
+        "7e6b7b4cfbf5"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "open_dataset",
+      "name": "Open Dataset",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "open-dataset"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:07+00:00",
+      "last_updated_at": "2026-04-25T15:27:07+00:00",
+      "related_categories": [
+        "research_benchmark",
+        "multimodal_ai",
+        "open_source_ecosystem"
+      ],
+      "related_tags": [
+        "open-dataset"
+      ],
+      "supporting_articles": [
+        "7e6b7b4cfbf5"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "tactile_sensing",
+      "name": "Tactile Sensing",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "tactile-sensing"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:13+00:00",
+      "last_updated_at": "2026-04-25T15:27:43+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "research_benchmark",
+        "multimodal_ai",
+        "product_business",
+        "open_source_ecosystem"
+      ],
+      "related_tags": [
+        "tactile-sensing"
+      ],
+      "supporting_articles": [
+        "7ffdcd4439dc",
+        "df7acb42e706"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "egocentric_video",
+      "name": "Egocentric Video",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "egocentric-video"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:13+00:00",
+      "last_updated_at": "2026-04-25T15:27:13+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "research_benchmark",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "egocentric-video"
+      ],
+      "supporting_articles": [
+        "7ffdcd4439dc"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "vision_tactile_alignment",
+      "name": "Vision Tactile Alignment",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "vision-tactile-alignment"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:13+00:00",
+      "last_updated_at": "2026-04-25T15:27:13+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "research_benchmark",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "vision-tactile-alignment"
+      ],
+      "supporting_articles": [
+        "7ffdcd4439dc"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "bimanual_manipulation",
+      "name": "Bimanual Manipulation",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "bimanual-manipulation"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:13+00:00",
+      "last_updated_at": "2026-04-25T15:27:13+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "research_benchmark",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "bimanual-manipulation"
+      ],
+      "supporting_articles": [
+        "7ffdcd4439dc"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "physical_grounding",
+      "name": "Physical Grounding",
+      "definition": "把模型行为连接到物理信号、传感器、触觉或动作的证据与机制。",
+      "aliases": [
+        "physical-grounding"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:13+00:00",
+      "last_updated_at": "2026-04-25T15:27:43+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "research_benchmark",
+        "multimodal_ai",
+        "product_business",
+        "open_source_ecosystem"
+      ],
+      "related_tags": [
+        "physical-grounding"
+      ],
+      "supporting_articles": [
+        "7ffdcd4439dc",
+        "df7acb42e706"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "multimodal_dataset",
+      "name": "Multimodal Dataset",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "multimodal-dataset"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:13+00:00",
+      "last_updated_at": "2026-04-25T15:27:13+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "research_benchmark",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "multimodal-dataset"
+      ],
+      "supporting_articles": [
+        "7ffdcd4439dc"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "tactile_prediction",
+      "name": "Tactile Prediction",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "tactile-prediction"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:13+00:00",
+      "last_updated_at": "2026-04-25T15:27:13+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "research_benchmark",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "tactile-prediction"
+      ],
+      "supporting_articles": [
+        "7ffdcd4439dc"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "tts",
+      "name": "Tts",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "tts"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:19+00:00",
+      "last_updated_at": "2026-04-25T15:27:19+00:00",
+      "related_categories": [
+        "multimodal_ai",
+        "open_source_ecosystem",
+        "ai_infrastructure"
+      ],
+      "related_tags": [
+        "tts"
+      ],
+      "supporting_articles": [
+        "8f8f6c5c71fe"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "voice_cloning",
+      "name": "Voice Cloning",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "voice-cloning"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:19+00:00",
+      "last_updated_at": "2026-04-25T15:27:19+00:00",
+      "related_categories": [
+        "multimodal_ai",
+        "open_source_ecosystem",
+        "ai_infrastructure"
+      ],
+      "related_tags": [
+        "voice-cloning"
+      ],
+      "supporting_articles": [
+        "8f8f6c5c71fe"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "controllable_voice_cloning",
+      "name": "Controllable Voice Cloning",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "controllable-voice-cloning"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:19+00:00",
+      "last_updated_at": "2026-04-25T15:27:19+00:00",
+      "related_categories": [
+        "multimodal_ai",
+        "open_source_ecosystem",
+        "ai_infrastructure"
+      ],
+      "related_tags": [
+        "controllable-voice-cloning"
+      ],
+      "supporting_articles": [
+        "8f8f6c5c71fe"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "multilingual_speech",
+      "name": "Multilingual Speech",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "multilingual-speech"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:19+00:00",
+      "last_updated_at": "2026-04-25T15:27:19+00:00",
+      "related_categories": [
+        "multimodal_ai",
+        "open_source_ecosystem",
+        "ai_infrastructure"
+      ],
+      "related_tags": [
+        "multilingual-speech"
+      ],
+      "supporting_articles": [
+        "8f8f6c5c71fe"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "chinese_dialects",
+      "name": "Chinese Dialects",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "chinese-dialects"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:19+00:00",
+      "last_updated_at": "2026-04-25T15:27:19+00:00",
+      "related_categories": [
+        "multimodal_ai",
+        "open_source_ecosystem",
+        "ai_infrastructure"
+      ],
+      "related_tags": [
+        "chinese-dialects"
+      ],
+      "supporting_articles": [
+        "8f8f6c5c71fe"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "tokenizer_free",
+      "name": "Tokenizer Free",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "tokenizer-free"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:19+00:00",
+      "last_updated_at": "2026-04-25T15:27:19+00:00",
+      "related_categories": [
+        "multimodal_ai",
+        "open_source_ecosystem",
+        "ai_infrastructure"
+      ],
+      "related_tags": [
+        "tokenizer-free"
+      ],
+      "supporting_articles": [
+        "8f8f6c5c71fe"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "diffusion_autoregressive",
+      "name": "Diffusion Autoregressive",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "diffusion-autoregressive"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:19+00:00",
+      "last_updated_at": "2026-04-25T15:27:19+00:00",
+      "related_categories": [
+        "multimodal_ai",
+        "open_source_ecosystem",
+        "ai_infrastructure"
+      ],
+      "related_tags": [
+        "diffusion-autoregressive"
+      ],
+      "supporting_articles": [
+        "8f8f6c5c71fe"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "apache_2_0",
+      "name": "Apache 2 0",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "apache-2-0"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:19+00:00",
+      "last_updated_at": "2026-04-25T15:27:19+00:00",
+      "related_categories": [
+        "multimodal_ai",
+        "open_source_ecosystem",
+        "ai_infrastructure"
+      ],
+      "related_tags": [
+        "apache-2-0"
+      ],
+      "supporting_articles": [
+        "8f8f6c5c71fe"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "python_api",
+      "name": "Python Api",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "python-api"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:19+00:00",
+      "last_updated_at": "2026-04-25T15:27:19+00:00",
+      "related_categories": [
+        "multimodal_ai",
+        "open_source_ecosystem",
+        "ai_infrastructure"
+      ],
+      "related_tags": [
+        "python-api"
+      ],
+      "supporting_articles": [
+        "8f8f6c5c71fe"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "cli",
+      "name": "Cli",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "cli"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:19+00:00",
+      "last_updated_at": "2026-04-25T15:27:19+00:00",
+      "related_categories": [
+        "multimodal_ai",
+        "open_source_ecosystem",
+        "ai_infrastructure"
+      ],
+      "related_tags": [
+        "cli"
+      ],
+      "supporting_articles": [
+        "8f8f6c5c71fe"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "ai_memory_engine",
+      "name": "Ai Memory Engine",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "ai-memory-engine"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:26+00:00",
+      "last_updated_at": "2026-04-25T15:27:26+00:00",
+      "related_categories": [
+        "memory_context",
+        "research_benchmark",
+        "open_source_ecosystem",
+        "developer_tools"
+      ],
+      "related_tags": [
+        "ai-memory-engine"
+      ],
+      "supporting_articles": [
+        "bf281b22fc01"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "graph_memory",
+      "name": "Graph Memory",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "graph-memory"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:26+00:00",
+      "last_updated_at": "2026-04-25T15:27:26+00:00",
+      "related_categories": [
+        "memory_context",
+        "research_benchmark",
+        "open_source_ecosystem",
+        "developer_tools"
+      ],
+      "related_tags": [
+        "graph-memory"
+      ],
+      "supporting_articles": [
+        "bf281b22fc01"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "graph_routing",
+      "name": "Graph Routing",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "graph-routing"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:26+00:00",
+      "last_updated_at": "2026-04-25T15:27:26+00:00",
+      "related_categories": [
+        "memory_context",
+        "research_benchmark",
+        "open_source_ecosystem",
+        "developer_tools"
+      ],
+      "related_tags": [
+        "graph-routing"
+      ],
+      "supporting_articles": [
+        "bf281b22fc01"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "bundle_search",
+      "name": "Bundle Search",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "bundle-search"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:26+00:00",
+      "last_updated_at": "2026-04-25T15:27:26+00:00",
+      "related_categories": [
+        "memory_context",
+        "research_benchmark",
+        "open_source_ecosystem",
+        "developer_tools"
+      ],
+      "related_tags": [
+        "bundle-search"
+      ],
+      "supporting_articles": [
+        "bf281b22fc01"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "coreference_resolution",
+      "name": "Coreference Resolution",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "coreference-resolution"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:26+00:00",
+      "last_updated_at": "2026-04-25T15:27:26+00:00",
+      "related_categories": [
+        "memory_context",
+        "research_benchmark",
+        "open_source_ecosystem",
+        "developer_tools"
+      ],
+      "related_tags": [
+        "coreference-resolution"
+      ],
+      "supporting_articles": [
+        "bf281b22fc01"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "retrieval_architecture",
+      "name": "Retrieval Architecture",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "retrieval-architecture"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:26+00:00",
+      "last_updated_at": "2026-04-25T15:27:26+00:00",
+      "related_categories": [
+        "memory_context",
+        "research_benchmark",
+        "open_source_ecosystem",
+        "developer_tools"
+      ],
+      "related_tags": [
+        "retrieval-architecture"
+      ],
+      "supporting_articles": [
+        "bf281b22fc01"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "llm_free_retrieval",
+      "name": "Llm Free Retrieval",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "llm-free-retrieval"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:26+00:00",
+      "last_updated_at": "2026-04-25T15:27:26+00:00",
+      "related_categories": [
+        "memory_context",
+        "research_benchmark",
+        "open_source_ecosystem",
+        "developer_tools"
+      ],
+      "related_tags": [
+        "llm-free-retrieval"
+      ],
+      "supporting_articles": [
+        "bf281b22fc01"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "low_latency_retrieval",
+      "name": "Low Latency Retrieval",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "low-latency-retrieval"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:26+00:00",
+      "last_updated_at": "2026-04-25T15:27:26+00:00",
+      "related_categories": [
+        "memory_context",
+        "research_benchmark",
+        "open_source_ecosystem",
+        "developer_tools"
+      ],
+      "related_tags": [
+        "low-latency-retrieval"
+      ],
+      "supporting_articles": [
+        "bf281b22fc01"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "benchmark_comparison",
+      "name": "Benchmark Comparison",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "benchmark-comparison"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:26+00:00",
+      "last_updated_at": "2026-04-25T15:27:26+00:00",
+      "related_categories": [
+        "memory_context",
+        "research_benchmark",
+        "open_source_ecosystem",
+        "developer_tools"
+      ],
+      "related_tags": [
+        "benchmark-comparison"
+      ],
+      "supporting_articles": [
+        "bf281b22fc01"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "docker_deployment",
+      "name": "Docker Deployment",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "docker-deployment"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:26+00:00",
+      "last_updated_at": "2026-04-25T15:27:26+00:00",
+      "related_categories": [
+        "memory_context",
+        "research_benchmark",
+        "open_source_ecosystem",
+        "developer_tools"
+      ],
+      "related_tags": [
+        "docker-deployment"
+      ],
+      "supporting_articles": [
+        "bf281b22fc01"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "multi_agent_system",
+      "name": "Multi Agent System",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "multi-agent-system"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:31+00:00",
+      "last_updated_at": "2026-04-25T15:27:31+00:00",
+      "related_categories": [
+        "ai_agent",
+        "open_source_ecosystem",
+        "developer_tools",
+        "product_business"
+      ],
+      "related_tags": [
+        "multi-agent-system"
+      ],
+      "supporting_articles": [
+        "d11e99337c97"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "langgraph",
+      "name": "Langgraph",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "langgraph"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:31+00:00",
+      "last_updated_at": "2026-04-25T15:27:31+00:00",
+      "related_categories": [
+        "ai_agent",
+        "open_source_ecosystem",
+        "developer_tools",
+        "product_business"
+      ],
+      "related_tags": [
+        "langgraph"
+      ],
+      "supporting_articles": [
+        "d11e99337c97"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "agent_state",
+      "name": "Agent State",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "agent-state"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:31+00:00",
+      "last_updated_at": "2026-04-25T15:27:31+00:00",
+      "related_categories": [
+        "ai_agent",
+        "open_source_ecosystem",
+        "developer_tools",
+        "product_business"
+      ],
+      "related_tags": [
+        "agent-state"
+      ],
+      "supporting_articles": [
+        "d11e99337c97"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "investment_agent",
+      "name": "Investment Agent",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "investment-agent"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:31+00:00",
+      "last_updated_at": "2026-04-25T15:27:31+00:00",
+      "related_categories": [
+        "ai_agent",
+        "open_source_ecosystem",
+        "developer_tools",
+        "product_business"
+      ],
+      "related_tags": [
+        "investment-agent"
+      ],
+      "supporting_articles": [
+        "d11e99337c97"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "backtesting",
+      "name": "Backtesting",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "backtesting"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:31+00:00",
+      "last_updated_at": "2026-04-25T15:27:31+00:00",
+      "related_categories": [
+        "ai_agent",
+        "open_source_ecosystem",
+        "developer_tools",
+        "product_business"
+      ],
+      "related_tags": [
+        "backtesting"
+      ],
+      "supporting_articles": [
+        "d11e99337c97"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "github_trending",
+      "name": "Github Trending",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "github-trending"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:31+00:00",
+      "last_updated_at": "2026-04-25T15:27:31+00:00",
+      "related_categories": [
+        "ai_agent",
+        "open_source_ecosystem",
+        "developer_tools",
+        "product_business"
+      ],
+      "related_tags": [
+        "github-trending"
+      ],
+      "supporting_articles": [
+        "d11e99337c97"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "local_llm",
+      "name": "Local Llm",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "local-llm"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:31+00:00",
+      "last_updated_at": "2026-04-25T15:27:31+00:00",
+      "related_categories": [
+        "ai_agent",
+        "open_source_ecosystem",
+        "developer_tools",
+        "product_business"
+      ],
+      "related_tags": [
+        "local-llm"
+      ],
+      "supporting_articles": [
+        "d11e99337c97"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "ollama",
+      "name": "Ollama",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "ollama"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:31+00:00",
+      "last_updated_at": "2026-04-25T15:27:31+00:00",
+      "related_categories": [
+        "ai_agent",
+        "open_source_ecosystem",
+        "developer_tools",
+        "product_business"
+      ],
+      "related_tags": [
+        "ollama"
+      ],
+      "supporting_articles": [
+        "d11e99337c97"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "react_flow",
+      "name": "React Flow",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "react-flow"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:31+00:00",
+      "last_updated_at": "2026-04-25T15:27:31+00:00",
+      "related_categories": [
+        "ai_agent",
+        "open_source_ecosystem",
+        "developer_tools",
+        "product_business"
+      ],
+      "related_tags": [
+        "react-flow"
+      ],
+      "supporting_articles": [
+        "d11e99337c97"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "frontend_rendering",
+      "name": "Frontend Rendering",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "frontend-rendering"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:37+00:00",
+      "last_updated_at": "2026-04-25T15:27:37+00:00",
+      "related_categories": [
+        "developer_tools",
+        "open_source_ecosystem",
+        "product_business"
+      ],
+      "related_tags": [
+        "frontend-rendering"
+      ],
+      "supporting_articles": [
+        "d668b6dcda22"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "html_in_canvas",
+      "name": "Html In Canvas",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "html-in-canvas"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:37+00:00",
+      "last_updated_at": "2026-04-25T15:27:37+00:00",
+      "related_categories": [
+        "developer_tools",
+        "open_source_ecosystem",
+        "product_business"
+      ],
+      "related_tags": [
+        "html-in-canvas"
+      ],
+      "supporting_articles": [
+        "d668b6dcda22"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "canvas_api",
+      "name": "Canvas Api",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "canvas-api"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:37+00:00",
+      "last_updated_at": "2026-04-25T15:27:37+00:00",
+      "related_categories": [
+        "developer_tools",
+        "open_source_ecosystem",
+        "product_business"
+      ],
+      "related_tags": [
+        "canvas-api"
+      ],
+      "supporting_articles": [
+        "d668b6dcda22"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "web_platform",
+      "name": "Web Platform",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "web-platform"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:37+00:00",
+      "last_updated_at": "2026-04-25T15:27:37+00:00",
+      "related_categories": [
+        "developer_tools",
+        "open_source_ecosystem",
+        "product_business"
+      ],
+      "related_tags": [
+        "web-platform"
+      ],
+      "supporting_articles": [
+        "d668b6dcda22"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "experimental_web_api",
+      "name": "Experimental Web Api",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "experimental-web-api"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:37+00:00",
+      "last_updated_at": "2026-04-25T15:27:37+00:00",
+      "related_categories": [
+        "developer_tools",
+        "open_source_ecosystem",
+        "product_business"
+      ],
+      "related_tags": [
+        "experimental-web-api"
+      ],
+      "supporting_articles": [
+        "d668b6dcda22"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "dom_bypass",
+      "name": "Dom Bypass",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "dom-bypass"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:37+00:00",
+      "last_updated_at": "2026-04-25T15:27:37+00:00",
+      "related_categories": [
+        "developer_tools",
+        "open_source_ecosystem",
+        "product_business"
+      ],
+      "related_tags": [
+        "dom-bypass"
+      ],
+      "supporting_articles": [
+        "d668b6dcda22"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "text_layout_engine",
+      "name": "Text Layout Engine",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "text-layout-engine"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:37+00:00",
+      "last_updated_at": "2026-04-25T15:27:37+00:00",
+      "related_categories": [
+        "developer_tools",
+        "open_source_ecosystem",
+        "product_business"
+      ],
+      "related_tags": [
+        "text-layout-engine"
+      ],
+      "supporting_articles": [
+        "d668b6dcda22"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "pretext",
+      "name": "Pretext",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "pretext"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:37+00:00",
+      "last_updated_at": "2026-04-25T15:27:37+00:00",
+      "related_categories": [
+        "developer_tools",
+        "open_source_ecosystem",
+        "product_business"
+      ],
+      "related_tags": [
+        "pretext"
+      ],
+      "supporting_articles": [
+        "d668b6dcda22"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "dexterous_hand",
+      "name": "Dexterous Hand",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "dexterous-hand"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:43+00:00",
+      "last_updated_at": "2026-04-25T15:27:43+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "product_business",
+        "open_source_ecosystem",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "dexterous-hand"
+      ],
+      "supporting_articles": [
+        "df7acb42e706"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "visuotactile_sensing",
+      "name": "Visuotactile Sensing",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "visuotactile-sensing"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:43+00:00",
+      "last_updated_at": "2026-04-25T15:27:43+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "product_business",
+        "open_source_ecosystem",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "visuotactile-sensing"
+      ],
+      "supporting_articles": [
+        "df7acb42e706"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "direct_drive",
+      "name": "Direct Drive",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "direct-drive"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:43+00:00",
+      "last_updated_at": "2026-04-25T15:27:43+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "product_business",
+        "open_source_ecosystem",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "direct-drive"
+      ],
+      "supporting_articles": [
+        "df7acb42e706"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "backdrivability",
+      "name": "Backdrivability",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "backdrivability"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:43+00:00",
+      "last_updated_at": "2026-04-25T15:27:43+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "product_business",
+        "open_source_ecosystem",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "backdrivability"
+      ],
+      "supporting_articles": [
+        "df7acb42e706"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "sim_to_real",
+      "name": "Sim To Real",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "sim-to-real"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:43+00:00",
+      "last_updated_at": "2026-04-25T15:27:43+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "product_business",
+        "open_source_ecosystem",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "sim-to-real"
+      ],
+      "supporting_articles": [
+        "df7acb42e706"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "teleoperation_data",
+      "name": "Teleoperation Data",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "teleoperation-data"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:43+00:00",
+      "last_updated_at": "2026-04-25T15:27:43+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "product_business",
+        "open_source_ecosystem",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "teleoperation-data"
+      ],
+      "supporting_articles": [
+        "df7acb42e706"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "robot_hand",
+      "name": "Robot Hand",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "robot-hand"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:43+00:00",
+      "last_updated_at": "2026-04-25T15:27:43+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "product_business",
+        "open_source_ecosystem",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "robot-hand"
+      ],
+      "supporting_articles": [
+        "df7acb42e706"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "ai_chart_agent",
+      "name": "Ai Chart Agent",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "ai-chart-agent"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:49+00:00",
+      "last_updated_at": "2026-04-25T15:27:49+00:00",
+      "related_categories": [
+        "product_business",
+        "ai_agent",
+        "ai_infrastructure",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "ai-chart-agent"
+      ],
+      "supporting_articles": [
+        "ecfdeb44e0ae"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "editable_chart_generation",
+      "name": "Editable Chart Generation",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "editable-chart-generation"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:49+00:00",
+      "last_updated_at": "2026-04-25T15:27:49+00:00",
+      "related_categories": [
+        "product_business",
+        "ai_agent",
+        "ai_infrastructure",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "editable-chart-generation"
+      ],
+      "supporting_articles": [
+        "ecfdeb44e0ae"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "white_box_ai",
+      "name": "White Box Ai",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "white-box-ai"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:49+00:00",
+      "last_updated_at": "2026-04-25T15:27:49+00:00",
+      "related_categories": [
+        "product_business",
+        "ai_agent",
+        "ai_infrastructure",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "white-box-ai"
+      ],
+      "supporting_articles": [
+        "ecfdeb44e0ae"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "data_visualization",
+      "name": "Data Visualization",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "data-visualization"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:49+00:00",
+      "last_updated_at": "2026-04-25T15:27:49+00:00",
+      "related_categories": [
+        "product_business",
+        "ai_agent",
+        "ai_infrastructure",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "data-visualization"
+      ],
+      "supporting_articles": [
+        "ecfdeb44e0ae"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "report_generation",
+      "name": "Report Generation",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "report-generation"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:49+00:00",
+      "last_updated_at": "2026-04-25T15:27:49+00:00",
+      "related_categories": [
+        "product_business",
+        "ai_agent",
+        "ai_infrastructure",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "report-generation"
+      ],
+      "supporting_articles": [
+        "ecfdeb44e0ae"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "excel_parsing",
+      "name": "Excel Parsing",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "excel-parsing"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:49+00:00",
+      "last_updated_at": "2026-04-25T15:27:49+00:00",
+      "related_categories": [
+        "product_business",
+        "ai_agent",
+        "ai_infrastructure",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "excel-parsing"
+      ],
+      "supporting_articles": [
+        "ecfdeb44e0ae"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "workflow_automation",
+      "name": "Workflow Automation",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "workflow-automation"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:49+00:00",
+      "last_updated_at": "2026-04-25T15:27:49+00:00",
+      "related_categories": [
+        "product_business",
+        "ai_agent",
+        "ai_infrastructure",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "workflow-automation"
+      ],
+      "supporting_articles": [
+        "ecfdeb44e0ae"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "api_integration",
+      "name": "Api Integration",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "api-integration"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:49+00:00",
+      "last_updated_at": "2026-04-25T15:27:49+00:00",
+      "related_categories": [
+        "product_business",
+        "ai_agent",
+        "ai_infrastructure",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "api-integration"
+      ],
+      "supporting_articles": [
+        "ecfdeb44e0ae"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "product_growth",
+      "name": "Product Growth",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "product-growth"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T15:27:49+00:00",
+      "last_updated_at": "2026-04-25T15:27:49+00:00",
+      "related_categories": [
+        "product_business",
+        "ai_agent",
+        "ai_infrastructure",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "product-growth"
+      ],
+      "supporting_articles": [
+        "ecfdeb44e0ae"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "structured_memory",
+      "name": "Structured Memory",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "structured-memory"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T16:46:17+00:00",
+      "last_updated_at": "2026-04-25T16:46:17+00:00",
+      "related_categories": [
+        "ai_agent",
+        "memory_context",
+        "developer_tools",
+        "ai_infrastructure"
+      ],
+      "related_tags": [
+        "structured-memory"
+      ],
+      "supporting_articles": [
+        "03f809cb0476"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "tool_routing",
+      "name": "Tool Routing",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "tool-routing"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T16:46:17+00:00",
+      "last_updated_at": "2026-04-25T16:46:17+00:00",
+      "related_categories": [
+        "ai_agent",
+        "memory_context",
+        "developer_tools",
+        "ai_infrastructure"
+      ],
+      "related_tags": [
+        "tool-routing"
+      ],
+      "supporting_articles": [
+        "03f809cb0476"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "thin_harness_fat_skills",
+      "name": "Thin Harness Fat Skills",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "thin-harness-fat-skills"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T16:46:17+00:00",
+      "last_updated_at": "2026-04-25T16:46:17+00:00",
+      "related_categories": [
+        "ai_agent",
+        "memory_context",
+        "developer_tools",
+        "ai_infrastructure"
+      ],
+      "related_tags": [
+        "thin-harness-fat-skills"
+      ],
+      "supporting_articles": [
+        "03f809cb0476"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "coding_agent",
+      "name": "Coding Agent",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "coding-agent"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T16:46:17+00:00",
+      "last_updated_at": "2026-04-25T16:46:17+00:00",
+      "related_categories": [
+        "ai_agent",
+        "memory_context",
+        "developer_tools",
+        "ai_infrastructure"
+      ],
+      "related_tags": [
+        "coding-agent"
+      ],
+      "supporting_articles": [
+        "03f809cb0476"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "repo_context",
+      "name": "Repo Context",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "repo-context"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T16:46:17+00:00",
+      "last_updated_at": "2026-04-25T16:46:17+00:00",
+      "related_categories": [
+        "ai_agent",
+        "memory_context",
+        "developer_tools",
+        "ai_infrastructure"
+      ],
+      "related_tags": [
+        "repo-context"
+      ],
+      "supporting_articles": [
+        "03f809cb0476"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "deterministic_tools",
+      "name": "Deterministic Tools",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "deterministic-tools"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T16:46:17+00:00",
+      "last_updated_at": "2026-04-25T16:46:17+00:00",
+      "related_categories": [
+        "ai_agent",
+        "memory_context",
+        "developer_tools",
+        "ai_infrastructure"
+      ],
+      "related_tags": [
+        "deterministic-tools"
+      ],
+      "supporting_articles": [
+        "03f809cb0476"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "cli_harness",
+      "name": "Cli Harness",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "cli-harness"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T16:46:17+00:00",
+      "last_updated_at": "2026-04-25T16:46:17+00:00",
+      "related_categories": [
+        "ai_agent",
+        "memory_context",
+        "developer_tools",
+        "ai_infrastructure"
+      ],
+      "related_tags": [
+        "cli-harness"
+      ],
+      "supporting_articles": [
+        "03f809cb0476"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "ai_index_report",
+      "name": "Ai Index Report",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "ai-index-report"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T16:46:24+00:00",
+      "last_updated_at": "2026-04-25T16:46:24+00:00",
+      "related_categories": [
+        "research_benchmark",
+        "product_business",
+        "ai_agent",
+        "policy_regulation"
+      ],
+      "related_tags": [
+        "ai-index-report"
+      ],
+      "supporting_articles": [
+        "0e7891dac0bb"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "benchmark_tracking",
+      "name": "Benchmark Tracking",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "benchmark-tracking"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T16:46:24+00:00",
+      "last_updated_at": "2026-04-25T16:46:24+00:00",
+      "related_categories": [
+        "research_benchmark",
+        "product_business",
+        "ai_agent",
+        "policy_regulation"
+      ],
+      "related_tags": [
+        "benchmark-tracking"
+      ],
+      "supporting_articles": [
+        "0e7891dac0bb"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "model_evaluation",
+      "name": "Model Evaluation",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "model-evaluation"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T16:46:24+00:00",
+      "last_updated_at": "2026-04-25T16:46:24+00:00",
+      "related_categories": [
+        "research_benchmark",
+        "product_business",
+        "ai_agent",
+        "policy_regulation"
+      ],
+      "related_tags": [
+        "model-evaluation"
+      ],
+      "supporting_articles": [
+        "0e7891dac0bb"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "swe_bench_verified",
+      "name": "Swe Bench Verified",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "swe-bench-verified"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T16:46:24+00:00",
+      "last_updated_at": "2026-04-25T16:46:24+00:00",
+      "related_categories": [
+        "research_benchmark",
+        "product_business",
+        "ai_agent",
+        "policy_regulation"
+      ],
+      "related_tags": [
+        "swe-bench-verified"
+      ],
+      "supporting_articles": [
+        "0e7891dac0bb"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "osworld",
+      "name": "Osworld",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "osworld"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T16:46:24+00:00",
+      "last_updated_at": "2026-04-25T16:46:24+00:00",
+      "related_categories": [
+        "research_benchmark",
+        "product_business",
+        "ai_agent",
+        "policy_regulation"
+      ],
+      "related_tags": [
+        "osworld"
+      ],
+      "supporting_articles": [
+        "0e7891dac0bb"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "china_us_competition",
+      "name": "China Us Competition",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "china-us-competition"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T16:46:24+00:00",
+      "last_updated_at": "2026-04-25T16:46:24+00:00",
+      "related_categories": [
+        "research_benchmark",
+        "product_business",
+        "ai_agent",
+        "policy_regulation"
+      ],
+      "related_tags": [
+        "china-us-competition"
+      ],
+      "supporting_articles": [
+        "0e7891dac0bb"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "frontier_models",
+      "name": "Frontier Models",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "frontier-models"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T16:46:24+00:00",
+      "last_updated_at": "2026-04-25T16:46:24+00:00",
+      "related_categories": [
+        "research_benchmark",
+        "product_business",
+        "ai_agent",
+        "policy_regulation"
+      ],
+      "related_tags": [
+        "frontier-models"
+      ],
+      "supporting_articles": [
+        "0e7891dac0bb"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "ai_adoption",
+      "name": "Ai Adoption",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "ai-adoption"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T16:46:24+00:00",
+      "last_updated_at": "2026-04-25T16:46:24+00:00",
+      "related_categories": [
+        "research_benchmark",
+        "product_business",
+        "ai_agent",
+        "policy_regulation"
+      ],
+      "related_tags": [
+        "ai-adoption"
+      ],
+      "supporting_articles": [
+        "0e7891dac0bb"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "ai_safety_incidents",
+      "name": "Ai Safety Incidents",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "ai-safety-incidents"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T16:46:24+00:00",
+      "last_updated_at": "2026-04-25T16:46:24+00:00",
+      "related_categories": [
+        "research_benchmark",
+        "product_business",
+        "ai_agent",
+        "policy_regulation"
+      ],
+      "related_tags": [
+        "ai-safety-incidents"
+      ],
+      "supporting_articles": [
+        "0e7891dac0bb"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "market_comparison",
+      "name": "Market Comparison",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "market-comparison"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T16:46:24+00:00",
+      "last_updated_at": "2026-04-25T16:46:24+00:00",
+      "related_categories": [
+        "research_benchmark",
+        "product_business",
+        "ai_agent",
+        "policy_regulation"
+      ],
+      "related_tags": [
+        "market-comparison"
+      ],
+      "supporting_articles": [
+        "0e7891dac0bb"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "kv_cache",
+      "name": "Kv Cache",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "kv-cache"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T16:46:31+00:00",
+      "last_updated_at": "2026-04-25T16:46:31+00:00",
+      "related_categories": [
+        "ai_infrastructure",
+        "memory_context",
+        "research_benchmark",
+        "product_business"
+      ],
+      "related_tags": [
+        "kv-cache"
+      ],
+      "supporting_articles": [
+        "a36d7f67197d"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "prefill_decode_disaggregation",
+      "name": "Prefill Decode Disaggregation",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "prefill-decode-disaggregation"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T16:46:31+00:00",
+      "last_updated_at": "2026-04-25T16:46:31+00:00",
+      "related_categories": [
+        "ai_infrastructure",
+        "memory_context",
+        "research_benchmark",
+        "product_business"
+      ],
+      "related_tags": [
+        "prefill-decode-disaggregation"
+      ],
+      "supporting_articles": [
+        "a36d7f67197d"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "cross_data_center_inference",
+      "name": "Cross Data Center Inference",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "cross-data-center-inference"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T16:46:31+00:00",
+      "last_updated_at": "2026-04-25T16:46:31+00:00",
+      "related_categories": [
+        "ai_infrastructure",
+        "memory_context",
+        "research_benchmark",
+        "product_business"
+      ],
+      "related_tags": [
+        "cross-data-center-inference"
+      ],
+      "supporting_articles": [
+        "a36d7f67197d"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "heterogeneous_cluster",
+      "name": "Heterogeneous Cluster",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "heterogeneous-cluster"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T16:46:31+00:00",
+      "last_updated_at": "2026-04-25T16:46:31+00:00",
+      "related_categories": [
+        "ai_infrastructure",
+        "memory_context",
+        "research_benchmark",
+        "product_business"
+      ],
+      "related_tags": [
+        "heterogeneous-cluster"
+      ],
+      "supporting_articles": [
+        "a36d7f67197d"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "inference_serving",
+      "name": "Inference Serving",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "inference-serving"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T16:46:31+00:00",
+      "last_updated_at": "2026-04-25T16:46:31+00:00",
+      "related_categories": [
+        "ai_infrastructure",
+        "memory_context",
+        "research_benchmark",
+        "product_business"
+      ],
+      "related_tags": [
+        "inference-serving"
+      ],
+      "supporting_articles": [
+        "a36d7f67197d"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "service_architecture",
+      "name": "Service Architecture",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "service-architecture"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T16:46:31+00:00",
+      "last_updated_at": "2026-04-25T16:46:31+00:00",
+      "related_categories": [
+        "ai_infrastructure",
+        "memory_context",
+        "research_benchmark",
+        "product_business"
+      ],
+      "related_tags": [
+        "service-architecture"
+      ],
+      "supporting_articles": [
+        "a36d7f67197d"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "ethernet_transport",
+      "name": "Ethernet Transport",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "ethernet-transport"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T16:46:31+00:00",
+      "last_updated_at": "2026-04-25T16:46:31+00:00",
+      "related_categories": [
+        "ai_infrastructure",
+        "memory_context",
+        "research_benchmark",
+        "product_business"
+      ],
+      "related_tags": [
+        "ethernet-transport"
+      ],
+      "supporting_articles": [
+        "a36d7f67197d"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "ttft",
+      "name": "Ttft",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "ttft"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T16:46:31+00:00",
+      "last_updated_at": "2026-04-25T16:46:31+00:00",
+      "related_categories": [
+        "ai_infrastructure",
+        "memory_context",
+        "research_benchmark",
+        "product_business"
+      ],
+      "related_tags": [
+        "ttft"
+      ],
+      "supporting_articles": [
+        "a36d7f67197d"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "throughput_optimization",
+      "name": "Throughput Optimization",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "throughput-optimization"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T16:46:31+00:00",
+      "last_updated_at": "2026-04-25T16:46:31+00:00",
+      "related_categories": [
+        "ai_infrastructure",
+        "memory_context",
+        "research_benchmark",
+        "product_business"
+      ],
+      "related_tags": [
+        "throughput-optimization"
+      ],
+      "supporting_articles": [
+        "a36d7f67197d"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "hybrid_attention",
+      "name": "Hybrid Attention",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "hybrid-attention"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-25T16:46:31+00:00",
+      "last_updated_at": "2026-04-25T16:46:31+00:00",
+      "related_categories": [
+        "ai_infrastructure",
+        "memory_context",
+        "research_benchmark",
+        "product_business"
+      ],
+      "related_tags": [
+        "hybrid-attention"
+      ],
+      "supporting_articles": [
+        "a36d7f67197d"
+      ],
+      "notes": []
+    }
+  ],
+  "governance": {
+    "statuses": [
+      "drafted",
+      "approved",
+      "merged",
+      "deprecated"
+    ],
+    "rule": "概念是可复用的思考对象，不只是标签。"
+  }
+}

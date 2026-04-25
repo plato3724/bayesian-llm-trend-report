@@ -1,0 +1,96 @@
+{
+  "article_id": "d11e99337c97",
+  "extraction_status": "completed",
+  "generated_at": "2026-04-25T15:27:26+00:00",
+  "method": "deterministic_mvp",
+  "summary": "文章称，AI Hedge Fund 的核心理念是把投资哲学编码成 Agent，让散户获得“大师模型”。 文章称，各投资大师 Agent 会对同一只股票给出独立判断，最终由投资组合经理 Agent 汇总裁决并输出买入、卖出或持有信号。 文章称，AI Hedge Fund 采用前后端分离的三层架构设计。",
+  "main_points": [
+    "文章称，AI Hedge Fund 的核心理念是把投资哲学编码成 Agent，让散户获得“大师模型”。",
+    "文章称，各投资大师 Agent 会对同一只股票给出独立判断，最终由投资组合经理 Agent 汇总裁决并输出买入、卖出或持有信号。",
+    "文章称，AI Hedge Fund 采用前后端分离的三层架构设计。",
+    "文章称，后端由 Python 和 FastAPI 驱动，并使用 LangGraph 编排多智能体工作流，所有 Agent 共享同一个 AgentState 数据字典在节点间传递信息。",
+    "文章称，由独立开发者 Virat Singh 打造的开源项目 AI Hedge Fund 迅速登上 GitHub Trending 榜单，并获得 51.7k Star 和 9k+ Fork。",
+    "文章称，AI Hedge Fund 目前内置 18 个专职 Agent，分为传奇投资人 Agent 和专业分析 Agent 两类。",
+    "文章称，整套系统支持 13 种主 LLM 提供商，也可通过 --ollama 参数接入本地大模型并离线运行完整推理流程。",
+    "文章称，AI Hedge Fund 内置回测模块，可对历史区间内的股票逐日研判并输出策略历史收益曲线与关键绩效指标。"
+  ],
+  "entities": [
+    "AI Hedge",
+    "Agent",
+    "AAPL",
+    "MSFT",
+    "NVDA",
+    "QbitAI",
+    "Hedge Fund",
+    "Anthropic",
+    "Groq",
+    "Star",
+    "Fork",
+    "Warren Buffett",
+    "Charlie Munger",
+    "Ben Graham",
+    "Bill Ackman",
+    "Cathie Wood",
+    "Michael Burry",
+    "Peter Lynch",
+    "Phil Fisher",
+    "Scuttlebutt"
+  ],
+  "claims": [
+    {
+      "id": "ai_hedge_fund_github_trending_and_stars",
+      "type": "tool",
+      "text": "文章称，由独立开发者 Virat Singh 打造的开源项目 AI Hedge Fund 迅速登上 GitHub Trending 榜单，并获得 51.7k Star 和 9k+ Fork。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "ai_hedge_fund_encodes_investment_philosophy_into_agents",
+      "type": "technique",
+      "text": "文章称，AI Hedge Fund 的核心理念是把投资哲学编码成 Agent，让散户获得“大师模型”。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "ai_hedge_fund_has_18_agents",
+      "type": "tool",
+      "text": "文章称，AI Hedge Fund 目前内置 18 个专职 Agent，分为传奇投资人 Agent 和专业分析 Agent 两类。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "portfolio_manager_aggregates_agent_signals",
+      "type": "technique",
+      "text": "文章称，各投资大师 Agent 会对同一只股票给出独立判断，最终由投资组合经理 Agent 汇总裁决并输出买入、卖出或持有信号。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "ai_hedge_fund_three_layer_front_back_separated_architecture",
+      "type": "technique",
+      "text": "文章称，AI Hedge Fund 采用前后端分离的三层架构设计。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "langgraph_and_shared_agentstate_workflow",
+      "type": "technique",
+      "text": "文章称，后端由 Python 和 FastAPI 驱动，并使用 LangGraph 编排多智能体工作流，所有 Agent 共享同一个 AgentState 数据字典在节点间传递信息。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "supports_13_llm_providers_and_local_models",
+      "type": "tool",
+      "text": "文章称，整套系统支持 13 种主 LLM 提供商，也可通过 --ollama 参数接入本地大模型并离线运行完整推理流程。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "backtester_runs_historical_strategy_evaluation",
+      "type": "tool",
+      "text": "文章称，AI Hedge Fund 内置回测模块，可对历史区间内的股票逐日研判并输出策略历史收益曲线与关键绩效指标。",
+      "source": "legacy_claims_json"
+    }
+  ],
+  "important_quotes": [],
+  "open_questions": [],
+  "source_trace": {
+    "record_path": "knowledge_state/articles/d11e99337c97/record.json",
+    "canonical_text_path": "knowledge_state/articles/d11e99337c97/canonical_text.txt",
+    "legacy_claims_path": "knowledge_state/articles/d11e99337c97/claims.json"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "article_id": "7e6b7b4cfbf5",
+  "classification_status": "drafted",
+  "generated_at": "2026-04-25T15:27:07+00:00",
+  "method": "llm_openrouter",
+  "llm_model": "openai/gpt-5.4",
+  "llm_attempts": 1,
+  "primary_category": "research_benchmark",
+  "secondary_categories": [
+    "multimodal_ai",
+    "open_source_ecosystem"
+  ],
+  "tags": [
+    "medical-vlm",
+    "ultrasound-imaging",
+    "image-text-dataset",
+    "multimodal-benchmark",
+    "clip-style-pretraining",
+    "semantic-alignment",
+    "cross-modal-retrieval",
+    "clinical-report-understanding",
+    "open-dataset"
+  ],
+  "source_type": "media",
+  "importance": "high",
+  "rationale": "文章核心是介绍一个被 CVPR 接收的研究成果：构建超声专属大规模图文数据集 US-365K，并用 Ultrasound-CLIP 在分类与图文检索任务上进行实验验证。可复用价值主要体现在数据集、方法设计、评测结果和开源资源，最适合归入“研究 / Benchmark”。虽然内容明显涉及视觉-语言跨模态学习，因此可作为“多模态 AI”次分类，但主线不是产品化落地或通用多模态应用，而是面向超声医学场景的数据集与研究评测体系建设。代码和数据已开源，因此“开源生态”可作为辅助分类。",
+  "category_scores": {
+    "ai_agent": 0,
+    "ai_infrastructure": 0,
+    "memory_context": 7,
+    "developer_tools": 4,
+    "multimodal_ai": 39,
+    "robotics_embodied_ai": 0,
+    "consumer_economy": 0,
+    "research_benchmark": 32,
+    "open_source_ecosystem": 4,
+    "policy_regulation": 0,
+    "product_business": 0
+  },
+  "fallback_suggestion": {
+    "primary_category": "multimodal_ai",
+    "secondary_categories": [
+      "research_benchmark"
+    ],
+    "tags": [
+      "benchmark",
+      "context-engineering",
+      "cross-modal",
+      "governance",
+      "market-signal",
+      "multimodal",
+      "research-result"
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "article_id": "7e6b7b4cfbf5",
+  "concept_status": "drafted",
+  "generated_at": "2026-04-25T15:27:07+00:00",
+  "method": "tag_to_concept_mvp",
+  "matched_concepts": [
+    "clinical_report_understanding",
+    "clip_style_pretraining",
+    "cross_modal_retrieval",
+    "image_text_dataset",
+    "medical_vlm",
+    "multimodal_benchmark",
+    "open_dataset",
+    "semantic_alignment",
+    "ultrasound_imaging"
+  ],
+  "created_concepts": [
+    "medical_vlm",
+    "ultrasound_imaging",
+    "image_text_dataset",
+    "multimodal_benchmark",
+    "clip_style_pretraining",
+    "semantic_alignment",
+    "cross_modal_retrieval",
+    "clinical_report_understanding",
+    "open_dataset"
+  ],
+  "candidate_concepts": [],
+  "source_trace": {
+    "classification_path": "knowledge_state/articles/7e6b7b4cfbf5/classification.json",
+    "extraction_path": "knowledge_state/articles/7e6b7b4cfbf5/extraction.json"
+  },
+  "article_entities": [
+    "Ultrasound",
+    "CLIP",
+    "UHAT",
+    "UDAF",
+    "Ultrasound-CLIP",
+    "QbitAI",
+    "UDT",
+    "GNN",
+    "MSE",
+    "I2T",
+    "T2I",
+    "Semantic-Aware Contrastive Pre",
+    "Ultrasound Image-Text Understanding",
+    "Jiayun Jin",
+    "Haolong Chai",
+    "Xueying Huang",
+    "Xiaoqing Guo",
+    "Zengwei Zheng",
+    "Zhan Zhou",
+    "Junmei Wang"
+  ]
+}

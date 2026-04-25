@@ -1,0 +1,57 @@
+{
+  "article_id": "d11e99337c97",
+  "classification_status": "drafted",
+  "generated_at": "2026-04-25T15:27:31+00:00",
+  "method": "llm_openrouter",
+  "llm_model": "openai/gpt-5.4",
+  "llm_attempts": 1,
+  "primary_category": "ai_agent",
+  "secondary_categories": [
+    "open_source_ecosystem",
+    "developer_tools",
+    "product_business"
+  ],
+  "tags": [
+    "multi-agent-system",
+    "agent-runtime",
+    "workflow-orchestration",
+    "langgraph",
+    "agent-state",
+    "investment-agent",
+    "backtesting",
+    "open-source",
+    "github-trending",
+    "local-llm",
+    "ollama",
+    "react-flow"
+  ],
+  "source_type": "media",
+  "importance": "high",
+  "rationale": "文章核心在于介绍一个将多位投资理念角色化并通过 LangGraph 编排协作的多智能体系统：多个投资大师 Agent 独立分析、由 Portfolio Manager Agent 汇总决策，属于典型的 Agent 行为设计与工作流编排。虽然文中也提到前后端架构、开源热度和部署方式，但这些更多是支撑信息；最值得归类和后续比较的是其多 Agent 分工、共享 AgentState、决策汇总与回测闭环机制，因此主分类应归入 AI Agent。",
+  "category_scores": {
+    "ai_agent": 40,
+    "ai_infrastructure": 8,
+    "memory_context": 0,
+    "developer_tools": 7,
+    "multimodal_ai": 2,
+    "robotics_embodied_ai": 0,
+    "consumer_economy": 3,
+    "research_benchmark": 0,
+    "open_source_ecosystem": 11,
+    "policy_regulation": 0,
+    "product_business": 7
+  },
+  "fallback_suggestion": {
+    "primary_category": "ai_agent",
+    "secondary_categories": [
+      "open_source_ecosystem"
+    ],
+    "tags": [
+      "agent-runtime",
+      "developer-experience",
+      "ecosystem",
+      "open-source",
+      "workflow-orchestration"
+    ]
+  }
+}

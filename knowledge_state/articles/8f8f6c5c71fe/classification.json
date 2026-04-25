@@ -1,0 +1,56 @@
+{
+  "article_id": "8f8f6c5c71fe",
+  "classification_status": "drafted",
+  "generated_at": "2026-04-25T15:27:19+00:00",
+  "method": "llm_openrouter",
+  "llm_model": "openai/gpt-5.4",
+  "llm_attempts": 1,
+  "primary_category": "multimodal_ai",
+  "secondary_categories": [
+    "open_source_ecosystem",
+    "ai_infrastructure"
+  ],
+  "tags": [
+    "tts",
+    "speech-generation",
+    "voice-cloning",
+    "controllable-voice-cloning",
+    "multilingual-speech",
+    "chinese-dialects",
+    "tokenizer-free",
+    "diffusion-autoregressive",
+    "audio-synthesis",
+    "apache-2-0",
+    "python-api",
+    "cli"
+  ],
+  "source_type": "media",
+  "importance": "medium",
+  "rationale": "文章核心在于介绍 VoxCPM2 的语音生成与声音克隆能力，包括多语种、多方言、音色设计、可控语音克隆和高保真音频输出，本质上属于语音/音频方向的多模态 AI 系统。虽然文中也强调了 Apache-2.0 开源、API/CLI/Web Demo 和生产部署路径，但这些更多是生态与落地信息，主轴仍是语音模型能力与生成机制，而不是基础设施平台本身。",
+  "category_scores": {
+    "ai_agent": 0,
+    "ai_infrastructure": 5,
+    "memory_context": 1,
+    "developer_tools": 1,
+    "multimodal_ai": 40,
+    "robotics_embodied_ai": 0,
+    "consumer_economy": 0,
+    "research_benchmark": 1,
+    "open_source_ecosystem": 13,
+    "policy_regulation": 0,
+    "product_business": 2
+  },
+  "fallback_suggestion": {
+    "primary_category": "multimodal_ai",
+    "secondary_categories": [
+      "open_source_ecosystem"
+    ],
+    "tags": [
+      "cross-modal",
+      "ecosystem",
+      "multimodal",
+      "open-source",
+      "speech-generation"
+    ]
+  }
+}

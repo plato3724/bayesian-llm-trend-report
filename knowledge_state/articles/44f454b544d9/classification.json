@@ -1,0 +1,58 @@
+{
+  "article_id": "44f454b544d9",
+  "classification_status": "drafted",
+  "generated_at": "2026-04-25T15:26:30+00:00",
+  "method": "llm_openrouter",
+  "llm_model": "openai/gpt-5.4",
+  "llm_attempts": 1,
+  "primary_category": "ai_agent",
+  "secondary_categories": [
+    "ai_infrastructure",
+    "developer_tools",
+    "research_benchmark"
+  ],
+  "tags": [
+    "multi-agent-research-workflow",
+    "hierarchical-agent-architecture",
+    "agent-runtime",
+    "experiment-harness",
+    "isolated-runs",
+    "human-in-the-loop",
+    "rollback-control",
+    "verified-results-feedback",
+    "workflow-orchestration",
+    "research-automation"
+  ],
+  "source_type": "media",
+  "importance": "high",
+  "rationale": "文章核心在于把科研过程组织成一个可运行的多智能体系统：通过金字塔分层架构、任务队列、agent 间讨论、关键节点的人类介入，以及结果回灌 agent loop，来实现自主推进与持续收敛。这些内容本质上描述的是 Agent 的协作机制、运行闭环和工作流编排，而不只是单纯的代码工具或基础设施。虽然文中也涉及 Experiment Harness、隔离运行、日志捕获等平台能力，以及论文复现和实验执行，但这些更像是支撑该多智能体科研系统落地的配套层，因此放在次分类更合适。",
+  "category_scores": {
+    "ai_agent": 28,
+    "ai_infrastructure": 2,
+    "memory_context": 3,
+    "developer_tools": 17,
+    "multimodal_ai": 6,
+    "robotics_embodied_ai": 3,
+    "consumer_economy": 2,
+    "research_benchmark": 19,
+    "open_source_ecosystem": 1,
+    "policy_regulation": 0,
+    "product_business": 0
+  },
+  "fallback_suggestion": {
+    "primary_category": "ai_agent",
+    "secondary_categories": [
+      "research_benchmark",
+      "developer_tools"
+    ],
+    "tags": [
+      "agent-runtime",
+      "benchmark",
+      "developer-experience",
+      "multimodal",
+      "research-result",
+      "software-engineering",
+      "workflow-orchestration"
+    ]
+  }
+}

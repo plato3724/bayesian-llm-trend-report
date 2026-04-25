@@ -1,0 +1,57 @@
+{
+  "article_id": "a36d7f67197d",
+  "concept_status": "drafted",
+  "generated_at": "2026-04-25T16:46:31+00:00",
+  "method": "tag_to_concept_mvp",
+  "matched_concepts": [
+    "cross_data_center_inference",
+    "ethernet_transport",
+    "heterogeneous_cluster",
+    "hybrid_attention",
+    "inference_serving",
+    "kv_cache",
+    "prefill_decode_disaggregation",
+    "service_architecture",
+    "throughput_optimization",
+    "ttft"
+  ],
+  "created_concepts": [
+    "kv_cache",
+    "prefill_decode_disaggregation",
+    "cross_data_center_inference",
+    "heterogeneous_cluster",
+    "inference_serving",
+    "service_architecture",
+    "ethernet_transport",
+    "ttft",
+    "throughput_optimization",
+    "hybrid_attention"
+  ],
+  "candidate_concepts": [],
+  "source_trace": {
+    "classification_path": "knowledge_state/articles/a36d7f67197d/classification.json",
+    "extraction_path": "knowledge_state/articles/a36d7f67197d/extraction.json"
+  },
+  "article_entities": [
+    "PrFaaS",
+    "Qin",
+    "Prefill",
+    "Service",
+    "M2",
+    "Ring-2",
+    "Cache",
+    "KV",
+    "Weiran He",
+    "Yaoyu Wang",
+    "Zheming Li",
+    "Yongwei Wu",
+    "Weimin Zheng",
+    "QbitAI",
+    "Kimi Linear",
+    "Qwen 3",
+    "MiMo-V2-Flash",
+    "MiMo-V2",
+    "Qwen3",
+    "Decode"
+  ]
+}

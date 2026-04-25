@@ -1,0 +1,47 @@
+{
+  "article_id": "06eb3b8e8732",
+  "classification_status": "drafted",
+  "generated_at": "2026-04-25T15:25:58+00:00",
+  "method": "llm_openrouter",
+  "llm_model": "openai/gpt-5.4",
+  "llm_attempts": 1,
+  "primary_category": "consumer_economy",
+  "secondary_categories": [
+    "product_business"
+  ],
+  "tags": [
+    "nostalgia-economy",
+    "consumer-behavior",
+    "market-signal",
+    "secondhand-market",
+    "retro-ip",
+    "collectibles-demand",
+    "offline-immersive-experience",
+    "social-commerce-trend"
+  ],
+  "source_type": "media",
+  "importance": "medium",
+  "rationale": "文章核心在于分析“怀旧/复古经济”作为消费现象的市场规模、用户情绪与品类走红路径，重点是消费者为何为情怀、二手老物件、经典IP与线下复古体验买单，以及由此形成的市场增长信号。这属于典型的消费行为与市场趋势观察。文中虽提到二手平台、AI验货、区块链溯源等，但这些只是支撑复古消费生态的延伸论点，不是文章主机制，因此主分类应归入消费经济，产品/商业可作为次级分类。",
+  "category_scores": {
+    "ai_agent": 0,
+    "ai_infrastructure": 0,
+    "memory_context": 4,
+    "developer_tools": 0,
+    "multimodal_ai": 6,
+    "robotics_embodied_ai": 0,
+    "consumer_economy": 58,
+    "research_benchmark": 0,
+    "open_source_ecosystem": 0,
+    "policy_regulation": 0,
+    "product_business": 6
+  },
+  "fallback_suggestion": {
+    "primary_category": "consumer_economy",
+    "secondary_categories": [],
+    "tags": [
+      "consumer-behavior",
+      "market-signal",
+      "product-launch"
+    ]
+  }
+}

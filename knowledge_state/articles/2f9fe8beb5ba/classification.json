@@ -1,0 +1,52 @@
+{
+  "article_id": "2f9fe8beb5ba",
+  "classification_status": "drafted",
+  "generated_at": "2026-04-25T15:26:17+00:00",
+  "method": "llm_openrouter",
+  "llm_model": "openai/gpt-5.4",
+  "llm_attempts": 1,
+  "primary_category": "multimodal_ai",
+  "secondary_categories": [
+    "ai_agent",
+    "memory_context",
+    "product_business"
+  ],
+  "tags": [
+    "speech-generation",
+    "audio-synthesis",
+    "long-form-audio",
+    "structured-generation",
+    "cross-modal-input",
+    "gst-schema",
+    "agent-compatible",
+    "context-engineering",
+    "multi-speaker-dialogue",
+    "acoustic-scene-modeling"
+  ],
+  "source_type": "media",
+  "importance": "medium",
+  "rationale": "文章核心讨论的是音频生成与语音合成框架：将文本、视频、网页、音频、剧本等多种输入转为结构化指令，生成长音频、多人对话和完整声学场景，属于典型的多模态生成系统。虽然文中强调“Native Agentic”与 LLM Agent 接口，但 Agent 更像控制与编排方式，不是主体创新本身；真正的核心机制是跨模态输入到语音/音频输出的生成架构，以及对声学场景、情绪和叙事的统一建模。因此主分类应归入多模态 AI。次分类可补充 AI Agent（因其强调与 Agent 工作流兼容）、记忆/Context Engineering（因其突出长上下文连贯与分层结构化控制）以及产品/商业（因文章带有框架发布和应用展示性质）。",
+  "category_scores": {
+    "ai_agent": 5,
+    "ai_infrastructure": 1,
+    "memory_context": 9,
+    "developer_tools": 2,
+    "multimodal_ai": 72,
+    "robotics_embodied_ai": 0,
+    "consumer_economy": 2,
+    "research_benchmark": 0,
+    "open_source_ecosystem": 2,
+    "policy_regulation": 0,
+    "product_business": 0
+  },
+  "fallback_suggestion": {
+    "primary_category": "multimodal_ai",
+    "secondary_categories": [],
+    "tags": [
+      "context-engineering",
+      "cross-modal",
+      "multimodal",
+      "speech-generation"
+    ]
+  }
+}

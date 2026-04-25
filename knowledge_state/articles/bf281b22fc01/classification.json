@@ -1,0 +1,57 @@
+{
+  "article_id": "bf281b22fc01",
+  "classification_status": "drafted",
+  "generated_at": "2026-04-25T15:27:26+00:00",
+  "method": "llm_openrouter",
+  "llm_model": "openai/gpt-5.4",
+  "llm_attempts": 1,
+  "primary_category": "memory_context",
+  "secondary_categories": [
+    "research_benchmark",
+    "open_source_ecosystem",
+    "developer_tools"
+  ],
+  "tags": [
+    "ai-memory-engine",
+    "context-engineering",
+    "long-term-memory",
+    "graph-memory",
+    "graph-routing",
+    "bundle-search",
+    "coreference-resolution",
+    "retrieval-architecture",
+    "llm-free-retrieval",
+    "low-latency-retrieval",
+    "benchmark-comparison",
+    "docker-deployment"
+  ],
+  "source_type": "media",
+  "importance": "high",
+  "rationale": "文章核心在于介绍 M-FLOW 作为 AI 记忆引擎的机制创新，重点讨论长期记忆组织、图结构检索、跨粒度上下文关联、指代消解与不依赖 LLM 的检索流程，本质属于记忆系统与 Context Engineering。文中虽然包含 benchmark 对比、开源项目链接和一行代码接入等信息，但这些更像支撑材料；真正的主体是“如何重构 AI 记忆与检索”。因此主分类应归入记忆 / Context Engineering。次分类可补充研究评测、开源生态和开发接入属性。",
+  "category_scores": {
+    "ai_agent": 1,
+    "ai_infrastructure": 2,
+    "memory_context": 50,
+    "developer_tools": 14,
+    "multimodal_ai": 0,
+    "robotics_embodied_ai": 0,
+    "consumer_economy": 3,
+    "research_benchmark": 11,
+    "open_source_ecosystem": 0,
+    "policy_regulation": 0,
+    "product_business": 0
+  },
+  "fallback_suggestion": {
+    "primary_category": "memory_context",
+    "secondary_categories": [
+      "developer_tools"
+    ],
+    "tags": [
+      "benchmark",
+      "context-engineering",
+      "developer-experience",
+      "long-term-memory",
+      "software-engineering"
+    ]
+  }
+}

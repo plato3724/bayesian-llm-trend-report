@@ -1,0 +1,42 @@
+{
+  "article_id": "5c7678b0d4c9",
+  "concept_status": "drafted",
+  "generated_at": "2026-04-25T15:26:47+00:00",
+  "method": "tag_to_concept_mvp",
+  "matched_concepts": [
+    "agentic_engineering",
+    "career_impact",
+    "coding_agents",
+    "developer_experience",
+    "engineering_productivity",
+    "prototype_generation",
+    "software_engineering",
+    "testing_and_verification"
+  ],
+  "created_concepts": [
+    "coding_agents",
+    "agentic_engineering",
+    "software_engineering",
+    "developer_experience",
+    "testing_and_verification",
+    "prototype_generation",
+    "engineering_productivity",
+    "career_impact"
+  ],
+  "candidate_concepts": [],
+  "source_trace": {
+    "classification_path": "knowledge_state/articles/5c7678b0d4c9/classification.json",
+    "extraction_path": "knowledge_state/articles/5c7678b0d4c9/extraction.json"
+  },
+  "article_entities": [
+    "Vibe",
+    "Engineering",
+    "QbitAI",
+    "Willison",
+    "GPT 5",
+    "Opus 4",
+    "ThoughtWorks",
+    "Hello World",
+    "AI 100"
+  ]
+}

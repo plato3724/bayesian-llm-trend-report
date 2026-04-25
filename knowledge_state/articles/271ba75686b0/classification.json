@@ -1,0 +1,61 @@
+{
+  "article_id": "271ba75686b0",
+  "classification_status": "drafted",
+  "generated_at": "2026-04-25T15:26:10+00:00",
+  "method": "llm_openrouter",
+  "llm_model": "openai/gpt-5.4",
+  "llm_attempts": 1,
+  "primary_category": "product_business",
+  "secondary_categories": [
+    "ai_agent",
+    "developer_tools",
+    "open_source_ecosystem"
+  ],
+  "tags": [
+    "token-economics",
+    "internal-incentives",
+    "agent-runtime",
+    "codebase-rewrite",
+    "developer-workflow",
+    "open-model-strategy",
+    "semi-open-source",
+    "distribution-advantage",
+    "token-consumption",
+    "org-behavior"
+  ],
+  "source_type": "media",
+  "importance": "medium",
+  "rationale": "文章核心不是在讲记忆或上下文工程机制，而是在讨论 Meta 围绕 AI 推进形成的内部激励、资源投入方式、产品战略与开源策略：用 token 消耗作为生产力指标、推动代码库重写、以半开源新模型配合 WhatsApp 和 Instagram 分发。这更适合归入“产品 / 商业”，因为重点是公司战略、组织激励和市场定位。文中虽提到循环运行 agent 刷 token，属于 AI Agent 的使用现象；也涉及代码重写和自动化工具，可作为开发者工具相关背景；同时提及半开源模型发布，可补充到开源生态。",
+  "category_scores": {
+    "ai_agent": 4,
+    "ai_infrastructure": 0,
+    "memory_context": 23,
+    "developer_tools": 7,
+    "multimodal_ai": 1,
+    "robotics_embodied_ai": 1,
+    "consumer_economy": 5,
+    "research_benchmark": 0,
+    "open_source_ecosystem": 6,
+    "policy_regulation": 0,
+    "product_business": 6
+  },
+  "fallback_suggestion": {
+    "primary_category": "memory_context",
+    "secondary_categories": [
+      "developer_tools",
+      "product_business",
+      "open_source_ecosystem"
+    ],
+    "tags": [
+      "business-model",
+      "context-engineering",
+      "developer-experience",
+      "ecosystem",
+      "long-term-memory",
+      "market-signal",
+      "open-source",
+      "product-launch",
+      "software-engineering"
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "article_id": "7bb7bc9e2b3e",
+  "classification_status": "drafted",
+  "generated_at": "2026-04-25T15:27:00+00:00",
+  "method": "llm_openrouter",
+  "llm_model": "openai/gpt-5.4",
+  "llm_attempts": 1,
+  "primary_category": "memory_context",
+  "secondary_categories": [
+    "developer_tools",
+    "open_source_ecosystem",
+    "multimodal_ai"
+  ],
+  "tags": [
+    "knowledge-graph",
+    "context-engineering",
+    "token-reduction",
+    "tree-sitter",
+    "ast-parsing",
+    "multimodal-ingestion",
+    "ai-coding-assistant",
+    "graph-based-retrieval",
+    "no-vector-embeddings",
+    "incremental-update",
+    "open-source"
+  ],
+  "source_type": "media",
+  "importance": "high",
+  "rationale": "文章核心在于用知识图谱重构 AI coding assistants 的上下文组织与检索方式：将代码、文档、论文和图像统一图谱化，以替代直接读取原始资料或依赖向量嵌入，从而显著降低 token 消耗并提升可查询性。这本质上属于记忆系统与 Context Engineering 的设计问题。虽然内容也涉及面向开发者的工具形态、开源项目传播和多模态输入处理，但这些更多是实现载体；文章最值得归类比较的核心机制，仍是图谱化记忆、上下文压缩与检索增强。",
+  "category_scores": {
+    "ai_agent": 5,
+    "ai_infrastructure": 4,
+    "memory_context": 28,
+    "developer_tools": 14,
+    "multimodal_ai": 6,
+    "robotics_embodied_ai": 0,
+    "consumer_economy": 6,
+    "research_benchmark": 5,
+    "open_source_ecosystem": 12,
+    "policy_regulation": 0,
+    "product_business": 1
+  },
+  "fallback_suggestion": {
+    "primary_category": "memory_context",
+    "secondary_categories": [
+      "developer_tools",
+      "open_source_ecosystem"
+    ],
+    "tags": [
+      "context-engineering",
+      "developer-experience",
+      "ecosystem",
+      "long-term-memory",
+      "multimodal",
+      "open-source",
+      "research-result",
+      "software-engineering"
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "article_id": "4a8b83da74e8",
+  "concept_status": "drafted",
+  "generated_at": "2026-04-25T15:26:36+00:00",
+  "method": "tag_to_concept_mvp",
+  "matched_concepts": [
+    "aaak_compression",
+    "context_engineering",
+    "github_stars",
+    "hierarchical_retrieval",
+    "local_first",
+    "long_term_memory",
+    "longmemeval",
+    "mcp_tool_calling",
+    "memory_palace",
+    "navigable_memory"
+  ],
+  "created_concepts": [
+    "long_term_memory",
+    "memory_palace",
+    "hierarchical_retrieval",
+    "navigable_memory",
+    "local_first",
+    "longmemeval",
+    "aaak_compression",
+    "mcp_tool_calling",
+    "github_stars"
+  ],
+  "candidate_concepts": [],
+  "source_trace": {
+    "classification_path": "knowledge_state/articles/4a8b83da74e8/classification.json",
+    "extraction_path": "knowledge_state/articles/4a8b83da74e8/extraction.json"
+  },
+  "article_entities": [
+    "QbitAI",
+    "Milla Jovovich",
+    "Embedding",
+    "Drawers",
+    "Closets",
+    "L2",
+    "AAAK",
+    "ChatGPT",
+    "API",
+    "Claude",
+    "Jovovich",
+    "Sigman",
+    "Cli",
+    "GitHub",
+    "JeremyNguyenPhD"
+  ]
+}

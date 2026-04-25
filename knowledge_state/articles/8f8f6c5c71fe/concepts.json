@@ -1,0 +1,49 @@
+{
+  "article_id": "8f8f6c5c71fe",
+  "concept_status": "drafted",
+  "generated_at": "2026-04-25T15:27:19+00:00",
+  "method": "tag_to_concept_mvp",
+  "matched_concepts": [
+    "apache_2_0",
+    "audio_synthesis",
+    "chinese_dialects",
+    "cli",
+    "controllable_voice_cloning",
+    "diffusion_autoregressive",
+    "multilingual_speech",
+    "python_api",
+    "speech_generation",
+    "tokenizer_free",
+    "tts",
+    "voice_cloning"
+  ],
+  "created_concepts": [
+    "tts",
+    "voice_cloning",
+    "controllable_voice_cloning",
+    "multilingual_speech",
+    "chinese_dialects",
+    "tokenizer_free",
+    "diffusion_autoregressive",
+    "apache_2_0",
+    "python_api",
+    "cli"
+  ],
+  "candidate_concepts": [],
+  "source_trace": {
+    "classification_path": "knowledge_state/articles/8f8f6c5c71fe/classification.json",
+    "extraction_path": "knowledge_state/articles/8f8f6c5c71fe/extraction.json"
+  },
+  "article_entities": [
+    "VoxCPM",
+    "QbitAI",
+    "AI",
+    "Generate Speech",
+    "Control Instruction",
+    "Value",
+    "Uhm",
+    "Diffusion Autoregressive Continuous Representation",
+    "OpenBMB",
+    "VoxCPM2"
+  ]
+}

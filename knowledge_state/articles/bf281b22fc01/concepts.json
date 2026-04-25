@@ -1,0 +1,50 @@
+{
+  "article_id": "bf281b22fc01",
+  "concept_status": "drafted",
+  "generated_at": "2026-04-25T15:27:26+00:00",
+  "method": "tag_to_concept_mvp",
+  "matched_concepts": [
+    "ai_memory_engine",
+    "benchmark_comparison",
+    "bundle_search",
+    "context_engineering",
+    "coreference_resolution",
+    "docker_deployment",
+    "graph_memory",
+    "graph_routing",
+    "llm_free_retrieval",
+    "long_term_memory",
+    "low_latency_retrieval",
+    "retrieval_architecture"
+  ],
+  "created_concepts": [
+    "ai_memory_engine",
+    "graph_memory",
+    "graph_routing",
+    "bundle_search",
+    "coreference_resolution",
+    "retrieval_architecture",
+    "llm_free_retrieval",
+    "low_latency_retrieval",
+    "benchmark_comparison",
+    "docker_deployment"
+  ],
+  "candidate_concepts": [],
+  "source_trace": {
+    "classification_path": "knowledge_state/articles/bf281b22fc01/classification.json",
+    "extraction_path": "knowledge_state/articles/bf281b22fc01/extraction.json"
+  },
+  "article_entities": [
+    "QbitAI",
+    "Claude",
+    "M-FLOW",
+    "Graphiti",
+    "LoCoMo",
+    "LongMemEval",
+    "EvolvingEvents",
+    "FacetPoint",
+    "Entity",
+    "MIT",
+    "FlowElement"
+  ]
+}

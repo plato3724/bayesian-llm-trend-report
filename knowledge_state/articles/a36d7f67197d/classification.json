@@ -1,0 +1,55 @@
+{
+  "article_id": "a36d7f67197d",
+  "classification_status": "drafted",
+  "generated_at": "2026-04-25T16:46:31+00:00",
+  "method": "llm_openrouter",
+  "llm_model": "openai/gpt-5.4",
+  "llm_attempts": 1,
+  "primary_category": "ai_infrastructure",
+  "secondary_categories": [
+    "memory_context",
+    "research_benchmark",
+    "product_business"
+  ],
+  "tags": [
+    "kv-cache",
+    "prefill-decode-disaggregation",
+    "cross-data-center-inference",
+    "heterogeneous-cluster",
+    "inference-serving",
+    "service-architecture",
+    "ethernet-transport",
+    "ttft",
+    "throughput-optimization",
+    "hybrid-attention"
+  ],
+  "source_type": "media",
+  "importance": "high",
+  "rationale": "文章核心讨论的是大模型推理服务架构 PrFaaS：如何将 Prefill 与 Decode 解耦到异构集群，并通过跨数据中心传输 KV Cache 来提升吞吐、降低时延。这属于模型服务、运行时系统和平台层的基础设施问题，而不是单纯的记忆/上下文设计。虽然文章大量涉及长上下文、KV Cache 和混合注意力，这些更像该基础设施方案成立的前提条件，因此可作为次分类放入 memory_context。文中还包含实验数据与论文结果，可辅以 research_benchmark；标题和表述带有“商业模式”与资源调度价值，但主体仍不是商业分析，因此 product_business 仅作次分类。",
+  "category_scores": {
+    "ai_agent": 0,
+    "ai_infrastructure": 4,
+    "memory_context": 25,
+    "developer_tools": 0,
+    "multimodal_ai": 0,
+    "robotics_embodied_ai": 0,
+    "consumer_economy": 0,
+    "research_benchmark": 11,
+    "open_source_ecosystem": 0,
+    "policy_regulation": 0,
+    "product_business": 4
+  },
+  "fallback_suggestion": {
+    "primary_category": "memory_context",
+    "secondary_categories": [
+      "research_benchmark"
+    ],
+    "tags": [
+      "benchmark",
+      "context-engineering",
+      "long-term-memory",
+      "product-launch",
+      "research-result"
+    ]
+  }
+}

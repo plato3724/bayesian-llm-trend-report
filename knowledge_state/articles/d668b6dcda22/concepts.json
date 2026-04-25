@@ -1,0 +1,45 @@
+{
+  "article_id": "d668b6dcda22",
+  "concept_status": "drafted",
+  "generated_at": "2026-04-25T15:27:37+00:00",
+  "method": "tag_to_concept_mvp",
+  "matched_concepts": [
+    "canvas_api",
+    "developer_experience",
+    "dom_bypass",
+    "experimental_web_api",
+    "frontend_rendering",
+    "html_in_canvas",
+    "open_source_adoption",
+    "pretext",
+    "text_layout_engine",
+    "web_platform"
+  ],
+  "created_concepts": [
+    "frontend_rendering",
+    "html_in_canvas",
+    "canvas_api",
+    "web_platform",
+    "experimental_web_api",
+    "dom_bypass",
+    "text_layout_engine",
+    "pretext"
+  ],
+  "candidate_concepts": [],
+  "source_trace": {
+    "classification_path": "knowledge_state/articles/d668b6dcda22/classification.json",
+    "extraction_path": "knowledge_state/articles/d668b6dcda22/extraction.json"
+  },
+  "article_entities": [
+    "HTML",
+    "Canvas",
+    "WICG",
+    "QbitAI",
+    "API",
+    "Doom",
+    "CSS",
+    "JS",
+    "WebGPU",
+    "AI"
+  ]
+}

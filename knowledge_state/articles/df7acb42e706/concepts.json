@@ -1,0 +1,41 @@
+{
+  "article_id": "df7acb42e706",
+  "concept_status": "drafted",
+  "generated_at": "2026-04-25T15:27:43+00:00",
+  "method": "tag_to_concept_mvp",
+  "matched_concepts": [
+    "backdrivability",
+    "dexterous_hand",
+    "direct_drive",
+    "embodied_ai",
+    "physical_grounding",
+    "robot_hand",
+    "sim_to_real",
+    "tactile_sensing",
+    "teleoperation_data",
+    "visuotactile_sensing"
+  ],
+  "created_concepts": [
+    "dexterous_hand",
+    "visuotactile_sensing",
+    "direct_drive",
+    "backdrivability",
+    "sim_to_real",
+    "teleoperation_data",
+    "robot_hand"
+  ],
+  "candidate_concepts": [],
+  "source_trace": {
+    "classification_path": "knowledge_state/articles/df7acb42e706/classification.json",
+    "extraction_path": "knowledge_state/articles/df7acb42e706/extraction.json"
+  },
+  "article_entities": [
+    "Revo",
+    "Revo 3",
+    "D0K7Z1Bug",
+    "QbitAI",
+    "Isaac Lab",
+    "Isaac Gym",
+    "NVIDIA"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "article_id": "20fb29fec269",
+  "concept_status": "drafted",
+  "generated_at": "2026-04-25T15:26:04+00:00",
+  "method": "tag_to_concept_mvp",
+  "matched_concepts": [
+    "agent_harness",
+    "agent_runtime",
+    "cloud_agent",
+    "consumer_agent",
+    "deterministic_execution",
+    "durable_session",
+    "managed_agents",
+    "sandboxed_execution",
+    "tool_integration",
+    "workflow_orchestration"
+  ],
+  "created_concepts": [
+    "managed_agents",
+    "agent_harness",
+    "agent_runtime",
+    "workflow_orchestration",
+    "sandboxed_execution",
+    "durable_session",
+    "tool_integration",
+    "consumer_agent",
+    "deterministic_execution",
+    "cloud_agent"
+  ],
+  "candidate_concepts": [],
+  "source_trace": {
+    "classification_path": "knowledge_state/articles/20fb29fec269/classification.json",
+    "extraction_path": "knowledge_state/articles/20fb29fec269/extraction.json"
+  },
+  "article_entities": [
+    "Agent Harness",
+    "Agents",
+    "AI",
+    "QbitAI",
+    "Chatbot",
+    "Agent",
+    "CREAO",
+    "Key",
+    "Harness",
+    "What"
+  ]
+}

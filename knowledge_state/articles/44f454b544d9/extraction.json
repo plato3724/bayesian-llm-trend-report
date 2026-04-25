@@ -1,0 +1,55 @@
+{
+  "article_id": "44f454b544d9",
+  "extraction_status": "completed",
+  "generated_at": "2026-04-25T15:26:23+00:00",
+  "method": "deterministic_mvp",
+  "summary": "Claw-Code Harness 提供 isolated runs、log capture，并把 verified results 回灌给 agent loop。 Claw AI Lab 在关键阶段提供 human-in-the-loop 质量闸门和 rollback。 Claw AI Lab 将自己定义为 autonomous multi-agent research team，并给出了 5-layer hierarchical pipeline。",
+  "main_points": [
+    "Claw-Code Harness 提供 isolated runs、log capture，并把 verified results 回灌给 agent loop。",
+    "Claw AI Lab 在关键阶段提供 human-in-the-loop 质量闸门和 rollback。",
+    "Claw AI Lab 将自己定义为 autonomous multi-agent research team，并给出了 5-layer hierarchical pipeline。"
+  ],
+  "entities": [
+    "Claw AI",
+    "Claude Code Harness",
+    "AI",
+    "Claw-AI-Lab",
+    "QbitAI",
+    "Fayao",
+    "Ye Deheng",
+    "Tianrun",
+    "AI Lab",
+    "Code",
+    "Loop",
+    "Harness",
+    "Model",
+    "World"
+  ],
+  "claims": [
+    {
+      "id": "claw_multilayer_lab",
+      "type": "tool",
+      "text": "Claw AI Lab 将自己定义为 autonomous multi-agent research team，并给出了 5-layer hierarchical pipeline。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "claw_code_harness",
+      "type": "technique",
+      "text": "Claw-Code Harness 提供 isolated runs、log capture，并把 verified results 回灌给 agent loop。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "claw_hitl_quality_gates",
+      "type": "technique",
+      "text": "Claw AI Lab 在关键阶段提供 human-in-the-loop 质量闸门和 rollback。",
+      "source": "legacy_claims_json"
+    }
+  ],
+  "important_quotes": [],
+  "open_questions": [],
+  "source_trace": {
+    "record_path": "knowledge_state/articles/44f454b544d9/record.json",
+    "canonical_text_path": "knowledge_state/articles/44f454b544d9/canonical_text.txt",
+    "legacy_claims_path": "knowledge_state/articles/44f454b544d9/claims.json"
+  }
+}

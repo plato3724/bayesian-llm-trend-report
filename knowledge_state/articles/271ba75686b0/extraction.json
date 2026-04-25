@@ -1,0 +1,38 @@
+{
+  "article_id": "271ba75686b0",
+  "extraction_status": "completed",
+  "generated_at": "2026-04-25T15:26:04+00:00",
+  "method": "deterministic_mvp",
+  "summary": "Meta 内部存在按 token 消耗排名的文化，且日均消耗达 2 万亿 token。 Meta 员工通过循环运行 agent 空转来刷 token 排行榜。",
+  "main_points": [
+    "Meta 内部存在按 token 消耗排名的文化，且日均消耗达 2 万亿 token。",
+    "Meta 员工通过循环运行 agent 空转来刷 token 排行榜。"
+  ],
+  "entities": [
+    "QbitAI",
+    "Token Legend",
+    "Anthropic",
+    "AI 100"
+  ],
+  "claims": [
+    {
+      "id": "meta_tokenmaxxing",
+      "type": "event",
+      "text": "Meta 内部存在按 token 消耗排名的文化，且日均消耗达 2 万亿 token。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "meta_looping_agents",
+      "type": "event",
+      "text": "Meta 员工通过循环运行 agent 空转来刷 token 排行榜。",
+      "source": "legacy_claims_json"
+    }
+  ],
+  "important_quotes": [],
+  "open_questions": [],
+  "source_trace": {
+    "record_path": "knowledge_state/articles/271ba75686b0/record.json",
+    "canonical_text_path": "knowledge_state/articles/271ba75686b0/canonical_text.txt",
+    "legacy_claims_path": "knowledge_state/articles/271ba75686b0/claims.json"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "article_id": "03f809cb0476",
+  "concept_status": "drafted",
+  "generated_at": "2026-04-25T16:46:17+00:00",
+  "method": "tag_to_concept_mvp",
+  "matched_concepts": [
+    "agent_runtime",
+    "cli_harness",
+    "coding_agent",
+    "context_engineering",
+    "deterministic_tools",
+    "repo_context",
+    "structured_memory",
+    "thin_harness_fat_skills",
+    "tool_routing",
+    "workflow_orchestration"
+  ],
+  "created_concepts": [
+    "structured_memory",
+    "tool_routing",
+    "thin_harness_fat_skills",
+    "coding_agent",
+    "repo_context",
+    "deterministic_tools",
+    "cli_harness"
+  ],
+  "candidate_concepts": [],
+  "source_trace": {
+    "classification_path": "knowledge_state/articles/03f809cb0476/classification.json",
+    "extraction_path": "knowledge_state/articles/03f809cb0476/extraction.json"
+  },
+  "article_entities": [
+    "Garry Tan",
+    "Skill",
+    "AI",
+    "Harness",
+    "Markdown",
+    "Diarization",
+    "Claude Code",
+    "Resolver",
+    "CLI",
+    "GitHub",
+    "Steve Yegge",
+    "YC",
+    "Garry",
+    "SQL",
+    "Santos",
+    "Oram",
+    "Kim",
+    "OK",
+    "Cursor",
+    "Yegge"
+  ]
+}

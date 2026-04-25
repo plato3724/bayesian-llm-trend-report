@@ -1,0 +1,50 @@
+{
+  "article_id": "4a8b83da74e8",
+  "classification_status": "drafted",
+  "generated_at": "2026-04-25T15:26:36+00:00",
+  "method": "llm_openrouter",
+  "llm_model": "openai/gpt-5.4",
+  "llm_attempts": 1,
+  "primary_category": "memory_context",
+  "secondary_categories": [
+    "open_source_ecosystem",
+    "research_benchmark",
+    "ai_agent"
+  ],
+  "tags": [
+    "long-term-memory",
+    "context-engineering",
+    "memory-palace",
+    "hierarchical-retrieval",
+    "navigable-memory",
+    "local-first",
+    "longmemeval",
+    "aaak-compression",
+    "mcp-tool-calling",
+    "github-stars"
+  ],
+  "source_type": "media",
+  "importance": "high",
+  "rationale": "文章核心在于介绍 MemPalace 的长期记忆设计机制：把对话与项目信息按 wings、rooms、halls、closets、drawers 组织成可导航的分层记忆结构，并通过按需检索、压缩摘要与上下文加载来解决长时记忆和上下文注入问题。这属于典型的记忆系统与 context engineering 主题。虽然文中也涉及 GitHub 爆火、开源可用、LongMemEval 成绩以及 MCP 工具调用，但这些分别更像生态热度、评测证据和接入方式，主线仍然是“如何构建 AI 的长期记忆与检索上下文”。",
+  "category_scores": {
+    "ai_agent": 1,
+    "ai_infrastructure": 3,
+    "memory_context": 59,
+    "developer_tools": 12,
+    "multimodal_ai": 0,
+    "robotics_embodied_ai": 0,
+    "consumer_economy": 2,
+    "research_benchmark": 4,
+    "open_source_ecosystem": 7,
+    "policy_regulation": 0,
+    "product_business": 2
+  },
+  "fallback_suggestion": {
+    "primary_category": "memory_context",
+    "secondary_categories": [],
+    "tags": [
+      "context-engineering",
+      "long-term-memory"
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "article_id": "59b86c15655e",
+  "extraction_status": "completed",
+  "generated_at": "2026-04-25T15:26:36+00:00",
+  "method": "deterministic_mvp",
+  "summary": "2026 年 4 月，中山大学与 MBZUAI 联合发布 A₁——一款完全开源、自适应截断式的视觉-语言-动作（VLA）模型。 A₁ 的论文、代码、模型权重全面开源，且不依赖私有数据或闭源组件。 A₁ 使用预算感知自适应推理：训练时 VLM 每一层都接入共享动作头同步学习，推理时逐层输出动作并监测相邻层动作差异，足够小时提前终止前向传播。",
+  "main_points": [
+    "2026 年 4 月，中山大学与 MBZUAI 联合发布 A₁——一款完全开源、自适应截断式的视觉-语言-动作（VLA）模型。",
+    "A₁ 的论文、代码、模型权重全面开源，且不依赖私有数据或闭源组件。",
+    "A₁ 使用预算感知自适应推理：训练时 VLM 每一层都接入共享动作头同步学习，推理时逐层输出动作并监测相邻层动作差异，足够小时提前终止前向传播。",
+    "A₁ 提出层间截断流匹配：让上一层动作头的输出作为下一层流匹配的热启动，避免每次提前退出时从随机噪声重新去噪，联合压缩主干与动作头的计算开销。",
+    "A₁ 在仿真与真机上实现推理时延最高降低 72%、计算量最高减少 76.6%，在 RoboChallenge 基准上平均成功率 29.00%，优于 π₀、X-VLA 等开源基线。"
+  ],
+  "entities": [
+    "QbitAI",
+    "Vision-Language",
+    "VLM",
+    "AgiBot",
+    "OpenArm",
+    "Dobot",
+    "A Fully Transparent Open-Source",
+    "Adaptive",
+    "Efficient Truncated Vision-Language-Action",
+    "Model"
+  ],
+  "claims": [
+    {
+      "id": "a1_model_release",
+      "type": "event",
+      "text": "2026 年 4 月，中山大学与 MBZUAI 联合发布 A₁——一款完全开源、自适应截断式的视觉-语言-动作（VLA）模型。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "a1_fully_open_source",
+      "type": "event",
+      "text": "A₁ 的论文、代码、模型权重全面开源，且不依赖私有数据或闭源组件。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "a1_adaptive_early_exit",
+      "type": "technique",
+      "text": "A₁ 使用预算感知自适应推理：训练时 VLM 每一层都接入共享动作头同步学习，推理时逐层输出动作并监测相邻层动作差异，足够小时提前终止前向传播。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "a1_layered_truncated_flow_matching",
+      "type": "technique",
+      "text": "A₁ 提出层间截断流匹配：让上一层动作头的输出作为下一层流匹配的热启动，避免每次提前退出时从随机噪声重新去噪，联合压缩主干与动作头的计算开销。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "a1_inference_cost_reduction",
+      "type": "technique",
+      "text": "A₁ 在仿真与真机上实现推理时延最高降低 72%、计算量最高减少 76.6%，在 RoboChallenge 基准上平均成功率 29.00%，优于 π₀、X-VLA 等开源基线。",
+      "source": "legacy_claims_json"
+    }
+  ],
+  "important_quotes": [],
+  "open_questions": [],
+  "source_trace": {
+    "record_path": "knowledge_state/articles/59b86c15655e/record.json",
+    "canonical_text_path": "knowledge_state/articles/59b86c15655e/canonical_text.txt",
+    "legacy_claims_path": "knowledge_state/articles/59b86c15655e/claims.json"
+  }
+}

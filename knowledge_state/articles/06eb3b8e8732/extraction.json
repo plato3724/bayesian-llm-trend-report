@@ -1,0 +1,53 @@
+{
+  "article_id": "06eb3b8e8732",
+  "extraction_status": "completed",
+  "generated_at": "2026-04-25T15:25:50+00:00",
+  "method": "deterministic_mvp",
+  "summary": "2025年中国'复古经济'市场规模已达3553亿元人民币，同比增长11.7%，预计2030年接近6000亿元，数据来源为艾媒咨询。 经典IP（《灌篮高手》《寻秦记》）、老数码产品（停产iPhone 4搜索量与价格回升10倍、CCD相机小红书#CCD#话题阅读超60亿）、线下沉浸体验（青神县蔗田偷菜日均破万人、港式复古日11天11万人次）等多类复古品类在同一时期同时走红。 文章称去年国内二手平台活跃用户同比暴涨近20%，是增速最快的电商赛道之一（未注明来源）。",
+  "main_points": [
+    "2025年中国'复古经济'市场规模已达3553亿元人民币，同比增长11.7%，预计2030年接近6000亿元，数据来源为艾媒咨询。",
+    "经典IP（《灌篮高手》《寻秦记》）、老数码产品（停产iPhone 4搜索量与价格回升10倍、CCD相机小红书#CCD#话题阅读超60亿）、线下沉浸体验（青神县蔗田偷菜日均破万人、港式复古日11天11万人次）等多类复古品类在同一时期同时走红。",
+    "文章称去年国内二手平台活跃用户同比暴涨近20%，是增速最快的电商赛道之一（未注明来源）。",
+    "文章提出AI验货、区块链溯源与日趋完善的信用评价体系将使二手品类从简单物品流转升级为资产管理与循环经济生态（前瞻性论断，非当前证据）。"
+  ],
+  "entities": [
+    "CCD",
+    "X2RHU8KKA5yBYNCmkE8ZFA",
+    "NBA",
+    "DV",
+    "VCG"
+  ],
+  "claims": [
+    {
+      "id": "nostalgia_market_size_3553b",
+      "type": "event",
+      "text": "2025年中国'复古经济'市场规模已达3553亿元人民币，同比增长11.7%，预计2030年接近6000亿元，数据来源为艾媒咨询。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "retro_product_revivals",
+      "type": "event",
+      "text": "经典IP（《灌篮高手》《寻秦记》）、老数码产品（停产iPhone 4搜索量与价格回升10倍、CCD相机小红书#CCD#话题阅读超60亿）、线下沉浸体验（青神县蔗田偷菜日均破万人、港式复古日11天11万人次）等多类复古品类在同一时期同时走红。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "secondhand_users_20pct_yoy",
+      "type": "event",
+      "text": "文章称去年国内二手平台活跃用户同比暴涨近20%，是增速最快的电商赛道之一（未注明来源）。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "ai_blockchain_secondhand_upgrade_thesis",
+      "type": "technique",
+      "text": "文章提出AI验货、区块链溯源与日趋完善的信用评价体系将使二手品类从简单物品流转升级为资产管理与循环经济生态（前瞻性论断，非当前证据）。",
+      "source": "legacy_claims_json"
+    }
+  ],
+  "important_quotes": [],
+  "open_questions": [],
+  "source_trace": {
+    "record_path": "knowledge_state/articles/06eb3b8e8732/record.json",
+    "canonical_text_path": "knowledge_state/articles/06eb3b8e8732/canonical_text.txt",
+    "legacy_claims_path": "knowledge_state/articles/06eb3b8e8732/claims.json"
+  }
+}

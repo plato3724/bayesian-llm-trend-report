@@ -1,0 +1,57 @@
+{
+  "article_id": "ecfdeb44e0ae",
+  "classification_status": "drafted",
+  "generated_at": "2026-04-25T15:27:49+00:00",
+  "method": "llm_openrouter",
+  "llm_model": "openai/gpt-5.4",
+  "llm_attempts": 1,
+  "primary_category": "product_business",
+  "secondary_categories": [
+    "ai_agent",
+    "ai_infrastructure",
+    "consumer_economy"
+  ],
+  "tags": [
+    "ai-chart-agent",
+    "editable-chart-generation",
+    "white-box-ai",
+    "human-in-the-loop",
+    "data-visualization",
+    "report-generation",
+    "excel-parsing",
+    "workflow-automation",
+    "api-integration",
+    "product-growth"
+  ],
+  "source_type": "media",
+  "importance": "medium",
+  "rationale": "文章核心是在介绍爱图表这一垂直 AI 产品的产品定位、差异化能力、商业增长和平台集成进展，重点是其如何作为“可编辑的图表智能体”进入市场并形成价值主张，因此主分类应归入产品/商业。虽然文中多次强调“智能体”能力与工作流自动化，也提到开放 API、接入飞书等平台，分别与 AI Agent 和基础设施有关，但这些内容主要是为产品定位和商业化叙事服务，而非深入讨论 agent 机制或底层系统设计。",
+  "category_scores": {
+    "ai_agent": 5,
+    "ai_infrastructure": 2,
+    "memory_context": 1,
+    "developer_tools": 1,
+    "multimodal_ai": 3,
+    "robotics_embodied_ai": 0,
+    "consumer_economy": 8,
+    "research_benchmark": 2,
+    "open_source_ecosystem": 3,
+    "policy_regulation": 0,
+    "product_business": 8
+  },
+  "fallback_suggestion": {
+    "primary_category": "product_business",
+    "secondary_categories": [
+      "consumer_economy",
+      "ai_agent"
+    ],
+    "tags": [
+      "agent-runtime",
+      "business-model",
+      "consumer-behavior",
+      "market-signal",
+      "product-launch",
+      "workflow-orchestration"
+    ]
+  }
+}

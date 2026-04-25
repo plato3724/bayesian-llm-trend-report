@@ -1,0 +1,49 @@
+{
+  "article_id": "44f454b544d9",
+  "concept_status": "drafted",
+  "generated_at": "2026-04-25T15:26:30+00:00",
+  "method": "tag_to_concept_mvp",
+  "matched_concepts": [
+    "agent_runtime",
+    "experiment_harness",
+    "hierarchical_agent_architecture",
+    "human_in_the_loop",
+    "isolated_runs",
+    "multi_agent_research_workflow",
+    "research_automation",
+    "rollback_control",
+    "verified_results_feedback",
+    "workflow_orchestration"
+  ],
+  "created_concepts": [
+    "multi_agent_research_workflow",
+    "hierarchical_agent_architecture",
+    "experiment_harness",
+    "isolated_runs",
+    "human_in_the_loop",
+    "rollback_control",
+    "verified_results_feedback",
+    "research_automation"
+  ],
+  "candidate_concepts": [],
+  "source_trace": {
+    "classification_path": "knowledge_state/articles/44f454b544d9/classification.json",
+    "extraction_path": "knowledge_state/articles/44f454b544d9/extraction.json"
+  },
+  "article_entities": [
+    "Claw AI",
+    "Claude Code Harness",
+    "AI",
+    "Claw-AI-Lab",
+    "QbitAI",
+    "Fayao",
+    "Ye Deheng",
+    "Tianrun",
+    "AI Lab",
+    "Code",
+    "Loop",
+    "Harness",
+    "Model",
+    "World"
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "article_id": "7e6b7b4cfbf5",
+  "extraction_status": "completed",
+  "generated_at": "2026-04-25T15:27:00+00:00",
+  "method": "deterministic_mvp",
+  "summary": "文章称，现有医疗跨模态数据中超声样本占比不足 5%。 文章称，US-365K 包含 36.4 万对超声图像-文本样本和 11676 个临床真实病例。 文章称，US-365K 的数据有效率超过 90%。",
+  "main_points": [
+    "文章称，现有医疗跨模态数据中超声样本占比不足 5%。",
+    "文章称，US-365K 包含 36.4 万对超声图像-文本样本和 11676 个临床真实病例。",
+    "文章称，US-365K 的数据有效率超过 90%。",
+    "文章称，在实验中 Ultrasound-CLIP 的多任务分类平均准确率达到 59.61%，图像到文本检索 I2T@10 达到 37.45%，文本到图像检索 T2I@50 达到 80.22%。",
+    "文章称，该成果已被 CVPR 2026 接收，相关代码和 US-365K 数据集已开源。",
+    "文章称，Ultrasound-CLIP 在双编码器基础上引入了 UDAF 引导的异质图编码器和基于 UDAF 的语义软标签两大模块。",
+    "文章称，Ultrasound-CLIP 采用对比损失与语义损失结合的双目标优化策略。",
+    "文章称，团队构建了首个大规模、100%专用于超声影像的图像-文本数据集 US-365K。"
+  ],
+  "entities": [
+    "Ultrasound",
+    "CLIP",
+    "UHAT",
+    "UDAF",
+    "Ultrasound-CLIP",
+    "QbitAI",
+    "UDT",
+    "GNN",
+    "MSE",
+    "I2T",
+    "T2I",
+    "Semantic-Aware Contrastive Pre",
+    "Ultrasound Image-Text Understanding",
+    "Jiayun Jin",
+    "Haolong Chai",
+    "Xueying Huang",
+    "Xiaoqing Guo",
+    "Zengwei Zheng",
+    "Zhan Zhou",
+    "Junmei Wang"
+  ],
+  "claims": [
+    {
+      "id": "us_365k_first_large_scale_ultrasound_only_dataset",
+      "type": "tool",
+      "text": "文章称，团队构建了首个大规模、100%专用于超声影像的图像-文本数据集 US-365K。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "ultrasound_share_below_5_percent_in_existing_medical_multimodal_data",
+      "type": "event",
+      "text": "文章称，现有医疗跨模态数据中超声样本占比不足 5%。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "us_365k_contains_364k_pairs_and_11676_cases",
+      "type": "event",
+      "text": "文章称，US-365K 包含 36.4 万对超声图像-文本样本和 11676 个临床真实病例。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "us_365k_effective_rate_above_90_percent",
+      "type": "event",
+      "text": "文章称，US-365K 的数据有效率超过 90%。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "ultrasound_clip_uses_heterogeneous_graph_encoder_and_soft_labels",
+      "type": "technique",
+      "text": "文章称，Ultrasound-CLIP 在双编码器基础上引入了 UDAF 引导的异质图编码器和基于 UDAF 的语义软标签两大模块。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "ultrasound_clip_uses_dual_objective_optimization",
+      "type": "technique",
+      "text": "文章称，Ultrasound-CLIP 采用对比损失与语义损失结合的双目标优化策略。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "ultrasound_clip_classification_and_retrieval_metrics",
+      "type": "event",
+      "text": "文章称，在实验中 Ultrasound-CLIP 的多任务分类平均准确率达到 59.61%，图像到文本检索 I2T@10 达到 37.45%，文本到图像检索 T2I@50 达到 80.22%。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "paper_accepted_by_cvpr_2026_and_resources_open_sourced",
+      "type": "event",
+      "text": "文章称，该成果已被 CVPR 2026 接收，相关代码和 US-365K 数据集已开源。",
+      "source": "legacy_claims_json"
+    }
+  ],
+  "important_quotes": [],
+  "open_questions": [],
+  "source_trace": {
+    "record_path": "knowledge_state/articles/7e6b7b4cfbf5/record.json",
+    "canonical_text_path": "knowledge_state/articles/7e6b7b4cfbf5/canonical_text.txt",
+    "legacy_claims_path": "knowledge_state/articles/7e6b7b4cfbf5/claims.json"
+  }
+}

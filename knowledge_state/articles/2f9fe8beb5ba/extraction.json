@@ -1,0 +1,55 @@
+{
+  "article_id": "2f9fe8beb5ba",
+  "extraction_status": "completed",
+  "generated_at": "2026-04-25T15:26:10+00:00",
+  "method": "deterministic_mvp",
+  "summary": "Any2Speech 使用 GST(Global-Sentence-Token) 分层 schema，作为 LLM Agent 与合成引擎之间的结构化语义接口。 Any2Speech 将文本、视频、网页、音频、剧本等任意输入转成结构化生成指令，目标是长上下文连贯、多角色交互和完整声学场景。 Any2Speech 将自己定义为 Native Agentic 的无边界长音频合成框架。",
+  "main_points": [
+    "Any2Speech 使用 GST(Global-Sentence-Token) 分层 schema，作为 LLM Agent 与合成引擎之间的结构化语义接口。",
+    "Any2Speech 将文本、视频、网页、音频、剧本等任意输入转成结构化生成指令，目标是长上下文连贯、多角色交互和完整声学场景。",
+    "Any2Speech 将自己定义为 Native Agentic 的无边界长音频合成框架。"
+  ],
+  "entities": [
+    "Midasheng",
+    "Xiaomi",
+    "Xiaomi Any2Speech",
+    "QbitAI",
+    "Global-Sentence-Token",
+    "GST",
+    "Dimension Dropout",
+    "Hugging Face",
+    "OpenClaw Skill",
+    "Web",
+    "OMT",
+    "Any2Speech",
+    "Demo",
+    "Dasheng-AudioGen-Web"
+  ],
+  "claims": [
+    {
+      "id": "any2speech_native_agentic",
+      "type": "tool",
+      "text": "Any2Speech 将自己定义为 Native Agentic 的无边界长音频合成框架。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "any2speech_gst_interface",
+      "type": "technique",
+      "text": "Any2Speech 使用 GST(Global-Sentence-Token) 分层 schema，作为 LLM Agent 与合成引擎之间的结构化语义接口。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "any2speech_any_input_long_audio",
+      "type": "technique",
+      "text": "Any2Speech 将文本、视频、网页、音频、剧本等任意输入转成结构化生成指令，目标是长上下文连贯、多角色交互和完整声学场景。",
+      "source": "legacy_claims_json"
+    }
+  ],
+  "important_quotes": [],
+  "open_questions": [],
+  "source_trace": {
+    "record_path": "knowledge_state/articles/2f9fe8beb5ba/record.json",
+    "canonical_text_path": "knowledge_state/articles/2f9fe8beb5ba/canonical_text.txt",
+    "legacy_claims_path": "knowledge_state/articles/2f9fe8beb5ba/claims.json"
+  }
+}

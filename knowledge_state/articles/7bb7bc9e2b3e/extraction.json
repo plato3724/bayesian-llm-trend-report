@@ -1,0 +1,51 @@
+{
+  "article_id": "7bb7bc9e2b3e",
+  "extraction_status": "completed",
+  "generated_at": "2026-04-25T15:26:55+00:00",
+  "method": "deterministic_mvp",
+  "summary": "Graphify 将 Tree-sitter 静态分析与 LLM 语义提取组合起来构图，并明确写出 no vector embeddings required。 Graphify 官方站点声称可以带来 71.5× token reduction，并输出 graph.html、graph.json 和 GRAPH_REPORT.md。 Graphify 是一个面向 AI coding assistants 的多模态知识图谱构建工具，可将代码、文档、论文和图示变成可查询 graph。",
+  "main_points": [
+    "Graphify 将 Tree-sitter 静态分析与 LLM 语义提取组合起来构图，并明确写出 no vector embeddings required。",
+    "Graphify 官方站点声称可以带来 71.5× token reduction，并输出 graph.html、graph.json 和 GRAPH_REPORT.md。",
+    "Graphify 是一个面向 AI coding assistants 的多模态知识图谱构建工具，可将代码、文档、论文和图示变成可查询 graph。"
+  ],
+  "entities": [
+    "Graphify",
+    "QbitAI",
+    "Star",
+    "Vision",
+    "Claude Code",
+    "Codex",
+    "OpenClaw",
+    "One More Thing",
+    "README",
+    "CN"
+  ],
+  "claims": [
+    {
+      "id": "graphify_multimodal_kg",
+      "type": "tool",
+      "text": "Graphify 是一个面向 AI coding assistants 的多模态知识图谱构建工具，可将代码、文档、论文和图示变成可查询 graph。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "graphify_tree_sitter_plus_llm",
+      "type": "technique",
+      "text": "Graphify 将 Tree-sitter 静态分析与 LLM 语义提取组合起来构图，并明确写出 no vector embeddings required。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "graphify_token_reduction",
+      "type": "technique",
+      "text": "Graphify 官方站点声称可以带来 71.5× token reduction，并输出 graph.html、graph.json 和 GRAPH_REPORT.md。",
+      "source": "legacy_claims_json"
+    }
+  ],
+  "important_quotes": [],
+  "open_questions": [],
+  "source_trace": {
+    "record_path": "knowledge_state/articles/7bb7bc9e2b3e/record.json",
+    "canonical_text_path": "knowledge_state/articles/7bb7bc9e2b3e/canonical_text.txt",
+    "legacy_claims_path": "knowledge_state/articles/7bb7bc9e2b3e/claims.json"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "article_id": "0e7891dac0bb",
+  "concept_status": "drafted",
+  "generated_at": "2026-04-25T16:46:24+00:00",
+  "method": "tag_to_concept_mvp",
+  "matched_concepts": [
+    "ai_adoption",
+    "ai_index_report",
+    "ai_safety_incidents",
+    "benchmark_tracking",
+    "china_us_competition",
+    "frontier_models",
+    "market_comparison",
+    "model_evaluation",
+    "osworld",
+    "swe_bench_verified"
+  ],
+  "created_concepts": [
+    "ai_index_report",
+    "benchmark_tracking",
+    "model_evaluation",
+    "swe_bench_verified",
+    "osworld",
+    "china_us_competition",
+    "frontier_models",
+    "ai_adoption",
+    "ai_safety_incidents",
+    "market_comparison"
+  ],
+  "candidate_concepts": [],
+  "source_trace": {
+    "classification_path": "knowledge_state/articles/0e7891dac0bb/classification.json",
+    "extraction_path": "knowledge_state/articles/0e7891dac0bb/extraction.json"
+  },
+  "article_entities": [
+    "QbitAI",
+    "Scaling",
+    "DeepSeek",
+    "Deep",
+    "AI",
+    "GitHub",
+    "HAI",
+    "Anyway"
+  ]
+}

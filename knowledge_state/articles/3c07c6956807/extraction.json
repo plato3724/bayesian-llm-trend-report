@@ -1,0 +1,53 @@
+{
+  "article_id": "3c07c6956807",
+  "extraction_status": "completed",
+  "generated_at": "2026-04-25T15:26:17+00:00",
+  "method": "deterministic_mvp",
+  "summary": "caveman README 声称通过更简洁的响应风格可减少约 75% 输出 token，并配套压缩工具减少约 45% 输入 token。 caveman 是面向 Claude Code、Codex 等 coding agent 的 skill/plugin。",
+  "main_points": [
+    "caveman README 声称通过更简洁的响应风格可减少约 75% 输出 token，并配套压缩工具减少约 45% 输入 token。",
+    "caveman 是面向 Claude Code、Codex 等 coding agent 的 skill/plugin。"
+  ],
+  "entities": [
+    "JuliusBrussee",
+    "Lite",
+    "Full",
+    "Ultra",
+    "Claude",
+    "QbitAI",
+    "Code",
+    "Copilot",
+    "Windsurf",
+    "Julius Brussee",
+    "Labs",
+    "Docs",
+    "Slack",
+    "Notion",
+    "In",
+    "Stacklink",
+    "GitHub",
+    "ClaudeAI",
+    "AI 100"
+  ],
+  "claims": [
+    {
+      "id": "caveman_plugin_scope",
+      "type": "tool",
+      "text": "caveman 是面向 Claude Code、Codex 等 coding agent 的 skill/plugin。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "caveman_token_savings",
+      "type": "technique",
+      "text": "caveman README 声称通过更简洁的响应风格可减少约 75% 输出 token，并配套压缩工具减少约 45% 输入 token。",
+      "source": "legacy_claims_json"
+    }
+  ],
+  "important_quotes": [],
+  "open_questions": [],
+  "source_trace": {
+    "record_path": "knowledge_state/articles/3c07c6956807/record.json",
+    "canonical_text_path": "knowledge_state/articles/3c07c6956807/canonical_text.txt",
+    "legacy_claims_path": "knowledge_state/articles/3c07c6956807/claims.json"
+  }
+}

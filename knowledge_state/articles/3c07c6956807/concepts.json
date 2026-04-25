@@ -1,0 +1,52 @@
+{
+  "article_id": "3c07c6956807",
+  "concept_status": "drafted",
+  "generated_at": "2026-04-25T15:26:23+00:00",
+  "method": "tag_to_concept_mvp",
+  "matched_concepts": [
+    "claude_code",
+    "codex",
+    "coding_agent_plugin",
+    "context_engineering",
+    "developer_workflow",
+    "open_source_adoption",
+    "prompt_compression",
+    "skills_plugin",
+    "token_compression"
+  ],
+  "created_concepts": [
+    "coding_agent_plugin",
+    "token_compression",
+    "prompt_compression",
+    "claude_code",
+    "codex",
+    "skills_plugin",
+    "open_source_adoption"
+  ],
+  "candidate_concepts": [],
+  "source_trace": {
+    "classification_path": "knowledge_state/articles/3c07c6956807/classification.json",
+    "extraction_path": "knowledge_state/articles/3c07c6956807/extraction.json"
+  },
+  "article_entities": [
+    "JuliusBrussee",
+    "Lite",
+    "Full",
+    "Ultra",
+    "Claude",
+    "QbitAI",
+    "Code",
+    "Copilot",
+    "Windsurf",
+    "Julius Brussee",
+    "Labs",
+    "Docs",
+    "Slack",
+    "Notion",
+    "In",
+    "Stacklink",
+    "GitHub",
+    "ClaudeAI",
+    "AI 100"
+  ]
+}

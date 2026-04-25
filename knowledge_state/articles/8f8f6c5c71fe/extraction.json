@@ -1,0 +1,44 @@
+{
+  "article_id": "8f8f6c5c71fe",
+  "extraction_status": "completed",
+  "generated_at": "2026-04-25T15:27:13+00:00",
+  "method": "deterministic_mvp",
+  "summary": "VoxCPM2 在 Apache-2.0 下开源，并提供 Python API、CLI、Web Demo 与 Nano-vLLM 生产部署路径。 VoxCPM2 是一个 2B tokenizer-free TTS 模型，支持 30 languages、9 Chinese dialects、Voice Design、Controllable Voice Cloning 和 48kHz 输出。",
+  "main_points": [
+    "VoxCPM2 在 Apache-2.0 下开源，并提供 Python API、CLI、Web Demo 与 Nano-vLLM 生产部署路径。",
+    "VoxCPM2 是一个 2B tokenizer-free TTS 模型，支持 30 languages、9 Chinese dialects、Voice Design、Controllable Voice Cloning 和 48kHz 输出。"
+  ],
+  "entities": [
+    "VoxCPM",
+    "QbitAI",
+    "AI",
+    "Generate Speech",
+    "Control Instruction",
+    "Value",
+    "Uhm",
+    "Diffusion Autoregressive Continuous Representation",
+    "OpenBMB",
+    "VoxCPM2"
+  ],
+  "claims": [
+    {
+      "id": "voxcpm2_capabilities",
+      "type": "tool",
+      "text": "VoxCPM2 是一个 2B tokenizer-free TTS 模型，支持 30 languages、9 Chinese dialects、Voice Design、Controllable Voice Cloning 和 48kHz 输出。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "voxcpm2_open_source_stack",
+      "type": "technique",
+      "text": "VoxCPM2 在 Apache-2.0 下开源，并提供 Python API、CLI、Web Demo 与 Nano-vLLM 生产部署路径。",
+      "source": "legacy_claims_json"
+    }
+  ],
+  "important_quotes": [],
+  "open_questions": [],
+  "source_trace": {
+    "record_path": "knowledge_state/articles/8f8f6c5c71fe/record.json",
+    "canonical_text_path": "knowledge_state/articles/8f8f6c5c71fe/canonical_text.txt",
+    "legacy_claims_path": "knowledge_state/articles/8f8f6c5c71fe/claims.json"
+  }
+}

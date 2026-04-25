@@ -1,0 +1,47 @@
+{
+  "article_id": "5c7678b0d4c9",
+  "classification_status": "drafted",
+  "generated_at": "2026-04-25T15:26:47+00:00",
+  "method": "llm_openrouter",
+  "llm_model": "openai/gpt-5.4",
+  "llm_attempts": 1,
+  "primary_category": "developer_tools",
+  "secondary_categories": [
+    "ai_agent",
+    "product_business"
+  ],
+  "tags": [
+    "coding-agents",
+    "agentic-engineering",
+    "software-engineering",
+    "developer-experience",
+    "testing-and-verification",
+    "prototype-generation",
+    "engineering-productivity",
+    "career-impact"
+  ],
+  "source_type": "media",
+  "importance": "high",
+  "rationale": "文章核心讨论的是 AI 写代码对软件工程工作流的重塑：代码生成跨过可用阈值后，开发瓶颈从实现转向 testing、验证、方案选择与架构判断。这本质上是在讨论开发者工具与软件工程生产方式的变化，而不是单纯讲商业发布或通用 Agent 概念。之所以补充 ai_agent，是因为文中明确区分了 coding agents、Agentic Engineering 与黑灯式 AI Agent 开发流程；补充 product_business，则是因为涉及工程岗位分层与行业生产模式变化，但这些仍是围绕开发工作流展开的次级主题。",
+  "category_scores": {
+    "ai_agent": 6,
+    "ai_infrastructure": 0,
+    "memory_context": 1,
+    "developer_tools": 43,
+    "multimodal_ai": 1,
+    "robotics_embodied_ai": 0,
+    "consumer_economy": 1,
+    "research_benchmark": 0,
+    "open_source_ecosystem": 2,
+    "policy_regulation": 0,
+    "product_business": 9
+  },
+  "fallback_suggestion": {
+    "primary_category": "developer_tools",
+    "secondary_categories": [],
+    "tags": [
+      "developer-experience",
+      "software-engineering"
+    ]
+  }
+}

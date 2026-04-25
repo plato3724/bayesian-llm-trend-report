@@ -1,0 +1,51 @@
+{
+  "article_id": "2f9fe8beb5ba",
+  "concept_status": "drafted",
+  "generated_at": "2026-04-25T15:26:17+00:00",
+  "method": "tag_to_concept_mvp",
+  "matched_concepts": [
+    "acoustic_scene_modeling",
+    "agent_compatible",
+    "audio_synthesis",
+    "context_engineering",
+    "cross_modal_input",
+    "gst_schema",
+    "long_form_audio",
+    "multi_speaker_dialogue",
+    "speech_generation",
+    "structured_generation"
+  ],
+  "created_concepts": [
+    "speech_generation",
+    "audio_synthesis",
+    "long_form_audio",
+    "structured_generation",
+    "cross_modal_input",
+    "gst_schema",
+    "agent_compatible",
+    "context_engineering",
+    "multi_speaker_dialogue",
+    "acoustic_scene_modeling"
+  ],
+  "candidate_concepts": [],
+  "source_trace": {
+    "classification_path": "knowledge_state/articles/2f9fe8beb5ba/classification.json",
+    "extraction_path": "knowledge_state/articles/2f9fe8beb5ba/extraction.json"
+  },
+  "article_entities": [
+    "Midasheng",
+    "Xiaomi",
+    "Xiaomi Any2Speech",
+    "QbitAI",
+    "Global-Sentence-Token",
+    "GST",
+    "Dimension Dropout",
+    "Hugging Face",
+    "OpenClaw Skill",
+    "Web",
+    "OMT",
+    "Any2Speech",
+    "Demo",
+    "Dasheng-AudioGen-Web"
+  ]
+}

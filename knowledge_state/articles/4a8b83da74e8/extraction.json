@@ -1,0 +1,56 @@
+{
+  "article_id": "4a8b83da74e8",
+  "extraction_status": "completed",
+  "generated_at": "2026-04-25T15:26:30+00:00",
+  "method": "deterministic_mvp",
+  "summary": "MemPalace 官方站点宣称其 LongMemEval raw 96.6%、hybrid 100%，同时承认 hybrid 分数和 AAAK 准确率存在方法学争议。 MemPalace 把长期记忆组织成 wings / rooms / halls / closets / drawers 的分层结构，并用 AAAK 做高压缩摘要。 MemPalace 采用“全部逐字保存，再做可导航检索”的长期记忆方案，而不是先让 AI 判断什么值得记。",
+  "main_points": [
+    "MemPalace 官方站点宣称其 LongMemEval raw 96.6%、hybrid 100%，同时承认 hybrid 分数和 AAAK 准确率存在方法学争议。",
+    "MemPalace 把长期记忆组织成 wings / rooms / halls / closets / drawers 的分层结构，并用 AAAK 做高压缩摘要。",
+    "MemPalace 采用“全部逐字保存，再做可导航检索”的长期记忆方案，而不是先让 AI 判断什么值得记。"
+  ],
+  "entities": [
+    "QbitAI",
+    "Milla Jovovich",
+    "Embedding",
+    "Drawers",
+    "Closets",
+    "L2",
+    "AAAK",
+    "ChatGPT",
+    "API",
+    "Claude",
+    "Jovovich",
+    "Sigman",
+    "Cli",
+    "GitHub",
+    "JeremyNguyenPhD"
+  ],
+  "claims": [
+    {
+      "id": "mempalace_store_everything",
+      "type": "tool",
+      "text": "MemPalace 采用“全部逐字保存，再做可导航检索”的长期记忆方案，而不是先让 AI 判断什么值得记。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "mempalace_structured_memory",
+      "type": "technique",
+      "text": "MemPalace 把长期记忆组织成 wings / rooms / halls / closets / drawers 的分层结构，并用 AAAK 做高压缩摘要。",
+      "source": "legacy_claims_json"
+    },
+    {
+      "id": "mempalace_benchmark_claims",
+      "type": "event",
+      "text": "MemPalace 官方站点宣称其 LongMemEval raw 96.6%、hybrid 100%，同时承认 hybrid 分数和 AAAK 准确率存在方法学争议。",
+      "source": "legacy_claims_json"
+    }
+  ],
+  "important_quotes": [],
+  "open_questions": [],
+  "source_trace": {
+    "record_path": "knowledge_state/articles/4a8b83da74e8/record.json",
+    "canonical_text_path": "knowledge_state/articles/4a8b83da74e8/canonical_text.txt",
+    "legacy_claims_path": "knowledge_state/articles/4a8b83da74e8/claims.json"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "article_id": "ecfdeb44e0ae",
+  "concept_status": "drafted",
+  "generated_at": "2026-04-25T15:27:49+00:00",
+  "method": "tag_to_concept_mvp",
+  "matched_concepts": [
+    "ai_chart_agent",
+    "api_integration",
+    "data_visualization",
+    "editable_chart_generation",
+    "excel_parsing",
+    "human_in_the_loop",
+    "product_growth",
+    "report_generation",
+    "white_box_ai",
+    "workflow_automation"
+  ],
+  "created_concepts": [
+    "ai_chart_agent",
+    "editable_chart_generation",
+    "white_box_ai",
+    "data_visualization",
+    "report_generation",
+    "excel_parsing",
+    "workflow_automation",
+    "api_integration",
+    "product_growth"
+  ],
+  "candidate_concepts": [],
+  "source_trace": {
+    "classification_path": "knowledge_state/articles/ecfdeb44e0ae/classification.json",
+    "extraction_path": "knowledge_state/articles/ecfdeb44e0ae/extraction.json"
+  },
+  "article_entities": [
+    "QbitAI",
+    "Aitubiao",
+    "Excel",
+    "Aily",
+    "Lobster",
+    "QClaw"
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "created_at": "2026-04-25T16:52:37+00:00",
+  "last_updated_at": "2026-04-25T16:53:37+00:00",
+  "version": 1,
+  "source_hash": "05bdbf3c5a5d2045957bdbb0bf2f1569b3f2956b0e296484583169a20c518765",
+  "prompt_version": "frameworks_from_reviews_v1",
+  "generated_by": "llm_framework_generation_v1",
+  "llm_model": "openai/gpt-5.4",
+  "llm_attempts": 1,
+  "frameworks": [
+    {
+      "framework_id": "mechanism_chain_validation",
+      "name": "机制链验证框架",
+      "purpose": "用于判断多篇材料是否在描述同一条底层机制链，而不是并列罗列现象、概念或热点。",
+      "dimensions": [
+        "核心变量是什么：真正被改变的是模型能力、系统结构、资源配置，还是行为激励？",
+        "机制链如何展开：上游变化通过哪些中间环节传导到最终结果？",
+        "必要前提是什么：哪些条件缺失时，这条链会失效或收益大幅衰减？",
+        "替代解释有哪些：这些结果是否也可能由热度、样本选择、组织投入或传播策略造成？",
+        "反证材料应长什么样：哪类案例最可能推翻当前机制解释？",
+        "可迁移边界在哪里：它适用于哪些场景，不适用于哪些任务、行业或规模条件？"
+      ],
+      "best_for": [
+        "跨文章综述抽象",
+        "技术趋势分析",
+        "产品与基础设施机制判断",
+        "避免把叙事误当规律"
+      ],
+      "source_review_ids": [
+        "ai_agent_living_review",
+        "ai_infrastructure_living_review",
+        "consumer_economy_living_review",
+        "developer_tools_living_review",
+        "memory_context_living_review",
+        "multimodal_ai_living_review",
+        "product_business_living_review",
+        "research_benchmark_living_review",
+        "robotics_embodied_ai_living_review"
+      ],
+      "status": "llm_draft"
+    },
+    {
+      "framework_id": "runtime_system_boundary",
+      "name": "运行时与系统边界框架",
+      "purpose": "用于分析一个能力为何在 Demo 中成立、在产品中失效，重点识别运行时设计、状态管理、权限、恢复和验证机制是否构成真实护城河。",
+      "dimensions": [
+        "能力被拆成了哪些可执行、可校验、可恢复的步骤？",
+        "上下文、状态和中间结果如何被装配、持久化和传递？",
+        "工具、模块或子系统如何路由，谁负责裁决与回滚？",
+        "错误最常出现在哪些环节，系统如何抑制错上下文、错工具、错循环和错状态？",
+        "成本、时延、权限和安全边界如何约束运行时设计？",
+        "当任务拉长、规模放大或用户变普通时，系统会先在哪个边界上崩溃？"
+      ],
+      "best_for": [
+        "AI Agent",
+        "记忆与 Context Engineering",
+        "开发者工具",
+        "具身智能 Runtime",
+        "产品级系统设计评估"
+      ],
+      "source_review_ids": [
+        "ai_agent_living_review",
+        "memory_context_living_review",
+        "developer_tools_living_review",
+        "product_business_living_review",
+        "robotics_embodied_ai_living_review"
+      ],
+      "status": "llm_draft"
+    },
+    {
+      "framework_id": "pattern_overlap_disambiguation",
+      "name": "模式重叠拆分框架",
+      "purpose": "用于处理综述中经常出现的相邻概念混合问题，判断它们是同一机制的不同表述，还是两个需要拆开的主题。",
+      "dimensions": [
+        "两个模式共享的核心因变量是什么？",
+        "它们是在描述同一条机制链的不同环节，还是不同层级的问题？",
+        "二者是否依赖同一组前提条件和资源约束？",
+        "如果分别成立，各自最强的证据和反证是什么？",
+        "概念合并后是否提升解释力，还是掩盖了关键差异？",
+        "最终应采取提升、合并、重命名还是分拆处理？"
+      ],
+      "best_for": [
+        "living review 概念治理",
+        "主题聚类校正",
+        "术语命名与边界判断"
+      ],
+      "source_review_ids": [
+        "ai_agent_living_review",
+        "ai_infrastructure_living_review",
+        "consumer_economy_living_review",
+        "developer_tools_living_review",
+        "memory_context_living_review",
+        "multimodal_ai_living_review",
+        "product_business_living_review",
+        "research_benchmark_living_review",
+        "robotics_embodied_ai_living_review"
+      ],
+      "status": "llm_draft"
+    },
+    {
+      "framework_id": "evidence_maturity_assessment",
+      "name": "证据成熟度评估框架",
+      "purpose": "用于区分机制证据、案例证据、市场信号和传播叙事，避免在单案例或早期样本上做过度外推。",
+      "dimensions": [
+        "当前证据属于机制成立、案例成立、规模成立，还是商业成立？",
+        "样本数量、对照条件和复现环境是否足以支持强结论？",
+        "有哪些指标是热度代理变量，哪些指标才接近真实效果？",
+        "失败案例、负面结果和未命中场景是否被纳入讨论？",
+        "如果扩大到不同组织、用户群体或基础设施条件，结论还是否稳固？",
+        "下一步最值得补的证据是什么：Benchmark、长期经营数据、对照实验还是反例？"
+      ],
+      "best_for": [
+        "单案例主题判断",
+        "早期趋势综述",
+        "投研与战略分析",
+        "媒体叙事校正"
+      ],
+      "source_review_ids": [
+        "ai_infrastructure_living_review",
+        "consumer_economy_living_review",
+        "developer_tools_living_review",
+        "multimodal_ai_living_review",
+        "product_business_living_review",
+        "research_benchmark_living_review",
+        "robotics_embodied_ai_living_review",
+        "ai_agent_living_review",
+        "memory_context_living_review"
+      ],
+      "status": "llm_draft"
+    }
+  ]
+}
