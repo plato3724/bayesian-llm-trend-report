@@ -1,0 +1,52 @@
+{
+  "article_id": "e7483ff9ebd1",
+  "classification_status": "drafted",
+  "generated_at": "2026-04-26T13:32:33+00:00",
+  "method": "llm_openrouter",
+  "llm_model": "openai/gpt-5.4",
+  "llm_attempts": 1,
+  "primary_category": "product_business",
+  "secondary_categories": [
+    "ai_infrastructure",
+    "consumer_economy"
+  ],
+  "tags": [
+    "optical-communication",
+    "ai-datacenter",
+    "telecom-equipment",
+    "market-share",
+    "infrastructure-supplier",
+    "patent-licensing",
+    "nokia",
+    "motorola",
+    "supply-chain-strategy"
+  ],
+  "source_type": "media",
+  "importance": "medium",
+  "rationale": "文章核心是在分析诺基亚、摩托罗拉如何在 AI 时代和全球通信/手机产业链中重塑增长曲线，本质是公司战略、业务转型、市场定位与资本叙事的商业分析。虽然文中大量提到光通信、AI 数据中心连接器等基础设施内容，但这些更多是作为诺基亚商业复兴的驱动力和市场背景，而非深入讨论技术机制本身，因此主分类应归入产品/商业。次分类可补充到 AI 基础设施，因为光通信与 AI 数据中心网络是关键增长支点；同时文章也涉及资本市场热度、复古消费和品牌影响力，可作为消费经济的辅助维度。",
+  "category_scores": {
+    "ai_agent": 0,
+    "ai_infrastructure": 1,
+    "memory_context": 0,
+    "developer_tools": 0,
+    "multimodal_ai": 0,
+    "robotics_embodied_ai": 0,
+    "consumer_economy": 52,
+    "research_benchmark": 0,
+    "open_source_ecosystem": 0,
+    "policy_regulation": 0,
+    "product_business": 13
+  },
+  "fallback_suggestion": {
+    "primary_category": "consumer_economy",
+    "secondary_categories": [
+      "product_business"
+    ],
+    "tags": [
+      "business-model",
+      "consumer-behavior",
+      "market-signal",
+      "product-launch"
+    ]
+  }
+}

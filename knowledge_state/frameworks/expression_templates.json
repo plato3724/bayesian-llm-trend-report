@@ -1,46 +1,67 @@
 {
-  "created_at": "2026-04-25T16:52:37+00:00",
-  "last_updated_at": "2026-04-25T16:53:37+00:00",
+  "created_at": "2026-04-26T13:33:43+00:00",
+  "last_updated_at": "2026-04-26T13:35:25+00:00",
   "version": 1,
-  "source_hash": "05bdbf3c5a5d2045957bdbb0bf2f1569b3f2956b0e296484583169a20c518765",
+  "source_hash": "b8ed4cb4c4bff469662e20c6ae93ed3f9247916ab740e3c793403c869a755fc7",
   "prompt_version": "frameworks_from_reviews_v1",
   "generated_by": "llm_framework_generation_v1",
   "llm_model": "openai/gpt-5.4",
   "llm_attempts": 1,
   "templates": [
     {
-      "template_id": "theme_synthesis_argument",
-      "name": "主题机制综述模板",
-      "use_case": "用于写一组相关文章的高层综述，不复述单篇内容，而是提出跨材料共享的底层机制判断。",
+      "template_id": "cross_review_mechanism_synthesis",
+      "name": "跨综述机制综合模板",
+      "use_case": "用于把多个主题综述提炼成一个可迁移的共同机制判断，而不是并列摘要。",
       "structure": [
-        "先界定问题：这组材料要解释的不是谁更火，而是重复出现的结构是什么",
-        "提出总判断：用一句话给出最可能成立的底层机制",
-        "展开机制链：说明上游变化如何通过中间环节传导到结果",
-        "识别共同模式：点出不同案例为何可被视为同一机制的不同切面",
-        "加入反证与弱点：说明现有证据哪里强、哪里弱、哪里仍是叙事",
-        "划定边界条件：在哪些场景结论成立，哪些场景不能外推",
-        "提出下一步：最值得寻找的反例、对照材料或概念重整方向"
+        "先指出这些材料表面上谈的是不同对象，但重复出现的不是名词，而是同一类底层机制",
+        "定义这条机制链，并说明其起点、关键中介变量与最终结果",
+        "解释为什么单篇文章看像局部技巧，合起来却显示出系统性变化",
+        "列出最强支持证据，同时区分机制证据与叙事信号",
+        "补上最关键的反证、失败条件与边界场景",
+        "判断当前哪些概念应合并、拆分或重命名",
+        "给出下一轮最值得追踪的验证问题"
       ],
       "source_review_ids": [
         "ai_agent_living_review",
+        "ai_infrastructure_living_review",
+        "developer_tools_living_review",
         "memory_context_living_review",
-        "robotics_embodied_ai_living_review",
-        "research_benchmark_living_review"
+        "product_business_living_review",
+        "robotics_embodied_ai_living_review"
       ],
       "status": "llm_draft"
     },
     {
-      "template_id": "single_case_signal_template",
-      "name": "单案例信号判断模板",
-      "use_case": "用于只有一篇或少量材料时，谨慎提炼其信号价值，同时避免把单点案例写成确定趋势。",
+      "template_id": "runtime_shift_argument",
+      "name": "从能力展示到运行时转向模板",
+      "use_case": "用于论证一个 AI 赛道的真正变化不在模型更强，而在 runtime、系统设计或约束管理升级。",
       "structure": [
-        "说明材料地位：它更像一个信号，而不是定论",
-        "提炼最重要的新信息：这篇材料真正揭示了哪条机制或变量关系",
-        "解释为什么值得注意：它可能改写了哪个旧假设或旧约束",
-        "明确前提条件：这一判断依赖哪些特殊设定才成立",
-        "指出不能证明什么：哪些更强结论目前没有证据支持",
-        "列出最关键的反证需求：还需要什么类型的案例、实验或经营数据",
-        "给出暂定结论：在证据不足前，最稳妥的表述边界是什么"
+        "先否定常见直觉：变化不只是模型更强或回答更惊艳",
+        "提出真正转向发生在运行时：上下文、状态、调度、验证、恢复或权限",
+        "说明旧范式为何在长时程、真实任务中暴露出系统性失败",
+        "展示新范式如何把失败变成可管理问题",
+        "指出仍未解决的成本、鲁棒性、组织摩擦或商业可行性问题",
+        "给出一个能区分“真升级”与“包装层”的判断标准"
+      ],
+      "source_review_ids": [
+        "ai_agent_living_review",
+        "memory_context_living_review",
+        "product_business_living_review",
+        "robotics_embodied_ai_living_review"
+      ],
+      "status": "llm_draft"
+    },
+    {
+      "template_id": "single_case_cautious_extrapolation",
+      "name": "单案例谨慎外推模板",
+      "use_case": "用于写只有一篇或少量证据时的综述判断，既提炼信号，又避免过度归纳。",
+      "structure": [
+        "先说明该材料揭示的最强信号是什么",
+        "把信号上升为一个可能成立的机制解释，而非直接宣布趋势",
+        "明确这个解释依赖的关键前提和隐藏条件",
+        "区分已被证据支持的部分与仍属推演的部分",
+        "列出最可能推翻该解释的反例类型",
+        "说明还需要哪些跨团队、跨场景、跨成本证据才能升格为稳定主题"
       ],
       "source_review_ids": [
         "ai_infrastructure_living_review",
@@ -49,43 +70,23 @@
       "status": "llm_draft"
     },
     {
-      "template_id": "runtime_product_evaluation",
-      "name": "运行时产品评估模板",
-      "use_case": "用于分析 AI Agent、记忆系统或工作流产品时，判断其竞争力是否来自 Runtime 设计而非表层模型能力。",
+      "template_id": "signal_vs_evidence_commentary",
+      "name": "信号与证据分层评论模板",
+      "use_case": "用于评论热点话题，避免把热度、增长或融资误写成已被验证的结构变化。",
       "structure": [
-        "定义任务：产品要连续完成的工作链条是什么",
-        "拆解运行时：上下文、状态、工具、验证和回滚分别如何实现",
-        "识别失效模式：最常见的系统性错误会在哪里出现",
-        "评估控制能力：系统如何处理权限、成本、时延和长任务漂移",
-        "比较替代方案：没有这些 Runtime 设计时，模型能力为何难以稳定兑现",
-        "检验证据质量：成功案例是否有统一对照、失败样本和长期数据",
-        "下判断：优势是结构性护城河，还是暂时性的工程包装"
+        "先承认当前话题为何值得关注，有哪些强信号",
+        "随后区分市场信号、机制证据、实验数据和经营结果四个层次",
+        "指出哪些流行指标容易被误读或被激励扭曲",
+        "说明真正支撑长期判断的证据还缺什么",
+        "补充失败样本、反例或沉默样本可能改变结论的方式",
+        "最后给出一个更克制但更稳固的判断"
       ],
       "source_review_ids": [
-        "ai_agent_living_review",
-        "memory_context_living_review",
-        "product_business_living_review"
-      ],
-      "status": "llm_draft"
-    },
-    {
-      "template_id": "cost_structure_reframing",
-      "name": "成本结构重写模板",
-      "use_case": "用于写产品、工具或基础设施变化时，强调其价值来自成本与责任结构的重排，而不只是新增能力。",
-      "structure": [
-        "指出旧成本结构：过去最贵、最慢或最不稳定的环节是什么",
-        "说明新方案改了什么：它重排了哪些资源、流程或责任",
-        "解释收益来源：效率提升到底来自自动化、压缩、隔离还是调度",
-        "暴露转移成本：哪些代价被转移到用户、组织或后续环节",
-        "讨论失败情形：当规模变大或条件变差时，哪里会先出问题",
-        "比较商业含义：这种重排更可能形成采用、留存还是短期热度",
-        "收束结论：真正的价值是能力增强，还是成本结构被改写"
-      ],
-      "source_review_ids": [
+        "consumer_economy_living_review",
         "developer_tools_living_review",
         "product_business_living_review",
-        "ai_infrastructure_living_review",
-        "consumer_economy_living_review"
+        "research_benchmark_living_review",
+        "multimodal_ai_living_review"
       ],
       "status": "llm_draft"
     }

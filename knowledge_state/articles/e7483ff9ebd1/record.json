@@ -1,0 +1,46 @@
+{
+  "article_id": "e7483ff9ebd1",
+  "title": "命运之神重新眷顾了诺基亚",
+  "url": "https://mp.weixin.qq.com/s/8s5ib3bBwtYLKWC6Fp-SlA",
+  "ingested_from": "github_issue",
+  "ingested_at": "2026-04-26T13:32:23+00:00",
+  "last_updated_at": "2026-04-26T13:32:26+00:00",
+  "content_state": {
+    "full_text_status": "acquired",
+    "canonical_text_source": "knowledge_state/articles/e7483ff9ebd1/canonical_text.txt",
+    "fetch_attempts": [
+      {
+        "attempted_at": "2026-04-26T13:32:26+00:00",
+        "status": "acquired",
+        "status_code": 200,
+        "final_url": "https://mp.weixin.qq.com/s/8s5ib3bBwtYLKWC6Fp-SlA",
+        "content_type": "text/html",
+        "text_length": 4574,
+        "raw_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/knowledge_state/articles/e7483ff9ebd1/raw/fetch_20260426T133223Z.html",
+        "text_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/knowledge_state/articles/e7483ff9ebd1/raw/extract_20260426T133223Z.txt",
+        "note": "Full text looks sufficient for claim extraction."
+      }
+    ],
+    "manual_artifacts": [],
+    "next_action": "extract_claims"
+  },
+  "analysis_state": {
+    "claim_extraction_status": "not_started",
+    "verification_status": "not_started",
+    "bayesian_status": "excluded_until_verified"
+  },
+  "article_summary": {
+    "events": [],
+    "techniques": [],
+    "tools": []
+  },
+  "hypothesis_impacts": [],
+  "ingest_sources": [
+    {
+      "source_name": "github_issue",
+      "source_ref": "https://github.com/plato3724/bayesian-llm-trend-report/issues/12",
+      "source_note": "https://mp.weixin.qq.com/s/8s5ib3bBwtYLKWC6Fp-SlA",
+      "ingested_at": "2026-04-26T13:32:23+00:00"
+    }
+  ]
+}

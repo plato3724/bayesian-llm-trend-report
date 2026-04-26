@@ -1,0 +1,39 @@
+{
+  "article_id": "e7483ff9ebd1",
+  "concept_status": "drafted",
+  "generated_at": "2026-04-26T13:32:33+00:00",
+  "method": "tag_to_concept_mvp",
+  "matched_concepts": [
+    "ai_datacenter",
+    "infrastructure_supplier",
+    "market_share",
+    "motorola",
+    "nokia",
+    "optical_communication",
+    "patent_licensing",
+    "supply_chain_strategy",
+    "telecom_equipment"
+  ],
+  "created_concepts": [
+    "optical_communication",
+    "ai_datacenter",
+    "telecom_equipment",
+    "market_share",
+    "infrastructure_supplier",
+    "patent_licensing",
+    "nokia",
+    "motorola",
+    "supply_chain_strategy"
+  ],
+  "candidate_concepts": [],
+  "source_trace": {
+    "classification_path": "knowledge_state/articles/e7483ff9ebd1/classification.json",
+    "extraction_path": "knowledge_state/articles/e7483ff9ebd1/extraction.json"
+  },
+  "article_entities": [
+    "RAN",
+    "India",
+    "Mark Tarre",
+    "VCG"
+  ]
+}

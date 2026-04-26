@@ -1,6 +1,6 @@
 {
   "created_at": "2026-04-25T15:25:50+00:00",
-  "last_updated_at": "2026-04-25T16:46:31+00:00",
+  "last_updated_at": "2026-04-26T13:32:33+00:00",
   "version": 1,
   "concepts": [
     {
@@ -4631,6 +4631,213 @@
       ],
       "supporting_articles": [
         "a36d7f67197d"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "optical_communication",
+      "name": "Optical Communication",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "optical-communication"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-26T13:32:33+00:00",
+      "last_updated_at": "2026-04-26T13:32:33+00:00",
+      "related_categories": [
+        "product_business",
+        "ai_infrastructure",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "optical-communication"
+      ],
+      "supporting_articles": [
+        "e7483ff9ebd1"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "ai_datacenter",
+      "name": "Ai Datacenter",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "ai-datacenter"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-26T13:32:33+00:00",
+      "last_updated_at": "2026-04-26T13:32:33+00:00",
+      "related_categories": [
+        "product_business",
+        "ai_infrastructure",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "ai-datacenter"
+      ],
+      "supporting_articles": [
+        "e7483ff9ebd1"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "telecom_equipment",
+      "name": "Telecom Equipment",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "telecom-equipment"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-26T13:32:33+00:00",
+      "last_updated_at": "2026-04-26T13:32:33+00:00",
+      "related_categories": [
+        "product_business",
+        "ai_infrastructure",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "telecom-equipment"
+      ],
+      "supporting_articles": [
+        "e7483ff9ebd1"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "market_share",
+      "name": "Market Share",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "market-share"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-26T13:32:33+00:00",
+      "last_updated_at": "2026-04-26T13:32:33+00:00",
+      "related_categories": [
+        "product_business",
+        "ai_infrastructure",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "market-share"
+      ],
+      "supporting_articles": [
+        "e7483ff9ebd1"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "infrastructure_supplier",
+      "name": "Infrastructure Supplier",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "infrastructure-supplier"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-26T13:32:33+00:00",
+      "last_updated_at": "2026-04-26T13:32:33+00:00",
+      "related_categories": [
+        "product_business",
+        "ai_infrastructure",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "infrastructure-supplier"
+      ],
+      "supporting_articles": [
+        "e7483ff9ebd1"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "patent_licensing",
+      "name": "Patent Licensing",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "patent-licensing"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-26T13:32:33+00:00",
+      "last_updated_at": "2026-04-26T13:32:33+00:00",
+      "related_categories": [
+        "product_business",
+        "ai_infrastructure",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "patent-licensing"
+      ],
+      "supporting_articles": [
+        "e7483ff9ebd1"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "nokia",
+      "name": "Nokia",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "nokia"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-26T13:32:33+00:00",
+      "last_updated_at": "2026-04-26T13:32:33+00:00",
+      "related_categories": [
+        "product_business",
+        "ai_infrastructure",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "nokia"
+      ],
+      "supporting_articles": [
+        "e7483ff9ebd1"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "motorola",
+      "name": "Motorola",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "motorola"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-26T13:32:33+00:00",
+      "last_updated_at": "2026-04-26T13:32:33+00:00",
+      "related_categories": [
+        "product_business",
+        "ai_infrastructure",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "motorola"
+      ],
+      "supporting_articles": [
+        "e7483ff9ebd1"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "supply_chain_strategy",
+      "name": "Supply Chain Strategy",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "supply-chain-strategy"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-26T13:32:33+00:00",
+      "last_updated_at": "2026-04-26T13:32:33+00:00",
+      "related_categories": [
+        "product_business",
+        "ai_infrastructure",
+        "consumer_economy"
+      ],
+      "related_tags": [
+        "supply-chain-strategy"
+      ],
+      "supporting_articles": [
+        "e7483ff9ebd1"
       ],
       "notes": []
     }
