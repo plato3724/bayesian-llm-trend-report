@@ -135,10 +135,103 @@ jobs:
         if: ${{ github.event_name == 'issues' }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          PAGES_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/knowledge.html
         run: |
-          # Give the human on the phone a quick confirmation so they
-          # know the bot saw the label and what state the article is in.
-          ARTICLE_INFO=$(python scripts/knowledge_pipeline.py status 2>/dev/null || echo "(knowledge status unavailable)")
-          gh issue comment "${{ github.event.issue.number }}" \
-            --body "$(printf 'Knowledge system updated.\n\n```\n%s\n```\n\nThe new article has been ingested into the non-Bayesian knowledge system when fetch succeeded. The legacy Bayesian report is kept as a historical page and is not refreshed by this workflow.' "$ARTICLE_INFO")" \
+          ISSUE_JSON="$(gh issue view "$ISSUE_NUMBER" --json body,url --jq '{body: .body, url: .url}')"
+          export ISSUE_JSON
+
+          python - <<'PY' > knowledge-comment.md
+          import json
+          import os
+          import subprocess
+          from pathlib import Path
+
+          issue = json.loads(os.environ.get("ISSUE_JSON") or "{}")
+          issue_body = issue.get("body") or ""
+          issue_url = issue.get("url") or ""
+          pages_url = os.environ.get("PAGES_URL") or "docs/knowledge.html"
+
+          def read_json(path, default=None):
+              try:
+                  return json.loads(path.read_text(encoding="utf-8"))
+              except Exception:
+                  return {} if default is None else default
+
+          def knowledge_status():
+              try:
+                  raw = subprocess.check_output(
+                      ["python", "scripts/knowledge_pipeline.py", "status"],
+                      text=True,
+                  )
+                  return json.loads(raw)
+              except Exception as exc:
+                  return {"status_error": str(exc)}
+
+          matched = []
+          article_root = Path("knowledge_state/articles")
+          for article_dir in sorted(article_root.glob("*")):
+              if not article_dir.is_dir():
+                  continue
+              record = read_json(article_dir / "record.json")
+              if not record:
+                  continue
+              record_blob = json.dumps(record, ensure_ascii=False)
+              article_url = record.get("url") or ""
+              issue_match = issue_url and issue_url in record_blob
+              body_match = article_url and article_url in issue_body
+              if not issue_match and not body_match:
+                  continue
+
+              classification = read_json(article_dir / "classification.json")
+              extraction = read_json(article_dir / "extraction.json")
+              concepts = read_json(article_dir / "concepts.json")
+              matched.append({
+                  "article_id": article_dir.name,
+                  "title": record.get("title") or article_url or article_dir.name,
+                  "url": article_url,
+                  "full_text_status": (record.get("content_state") or {}).get("full_text_status", "unknown"),
+                  "classification_method": classification.get("method", "unknown"),
+                  "primary_category": classification.get("primary_category", "unknown"),
+                  "secondary_categories": classification.get("secondary_categories") or [],
+                  "tags": classification.get("tags") or [],
+                  "importance": classification.get("importance", "unknown"),
+                  "extraction_status": extraction.get("extraction_status", "unknown"),
+                  "concept_count": len(concepts.get("concept_candidates") or concepts.get("concepts") or []),
+              })
+
+          print("Knowledge system updated.")
+          print()
+          if matched:
+              print("Updated article:")
+              for item in matched:
+                  print(f"- `{item['article_id']}` {item['title']}")
+                  if item["url"]:
+                      print(f"  - Source: {item['url']}")
+                  print(f"  - Full text: `{item['full_text_status']}`")
+                  print(f"  - Extraction: `{item['extraction_status']}`")
+                  print(f"  - Category: `{item['primary_category']}`")
+                  if item["secondary_categories"]:
+                      secondary = ', '.join(f"`{value}`" for value in item["secondary_categories"])
+                      print(f"  - Secondary: {secondary}")
+                  print(f"  - Classification: `{item['classification_method']}`")
+                  print(f"  - Importance: `{item['importance']}`")
+                  if item["tags"]:
+                      tags = ', '.join(f"`{value}`" for value in item["tags"][:8])
+                      print(f"  - Tags: {tags}")
+                  print(f"  - Report: {pages_url}#articles")
+          else:
+              print("No matching article record was found for this issue. Check the workflow log if the article URL was edited, blocked, or already existed under another issue.")
+
+          print()
+          print("Knowledge coverage:")
+          print("```json")
+          print(json.dumps(knowledge_status(), ensure_ascii=False, indent=2))
+          print("```")
+          print()
+          print("Legacy Bayesian report is kept as a historical page and is not refreshed by this workflow.")
+          PY
+
+          gh issue comment "$ISSUE_NUMBER" \
+            --body-file knowledge-comment.md \
             || echo "Comment failed (not fatal)."
