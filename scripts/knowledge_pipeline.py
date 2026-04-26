@@ -1437,7 +1437,9 @@ def article_management_issue_url(row: dict[str, Any]) -> str:
     )
     query = urllib.parse.urlencode(
         {
+            "template": "manage-article.md",
             "title": f"[Manage Article] {article_id}",
+            "labels": "knowledge-management",
             "body": body,
         }
     )
