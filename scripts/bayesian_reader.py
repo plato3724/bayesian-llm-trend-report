@@ -5135,6 +5135,11 @@ def build_report_html() -> str:
             f"<a href='{html_escape(github_config['pages_url'])}' target='_blank' rel='noreferrer'>{html_escape(github_config['pages_url'])}</a>"
             "</p>"
         )
+    knowledge_link_html = (
+        "<p class='muted'>新知识系统："
+        "<a href='knowledge.html' target='_blank' rel='noreferrer'>打开分类综述、分类文章和表达框架</a>"
+        "</p>"
+    )
     repo_link_html = ""
     issue_link_html = ""
     if github_config.get("repo"):
@@ -5561,12 +5566,14 @@ def build_report_html() -> str:
       {repo_link_html}
       {issue_link_html}
       {pages_link_html}
+      {knowledge_link_html}
       <div class="stats">{stats_html}</div>
     </section>
 
     <nav class="section section-nav">
       <div class="nav-row">
         <a href="#trends">核心趋势</a>
+        <a href="knowledge.html">知识系统</a>
         <a href="#candidates">候选假设</a>
         <a href="#clusters">潜在主题簇</a>
         <a href="#narrative">本轮结论</a>

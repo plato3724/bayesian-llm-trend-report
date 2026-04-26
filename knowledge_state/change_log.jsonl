@@ -2326,3 +2326,4 @@
 {"timestamp": "2026-04-25T16:53:56+00:00", "event": "knowledge_init", "created": [], "force": false}
 {"timestamp": "2026-04-25T16:53:56+00:00", "event": "knowledge_init", "created": [], "force": false}
 {"timestamp": "2026-04-25T16:53:57+00:00", "event": "knowledge_build_report", "output_path": "docs/knowledge.html"}
+{"timestamp": "2026-04-26T01:01:06+00:00", "event": "build_report", "output_path": "D:\\code\\tec_trade\\docs\\index.html"}
