@@ -59,14 +59,9 @@ on:
         description: "After a clean stage, run apply-verification. Only fires when approval.decision is auto_approved AND no Phase C escalation triggered. Default 'false' in manual mode keeps the human in the loop."
         required: false
         default: "false"
-  workflow_run:
-    workflows: ["draft-claims"]
-    types: [completed]
-    branches: [main]
-
 jobs:
   draft:
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
     permissions:
       contents: write

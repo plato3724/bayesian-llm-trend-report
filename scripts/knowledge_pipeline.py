@@ -2869,7 +2869,11 @@ def iter_article_ids(limit: int | None = None) -> list[str]:
     return ids[:limit] if limit is not None else ids
 
 
-def run_mvp(limit: int | None = None, force: bool = False) -> dict[str, Any]:
+def run_mvp(
+    limit: int | None = None,
+    force: bool = False,
+    skip_frameworks: bool = False,
+) -> dict[str, Any]:
     init_state(force=force)
     if force:
         reset_global_concepts()
@@ -2899,7 +2903,7 @@ def run_mvp(limit: int | None = None, force: bool = False) -> dict[str, Any]:
             }
         )
     reviews = build_topic_reviews()
-    frameworks = build_frameworks()
+    frameworks = None if skip_frameworks else build_frameworks()
     report = build_report()
     return {
         "ok": True,
@@ -2909,6 +2913,46 @@ def run_mvp(limit: int | None = None, force: bool = False) -> dict[str, Any]:
         "reviews": reviews,
         "frameworks": frameworks,
         "report": report,
+    }
+
+
+def refresh_llm_reviews(
+    force: bool = False,
+    model: str | None = None,
+) -> dict[str, Any]:
+    reviews_doc = br.read_json(TOPIC_REVIEWS_PATH, default={"reviews": []})
+    categories: list[str] = []
+    for review in reviews_doc.get("reviews", []):
+        if not isinstance(review, dict):
+            continue
+        scope = review.get("scope", {}) if isinstance(review.get("scope"), dict) else {}
+        category = scope.get("primary_category")
+        if not isinstance(category, str) or not category:
+            continue
+        trace = review.get("source_trace", {}) if isinstance(review.get("source_trace"), dict) else {}
+        if force or trace.get("deep_review_method") != "llm":
+            categories.append(category)
+
+    refreshed: list[dict[str, Any]] = []
+    skipped = 0
+    for category in categories:
+        result = draft_deep_review(category=category, model=model)
+        refreshed.append(
+            {
+                "category": category,
+                "model": result.get("model"),
+                "path": result.get("path"),
+            }
+        )
+
+    if not categories:
+        skipped = len(reviews_doc.get("reviews", [])) if isinstance(reviews_doc, dict) else 0
+
+    return {
+        "ok": True,
+        "refreshed_count": len(refreshed),
+        "skipped_count": skipped,
+        "refreshed": refreshed,
     }
 
 
@@ -3686,12 +3730,17 @@ def build_parser() -> argparse.ArgumentParser:
     frameworks.add_argument("--force", action="store_true")
     frameworks.add_argument("--model")
 
+    refresh_reviews = subparsers.add_parser("refresh-llm-reviews", help="Rewrite non-LLM topic reviews with the configured LLM")
+    refresh_reviews.add_argument("--force", action="store_true")
+    refresh_reviews.add_argument("--model")
+
     report = subparsers.add_parser("build-report", help="Generate the static non-Bayesian knowledge report")
     report.add_argument("--output", default=str(REPORT_PATH))
 
     run = subparsers.add_parser("run-mvp", help="Run extraction, classification, concept update, and reviews")
     run.add_argument("--limit", type=int)
     run.add_argument("--force", action="store_true")
+    run.add_argument("--skip-frameworks", action="store_true")
 
     subparsers.add_parser("status", help="Show non-Bayesian knowledge pipeline coverage")
 
@@ -3726,11 +3775,14 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "build-frameworks":
         print_json(build_frameworks(force=args.force, model=args.model))
         return 0
+    if args.command == "refresh-llm-reviews":
+        print_json(refresh_llm_reviews(force=args.force, model=args.model))
+        return 0
     if args.command == "build-report":
         print_json(build_report(output_path=Path(args.output)))
         return 0
     if args.command == "run-mvp":
-        print_json(run_mvp(limit=args.limit, force=args.force))
+        print_json(run_mvp(limit=args.limit, force=args.force, skip_frameworks=args.skip_frameworks))
         return 0
     if args.command == "status":
         print_json(knowledge_status())

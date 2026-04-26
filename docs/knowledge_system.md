@@ -27,6 +27,25 @@ docs/knowledge.html
 python scripts/knowledge_pipeline.py
 ```
 
+## 线上自动化策略
+
+当前线上主入口逐步转向：
+
+```text
+docs/knowledge.html
+```
+
+旧的 Bayesian 页面 `docs/index.html` 保留为历史页，不再由新增文章流程自动刷新。GitHub issue 新增文章后，`ingest-article` workflow 仍复用 `bayesian_reader.py sync-issues` 和 `fetch-pending` 做文章入口与全文抓取，但后续自动更新改为：
+
+```bash
+python scripts/knowledge_pipeline.py run-mvp --skip-frameworks
+python scripts/knowledge_pipeline.py refresh-llm-reviews
+python scripts/knowledge_pipeline.py build-frameworks
+python scripts/knowledge_pipeline.py build-report
+```
+
+`draft-claims` 和 `draft-verification` 的自动链式运行已关闭，只保留手动 workflow_dispatch 作为旧系统维护入口。
+
 目前已经实现五层：
 
 1. **文章抽取**

@@ -61,17 +61,9 @@ on:
         description: "After drafting, run save-claims and commit claims.json. Set to 'false' to only write the gitignored draft."
         required: false
         default: "true"
-  workflow_run:
-    workflows: ["ingest-article"]
-    types: [completed]
-    branches: [main]
-
 jobs:
   draft:
-    # workflow_run fires on every completion (success or failure); only
-    # chain forward if the ingest run itself succeeded. Manual dispatch
-    # is unconditional.
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
     permissions:
       contents: write

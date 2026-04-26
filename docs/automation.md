@@ -1,5 +1,12 @@
 # Automation: GitHub Actions + OpenRouter
 
+> Current operating mode: the Bayesian automation described below is now
+> historical. The online primary report is `docs/knowledge.html`. New article
+> ingestion still uses `bayesian_reader.py sync-issues` / `fetch-pending` for
+> the inbox and canonical text fetch, but automatic claims, verification, and
+> posterior updates are disabled. `draft-claims` and `draft-verification` are
+> retained only for manual historical maintenance.
+
 This document describes the GitHub Actions workflows that automate
 the Bayesian reader pipeline and how to set them up. Everything here
 is **additive** to the manual Claude Code flow — you can still run

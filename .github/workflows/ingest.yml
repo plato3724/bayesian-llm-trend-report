@@ -62,6 +62,11 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
       - name: Sync GitHub issues into knowledge_state
         env:
           # `gh` CLI on ubuntu-latest is already installed; it just needs a token.
@@ -77,11 +82,17 @@ jobs:
       - name: Show acquisition status
         run: python scripts/bayesian_reader.py status
 
-      - name: Refresh article workflow states
-        run: python scripts/bayesian_reader.py refresh-records
-
-      - name: Rebuild report HTML
-        run: python scripts/bayesian_reader.py build-report
+      - name: Update knowledge system
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENROUTER_DEFAULT_MODEL: ${{ vars.OPENROUTER_DEFAULT_MODEL }}
+          OPENROUTER_REFERER: https://github.com/${{ github.repository }}
+          OPENROUTER_TITLE: "tec_trade knowledge system"
+        run: |
+          python scripts/knowledge_pipeline.py run-mvp --skip-frameworks
+          python scripts/knowledge_pipeline.py refresh-llm-reviews
+          python scripts/knowledge_pipeline.py build-frameworks
+          python scripts/knowledge_pipeline.py build-report
 
       - name: Commit and push if there are changes
         env:
@@ -93,7 +104,16 @@ jobs:
           # Only stage the paths this workflow is allowed to modify.
           # This keeps drift in unrelated files from leaking into an
           # "ingest" commit, and makes the diff auditable.
-          git add knowledge_state/articles/ knowledge_state/change_log.jsonl docs/index.html || true
+          git add \
+            knowledge_state/articles/ \
+            knowledge_state/taxonomy/ \
+            knowledge_state/concepts/ \
+            knowledge_state/reviews/ \
+            knowledge_state/frameworks/ \
+            knowledge_state/judgments/ \
+            knowledge_state/theories/ \
+            knowledge_state/change_log.jsonl \
+            docs/knowledge.html || true
 
           if git diff --staged --quiet; then
             echo "No changes to commit."
@@ -108,7 +128,7 @@ jobs:
             SUBJECT="chore(ingest): manual fetch-pending run"
           fi
 
-          git commit -m "$SUBJECT" -m "Automated Phase A ingest: sync-issues + fetch-pending. No LLM involvement." -m "Co-Authored-By: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
+          git commit -m "$SUBJECT" -m "Automated knowledge workflow: sync/fetch article, classify, refresh LLM reviews, rebuild frameworks and docs/knowledge.html. Legacy Bayesian report is not updated." -m "Co-Authored-By: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
           git push
 
       - name: Comment on the triggering issue
@@ -118,7 +138,7 @@ jobs:
         run: |
           # Give the human on the phone a quick confirmation so they
           # know the bot saw the label and what state the article is in.
-          ARTICLE_INFO=$(python scripts/bayesian_reader.py status 2>/dev/null | tail -20 || echo "(status unavailable)")
+          ARTICLE_INFO=$(python scripts/knowledge_pipeline.py status 2>/dev/null || echo "(knowledge status unavailable)")
           gh issue comment "${{ github.event.issue.number }}" \
-            --body "$(printf 'Phase A ingest done.\n\n```\n%s\n```\n\nThe report was refreshed with the latest pending state. If full text was acquired, Phase B and Phase C will continue automatically. If fetch failed or the text is incomplete, add excerpts to this issue or attach the article manually.' "$ARTICLE_INFO")" \
+            --body "$(printf 'Knowledge system updated.\n\n```\n%s\n```\n\nThe new article has been ingested into the non-Bayesian knowledge system when fetch succeeded. The legacy Bayesian report is kept as a historical page and is not refreshed by this workflow.' "$ARTICLE_INFO")" \
             || echo "Comment failed (not fatal)."
