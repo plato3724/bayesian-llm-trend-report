@@ -288,6 +288,8 @@ def upsert_article(
             },
             "hypothesis_impacts": [],
             "ingest_sources": [],
+            "lifecycle_state": "active",
+            "lifecycle_events": [],
         }
     else:
         record["title"] = title
@@ -304,6 +306,8 @@ def upsert_article(
         record.setdefault("article_summary", {"events": [], "techniques": [], "tools": []})
         record.setdefault("hypothesis_impacts", [])
         record.setdefault("ingest_sources", [])
+        record.setdefault("lifecycle_state", "active")
+        record.setdefault("lifecycle_events", [])
 
     source_entry = {
         "source_name": source_name,

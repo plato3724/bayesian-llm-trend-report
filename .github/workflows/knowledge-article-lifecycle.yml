@@ -1,0 +1,161 @@
+name: knowledge-article-lifecycle
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  lifecycle:
+    if: ${{ github.event.issue.pull_request == null && (startsWith(github.event.comment.body, '/archive') || startsWith(github.event.comment.body, '/exclude') || startsWith(github.event.comment.body, '/restore')) && (github.event.comment.author_association == 'OWNER' || github.event.comment.author_association == 'MEMBER' || github.event.comment.author_association == 'COLLABORATOR') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    concurrency:
+      group: knowledge-article-lifecycle-${{ github.event.issue.number }}
+      cancel-in-progress: false
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Resolve lifecycle command
+        id: resolve
+        env:
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          COMMENT_BODY: ${{ github.event.comment.body }}
+          ACTOR: ${{ github.event.comment.user.login }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import os
+          import shlex
+          import sys
+          from pathlib import Path
+
+          sys.path.insert(0, str(Path("scripts").resolve()))
+          import bayesian_reader as br  # type: ignore
+
+          issue_number = os.environ["ISSUE_NUMBER"]
+          body = os.environ["COMMENT_BODY"].strip()
+          lines = body.splitlines()
+          first_line = lines[0].strip() if lines else ""
+          parts = shlex.split(first_line)
+          command = parts[0] if parts else ""
+          state_by_command = {
+              "/archive": "archived",
+              "/exclude": "excluded",
+              "/restore": "active",
+          }
+          state = state_by_command.get(command, "")
+          article_id = parts[1] if len(parts) > 1 else ""
+          inline_reason = " ".join(parts[2:]) if len(parts) > 2 else ""
+
+          if not article_id:
+              article_id = br.find_article_id_by_issue_number(issue_number) or ""
+
+          remaining = "\n".join(line.strip() for line in lines[1:] if line.strip())
+          reason = "\n".join(part for part in (inline_reason, remaining) if part).strip()
+
+          output_path = Path(os.environ["GITHUB_OUTPUT"])
+          with output_path.open("a", encoding="utf-8") as fh:
+              fh.write(f"state={state}\n")
+              fh.write(f"article_id={article_id}\n")
+              fh.write(f"actor={os.environ.get('ACTOR', '')}\n")
+              fh.write("reason<<EOF\n")
+              fh.write(reason)
+              fh.write("\nEOF\n")
+          print({"issue_number": issue_number, "article_id": article_id, "state": state})
+          PY
+
+      - name: Apply lifecycle state and rebuild knowledge system
+        id: rebuild
+        if: ${{ steps.resolve.outputs.article_id != '' && steps.resolve.outputs.state != '' }}
+        env:
+          ARTICLE_ID: ${{ steps.resolve.outputs.article_id }}
+          STATE: ${{ steps.resolve.outputs.state }}
+          REASON: ${{ steps.resolve.outputs.reason }}
+          ACTOR: ${{ steps.resolve.outputs.actor }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENROUTER_DEFAULT_MODEL: ${{ vars.OPENROUTER_DEFAULT_MODEL }}
+          OPENROUTER_REFERER: https://github.com/${{ github.repository }}
+          OPENROUTER_TITLE: "tec_trade knowledge system"
+        run: |
+          set -euo pipefail
+          python scripts/knowledge_pipeline.py set-article-state \
+            --article-id "$ARTICLE_ID" \
+            --state "$STATE" \
+            --reason "$REASON" \
+            --actor "$ACTOR"
+          python scripts/knowledge_pipeline.py rebuild-concepts
+          python scripts/knowledge_pipeline.py build-reviews
+          python scripts/knowledge_pipeline.py refresh-llm-reviews
+          python scripts/knowledge_pipeline.py build-frameworks
+          python scripts/knowledge_pipeline.py build-report
+          python scripts/knowledge_pipeline.py status > knowledge-status.json
+
+      - name: Commit and push changes
+        id: commit
+        if: ${{ steps.resolve.outputs.article_id != '' && steps.resolve.outputs.state != '' }}
+        env:
+          ARTICLE_ID: ${{ steps.resolve.outputs.article_id }}
+          STATE: ${{ steps.resolve.outputs.state }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add \
+            knowledge_state/articles/ \
+            knowledge_state/taxonomy/ \
+            knowledge_state/concepts/ \
+            knowledge_state/reviews/ \
+            knowledge_state/frameworks/ \
+            knowledge_state/judgments/ \
+            knowledge_state/theories/ \
+            knowledge_state/change_log.jsonl \
+            docs/knowledge.html || true
+
+          if git diff --staged --quiet; then
+            echo "committed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          git commit -m "chore(knowledge): set $ARTICLE_ID $STATE" -m "Rebuild active article concepts, topic reviews, frameworks, and docs/knowledge.html after article lifecycle change."
+          git push
+          echo "committed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Comment result
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ARTICLE_ID: ${{ steps.resolve.outputs.article_id }}
+          STATE: ${{ steps.resolve.outputs.state }}
+          COMMITTED: ${{ steps.commit.outputs.committed }}
+          PAGES_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/knowledge.html
+        run: |
+          set -euo pipefail
+          if [ -z "$ARTICLE_ID" ] || [ -z "$STATE" ]; then
+            gh issue comment "$ISSUE_NUMBER" --body "Knowledge lifecycle command was not applied because no matching article ID or state could be resolved."
+            exit 0
+          fi
+
+          STATUS_TEXT="(status unavailable)"
+          if [ -f knowledge-status.json ]; then
+            STATUS_TEXT="$(cat knowledge-status.json)"
+          fi
+
+          gh issue comment "$ISSUE_NUMBER" --body "$(printf 'Knowledge lifecycle updated.\n\n- Article: `%s`\n- State: `%s`\n- Commit created: `%s`\n- Knowledge page: %s#articles\n\n```json\n%s\n```\n\nActive articles are used for the article library, topic reviews, concepts, and expression frameworks. Archived or excluded articles remain in the repository for traceability but are not used in the current knowledge synthesis.' "$ARTICLE_ID" "$STATE" "${COMMITTED:-false}" "$PAGES_URL" "$STATUS_TEXT")"

@@ -171,6 +171,22 @@
     .category-article:first-child { border-top: 0; padding-top: 0; }
     .article-row { display: grid; grid-template-columns: minmax(0, 1fr) 160px; gap: 18px; }
     .article-meta { display: flex; flex-direction: column; gap: 8px; color: var(--muted); font-size: 13px; }
+    .article-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; align-items: center; }
+    .article-action, .article-action-link {
+      appearance: none;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fafafa;
+      color: var(--accent-3);
+      padding: 5px 9px;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .article-action:hover, .article-action-link:hover { background: #eef4ff; text-decoration: none; }
+    .article-action.copied { color: var(--accent); border-color: #99d2c8; background: #eef9f7; }
+    .article-action-muted { color: var(--muted); font-size: 12px; }
     .note { color: var(--muted); max-width: 840px; }
     @media (max-width: 860px) {
       .stats, .grid, .split, .article-row, .category-article { grid-template-columns: 1fr; }
@@ -751,8 +767,14 @@
               <h4><a href='https://mp.weixin.qq.com/s/8k_J9QDdg7XiCXwc-GimRA' target='_blank' rel='noreferrer'>Anthropic发布Managed Agents，才发现这支硅谷华人团队早就押对了赌注</a></h4>
               <p>Anthropic 发布了面向长时程 agent 工作的托管服务 Managed Agents。 CREAO 是全球第一个真正面向普通用户的 AI Agent Harness。 Managed Agents 将 agent 运行时虚拟化为 session、harness、sandbox 三个可独立替换的接口。</p>
               <div class="pill-row"><span class='pill pattern'>managed-agents</span><span class='pill pattern'>agent-harness</span><span class='pill pattern'>agent-runtime</span><span class='pill pattern'>workflow-orchestration</span><span class='pill pattern'>sandboxed-execution</span><span class='pill pattern'>durable-session</span></div>
+              <div class="article-actions">
+                <button type="button" class="article-action" data-copy="/archive 20fb29fec269 原因：">归档请求</button>
+                <button type="button" class="article-action" data-copy="/exclude 20fb29fec269 原因：">排除这篇</button>
+                <span class='article-action-muted'>无 issue</span>
+              </div>
             </div>
             <div class="article-meta">
+              <span>20fb29fec269</span>
               <span>中</span>
               <span>已获取</span>
             </div>
@@ -763,8 +785,14 @@
               <h4><a href='https://mp.weixin.qq.com/s/Dc1ZW4NEn2xVmJAd6lEZNQ' target='_blank' rel='noreferrer'>Claude Code Harness+龙虾科研团来了！金字塔分层架构+多智能体讨论，单人也能跑出「实验室」科研</a></h4>
               <p>Claw-Code Harness 提供 isolated runs、log capture，并把 verified results 回灌给 agent loop。 Claw AI Lab 在关键阶段提供 human-in-the-loop 质量闸门和 rollback。 Claw AI Lab 将自己定义为 autonomous multi-agent research team，并给出了 5-layer hierarchical pipeline。</p>
               <div class="pill-row"><span class='pill pattern'>multi-agent-research-workflow</span><span class='pill pattern'>hierarchical-agent-architecture</span><span class='pill pattern'>agent-runtime</span><span class='pill pattern'>experiment-harness</span><span class='pill pattern'>isolated-runs</span><span class='pill pattern'>human-in-the-loop</span></div>
+              <div class="article-actions">
+                <button type="button" class="article-action" data-copy="/archive 44f454b544d9 原因：">归档请求</button>
+                <button type="button" class="article-action" data-copy="/exclude 44f454b544d9 原因：">排除这篇</button>
+                <span class='article-action-muted'>无 issue</span>
+              </div>
             </div>
             <div class="article-meta">
+              <span>44f454b544d9</span>
               <span>高</span>
               <span>已获取</span>
             </div>
@@ -775,8 +803,14 @@
               <h4><a href='https://mp.weixin.qq.com/s/z6ZXj_p6Z9fIvFifkAvP9A' target='_blank' rel='noreferrer'>YC内部AI架构曝光！YC总裁Garry亲证：比谷歌员工效率高1000倍的秘密，不在模型，而在“Harness”</a></h4>
               <p>文章称 Steve Yegge 表示，使用 AI 编程代理的人比今天使用 Cursor 和聊天的工程师生产效率高 10 倍到 100 倍。 文章称 Steve Yegge 表示，使用 AI 编程代理的人比 2005 年时的谷歌员工生产效率高约 1000 倍。 文章称 Garry Tan 分享其 CLAUDE.md 文件曾膨胀到 20,000 行，后来删减后最终修复方案只有大约 200 行，而且主要是指向不同文档的指针。</p>
               <div class="pill-row"><span class='pill pattern'>agent-runtime</span><span class='pill pattern'>workflow-orchestration</span><span class='pill pattern'>context-engineering</span><span class='pill pattern'>structured-memory</span><span class='pill pattern'>tool-routing</span><span class='pill pattern'>thin-harness-fat-skills</span></div>
+              <div class="article-actions">
+                <button type="button" class="article-action" data-copy="/archive 03f809cb0476 原因：">归档请求</button>
+                <button type="button" class="article-action" data-copy="/exclude 03f809cb0476 原因：">排除这篇</button>
+                <a class='article-action-link' href='https://github.com/plato3724/bayesian-llm-trend-report/issues/9' target='_blank' rel='noreferrer'>管理 issue</a>
+              </div>
             </div>
             <div class="article-meta">
+              <span>03f809cb0476</span>
               <span>高</span>
               <span>已获取</span>
             </div>
@@ -787,8 +821,14 @@
               <h4><a href='https://mp.weixin.qq.com/s/DdftSCeLD-gRKQpo2YOiJw' target='_blank' rel='noreferrer'>https://mp.weixin.qq.com/s/DdftSCeLD-gRKQpo2YOiJw</a></h4>
               <p>从去年 9 月至今，Hyperknow 已经迭代五个大版本，小版本累计数百次。 2025 年 11 月，通用学习智能体 Hyperknow 正式发布。 三个月后，Hyperknow 3.0 上线。</p>
               <div class="pill-row"><span class='pill pattern'>learning-agent</span><span class='pill pattern'>proactive-assistance</span><span class='pill pattern'>agent-runtime</span><span class='pill pattern'>personalized-learning</span><span class='pill pattern'>context-aware-agent</span><span class='pill pattern'>student-workflow</span></div>
+              <div class="article-actions">
+                <button type="button" class="article-action" data-copy="/archive 719a74e44194 原因：">归档请求</button>
+                <button type="button" class="article-action" data-copy="/exclude 719a74e44194 原因：">排除这篇</button>
+                <a class='article-action-link' href='https://github.com/plato3724/bayesian-llm-trend-report/issues/2' target='_blank' rel='noreferrer'>管理 issue</a>
+              </div>
             </div>
             <div class="article-meta">
+              <span>719a74e44194</span>
               <span>高</span>
               <span>已获取</span>
             </div>
@@ -799,8 +839,14 @@
               <h4><a href='https://mp.weixin.qq.com/s/4umG7Vx_cWr0FwWc1YLuWQ' target='_blank' rel='noreferrer'>有人把巴菲特芒格炼化成Agent，然后开源了</a></h4>
               <p>文章称，AI Hedge Fund 的核心理念是把投资哲学编码成 Agent，让散户获得“大师模型”。 文章称，各投资大师 Agent 会对同一只股票给出独立判断，最终由投资组合经理 Agent 汇总裁决并输出买入、卖出或持有信号。 文章称，AI Hedge Fund 采用前后端分离的三层架构设计。</p>
               <div class="pill-row"><span class='pill pattern'>multi-agent-system</span><span class='pill pattern'>agent-runtime</span><span class='pill pattern'>workflow-orchestration</span><span class='pill pattern'>langgraph</span><span class='pill pattern'>agent-state</span><span class='pill pattern'>investment-agent</span></div>
+              <div class="article-actions">
+                <button type="button" class="article-action" data-copy="/archive d11e99337c97 原因：">归档请求</button>
+                <button type="button" class="article-action" data-copy="/exclude d11e99337c97 原因：">排除这篇</button>
+                <a class='article-action-link' href='https://github.com/plato3724/bayesian-llm-trend-report/issues/8' target='_blank' rel='noreferrer'>管理 issue</a>
+              </div>
             </div>
             <div class="article-meta">
+              <span>d11e99337c97</span>
               <span>高</span>
               <span>已获取</span>
             </div>
@@ -826,8 +872,14 @@
               <h4><a href='https://mp.weixin.qq.com/s/V4bP5sWmqObOCboFJ7Imvw' target='_blank' rel='noreferrer'>Kimi新论文：把KVCache玩成新商业模式了</a></h4>
               <p>文章称，at 32K context, MiMo-V2-Flash has KV throughput of only 4.66Gbps, which is 13 times lower than MiniMax-M2.5. 文章称，at 32K context, Qwen3.5-397B has KV throughput of 8.25Gbps versus 33.35Gbps for a comparable dense model, a 4x reduction. 文章称，in tests on an internal 1T-parameter hybrid-attention model, the PrFaaS-PD architecture increased service throughput by 54% compared with a homogeneous PD cluster of the same hardware scale.</p>
               <div class="pill-row"><span class='pill pattern'>kv-cache</span><span class='pill pattern'>prefill-decode-disaggregation</span><span class='pill pattern'>cross-data-center-inference</span><span class='pill pattern'>heterogeneous-cluster</span><span class='pill pattern'>inference-serving</span><span class='pill pattern'>service-architecture</span></div>
+              <div class="article-actions">
+                <button type="button" class="article-action" data-copy="/archive a36d7f67197d 原因：">归档请求</button>
+                <button type="button" class="article-action" data-copy="/exclude a36d7f67197d 原因：">排除这篇</button>
+                <a class='article-action-link' href='https://github.com/plato3724/bayesian-llm-trend-report/issues/11' target='_blank' rel='noreferrer'>管理 issue</a>
+              </div>
             </div>
             <div class="article-meta">
+              <span>a36d7f67197d</span>
               <span>高</span>
               <span>已获取</span>
             </div>
@@ -853,8 +905,14 @@
               <h4><a href='https://mp.weixin.qq.com/s/3VTOnBLynFfDtlSifzzFQQ' target='_blank' rel='noreferrer'>Meta员工空转AI只为浪费token！烧的多挣的多，日均消耗2万亿</a></h4>
               <p>Meta 内部存在按 token 消耗排名的文化，且日均消耗达 2 万亿 token。 Meta 员工通过循环运行 agent 空转来刷 token 排行榜。</p>
               <div class="pill-row"><span class='pill pattern'>token-economics</span><span class='pill pattern'>internal-incentives</span><span class='pill pattern'>agent-runtime</span><span class='pill pattern'>codebase-rewrite</span><span class='pill pattern'>developer-workflow</span><span class='pill pattern'>open-model-strategy</span></div>
+              <div class="article-actions">
+                <button type="button" class="article-action" data-copy="/archive 271ba75686b0 原因：">归档请求</button>
+                <button type="button" class="article-action" data-copy="/exclude 271ba75686b0 原因：">排除这篇</button>
+                <span class='article-action-muted'>无 issue</span>
+              </div>
             </div>
             <div class="article-meta">
+              <span>271ba75686b0</span>
               <span>中</span>
               <span>已获取</span>
             </div>
@@ -865,8 +923,14 @@
               <h4><a href='https://mp.weixin.qq.com/s/8s5ib3bBwtYLKWC6Fp-SlA' target='_blank' rel='noreferrer'>命运之神重新眷顾了诺基亚</a></h4>
               <p>“2025年，诺基亚拥有光通信全球约21%的份额，十大云服务商中有九家采用了它的技术。在下一代光纤技术市场，它以35%份额位居第一。” “你要站在光里，不要光站在那里，更不要光着在光里。” 最近这段时间，资本市场最火热的一个词，莫过于“光”。像“以前相信光（奥特曼），现在相信‘光’（光模块）”“现在聊光模块，比光纤还细的是投资者的神经”等段子密集出现。</p>
               <div class="pill-row"><span class='pill pattern'>optical-communication</span><span class='pill pattern'>ai-datacenter</span><span class='pill pattern'>telecom-equipment</span><span class='pill pattern'>market-share</span><span class='pill pattern'>infrastructure-supplier</span><span class='pill pattern'>patent-licensing</span></div>
+              <div class="article-actions">
+                <button type="button" class="article-action" data-copy="/archive e7483ff9ebd1 原因：">归档请求</button>
+                <button type="button" class="article-action" data-copy="/exclude e7483ff9ebd1 原因：">排除这篇</button>
+                <a class='article-action-link' href='https://github.com/plato3724/bayesian-llm-trend-report/issues/12' target='_blank' rel='noreferrer'>管理 issue</a>
+              </div>
             </div>
             <div class="article-meta">
+              <span>e7483ff9ebd1</span>
               <span>中</span>
               <span>已获取</span>
             </div>
@@ -877,8 +941,14 @@
               <h4><a href='https://mp.weixin.qq.com/s/C-DQja0ppFi0BzZwHZPpZw' target='_blank' rel='noreferrer'>武大文科教授硬核跨界AI：半年项目量猛涨4000%，重构AI图表生产力</a></h4>
               <p>爱图表将自己定位为可编辑的图表智能体，而不是一次性出图工具。</p>
               <div class="pill-row"><span class='pill pattern'>ai-chart-agent</span><span class='pill pattern'>editable-chart-generation</span><span class='pill pattern'>white-box-ai</span><span class='pill pattern'>human-in-the-loop</span><span class='pill pattern'>data-visualization</span><span class='pill pattern'>report-generation</span></div>
+              <div class="article-actions">
+                <button type="button" class="article-action" data-copy="/archive ecfdeb44e0ae 原因：">归档请求</button>
+                <button type="button" class="article-action" data-copy="/exclude ecfdeb44e0ae 原因：">排除这篇</button>
+                <span class='article-action-muted'>无 issue</span>
+              </div>
             </div>
             <div class="article-meta">
+              <span>ecfdeb44e0ae</span>
               <span>中</span>
               <span>已获取</span>
             </div>
@@ -904,8 +974,14 @@
               <h4><a href='https://mp.weixin.qq.com/s/77mbsD2cSqW8_NIMW6LE2Q' target='_blank' rel='noreferrer'>国产免费2B开源语音模型征服《莽撞人》！复刻郭德纲最难贯口</a></h4>
               <p>VoxCPM2 在 Apache-2.0 下开源，并提供 Python API、CLI、Web Demo 与 Nano-vLLM 生产部署路径。 VoxCPM2 是一个 2B tokenizer-free TTS 模型，支持 30 languages、9 Chinese dialects、Voice Design、Controllable Voice Cloning 和 48kHz 输出。</p>
               <div class="pill-row"><span class='pill pattern'>tts</span><span class='pill pattern'>speech-generation</span><span class='pill pattern'>voice-cloning</span><span class='pill pattern'>controllable-voice-cloning</span><span class='pill pattern'>multilingual-speech</span><span class='pill pattern'>chinese-dialects</span></div>
+              <div class="article-actions">
+                <button type="button" class="article-action" data-copy="/archive 8f8f6c5c71fe 原因：">归档请求</button>
+                <button type="button" class="article-action" data-copy="/exclude 8f8f6c5c71fe 原因：">排除这篇</button>
+                <span class='article-action-muted'>无 issue</span>
+              </div>
             </div>
             <div class="article-meta">
+              <span>8f8f6c5c71fe</span>
               <span>中</span>
               <span>已获取</span>
             </div>
@@ -916,8 +992,14 @@
               <h4><a href='https://mp.weixin.qq.com/s/iECTNjrTOOpWN3tqGeektw' target='_blank' rel='noreferrer'>小米AI语音新框架：人人都能当声音导演</a></h4>
               <p>Any2Speech 使用 GST(Global-Sentence-Token) 分层 schema，作为 LLM Agent 与合成引擎之间的结构化语义接口。 Any2Speech 将文本、视频、网页、音频、剧本等任意输入转成结构化生成指令，目标是长上下文连贯、多角色交互和完整声学场景。 Any2Speech 将自己定义为 Native Agentic 的无边界长音频合成框架。</p>
               <div class="pill-row"><span class='pill pattern'>speech-generation</span><span class='pill pattern'>audio-synthesis</span><span class='pill pattern'>long-form-audio</span><span class='pill pattern'>structured-generation</span><span class='pill pattern'>cross-modal-input</span><span class='pill pattern'>gst-schema</span></div>
+              <div class="article-actions">
+                <button type="button" class="article-action" data-copy="/archive 2f9fe8beb5ba 原因：">归档请求</button>
+                <button type="button" class="article-action" data-copy="/exclude 2f9fe8beb5ba 原因：">排除这篇</button>
+                <span class='article-action-muted'>无 issue</span>
+              </div>
             </div>
             <div class="article-meta">
+              <span>2f9fe8beb5ba</span>
               <span>中</span>
               <span>已获取</span>
             </div>
@@ -943,8 +1025,14 @@
               <h4><a href='https://mp.weixin.qq.com/s/njRxx7V_-MJrXn6sS7Hh8g' target='_blank' rel='noreferrer'>25年10x工程师经验一夜归零！Django创始人警告：3-8年的程序员受AI冲击最大</a></h4>
               <p>Simon Willison 将 2025 年 11 月描述为 coding agents 的 inflection point：模型只是小幅变强，但跨过了‘基本都能按要求工作’的阈值。 Simon Willison 引述 ThoughtWorks 的讨论，认为最尴尬的位置是‘中间层工程师’，同时他自己也公开说对软件工时估算的旧经验已经失效。 Simon Willison 认为软件工程的新瓶颈已从实现转向 testing、proving 和选方案，因为原型和实现的速度大幅提升。</p>
               <div class="pill-row"><span class='pill pattern'>coding-agents</span><span class='pill pattern'>agentic-engineering</span><span class='pill pattern'>software-engineering</span><span class='pill pattern'>developer-experience</span><span class='pill pattern'>testing-and-verification</span><span class='pill pattern'>prototype-generation</span></div>
+              <div class="article-actions">
+                <button type="button" class="article-action" data-copy="/archive 5c7678b0d4c9 原因：">归档请求</button>
+                <button type="button" class="article-action" data-copy="/exclude 5c7678b0d4c9 原因：">排除这篇</button>
+                <span class='article-action-muted'>无 issue</span>
+              </div>
             </div>
             <div class="article-meta">
+              <span>5c7678b0d4c9</span>
               <span>高</span>
               <span>已获取</span>
             </div>
@@ -955,8 +1043,14 @@
               <h4><a href='https://mp.weixin.qq.com/s/1sHFs1JKXC0Kta6fd3zGBQ' target='_blank' rel='noreferrer'>HTML-in-Canvas引爆前端！AI时代互联网视觉效果完全不一样了</a></h4>
               <p>文章称，HTML-in-Canvas is currently an experimental feature and has entered the W3C/WICG system as a proposal. 文章称，a similar HTML-in-Canvas idea was proposed in 2016, was shelved by browser vendors at the time, and has recently been revived and advanced by Google. 文章称，Pretext bypasses the browser&#x27;s DOM layout system, uses pure mathematical calculation for text layout, and is claimed to be hundreds of times faster than traditional methods.</p>
               <div class="pill-row"><span class='pill pattern'>frontend-rendering</span><span class='pill pattern'>html-in-canvas</span><span class='pill pattern'>canvas-api</span><span class='pill pattern'>web-platform</span><span class='pill pattern'>experimental-web-api</span><span class='pill pattern'>dom-bypass</span></div>
+              <div class="article-actions">
+                <button type="button" class="article-action" data-copy="/archive d668b6dcda22 原因：">归档请求</button>
+                <button type="button" class="article-action" data-copy="/exclude d668b6dcda22 原因：">排除这篇</button>
+                <a class='article-action-link' href='https://github.com/plato3724/bayesian-llm-trend-report/issues/6' target='_blank' rel='noreferrer'>管理 issue</a>
+              </div>
             </div>
             <div class="article-meta">
+              <span>d668b6dcda22</span>
               <span>中</span>
               <span>已获取</span>
             </div>
@@ -967,8 +1061,14 @@
               <h4><a href='https://mp.weixin.qq.com/s/jYNoySKC_OiDpsbYTg_Gzg' target='_blank' rel='noreferrer'>省token神器3天狂揽4.1k星！19岁小哥开发，信息无损最高省87%</a></h4>
               <p>caveman README 声称通过更简洁的响应风格可减少约 75% 输出 token，并配套压缩工具减少约 45% 输入 token。 caveman 是面向 Claude Code、Codex 等 coding agent 的 skill/plugin。</p>
               <div class="pill-row"><span class='pill pattern'>coding-agent-plugin</span><span class='pill pattern'>token-compression</span><span class='pill pattern'>prompt-compression</span><span class='pill pattern'>context-engineering</span><span class='pill pattern'>developer-workflow</span><span class='pill pattern'>claude-code</span></div>
+              <div class="article-actions">
+                <button type="button" class="article-action" data-copy="/archive 3c07c6956807 原因：">归档请求</button>
+                <button type="button" class="article-action" data-copy="/exclude 3c07c6956807 原因：">排除这篇</button>
+                <span class='article-action-muted'>无 issue</span>
+              </div>
             </div>
             <div class="article-meta">
+              <span>3c07c6956807</span>
               <span>中</span>
               <span>已获取</span>
             </div>
@@ -994,8 +1094,14 @@
               <h4><a href='https://mp.weixin.qq.com/s/m1P0KXuGzgrS-D0K7Z1Bug' target='_blank' rel='noreferrer'>https://mp.weixin.qq.com/s/m1P0KXuGzgrS-D0K7Z1Bug</a></h4>
               <p>文章称，according to BrainCo&#x27;s system tests, manipulation performance improved linearly from 11 to 20 degrees of freedom, and showed a clear jump from 20 to 21 degrees of freedom. 文章称，the Revo second-generation hand has appeared in Unitree&#x27;s public dataset and completed tasks in medical care, rehabilitation, and home scenarios. 文章称，in January this year, BrainCo raised 2 billion yuan led by IDG Capital and Walden International, which it describes as the largest single financing in the global brain-computer interface field excluding Neuralink.</p>
               <div class="pill-row"><span class='pill pattern'>dexterous-hand</span><span class='pill pattern'>embodied-ai</span><span class='pill pattern'>physical-grounding</span><span class='pill pattern'>tactile-sensing</span><span class='pill pattern'>visuotactile-sensing</span><span class='pill pattern'>direct-drive</span></div>
+              <div class="article-actions">
+                <button type="button" class="article-action" data-copy="/archive df7acb42e706 原因：">归档请求</button>
+                <button type="button" class="article-action" data-copy="/exclude df7acb42e706 原因：">排除这篇</button>
+                <a class='article-action-link' href='https://github.com/plato3724/bayesian-llm-trend-report/issues/4' target='_blank' rel='noreferrer'>管理 issue</a>
+              </div>
             </div>
             <div class="article-meta">
+              <span>df7acb42e706</span>
               <span>高</span>
               <span>已获取</span>
             </div>
@@ -1006,8 +1112,14 @@
               <h4><a href='https://mp.weixin.qq.com/s/qvFg1-bihlvvHGkBgJEKBA' target='_blank' rel='noreferrer'>补全具身智能「触觉」拼图！哈工深发布EgoTouch：300项操作任务，百万帧视觉触觉同步对齐</a></h4>
               <p>TouchAnything 使用 shared DINOv2 encoder、learnable view embeddings、cross-view attention 和 view dropout 做多视角触觉预测。 EgoTouch 是面向 egocentric hand-object interaction 的大规模多视角触觉数据集，包含 302 tasks、4,530 episodes、3 camera views、42 joints 和 pressure maps。</p>
               <div class="pill-row"><span class='pill pattern'>embodied-ai</span><span class='pill pattern'>tactile-sensing</span><span class='pill pattern'>egocentric-video</span><span class='pill pattern'>vision-tactile-alignment</span><span class='pill pattern'>bimanual-manipulation</span><span class='pill pattern'>physical-grounding</span></div>
+              <div class="article-actions">
+                <button type="button" class="article-action" data-copy="/archive 7ffdcd4439dc 原因：">归档请求</button>
+                <button type="button" class="article-action" data-copy="/exclude 7ffdcd4439dc 原因：">排除这篇</button>
+                <span class='article-action-muted'>无 issue</span>
+              </div>
             </div>
             <div class="article-meta">
+              <span>7ffdcd4439dc</span>
               <span>中</span>
               <span>已获取</span>
             </div>
@@ -1018,8 +1130,14 @@
               <h4><a href='https://mp.weixin.qq.com/s/u1lUvNUZErK1AwiBpa-jeA' target='_blank' rel='noreferrer'>解决VLA模型落地难，普通硬件也能跑！全透明全开源的高效VLA模型把推理成本砍掉76%</a></h4>
               <p>2026 年 4 月，中山大学与 MBZUAI 联合发布 A₁——一款完全开源、自适应截断式的视觉-语言-动作（VLA）模型。 A₁ 的论文、代码、模型权重全面开源，且不依赖私有数据或闭源组件。 A₁ 使用预算感知自适应推理：训练时 VLM 每一层都接入共享动作头同步学习，推理时逐层输出动作并监测相邻层动作差异，足够小时提前终止前向传播。</p>
               <div class="pill-row"><span class='pill pattern'>vla-model</span><span class='pill pattern'>vision-language-action</span><span class='pill pattern'>embodied-ai</span><span class='pill pattern'>robot-control</span><span class='pill pattern'>adaptive-inference</span><span class='pill pattern'>early-exit</span></div>
+              <div class="article-actions">
+                <button type="button" class="article-action" data-copy="/archive 59b86c15655e 原因：">归档请求</button>
+                <button type="button" class="article-action" data-copy="/exclude 59b86c15655e 原因：">排除这篇</button>
+                <a class='article-action-link' href='https://github.com/plato3724/bayesian-llm-trend-report/issues/1' target='_blank' rel='noreferrer'>管理 issue</a>
+              </div>
             </div>
             <div class="article-meta">
+              <span>59b86c15655e</span>
               <span>高</span>
               <span>已获取</span>
             </div>
@@ -1045,8 +1163,14 @@
               <h4><a href='https://mp.weixin.qq.com/s/X2RHU8KKA5yBYNCmkE8ZFA' target='_blank' rel='noreferrer'>https://mp.weixin.qq.com/s/X2RHU8KKA5yBYNCmkE8ZFA</a></h4>
               <p>2025年中国&#x27;复古经济&#x27;市场规模已达3553亿元人民币，同比增长11.7%，预计2030年接近6000亿元，数据来源为艾媒咨询。 经典IP（《灌篮高手》《寻秦记》）、老数码产品（停产iPhone 4搜索量与价格回升10倍、CCD相机小红书#CCD#话题阅读超60亿）、线下沉浸体验（青神县蔗田偷菜日均破万人、港式复古日11天11万人次）等多类复古品类在同一时期同时走红。 文章称去年国内二手平台活跃用户同比暴涨近20%，是增速最快的电商赛道之一（未注明来源）。</p>
               <div class="pill-row"><span class='pill pattern'>nostalgia-economy</span><span class='pill pattern'>consumer-behavior</span><span class='pill pattern'>market-signal</span><span class='pill pattern'>secondhand-market</span><span class='pill pattern'>retro-ip</span><span class='pill pattern'>collectibles-demand</span></div>
+              <div class="article-actions">
+                <button type="button" class="article-action" data-copy="/archive 06eb3b8e8732 原因：">归档请求</button>
+                <button type="button" class="article-action" data-copy="/exclude 06eb3b8e8732 原因：">排除这篇</button>
+                <a class='article-action-link' href='https://github.com/plato3724/bayesian-llm-trend-report/issues/3' target='_blank' rel='noreferrer'>管理 issue</a>
+              </div>
             </div>
             <div class="article-meta">
+              <span>06eb3b8e8732</span>
               <span>中</span>
               <span>已获取</span>
             </div>
@@ -1072,8 +1196,14 @@
               <h4><a href='https://mp.weixin.qq.com/s/IHKYn-mpoLyT6R00Jy6YxQ' target='_blank' rel='noreferrer'>36.4万超声图文对！中国团队构建首个大规模超声专属数据集，让AI真正读懂临床诊断语义</a></h4>
               <p>文章称，现有医疗跨模态数据中超声样本占比不足 5%。 文章称，US-365K 包含 36.4 万对超声图像-文本样本和 11676 个临床真实病例。 文章称，US-365K 的数据有效率超过 90%。</p>
               <div class="pill-row"><span class='pill pattern'>medical-vlm</span><span class='pill pattern'>ultrasound-imaging</span><span class='pill pattern'>image-text-dataset</span><span class='pill pattern'>multimodal-benchmark</span><span class='pill pattern'>clip-style-pretraining</span><span class='pill pattern'>semantic-alignment</span></div>
+              <div class="article-actions">
+                <button type="button" class="article-action" data-copy="/archive 7e6b7b4cfbf5 原因：">归档请求</button>
+                <button type="button" class="article-action" data-copy="/exclude 7e6b7b4cfbf5 原因：">排除这篇</button>
+                <a class='article-action-link' href='https://github.com/plato3724/bayesian-llm-trend-report/issues/5' target='_blank' rel='noreferrer'>管理 issue</a>
+              </div>
             </div>
             <div class="article-meta">
+              <span>7e6b7b4cfbf5</span>
               <span>高</span>
               <span>已获取</span>
             </div>
@@ -1084,8 +1214,14 @@
               <h4><a href='https://mp.weixin.qq.com/s/5E8nVOZ3KI2LFfsIa41EpA' target='_blank' rel='noreferrer'>斯坦福年度结论：中美大模型已没差距</a></h4>
               <p>文章称，斯坦福HAI最新发布的《2026年AI指数报告》认为中美AI模型性能差距已基本消除（effectively closed）。 文章称，2025年业界生产了超过90%的知名前沿模型，其中多个模型在博士级科学问题、多模态推理和竞赛数学方面已达到或超越人类基线。 文章称，在SWE-bench Verified编码基准测试上，模型性能在一年内从60%提升至接近100%。</p>
               <div class="pill-row"><span class='pill pattern'>ai-index-report</span><span class='pill pattern'>benchmark-tracking</span><span class='pill pattern'>model-evaluation</span><span class='pill pattern'>swe-bench-verified</span><span class='pill pattern'>osworld</span><span class='pill pattern'>china-us-competition</span></div>
+              <div class="article-actions">
+                <button type="button" class="article-action" data-copy="/archive 0e7891dac0bb 原因：">归档请求</button>
+                <button type="button" class="article-action" data-copy="/exclude 0e7891dac0bb 原因：">排除这篇</button>
+                <a class='article-action-link' href='https://github.com/plato3724/bayesian-llm-trend-report/issues/10' target='_blank' rel='noreferrer'>管理 issue</a>
+              </div>
             </div>
             <div class="article-meta">
+              <span>0e7891dac0bb</span>
               <span>高</span>
               <span>已获取</span>
             </div>
@@ -1111,8 +1247,14 @@
               <h4><a href='https://mp.weixin.qq.com/s/6vRe448c-xxwPQoID0oUGA' target='_blank' rel='noreferrer'>19岁，常青藤辍学，这群中国年轻人重构了AI记忆</a></h4>
               <p>文章称，在对齐 Mem0 官网 benchmark 测试的 LoCoMo 上，M-FLOW 领先 Mem0 36%。 文章称，在对齐 Graphiti 官网 benchmark 测试的 LongMemEval 上，M-FLOW 领先 Graphiti 16%。 文章称，在长期事件演变测试 EvolvingEvents 中，M-FLOW 领先 Cognee 7%，领先 Graphiti 20%。</p>
               <div class="pill-row"><span class='pill pattern'>ai-memory-engine</span><span class='pill pattern'>context-engineering</span><span class='pill pattern'>long-term-memory</span><span class='pill pattern'>graph-memory</span><span class='pill pattern'>graph-routing</span><span class='pill pattern'>bundle-search</span></div>
+              <div class="article-actions">
+                <button type="button" class="article-action" data-copy="/archive bf281b22fc01 原因：">归档请求</button>
+                <button type="button" class="article-action" data-copy="/exclude bf281b22fc01 原因：">排除这篇</button>
+                <a class='article-action-link' href='https://github.com/plato3724/bayesian-llm-trend-report/issues/7' target='_blank' rel='noreferrer'>管理 issue</a>
+              </div>
             </div>
             <div class="article-meta">
+              <span>bf281b22fc01</span>
               <span>高</span>
               <span>已获取</span>
             </div>
@@ -1123,8 +1265,14 @@
               <h4><a href='https://mp.weixin.qq.com/s/wtUOYjlnUHED6iclScu2zg' target='_blank' rel='noreferrer'>《生化危机》女主演跨界AI拿SOTA了！打造免费“AI记忆系统”爆火GitHub</a></h4>
               <p>MemPalace 官方站点宣称其 LongMemEval raw 96.6%、hybrid 100%，同时承认 hybrid 分数和 AAAK 准确率存在方法学争议。 MemPalace 把长期记忆组织成 wings / rooms / halls / closets / drawers 的分层结构，并用 AAAK 做高压缩摘要。 MemPalace 采用“全部逐字保存，再做可导航检索”的长期记忆方案，而不是先让 AI 判断什么值得记。</p>
               <div class="pill-row"><span class='pill pattern'>long-term-memory</span><span class='pill pattern'>context-engineering</span><span class='pill pattern'>memory-palace</span><span class='pill pattern'>hierarchical-retrieval</span><span class='pill pattern'>navigable-memory</span><span class='pill pattern'>local-first</span></div>
+              <div class="article-actions">
+                <button type="button" class="article-action" data-copy="/archive 4a8b83da74e8 原因：">归档请求</button>
+                <button type="button" class="article-action" data-copy="/exclude 4a8b83da74e8 原因：">排除这篇</button>
+                <span class='article-action-muted'>无 issue</span>
+              </div>
             </div>
             <div class="article-meta">
+              <span>4a8b83da74e8</span>
               <span>高</span>
               <span>已获取</span>
             </div>
@@ -1135,8 +1283,14 @@
               <h4><a href='https://mp.weixin.qq.com/s/1CG6zpho8n16u_3DOWXWHg' target='_blank' rel='noreferrer'>卡帕西没做完的，开源社区48小时搞定了！完全体知识库，token省70倍</a></h4>
               <p>Graphify 将 Tree-sitter 静态分析与 LLM 语义提取组合起来构图，并明确写出 no vector embeddings required。 Graphify 官方站点声称可以带来 71.5× token reduction，并输出 graph.html、graph.json 和 GRAPH_REPORT.md。 Graphify 是一个面向 AI coding assistants 的多模态知识图谱构建工具，可将代码、文档、论文和图示变成可查询 graph。</p>
               <div class="pill-row"><span class='pill pattern'>knowledge-graph</span><span class='pill pattern'>context-engineering</span><span class='pill pattern'>token-reduction</span><span class='pill pattern'>tree-sitter</span><span class='pill pattern'>ast-parsing</span><span class='pill pattern'>multimodal-ingestion</span></div>
+              <div class="article-actions">
+                <button type="button" class="article-action" data-copy="/archive 7bb7bc9e2b3e 原因：">归档请求</button>
+                <button type="button" class="article-action" data-copy="/exclude 7bb7bc9e2b3e 原因：">排除这篇</button>
+                <span class='article-action-muted'>无 issue</span>
+              </div>
             </div>
             <div class="article-meta">
+              <span>7bb7bc9e2b3e</span>
               <span>高</span>
               <span>已获取</span>
             </div>
@@ -1236,5 +1390,24 @@
             </div>
     </section>
   </main>
+  <script>
+    document.querySelectorAll('[data-copy]').forEach((button) => {
+      button.addEventListener('click', async () => {
+        const text = button.getAttribute('data-copy') || '';
+        try {
+          await navigator.clipboard.writeText(text);
+          const oldText = button.textContent;
+          button.textContent = '已复制命令';
+          button.classList.add('copied');
+          window.setTimeout(() => {
+            button.textContent = oldText;
+            button.classList.remove('copied');
+          }, 1600);
+        } catch (error) {
+          window.prompt('复制这条命令到文章 issue 评论中执行：', text);
+        }
+      });
+    });
+  </script>
 </body>
 </html>

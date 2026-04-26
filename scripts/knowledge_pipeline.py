@@ -50,6 +50,10 @@ THEORIES_PATH = THEORIES_DIR / "theories.json"
 THINKING_FRAMEWORKS_PATH = FRAMEWORKS_DIR / "thinking_frameworks.json"
 EXPRESSION_TEMPLATES_PATH = FRAMEWORKS_DIR / "expression_templates.json"
 
+ACTIVE_ARTICLE_STATE = "active"
+INACTIVE_ARTICLE_STATES = {"archived", "excluded"}
+VALID_ARTICLE_STATES = {ACTIVE_ARTICLE_STATE, *INACTIVE_ARTICLE_STATES}
+
 
 CATEGORY_DEFINITIONS: list[dict[str, Any]] = [
     {
@@ -1377,12 +1381,37 @@ def load_ready_articles() -> list[dict[str, Any]]:
         article_id = record.get("article_id")
         if not isinstance(article_id, str):
             continue
+        if not article_is_active(record):
+            continue
         if not article_extraction_path(article_id).exists():
             continue
         if not article_classification_path(article_id).exists():
             continue
         ready.append(record)
     return ready
+
+
+def article_lifecycle_state(record: dict[str, Any] | None) -> str:
+    if not isinstance(record, dict):
+        return ACTIVE_ARTICLE_STATE
+    state = record.get("lifecycle_state")
+    if not isinstance(state, str) or not state.strip():
+        return ACTIVE_ARTICLE_STATE
+    return state.strip().lower()
+
+
+def article_is_active(record: dict[str, Any] | None) -> bool:
+    return article_lifecycle_state(record) == ACTIVE_ARTICLE_STATE
+
+
+def issue_url_for_record(record: dict[str, Any]) -> str:
+    for source in reversed(record.get("ingest_sources", [])):
+        if not isinstance(source, dict):
+            continue
+        source_ref = source.get("source_ref")
+        if isinstance(source_ref, str) and "/issues/" in source_ref:
+            return source_ref.strip()
+    return ""
 
 
 def top_items(counter: Counter[str], limit: int) -> list[dict[str, Any]]:
@@ -2860,12 +2889,15 @@ def rebuild_concepts() -> dict[str, Any]:
     }
 
 
-def iter_article_ids(limit: int | None = None) -> list[str]:
-    ids = [
-        record["article_id"]
-        for record in br.load_all_article_records()
-        if isinstance(record.get("article_id"), str)
-    ]
+def iter_article_ids(limit: int | None = None, active_only: bool = True) -> list[str]:
+    ids = []
+    for record in br.load_all_article_records():
+        article_id = record.get("article_id")
+        if not isinstance(article_id, str):
+            continue
+        if active_only and not article_is_active(record):
+            continue
+        ids.append(article_id)
     return ids[:limit] if limit is not None else ids
 
 
@@ -2957,7 +2989,13 @@ def refresh_llm_reviews(
 
 
 def knowledge_status() -> dict[str, Any]:
-    article_ids = iter_article_ids()
+    all_article_ids = iter_article_ids(active_only=False)
+    article_ids = iter_article_ids(active_only=True)
+    inactive_records = [
+        record
+        for record in br.load_all_article_records()
+        if isinstance(record.get("article_id"), str) and not article_is_active(record)
+    ]
     extracted = sum(1 for aid in article_ids if article_extraction_path(aid).exists())
     classified = sum(1 for aid in article_ids if article_classification_path(aid).exists())
     concepted = sum(1 for aid in article_ids if article_concepts_path(aid).exists())
@@ -2965,6 +3003,8 @@ def knowledge_status() -> dict[str, Any]:
     reviews_doc = br.read_json(TOPIC_REVIEWS_PATH, default={"reviews": []})
     return {
         "article_count": len(article_ids),
+        "total_article_count": len(all_article_ids),
+        "inactive_article_count": len(inactive_records),
         "articles_with_extraction": extracted,
         "articles_with_classification": classified,
         "articles_with_concepts": concepted,
@@ -2974,6 +3014,65 @@ def knowledge_status() -> dict[str, Any]:
         "review_count": len(reviews_doc.get("reviews", []))
         if isinstance(reviews_doc, dict)
         else 0,
+    }
+
+
+def set_article_lifecycle(
+    article_id: str,
+    state: str,
+    reason: str = "",
+    actor: str = "",
+) -> dict[str, Any]:
+    state = state.strip().lower()
+    if state not in VALID_ARTICLE_STATES:
+        raise ValueError(f"Unsupported article lifecycle state: {state}")
+
+    record_path = br.article_record_path(article_id)
+    record = br.read_json(record_path, default=None)
+    if not isinstance(record, dict):
+        raise FileNotFoundError(f"No record.json found for article_id {article_id!r}")
+
+    previous_state = article_lifecycle_state(record)
+    timestamp = now()
+    record["lifecycle_state"] = state
+    record["last_updated_at"] = timestamp
+    record.setdefault("lifecycle_events", []).append(
+        {
+            "timestamp": timestamp,
+            "from": previous_state,
+            "to": state,
+            "reason": reason,
+            "actor": actor,
+        }
+    )
+    if state in INACTIVE_ARTICLE_STATES:
+        record["exclude_reason"] = reason
+        record["archived_at"] = timestamp
+        record["archived_by"] = actor
+    else:
+        record["exclude_reason"] = None
+        record["restored_at"] = timestamp
+        record["restored_by"] = actor
+
+    br.write_json(record_path, record)
+    br.append_jsonl(
+        br.CHANGE_LOG_PATH,
+        {
+            "timestamp": timestamp,
+            "event": "knowledge_article_lifecycle_update",
+            "article_id": article_id,
+            "from": previous_state,
+            "to": state,
+            "reason": reason,
+            "actor": actor,
+        },
+    )
+    return {
+        "ok": True,
+        "article_id": article_id,
+        "previous_state": previous_state,
+        "state": state,
+        "record_path": br.relpath_from_root(record_path),
     }
 
 
@@ -3050,6 +3149,8 @@ def load_article_view_rows() -> list[dict[str, Any]]:
         article_id = record.get("article_id")
         if not isinstance(article_id, str):
             continue
+        if not article_is_active(record):
+            continue
         extraction = br.read_json(article_extraction_path(article_id), default={})
         classification = br.read_json(article_classification_path(article_id), default={})
         concepts = br.read_json(article_concepts_path(article_id), default={})
@@ -3065,6 +3166,8 @@ def load_article_view_rows() -> list[dict[str, Any]]:
                 "importance": classification.get("importance", "unknown"),
                 "summary": extraction.get("summary", ""),
                 "concepts": concepts.get("matched_concepts", []),
+                "issue_url": issue_url_for_record(record),
+                "lifecycle_state": article_lifecycle_state(record),
             }
         )
     return sorted(rows, key=lambda item: (str(item.get("primary_category")), str(item.get("title"))))
@@ -3331,14 +3434,27 @@ def render_article_group(category_id: str, rows: list[dict[str, Any]]) -> str:
                 tag_counter[tag] += 1
         tag_html = "".join(pill(tag, "pattern") for tag in tags[:6])
         summary = row.get("summary") or ""
+        article_id = str(row.get("article_id") or "")
+        issue_url = row.get("issue_url") or ""
+        manage_html = (
+            f"<a class='article-action-link' href='{html_escape(issue_url)}' target='_blank' rel='noreferrer'>管理 issue</a>"
+            if issue_url
+            else "<span class='article-action-muted'>无 issue</span>"
+        )
         items_html += f"""
           <li class="category-article">
             <div>
               <h4>{title_html}</h4>
               <p>{html_escape(summary)}</p>
               <div class="pill-row">{tag_html}</div>
+              <div class="article-actions">
+                <button type="button" class="article-action" data-copy="/archive {html_escape(article_id)} 原因：">归档请求</button>
+                <button type="button" class="article-action" data-copy="/exclude {html_escape(article_id)} 原因：">排除这篇</button>
+                {manage_html}
+              </div>
             </div>
             <div class="article-meta">
+              <span>{html_escape(article_id)}</span>
               <span>{html_escape(display_status(row.get("importance", "unknown")))}</span>
               <span>{html_escape(display_status(row.get("content_status", "unknown")))}</span>
             </div>
@@ -3619,6 +3735,22 @@ def build_report_html() -> str:
     .category-article:first-child {{ border-top: 0; padding-top: 0; }}
     .article-row {{ display: grid; grid-template-columns: minmax(0, 1fr) 160px; gap: 18px; }}
     .article-meta {{ display: flex; flex-direction: column; gap: 8px; color: var(--muted); font-size: 13px; }}
+    .article-actions {{ display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; align-items: center; }}
+    .article-action, .article-action-link {{
+      appearance: none;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fafafa;
+      color: var(--accent-3);
+      padding: 5px 9px;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }}
+    .article-action:hover, .article-action-link:hover {{ background: #eef4ff; text-decoration: none; }}
+    .article-action.copied {{ color: var(--accent); border-color: #99d2c8; background: #eef9f7; }}
+    .article-action-muted {{ color: var(--muted); font-size: 12px; }}
     .note {{ color: var(--muted); max-width: 840px; }}
     @media (max-width: 860px) {{
       .stats, .grid, .split, .article-row, .category-article {{ grid-template-columns: 1fr; }}
@@ -3667,6 +3799,25 @@ def build_report_html() -> str:
       <div class="grid">{''.join(framework_cards) if framework_cards else '<p>暂无框架。</p>'}</div>
     </section>
   </main>
+  <script>
+    document.querySelectorAll('[data-copy]').forEach((button) => {{
+      button.addEventListener('click', async () => {{
+        const text = button.getAttribute('data-copy') || '';
+        try {{
+          await navigator.clipboard.writeText(text);
+          const oldText = button.textContent;
+          button.textContent = '已复制命令';
+          button.classList.add('copied');
+          window.setTimeout(() => {{
+            button.textContent = oldText;
+            button.classList.remove('copied');
+          }}, 1600);
+        }} catch (error) {{
+          window.prompt('复制这条命令到文章 issue 评论中执行：', text);
+        }}
+      }});
+    }});
+  </script>
 </body>
 </html>
 """
@@ -3737,6 +3888,12 @@ def build_parser() -> argparse.ArgumentParser:
     report = subparsers.add_parser("build-report", help="Generate the static non-Bayesian knowledge report")
     report.add_argument("--output", default=str(REPORT_PATH))
 
+    lifecycle = subparsers.add_parser("set-article-state", help="Set article lifecycle state: active, archived, or excluded")
+    lifecycle.add_argument("--article-id", required=True)
+    lifecycle.add_argument("--state", required=True, choices=sorted(VALID_ARTICLE_STATES))
+    lifecycle.add_argument("--reason", default="")
+    lifecycle.add_argument("--actor", default="")
+
     run = subparsers.add_parser("run-mvp", help="Run extraction, classification, concept update, and reviews")
     run.add_argument("--limit", type=int)
     run.add_argument("--force", action="store_true")
@@ -3780,6 +3937,16 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     if args.command == "build-report":
         print_json(build_report(output_path=Path(args.output)))
+        return 0
+    if args.command == "set-article-state":
+        print_json(
+            set_article_lifecycle(
+                article_id=args.article_id,
+                state=args.state,
+                reason=args.reason,
+                actor=args.actor,
+            )
+        )
         return 0
     if args.command == "run-mvp":
         print_json(run_mvp(limit=args.limit, force=args.force, skip_frameworks=args.skip_frameworks))
