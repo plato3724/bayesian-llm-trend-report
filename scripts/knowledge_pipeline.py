@@ -22,6 +22,7 @@ import json
 import os
 import re
 import sys
+import urllib.parse
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
@@ -1412,6 +1413,35 @@ def issue_url_for_record(record: dict[str, Any]) -> str:
         if isinstance(source_ref, str) and "/issues/" in source_ref:
             return source_ref.strip()
     return ""
+
+
+def github_repo_url() -> str:
+    config = br.read_github_config()
+    repo = config.get("repo")
+    if isinstance(repo, str) and repo.strip():
+        return f"https://github.com/{repo.strip()}"
+    return "https://github.com/plato3724/bayesian-llm-trend-report"
+
+
+def article_management_issue_url(row: dict[str, Any]) -> str:
+    article_id = str(row.get("article_id") or "")
+    title = str(row.get("title") or article_id)
+    source_url = str(row.get("url") or "")
+    body = (
+        "这是一篇早期导入文章的管理 issue。它没有原始 GitHub issue，因此从知识页新建此管理入口。\n\n"
+        f"- 文章 ID: `{article_id}`\n"
+        f"- 标题: {title}\n"
+        f"- 来源: {source_url}\n\n"
+        "在下面评论其中一条命令即可触发知识系统更新：\n\n"
+        f"```text\n/archive {article_id} 原因：\n/exclude {article_id} 原因：\n/restore {article_id} 原因：\n```"
+    )
+    query = urllib.parse.urlencode(
+        {
+            "title": f"[Manage Article] {article_id}",
+            "body": body,
+        }
+    )
+    return f"{github_repo_url()}/issues/new?{query}"
 
 
 def top_items(counter: Counter[str], limit: int) -> list[dict[str, Any]]:
@@ -3439,7 +3469,7 @@ def render_article_group(category_id: str, rows: list[dict[str, Any]]) -> str:
         manage_html = (
             f"<a class='article-action-link' href='{html_escape(issue_url)}' target='_blank' rel='noreferrer'>管理 issue</a>"
             if issue_url
-            else "<span class='article-action-muted'>无 issue</span>"
+            else f"<a class='article-action-link' href='{html_escape(article_management_issue_url(row))}' target='_blank' rel='noreferrer'>新建管理 issue</a>"
         )
         items_html += f"""
           <li class="category-article">
