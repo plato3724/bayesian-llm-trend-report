@@ -1,7 +1,7 @@
 {
   "article_id": "2f9fe8beb5ba",
   "concept_status": "drafted",
-  "generated_at": "2026-04-25T15:26:17+00:00",
+  "generated_at": "2026-04-26T14:55:54+00:00",
   "method": "tag_to_concept_mvp",
   "matched_concepts": [
     "acoustic_scene_modeling",
@@ -23,7 +23,6 @@
     "cross_modal_input",
     "gst_schema",
     "agent_compatible",
-    "context_engineering",
     "multi_speaker_dialogue",
     "acoustic_scene_modeling"
   ],

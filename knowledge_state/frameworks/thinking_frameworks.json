@@ -1,30 +1,30 @@
 {
-  "created_at": "2026-04-26T13:33:43+00:00",
-  "last_updated_at": "2026-04-26T13:35:25+00:00",
+  "created_at": "2026-04-26T14:57:11+00:00",
+  "last_updated_at": "2026-04-26T14:58:28+00:00",
   "version": 1,
-  "source_hash": "b8ed4cb4c4bff469662e20c6ae93ed3f9247916ab740e3c793403c869a755fc7",
+  "source_hash": "8e2c7373c3ff7c2a2efbd15e224f83a82b7d7279f548b71756c694d2886580a2",
   "prompt_version": "frameworks_from_reviews_v1",
   "generated_by": "llm_framework_generation_v1",
   "llm_model": "openai/gpt-5.4",
   "llm_attempts": 1,
   "frameworks": [
     {
-      "framework_id": "mechanism_chain_validation",
-      "name": "机制链验证框架",
-      "purpose": "用于判断多篇材料是否真的在指向同一个底层机制，而不是若干相邻概念、传播叙事或巧合性共振。",
+      "framework_id": "mechanism_vs_narrative_test",
+      "name": "机制与叙事区分框架",
+      "purpose": "用于判断一组材料是在揭示可重复的底层机制，还是仅在放大案例叙事、热度信号或单次成功故事。",
       "dimensions": [
-        "表面主题背后，真正重复出现的因果链条是什么",
-        "链条中的关键前提条件、依赖技术与组织约束是什么",
-        "哪些证据支持的是机制成立，哪些只支持案例成功或叙事热度",
-        "如果链条中某一环失效，整体结论会如何坍塌",
-        "最有力的反证材料应长什么样，来自哪些场景",
-        "当前概念之间是同一机制的不同切面，还是应拆分为相邻主题"
+        "这组材料共同指向的底层机制是什么，而不是各自的表面 claim 是什么？",
+        "证据类型主要是机制证据、结果证据、市场信号，还是传播叙事？分别占比如何？",
+        "若该机制成立，它应当通过什么中间变量传导到结果，而不是只在终局指标上体现？",
+        "目前最强反证会来自哪里：失败案例、对照实验、跨场景失效，还是成本与组织摩擦？",
+        "哪些条件是该机制成立的前提，一旦前提消失，结论是否还成立？",
+        "这组材料是在描述同一机制的不同切面，还是把相邻但不同的主题混在一起？"
       ],
       "best_for": [
         "动态综述抽象",
-        "跨文章模式识别",
         "趋势判断校正",
-        "概念合并或重命名"
+        "单案例主题评估",
+        "投资与产业叙事辨析"
       ],
       "source_review_ids": [
         "ai_agent_living_review",
@@ -40,86 +40,93 @@
       "status": "llm_draft"
     },
     {
-      "framework_id": "runtime_constraint_analysis",
-      "name": "运行时与约束分析框架",
-      "purpose": "用于分析一个系统的竞争力是否主要来自 Runtime 设计，而非模型、功能点或单次性能展示。",
+      "framework_id": "runtime_bottleneck_analysis",
+      "name": "运行时瓶颈分析框架",
+      "purpose": "用于分析一个系统的关键竞争点是否已经从模型能力转移到运行时组织，包括上下文、状态、路由、验证、恢复与资源调度。",
       "dimensions": [
-        "系统要在运行时持续管理哪些关键变量：上下文、状态、权限、成本、时延或恢复",
-        "哪些失败是模型能力问题，哪些是 runtime 编排问题",
-        "验证、回滚、审计和沙盒隔离是否构成质量闸门",
-        "长时程任务中，结果如何成为下一轮决策的可靠输入",
-        "系统在异常、漂移、错路由或中断时如何恢复",
-        "在真实部署下，runtime 的复杂度是否反而抵消了收益"
+        "系统的真实瓶颈位于生成能力、上下文装配、状态持久化、工具调用还是执行验证？",
+        "输入如何被转化为可执行状态，哪些信息被保留、压缩、丢弃或延迟加载？",
+        "执行过程中如何路由到正确工具、模块、子代理或硬件资源？",
+        "系统如何发现错误、阻断错误扩散，并支持回滚、重试与恢复？",
+        "长时程任务中的成本、时延、权限与安全边界如何被控制？",
+        "当任务复杂度、请求长度或环境噪声上升时，系统在哪一环最先退化？"
       ],
       "best_for": [
         "AI Agent",
-        "记忆系统",
+        "Context Engineering",
         "开发者工具",
-        "具身系统",
-        "产品化评估"
+        "具身智能运行时",
+        "语音生成工作流"
       ],
       "source_review_ids": [
         "ai_agent_living_review",
         "memory_context_living_review",
         "developer_tools_living_review",
+        "robotics_embodied_ai_living_review",
+        "multimodal_ai_living_review"
+      ],
+      "status": "llm_draft"
+    },
+    {
+      "framework_id": "boundary_condition_and_failure_map",
+      "name": "边界条件与失败地图框架",
+      "purpose": "用于系统性识别一个观点在哪些条件下成立、在哪些条件下失效，并把失败视为框架的一部分而非例外。",
+      "dimensions": [
+        "该结论依赖哪些明确前提：数据、网络、算力、组织流程、用户行为或硬件条件？",
+        "最常见的失败模式是什么：错误上下文、错误路由、错误评测、错误激励，还是物理执行失败？",
+        "失败是局部可修复问题，还是会沿系统链条放大为结构性崩溃？",
+        "有没有看似成功、实则靠人工兜底、场景筛选或选择性展示维持的案例？",
+        "哪些边界条件一旦越过，原先优势会转化为成本负担、复杂度负担或不稳定性？",
+        "需要什么反例或负样本，才能真正挑战当前解释？"
+      ],
+      "best_for": [
+        "反证设计",
+        "技术评估",
+        "产品上线前审查",
+        "综述中的风险段落",
+        "失败案例归纳"
+      ],
+      "source_review_ids": [
+        "ai_agent_living_review",
+        "ai_infrastructure_living_review",
+        "consumer_economy_living_review",
+        "developer_tools_living_review",
+        "memory_context_living_review",
+        "multimodal_ai_living_review",
         "product_business_living_review",
+        "research_benchmark_living_review",
         "robotics_embodied_ai_living_review"
       ],
       "status": "llm_draft"
     },
     {
-      "framework_id": "structure_before_retrieval_or_generation",
-      "name": "先组织后调用框架",
-      "purpose": "用于分析系统性能提升是否来自更强模型本身，还是来自对信息、任务或表达的预组织。",
+      "framework_id": "pattern_overlap_disambiguation",
+      "name": "模式重叠拆分框架",
+      "purpose": "用于处理综述中常见的概念混叠问题，判断多个高频标签是在描述同一机制、上下游链条，还是被误并列的相邻主题。",
       "dimensions": [
-        "原始输入在进入模型前被如何结构化、压缩、分层或路由",
-        "这种预组织改变的是检索效率、生成质量还是控制粒度",
-        "收益来自信息拓扑优化，还是仅来自更大上下文和更多算力",
-        "结构化过程会引入哪些信息损失、偏置或维护成本",
-        "在跨场景迁移时，预组织规则是否仍然有效",
-        "当结构错误时，系统会比平坦方案更稳还是更脆弱"
+        "高频概念之间是因果关系、包含关系、并列关系，还是仅仅共现关系？",
+        "如果去掉其中一个概念，剩余解释是否仍然成立？",
+        "这些概念对应的是同一系统层，还是分属模型层、运行时层、部署层或商业层？",
+        "不同文章对同一词的使用是否稳定，还是存在命名漂移与语义滑动？",
+        "最适合的处理方式是合并、重命名、上升一级抽象，还是拆成两个综述？",
+        "哪一类新增文章最有助于区分这些模式究竟是否同源？"
       ],
       "best_for": [
-        "Context Engineering",
-        "长期记忆",
-        "语音生成",
-        "开发者工具",
-        "工作流系统"
+        "活综述维护",
+        "主题命名",
+        "知识库概念治理",
+        "跨文章聚类校正"
       ],
       "source_review_ids": [
-        "memory_context_living_review",
-        "multimodal_ai_living_review",
-        "developer_tools_living_review",
-        "ai_agent_living_review"
-      ],
-      "status": "llm_draft"
-    },
-    {
-      "framework_id": "signal_vs_structure_assessment",
-      "name": "信号与结构区分框架",
-      "purpose": "用于区分热度、增长、融资、涨星、单次 benchmark 或传播效果，究竟只是市场信号，还是已足以支持结构性结论。",
-      "dimensions": [
-        "当前证据属于热度信号、机制证据、对照实验还是经营结果",
-        "哪些指标容易被激励扭曲，不能直接代表真实价值",
-        "单案例成功能否被复现到不同组织、不同任务或不同成本条件",
-        "哪些长期指标最能检验结构是否稳固，如留存、续费、故障率、单位成本",
-        "是否存在被忽略的失败样本、沉默样本或幸存者偏差",
-        "如果热度退潮，结论中还有哪些部分依然成立"
-      ],
-      "best_for": [
-        "产品商业分析",
-        "消费经济",
-        "开发者工具 adoption",
-        "研究趋势解读",
-        "单案例综述"
-      ],
-      "source_review_ids": [
+        "ai_agent_living_review",
+        "ai_infrastructure_living_review",
         "consumer_economy_living_review",
         "developer_tools_living_review",
+        "memory_context_living_review",
+        "multimodal_ai_living_review",
         "product_business_living_review",
         "research_benchmark_living_review",
-        "multimodal_ai_living_review",
-        "ai_agent_living_review"
+        "robotics_embodied_ai_living_review"
       ],
       "status": "llm_draft"
     }

@@ -4,7 +4,7 @@
   "url": "https://mp.weixin.qq.com/s/C-DQja0ppFi0BzZwHZPpZw",
   "ingested_from": "url.md",
   "ingested_at": "2026-04-11T02:31:52+00:00",
-  "last_updated_at": "2026-04-20T16:24:30+00:00",
+  "last_updated_at": "2026-04-26T14:55:54+00:00",
   "content_state": {
     "full_text_status": "acquired",
     "canonical_text_source": "D:\\code\\tec_trade\\knowledge_state\\articles\\ecfdeb44e0ae\\canonical_text.txt",
@@ -47,5 +47,18 @@
       "爱图表将自己定位为可编辑的图表智能体，而不是一次性出图工具。"
     ]
   },
-  "hypothesis_impacts": []
+  "hypothesis_impacts": [],
+  "lifecycle_state": "archived",
+  "lifecycle_events": [
+    {
+      "timestamp": "2026-04-26T14:55:54+00:00",
+      "from": "active",
+      "to": "archived",
+      "reason": "原因：差别太大没有核实清楚",
+      "actor": "plato3724"
+    }
+  ],
+  "exclude_reason": "原因：差别太大没有核实清楚",
+  "archived_at": "2026-04-26T14:55:54+00:00",
+  "archived_by": "plato3724"
 }
