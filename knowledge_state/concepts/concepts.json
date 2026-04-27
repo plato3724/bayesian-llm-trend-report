@@ -1,6 +1,6 @@
 {
   "created_at": "2026-04-25T15:25:50+00:00",
-  "last_updated_at": "2026-04-26T14:55:54+00:00",
+  "last_updated_at": "2026-04-27T01:41:05+00:00",
   "version": 1,
   "concepts": [
     {
@@ -1956,13 +1956,14 @@
       ],
       "status": "drafted",
       "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "last_updated_at": "2026-04-27T01:41:05+00:00",
       "related_categories": [
         "robotics_embodied_ai",
         "research_benchmark",
         "open_source_ecosystem",
         "multimodal_ai",
-        "product_business"
+        "product_business",
+        "ai_agent"
       ],
       "related_tags": [
         "embodied-ai"
@@ -1970,7 +1971,8 @@
       "supporting_articles": [
         "59b86c15655e",
         "7ffdcd4439dc",
-        "df7acb42e706"
+        "df7acb42e706",
+        "39ca3e825456"
       ],
       "notes": []
     },
@@ -3074,20 +3076,22 @@
       ],
       "status": "drafted",
       "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "last_updated_at": "2026-04-27T01:41:05+00:00",
       "related_categories": [
         "robotics_embodied_ai",
         "research_benchmark",
         "multimodal_ai",
         "product_business",
-        "open_source_ecosystem"
+        "open_source_ecosystem",
+        "ai_agent"
       ],
       "related_tags": [
         "physical-grounding"
       ],
       "supporting_articles": [
         "7ffdcd4439dc",
-        "df7acb42e706"
+        "df7acb42e706",
+        "39ca3e825456"
       ],
       "notes": []
     },
@@ -4619,6 +4623,198 @@
       ],
       "supporting_articles": [
         "e7483ff9ebd1"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "autonomous_driving",
+      "name": "Autonomous Driving",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "autonomous-driving"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-27T01:41:05+00:00",
+      "last_updated_at": "2026-04-27T01:41:05+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "ai_agent",
+        "research_benchmark",
+        "product_business"
+      ],
+      "related_tags": [
+        "autonomous-driving"
+      ],
+      "supporting_articles": [
+        "39ca3e825456"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "world_model",
+      "name": "World Model",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "world-model"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-27T01:41:05+00:00",
+      "last_updated_at": "2026-04-27T01:41:05+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "ai_agent",
+        "research_benchmark",
+        "product_business"
+      ],
+      "related_tags": [
+        "world-model"
+      ],
+      "supporting_articles": [
+        "39ca3e825456"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "self_diagnosis",
+      "name": "Self Diagnosis",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "self-diagnosis"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-27T01:41:05+00:00",
+      "last_updated_at": "2026-04-27T01:41:05+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "ai_agent",
+        "research_benchmark",
+        "product_business"
+      ],
+      "related_tags": [
+        "self-diagnosis"
+      ],
+      "supporting_articles": [
+        "39ca3e825456"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "tool_calling",
+      "name": "Tool Calling",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "tool-calling"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-27T01:41:05+00:00",
+      "last_updated_at": "2026-04-27T01:41:05+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "ai_agent",
+        "research_benchmark",
+        "product_business"
+      ],
+      "related_tags": [
+        "tool-calling"
+      ],
+      "supporting_articles": [
+        "39ca3e825456"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "agent_evaluation",
+      "name": "Agent Evaluation",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "agent-evaluation"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-27T01:41:05+00:00",
+      "last_updated_at": "2026-04-27T01:41:05+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "ai_agent",
+        "research_benchmark",
+        "product_business"
+      ],
+      "related_tags": [
+        "agent-evaluation"
+      ],
+      "supporting_articles": [
+        "39ca3e825456"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "intention_modeling",
+      "name": "Intention Modeling",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "intention-modeling"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-27T01:41:05+00:00",
+      "last_updated_at": "2026-04-27T01:41:05+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "ai_agent",
+        "research_benchmark",
+        "product_business"
+      ],
+      "related_tags": [
+        "intention-modeling"
+      ],
+      "supporting_articles": [
+        "39ca3e825456"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "reinforcement_learning",
+      "name": "Reinforcement Learning",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "reinforcement-learning"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-27T01:41:05+00:00",
+      "last_updated_at": "2026-04-27T01:41:05+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "ai_agent",
+        "research_benchmark",
+        "product_business"
+      ],
+      "related_tags": [
+        "reinforcement-learning"
+      ],
+      "supporting_articles": [
+        "39ca3e825456"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "robotaxi",
+      "name": "Robotaxi",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "robotaxi"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-27T01:41:05+00:00",
+      "last_updated_at": "2026-04-27T01:41:05+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "ai_agent",
+        "research_benchmark",
+        "product_business"
+      ],
+      "related_tags": [
+        "robotaxi"
+      ],
+      "supporting_articles": [
+        "39ca3e825456"
       ],
       "notes": []
     }

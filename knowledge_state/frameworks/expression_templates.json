@@ -1,77 +1,73 @@
 {
-  "created_at": "2026-04-26T14:57:11+00:00",
-  "last_updated_at": "2026-04-26T14:58:28+00:00",
+  "created_at": "2026-04-27T01:42:28+00:00",
+  "last_updated_at": "2026-04-27T01:43:32+00:00",
   "version": 1,
-  "source_hash": "8e2c7373c3ff7c2a2efbd15e224f83a82b7d7279f548b71756c694d2886580a2",
+  "source_hash": "46c282405889d547869aa53f132ccaa2f2fdaf851a23e59671ec7680b3e9367f",
   "prompt_version": "frameworks_from_reviews_v1",
   "generated_by": "llm_framework_generation_v1",
   "llm_model": "openai/gpt-5.4",
   "llm_attempts": 1,
   "templates": [
     {
-      "template_id": "living_review_synthesis_template",
-      "name": "动态综述综合判断模板",
-      "use_case": "用于把多篇主题材料整合成一个可更新的中层判断，而不是逐篇摘录。",
+      "template_id": "theme_mechanism_synthesis",
+      "name": "主题机制综述模板",
+      "use_case": "用于把多篇材料从零散观点整合成一个可检验的主题判断。",
       "structure": [
-        "先定义综述要回答的中心问题：这组材料共同在解释什么变化",
-        "提炼重复出现的模式，并指出它们可能对应的共同底层机制",
-        "给出一条核心 thesis：真正变化发生在哪一层，而不是表面热点是什么",
-        "拆解机制链条：前提条件—中间变量—结果表现",
-        "明确当前证据强弱：哪些是机制证据，哪些只是案例、热度或市场信号",
-        "列出主要误读、反证方向与失败边界，防止正向材料自我强化",
-        "提出下一轮综述最关键的问题：该合并概念、拆分主题，还是寻找反例"
+        "先指出这组材料重复出现的不是哪些结论，而是哪类底层机制。",
+        "概括一个核心判断：真正变化发生在什么层，而不发生在什么层。",
+        "拆出 2-4 条机制链，说明它们如何共同支持该判断。",
+        "明确当前最稳固的证据与最薄弱的证据分别是什么。",
+        "加入至少一个反证方向：什么类型的文章或案例最可能推翻当前解释。",
+        "交代概念边界：哪些相邻概念可能应合并，哪些只是暂时混杂。",
+        "以“当前更适合被视为中强度假设/早期结构/重复信号”之类判断收束。"
       ],
       "source_review_ids": [
         "ai_agent_living_review",
-        "ai_infrastructure_living_review",
-        "consumer_economy_living_review",
         "developer_tools_living_review",
         "memory_context_living_review",
         "multimodal_ai_living_review",
-        "product_business_living_review",
-        "research_benchmark_living_review",
-        "robotics_embodied_ai_living_review"
+        "robotics_embodied_ai_living_review",
+        "research_benchmark_living_review"
       ],
       "status": "llm_draft"
     },
     {
-      "template_id": "mechanism_chain_explanation_template",
-      "name": "机制链解释模板",
-      "use_case": "用于说明一个趋势为什么成立，强调因果链和中间机制，而不是停留在结果描述。",
+      "template_id": "single_case_to_hypothesis",
+      "name": "单案例到可检验假设模板",
+      "use_case": "用于处理只有一篇或少量材料的主题，避免把个案过度上升为定论。",
       "structure": [
-        "先指出表面现象或新说法为什么不足以解释变化",
-        "给出更有解释力的底层机制名称",
-        "按顺序展开机制链：起点条件—约束变化—系统重组—结果外溢",
-        "说明该机制为何比旧解释更能统一多个案例",
-        "补充该机制成立所依赖的关键前提与适用范围",
-        "指出最可能打断这条机制链的反例、失败模式或边界条件"
+        "先说明当前材料的地位：它提供的是信号，不是定论。",
+        "提炼该案例真正揭示的机制链，而非停留在新名词或结果展示。",
+        "说明这个机制一旦成立，会如何改写系统边界、成本结构或市场关系。",
+        "明确哪些部分已有证据支持，哪些仍只是推演、叙事或产业想象。",
+        "列出最关键的隐含前提与边界条件。",
+        "指出最值得寻找的反例、对照实验或跨场景验证。",
+        "以“目前最合理的定位是可检验假设”收尾。"
       ],
       "source_review_ids": [
         "ai_infrastructure_living_review",
-        "memory_context_living_review",
-        "multimodal_ai_living_review",
-        "robotics_embodied_ai_living_review",
+        "consumer_economy_living_review",
         "product_business_living_review"
       ],
       "status": "llm_draft"
     },
     {
-      "template_id": "signal_vs_proof_writing_template",
-      "name": "信号与证明区分模板",
-      "use_case": "用于写作中区分哪些内容只是趋势信号，哪些已经构成较强证明，避免把叙事写成结论。",
+      "template_id": "against_common_misreading",
+      "name": "反误读校正模板",
+      "use_case": "用于纠正常见的热度崇拜、结果误读、概念偷换和外推过度。",
       "structure": [
-        "先承认材料提供了什么强信号",
-        "再界定这些信号目前证明了什么、没有证明什么",
-        "把证据分层为机制证据、实验结果、采用数据、市场结果与传播热度",
-        "指出现阶段最缺失的验证环节，如对照实验、失败案例、经营质量或跨场景复现",
-        "说明如果这些缺口得不到补足，当前结论应如何降级表述",
-        "最后给出审慎但不保守的中间判断"
+        "先点出一个最常见但危险的直觉式误读。",
+        "解释这种误读为什么看起来合理，以及它忽略了什么关键机制。",
+        "用更稳固的替代解释重写问题定义。",
+        "补充一个失败场景或反例，说明原误读在哪里会崩。",
+        "区分哪些信号可以当作提示，哪些不能当作证明。",
+        "给出更可靠的评估标准或下一步验证方法。"
       ],
       "source_review_ids": [
         "ai_agent_living_review",
-        "ai_infrastructure_living_review",
         "consumer_economy_living_review",
         "developer_tools_living_review",
+        "memory_context_living_review",
         "multimodal_ai_living_review",
         "product_business_living_review",
         "research_benchmark_living_review",
@@ -80,27 +76,22 @@
       "status": "llm_draft"
     },
     {
-      "template_id": "pattern_overlap_resolution_template",
-      "name": "概念重叠拆分模板",
-      "use_case": "用于处理综述中两个或多个高频概念混在一起时的分析与写作。",
+      "template_id": "bottleneck_shift_analysis",
+      "name": "瓶颈迁移分析模板",
+      "use_case": "用于解释一个新技术为何重要，重点不写它多强，而写它如何改变瓶颈与价值分布。",
       "structure": [
-        "先列出当前被同时使用的几个核心概念",
-        "分别给出每个概念在材料中的实际指向与系统层级",
-        "比较它们是同一机制的不同命名，还是上下游相连的不同主题",
-        "用去除法说明：去掉其中一个概念后，解释力会损失什么",
-        "提出最合理的处理方案：合并、改名、升维抽象或拆分成子主题",
-        "说明下一批最值得纳入的文章类型，以验证这一拆分是否成立"
+        "定义旧系统的核心瓶颈及其后果。",
+        "说明新变化解除的不是全部约束，而是其中哪个关键卡点。",
+        "分析瓶颈松动后，系统架构或流程会如何重组。",
+        "指出新的稀缺环节、收费权或控制权转移到了哪里。",
+        "说明这种变化依赖哪些前提，一旦前提消失会发生什么。",
+        "最后判断这是局部优化、结构性重配，还是仅限特定场景的改进。"
       ],
       "source_review_ids": [
-        "ai_agent_living_review",
         "ai_infrastructure_living_review",
-        "consumer_economy_living_review",
         "developer_tools_living_review",
-        "memory_context_living_review",
-        "multimodal_ai_living_review",
         "product_business_living_review",
-        "research_benchmark_living_review",
-        "robotics_embodied_ai_living_review"
+        "memory_context_living_review"
       ],
       "status": "llm_draft"
     }

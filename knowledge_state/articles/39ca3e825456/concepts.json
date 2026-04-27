@@ -1,0 +1,42 @@
+{
+  "article_id": "39ca3e825456",
+  "concept_status": "drafted",
+  "generated_at": "2026-04-27T01:41:05+00:00",
+  "method": "tag_to_concept_mvp",
+  "matched_concepts": [
+    "agent_evaluation",
+    "autonomous_driving",
+    "embodied_ai",
+    "intention_modeling",
+    "physical_grounding",
+    "reinforcement_learning",
+    "robotaxi",
+    "self_diagnosis",
+    "tool_calling",
+    "world_model"
+  ],
+  "created_concepts": [
+    "autonomous_driving",
+    "world_model",
+    "self_diagnosis",
+    "tool_calling",
+    "agent_evaluation",
+    "intention_modeling",
+    "reinforcement_learning",
+    "robotaxi"
+  ],
+  "candidate_concepts": [],
+  "source_trace": {
+    "classification_path": "knowledge_state/articles/39ca3e825456/classification.json",
+    "extraction_path": "knowledge_state/articles/39ca3e825456/extraction.json"
+  },
+  "article_entities": [
+    "AI",
+    "How",
+    "Scaling",
+    "Jay",
+    "QbitAI",
+    "Harness",
+    "Intention"
+  ]
+}

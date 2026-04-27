@@ -215,7 +215,7 @@
       </nav>
     </header>
 
-    <section class="stats"><div class='stat'><span>文章</span><strong>22</strong></div><div class='stat'><span>已抽取</span><strong>22</strong></div><div class='stat'><span>已分类</span><strong>22</strong></div><div class='stat'><span>综述</span><strong>9</strong></div></section>
+    <section class="stats"><div class='stat'><span>文章</span><strong>23</strong></div><div class='stat'><span>已抽取</span><strong>23</strong></div><div class='stat'><span>已分类</span><strong>23</strong></div><div class='stat'><span>综述</span><strong>9</strong></div></section>
 
     <section id="reviews">
       <h2>主题综述</h2>
@@ -694,52 +694,52 @@
             </span>
             <span class="review-meta">
               <span class="type-badge thinking">LLM 深度分析</span>
-              <span class="count">3 篇文章</span>
+              <span class="count">4 篇文章</span>
             </span>
           </span>
-          <span class="review-preview">当前具身智能的关键变化，不是单一模型、单一传感器或单一硬件参数的突破，而是行业开始承认：机器人智能的上限由一条闭环决定——模型必须在有限算力下及时出动作，系统必须感知接触与力学状态，硬件必须以可顺应、可迁移的方式把策略落实到真实物体上。A₁、EgoTouch/TouchAnything 与 Revo 3 分别切入这条闭环的不同断点，因此它们并非平行案例，而是在共同说明具身智能正在从“把大模型接到机械体上”转向“重建一个受物理约束的端到端系统”。</span>
-          <span class="pill-row review-preview-tags"><span class='pill pattern'>embodied-ai</span><span class='pill pattern'>tactile-sensing</span><span class='pill pattern'>physical-grounding</span><span class='pill pattern'>vla-model</span><span class='pill pattern'>vision-language-action</span><span class='pill pattern'>robot-control</span></span>
+          <span class="review-preview">当前具身智能的核心矛盾，不是模型能力不够强，而是系统必须同时满足物理保真、实时性、接触反馈和可迁移控制四个条件。材料一说明语言并不天然适合作为高频物理控制的中心接口，材料二说明即便接受 VLA 范式，算力和延迟也会成为现实部署的硬边界，材料三说明没有触觉与接触数据，模型无法真正理解操作成功与否，材料四则说明没有合适的自由度、反驱与触觉执行端，再强的算法也会卡在 sim-to-real。四者合起来指向同一个结论：具身智能的决定性竞争，不在单一模型大小，而在能否建立一个由物理世界约束的全链路闭环。</span>
+          <span class="pill-row review-preview-tags"><span class='pill pattern'>embodied-ai</span><span class='pill pattern'>physical-grounding</span><span class='pill pattern'>tactile-sensing</span><span class='pill pattern'>autonomous-driving</span><span class='pill pattern'>world-model</span><span class='pill pattern'>self-diagnosis</span></span>
         </summary>
         <div class="review-body">
         
       <div class="deep-review">
         <p class="eyebrow">深度分析文章</p>
-        <h3>具身智能的瓶颈正在从“会不会做”转向“能否在物理世界里稳定、低成本地做”</h3>
-        <p class="lead">这组三篇材料表面上分别讲 VLA 推理效率、触觉数据集和灵巧手硬件，但放在一起看，真正浮现出的主线不是“能力更强了”，而是具身系统的三类约束开始被同时正视：算力预算、接触感知、执行器顺应性。它们共同决定机器人是否能从 demo 进入可训练、可部署、可复现的现实场景。</p>
+        <h3>具身智能的瓶颈已从“会不会”转向“靠什么闭环”：语言退居中介，物理约束重新成为主轴</h3>
+        <p class="lead">这组材料真正连成一条线的，不是机器人更像人了，也不是又多了几个 demo，而是一个更硬的判断：具身智能正在从“把大模型接到执行器上”转向“围绕物理世界建立可训练、可部署、可验证的闭环”。世界模型、自适应推理、触觉数据与灵巧手硬件，分别对应这个闭环里的表征、算力、感知和执行约束。</p>
         <div class="thesis">
           <strong>核心判断</strong>
-          <p>当前具身智能的关键变化，不是单一模型、单一传感器或单一硬件参数的突破，而是行业开始承认：机器人智能的上限由一条闭环决定——模型必须在有限算力下及时出动作，系统必须感知接触与力学状态，硬件必须以可顺应、可迁移的方式把策略落实到真实物体上。A₁、EgoTouch/TouchAnything 与 Revo 3 分别切入这条闭环的不同断点，因此它们并非平行案例，而是在共同说明具身智能正在从“把大模型接到机械体上”转向“重建一个受物理约束的端到端系统”。</p>
+          <p>当前具身智能的核心矛盾，不是模型能力不够强，而是系统必须同时满足物理保真、实时性、接触反馈和可迁移控制四个条件。材料一说明语言并不天然适合作为高频物理控制的中心接口，材料二说明即便接受 VLA 范式，算力和延迟也会成为现实部署的硬边界，材料三说明没有触觉与接触数据，模型无法真正理解操作成功与否，材料四则说明没有合适的自由度、反驱与触觉执行端，再强的算法也会卡在 sim-to-real。四者合起来指向同一个结论：具身智能的决定性竞争，不在单一模型大小，而在能否建立一个由物理世界约束的全链路闭环。</p>
         </div>
-        <section class='deep-section'><h4>一、这组材料最重要的判断：具身智能的核心矛盾不是智能不够，而是闭环不完整</h4><p>如果逐篇看，这三篇材料分别落在不同方向：A₁讨论 VLA 的高效推理，EgoTouch 讨论视觉到触觉的补全，Revo 3 讨论灵巧手的自由度、反驱与触觉配置。但把它们并置后，更有解释力的判断是：具身智能现在最紧迫的问题，已经不是“能不能生成动作”，而是从理解任务到接触物体再到稳定执行的整个闭环里，哪一环在拖后腿。</p><p>材料一提供的是机制证据：它明确指出 VLA 的瓶颈不只在 backbone 大，还在动作头的迭代式去噪开销，因此通过预算感知自适应推理和层间截断流匹配，把“算到什么时候为止”变成系统内部可学习、可动态决策的问题。这不是单纯的提速技巧，而是在回答一个具身系统问题：机器人必须在时延约束内行动，错过时机的高精度，本质上也是低性能。</p><p>材料二同样提供机制证据，但它切到另一个被长期低估的断点：视觉并不天然等于接触理解。EgoTouch 和 TouchAnything 的价值，不只是多做了一个数据集和 Benchmark，而是用同步的第一人称视觉、腕部视角、双掌压力和手部姿态数据说明，很多操作任务的成败取决于是否知道“已经接触了吗、接触稳不稳、力分布在哪里”。这类信息在纯视觉里经常缺席。</p><p>材料三更多是案例证据与部分机制叙述的混合体。它通过 Revo 3 强调自由度、全掌触觉、指尖视触觉、直驱与可反驱设计，并把反驱解释为弥合 sim-to-real gap 的关键之一。这里真正值得保留的不是“像人手一样灵活”的展示感，而是一个硬件层判断：如果执行端过于刚性、传动链过长、接触不可顺应，那么仿真里可学的策略很难在真机上稳定复现。</p><p>因此，这三篇材料不是各讲各的。它们共同指向一个更严肃的结论：具身智能的难点正在从感知-规划的抽象层，回落到实时性、接触、顺应性这些物理约束上。谁能更系统地处理这些约束，谁才更接近可部署的机器人智能。</p></section><section class='deep-section'><h4>二、A₁说明：具身模型先要解决“来得及行动”，其次才是“动作看起来更聪明”</h4><p>材料一是这组三篇里最强的机制证据，因为它没有停留在“模型效果更好”的笼统叙事，而是对 VLA 系统中的计算瓶颈做了结构拆解：主干 VLM 很大，动作头又常常依赖多步扩散或流匹配，两者叠加后，实时控制就会被推理延迟拖垮。这里的关键不是参数规模本身，而是推理路径是否与机器人控制的时间预算相容。</p><p>A₁ 的预算感知自适应推理之所以重要，在于它把“是否需要算完整个网络”从一个固定工程设定，变成依据层间动作差异动态决定的策略。训练时各层共享动作头，推理时逐层输出动作并判断是否提前退出，这等于承认一个事实：对很多动作来说，深层计算并不总能带来足以抵消时延成本的收益。具身场景里的最优解，不一定是最完整的推理，而是足够可靠且足够快的推理。</p><p>层间截断流匹配进一步补上了动作头侧的机制短板。传统早停思路容易让动作头的去噪过程重复启动，造成‘主干省了，动作头又拖回来’的悖论。A₁ 用上一层输出作为下一层热启动，本质上是在利用机器人动作的时间连续性和层间语义渐进性，减少无意义的重新采样。这一点说明，具身系统优化不能只盯 backbone；控制输出端同样是延迟大户。</p><p>不过，也要明确材料一里哪些属于案例证据，哪些只是叙事信号。仿真和真机上时延下降、计算量减少、RoboChallenge 成绩提升，属于案例证据，说明这套机制在给定任务和平台上有效。‘普通硬件也能跑’‘打破强性能=高开销困局’这类表述，则更多是热度和叙事信号，还不能自动推出跨平台、跨任务、跨机械体都成立。</p><p>换句话说，A₁ 的真正启示不是又有一个更强 VLA，而是具身模型的优化目标需要从“追求更深更大”转向“按任务复杂度分配算力”。这会影响后续系统设计：Agent Runtime 式的动态预算分配，可能会成为机器人模型栈里比单纯堆参数更关键的一层。</p></section><section class='deep-section'><h4>三、EgoTouch说明：缺的不是更多图像，而是对接触状态的可学习表示</h4><p>材料二的价值，在于它把“触觉很重要”从一句常识，推进到了可训练、可评估的数据问题。长期以来，具身领域默认视觉是主模态，其他模态是增益项；但 EgoTouch 的论证方向恰好相反：在很多 hand-object interaction 任务中，触觉不是附加信息，而是决定操作成功与否的基础变量，因为稳定接触、局部滑移、施力分布这些状态，视觉并不总能可靠恢复。</p><p>EgoTouch 作为数据集提供的是案例证据与基础设施证据：302 个任务、4,530 个 episode、三视角视频、42 个关节、压力图，并且逐帧时间对齐。这些数字本身不能直接证明‘触觉将主导具身智能’，但它们证明了一个更扎实的事实：过去缺失的模态，现在开始具备了系统化采集和标准化建模的条件。</p><p>TouchAnything 则提供了机制证据。shared DINOv2 encoder、learnable view embeddings、cross-view attention 和 view dropout 说明团队不是简单做多相机融合，而是在解决一个关键问题：当部分视角缺失时，模型能否仍然从剩余视觉上下文中推断触觉分布。这种设计表明，视觉到触觉的映射不应被理解为单帧重建，而更像一种受视角互补性约束的 Context Engineering 问题：ego 视角提供任务语境，腕部视角补充自遮挡下的接触细节。</p><p>材料二中最值得认真看的是两类结果。一类是多视角输入提升 Contact_IoU、Volumetric_IoU 等指标，这属于机制支持性的实验结果，说明不同视角确实承载互补的接触信息。另一类是随着数据比例增加，性能稳定提升，这是一种较弱但重要的 scaling signal，意味着视觉-触觉映射不是纯靠手工先验撑起来，而可能具备继续扩展的学习曲线。</p><p>但也要保持边界意识。材料二目前证明的是‘可以从视觉预测触觉’，而不是‘预测到的触觉足以替代真实触觉传感器用于闭环控制’。前者主要服务于表示学习与离线建模，后者才关乎实时机器人执行。这个差别不能混淆。否则很容易把数据集工作误读成已经解决了具身操作中的感知闭环问题。</p></section><section class='deep-section'><h4>四、Revo 3说明：硬件不是承载算法的外壳，而是算法能否落地的约束面</h4><p>材料三的信息最杂，既有产品参数、demo 展示、资本叙事，也有一些关于自由度和反驱的机制解释。因此必须先分层。关于融资规模、‘中国第一家脑机接口独角兽’、资本市场想象力，这些主要是热度或叙事信号，说明市场开始把灵巧手视为更大的具身入口，但它们不能直接当作技术结论。关于 Revo 3 的 21 自由度、全掌触觉、指尖视触觉、70N 握力，则是产品案例证据，说明一种硬件组合正在被押注。真正接近机制证据的，是对反驱、直驱和 sim-to-real gap 关系的解释。</p><p>这篇材料里最有分析价值的判断，是‘反驱最大的意义不是防撞，而是让训练更友好’。这句话实际上在描述一个常被忽略的现实：很多策略在仿真中可学，不是因为算法足够强，而是因为仿真假设了某种接触顺应性；如果真机关节太刚、传动滞后太大，策略一落地就会因接触力失真而失败。也就是说，sim-to-real gap 并不只来自视觉域偏移或动力学参数误差，还来自执行器对接触的“性格”不同。</p><p>关于 21 自由度是甜点位的说法，则更接近企业内部测试导向的案例结论。它提示我们，自由度的价值不是越多越好，而是存在结构性阈值：过低会限制模仿与操作空间，过高则可能引入控制复杂度、成本和可靠性问题。但这一结论目前仍缺乏独立复现实验支持，因此应视为待验证假说，而不是行业共识。</p><p>即便如此，材料三仍然与前两篇形成了重要互证。A₁ 解决的是推理是否赶得上控制节奏，EgoTouch 解决的是系统是否知道自己如何接触了物体，Revo 3 所代表的思路则在问：即使模型算出来了、状态也估出来了，手本身能不能把动作柔顺地做出来。它把硬件重新拉回闭环中心，提醒我们具身智能不能只把硬件当作 inference endpoint。</p></section><section class='deep-section'><h4>五、三篇材料合起来揭示的机制链：算力、触觉、顺应性不是并列模块，而是彼此制约</h4><p>这组三篇材料的最大洞见，在于它们拼出了一个更完整的失败链条。若模型推理太慢，机器人来不及在接触窗口内动作；若缺少触觉或可靠的接触估计，系统不知道已经抓稳还是正在滑脱；若执行端缺乏反驱与顺应性，策略即便正确也会在真实接触中因过刚而失败。于是，看似独立的研究方向，实际上分别瞄准了同一闭环里的不同失效源。</p><p>这也解释了为什么具身智能近年的很多 demo 看起来‘每一项都像有进展’，但整体落地速度仍然慢。因为 demo 往往只证明链条某一段是通的，却没有证明整条链能在同一时间预算、同一硬件约束、同一任务分布下稳定协作。材料一、二、三恰恰分别说明：闭环中的每一层都不能再被当作理所当然的黑盒。</p><p>从研究组织的角度看，这意味着领域焦点正在变化。过去更像是“感知模型、控制算法、机械设计”三条分离赛道；现在则更像系统协同优化问题。比如，自适应推理会影响控制频率与采样策略，触觉建模会改变状态表示和成功判定方式，反驱设计会重塑策略搜索空间和 sim-to-real 的可迁移性。它们不是下游适配关系，而是上游共设计关系。</p><p>因此，更准确的表述不是‘触觉重要了’或‘VLA 更高效了’，而是具身智能正在从以模型为中心的叙事，转向以闭环可用性为中心的叙事。谁能把模型、感知与执行器的耦合关系解释清楚，谁才在真正推进这条赛道。</p></section><section class='deep-section'><h4>六、反证、边界条件与下一轮阅读要验证的问题</h4><p>这组证据虽然足以形成判断，但远不足以下结论。首先，材料一只有一个强案例。A₁ 的自适应截断是否能在更多 VLA backbone、更多动作头范式、更多长时序任务中保持成功率与稳定性，还需要后续阅读验证。尤其要关注：提前退出是否会在边界任务、接触精细任务或异常场景中积累隐性错误。</p><p>其次，材料二强调触觉的重要性，但还没有直接证明视觉预测触觉比真实触觉传感更适合作为在线控制输入。下一轮最需要寻找的反证，是那些加入触觉后收益有限、甚至因传感噪声和系统复杂度导致性能下降的研究。如果这类材料大量出现，那么‘触觉是下一块核心拼图’就需要改写为‘触觉在特定操作子任务上关键，但不是普遍主导变量’。</p><p>再次，材料三关于 21 自由度甜点位、反驱显著改善训练友好性等判断，目前很大程度依赖企业叙述与 demo 解释。下一轮应优先寻找第三方 Benchmark、公开策略迁移实验、长期耐久数据以及与绳驱/连杆方案的可比测试。否则，很容易把优秀产品叙事误当作硬件路线已被验证。</p><p>还要警惕一个可能的反向解释：这三篇材料都来自偏前沿、偏展示性的技术报道，因此天然更容易高估‘系统闭环重建’的进展，而低估集成成本、维护复杂度、传感器可靠性、标定负担和数据采集成本。如果后续材料显示，大多数商业部署仍依赖低自由度夹爪、简单视觉和任务工程，那么当前判断的适用范围就应限定在高灵巧、高泛化要求的操作场景，而非整个机器人行业。</p><p>下一轮最值得验证的问题至少有四个。第一，自适应推理与触觉输入能否联动：当接触不确定性升高时，模型是否应动态增加计算深度。第二，视觉预测触觉能否作为真实触觉传感器的预训练桥梁，而不只是替代品。第三，反驱和高自由度是否真的显著提升策略学习样本效率与 sim-to-real 成功率。第四，哪些 Benchmark 才能同时评估实时性、接触稳定性与硬件可迁移性，而不是只评单次任务成功率。</p></section>
+        <section class='deep-section'><h4>一、先说结论：这不是“机器人接入大模型”的故事，而是“谁能重建物理闭环”的故事</h4><p>如果只看表层，这四篇材料分别讲了世界模型、VLA 提效、触觉数据集和灵巧手产品，似乎分散。但放在一起看，它们共同回答的是同一个问题：机器人为什么迟迟不能像语言模型那样靠单一尺度扩张迅速跨越现实门槛？答案是，具身智能不是纯认知问题，而是一个被物理世界强约束的系统工程问题。</p><p>这意味着，行业重点已经不再是“模型会不会输出动作”，而是“动作是否在真实世界里足够快、足够稳、知道自己为什么成功或失败、并且能迁移到不同硬件和场景”。从这个角度看，真正的主线不是更大参数，也不是更炫 demo，而是能否把感知、表征、控制、硬件和评测串成闭环。</p><p>四篇材料在这个闭环里各自占位很清晰。材料一更多提供机制判断：语言对4D物理时空是降维表达，因而不适合充当高频物理控制的唯一中介；材料二提供的是落地机制证据：即便采用 VLA，推理路径过长、动作头过重，也会直接压垮实时控制；材料三提供的是感知层机制证据：缺少触觉，模型连接触稳定性和力学交互都难以判定；材料四则是案例与部分机制混合证据：自由度、反驱、全掌触觉这些硬件属性，不是产品参数点缀，而是训练可迁移性的前提条件。</p><p>换句话说，这组材料真正支持的不是“多模态更好”这种空泛结论，而是一个更具体的命题：具身智能的上限由物理闭环完整度决定，而不是由语言能力单独决定。</p></section><section class='deep-section'><h4>二、语言不是消失了，而是从“控制中枢”退到“辅助接口”</h4><p>材料一最重要的贡献，不是“AI是匹脱缰野马”这种传播性表述，而是它提出了一个很强的机制判断：语言是对复杂物理时空的扁平投影，因此会丢失大量真实世界上下文。这一点若成立，就直接挑战了很多具身叙事里默认的前提——即把语言模型放在感知与动作之间，天然就是最优路线。</p><p>这个判断的价值，在于它解释了为什么具身系统常常在“会说、会解释、会规划”与“真能稳定操作”之间出现落差。语言适合抽象说明、任务分解、跨主体沟通，但未必适合作为毫秒级控制回路中的主中介。材料一提出用 Intention 语义层而不是自然语言承接动作生成，本质上是在寻找一种更贴近控制本体、又保留可解释性的中间表示。</p><p>这里的证据性质需要分清。关于“语言会损失物理上下文”的部分，属于机制证据；关于 PonyWorld 2.0、自我诊断、AI 评测 AI 的部分，属于案例中的系统设想与方法路径；至于“通往物理 AGI 的道路已经被打开”这类说法，则更多是叙事信号，不宜直接当作已经被验证的技术结论。</p><p>但即便如此，材料一的机制判断仍然很关键，因为它为其余三篇材料提供了解释框架：如果语言不是具身控制的天然核心，那我们就必须重新重视那些此前在互联网 AI 中被边缘化的东西——实时性、接触、意图表示、硬件顺应性和自我评测。</p></section><section class='deep-section'><h4>三、VLA 的问题不是方向错误，而是它把“能做”与“能部署”分开了</h4><p>材料二的意义，在于它没有继续争论 VLA 该不该做，而是把焦点推进到更现实的一层：VLA 如果太慢、太贵，就算在 Benchmark 上可行，也无法成为普通硬件上的控制基础设施。这里最有价值的是预算感知自适应推理、逐层动作一致性提前退出、层间截断流匹配这些具体设计，它们都属于机制证据，因为它们解释了为什么计算量和时延可以下降，而不是只报一个更好的结果。</p><p>这篇材料的深层含义，是把具身智能从“模型能力竞赛”拉回“控制系统设计”。机器人不像聊天机器人，推理深一点通常只是多等一会儿；机器人多等几十到几百毫秒，可能就意味着错过接触窗口、轨迹抖动、抓取失败，甚至安全风险。因此，实时性不是附属优化项，而是能力定义的一部分。</p><p>A₁ 的结果——时延最高降低72%、计算量最高减少76.6%、在 RoboChallenge 上优于若干开源基线——属于案例证据，说明这类机制有现实效果。但“VLA 已成为开放世界机器人操作的核心范式”这类表述，更多还是阶段性的行业共识信号，不能等同于路线已经收敛。因为材料一实际上就在对“语言居中”的 VLA 逻辑提出边界挑战。</p><p>因此，这里不能简单得出“VLA 赢了”或“VLA 不行”两种粗糙结论。更准确的说法是：VLA 目前仍是重要过渡范式，尤其在任务表达、泛化和开源生态上有优势，但它必须被压缩、截断、预算化，才能真正进入具身控制主回路。否则，它更像一个昂贵的研究接口，而不是稳定的执行系统。</p></section><section class='deep-section'><h4>四、触觉不是锦上添花，而是把“看见动作”升级为“理解接触”</h4><p>材料三提供了这组综述里最清楚的感知层机制补丁：视觉可以看到姿态与对象，触觉才真正告诉系统接触是否成立、施力是否稳定、操作是否成功。对于抓取、插拔、按压、双手协作这类任务，仅靠视觉经常只能推测“像是成功了”，却无法确认“力学上已经闭合”。</p><p>EgoTouch 的价值首先在数据层。第一人称视频、腕部视角、双掌压力图、42个关节位姿的逐帧时间对齐，不只是模态堆砌，而是在构造一种过去稀缺的监督信号：同一个操作过程里，视觉变化、接触分布和动作结构可以被同时建模。这是机制证据，因为它解释了为什么模型有机会学到视觉到触觉的映射，而不是停留在单纯关联。</p><p>TouchAnything 使用 shared DINOv2 encoder、view embeddings、cross-view attention 和 view dropout 做多视角触觉预测，也属于机制证据；而“302项任务、4530个 episodes、百万帧同步对齐”“三视角输入优于单视角”“数据规模扩大带来稳定 scaling”则属于案例证据，表明这条路线具备可扩展性。</p><p>这篇材料也帮助我们修正一个常见误解：所谓 physical grounding，不等于多装几个传感器，而是让模型获得能够判定接触、摩擦、滑移、稳定性的关键信号。如果没有这类信号，机器人做的仍然可能只是‘视觉驱动的动作猜测’。</p></section><section class='deep-section'><h4>五、硬件不是算法的外设，而是算法能否成立的先验条件</h4><p>材料四最值得保留的，不是融资额或‘全球首个’这类高热度叙事，而是它把灵巧手硬件参数与训练迁移机制直接连了起来。自由度、直驱、可反驱、全掌触觉、指尖视触觉，这些不是宣传页上的配置表，而是在回答一个核心问题：算法在仿真里学到的东西，为什么能或不能落到真机上。</p><p>其中最强的机制证据，是对反驱的解释。材料明确指出，sim-to-real gap 的一个来源是仿真中默认接触可顺应，而真实硬件若过刚，就会出现接触力过大、卡死和震荡。这使得“反驱”不只是安全特性，更是控制策略能够迁移的关键物理条件。这一判断与材料三的触觉补丁构成互证：前者解决接触时能不能柔顺响应，后者解决接触后能不能感知其状态。</p><p>关于21个自由度是否是‘甜点位’，目前更适合作为单案例证据而非普遍规律。它说明自由度提升可能存在非线性收益区间，但还不足以推广为整个行业的统一结论，因为不同手型、控制器、任务集和成本约束都可能改变这个最优点。类似地，Revo 3 已出现在公开数据集、完成医疗康复和家居任务，这些都属于案例展示，能证明产品方向有可行性，但不能直接证明商业规模化或算法通用性。</p><p>材料四里关于融资、资本市场位置、脑机接口叙事延展等内容，则主要是热度与叙事信号。它们能说明市场正在把灵巧手视为具身智能的重要执行端，但不能拿来替代技术成熟度判断。</p></section><section class='deep-section'><h4>六、把四篇材料拼起来，真正浮现的是一条新的技术分工</h4><p>如果把这四篇材料当成同一系统的不同切面，可以得到一个比“多模态具身智能”更有解释力的结构。材料一在重写表征层：不是自然语言统领一切，而是寻找更接近物理控制的世界模型与意图层；材料二在重写计算层：不是默认全程满算，而是按任务复杂度动态分配算力；材料三在重写感知层：不是只看见场景，而是补齐接触与力学信号；材料四在重写执行层：不是把算法嫁接到任意末端，而是让硬件本身具备顺应、感知和足够动作空间。</p><p>这条分工链意味着，具身智能未来的竞争将越来越像“系统协同效率”竞争，而不是单点冠军赛。没有高保真表征，控制容易依赖语言近似；没有预算化推理，再好的模型也跑不进真实时序；没有触觉数据，接触就成了黑箱；没有可反驱硬件，训练策略就容易断在 sim-to-real 上。</p><p>从证据强弱看，材料一和材料二更偏机制导向，材料三处在‘数据基础设施 + 初步机制’的位置，材料四则偏‘硬件案例 + 机制补充’。它们合起来能支撑一个中等强度的判断：具身智能正在从模型中心主义转向闭环中心主义。但它们还不足以支撑更强的结论，比如哪条路线已经明确胜出，或者商业化大规模普及已近在眼前。</p></section><section class='deep-section'><h4>七、反证与边界：这组材料哪里可能看错了</h4><p>第一种反证来自路线层面。材料一对语言中介提出挑战，但材料二又展示了 VLA 在效率优化后仍可能很有竞争力。下一轮阅读要验证的不是谁‘对谁错’，而是任务分层是否正在发生：高层任务指定、语义泛化和长程规划仍可能依赖语言，而低层控制与接触闭环则逐步去语言化。如果这一分层成立，那么“反语言”与“做 VLA”并不矛盾，只是分别占据控制栈的不同层级。</p><p>第二种反证来自数据与评测。材料三证明触觉重要，但还没有证明视觉预测触觉足以替代真实触觉传感器，也没有证明在未见材质、复杂形变、高速交互中仍能稳定泛化。材料四展示了全掌触觉与视触觉融合的价值，但缺少统一 Benchmark 来比较不同硬件在长期稳定性、维护成本和控制学习效率上的真实差异。</p><p>第三种反证来自成本与工程复杂度。闭环越完整，系统越复杂：更多传感器、更多标定、更高数据采集成本、更难维护的硬件、更复杂的训练与部署链路。材料二在算力成本上给出积极信号，但材料三和材料四其实都隐含了新的工程负担。闭环中心主义是否真的优于‘较弱感知 + 更强先验 + 更便宜硬件’，目前证据还不充分。</p><p>第四种边界来自场景差异。自动驾驶、机械臂操作、灵巧手 manipulation 虽然都属于具身智能，但约束完全不同。材料一来自自动驾驶世界模型，材料二和材料三更偏操作任务，材料四则聚焦末端执行器。它们可以相互启发，但不能未经验证地把一个子领域的方法直接推广到另一个子领域。</p></section><section class='deep-section'><h4>八、下一轮最值得验证的问题，不是更多新闻，而是更硬的比较证据</h4><p>下一轮阅读最该补的，不是再来一篇‘机器人会做什么新动作’，而是三类更硬的材料。第一类是分层架构比较：语言居中的 VLA、意图中间层、纯传感器到动作映射，这三者在不同任务上的精度、时延、可解释性和数据效率到底如何取舍。第二类是触觉价值比较：真实触觉传感器、视觉预测触觉、无触觉方案，分别在哪些任务上出现显著分水岭。第三类是硬件可迁移性比较：反驱、自由度、全掌触觉等硬件设计究竟让训练样本效率提升多少、sim-to-real gap 缩小多少、维护成本增加多少。</p><p>只有这些问题得到更系统的对照证据，当前这组材料提出的核心判断才会从‘有解释力的趋势判断’升级为‘更稳固的行业认知’。在此之前，最合理的态度不是押注某个单点技术，而是持续追踪谁能把表征、算力、触觉和执行真正连成一个低延迟、可评测、可复现的物理闭环。</p></section>
       </div>
     
         <details class="evidence-detail">
           <summary>证据附录：问题、模式、案例与下一轮问题</summary>
-        <p class="review-question">在这 3 篇「机器人 / 具身智能」文章中，超越单篇 claim 的重复结构是什么？</p>
-        <p>这组「机器人 / 具身智能」综述目前处于「早期成形」阶段。最强的重复模式是 embodied-ai、tactile-sensing、physical-grounding；概念层正在围绕 embodied_ai、physical_grounding、tactile_sensing 聚集。因此综述重点不应只是罗列文章 claim，而应判断这些案例是否在描述同一个底层机制。</p>
+        <p class="review-question">在这 4 篇「机器人 / 具身智能」文章中，超越单篇 claim 的重复结构是什么？</p>
+        <p>这组「机器人 / 具身智能」综述目前处于「反复出现」阶段。最强的重复模式是 embodied-ai、physical-grounding、tactile-sensing；概念层正在围绕 embodied_ai、physical_grounding、tactile_sensing 聚集。因此综述重点不应只是罗列文章 claim，而应判断这些案例是否在描述同一个底层机制。</p>
         <div class="split">
           <div>
             <h4>分析性结论</h4>
-            <ul><li><strong>embodied-ai 是当前的组织性模式。</strong><p>材料把物理交互视为独立智能问题：感知与行动本身就是系统边界的一部分。</p></li><li><strong>tactile-sensing 是当前的组织性模式。</strong><p>这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。</p></li><li><strong>physical-grounding 是当前的组织性模式。</strong><p>重复主张是，触觉、第一人称视频或传感器等物理信号可以提供文本无法提供的 grounding。</p></li></ul>
+            <ul><li><strong>embodied-ai 是当前的组织性模式。</strong><p>材料把物理交互视为独立智能问题：感知与行动本身就是系统边界的一部分。</p></li><li><strong>physical-grounding 是当前的组织性模式。</strong><p>重复主张是，触觉、第一人称视频或传感器等物理信号可以提供文本无法提供的 grounding。</p></li><li><strong>tactile-sensing 是当前的组织性模式。</strong><p>这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。</p></li></ul>
           </div>
           <div>
             <h4>主导模式</h4>
-            <ul><li><strong>embodied-ai</strong> <span class='muted'>(反复出现, 3 篇)</span><p>材料把物理交互视为独立智能问题：感知与行动本身就是系统边界的一部分。</p></li><li><strong>tactile-sensing</strong> <span class='muted'>(早期成形, 2 篇)</span><p>这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。</p></li><li><strong>physical-grounding</strong> <span class='muted'>(早期成形, 2 篇)</span><p>重复主张是，触觉、第一人称视频或传感器等物理信号可以提供文本无法提供的 grounding。</p></li><li><strong>vla-model</strong> <span class='muted'>(单案例, 1 篇)</span><p>这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。</p></li></ul>
+            <ul><li><strong>embodied-ai</strong> <span class='muted'>(反复出现, 4 篇)</span><p>材料把物理交互视为独立智能问题：感知与行动本身就是系统边界的一部分。</p></li><li><strong>physical-grounding</strong> <span class='muted'>(反复出现, 3 篇)</span><p>重复主张是，触觉、第一人称视频或传感器等物理信号可以提供文本无法提供的 grounding。</p></li><li><strong>tactile-sensing</strong> <span class='muted'>(早期成形, 2 篇)</span><p>这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。</p></li><li><strong>autonomous-driving</strong> <span class='muted'>(单案例, 1 篇)</span><p>这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。</p></li></ul>
           </div>
         </div>
         <div class="split">
           <div>
             <h4>案例分析</h4>
-            <ul><li><strong><a href="https://mp.weixin.qq.com/s/u1lUvNUZErK1AwiBpa-jeA" target="_blank" rel="noreferrer">解决VLA模型落地难，普通硬件也能跑！全透明全开源的高效VLA模型把推理成本砍掉76%</a></strong><p>这个案例为 embodied-ai, vla-model, vision-language-action 提供了具体的文章级证据。</p><p class='muted'>它不能单独构成结论；需要和本综述中的其他案例比较后才能判断其结构性意义。</p></li><li><strong><a href="https://mp.weixin.qq.com/s/qvFg1-bihlvvHGkBgJEKBA" target="_blank" rel="noreferrer">补全具身智能「触觉」拼图！哈工深发布EgoTouch：300项操作任务，百万帧视觉触觉同步对齐</a></strong><p>这个案例为 embodied-ai, tactile-sensing, physical-grounding 提供了具体的文章级证据。</p><p class='muted'>它不能单独构成结论；需要和本综述中的其他案例比较后才能判断其结构性意义。</p></li><li><strong><a href="https://mp.weixin.qq.com/s/m1P0KXuGzgrS-D0K7Z1Bug" target="_blank" rel="noreferrer">https://mp.weixin.qq.com/s/m1P0KXuGzgrS-D0K7Z1Bug</a></strong><p>这个案例为 embodied-ai, tactile-sensing, physical-grounding 提供了具体的文章级证据。</p><p class='muted'>它不能单独构成结论；需要和本综述中的其他案例比较后才能判断其结构性意义。</p></li></ul>
+            <ul><li><strong><a href="https://mp.weixin.qq.com/s/DOqsRBWk0Yr-gcTdTmqqzQ" target="_blank" rel="noreferrer">AI是匹脱缰野马，Harness是这个时代最关键的能力</a></strong><p>这个案例为 embodied-ai, physical-grounding, autonomous-driving 提供了具体的文章级证据。</p><p class='muted'>它不能单独构成结论；需要和本综述中的其他案例比较后才能判断其结构性意义。</p></li><li><strong><a href="https://mp.weixin.qq.com/s/u1lUvNUZErK1AwiBpa-jeA" target="_blank" rel="noreferrer">解决VLA模型落地难，普通硬件也能跑！全透明全开源的高效VLA模型把推理成本砍掉76%</a></strong><p>这个案例为 embodied-ai 提供了具体的文章级证据。</p><p class='muted'>它不能单独构成结论；需要和本综述中的其他案例比较后才能判断其结构性意义。</p></li><li><strong><a href="https://mp.weixin.qq.com/s/qvFg1-bihlvvHGkBgJEKBA" target="_blank" rel="noreferrer">补全具身智能「触觉」拼图！哈工深发布EgoTouch：300项操作任务，百万帧视觉触觉同步对齐</a></strong><p>这个案例为 embodied-ai, physical-grounding, tactile-sensing 提供了具体的文章级证据。</p><p class='muted'>它不能单独构成结论；需要和本综述中的其他案例比较后才能判断其结构性意义。</p></li><li><strong><a href="https://mp.weixin.qq.com/s/m1P0KXuGzgrS-D0K7Z1Bug" target="_blank" rel="noreferrer">https://mp.weixin.qq.com/s/m1P0KXuGzgrS-D0K7Z1Bug</a></strong><p>这个案例为 embodied-ai, physical-grounding, tactile-sensing 提供了具体的文章级证据。</p><p class='muted'>它不能单独构成结论；需要和本综述中的其他案例比较后才能判断其结构性意义。</p></li></ul>
           </div>
           <div>
             <h4>张力与下一步问题</h4>
-            <ul><li><strong>模式重叠</strong><p>当前综述同时混合了 embodied-ai 和 tactile-sensing。下一轮应判断它们是同一机制，还是两个相邻主题。</p></li></ul>
+            <ul><li><strong>模式重叠</strong><p>当前综述同时混合了 embodied-ai 和 physical-grounding。下一轮应判断它们是同一机制，还是两个相邻主题。</p></li></ul>
             <ul><li>哪类文章最能反驳当前对「机器人 / 具身智能」的解释？</li><li>本综述中的哪个概念应该在人审后提升、合并或重命名？</li></ul>
           </div>
         </div>
         </details>
-        <div class="concept-strip"><span class='pill concept'>embodied_ai</span><span class='pill concept'>physical_grounding</span><span class='pill concept'>tactile_sensing</span><span class='pill concept'>adaptive_inference</span><span class='pill concept'>early_exit</span><span class='pill concept'>flow_matching</span><span class='pill concept'>open_source_model</span><span class='pill concept'>real_world_robotics</span></div>
+        <div class="concept-strip"><span class='pill concept'>embodied_ai</span><span class='pill concept'>physical_grounding</span><span class='pill concept'>tactile_sensing</span><span class='pill concept'>agent_evaluation</span><span class='pill concept'>autonomous_driving</span><span class='pill concept'>intention_modeling</span><span class='pill concept'>reinforcement_learning</span><span class='pill concept'>robotaxi</span></div>
         </div>
       </details>
     </div>
@@ -1065,12 +1065,30 @@
               <span class="eyebrow">分类文章</span>
               <span class="category-title">机器人 / 具身智能</span>
             </span>
-            <span class="count">3 篇文章</span>
+            <span class="count">4 篇文章</span>
           </span>
           <span class="category-intro">机器人、具身智能、触觉 grounding、传感器和物理世界 agent。</span>
-          <span class="pill-row category-preview-tags"><span class='pill pattern'>embodied-ai</span><span class='pill pattern'>physical-grounding</span><span class='pill pattern'>tactile-sensing</span><span class='pill pattern'>dexterous-hand</span><span class='pill pattern'>visuotactile-sensing</span></span>
+          <span class="pill-row category-preview-tags"><span class='pill pattern'>embodied-ai</span><span class='pill pattern'>physical-grounding</span><span class='pill pattern'>tactile-sensing</span><span class='pill pattern'>autonomous-driving</span><span class='pill pattern'>world-model</span></span>
         </summary>
         <ul class="category-article-list">
+          <li class="category-article">
+            <div>
+              <h4><a href='https://mp.weixin.qq.com/s/DOqsRBWk0Yr-gcTdTmqqzQ' target='_blank' rel='noreferrer'>AI是匹脱缰野马，Harness是这个时代最关键的能力</a></h4>
+              <p>量子位专访楼天城：AI是匹脱缰野马，Harness是这个时代最关键的能力 Harness（驯马）会成为这个（AI）时代最关键的能力之一。 这是小马智行CTO楼天城，在与量子位的对话中，给出的最新判断。</p>
+              <div class="pill-row"><span class='pill pattern'>embodied-ai</span><span class='pill pattern'>physical-grounding</span><span class='pill pattern'>autonomous-driving</span><span class='pill pattern'>world-model</span><span class='pill pattern'>self-diagnosis</span><span class='pill pattern'>tool-calling</span></div>
+              <div class="article-actions">
+                <button type="button" class="article-action" data-copy="/archive 39ca3e825456 原因：">归档请求</button>
+                <button type="button" class="article-action" data-copy="/exclude 39ca3e825456 原因：">排除这篇</button>
+                <a class='article-action-link' href='https://github.com/plato3724/bayesian-llm-trend-report/issues/14' target='_blank' rel='noreferrer'>管理 issue</a>
+              </div>
+            </div>
+            <div class="article-meta">
+              <span>39ca3e825456</span>
+              <span>高</span>
+              <span>已获取</span>
+            </div>
+          </li>
+        
           <li class="category-article">
             <div>
               <h4><a href='https://mp.weixin.qq.com/s/m1P0KXuGzgrS-D0K7Z1Bug' target='_blank' rel='noreferrer'>https://mp.weixin.qq.com/s/m1P0KXuGzgrS-D0K7Z1Bug</a></h4>
@@ -1291,10 +1309,10 @@
                 <span class="type-badge thinking">思考框架</span>
                 <span class="status-badge">LLM 初稿</span>
               </div>
-              <h3>机制与叙事区分框架</h3>
-              <p>用于判断一组材料是在揭示可重复的底层机制，还是仅在放大案例叙事、热度信号或单次成功故事。</p>
-              <div class="pill-row"><span class='pill category'>动态综述抽象</span><span class='pill category'>趋势判断校正</span><span class='pill category'>单案例主题评估</span><span class='pill category'>投资与产业叙事辨析</span></div>
-              <ul><li>这组材料共同指向的底层机制是什么，而不是各自的表面 claim 是什么？</li><li>证据类型主要是机制证据、结果证据、市场信号，还是传播叙事？分别占比如何？</li><li>若该机制成立，它应当通过什么中间变量传导到结果，而不是只在终局指标上体现？</li><li>目前最强反证会来自哪里：失败案例、对照实验、跨场景失效，还是成本与组织摩擦？</li><li>哪些条件是该机制成立的前提，一旦前提消失，结论是否还成立？</li><li>这组材料是在描述同一机制的不同切面，还是把相邻但不同的主题混在一起？</li></ul>
+              <h3>机制—证据—边界三层判断框架</h3>
+              <p>用于判断一个主题是在揭示可迁移的底层机制，还是只是在重复个案叙事，并系统处理反证、失败案例与适用边界。</p>
+              <div class="pill-row"><span class='pill category'>主题综述抽象</span><span class='pill category'>趋势判断</span><span class='pill category'>单案例向稳定主题过渡</span><span class='pill category'>研究与产业信号辨别</span></div>
+              <ul><li>这组材料共同指向的底层机制是什么，而不是各自表面的 claim 是什么？</li><li>当前证据属于机制证据、结果证据、叙事信号还是热度信号？分别有多强？</li><li>有哪些关键前提一旦不成立，当前解释就会失效？</li><li>最能反驳该解释的失败案例、负面结果或替代解释是什么？</li><li>哪些看似相邻的模式其实可能是同一机制，哪些可能只是概念混杂？</li><li>该机制在什么场景下可迁移，在什么规模、成本、组织条件下会失灵？</li></ul>
             </article>
             
             <article class="card framework-card thinking-framework">
@@ -1302,10 +1320,10 @@
                 <span class="type-badge thinking">思考框架</span>
                 <span class="status-badge">LLM 初稿</span>
               </div>
-              <h3>运行时瓶颈分析框架</h3>
-              <p>用于分析一个系统的关键竞争点是否已经从模型能力转移到运行时组织，包括上下文、状态、路由、验证、恢复与资源调度。</p>
-              <div class="pill-row"><span class='pill category'>Ai Agent</span><span class='pill category'>Context Engineering</span><span class='pill category'>开发者工具</span><span class='pill category'>具身智能运行时</span><span class='pill category'>语音生成工作流</span></div>
-              <ul><li>系统的真实瓶颈位于生成能力、上下文装配、状态持久化、工具调用还是执行验证？</li><li>输入如何被转化为可执行状态，哪些信息被保留、压缩、丢弃或延迟加载？</li><li>执行过程中如何路由到正确工具、模块、子代理或硬件资源？</li><li>系统如何发现错误、阻断错误扩散，并支持回滚、重试与恢复？</li><li>长时程任务中的成本、时延、权限与安全边界如何被控制？</li><li>当任务复杂度、请求长度或环境噪声上升时，系统在哪一环最先退化？</li></ul>
+              <h3>运行时系统设计框架</h3>
+              <p>用于分析一个 AI 或软件系统的真实竞争力是否来自模型本身，还是来自运行时对上下文、状态、工具、验证、恢复与权限的组织能力。</p>
+              <div class="pill-row"><span class='pill category'>Ai Agent</span><span class='pill category'>记忆 / Context Engineering</span><span class='pill category'>开发者工具</span><span class='pill category'>产品化系统设计</span></div>
+              <ul><li>系统把任务拆成了哪些可执行、可校验、可恢复的单元？</li><li>上下文如何被装配、压缩、路由与更新，错误上下文如何被抑制？</li><li>状态如何持久化、共享、回滚与审计，长期运行如何避免漂移？</li><li>工具、子系统或子代理如何被调度，失败后如何收敛而非放大噪音？</li><li>验证、质量闸门、权限边界和沙盒隔离如何设计？</li><li>在长时程任务中，成本、延迟、错误率与用户体验之间如何取舍？</li></ul>
             </article>
             
             <article class="card framework-card thinking-framework">
@@ -1313,10 +1331,10 @@
                 <span class="type-badge thinking">思考框架</span>
                 <span class="status-badge">LLM 初稿</span>
               </div>
-              <h3>边界条件与失败地图框架</h3>
-              <p>用于系统性识别一个观点在哪些条件下成立、在哪些条件下失效，并把失败视为框架的一部分而非例外。</p>
-              <div class="pill-row"><span class='pill category'>反证设计</span><span class='pill category'>技术评估</span><span class='pill category'>产品上线前审查</span><span class='pill category'>综述中的风险段落</span><span class='pill category'>失败案例归纳</span></div>
-              <ul><li>该结论依赖哪些明确前提：数据、网络、算力、组织流程、用户行为或硬件条件？</li><li>最常见的失败模式是什么：错误上下文、错误路由、错误评测、错误激励，还是物理执行失败？</li><li>失败是局部可修复问题，还是会沿系统链条放大为结构性崩溃？</li><li>有没有看似成功、实则靠人工兜底、场景筛选或选择性展示维持的案例？</li><li>哪些边界条件一旦越过，原先优势会转化为成本负担、复杂度负担或不稳定性？</li><li>需要什么反例或负样本，才能真正挑战当前解释？</li></ul>
+              <h3>信号到结构成熟度框架</h3>
+              <p>用于区分一个新主题目前只是出现市场或技术信号，还是已经具备可重复、可扩展、可商业化的结构性基础。</p>
+              <div class="pill-row"><span class='pill category'>消费经济</span><span class='pill category'>产品 / 商业</span><span class='pill category'>开发者工具</span><span class='pill category'>多模态 Ai</span><span class='pill category'>新兴赛道成熟度判断</span></div>
+              <ul><li>当前看到的是单点爆发、重复信号，还是跨案例机制收敛？</li><li>热度、传播、融资、stars、搜索量与真实 adoption 分别说明什么，不能说明什么？</li><li>是否已有独立对照、长期数据、失败案例与经营质量证据？</li><li>价值是否来自一次性情绪或 Demo，还是来自持续流程、基础设施或交易结构？</li><li>规模化时最可能暴露的瓶颈是成本、组织摩擦、网络效应缺失还是技术退化？</li><li>如果把最乐观叙事去掉，这个主题仍然剩下什么稳定价值？</li></ul>
             </article>
             
             <article class="card framework-card thinking-framework">
@@ -1324,10 +1342,10 @@
                 <span class="type-badge thinking">思考框架</span>
                 <span class="status-badge">LLM 初稿</span>
               </div>
-              <h3>模式重叠拆分框架</h3>
-              <p>用于处理综述中常见的概念混叠问题，判断多个高频标签是在描述同一机制、上下游链条，还是被误并列的相邻主题。</p>
-              <div class="pill-row"><span class='pill category'>活综述维护</span><span class='pill category'>主题命名</span><span class='pill category'>知识库概念治理</span><span class='pill category'>跨文章聚类校正</span></div>
-              <ul><li>高频概念之间是因果关系、包含关系、并列关系，还是仅仅共现关系？</li><li>如果去掉其中一个概念，剩余解释是否仍然成立？</li><li>这些概念对应的是同一系统层，还是分属模型层、运行时层、部署层或商业层？</li><li>不同文章对同一词的使用是否稳定，还是存在命名漂移与语义滑动？</li><li>最适合的处理方式是合并、重命名、上升一级抽象，还是拆成两个综述？</li><li>哪一类新增文章最有助于区分这些模式究竟是否同源？</li></ul>
+              <h3>瓶颈重配框架</h3>
+              <p>用于分析新技术的真实价值是否来自能力增加，还是来自把系统瓶颈从一个环节转移、压缩或重组，从而重画成本结构与价值捕获位置。</p>
+              <div class="pill-row"><span class='pill category'>Ai 基础设施</span><span class='pill category'>产品 / 商业</span><span class='pill category'>开发者工具</span><span class='pill category'>记忆 / Context Engineering</span><span class='pill category'>供应链与价值链分析</span></div>
+              <ul><li>原系统的主瓶颈是什么：算力、带宽、上下文、验证、控制权还是交易流通？</li><li>新方案改变的是能力上限，还是瓶颈位置与约束形式？</li><li>瓶颈被解除后，新的稀缺环节转移到了哪里？</li><li>谁获得了新的调度权、定价权或收费权？</li><li>该重配是否依赖某个隐含前提，如模型结构变化、组织激励或硬件条件？</li><li>一旦新瓶颈出现，原先收益会不会迅速回吐？</li></ul>
             </article>
             
             <article class="card framework-card expression-template">
@@ -1335,9 +1353,9 @@
                 <span class="type-badge expression">表达模板</span>
                 <span class="status-badge">LLM 初稿</span>
               </div>
-              <h3>动态综述综合判断模板</h3>
-              <p>用于把多篇主题材料整合成一个可更新的中层判断，而不是逐篇摘录。</p>
-              <ul><li>先定义综述要回答的中心问题：这组材料共同在解释什么变化</li><li>提炼重复出现的模式，并指出它们可能对应的共同底层机制</li><li>给出一条核心 thesis：真正变化发生在哪一层，而不是表面热点是什么</li><li>拆解机制链条：前提条件—中间变量—结果表现</li><li>明确当前证据强弱：哪些是机制证据，哪些只是案例、热度或市场信号</li><li>列出主要误读、反证方向与失败边界，防止正向材料自我强化</li><li>提出下一轮综述最关键的问题：该合并概念、拆分主题，还是寻找反例</li></ul>
+              <h3>主题机制综述模板</h3>
+              <p>用于把多篇材料从零散观点整合成一个可检验的主题判断。</p>
+              <ul><li>先指出这组材料重复出现的不是哪些结论，而是哪类底层机制。</li><li>概括一个核心判断：真正变化发生在什么层，而不发生在什么层。</li><li>拆出 2-4 条机制链，说明它们如何共同支持该判断。</li><li>明确当前最稳固的证据与最薄弱的证据分别是什么。</li><li>加入至少一个反证方向：什么类型的文章或案例最可能推翻当前解释。</li><li>交代概念边界：哪些相邻概念可能应合并，哪些只是暂时混杂。</li><li>以“当前更适合被视为中强度假设/早期结构/重复信号”之类判断收束。</li></ul>
             </article>
             
             <article class="card framework-card expression-template">
@@ -1345,9 +1363,9 @@
                 <span class="type-badge expression">表达模板</span>
                 <span class="status-badge">LLM 初稿</span>
               </div>
-              <h3>机制链解释模板</h3>
-              <p>用于说明一个趋势为什么成立，强调因果链和中间机制，而不是停留在结果描述。</p>
-              <ul><li>先指出表面现象或新说法为什么不足以解释变化</li><li>给出更有解释力的底层机制名称</li><li>按顺序展开机制链：起点条件—约束变化—系统重组—结果外溢</li><li>说明该机制为何比旧解释更能统一多个案例</li><li>补充该机制成立所依赖的关键前提与适用范围</li><li>指出最可能打断这条机制链的反例、失败模式或边界条件</li></ul>
+              <h3>单案例到可检验假设模板</h3>
+              <p>用于处理只有一篇或少量材料的主题，避免把个案过度上升为定论。</p>
+              <ul><li>先说明当前材料的地位：它提供的是信号，不是定论。</li><li>提炼该案例真正揭示的机制链，而非停留在新名词或结果展示。</li><li>说明这个机制一旦成立，会如何改写系统边界、成本结构或市场关系。</li><li>明确哪些部分已有证据支持，哪些仍只是推演、叙事或产业想象。</li><li>列出最关键的隐含前提与边界条件。</li><li>指出最值得寻找的反例、对照实验或跨场景验证。</li><li>以“目前最合理的定位是可检验假设”收尾。</li></ul>
             </article>
             
             <article class="card framework-card expression-template">
@@ -1355,9 +1373,9 @@
                 <span class="type-badge expression">表达模板</span>
                 <span class="status-badge">LLM 初稿</span>
               </div>
-              <h3>信号与证明区分模板</h3>
-              <p>用于写作中区分哪些内容只是趋势信号，哪些已经构成较强证明，避免把叙事写成结论。</p>
-              <ul><li>先承认材料提供了什么强信号</li><li>再界定这些信号目前证明了什么、没有证明什么</li><li>把证据分层为机制证据、实验结果、采用数据、市场结果与传播热度</li><li>指出现阶段最缺失的验证环节，如对照实验、失败案例、经营质量或跨场景复现</li><li>说明如果这些缺口得不到补足，当前结论应如何降级表述</li><li>最后给出审慎但不保守的中间判断</li></ul>
+              <h3>反误读校正模板</h3>
+              <p>用于纠正常见的热度崇拜、结果误读、概念偷换和外推过度。</p>
+              <ul><li>先点出一个最常见但危险的直觉式误读。</li><li>解释这种误读为什么看起来合理，以及它忽略了什么关键机制。</li><li>用更稳固的替代解释重写问题定义。</li><li>补充一个失败场景或反例，说明原误读在哪里会崩。</li><li>区分哪些信号可以当作提示，哪些不能当作证明。</li><li>给出更可靠的评估标准或下一步验证方法。</li></ul>
             </article>
             
             <article class="card framework-card expression-template">
@@ -1365,9 +1383,9 @@
                 <span class="type-badge expression">表达模板</span>
                 <span class="status-badge">LLM 初稿</span>
               </div>
-              <h3>概念重叠拆分模板</h3>
-              <p>用于处理综述中两个或多个高频概念混在一起时的分析与写作。</p>
-              <ul><li>先列出当前被同时使用的几个核心概念</li><li>分别给出每个概念在材料中的实际指向与系统层级</li><li>比较它们是同一机制的不同命名，还是上下游相连的不同主题</li><li>用去除法说明：去掉其中一个概念后，解释力会损失什么</li><li>提出最合理的处理方案：合并、改名、升维抽象或拆分成子主题</li><li>说明下一批最值得纳入的文章类型，以验证这一拆分是否成立</li></ul>
+              <h3>瓶颈迁移分析模板</h3>
+              <p>用于解释一个新技术为何重要，重点不写它多强，而写它如何改变瓶颈与价值分布。</p>
+              <ul><li>定义旧系统的核心瓶颈及其后果。</li><li>说明新变化解除的不是全部约束，而是其中哪个关键卡点。</li><li>分析瓶颈松动后，系统架构或流程会如何重组。</li><li>指出新的稀缺环节、收费权或控制权转移到了哪里。</li><li>说明这种变化依赖哪些前提，一旦前提消失会发生什么。</li><li>最后判断这是局部优化、结构性重配，还是仅限特定场景的改进。</li></ul>
             </article>
             </div>
     </section>

@@ -1,0 +1,48 @@
+{
+  "article_id": "39ca3e825456",
+  "title": "AI是匹脱缰野马，Harness是这个时代最关键的能力",
+  "url": "https://mp.weixin.qq.com/s/DOqsRBWk0Yr-gcTdTmqqzQ",
+  "ingested_from": "github_issue",
+  "ingested_at": "2026-04-27T01:40:52+00:00",
+  "last_updated_at": "2026-04-27T01:40:59+00:00",
+  "content_state": {
+    "full_text_status": "acquired",
+    "canonical_text_source": "knowledge_state/articles/39ca3e825456/canonical_text.txt",
+    "fetch_attempts": [
+      {
+        "attempted_at": "2026-04-27T01:40:59+00:00",
+        "status": "acquired",
+        "status_code": 200,
+        "final_url": "https://mp.weixin.qq.com/s/DOqsRBWk0Yr-gcTdTmqqzQ",
+        "content_type": "text/html",
+        "text_length": 14959,
+        "raw_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/knowledge_state/articles/39ca3e825456/raw/fetch_20260427T014052Z.html",
+        "text_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/knowledge_state/articles/39ca3e825456/raw/extract_20260427T014052Z.txt",
+        "note": "Full text looks sufficient for claim extraction."
+      }
+    ],
+    "manual_artifacts": [],
+    "next_action": "extract_claims"
+  },
+  "analysis_state": {
+    "claim_extraction_status": "not_started",
+    "verification_status": "not_started",
+    "bayesian_status": "excluded_until_verified"
+  },
+  "article_summary": {
+    "events": [],
+    "techniques": [],
+    "tools": []
+  },
+  "hypothesis_impacts": [],
+  "ingest_sources": [
+    {
+      "source_name": "github_issue",
+      "source_ref": "https://github.com/plato3724/bayesian-llm-trend-report/issues/14",
+      "source_note": "https://mp.weixin.qq.com/s/DOqsRBWk0Yr-gcTdTmqqzQ",
+      "ingested_at": "2026-04-27T01:40:52+00:00"
+    }
+  ],
+  "lifecycle_state": "active",
+  "lifecycle_events": []
+}

@@ -1,0 +1,57 @@
+{
+  "article_id": "39ca3e825456",
+  "classification_status": "drafted",
+  "generated_at": "2026-04-27T01:41:05+00:00",
+  "method": "llm_openrouter",
+  "llm_model": "openai/gpt-5.4",
+  "llm_attempts": 1,
+  "primary_category": "robotics_embodied_ai",
+  "secondary_categories": [
+    "ai_agent",
+    "research_benchmark",
+    "product_business"
+  ],
+  "tags": [
+    "embodied-ai",
+    "physical-grounding",
+    "autonomous-driving",
+    "world-model",
+    "self-diagnosis",
+    "tool-calling",
+    "agent-evaluation",
+    "intention-modeling",
+    "reinforcement-learning",
+    "robotaxi"
+  ],
+  "source_type": "media",
+  "importance": "high",
+  "rationale": "文章核心不是通用 Agent 工作流本身，而是自动驾驶这一物理世界中的具身智能系统如何通过世界模型、自我诊断、意图层和定向数据采集实现闭环进化。虽然文中反复提到工具调用、AI 驱动 AI、Harness 等 Agent 式概念，但这些都服务于“AI 司机”在真实道路环境中的感知、决策、评测与迭代，因此更适合归入机器人/具身智能。次级上可关联 AI Agent，因为其强调调用工具、人类在环与自主闭环；也可关联研究/Benchmark，因为包含世界模型2.0、评测与训练范式讨论；同时具备产品/商业信号，因为结合了小马智行的 Robotaxi 落地与规模化部署叙事。",
+  "category_scores": {
+    "ai_agent": 11,
+    "ai_infrastructure": 2,
+    "memory_context": 5,
+    "developer_tools": 6,
+    "multimodal_ai": 1,
+    "robotics_embodied_ai": 2,
+    "consumer_economy": 1,
+    "research_benchmark": 2,
+    "open_source_ecosystem": 1,
+    "policy_regulation": 0,
+    "product_business": 3
+  },
+  "fallback_suggestion": {
+    "primary_category": "ai_agent",
+    "secondary_categories": [
+      "developer_tools",
+      "memory_context"
+    ],
+    "tags": [
+      "agent-runtime",
+      "context-engineering",
+      "developer-experience",
+      "long-term-memory",
+      "software-engineering",
+      "workflow-orchestration"
+    ]
+  }
+}

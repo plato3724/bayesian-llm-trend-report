@@ -1,0 +1,71 @@
+{
+  "article_id": "39ca3e825456",
+  "extraction_status": "completed",
+  "generated_at": "2026-04-27T01:40:59+00:00",
+  "method": "deterministic_mvp",
+  "summary": "量子位专访楼天城：AI是匹脱缰野马，Harness是这个时代最关键的能力 Harness（驯马）会成为这个（AI）时代最关键的能力之一。 这是小马智行CTO楼天城，在与量子位的对话中，给出的最新判断。",
+  "main_points": [
+    "量子位专访楼天城：AI是匹脱缰野马，Harness是这个时代最关键的能力",
+    "Harness（驯马）会成为这个（AI）时代最关键的能力之一。",
+    "这是小马智行CTO楼天城，在与量子位的对话中，给出的最新判断。",
+    "在他看来，如今的AI越来越像一匹脱缰野马。它开始学会了「调用」：调用工具、调用skills……因此能通过这些脚手架，自我演进，和人类打配合。",
+    "主动性和能量大幅提升，未来甚至连人类，都可能成为被「调用」的一环。",
+    "楼教主表示，当「AI司机」也和Coding Agent一样学会了使用工具，人类工程师的角色，会逐渐从「教练」转变为「执行者」。",
+    "这也是小马智行发布PonyWorld世界模型2.0的根本原因。",
+    "自动驾驶，即将进入一个AI主导、AI评测、并「调用」人类协助的新时代。"
+  ],
+  "entities": [
+    "AI",
+    "How",
+    "Scaling",
+    "Jay",
+    "QbitAI",
+    "Harness",
+    "Intention"
+  ],
+  "claims": [
+    {
+      "id": "auto_point_1",
+      "type": "event",
+      "text": "量子位专访楼天城：AI是匹脱缰野马，Harness是这个时代最关键的能力",
+      "source": "canonical_text_heuristic"
+    },
+    {
+      "id": "auto_point_2",
+      "type": "event",
+      "text": "Harness（驯马）会成为这个（AI）时代最关键的能力之一。",
+      "source": "canonical_text_heuristic"
+    },
+    {
+      "id": "auto_point_3",
+      "type": "event",
+      "text": "这是小马智行CTO楼天城，在与量子位的对话中，给出的最新判断。",
+      "source": "canonical_text_heuristic"
+    },
+    {
+      "id": "auto_point_4",
+      "type": "event",
+      "text": "在他看来，如今的AI越来越像一匹脱缰野马。它开始学会了「调用」：调用工具、调用skills……因此能通过这些脚手架，自我演进，和人类打配合。",
+      "source": "canonical_text_heuristic"
+    },
+    {
+      "id": "auto_point_5",
+      "type": "event",
+      "text": "主动性和能量大幅提升，未来甚至连人类，都可能成为被「调用」的一环。",
+      "source": "canonical_text_heuristic"
+    },
+    {
+      "id": "auto_point_6",
+      "type": "event",
+      "text": "楼教主表示，当「AI司机」也和Coding Agent一样学会了使用工具，人类工程师的角色，会逐渐从「教练」转变为「执行者」。",
+      "source": "canonical_text_heuristic"
+    }
+  ],
+  "important_quotes": [],
+  "open_questions": [],
+  "source_trace": {
+    "record_path": "knowledge_state/articles/39ca3e825456/record.json",
+    "canonical_text_path": "knowledge_state/articles/39ca3e825456/canonical_text.txt",
+    "legacy_claims_path": "knowledge_state/articles/39ca3e825456/claims.json"
+  }
+}

@@ -65,5 +65,7 @@
       "source_note": "https://mp.weixin.qq.com/s/5E8nVOZ3KI2LFfsIa41EpA",
       "ingested_at": "2026-04-14T05:44:30+00:00"
     }
-  ]
+  ],
+  "lifecycle_state": "active",
+  "lifecycle_events": []
 }
