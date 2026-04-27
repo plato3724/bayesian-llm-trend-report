@@ -54,6 +54,7 @@ EXPRESSION_TEMPLATES_PATH = FRAMEWORKS_DIR / "expression_templates.json"
 ACTIVE_ARTICLE_STATE = "active"
 INACTIVE_ARTICLE_STATES = {"archived", "excluded"}
 VALID_ARTICLE_STATES = {ACTIVE_ARTICLE_STATE, *INACTIVE_ARTICLE_STATES}
+DEEP_REVIEW_FULL_TEXT_LIMIT = 24000
 
 
 CATEGORY_DEFINITIONS: list[dict[str, Any]] = [
@@ -669,6 +670,22 @@ def reset_global_concepts() -> None:
 def compact_text(value: str, limit: int = 5000) -> str:
     text = re.sub(r"\s+", " ", value or "").strip()
     return text[:limit]
+
+
+def review_text_payload(value: str, limit: int = DEEP_REVIEW_FULL_TEXT_LIMIT) -> dict[str, Any]:
+    text = re.sub(r"\s+", " ", value or "").strip()
+    if len(text) <= limit:
+        return {
+            "text": text,
+            "included_chars": len(text),
+            "truncated": False,
+        }
+    return {
+        "text": text[:limit],
+        "included_chars": limit,
+        "truncated": True,
+        "omitted_chars": len(text) - limit,
+    }
 
 
 def stable_hash(value: Any) -> str:
@@ -1663,6 +1680,7 @@ def collect_review_material(
             if isinstance(item, str) and item.strip()
         ][:8]
         canonical_text = load_article_text(article_id)
+        text_payload = review_text_payload(canonical_text)
         keywords = review_keywords(category_id or classification.get("primary_category"), tags)
         claims: list[str] = []
         for item in extraction.get("claims", []):
@@ -1676,7 +1694,10 @@ def collect_review_material(
                 "title": record.get("title") or article_id,
                 "url": record.get("url") or "",
                 "text_length": len(canonical_text),
-                "full_text_excerpt": compact_text(canonical_text, limit=2200),
+                "full_text": text_payload["text"],
+                "full_text_included_chars": text_payload["included_chars"],
+                "full_text_truncated": text_payload["truncated"],
+                "full_text_omitted_chars": text_payload.get("omitted_chars", 0),
                 "evidence_sentences": select_evidence_sentences(canonical_text, keywords, limit=5),
                 "summary": extraction.get("summary") or "",
                 "main_points": [
@@ -2315,6 +2336,9 @@ def deep_review_llm_system_prompt() -> str:
 - insights、essential_cognition、misreadings_to_avoid 是内部结构化元数据，不要把它们写成正文里的清单。
 - 正文中引用文章时，只使用文章标题、简称或“材料一/材料二/材料三”。不要输出 article_id、哈希 ID、文件名或内部路径。
 - 如果输入里出现 article_id，它只用于 evidence_article_ids 字段，不得出现在 title、dek、core_thesis 或 sections.paragraphs 中。
+- 以 included_articles[*].full_text 为主要证据。summary、main_points 和 claims 只是辅助索引。
+- 不要继承旧 deep review 的材料编号或旧叙述；每次都必须重新核对当前 included_articles 的标题和 full_text。
+- 不得把某一篇文章的事实、模型名、公司名或技术细节归到另一篇文章名下。
 
 只输出 JSON object，schema 如下：
 {
@@ -2436,7 +2460,10 @@ def draft_deep_review(category: str, model: str | None = None) -> dict[str, Any]
                 "claims": item.get("claims", []),
                 "tags": item.get("tags", []),
                 "text_length": item.get("text_length"),
-                "full_text_excerpt": item.get("full_text_excerpt"),
+                "full_text": item.get("full_text"),
+                "full_text_included_chars": item.get("full_text_included_chars"),
+                "full_text_truncated": item.get("full_text_truncated"),
+                "full_text_omitted_chars": item.get("full_text_omitted_chars"),
                 "evidence_sentences": item.get("evidence_sentences", []),
             }
         )
@@ -2455,7 +2482,6 @@ def draft_deep_review(category: str, model: str | None = None) -> dict[str, Any]
             }
             for index, item in enumerate(material, start=1)
         ],
-        "existing_deep_review": review.get("deep_review", {}),
         "dominant_patterns": review.get("dominant_patterns", []),
         "case_analysis": review.get("case_analysis", []),
         "tensions": review.get("tensions", []),
@@ -2487,6 +2513,16 @@ def draft_deep_review(category: str, model: str | None = None) -> dict[str, Any]
         review["source_trace"]["deep_review_method"] = "llm"
         review["source_trace"]["deep_review_model"] = result.model
         review["source_trace"]["deep_review_attempts"] = result.attempts
+        review["source_trace"]["deep_review_input_text_lengths"] = {
+            str(item.get("article_id")): item.get("full_text_included_chars")
+            for item in material
+            if item.get("article_id")
+        }
+        review["source_trace"]["deep_review_input_truncated_article_ids"] = [
+            str(item.get("article_id"))
+            for item in material
+            if item.get("article_id") and item.get("full_text_truncated")
+        ]
     reviews_doc["last_updated_at"] = now()
     br.write_json(TOPIC_REVIEWS_PATH, reviews_doc)
     report = build_report()
