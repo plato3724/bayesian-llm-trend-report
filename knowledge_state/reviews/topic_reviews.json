@@ -1,14 +1,14 @@
 {
   "created_at": "2026-04-25T15:25:50+00:00",
-  "last_updated_at": "2026-04-27T15:35:34+00:00",
+  "last_updated_at": "2026-04-27T15:37:13+00:00",
   "version": 1,
   "reviews": [
     {
       "review_id": "ai_agent_living_review",
       "title": "AI Agent动态综述",
       "status": "drafted",
-      "version": 7,
-      "last_updated_at": "2026-04-27T15:34:12+00:00",
+      "version": 8,
+      "last_updated_at": "2026-04-27T15:37:13+00:00",
       "scope": {
         "primary_category": "ai_agent",
         "tags": [
@@ -587,24 +587,15 @@
         "method": "deterministic_review_analysis_mvp",
         "deep_review_method": "llm",
         "deep_review_model": "openai/gpt-5.4",
-        "deep_review_attempts": 1,
-        "deep_review_input_text_lengths": {
-          "03f809cb0476": 6227,
-          "20fb29fec269": 4097,
-          "44f454b544d9": 3121,
-          "719a74e44194": 12214,
-          "7446bf91ca19": 5605,
-          "d11e99337c97": 3409
-        },
-        "deep_review_input_truncated_article_ids": []
+        "deep_review_attempts": 1
       }
     },
     {
       "review_id": "ai_infrastructure_living_review",
       "title": "AI 基础设施动态综述",
       "status": "drafted",
-      "version": 6,
-      "last_updated_at": "2026-04-27T15:34:12+00:00",
+      "version": 7,
+      "last_updated_at": "2026-04-27T15:37:13+00:00",
       "scope": {
         "primary_category": "ai_infrastructure",
         "tags": [
@@ -997,8 +988,8 @@
       "review_id": "consumer_economy_living_review",
       "title": "消费经济动态综述",
       "status": "drafted",
-      "version": 7,
-      "last_updated_at": "2026-04-27T15:34:12+00:00",
+      "version": 8,
+      "last_updated_at": "2026-04-27T15:37:13+00:00",
       "scope": {
         "primary_category": "consumer_economy",
         "tags": [
@@ -1380,8 +1371,8 @@
       "review_id": "developer_tools_living_review",
       "title": "开发者工具动态综述",
       "status": "drafted",
-      "version": 7,
-      "last_updated_at": "2026-04-27T15:34:12+00:00",
+      "version": 8,
+      "last_updated_at": "2026-04-27T15:37:13+00:00",
       "scope": {
         "primary_category": "developer_tools",
         "tags": [
@@ -1848,8 +1839,8 @@
       "review_id": "memory_context_living_review",
       "title": "记忆 / Context Engineering动态综述",
       "status": "drafted",
-      "version": 7,
-      "last_updated_at": "2026-04-27T15:34:12+00:00",
+      "version": 8,
+      "last_updated_at": "2026-04-27T15:37:13+00:00",
       "scope": {
         "primary_category": "memory_context",
         "tags": [
@@ -2334,8 +2325,8 @@
       "review_id": "multimodal_ai_living_review",
       "title": "多模态 AI动态综述",
       "status": "drafted",
-      "version": 7,
-      "last_updated_at": "2026-04-27T15:34:12+00:00",
+      "version": 8,
+      "last_updated_at": "2026-04-27T15:37:13+00:00",
       "scope": {
         "primary_category": "multimodal_ai",
         "tags": [
@@ -2762,8 +2753,8 @@
       "review_id": "product_business_living_review",
       "title": "产品 / 商业动态综述",
       "status": "drafted",
-      "version": 7,
-      "last_updated_at": "2026-04-27T15:34:12+00:00",
+      "version": 8,
+      "last_updated_at": "2026-04-27T15:37:13+00:00",
       "scope": {
         "primary_category": "product_business",
         "tags": [
@@ -3190,8 +3181,8 @@
       "review_id": "research_benchmark_living_review",
       "title": "研究 / Benchmark动态综述",
       "status": "drafted",
-      "version": 7,
-      "last_updated_at": "2026-04-27T15:34:12+00:00",
+      "version": 8,
+      "last_updated_at": "2026-04-27T15:37:13+00:00",
       "scope": {
         "primary_category": "research_benchmark",
         "tags": [
@@ -3610,8 +3601,8 @@
       "review_id": "robotics_embodied_ai_living_review",
       "title": "机器人 / 具身智能动态综述",
       "status": "drafted",
-      "version": 7,
-      "last_updated_at": "2026-04-27T15:34:12+00:00",
+      "version": 8,
+      "last_updated_at": "2026-04-27T15:37:13+00:00",
       "scope": {
         "primary_category": "robotics_embodied_ai",
         "tags": [
