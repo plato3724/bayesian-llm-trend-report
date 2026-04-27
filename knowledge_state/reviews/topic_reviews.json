@@ -1,14 +1,14 @@
 {
   "created_at": "2026-04-25T15:25:50+00:00",
-  "last_updated_at": "2026-04-27T01:42:28+00:00",
+  "last_updated_at": "2026-04-27T01:43:47+00:00",
   "version": 1,
   "reviews": [
     {
       "review_id": "ai_agent_living_review",
       "title": "AI Agent动态综述",
       "status": "drafted",
-      "version": 5,
-      "last_updated_at": "2026-04-27T01:41:05+00:00",
+      "version": 6,
+      "last_updated_at": "2026-04-27T01:43:47+00:00",
       "scope": {
         "primary_category": "ai_agent",
         "tags": [
@@ -574,8 +574,8 @@
       "review_id": "ai_infrastructure_living_review",
       "title": "AI 基础设施动态综述",
       "status": "drafted",
-      "version": 4,
-      "last_updated_at": "2026-04-27T01:41:05+00:00",
+      "version": 5,
+      "last_updated_at": "2026-04-27T01:43:47+00:00",
       "scope": {
         "primary_category": "ai_infrastructure",
         "tags": [
@@ -968,8 +968,8 @@
       "review_id": "consumer_economy_living_review",
       "title": "消费经济动态综述",
       "status": "drafted",
-      "version": 5,
-      "last_updated_at": "2026-04-27T01:41:05+00:00",
+      "version": 6,
+      "last_updated_at": "2026-04-27T01:43:47+00:00",
       "scope": {
         "primary_category": "consumer_economy",
         "tags": [
@@ -1351,8 +1351,8 @@
       "review_id": "developer_tools_living_review",
       "title": "开发者工具动态综述",
       "status": "drafted",
-      "version": 5,
-      "last_updated_at": "2026-04-27T01:41:05+00:00",
+      "version": 6,
+      "last_updated_at": "2026-04-27T01:43:47+00:00",
       "scope": {
         "primary_category": "developer_tools",
         "tags": [
@@ -1819,8 +1819,8 @@
       "review_id": "memory_context_living_review",
       "title": "记忆 / Context Engineering动态综述",
       "status": "drafted",
-      "version": 5,
-      "last_updated_at": "2026-04-27T01:41:05+00:00",
+      "version": 6,
+      "last_updated_at": "2026-04-27T01:43:47+00:00",
       "scope": {
         "primary_category": "memory_context",
         "tags": [
@@ -2305,8 +2305,8 @@
       "review_id": "multimodal_ai_living_review",
       "title": "多模态 AI动态综述",
       "status": "drafted",
-      "version": 5,
-      "last_updated_at": "2026-04-27T01:41:05+00:00",
+      "version": 6,
+      "last_updated_at": "2026-04-27T01:43:47+00:00",
       "scope": {
         "primary_category": "multimodal_ai",
         "tags": [
@@ -2733,8 +2733,8 @@
       "review_id": "product_business_living_review",
       "title": "产品 / 商业动态综述",
       "status": "drafted",
-      "version": 5,
-      "last_updated_at": "2026-04-27T01:41:05+00:00",
+      "version": 6,
+      "last_updated_at": "2026-04-27T01:43:47+00:00",
       "scope": {
         "primary_category": "product_business",
         "tags": [
@@ -3161,8 +3161,8 @@
       "review_id": "research_benchmark_living_review",
       "title": "研究 / Benchmark动态综述",
       "status": "drafted",
-      "version": 5,
-      "last_updated_at": "2026-04-27T01:41:05+00:00",
+      "version": 6,
+      "last_updated_at": "2026-04-27T01:43:47+00:00",
       "scope": {
         "primary_category": "research_benchmark",
         "tags": [
@@ -3581,8 +3581,8 @@
       "review_id": "robotics_embodied_ai_living_review",
       "title": "机器人 / 具身智能动态综述",
       "status": "drafted",
-      "version": 5,
-      "last_updated_at": "2026-04-27T01:41:05+00:00",
+      "version": 6,
+      "last_updated_at": "2026-04-27T01:43:47+00:00",
       "scope": {
         "primary_category": "robotics_embodied_ai",
         "tags": [
