@@ -1,0 +1,43 @@
+{
+  "article_id": "7446bf91ca19",
+  "concept_status": "drafted",
+  "generated_at": "2026-04-27T15:34:12+00:00",
+  "method": "tag_to_concept_mvp",
+  "matched_concepts": [
+    "agent_runtime",
+    "async_agent",
+    "cloud_agent",
+    "codex",
+    "coding_agent",
+    "developer_workflow",
+    "ide_integration",
+    "long_running_tasks",
+    "openclaw",
+    "task_delegation"
+  ],
+  "created_concepts": [
+    "async_agent",
+    "long_running_tasks",
+    "task_delegation",
+    "ide_integration",
+    "openclaw"
+  ],
+  "candidate_concepts": [],
+  "source_trace": {
+    "classification_path": "knowledge_state/articles/7446bf91ca19/classification.json",
+    "extraction_path": "knowledge_state/articles/7446bf91ca19/extraction.json"
+  },
+  "article_entities": [
+    "Alexander",
+    "Romain",
+    "Codex",
+    "OpenAI Codex",
+    "PRD",
+    "PM",
+    "OpenAI",
+    "Brockman",
+    "Cursor",
+    "Linear",
+    "THAvc0"
+  ]
+}

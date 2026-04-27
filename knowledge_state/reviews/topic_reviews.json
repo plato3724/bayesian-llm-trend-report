@@ -1,29 +1,29 @@
 {
   "created_at": "2026-04-25T15:25:50+00:00",
-  "last_updated_at": "2026-04-27T02:07:27+00:00",
+  "last_updated_at": "2026-04-27T15:35:34+00:00",
   "version": 1,
   "reviews": [
     {
       "review_id": "ai_agent_living_review",
       "title": "AI Agent动态综述",
       "status": "drafted",
-      "version": 6,
-      "last_updated_at": "2026-04-27T01:43:47+00:00",
+      "version": 7,
+      "last_updated_at": "2026-04-27T15:34:12+00:00",
       "scope": {
         "primary_category": "ai_agent",
         "tags": [
           "agent-runtime",
           "workflow-orchestration",
+          "coding-agent",
+          "cloud-agent",
           "context-engineering",
           "structured-memory",
           "tool-routing",
           "thin-harness-fat-skills",
-          "coding-agent",
           "repo-context",
           "deterministic-tools",
           "cli-harness",
-          "managed-agents",
-          "agent-harness"
+          "managed-agents"
         ]
       },
       "included_articles": [
@@ -31,141 +31,138 @@
         "20fb29fec269",
         "44f454b544d9",
         "719a74e44194",
+        "7446bf91ca19",
         "d11e99337c97"
       ],
-      "article_count": 5,
-      "central_question": "在这 5 篇「AI Agent」文章中，超越单篇 claim 的重复结构是什么？",
+      "article_count": 6,
+      "central_question": "在这 6 篇「AI Agent」文章中，超越单篇 claim 的重复结构是什么？",
       "maturity": "recurring",
-      "synthesis": "这组「AI Agent」综述目前处于「反复出现」阶段。最强的重复模式是 agent-runtime、workflow-orchestration、context-engineering；概念层正在围绕 agent_runtime、workflow_orchestration、cli_harness 聚集。因此综述重点不应只是罗列文章 claim，而应判断这些案例是否在描述同一个底层机制。",
+      "synthesis": "这组「AI Agent」综述目前处于「反复出现」阶段。最强的重复模式是 agent-runtime、workflow-orchestration、coding-agent；概念层正在围绕 agent_runtime、workflow_orchestration、coding_agent 聚集。因此综述重点不应只是罗列文章 claim，而应判断这些案例是否在描述同一个底层机制。",
       "deep_review": {
-        "title": "AI Agent 的竞争重心，正在从“更会答”转向“更能跑”",
-        "dek": "这组材料真正连成一条线的，不是某个模型突然更强，而是 Agent 被重新理解为一套可持续运行的系统：它要管理上下文、状态、工具、沙盒、验证、回滚与协作。Harness 不是配角，而是在很多场景里决定上限的主战场。",
-        "core_thesis": "基于这组证据，当前 AI Agent 的关键变化不是模型从不会做事变成会做事，而是产品和系统设计开始把“做事”拆成可执行、可校验、可恢复、可复用的运行时问题。换言之，真正的分水岭不是单轮智能，而是 Agent Runtime 是否足够好：能否在正确时刻给出正确上下文，能否把任务分派给合适工具或子代理，能否把执行结果变成下一轮决策的可靠输入，能否在长时程任务中控制成本、错误和权限边界。",
+        "title": "AI Agent 的真正分水岭：不是更强模型，而是把“运行时”做成产品",
+        "dek": "这组材料共同指向一个更具体的判断：AI Agent 的竞争焦点，正从模型能力转向 Agent Runtime。真正拉开差距的，不是一次回答有多聪明，而是系统能否在长时程、多步骤、可验证、可回滚的任务中，持续提供恰当上下文、稳定执行边界与复用机制。",
+        "core_thesis": "当前 AI Agent 的结构性变化，不是“Chatbot 变聪明了”，而是 Agent 被重新定义为一个可持续运行的系统：上层用 Skills、角色分工或任务编排承载判断，中层用 Harness/Session/Memory 组织上下文与循环，底层用 Sandbox、确定性工具和验证链路提供可信执行。模型仍然重要，但越来越像 Runtime 中的推理内核，而不是完整产品本身。真正的壁垒正在转移到运行时设计、上下文装配、执行验证与能力沉淀。",
         "sections": [
           {
-            "heading": "一、先给判断：Agent 时代的护城河，越来越不像模型，越来越像运行时系统",
+            "heading": "核心判断：Agent 赛道正在从“模型应用”转向“运行时工程”",
             "paragraphs": [
-              "如果只看表面，这五篇材料分别讲了编程代理、Managed Agents、科研多智能体、学习助手和投资 Agent，看上去像五个互不相干的赛道。但把证据按机制重新排列后，会看到一个更稳定的判断：大家真正争夺的不是“模型是否还能再聪明一点”，而是“模型之外的系统是否能把能力稳定释放出来”。",
-              "《YC内部AI架构曝光！YC总裁Garry亲证：比谷歌员工效率高1000倍的秘密，不在模型，而在“Harness”》提供了最鲜明的表述：同一个模型，为什么有人只能获得 2 倍收益，有人却声称获得 10 倍、100 倍甚至更高收益？文章给出的解释不是模型差异，而是 harness 差异。这里的 harness 并不神秘，本质上就是一层运行时组织能力：上下文如何装配、工具如何调用、记忆如何保留、子任务如何并行、噪音如何压制。",
-              "这一判断之所以重要，在于它改变了我们看 Agent 的方式。过去我们容易把 Agent 理解成“带工具调用的聊天机器人”或“更长一点的 workflow”。而这组材料共同指向的是另一种定义：Agent 是一个持续执行的过程，不是一次回答；是一个受约束的系统，不是一个任意发散的智能体；它的价值不只取决于大脑，也取决于手、记忆、环境、日志和审计边界。"
+              "如果只看表面，这几篇材料谈的是不同东西：有的讲编程 Agent，有的讲消费级自动化，有的讲科研协同，有的讲学习助手，有的讲投资多 Agent。但把证据放在一起看，最强的共性并不是“会规划”或“多智能体”，而是它们都把 Agent 当成一个运行中的系统来设计。也就是说，Agent 不再等于一个会回答问题的大模型，而是一个由上下文组织、工具调用、状态持久化、安全边界、验证反馈和任务循环共同构成的 Agent Runtime。",
+              "这也是为什么材料一反复强调秘密不在模型，而在 harness；材料二把 Managed Agents 讲成 session、harness、sandbox 的可替换接口；材料三把科研执行链路中的 Experiment Harness、日志、回滚、人类闸门放到中心位置；材料五则把 Codex 的产品逻辑描述为不阻碍模型发挥能力、面向云端异步委派的底层原语。这里真正稳定复现的不是某个 prompt 技巧，而是一种系统观：模型负责在潜在空间里判断，运行时负责在现实世界里组织它、约束它、校验它、记住它。",
+              "因此，当前 Agent 领域最值得重估的概念不是“智能体是否足够像人”，而是“运行时是否足够像操作系统”。谁能稳定管理长任务、隔离执行环境、压缩无关上下文、把经验沉淀为可复用能力，谁就更可能把 Agent 从演示推向生产。"
             ]
           },
           {
-            "heading": "二、哪些是机制证据，哪些只是案例，哪些只是热度信号",
+            "heading": "机制证据：为什么运行时比模型本身更像决定性变量",
             "paragraphs": [
-              "这组材料中，最有解释力的是机制证据，而不是热闹的叙事。机制证据主要来自三类信息。第一类是《YC内部AI架构曝光！YC总裁Garry亲证：比谷歌员工效率高1000倍的秘密，不在模型，而在“Harness”》对“瘦外壳 + 胖技能”的拆分：外壳只做循环、文件读写、上下文管理和安全检查，真正可复用的判断过程沉淀在 skill 中；并且文章明确指出，工具过多、接口过重、REST 包装过深会直接吞噬上下文、拉高延迟和失败率。这不是愿景，而是关于系统瓶颈在哪里的机制说明。",
-              "第二类机制证据来自《Anthropic发布Managed Agents，才发现这支硅谷华人团队早就押对了赌注》和《Claude Code Harness+龙虾科研团来了！金字塔分层架构+多智能体讨论，单人也能跑出「实验室」科研》。前者强调 session、harness、sandbox 的解耦，以及 durable session log、外置凭证这类边界设计；后者强调 isolated runs、log capture、verified results 回灌 agent loop，以及 human-in-the-loop 的质量闸门和 rollback。它们共同说明：一个可用的 Agent，不只是会调工具，还要有可隔离执行、可回放、可验证、可中止、可恢复的运行环境。",
-              "第三类机制证据来自《有人把巴菲特芒格炼化成Agent，然后开源了》中的状态共享与工作流编排。文章提到多个 Agent 共享同一个 AgentState 数据字典，信息在节点间流转，下游节点动态引用上游分析结果。这个设计不一定先进，但它清楚说明了多 Agent 系统不是“人设越多越好”，而是状态如何传递、裁决如何收敛、节点如何协作。",
-              "相比之下，Hyperknow 更像案例证据而非强机制证据。《不要 Ask ChatGPT，Ask Hyperknow 3.0》展示了学习场景中的主动提问、课程进度感知、结构化学习空间，以及从被动问答到主动规划的产品方向。它证明 Agent 逻辑正在渗入教育场景，但对底层 runtime 机制披露较少，因此更适合用来说明应用扩展，而不是直接用来证明某一架构范式已经成立。",
-              "至于 GitHub Trending、热搜 Top 3、数十位科技 KOL 关注、快速迭代数百个版本，这些更接近热度或叙事信号。它们说明市场注意力正在聚集，不能说明架构一定有效，更不能直接推出商业可行性或长期壁垒。把叙事信号当机制证据，是这类主题最常见的误读。"
+              "这一判断最强的机制证据来自材料一。它不是单纯宣称效率提升，而是给出了提升发生的机制：实时仓库上下文、提示缓存、结构化会话记忆、并行子代理、专用工具、冗余最小化，这些都“不让模型更聪明”，只是让模型在恰当时刻获得恰当上下文。换句话说，Agent 的上限并不只由模型参数决定，还由上下文装配质量决定。20,000 行 CLAUDE.md 导致注意力下降，压缩成约 200 行指针后按需加载，正是一个很典型的 Context Engineering 证据：上下文不是越多越好，而是越可路由、越少噪声越好。",
+              "同样来自材料一的另一个关键机制，是“瘦外壳 + 胖技能”。这里的 Skills 不是一次性提示词，而是带参数的、可复用的 Markdown 过程封装；Harness 只负责循环、文件读写、上下文管理和安全检查。这种分层很重要，因为它把智能从臃肿的总控 prompt 里剥离出来，转成可维护、可重写、可积累的能力模块。进一步说，这不是提示词工程的小修小补，而是在把知识工作中的判断流程软件化，只不过编程语言从传统代码扩展到了模型更擅长理解的自然语言结构。",
+              "材料一还提出了一个决定 Agent 能否落地的分工原则：潜在空间与确定性空间分离。判断、解释、综合交给模型；SQL、编译、算术、浏览器精确操作交给确定性工具。这个划分解释了很多 Agent 为什么看起来很强、实际却不稳定：不是模型不够聪明，而是系统把本该由可靠程序完成的步骤错误地交给了生成式推理。Agent Runtime 的价值，恰恰是为两种空间建立明确接口。",
+              "材料二与材料三从另一个侧面强化了这一机制。材料二把 Managed Agents 描述成 session、harness、sandbox 解耦，意味着运行时的几个关键维度——状态持续、执行控制、环境隔离——可以被独立设计和替换。材料三则进一步把“可信执行链路”具体化：isolated runs、log capture、verified results 回灌 agent loop、不可编辑的 Experiment Harness、时间预算控制、异常值校验、标准化 results.json。这些都不是叙事修辞，而是非常具体的运行时设计元素。它们说明，Agent 能不能用于科研，不取决于会不会写出一段像样的代码，而取决于这段代码能否被在受控环境里执行、被验证、被复现、被回滚。"
             ]
           },
           {
-            "heading": "三、为什么 Harness 会成为关键：因为模型的主要失败，越来越像系统失败",
+            "heading": "案例证据：不同赛道都在收敛到同一种架构直觉",
             "paragraphs": [
-              "这组材料背后的深层机制是：模型在真实任务中最常见的失效，往往不再是“完全不会”，而是“在错误时间拿到错误信息”“调用了错误工具”“进入了错误循环”“把未验证结果继续当真”。一旦进入长任务链条，这些错误会累计，并最终表现为成本失控、结果漂移、权限失控或过程不可复现。",
-              "因此，《YC内部AI架构曝光！YC总裁Garry亲证：比谷歌员工效率高1000倍的秘密，不在模型，而在“Harness”》强调实时仓库上下文、提示缓存、结构化会话记忆、并行子代理，并不是在让模型“更聪明”，而是在让模型少被噪音干扰、少把 token 浪费在无关内容上。这里最值得抓住的一点是：Context Engineering 不是把更多资料塞进上下文，而是把错误上下文排除出去。这是一种信息节流，而不是信息堆积。",
-              "同样，《Anthropic发布Managed Agents，才发现这支硅谷华人团队早就押对了赌注》里 session、harness、sandbox 的拆分，也不是为了架构好看，而是为了把原本混在一次调用里的责任边界分开：谁负责状态延续，谁负责执行循环，谁负责权限和环境隔离。边界清楚以后，延迟、安全、恢复能力才可能被单独优化。",
-              "《Claude Code Harness+龙虾科研团来了！金字塔分层架构+多智能体讨论，单人也能跑出「实验室」科研》进一步给出另一种强约束环境：实验 Harness 统一管理时间预算、指标上报、异常值校验，并输出标准化结果。这类设计意味着 Agent 不再只是“建议你做实验”，而是被迫在一个可检验框架里产出结果。它把开放式生成转成半结构化执行，这正是很多高价值场景从 demo 走向可用系统的必要条件。"
+              "在案例层面，几篇材料虽然行业不同，却在收敛到一套相似直觉。编程场景里，材料一和《OpenAI Codex 核心团队爆猛料》都在讲同一件事：真正的价值不再是代码补全，而是长时程任务委派。Codex 被描述成异步自主 Agent，强调云端执行、用户给意图而非逐步操作；材料一则强调 repo context、skills 和 resolver。二者的共同点是，代码场景已经证明：当任务足够长、上下文足够多、验证要求足够高时，产品竞争就从“模型回答得像不像”转向“系统能不能把任务跑完”。",
+              "科研场景里的《Claude Code Harness+龙虾科研团来了！金字塔分层架构+多智能体讨论，单人也能跑出「实验室」科研》更进一步，因为科研天然比编程更依赖阶段性判断和质量门。其五层分层架构、多 agent 讨论、human-in-the-loop、rollback，本质上是在模拟实验室而不是模拟单个研究员。这里多智能体不是热闹，而是组织形式：不同角色并行推进，结果通过任务队列、上下文连接和实验验证链路收敛。这个案例说明，多 agent 只有在运行时能管理分工、冲突、日志和回滚时才有意义，否则只是把单一幻觉放大成群体幻觉。",
+              "学习场景中的 Hyperknow 3.0 则展示了另一条路径：并不强调复杂编排，却强调“全包围式学习助手”、连接 Canvas LMS、课程知识库、主动捕捉学习进度、在用户提问前准备材料。这个案例的关键不在于它比通用聊天模型更会解释，而在于它把用户身份、课程、文件、节奏和历史互动组织成了专用记忆体系。这里的 Agent Runtime 更像个性化教育操作层：什么时候介入、拿什么材料介入、如何组织长文档与个体画像，比单次问答质量更重要。",
+              "投资场景中的《有人把巴菲特芒格炼化成Agent，然后开源了》则属于较弱但有代表性的案例。它给出的是 LangGraph、多 Agent、共享 AgentState、可视化编排、回测模块等系统元素。这个案例能说明“观点生产”正在被工作流化，也能说明 Agent 框架的可复制性；但它同时暴露边界：把投资哲学编码成 agent，并不自动等于获得投资结果。这里的多 agent 更像一种观点组织器，而不是已被证明有效的决策机器。"
             ]
           },
           {
-            "heading": "四、从单 Agent 到多 Agent，不是数量升级，而是组织形式升级",
+            "heading": "热度信号与叙事信号：哪些内容值得降权看待",
             "paragraphs": [
-              "多 Agent 在这组材料里频繁出现，但不能简单理解为“多几个角色就更强”。真正的变化在于组织形式。《有人把巴菲特芒格炼化成Agent，然后开源了》中的投资系统，把多个风格化 Agent 的判断汇总给 Portfolio Manager，这是一种委员会式收敛；《Claude Code Harness+龙虾科研团来了！金字塔分层架构+多智能体讨论，单人也能跑出「实验室」科研》则是金字塔式分层架构，上层做方向与规划，下层做实验与执行，并允许人类在关键节点介入、修正、回滚。",
-              "这两种设计虽然场景不同，但都说明一个机制：多 Agent 的价值不在并发本身，而在冲突如何暴露、信息如何共享、裁决如何做出。没有共享状态和收敛规则，多 Agent 很容易退化成多份冗余噪音；有了任务队列、上下文连接、角色边界和验证回路，多 Agent 才可能形成“结构化分工”，而不是“人格化表演”。",
-              "也因此，workflow-orchestration 和 agent-runtime 既相关又不完全相同。前者强调任务如何编排，后者强调编排发生在什么样的状态与执行环境里。当前材料显示，两者正在合流：编排越来越依赖运行时提供的持久状态、日志、回滚和权限控制；运行时的价值，也越来越通过复杂工作流而不是单次调用体现出来。"
+              "这组材料里有不少信息更接近热度或叙事信号，而非机制证据。比如“效率高 1000 倍”“全球第一个真正面向普通用户的 AI Agent Harness”“GitHub Trending、51.7k Star、9k+ Fork”“设计师写代码比工程师还猛”，这些说法可以帮助判断行业情绪、资本故事和赛道拥挤度，但不能直接当作方法有效性的严格证据。它们说明市场正在围绕 Agent 重新估值，却不能单独证明某种架构一定更优。",
+              "尤其是材料二关于 CREAO 的部分，更多呈现的是产品叙事与用户体验承诺，例如 0 门槛、云端影分身、固化后 100% 准确率。它对“消费级 Agent Harness”这个方向有启发，但机制展开相对不足，且“100% 准确率”本身需要非常谨慎地理解：更可能指被固化后的确定性流程复用，而不是 LLM 在开放任务中的绝对正确。类似地，材料五里关于 PM 消失、组织形态重构的内容，更多是 AI 原生团队文化的叙事外溢，不应混同为 Agent Runtime 的直接技术结论。",
+              "更稳妥的做法是把这类内容当作信号层：它们表明行业已经从讨论‘模型哪个好’转向讨论‘谁能把 Agent 跑起来’。但要判断长期价值，仍需回到那些更硬的运行时细节：上下文如何路由，状态如何持久化，执行如何隔离，输出如何验证，错误如何回滚，能力如何沉淀。"
             ]
           },
           {
-            "heading": "五、消费级与行业级 Agent 的分野，不在界面，而在是否把不稳定推到系统背后",
+            "heading": "真正的趋势不是“多智能体”，而是“可验证的任务闭环”",
             "paragraphs": [
-              "《Anthropic发布Managed Agents，才发现这支硅谷华人团队早就押对了赌注》与《不要 Ask ChatGPT，Ask Hyperknow 3.0》提供了一个值得注意的方向：Agent 正从开发者工具外溢到普通用户场景。但消费级 Agent 真正的难点，不是把按钮做少、把界面做简单，而是把原本需要用户承担的不稳定性、环境配置、持续在线、错误恢复，迁移到平台背后。",
-              "在 CREAO 的叙事里，用户用人话描述需求，系统自动接入软件、生成流程、再把流程固化为可重复调度的 Agent。这个案例里最值得关注的，不是“普通人也能用 Agent”这句口号，而是其背后隐含的产品逻辑：一旦一个流程被跑通并固化，后续执行应尽量少依赖实时推理，转而依赖稳定的软件基础设施。这意味着在某些任务上，Agent 的终局可能不是“永远保持高度自主”，而是“先用自主性探索，再把有效路径编译成稳定执行体”。",
-              "Hyperknow 的主动提问、课程感知、深度学习课堂，也可以从这个视角理解。它并不是单纯从问答转向陪伴，而是在尝试把学习场景中的“下一步该做什么”变成系统能预判和组织的对象。不过这类场景也提醒我们，消费级 Agent 不一定需要重型多 Agent 编排；有时更关键的是对用户上下文的持续感知，以及把主动性控制在不打扰、不越权的边界内。"
+              "这组材料最容易被误读成“多智能体时代来了”。但更准确的说法是：可验证的任务闭环时代来了，多智能体只是其中一种实现形式。材料三之所以成立，不是因为有多个 agent 在讨论，而是因为它有实验 Harness、运行日志、标准化输出、人工闸门和回滚。材料六之所以目前仍偏演示，不是因为它 agent 数量不够多，而是因为真实世界中的投资反馈周期长、噪声高、验证代价高，闭环并不完整。",
+              "从这个角度看，材料一提出的 Diarization 很关键。它强调从大量文档中生成带判断的结构化单页简介，指出矛盾、记录时间变化、发现隐藏模式。这其实是在定义一种新型知识工作输出：不是检索命中，不是数据库查询，而是可消费的判断摘要。它说明 Agent 的终局不只是‘替你做动作’，还包括‘替你形成可追责、可复用的中间判断对象’。而一旦这些判断对象能被继续路由、验证、重写技能，系统就形成了学习循环。",
+              "材料一里最值得长期重视的，反而不是那串夸张效率数字，而是“如果我不得不问你两次，你就失败了”的纪律，以及 skill 文件的自我重写。它把 Agent 的价值定义为永久升级：第一次人工完成，第二次沉淀为 Skill，第三次定时自动运行。这个思想与材料五关于 Codex 从终局倒推、只做底层原语其实是相通的：Agent 产品真正的复利，不在于一次任务做得多惊艳，而在于下次无需重新教。"
             ]
           },
           {
-            "heading": "六、反证与边界：这组材料支持趋势，但还不足以证明商业和技术都已跑通",
+            "heading": "反证与边界：不是所有任务都适合 Agent Runtime 扩张",
             "paragraphs": [
-              "虽然这组证据足以支持“竞争重心从模型转向 runtime/harness”的趋势判断，但还远远不足以得出更强结论。首先，最强的产能提升叙事来自《YC内部AI架构曝光！YC总裁Garry亲证：比谷歌员工效率高1000倍的秘密，不在模型，而在“Harness”》，其中 10 倍到 1000 倍的效率说法更像强烈主张，而不是严格可比的 Benchmark。它可以作为方向信号，不能直接当作量化事实。",
-              "其次，多数材料展示的是成功路径，而非失败样本。我们看到了沙盒、日志、回滚、状态共享和技能复用的好处，但没有看到它们在高成本、复杂权限、工具脆弱、数据脏污、跨系统依赖混乱时的失效模式。尤其是多 Agent 架构，理论上能提升并行与分工，实践中也可能带来调试困难、状态膨胀和责任不清。",
-              "再次，部分叙事可能夸大了“固化后准确率 100%”这类表述。只要任务环境是开放世界、外部系统会变化、输入存在歧义，Agent 就很难获得绝对准确。更现实的评价标准应该是：在多大范围内可重复、在多长时间内保持稳定、在错误发生时是否可监控与可恢复。",
-              "最后，这组材料大都默认基座模型会继续增强，因此很多流程设计建立在“模型已足够强”的前提上。可一旦模型能力停滞、成本上升或工具调用变贵，某些依赖长上下文和频繁循环的架构可能会失去经济性。也就是说，Harness 重要，不代表模型不重要；Harness 的有效性，仍受模型能力与价格曲线约束。"
+              "尽管这些材料共同推高了 Agent Runtime 的重要性，但也必须看到反证与边界。第一，运行时越重，并不一定越好。材料一实际上是在反对臃肿外壳：40 多个工具定义占掉半个上下文窗口、REST 包装导致 token、延迟、失败率三增。也就是说，Agent Runtime 的价值不在于层层加框架，而在于把复杂性压到最能产生复利的地方。过度编排、过多抽象、本末倒置的工具封装，都会让 Agent 退化成昂贵又迟钝的自动机。",
+              "第二，不是所有领域都能轻易建立验证闭环。编程和科研之所以成为 Agent 落地前沿，是因为它们至少部分拥有机器可验证的中间结果：测试是否通过、脚本是否运行、指标是否异常、结果文件是否标准化。学习场景和投资场景则更难，因为“学懂了没有”“策略是否有效”往往不能即时验证，容易让系统滑向体验叙事而非真实闭环。因此，Hyperknow 和 AI Hedge Fund 这类案例更像方向证明，而非已经完成了机制闭环。",
+              "第三，长上下文不等于不需要检索与路由。材料四里有一种明显倾向：随着上下文窗口变大，RAG 频率在下降。这是重要观察，但未必应被理解为‘检索不重要了’。材料一恰恰表明，更长上下文反而让 resolver、按需加载和噪声控制更重要。因为真正稀缺的不只是 token 容量，而是注意力预算。把更多内容塞进去，不等于模型会更好地找到关键内容。",
+              "第四，所谓“确定性执行 100% 准确”只在任务已经被充分编译、约束和固化的情况下成立。开放环境中的浏览、沟通、判断、异常恢复仍充满不确定性。任何把 Agent 宣传为‘一旦上云就不再幻觉’的说法，都需要警惕它是否偷偷把问题空间收窄了。"
             ]
           },
           {
-            "heading": "七、下一轮最值得验证的问题：不是再找新案例，而是找能推翻当前判断的证据",
+            "heading": "下一轮阅读最该验证什么",
             "paragraphs": [
-              "如果下一轮阅读只是继续增加“又一个 Agent 产品发布”“又一个多智能体案例”，这篇综述不会变得更强。真正能推进认知的，是几类更难找但更关键的证据。",
-              "第一，要找失败证据：哪些 Agent Runtime 设计在真实生产中反而导致更高延迟、更高 token 成本、更差可维护性？特别是工具过度抽象、上下文层层包装、角色过多导致协调开销失控的案例。",
-              "第二，要找比较证据：同样任务下，thin harness + fat skills 与重型 orchestration 框架相比，到底谁在成本、可靠性、扩展性上更优？目前《YC内部AI架构曝光！YC总裁Garry亲证：比谷歌员工效率高1000倍的秘密，不在模型，而在“Harness”》强烈主张前者，但材料还不够证明其适用于多数场景。",
-              "第三，要找评价证据：对长时程 Agent，什么才是比单轮正确率更合适的 Benchmark？是任务完成率、恢复成功率、单位结果成本、人工介入频次，还是稳定运行时长？没有这类指标，很多“可用”都只是展示层面的可用。",
-              "第四，要找组织证据：企业或个人真正采用 Agent 时，最大的瓶颈到底是技术、权限、安全，还是流程改造与责任归属？如果组织摩擦大于模型摩擦，再好的 runtime 也可能卡在落地层。",
-              "换句话说，这组材料已经足够让我们把 AI Agent 从“更强模型的附属品”重新定义为“运行时系统工程”。但它还没有回答更难的问题：哪种运行时架构会成为主流，哪些只是过渡形态，哪些会因成本、复杂度或治理问题而被淘汰。下一轮阅读，应该围绕这些分水岭来做。"
+              "如果要继续追踪这个主题，下一轮阅读最该验证的不是‘还有哪些 Agent 很火’，而是三个更硬的问题。第一，Agent Runtime 的最小稳定单元到底是什么：是 session-harness-sandbox 这样的三分法，还是 skill-resolver-tool 的三层法，抑或二者其实是一种控制面与执行面的对应关系？这关系到“agent-runtime”和“workflow-orchestration”究竟是同一机制的不同切面，还是两个相邻但需区分的主题。",
+              "第二，哪些领域已经形成可测 Benchmark，能够证明运行时设计优于单纯升级模型？材料里有很多强判断，但缺少统一比较框架。需要寻找能比较不同 harness、不同 memory 组织、不同验证链路的实证材料，否则我们容易被个案中的成功叙事牵着走。",
+              "第三，技能沉淀与会话记忆之间是什么关系。材料一强调 Skill 是永久升级，材料四强调个性化记忆体系，材料二强调固化后的 Agent 可持续运行。下一步值得验证的是：长期价值究竟主要来自用户级记忆、任务级脚本，还是组织级技能库？不同答案会直接决定 Agent 产品的商业壁垒落在哪一层。",
+              "综合而言，这组材料最有洞见的地方，不是告诉我们 Agent 已经无所不能，而是提示了一个更准确的产业转向：模型能力正在成为共用品，真正稀缺的是把模型嵌入可持续、可验证、可积累工作流的能力。谁先把 Runtime 做成产品，谁才更接近下一个阶段的 Agent 平台。"
             ]
           }
         ],
         "insights": [
           {
-            "claim": "这组材料最稳固的共同结论是：AI Agent 的核心竞争，正在从模型能力展示转向运行时系统设计，包括上下文装配、状态持久化、工具路由、沙盒隔离、验证与回滚。",
-            "why_it_matters": "这决定了我们不应再用“回答是否惊艳”来评估 Agent，而应关注它能否长期、稳定、低成本地完成任务链条。",
+            "claim": "当前 Agent 的核心竞争，正在从“模型输出质量”转向“运行时组织能力”。",
+            "why_it_matters": "这决定了产品壁垒不再只是基座模型选型，而是上下文路由、状态持久化、工具隔离、验证反馈和能力沉淀的系统设计。",
             "evidence_article_ids": [
               "03f809cb0476",
               "20fb29fec269",
               "44f454b544d9",
-              "d11e99337c97"
+              "7446bf91ca19"
             ]
           },
           {
-            "claim": "Harness 的价值，不是把模型包起来，而是把模型常见的系统性失败变得可管理：错上下文、错工具、错循环、错状态传递，都需要运行时约束来抑制。",
-            "why_it_matters": "这解释了为什么同一个模型在不同产品和团队手里，表现会出现数量级差异。",
+            "claim": "“瘦外壳 + 胖技能”不是提示词技巧，而是在把知识工作的判断流程模块化、可复用化。",
+            "why_it_matters": "这解释了为什么同一模型在不同团队手里效果差异极大，也说明真正的复利来自技能沉淀，而非一次性对话表现。",
             "evidence_article_ids": [
-              "03f809cb0476",
-              "20fb29fec269",
-              "44f454b544d9"
+              "03f809cb0476"
             ]
           },
           {
-            "claim": "多 Agent 的真正增益来自组织结构，而不是角色数量；没有共享状态、收敛机制和质量闸门，多 Agent 很容易退化成噪音放大器。",
-            "why_it_matters": "这能帮助区分哪些多智能体系统是在做结构化分工，哪些只是做角色扮演式包装。",
+            "claim": "多智能体本身不是趋势核心，真正的核心是可验证、可回滚、可持续的任务闭环。",
+            "why_it_matters": "这能区分哪些系统只是把多个角色包装在一起，哪些系统真的具备生产级可信执行能力。",
             "evidence_article_ids": [
               "44f454b544d9",
+              "03f809cb0476",
               "d11e99337c97"
             ]
           },
           {
-            "claim": "消费级 Agent 的门槛不主要在交互层，而在平台是否把部署、持续在线、错误恢复和重复调度这些不稳定性吸收到系统背后。",
-            "why_it_matters": "这决定了 Agent 能否从开发者玩具走向普通用户的日常基础设施。",
+            "claim": "Agent 在编程、科研场景先爆发，不是偶然，而是因为这些场景更容易建立机器可验证的中间结果。",
+            "why_it_matters": "这为判断下一波 Agent 落地行业提供了标准：优先看是否有低成本验证链，而不是只看需求是否强烈。",
             "evidence_article_ids": [
-              "20fb29fec269",
+              "03f809cb0476",
+              "44f454b544d9",
+              "7446bf91ca19"
+            ]
+          },
+          {
+            "claim": "长上下文没有消灭 Context Engineering，反而放大了路由、压缩和按需加载的重要性。",
+            "why_it_matters": "这能避免行业把“窗口变大”误读为“信息管理问题已经解决”，从而继续重视 resolver、memory 与文档结构设计。",
+            "evidence_article_ids": [
+              "03f809cb0476",
               "719a74e44194"
-            ]
-          },
-          {
-            "claim": "当前材料对趋势判断较强，对量化收益和长期商业可行性的证明较弱；很多高增益表述仍属于强叙事，而非严格对比实验。",
-            "why_it_matters": "这提醒我们要把机制成立与规模化成立区分开，避免把热度、案例成功和结构性胜出混为一谈。",
-            "evidence_article_ids": [
-              "03f809cb0476",
-              "20fb29fec269",
-              "719a74e44194",
-              "d11e99337c97"
             ]
           }
         ],
-        "essential_cognition": "把 AI Agent 理解为一种运行时系统工程，而不是模型能力的自然外溢。模型提供潜在智能，Harness 决定这种智能是否能被持续、可靠、低噪音地组织成真实工作的能力。",
+        "essential_cognition": "理解这组材料的关键，不是把 Agent 看成‘更会做事的聊天机器人’，而是把它看成一种新型运行时：模型负责推理，运行时负责组织推理进入真实任务。只要这个认知不建立，就会高估模型升级、低估上下文装配、执行边界和验证闭环的价值。",
         "misreadings_to_avoid": [
-          "把高热度、高 star、热搜或频繁迭代误当成架构正确性的证明。",
-          "把 Harness 理解成普通包装层，而忽视它对上下文、状态、权限、验证和恢复的决定性作用。",
-          "把多 Agent 等同于更高级智能，而不检查其状态共享、裁决机制和回滚能力。",
-          "把效率提升叙事直接当成可复现实验结果，忽略缺少统一 Benchmark 和对照条件。",
-          "把应用案例的成功外推为通用规律，忽视场景差异、成本约束与组织摩擦。"
+          "不要把效率提升数字直接当成严格结论，它们更多是强叙事信号，真正可靠的是其背后的运行时机制描述。",
+          "不要把多智能体等同于高水平 Agent，角色数量不是关键，验证链路和回滚能力才是关键。",
+          "不要把长上下文理解为 RAG、resolver、memory 不再重要，注意力管理仍是核心问题。",
+          "不要把消费级易用性宣传直接等同于技术闭环成立，用户体验叙事与机制证据需要分开看。",
+          "不要把投资哲学被编码成 Agent 误读为投资结果已被复制，方法表示与真实收益之间仍有巨大鸿沟。"
         ],
         "writing_hooks": [
-          "Agent 的下一轮胜负手，可能不在谁的大脑更强，而在谁的“手脚、记忆和工作台”更可靠。",
-          "当模型越来越像通用引擎，真正拉开差距的，也许是点火系统、传动系统和刹车系统。",
-          "很多 Agent 失败并不是因为它不会思考，而是因为它在错误的环境里思考。",
-          "从 Chatbot 到 Agent，最重要的变化不是能做更多事，而是能把做事过程变成可管理系统。"
+          "Agent 的分水岭，不是它会不会思考，而是它能不能把任务跑完。",
+          "模型像大脑，Runtime 像操作系统；今天真正缺的不是前者，而是后者。",
+          "多智能体不是答案，能验证、能回滚、能复用的闭环才是答案。",
+          "上下文窗口变大了，但注意力预算仍然稀缺。",
+          "Agent 真正的复利，不是一次惊艳，而是下次不用再教。"
         ],
         "source_trace": {
           "material_basis": "canonical_text + extraction + classification + concepts",
@@ -174,9 +171,10 @@
             "20fb29fec269": 4097,
             "44f454b544d9": 3121,
             "719a74e44194": 12214,
+            "7446bf91ca19": 5605,
             "d11e99337c97": 3409
           },
-          "evidence_sentence_count": 25
+          "evidence_sentence_count": 30
         },
         "generated_by": "llm_deep_review_article_v1"
       },
@@ -189,6 +187,7 @@
             "20fb29fec269",
             "44f454b544d9",
             "719a74e44194",
+            "7446bf91ca19",
             "d11e99337c97"
           ]
         },
@@ -203,10 +202,11 @@
           ]
         },
         {
-          "takeaway": "context-engineering 是当前的组织性模式。",
-          "why_it_matters": "共同问题不只是上下文窗口变大，而是如何选择、压缩、检索和结构化 context。",
+          "takeaway": "coding-agent 是当前的组织性模式。",
+          "why_it_matters": "这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。",
           "evidence_article_ids": [
-            "03f809cb0476"
+            "03f809cb0476",
+            "7446bf91ca19"
           ]
         }
       ],
@@ -260,6 +260,18 @@
           "text": "三个月后，Hyperknow 3.0 上线。"
         },
         {
+          "article_id": "7446bf91ca19",
+          "text": "OpenAI Codex 核心团队爆猛料：我们不写 PRD，几乎不用 PM，设计师写代码比工程师还猛"
+        },
+        {
+          "article_id": "7446bf91ca19",
+          "text": "嘿，别急着划走，我知道你可能已经看腻了关于“AI又颠覆了某某行业”的陈词滥调。但这次我们聊点硬核的，也聊点野的。今天的主角是OpenAI Codex，但你猜怎么着？它的产品负责人和开发者体验负责人，在一次罕见的播客对谈中，几乎把传统的软件开发教科书撕了个粉碎。"
+        },
+        {
+          "article_id": "7446bf91ca19",
+          "text": "这事儿发生在近期的一期播客里，OpenAI Codex产品负责人Alexander Embiricos和开发者体验负责人Romain Huet一起做客，聊了不少Codex幕后的故事。Alexander在加入OpenAI之前，曾有五年的结对编程产品创业经验，而Romain则曾在Stripe担任开发者平台产品负责人。"
+        },
+        {
           "article_id": "d11e99337c97",
           "text": "文章称，AI Hedge Fund 的核心理念是把投资哲学编码成 Agent，让散户获得“大师模型”。"
         },
@@ -275,13 +287,14 @@
       "recurring_patterns": [
         {
           "pattern": "agent-runtime",
-          "count": 5,
+          "count": 6,
           "interpretation": "这组文章把 agent 能力视为运行时问题：持久 session、工具、状态和执行边界，与基础模型本身同样重要。",
           "evidence_article_ids": [
             "03f809cb0476",
             "20fb29fec269",
             "44f454b544d9",
             "719a74e44194",
+            "7446bf91ca19",
             "d11e99337c97"
           ],
           "strength": "recurring"
@@ -299,6 +312,26 @@
           "strength": "recurring"
         },
         {
+          "pattern": "coding-agent",
+          "count": 2,
+          "interpretation": "这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。",
+          "evidence_article_ids": [
+            "03f809cb0476",
+            "7446bf91ca19"
+          ],
+          "strength": "emerging"
+        },
+        {
+          "pattern": "cloud-agent",
+          "count": 2,
+          "interpretation": "这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。",
+          "evidence_article_ids": [
+            "20fb29fec269",
+            "7446bf91ca19"
+          ],
+          "strength": "emerging"
+        },
+        {
           "pattern": "context-engineering",
           "count": 1,
           "interpretation": "共同问题不只是上下文窗口变大，而是如何选择、压缩、检索和结构化 context。",
@@ -309,24 +342,6 @@
         },
         {
           "pattern": "structured-memory",
-          "count": 1,
-          "interpretation": "这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。",
-          "evidence_article_ids": [
-            "03f809cb0476"
-          ],
-          "strength": "single_case"
-        },
-        {
-          "pattern": "tool-routing",
-          "count": 1,
-          "interpretation": "这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。",
-          "evidence_article_ids": [
-            "03f809cb0476"
-          ],
-          "strength": "single_case"
-        },
-        {
-          "pattern": "thin-harness-fat-skills",
           "count": 1,
           "interpretation": "这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。",
           "evidence_article_ids": [
@@ -338,13 +353,14 @@
       "dominant_patterns": [
         {
           "pattern": "agent-runtime",
-          "count": 5,
+          "count": 6,
           "interpretation": "这组文章把 agent 能力视为运行时问题：持久 session、工具、状态和执行边界，与基础模型本身同样重要。",
           "evidence_article_ids": [
             "03f809cb0476",
             "20fb29fec269",
             "44f454b544d9",
             "719a74e44194",
+            "7446bf91ca19",
             "d11e99337c97"
           ],
           "strength": "recurring"
@@ -362,6 +378,26 @@
           "strength": "recurring"
         },
         {
+          "pattern": "coding-agent",
+          "count": 2,
+          "interpretation": "这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。",
+          "evidence_article_ids": [
+            "03f809cb0476",
+            "7446bf91ca19"
+          ],
+          "strength": "emerging"
+        },
+        {
+          "pattern": "cloud-agent",
+          "count": 2,
+          "interpretation": "这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。",
+          "evidence_article_ids": [
+            "20fb29fec269",
+            "7446bf91ca19"
+          ],
+          "strength": "emerging"
+        },
+        {
           "pattern": "context-engineering",
           "count": 1,
           "interpretation": "共同问题不只是上下文窗口变大，而是如何选择、压缩、检索和结构化 context。",
@@ -372,24 +408,6 @@
         },
         {
           "pattern": "structured-memory",
-          "count": 1,
-          "interpretation": "这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。",
-          "evidence_article_ids": [
-            "03f809cb0476"
-          ],
-          "strength": "single_case"
-        },
-        {
-          "pattern": "tool-routing",
-          "count": 1,
-          "interpretation": "这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。",
-          "evidence_article_ids": [
-            "03f809cb0476"
-          ],
-          "strength": "single_case"
-        },
-        {
-          "pattern": "thin-harness-fat-skills",
           "count": 1,
           "interpretation": "这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。",
           "evidence_article_ids": [
@@ -404,7 +422,7 @@
           "title": "YC内部AI架构曝光！YC总裁Garry亲证：比谷歌员工效率高1000倍的秘密，不在模型，而在“Harness”",
           "url": "https://mp.weixin.qq.com/s/z6ZXj_p6Z9fIvFifkAvP9A",
           "role": "anchor_case",
-          "what_it_shows": "这个案例为 agent-runtime, workflow-orchestration, context-engineering 提供了具体的文章级证据。",
+          "what_it_shows": "这个案例为 agent-runtime, workflow-orchestration, coding-agent 提供了具体的文章级证据。",
           "limits": "它不能单独构成结论；需要和本综述中的其他案例比较后才能判断其结构性意义。",
           "summary": "文章称 Steve Yegge 表示，使用 AI 编程代理的人比今天使用 Cursor 和聊天的工程师生产效率高 10 倍到 100 倍。 文章称 Steve Yegge 表示，使用 AI 编程代理的人比 2005 年时的谷歌员工生产效率高约 1000 倍。 文章称 Garry Tan 分享其 CLAUDE.md 文件曾膨胀到 20,000 行，后来删减后最终修复方案只有大约 200 行，而且主要是指向不同文档的指针。"
         },
@@ -413,7 +431,7 @@
           "title": "Anthropic发布Managed Agents，才发现这支硅谷华人团队早就押对了赌注",
           "url": "https://mp.weixin.qq.com/s/8k_J9QDdg7XiCXwc-GimRA",
           "role": "anchor_case",
-          "what_it_shows": "这个案例为 agent-runtime, workflow-orchestration 提供了具体的文章级证据。",
+          "what_it_shows": "这个案例为 agent-runtime, workflow-orchestration, cloud-agent 提供了具体的文章级证据。",
           "limits": "它不能单独构成结论；需要和本综述中的其他案例比较后才能判断其结构性意义。",
           "summary": "Anthropic 发布了面向长时程 agent 工作的托管服务 Managed Agents。 CREAO 是全球第一个真正面向普通用户的 AI Agent Harness。 Managed Agents 将 agent 运行时虚拟化为 session、harness、sandbox 三个可独立替换的接口。"
         },
@@ -436,13 +454,13 @@
           "summary": "从去年 9 月至今，Hyperknow 已经迭代五个大版本，小版本累计数百次。 2025 年 11 月，通用学习智能体 Hyperknow 正式发布。 三个月后，Hyperknow 3.0 上线。"
         },
         {
-          "article_id": "d11e99337c97",
-          "title": "有人把巴菲特芒格炼化成Agent，然后开源了",
-          "url": "https://mp.weixin.qq.com/s/4umG7Vx_cWr0FwWc1YLuWQ",
+          "article_id": "7446bf91ca19",
+          "title": "OpenAI Codex 核心团队爆猛料：我们不写 PRD，几乎不用 PM，设计师写代码比工程师还猛",
+          "url": "https://mp.weixin.qq.com/s/FGUP63N48OsmqS1qG13grA",
           "role": "anchor_case",
-          "what_it_shows": "这个案例为 agent-runtime, workflow-orchestration 提供了具体的文章级证据。",
+          "what_it_shows": "这个案例为 agent-runtime, coding-agent, cloud-agent 提供了具体的文章级证据。",
           "limits": "它不能单独构成结论；需要和本综述中的其他案例比较后才能判断其结构性意义。",
-          "summary": "文章称，AI Hedge Fund 的核心理念是把投资哲学编码成 Agent，让散户获得“大师模型”。 文章称，各投资大师 Agent 会对同一只股票给出独立判断，最终由投资组合经理 Agent 汇总裁决并输出买入、卖出或持有信号。 文章称，AI Hedge Fund 采用前后端分离的三层架构设计。"
+          "summary": "OpenAI Codex 核心团队爆猛料：我们不写 PRD，几乎不用 PM，设计师写代码比工程师还猛 嘿，别急着划走，我知道你可能已经看腻了关于“AI又颠覆了某某行业”的陈词滥调。但这次我们聊点硬核的，也聊点野的。今天的主角是OpenAI Codex，但你猜怎么着？它的产品负责人和开发者体验负责人，在一次罕见的播客对谈中，几乎把传统的软件开发教科书撕了个粉碎。 这事儿发生在近期的一期播客里，OpenAI Codex产品负责人Alexander Embiricos和开发者体验负责人Romain Huet一起做客，聊了不少Codex幕后的故事。Alexander在加入OpenAI之前，曾有五年的结对编程产品创业经验，而Romain则曾在Stripe担任开发者平台产品负责人。"
         }
       ],
       "disagreements": [
@@ -454,6 +472,7 @@
             "20fb29fec269",
             "44f454b544d9",
             "719a74e44194",
+            "7446bf91ca19",
             "d11e99337c97"
           ]
         }
@@ -467,12 +486,13 @@
             "20fb29fec269",
             "44f454b544d9",
             "719a74e44194",
+            "7446bf91ca19",
             "d11e99337c97"
           ]
         }
       ],
       "implications": [
-        "如果「AI Agent」继续围绕 agent-runtime, workflow-orchestration, context-engineering 增长，后续分析应把它看作系统层变化，而不是孤立新闻。",
+        "如果「AI Agent」继续围绕 agent-runtime, workflow-orchestration, coding-agent 增长，后续分析应把它看作系统层变化，而不是孤立新闻。",
         "下一轮综述应比较案例之间的关系，而不只是分别总结每篇文章。"
       ],
       "representative_cases": [
@@ -501,27 +521,31 @@
           "summary": "从去年 9 月至今，Hyperknow 已经迭代五个大版本，小版本累计数百次。 2025 年 11 月，通用学习智能体 Hyperknow 正式发布。 三个月后，Hyperknow 3.0 上线。"
         },
         {
-          "article_id": "d11e99337c97",
-          "title": "有人把巴菲特芒格炼化成Agent，然后开源了",
-          "url": "https://mp.weixin.qq.com/s/4umG7Vx_cWr0FwWc1YLuWQ",
-          "summary": "文章称，AI Hedge Fund 的核心理念是把投资哲学编码成 Agent，让散户获得“大师模型”。 文章称，各投资大师 Agent 会对同一只股票给出独立判断，最终由投资组合经理 Agent 汇总裁决并输出买入、卖出或持有信号。 文章称，AI Hedge Fund 采用前后端分离的三层架构设计。"
+          "article_id": "7446bf91ca19",
+          "title": "OpenAI Codex 核心团队爆猛料：我们不写 PRD，几乎不用 PM，设计师写代码比工程师还猛",
+          "url": "https://mp.weixin.qq.com/s/FGUP63N48OsmqS1qG13grA",
+          "summary": "OpenAI Codex 核心团队爆猛料：我们不写 PRD，几乎不用 PM，设计师写代码比工程师还猛 嘿，别急着划走，我知道你可能已经看腻了关于“AI又颠覆了某某行业”的陈词滥调。但这次我们聊点硬核的，也聊点野的。今天的主角是OpenAI Codex，但你猜怎么着？它的产品负责人和开发者体验负责人，在一次罕见的播客对谈中，几乎把传统的软件开发教科书撕了个粉碎。 这事儿发生在近期的一期播客里，OpenAI Codex产品负责人Alexander Embiricos和开发者体验负责人Romain Huet一起做客，聊了不少Codex幕后的故事。Alexander在加入OpenAI之前，曾有五年的结对编程产品创业经验，而Romain则曾在Stripe担任开发者平台产品负责人。"
         }
       ],
       "concepts_used": [
         {
           "id": "agent_runtime",
-          "count": 5
+          "count": 6
         },
         {
           "id": "workflow_orchestration",
           "count": 4
         },
         {
-          "id": "cli_harness",
-          "count": 1
+          "id": "coding_agent",
+          "count": 2
         },
         {
-          "id": "coding_agent",
+          "id": "cloud_agent",
+          "count": 2
+        },
+        {
+          "id": "cli_harness",
           "count": 1
         },
         {
@@ -551,10 +575,6 @@
         {
           "id": "agent_harness",
           "count": 1
-        },
-        {
-          "id": "cloud_agent",
-          "count": 1
         }
       ],
       "open_questions": [],
@@ -567,15 +587,24 @@
         "method": "deterministic_review_analysis_mvp",
         "deep_review_method": "llm",
         "deep_review_model": "openai/gpt-5.4",
-        "deep_review_attempts": 1
+        "deep_review_attempts": 1,
+        "deep_review_input_text_lengths": {
+          "03f809cb0476": 6227,
+          "20fb29fec269": 4097,
+          "44f454b544d9": 3121,
+          "719a74e44194": 12214,
+          "7446bf91ca19": 5605,
+          "d11e99337c97": 3409
+        },
+        "deep_review_input_truncated_article_ids": []
       }
     },
     {
       "review_id": "ai_infrastructure_living_review",
       "title": "AI 基础设施动态综述",
       "status": "drafted",
-      "version": 5,
-      "last_updated_at": "2026-04-27T01:43:47+00:00",
+      "version": 6,
+      "last_updated_at": "2026-04-27T15:34:12+00:00",
       "scope": {
         "primary_category": "ai_infrastructure",
         "tags": [
@@ -968,8 +997,8 @@
       "review_id": "consumer_economy_living_review",
       "title": "消费经济动态综述",
       "status": "drafted",
-      "version": 6,
-      "last_updated_at": "2026-04-27T01:43:47+00:00",
+      "version": 7,
+      "last_updated_at": "2026-04-27T15:34:12+00:00",
       "scope": {
         "primary_category": "consumer_economy",
         "tags": [
@@ -1351,8 +1380,8 @@
       "review_id": "developer_tools_living_review",
       "title": "开发者工具动态综述",
       "status": "drafted",
-      "version": 6,
-      "last_updated_at": "2026-04-27T01:43:47+00:00",
+      "version": 7,
+      "last_updated_at": "2026-04-27T15:34:12+00:00",
       "scope": {
         "primary_category": "developer_tools",
         "tags": [
@@ -1819,8 +1848,8 @@
       "review_id": "memory_context_living_review",
       "title": "记忆 / Context Engineering动态综述",
       "status": "drafted",
-      "version": 6,
-      "last_updated_at": "2026-04-27T01:43:47+00:00",
+      "version": 7,
+      "last_updated_at": "2026-04-27T15:34:12+00:00",
       "scope": {
         "primary_category": "memory_context",
         "tags": [
@@ -2305,8 +2334,8 @@
       "review_id": "multimodal_ai_living_review",
       "title": "多模态 AI动态综述",
       "status": "drafted",
-      "version": 6,
-      "last_updated_at": "2026-04-27T01:43:47+00:00",
+      "version": 7,
+      "last_updated_at": "2026-04-27T15:34:12+00:00",
       "scope": {
         "primary_category": "multimodal_ai",
         "tags": [
@@ -2733,8 +2762,8 @@
       "review_id": "product_business_living_review",
       "title": "产品 / 商业动态综述",
       "status": "drafted",
-      "version": 6,
-      "last_updated_at": "2026-04-27T01:43:47+00:00",
+      "version": 7,
+      "last_updated_at": "2026-04-27T15:34:12+00:00",
       "scope": {
         "primary_category": "product_business",
         "tags": [
@@ -3161,8 +3190,8 @@
       "review_id": "research_benchmark_living_review",
       "title": "研究 / Benchmark动态综述",
       "status": "drafted",
-      "version": 6,
-      "last_updated_at": "2026-04-27T01:43:47+00:00",
+      "version": 7,
+      "last_updated_at": "2026-04-27T15:34:12+00:00",
       "scope": {
         "primary_category": "research_benchmark",
         "tags": [
@@ -3581,8 +3610,8 @@
       "review_id": "robotics_embodied_ai_living_review",
       "title": "机器人 / 具身智能动态综述",
       "status": "drafted",
-      "version": 6,
-      "last_updated_at": "2026-04-27T01:43:47+00:00",
+      "version": 7,
+      "last_updated_at": "2026-04-27T15:34:12+00:00",
       "scope": {
         "primary_category": "robotics_embodied_ai",
         "tags": [
@@ -4103,14 +4132,7 @@
         "method": "deterministic_review_analysis_mvp",
         "deep_review_method": "llm",
         "deep_review_model": "openai/gpt-5.4",
-        "deep_review_attempts": 1,
-        "deep_review_input_text_lengths": {
-          "39ca3e825456": 14959,
-          "59b86c15655e": 2416,
-          "7ffdcd4439dc": 2878,
-          "df7acb42e706": 4261
-        },
-        "deep_review_input_truncated_article_ids": []
+        "deep_review_attempts": 1
       }
     }
   ],

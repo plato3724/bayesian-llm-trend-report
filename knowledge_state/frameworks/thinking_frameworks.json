@@ -1,121 +1,130 @@
 {
-  "created_at": "2026-04-27T01:42:28+00:00",
-  "last_updated_at": "2026-04-27T01:43:32+00:00",
+  "created_at": "2026-04-27T15:35:34+00:00",
+  "last_updated_at": "2026-04-27T15:36:44+00:00",
   "version": 1,
-  "source_hash": "46c282405889d547869aa53f132ccaa2f2fdaf851a23e59671ec7680b3e9367f",
+  "source_hash": "37f7bbafb920399de670f444d02e7c8030629a4e3adaf23ee52197251fd0db03",
   "prompt_version": "frameworks_from_reviews_v1",
   "generated_by": "llm_framework_generation_v1",
   "llm_model": "openai/gpt-5.4",
   "llm_attempts": 1,
   "frameworks": [
     {
-      "framework_id": "mechanism_evidence_boundary",
-      "name": "机制—证据—边界三层判断框架",
-      "purpose": "用于判断一个主题是在揭示可迁移的底层机制，还是只是在重复个案叙事，并系统处理反证、失败案例与适用边界。",
+      "framework_id": "mechanism_chain_validation",
+      "name": "机制链验证框架",
+      "purpose": "用于判断多个案例是否在描述同一条底层机制链，而不是被表层术语、热度叙事或单点指标误导。",
       "dimensions": [
-        "这组材料共同指向的底层机制是什么，而不是各自表面的 claim 是什么？",
-        "当前证据属于机制证据、结果证据、叙事信号还是热度信号？分别有多强？",
-        "有哪些关键前提一旦不成立，当前解释就会失效？",
-        "最能反驳该解释的失败案例、负面结果或替代解释是什么？",
-        "哪些看似相邻的模式其实可能是同一机制，哪些可能只是概念混杂？",
-        "该机制在什么场景下可迁移，在什么规模、成本、组织条件下会失灵？"
+        "起点变量是什么：变化最先发生在模型、数据、组织、接口、硬件还是用户行为？",
+        "中间传导链路是什么：从局部改动到系统结果之间经过了哪些关键环节？",
+        "终局效果是什么：改善的是成本、可靠性、控制力、吞吐、定价权还是 adoption？",
+        "必要前提有哪些：结论成立依赖哪些边界条件、配套能力或隐含假设？",
+        "最强反证是什么：哪类失败案例或相反证据能直接打断这条机制链？",
+        "替代解释有哪些：现象是否也可能由营销、周期、样本偏差或短期激励造成？",
+        "可迁移性如何：该机制是特定场景有效，还是可跨行业、跨任务复用？"
       ],
       "best_for": [
-        "主题综述抽象",
-        "趋势判断",
-        "单案例向稳定主题过渡",
-        "研究与产业信号辨别"
+        "AI Agent",
+        "AI 基础设施",
+        "记忆 / Context Engineering",
+        "多模态 AI",
+        "机器人 / 具身智能",
+        "产品 / 商业"
       ],
       "source_review_ids": [
         "ai_agent_living_review",
         "ai_infrastructure_living_review",
-        "consumer_economy_living_review",
-        "developer_tools_living_review",
         "memory_context_living_review",
         "multimodal_ai_living_review",
+        "robotics_embodied_ai_living_review",
         "product_business_living_review",
-        "research_benchmark_living_review",
-        "robotics_embodied_ai_living_review"
+        "consumer_economy_living_review"
       ],
       "status": "llm_draft"
     },
     {
-      "framework_id": "runtime_system_design",
-      "name": "运行时系统设计框架",
-      "purpose": "用于分析一个 AI 或软件系统的真实竞争力是否来自模型本身，还是来自运行时对上下文、状态、工具、验证、恢复与权限的组织能力。",
+      "framework_id": "system_boundary_redraw",
+      "name": "系统边界重绘框架",
+      "purpose": "用于分析一项新技术或新产品是否真正改变了系统边界、责任分工与价值捕获位置，而不仅是增加了一个功能点。",
       "dimensions": [
-        "系统把任务拆成了哪些可执行、可校验、可恢复的单元？",
-        "上下文如何被装配、压缩、路由与更新，错误上下文如何被抑制？",
-        "状态如何持久化、共享、回滚与审计，长期运行如何避免漂移？",
-        "工具、子系统或子代理如何被调度，失败后如何收敛而非放大噪音？",
-        "验证、质量闸门、权限边界和沙盒隔离如何设计？",
-        "在长时程任务中，成本、延迟、错误率与用户体验之间如何取舍？"
+        "原有边界在哪里：过去由谁负责输入、判断、执行、验证、维护？",
+        "新边界如何重画：哪些能力被上移、下移、外包、自动化或模块化？",
+        "瓶颈是否转移：旧瓶颈被消除后，新瓶颈转移到了验证、互连、记忆、控制还是交易？",
+        "责任是否重分配：出错时由模型、工具、用户、组织还是基础设施承担后果？",
+        "价值捕获点在哪里：谁因边界重绘获得更强定价权、流量入口或收费权？",
+        "失败模式是什么：边界重绘后最容易出现的失控、错配、空转或维护成本是什么？",
+        "边界条件是什么：该重绘依赖哪些组织能力、接口标准或物理约束？"
       ],
       "best_for": [
+        "开发者工具",
         "AI Agent",
-        "记忆 / Context Engineering",
-        "开发者工具",
-        "产品化系统设计"
-      ],
-      "source_review_ids": [
-        "ai_agent_living_review",
-        "memory_context_living_review",
-        "developer_tools_living_review",
-        "product_business_living_review"
-      ],
-      "status": "llm_draft"
-    },
-    {
-      "framework_id": "signal_to_structure_maturity",
-      "name": "信号到结构成熟度框架",
-      "purpose": "用于区分一个新主题目前只是出现市场或技术信号，还是已经具备可重复、可扩展、可商业化的结构性基础。",
-      "dimensions": [
-        "当前看到的是单点爆发、重复信号，还是跨案例机制收敛？",
-        "热度、传播、融资、stars、搜索量与真实 adoption 分别说明什么，不能说明什么？",
-        "是否已有独立对照、长期数据、失败案例与经营质量证据？",
-        "价值是否来自一次性情绪或 Demo，还是来自持续流程、基础设施或交易结构？",
-        "规模化时最可能暴露的瓶颈是成本、组织摩擦、网络效应缺失还是技术退化？",
-        "如果把最乐观叙事去掉，这个主题仍然剩下什么稳定价值？"
-      ],
-      "best_for": [
-        "消费经济",
         "产品 / 商业",
-        "开发者工具",
-        "多模态 AI",
-        "新兴赛道成熟度判断"
+        "记忆 / Context Engineering",
+        "AI 基础设施"
       ],
       "source_review_ids": [
-        "consumer_economy_living_review",
         "developer_tools_living_review",
-        "multimodal_ai_living_review",
+        "ai_agent_living_review",
         "product_business_living_review",
+        "memory_context_living_review",
         "ai_infrastructure_living_review"
       ],
       "status": "llm_draft"
     },
     {
-      "framework_id": "bottleneck_reconfiguration",
-      "name": "瓶颈重配框架",
-      "purpose": "用于分析新技术的真实价值是否来自能力增加，还是来自把系统瓶颈从一个环节转移、压缩或重组，从而重画成本结构与价值捕获位置。",
+      "framework_id": "verification_first_adoption",
+      "name": "验证优先落地框架",
+      "purpose": "用于判断为什么某些技术先在特定场景落地，以及落地是否由可验证闭环支撑，而非由需求强度或叙事热度驱动。",
       "dimensions": [
-        "原系统的主瓶颈是什么：算力、带宽、上下文、验证、控制权还是交易流通？",
-        "新方案改变的是能力上限，还是瓶颈位置与约束形式？",
-        "瓶颈被解除后，新的稀缺环节转移到了哪里？",
-        "谁获得了新的调度权、定价权或收费权？",
-        "该重配是否依赖某个隐含前提，如模型结构变化、组织激励或硬件条件？",
-        "一旦新瓶颈出现，原先收益会不会迅速回吐？"
+        "可验证对象是什么：中间结果、最终结果还是过程行为可被机器或制度验证？",
+        "验证成本有多高：验证是低成本自动完成，还是依赖昂贵人工和长周期反馈？",
+        "闭环速度如何：从尝试到纠错再到能力沉淀的周期有多短？",
+        "错误代价如何：失败是可回滚的小错，还是会造成高风险不可逆后果？",
+        "能力是否可积累：每次执行能否沉淀为 skill、规则、数据或 runtime 改进？",
+        "反例在哪里：哪些高需求场景迟迟不落地，恰恰因为验证链太弱？",
+        "规模化边界是什么：从 demo 到生产，验证机制在哪一步开始失效？"
       ],
       "best_for": [
-        "AI 基础设施",
-        "产品 / 商业",
+        "AI Agent",
         "开发者工具",
-        "记忆 / Context Engineering",
-        "供应链与价值链分析"
+        "研究 / Benchmark",
+        "机器人 / 具身智能",
+        "多模态 AI"
       ],
       "source_review_ids": [
+        "ai_agent_living_review",
+        "developer_tools_living_review",
+        "research_benchmark_living_review",
+        "robotics_embodied_ai_living_review",
+        "multimodal_ai_living_review"
+      ],
+      "status": "llm_draft"
+    },
+    {
+      "framework_id": "signal_vs_structure_assessment",
+      "name": "信号与结构区分框架",
+      "purpose": "用于区分当前看到的是早期市场/技术信号，还是已经具备可持续性的结构性变化，避免把热度、单案例或传播效果误判为趋势定论。",
+      "dimensions": [
+        "当前证据属于哪一类：机制证据、结果证据、市场信号、叙事信号还是 benchmark 证据？",
+        "证据覆盖是否充分：是否同时包含成功、失败、对照组和长期观察？",
+        "单案例风险多大：现象能否被第二、第三个独立案例复现？",
+        "时间维度是否足够：这是短期波动、周期性噪声，还是跨阶段持续出现？",
+        "最容易被误读的指标是什么：增长、搜索量、星标、估值、分数还是吞吐？",
+        "若为真应出现什么后续现象：有哪些可验证的二阶、三阶后果？",
+        "若为假会如何解释现象：有哪些更简单的替代叙事能解释当前材料？"
+      ],
+      "best_for": [
+        "消费经济",
+        "AI 基础设施",
+        "开发者工具",
+        "研究 / Benchmark",
+        "多模态 AI",
+        "产品 / 商业"
+      ],
+      "source_review_ids": [
+        "consumer_economy_living_review",
         "ai_infrastructure_living_review",
         "developer_tools_living_review",
-        "memory_context_living_review",
+        "research_benchmark_living_review",
+        "multimodal_ai_living_review",
         "product_business_living_review"
       ],
       "status": "llm_draft"

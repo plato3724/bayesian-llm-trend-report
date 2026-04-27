@@ -1,0 +1,48 @@
+{
+  "article_id": "7446bf91ca19",
+  "title": "OpenAI Codex 核心团队爆猛料：我们不写 PRD，几乎不用 PM，设计师写代码比工程师还猛",
+  "url": "https://mp.weixin.qq.com/s/FGUP63N48OsmqS1qG13grA",
+  "ingested_from": "github_issue",
+  "ingested_at": "2026-04-27T15:34:02+00:00",
+  "last_updated_at": "2026-04-27T15:34:05+00:00",
+  "content_state": {
+    "full_text_status": "acquired",
+    "canonical_text_source": "knowledge_state/articles/7446bf91ca19/canonical_text.txt",
+    "fetch_attempts": [
+      {
+        "attempted_at": "2026-04-27T15:34:05+00:00",
+        "status": "acquired",
+        "status_code": 200,
+        "final_url": "https://mp.weixin.qq.com/s/FGUP63N48OsmqS1qG13grA",
+        "content_type": "text/html",
+        "text_length": 5605,
+        "raw_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/knowledge_state/articles/7446bf91ca19/raw/fetch_20260427T153402Z.html",
+        "text_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/knowledge_state/articles/7446bf91ca19/raw/extract_20260427T153402Z.txt",
+        "note": "Full text looks sufficient for claim extraction."
+      }
+    ],
+    "manual_artifacts": [],
+    "next_action": "extract_claims"
+  },
+  "analysis_state": {
+    "claim_extraction_status": "not_started",
+    "verification_status": "not_started",
+    "bayesian_status": "excluded_until_verified"
+  },
+  "article_summary": {
+    "events": [],
+    "techniques": [],
+    "tools": []
+  },
+  "hypothesis_impacts": [],
+  "ingest_sources": [
+    {
+      "source_name": "github_issue",
+      "source_ref": "https://github.com/plato3724/bayesian-llm-trend-report/issues/15",
+      "source_note": "https://mp.weixin.qq.com/s/FGUP63N48OsmqS1qG13grA",
+      "ingested_at": "2026-04-27T15:34:02+00:00"
+    }
+  ],
+  "lifecycle_state": "active",
+  "lifecycle_events": []
+}

@@ -1,6 +1,6 @@
 {
   "created_at": "2026-04-25T15:25:50+00:00",
-  "last_updated_at": "2026-04-27T01:41:05+00:00",
+  "last_updated_at": "2026-04-27T15:34:12+00:00",
   "version": 1,
   "concepts": [
     {
@@ -12,7 +12,7 @@
       ],
       "status": "drafted",
       "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "last_updated_at": "2026-04-27T15:34:12+00:00",
       "related_categories": [
         "ai_agent",
         "memory_context",
@@ -32,7 +32,8 @@
         "271ba75686b0",
         "44f454b544d9",
         "719a74e44194",
-        "d11e99337c97"
+        "d11e99337c97",
+        "7446bf91ca19"
       ],
       "notes": []
     },
@@ -181,18 +182,21 @@
       ],
       "status": "drafted",
       "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "last_updated_at": "2026-04-27T15:34:12+00:00",
       "related_categories": [
         "ai_agent",
         "memory_context",
         "developer_tools",
-        "ai_infrastructure"
+        "ai_infrastructure",
+        "product_business",
+        "open_source_ecosystem"
       ],
       "related_tags": [
         "coding-agent"
       ],
       "supporting_articles": [
-        "03f809cb0476"
+        "03f809cb0476",
+        "7446bf91ca19"
       ],
       "notes": []
     },
@@ -861,18 +865,21 @@
       ],
       "status": "drafted",
       "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "last_updated_at": "2026-04-27T15:34:12+00:00",
       "related_categories": [
         "ai_agent",
         "ai_infrastructure",
         "product_business",
-        "consumer_economy"
+        "consumer_economy",
+        "developer_tools",
+        "open_source_ecosystem"
       ],
       "related_tags": [
         "cloud-agent"
       ],
       "supporting_articles": [
-        "20fb29fec269"
+        "20fb29fec269",
+        "7446bf91ca19"
       ],
       "notes": []
     },
@@ -957,7 +964,7 @@
       ],
       "status": "drafted",
       "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "last_updated_at": "2026-04-27T15:34:12+00:00",
       "related_categories": [
         "product_business",
         "ai_agent",
@@ -970,7 +977,8 @@
       ],
       "supporting_articles": [
         "271ba75686b0",
-        "3c07c6956807"
+        "3c07c6956807",
+        "7446bf91ca19"
       ],
       "notes": []
     },
@@ -1421,18 +1429,20 @@
       ],
       "status": "drafted",
       "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "last_updated_at": "2026-04-27T15:34:12+00:00",
       "related_categories": [
         "developer_tools",
         "memory_context",
         "open_source_ecosystem",
-        "ai_agent"
+        "ai_agent",
+        "product_business"
       ],
       "related_tags": [
         "codex"
       ],
       "supporting_articles": [
-        "3c07c6956807"
+        "3c07c6956807",
+        "7446bf91ca19"
       ],
       "notes": []
     },
@@ -4815,6 +4825,126 @@
       ],
       "supporting_articles": [
         "39ca3e825456"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "async_agent",
+      "name": "Async Agent",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "async-agent"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-27T15:34:12+00:00",
+      "last_updated_at": "2026-04-27T15:34:12+00:00",
+      "related_categories": [
+        "ai_agent",
+        "developer_tools",
+        "product_business",
+        "open_source_ecosystem"
+      ],
+      "related_tags": [
+        "async-agent"
+      ],
+      "supporting_articles": [
+        "7446bf91ca19"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "long_running_tasks",
+      "name": "Long Running Tasks",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "long-running-tasks"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-27T15:34:12+00:00",
+      "last_updated_at": "2026-04-27T15:34:12+00:00",
+      "related_categories": [
+        "ai_agent",
+        "developer_tools",
+        "product_business",
+        "open_source_ecosystem"
+      ],
+      "related_tags": [
+        "long-running-tasks"
+      ],
+      "supporting_articles": [
+        "7446bf91ca19"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "task_delegation",
+      "name": "Task Delegation",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "task-delegation"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-27T15:34:12+00:00",
+      "last_updated_at": "2026-04-27T15:34:12+00:00",
+      "related_categories": [
+        "ai_agent",
+        "developer_tools",
+        "product_business",
+        "open_source_ecosystem"
+      ],
+      "related_tags": [
+        "task-delegation"
+      ],
+      "supporting_articles": [
+        "7446bf91ca19"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "ide_integration",
+      "name": "Ide Integration",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "ide-integration"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-27T15:34:12+00:00",
+      "last_updated_at": "2026-04-27T15:34:12+00:00",
+      "related_categories": [
+        "ai_agent",
+        "developer_tools",
+        "product_business",
+        "open_source_ecosystem"
+      ],
+      "related_tags": [
+        "ide-integration"
+      ],
+      "supporting_articles": [
+        "7446bf91ca19"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "openclaw",
+      "name": "Openclaw",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "openclaw"
+      ],
+      "status": "drafted",
+      "created_at": "2026-04-27T15:34:12+00:00",
+      "last_updated_at": "2026-04-27T15:34:12+00:00",
+      "related_categories": [
+        "ai_agent",
+        "developer_tools",
+        "product_business",
+        "open_source_ecosystem"
+      ],
+      "related_tags": [
+        "openclaw"
+      ],
+      "supporting_articles": [
+        "7446bf91ca19"
       ],
       "notes": []
     }

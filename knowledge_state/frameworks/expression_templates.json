@@ -1,97 +1,95 @@
 {
-  "created_at": "2026-04-27T01:42:28+00:00",
-  "last_updated_at": "2026-04-27T01:43:32+00:00",
+  "created_at": "2026-04-27T15:35:34+00:00",
+  "last_updated_at": "2026-04-27T15:36:44+00:00",
   "version": 1,
-  "source_hash": "46c282405889d547869aa53f132ccaa2f2fdaf851a23e59671ec7680b3e9367f",
+  "source_hash": "37f7bbafb920399de670f444d02e7c8030629a4e3adaf23ee52197251fd0db03",
   "prompt_version": "frameworks_from_reviews_v1",
   "generated_by": "llm_framework_generation_v1",
   "llm_model": "openai/gpt-5.4",
   "llm_attempts": 1,
   "templates": [
     {
-      "template_id": "theme_mechanism_synthesis",
-      "name": "主题机制综述模板",
-      "use_case": "用于把多篇材料从零散观点整合成一个可检验的主题判断。",
+      "template_id": "from_claims_to_mechanism",
+      "name": "从 claim 到机制的综述模板",
+      "use_case": "用于把多篇材料从表层观点整理为一个可检验的底层机制解释。",
       "structure": [
-        "先指出这组材料重复出现的不是哪些结论，而是哪类底层机制。",
-        "概括一个核心判断：真正变化发生在什么层，而不发生在什么层。",
-        "拆出 2-4 条机制链，说明它们如何共同支持该判断。",
-        "明确当前最稳固的证据与最薄弱的证据分别是什么。",
-        "加入至少一个反证方向：什么类型的文章或案例最可能推翻当前解释。",
-        "交代概念边界：哪些相邻概念可能应合并，哪些只是暂时混杂。",
-        "以“当前更适合被视为中强度假设/早期结构/重复信号”之类判断收束。"
+        "先定义共同问题：这些材料表面不同，但可能在解释哪一个共同变化？",
+        "提炼重复结构：哪些术语、场景或系统部件反复出现，且不应被视为偶然？",
+        "提出机制判断：用一条因果链说明这些现象如何连起来。",
+        "说明为什么重要：该机制改变了什么竞争焦点、成本结构或落地路径？",
+        "加入反证与边界：哪些案例会挑战这个解释，哪些前提不成立时结论会失效？",
+        "区分证据强弱：哪些部分已有机制证据，哪些仍只是叙事信号或单案例结果？",
+        "给出下一步问题：后续应寻找什么材料来验证、拆分或修正当前主题？"
       ],
       "source_review_ids": [
         "ai_agent_living_review",
         "developer_tools_living_review",
         "memory_context_living_review",
-        "multimodal_ai_living_review",
         "robotics_embodied_ai_living_review",
         "research_benchmark_living_review"
       ],
       "status": "llm_draft"
     },
     {
-      "template_id": "single_case_to_hypothesis",
-      "name": "单案例到可检验假设模板",
-      "use_case": "用于处理只有一篇或少量材料的主题，避免把个案过度上升为定论。",
+      "template_id": "trend_with_counterevidence",
+      "name": "趋势判断与反证模板",
+      "use_case": "用于写趋势分析，既提出中强度判断，也系统纳入最可能的误读、失败和替代解释。",
       "structure": [
-        "先说明当前材料的地位：它提供的是信号，不是定论。",
-        "提炼该案例真正揭示的机制链，而非停留在新名词或结果展示。",
-        "说明这个机制一旦成立，会如何改写系统边界、成本结构或市场关系。",
-        "明确哪些部分已有证据支持，哪些仍只是推演、叙事或产业想象。",
-        "列出最关键的隐含前提与边界条件。",
-        "指出最值得寻找的反例、对照实验或跨场景验证。",
-        "以“目前最合理的定位是可检验假设”收尾。"
+        "先给出趋势命题：当前最值得关注的变化是什么，而不是什么。",
+        "交代支持材料：哪些重复信号支持该趋势成立。",
+        "解释底层机制：为什么这些信号可能属于同一因果结构。",
+        "明确常见误读：哪些看似支持趋势的材料其实证据较弱或容易被夸大。",
+        "列出最强反证：什么样的数据、案例或失败会直接挑战该命题。",
+        "划定适用边界：该趋势更适用于哪些场景，不适用于哪些场景。",
+        "形成审慎结论：把趋势定位为已成形、早期成形、反复出现或仍待验证。"
+      ],
+      "source_review_ids": [
+        "consumer_economy_living_review",
+        "ai_infrastructure_living_review",
+        "multimodal_ai_living_review",
+        "product_business_living_review",
+        "research_benchmark_living_review"
+      ],
+      "status": "llm_draft"
+    },
+    {
+      "template_id": "system_boundary_analysis",
+      "name": "系统边界变化分析模板",
+      "use_case": "用于分析一个工具、平台或架构升级到底改变了什么系统边界，以及价值为何会重新分配。",
+      "structure": [
+        "描述旧系统：过去的工作流、责任链和瓶颈分布是什么。",
+        "指出新变化：新技术把哪个关键环节改写了。",
+        "分析边界重绘：哪些能力被模块化、自动化、外包化或下沉到底层。",
+        "识别新瓶颈：旧瓶颈消失后，哪里成为新的稀缺点。",
+        "讨论价值重分配：谁因此获得更高效率、控制权或收费权。",
+        "补充失败模式：边界重绘会带来哪些维护成本、验证压力或治理问题。",
+        "给出判断标准：怎样区分真正的范式变化与一次性的功能演示。"
+      ],
+      "source_review_ids": [
+        "developer_tools_living_review",
+        "ai_agent_living_review",
+        "product_business_living_review",
+        "ai_infrastructure_living_review"
+      ],
+      "status": "llm_draft"
+    },
+    {
+      "template_id": "single_case_to_theme",
+      "name": "单案例到主题雏形模板",
+      "use_case": "用于处理只有一篇或少量材料的主题，提炼其中可复用的假设，同时避免过早下结论。",
+      "structure": [
+        "先说明定位：这不是稳定主题，而是一个值得跟踪的信号点。",
+        "抽出最有解释力的机制：单案例真正揭示的不是名词，而是哪条机制链。",
+        "指出当前能证明什么：哪些结论已有直接证据支持。",
+        "指出当前不能证明什么：哪些产业、市场或通用化判断仍属推演。",
+        "识别相邻模式：案例里混合了哪些可能需要拆分的概念。",
+        "提出验证路径：下一步最需要补充什么类型的文章、对照和失败案例。",
+        "给出临时结论：把该主题定义为假设、信号或早期轮廓，而非既成事实。"
       ],
       "source_review_ids": [
         "ai_infrastructure_living_review",
         "consumer_economy_living_review",
         "product_business_living_review"
-      ],
-      "status": "llm_draft"
-    },
-    {
-      "template_id": "against_common_misreading",
-      "name": "反误读校正模板",
-      "use_case": "用于纠正常见的热度崇拜、结果误读、概念偷换和外推过度。",
-      "structure": [
-        "先点出一个最常见但危险的直觉式误读。",
-        "解释这种误读为什么看起来合理，以及它忽略了什么关键机制。",
-        "用更稳固的替代解释重写问题定义。",
-        "补充一个失败场景或反例，说明原误读在哪里会崩。",
-        "区分哪些信号可以当作提示，哪些不能当作证明。",
-        "给出更可靠的评估标准或下一步验证方法。"
-      ],
-      "source_review_ids": [
-        "ai_agent_living_review",
-        "consumer_economy_living_review",
-        "developer_tools_living_review",
-        "memory_context_living_review",
-        "multimodal_ai_living_review",
-        "product_business_living_review",
-        "research_benchmark_living_review",
-        "robotics_embodied_ai_living_review"
-      ],
-      "status": "llm_draft"
-    },
-    {
-      "template_id": "bottleneck_shift_analysis",
-      "name": "瓶颈迁移分析模板",
-      "use_case": "用于解释一个新技术为何重要，重点不写它多强，而写它如何改变瓶颈与价值分布。",
-      "structure": [
-        "定义旧系统的核心瓶颈及其后果。",
-        "说明新变化解除的不是全部约束，而是其中哪个关键卡点。",
-        "分析瓶颈松动后，系统架构或流程会如何重组。",
-        "指出新的稀缺环节、收费权或控制权转移到了哪里。",
-        "说明这种变化依赖哪些前提，一旦前提消失会发生什么。",
-        "最后判断这是局部优化、结构性重配，还是仅限特定场景的改进。"
-      ],
-      "source_review_ids": [
-        "ai_infrastructure_living_review",
-        "developer_tools_living_review",
-        "product_business_living_review",
-        "memory_context_living_review"
       ],
       "status": "llm_draft"
     }
