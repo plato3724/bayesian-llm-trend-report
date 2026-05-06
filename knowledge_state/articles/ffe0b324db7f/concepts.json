@@ -1,0 +1,53 @@
+{
+  "article_id": "ffe0b324db7f",
+  "concept_status": "drafted",
+  "generated_at": "2026-05-06T13:40:37+00:00",
+  "method": "tag_to_concept_mvp",
+  "matched_concepts": [
+    "agent_runtime",
+    "computer_use_agent",
+    "digital_workflow",
+    "knowledge_work",
+    "language_agent",
+    "micro_world",
+    "software_automation",
+    "tool_calling",
+    "workflow_orchestration",
+    "world_model"
+  ],
+  "created_concepts": [
+    "language_agent",
+    "computer_use_agent",
+    "micro_world",
+    "digital_workflow",
+    "software_automation",
+    "knowledge_work"
+  ],
+  "candidate_concepts": [],
+  "source_trace": {
+    "classification_path": "knowledge_state/articles/ffe0b324db7f/classification.json",
+    "extraction_path": "knowledge_state/articles/ffe0b324db7f/extraction.json"
+  },
+  "article_entities": [
+    "Agent",
+    "OpenClaw",
+    "AutoGPT",
+    "OpenClaw Moment",
+    "AI",
+    "Star",
+    "API",
+    "EP139",
+    "GitHub",
+    "NeoCognition",
+    "Sloan Research Fellowship",
+    "Hopfield",
+    "Moment",
+    "ChatGPT Moment",
+    "ChatGPT",
+    "Significant-Gravitas",
+    "Bill",
+    "CEO",
+    "Language Agent",
+    "Terence Tao"
+  ]
+}

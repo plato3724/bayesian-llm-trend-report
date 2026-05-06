@@ -1,0 +1,84 @@
+{
+  "article_id": "ffe0b324db7f",
+  "extraction_status": "completed",
+  "generated_at": "2026-05-06T13:40:27+00:00",
+  "method": "deterministic_mvp",
+  "summary": "斯隆奖得主青年学者苏煜谈Agent：会用的人，不是Prompt高手，而是能把自己的工作小世界说清楚的人 Agent 不是工具调用，是学会一个小世界 如果你正在把 Agent 学成“提示词 + 工具调用 + 工作流外壳”，这个路子有点窄。",
+  "main_points": [
+    "斯隆奖得主青年学者苏煜谈Agent：会用的人，不是Prompt高手，而是能把自己的工作小世界说清楚的人",
+    "Agent 不是工具调用，是学会一个小世界",
+    "如果你正在把 Agent 学成“提示词 + 工具调用 + 工作流外壳”，这个路子有点窄。",
+    "OpenClaw 这次让人看见的，不只是又火了一个工具。它更像一个信号：Agent 已经开始碰到文件、软件、权限和流程。未来会用 Agent 的人，不一定是提示词高手，而是能把自己的小世界说清楚的人。",
+    "OpenClaw Moment 最容易被误读成一次产品爆火。",
+    "一个工具突然出圈，大家开始讨论代码 Agent、电脑使用型 Agent、权限开放、软件自动化。好像这又是 AI 圈里一个新的热词，过两个月会被下一个热词替换掉。",
+    "但如果只把它看成工具新闻，可能会错过更大的变化。OpenClaw 让一件事变得可见：**Agent（智能体）**不再只是聊天窗口里的回答者，它开始进入真实任务的现场，也碰到一个工作世界里那些过去只有人类专家才知道的例外。",
+    "这个判断来自《张小珺Jùn｜商业访谈录》EP139。张小珺这一期请到的嘉宾是苏煜，俄亥俄州立大学计算机科学与工程系助理教授、NeoCognition 联合创始人兼 CEO，研究方向是语言智能体（Language Agent），也是 2025 年斯隆研究奖（Sloan Research Fellowship）得主。"
+  ],
+  "entities": [
+    "Agent",
+    "OpenClaw",
+    "AutoGPT",
+    "OpenClaw Moment",
+    "AI",
+    "Star",
+    "API",
+    "EP139",
+    "GitHub",
+    "NeoCognition",
+    "Sloan Research Fellowship",
+    "Hopfield",
+    "Moment",
+    "ChatGPT Moment",
+    "ChatGPT",
+    "Significant-Gravitas",
+    "Bill",
+    "CEO",
+    "Language Agent",
+    "Terence Tao"
+  ],
+  "claims": [
+    {
+      "id": "auto_point_1",
+      "type": "event",
+      "text": "斯隆奖得主青年学者苏煜谈Agent：会用的人，不是Prompt高手，而是能把自己的工作小世界说清楚的人",
+      "source": "canonical_text_heuristic"
+    },
+    {
+      "id": "auto_point_2",
+      "type": "event",
+      "text": "Agent 不是工具调用，是学会一个小世界",
+      "source": "canonical_text_heuristic"
+    },
+    {
+      "id": "auto_point_3",
+      "type": "event",
+      "text": "如果你正在把 Agent 学成“提示词 + 工具调用 + 工作流外壳”，这个路子有点窄。",
+      "source": "canonical_text_heuristic"
+    },
+    {
+      "id": "auto_point_4",
+      "type": "event",
+      "text": "OpenClaw 这次让人看见的，不只是又火了一个工具。它更像一个信号：Agent 已经开始碰到文件、软件、权限和流程。未来会用 Agent 的人，不一定是提示词高手，而是能把自己的小世界说清楚的人。",
+      "source": "canonical_text_heuristic"
+    },
+    {
+      "id": "auto_point_5",
+      "type": "event",
+      "text": "OpenClaw Moment 最容易被误读成一次产品爆火。",
+      "source": "canonical_text_heuristic"
+    },
+    {
+      "id": "auto_point_6",
+      "type": "event",
+      "text": "一个工具突然出圈，大家开始讨论代码 Agent、电脑使用型 Agent、权限开放、软件自动化。好像这又是 AI 圈里一个新的热词，过两个月会被下一个热词替换掉。",
+      "source": "canonical_text_heuristic"
+    }
+  ],
+  "important_quotes": [],
+  "open_questions": [],
+  "source_trace": {
+    "record_path": "knowledge_state/articles/ffe0b324db7f/record.json",
+    "canonical_text_path": "knowledge_state/articles/ffe0b324db7f/canonical_text.txt",
+    "legacy_claims_path": "knowledge_state/articles/ffe0b324db7f/claims.json"
+  }
+}
