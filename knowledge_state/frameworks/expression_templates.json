@@ -1,95 +1,60 @@
 {
-  "created_at": "2026-05-06T13:42:19+00:00",
-  "last_updated_at": "2026-05-06T13:43:37+00:00",
+  "created_at": "2026-05-07T15:23:09+00:00",
+  "last_updated_at": "2026-05-07T15:23:09+00:00",
   "version": 1,
-  "source_hash": "9235ba5e0c6a45834bee99e24631e55570f9854f2dc81592e289b575008ac2f9",
+  "source_hash": "96f472d54142a7fec6e0ce89efa1953ac3a804026c2ad2185ada4b4d2a1ca3b8",
   "prompt_version": "frameworks_from_reviews_v1",
-  "generated_by": "llm_framework_generation_v1",
-  "llm_model": "openai/gpt-5.4",
-  "llm_attempts": 1,
+  "generated_by": "deterministic_framework_fallback_v1",
   "templates": [
     {
-      "template_id": "synthesize_mechanism_not_headlines",
-      "name": "从案例到机制的综述模板",
-      "use_case": "用于写动态综述结论，重点不是复述文章观点，而是抽象共同机制并指出尚未解决的边界。",
+      "template_id": "review_to_argument",
+      "name": "从综述到论点",
+      "use_case": "把一个分类综述改写成一篇分析文章或观点笔记。",
       "structure": [
-        "先定义问题：这组材料要解释的不是谁更火，而是是否共享同一底层机制",
-        "概括共同变化：用一句话指出最强共识或重复结构",
-        "展开机制链：说明变化是通过哪几个环节串起来的",
-        "指出跨案例共通性：解释为什么看似不同场景其实在复用同一结构",
-        "纳入反证与误读：说明哪些流行解释并不构成有效证据",
-        "交代边界条件：在哪些任务、组织或成本条件下判断才成立",
-        "给出下一步问题：最需要什么反驳材料、补充证据或概念重命名"
+        "一句话判断",
+        "代表性材料",
+        "重复模式",
+        "机制解释",
+        "约束与反证",
+        "可更新结论"
       ],
       "source_review_ids": [
         "ai_agent_living_review",
-        "memory_context_living_review",
-        "robotics_embodied_ai_living_review",
-        "research_benchmark_living_review"
-      ],
-      "status": "llm_draft"
-    },
-    {
-      "template_id": "evaluate_trend_maturity",
-      "name": "趋势成熟度判断模板",
-      "use_case": "用于写一个主题目前处于单案例、早期成形还是反复出现阶段，并解释为什么还不能下定论。",
-      "structure": [
-        "先给成熟度定位：单案例、早期成形或反复出现",
-        "说明当前最强证据是什么：机制、结果、热度还是采用",
-        "指出证据缺口：缺少独立复现、失败案例、成本数据或跨场景验证",
-        "分析最容易被误判的地方：哪些信号会被错当成结构",
-        "说明相邻模式重叠：当前主题与另一个概念是否混杂",
-        "提出反证需求：什么类型的新材料最能推翻当前判断"
-      ],
-      "source_review_ids": [
         "ai_infrastructure_living_review",
         "consumer_economy_living_review",
         "developer_tools_living_review",
+        "memory_context_living_review",
         "multimodal_ai_living_review",
-        "product_business_living_review"
+        "product_business_living_review",
+        "research_benchmark_living_review",
+        "robotics_embodied_ai_living_review"
       ],
-      "status": "llm_draft"
+      "status": "drafted"
     },
     {
-      "template_id": "compare_model_and_system_value",
-      "name": "模型能力 vs 系统能力表达模板",
-      "use_case": "用于写一类产品或技术的价值来源，强调价值不只来自模型本身，而来自系统边界、runtime 与验证设计。",
+      "template_id": "cross_review_theory_note",
+      "name": "跨综述理论笔记",
+      "use_case": "把多个分类综述抽象成更高层的判断或理论雏形。",
       "structure": [
-        "先否定直觉：真正变化不只是模型更强",
-        "指出系统重心转移：价值开始落到 runtime、流程、状态或基础设施",
-        "拆解分层结构：模型负责什么，确定性层负责什么，人类负责什么",
-        "说明为什么这比单点能力更关键：它如何决定可托付性、可维护性或商业护城河",
-        "补充失败模式：缺少哪一层时系统会停留在 60%-70% 可用性",
-        "给出判断标准：未来评估同类产品应优先看哪些系统指标"
+        "多个分类共同暴露的问题",
+        "表层差异",
+        "共享机制",
+        "边界条件",
+        "理论化表达",
+        "后续验证材料"
       ],
       "source_review_ids": [
         "ai_agent_living_review",
+        "ai_infrastructure_living_review",
+        "consumer_economy_living_review",
         "developer_tools_living_review",
         "memory_context_living_review",
-        "product_business_living_review"
-      ],
-      "status": "llm_draft"
-    },
-    {
-      "template_id": "cost_shift_analysis",
-      "name": "成本与瓶颈迁移分析模板",
-      "use_case": "用于写一个新技术如何重排成本结构、改变稀缺能力位置，并由此带来新的产品机会或基础设施价值。",
-      "structure": [
-        "界定旧瓶颈：原系统最贵、最慢或最不稳定的环节是什么",
-        "说明新机制如何释放旧瓶颈",
-        "指出新瓶颈转移到哪里：验证、网络、状态管理、数据治理或组织协同",
-        "分析谁因此获得新价值，谁因此被削弱",
-        "讨论表面提效与真实提效的差别：成本是否只是被后移或隐藏",
-        "列出边界与反例：在哪些条件下重排无效甚至更差",
-        "收束为判断：真正值得关注的是哪类新收费权或新能力缺口"
-      ],
-      "source_review_ids": [
-        "ai_infrastructure_living_review",
-        "developer_tools_living_review",
+        "multimodal_ai_living_review",
         "product_business_living_review",
-        "consumer_economy_living_review"
+        "research_benchmark_living_review",
+        "robotics_embodied_ai_living_review"
       ],
-      "status": "llm_draft"
+      "status": "drafted"
     }
   ]
 }

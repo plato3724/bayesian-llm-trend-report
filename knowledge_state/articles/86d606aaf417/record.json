@@ -1,0 +1,48 @@
+{
+  "article_id": "86d606aaf417",
+  "title": "OpenAI公开大规模稳定训练的秘密，英伟达AMD英特尔都受益",
+  "url": "https://mp.weixin.qq.com/s/QugylM-Bhdx785Gnxca84w",
+  "ingested_from": "github_issue",
+  "ingested_at": "2026-05-07T15:16:07+00:00",
+  "last_updated_at": "2026-05-07T15:16:29+00:00",
+  "content_state": {
+    "full_text_status": "acquired",
+    "canonical_text_source": "knowledge_state/articles/86d606aaf417/canonical_text.txt",
+    "fetch_attempts": [
+      {
+        "attempted_at": "2026-05-07T15:16:29+00:00",
+        "status": "acquired",
+        "status_code": 200,
+        "final_url": "https://mp.weixin.qq.com/s/QugylM-Bhdx785Gnxca84w",
+        "content_type": "text/html",
+        "text_length": 2288,
+        "raw_path": "D:\\code\\tec_trade\\knowledge_state\\articles\\86d606aaf417\\raw\\fetch_20260507T151628Z.html",
+        "text_path": "D:\\code\\tec_trade\\knowledge_state\\articles\\86d606aaf417\\raw\\extract_20260507T151628Z.txt",
+        "note": "Full text looks sufficient for claim extraction."
+      }
+    ],
+    "manual_artifacts": [],
+    "next_action": "extract_claims"
+  },
+  "analysis_state": {
+    "claim_extraction_status": "not_started",
+    "verification_status": "not_started",
+    "bayesian_status": "excluded_until_verified"
+  },
+  "article_summary": {
+    "events": [],
+    "techniques": [],
+    "tools": []
+  },
+  "hypothesis_impacts": [],
+  "ingest_sources": [
+    {
+      "source_name": "github_issue",
+      "source_ref": "https://github.com/plato3724/bayesian-llm-trend-report/issues/17",
+      "source_note": "https://mp.weixin.qq.com/s/QugylM-Bhdx785Gnxca84w",
+      "ingested_at": "2026-05-07T15:16:07+00:00"
+    }
+  ],
+  "lifecycle_state": "active",
+  "lifecycle_events": []
+}

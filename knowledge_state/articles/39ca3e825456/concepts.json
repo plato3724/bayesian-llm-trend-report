@@ -1,7 +1,7 @@
 {
   "article_id": "39ca3e825456",
   "concept_status": "drafted",
-  "generated_at": "2026-04-27T01:41:05+00:00",
+  "generated_at": "2026-05-07T15:23:34+00:00",
   "method": "tag_to_concept_mvp",
   "matched_concepts": [
     "agent_evaluation",
@@ -16,6 +16,8 @@
     "world_model"
   ],
   "created_concepts": [
+    "embodied_ai",
+    "physical_grounding",
     "autonomous_driving",
     "world_model",
     "self_diagnosis",

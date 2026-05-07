@@ -67,6 +67,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Sync triggering issue into knowledge_state
+        if: ${{ github.event_name == 'issues' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/bayesian_reader.py sync-issue --issue-number "${{ github.event.issue.number }}"
+
       - name: Sync GitHub issues into knowledge_state
         env:
           # `gh` CLI on ubuntu-latest is already installed; it just needs a token.

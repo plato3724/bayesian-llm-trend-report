@@ -420,6 +420,52 @@ def bootstrap_from_url_md(source_path: Path) -> dict[str, Any]:
     return {"created": created, "updated": updated, "article_ids": imported_ids}
 
 
+def import_github_issue(issue: dict[str, Any]) -> dict[str, Any]:
+    # Accept URLs in either the issue body OR the title. Users frequently
+    # paste the URL into the title and use the body for a short domain hint,
+    # so we must check both places and dedupe.
+    body_text = issue.get("body") or ""
+    title_text = issue.get("title") or ""
+    urls_seen: set[str] = set()
+    urls: list[str] = []
+    for url in extract_urls(body_text) + extract_urls(title_text):
+        if url not in urls_seen:
+            urls_seen.add(url)
+            urls.append(url)
+    if not urls:
+        return {"created": 0, "updated": 0, "skipped": 1, "imported": []}
+
+    created = 0
+    updated = 0
+    imported: list[dict[str, Any]] = []
+    notes = body_text.strip()
+    for url in urls:
+        display_title = title_text.strip()
+        if not display_title or display_title == url:
+            display_title = url
+        article_id, was_created = upsert_article(
+            title=display_title,
+            url=url,
+            source_name="github_issue",
+            source_ref=issue.get("url"),
+            source_note=notes,
+        )
+        if was_created:
+            created += 1
+        else:
+            updated += 1
+        imported.append(
+            {
+                "article_id": article_id,
+                "issue_number": issue.get("number"),
+                "issue_url": issue.get("url"),
+                "title": issue.get("title"),
+                "url": url,
+            }
+        )
+    return {"created": created, "updated": updated, "skipped": 0, "imported": imported}
+
+
 def sync_github_issues(
     repo: str | None = None,
     label: str | None = None,
@@ -456,47 +502,11 @@ def sync_github_issues(
     skipped = 0
 
     for issue in issues:
-        # Accept URLs in either the issue body OR the title. Users frequently
-        # paste the URL into the title and use the body for a short domain
-        # hint (e.g. "怀旧经济"), so we must check both places and dedupe.
-        body_text = issue.get("body") or ""
-        title_text = issue.get("title") or ""
-        urls_seen: set[str] = set()
-        urls: list[str] = []
-        for url in extract_urls(body_text) + extract_urls(title_text):
-            if url not in urls_seen:
-                urls_seen.add(url)
-                urls.append(url)
-        if not urls:
-            skipped += 1
-            continue
-        notes = body_text.strip()
-        for url in urls:
-            # Prefer a title that isn't itself just the URL, otherwise fall
-            # back to the URL so upsert_article still has something to show.
-            display_title = title_text.strip()
-            if not display_title or display_title == url:
-                display_title = url
-            article_id, was_created = upsert_article(
-                title=display_title,
-                url=url,
-                source_name="github_issue",
-                source_ref=issue.get("url"),
-                source_note=notes,
-            )
-            if was_created:
-                created += 1
-            else:
-                updated += 1
-            imported.append(
-                {
-                    "article_id": article_id,
-                    "issue_number": issue.get("number"),
-                    "issue_url": issue.get("url"),
-                    "title": issue.get("title"),
-                    "url": url,
-                }
-            )
+        result = import_github_issue(issue)
+        created += result["created"]
+        updated += result["updated"]
+        skipped += result["skipped"]
+        imported.extend(result["imported"])
 
     if write_config_flag:
         write_github_config(repo=repo_slug, issue_label=effective_label)
@@ -523,6 +533,46 @@ def sync_github_issues(
         "updated": updated,
         "skipped": skipped,
         "imported": imported,
+    }
+
+
+def sync_github_issue(
+    issue_number: int,
+    repo: str | None = None,
+    write_config_flag: bool = False,
+) -> dict[str, Any]:
+    repo_slug = resolve_repo_slug(repo)
+    issue = run_gh_json(
+        [
+            "issue",
+            "view",
+            str(issue_number),
+            "--repo",
+            repo_slug,
+            "--json",
+            "number,title,body,url,labels,createdAt",
+        ]
+    )
+    result = import_github_issue(issue)
+    if write_config_flag:
+        write_github_config(repo=repo_slug)
+    append_jsonl(
+        CHANGE_LOG_PATH,
+        {
+            "timestamp": utc_now(),
+            "event": "sync_github_issue",
+            "repo": repo_slug,
+            "issue_number": issue_number,
+            "created": result["created"],
+            "updated": result["updated"],
+            "skipped": result["skipped"],
+            "imported": result["imported"],
+        },
+    )
+    return {
+        "repo": repo_slug,
+        "issue_number": issue_number,
+        **result,
     }
 
 
@@ -6118,6 +6168,10 @@ def build_parser() -> argparse.ArgumentParser:
     sync.add_argument("--state", default="open")
     sync.add_argument("--limit", type=int, default=100)
     sync.add_argument("--write-config", action="store_true")
+    sync_one = subparsers.add_parser("sync-issue", help="Import article links from one GitHub Issue")
+    sync_one.add_argument("--repo")
+    sync_one.add_argument("--issue-number", type=int, required=True)
+    sync_one.add_argument("--write-config", action="store_true")
     pipeline = subparsers.add_parser("run-pipeline", help="Run issue sync, fetch, recompute, and report build in one step")
     pipeline.add_argument("--repo")
     pipeline.add_argument("--label")
@@ -6332,6 +6386,15 @@ def main(argv: list[str]) -> int:
             label=args.label,
             state=args.state,
             limit=args.limit,
+            write_config_flag=args.write_config,
+        )
+        print_json(result)
+        return 0
+
+    if args.command == "sync-issue":
+        result = sync_github_issue(
+            issue_number=args.issue_number,
+            repo=args.repo,
             write_config_flag=args.write_config,
         )
         print_json(result)

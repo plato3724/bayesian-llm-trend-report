@@ -1,7 +1,7 @@
 {
   "article_id": "59b86c15655e",
   "concept_status": "drafted",
-  "generated_at": "2026-04-26T14:55:54+00:00",
+  "generated_at": "2026-05-07T15:23:34+00:00",
   "method": "tag_to_concept_mvp",
   "matched_concepts": [
     "adaptive_inference",
@@ -18,7 +18,6 @@
   "created_concepts": [
     "vla_model",
     "vision_language_action",
-    "embodied_ai",
     "robot_control",
     "adaptive_inference",
     "early_exit",

@@ -1,0 +1,32 @@
+{
+  "article_id": "86d606aaf417",
+  "classification_status": "drafted",
+  "generated_at": "2026-05-07T15:22:53+00:00",
+  "method": "deterministic_keyword_mvp",
+  "primary_category": "ai_infrastructure",
+  "secondary_categories": [],
+  "tags": [
+    "datacenter-networking",
+    "gpu-cluster",
+    "infrastructure",
+    "market-signal",
+    "network-protocol",
+    "training-infrastructure"
+  ],
+  "source_type": "media",
+  "importance": "high",
+  "rationale": "关键词规则生成的分类草稿。需要人审；后续可由 LLM 分类替换，但保留相同 schema。",
+  "category_scores": {
+    "ai_agent": 0,
+    "ai_infrastructure": 76,
+    "memory_context": 0,
+    "developer_tools": 0,
+    "multimodal_ai": 1,
+    "robotics_embodied_ai": 0,
+    "consumer_economy": 0,
+    "research_benchmark": 0,
+    "open_source_ecosystem": 1,
+    "policy_regulation": 0,
+    "product_business": 1
+  }
+}

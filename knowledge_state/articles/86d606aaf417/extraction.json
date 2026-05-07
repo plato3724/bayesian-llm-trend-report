@@ -1,0 +1,76 @@
+{
+  "article_id": "86d606aaf417",
+  "extraction_status": "completed",
+  "generated_at": "2026-05-07T15:16:52+00:00",
+  "method": "deterministic_mvp",
+  "summary": "OpenAI公开大规模稳定训练的秘密，英伟达AMD英特尔都受益 OpenAI，这次又真·Open了一下。 刚刚，OpenAI通过OCP开放了超大规模AI训练时使用的网络协议——MRC。",
+  "main_points": [
+    "OpenAI公开大规模稳定训练的秘密，英伟达AMD英特尔都受益",
+    "OpenAI，这次又真·Open了一下。",
+    "刚刚，OpenAI通过OCP开放了超大规模AI训练时使用的网络协议——MRC。",
+    "这次开放的MRC，是实现微秒级故障恢复、能支持10万块以上GPU高效协作的底层通信协议。",
+    "核心奥义就是，在大规模的训练环境下，确保网络通信的稳定性。",
+    "而且这一波是和硬件厂商合作，在OpenAI的组织下，英伟达、AMD和英特尔都参与了这个项目。",
+    "有网友表示，把这些厂商聚在一起合作制定标准，简直比实现AGI还难以协调。",
+    "这套MRC（Multipath Reliable Connection）协议，是OpenAI联合英伟达、AMD、英特尔、微软和博通，花了两年时间做出来的，上周通过Open Compute Project向全行业开放。"
+  ],
+  "entities": [
+    "QbitAI",
+    "OpenAI",
+    "MRC",
+    "Multipath Reliable Connection",
+    "AMD",
+    "Compute",
+    "Multi-Plane Network",
+    "Adaptive Packet Spraying",
+    "IPv6 Segment Routing",
+    "One More Thing",
+    "TiW96H5HmAw",
+    "Fusion"
+  ],
+  "claims": [
+    {
+      "id": "auto_point_1",
+      "type": "event",
+      "text": "OpenAI公开大规模稳定训练的秘密，英伟达AMD英特尔都受益",
+      "source": "canonical_text_heuristic"
+    },
+    {
+      "id": "auto_point_2",
+      "type": "event",
+      "text": "OpenAI，这次又真·Open了一下。",
+      "source": "canonical_text_heuristic"
+    },
+    {
+      "id": "auto_point_3",
+      "type": "event",
+      "text": "刚刚，OpenAI通过OCP开放了超大规模AI训练时使用的网络协议——MRC。",
+      "source": "canonical_text_heuristic"
+    },
+    {
+      "id": "auto_point_4",
+      "type": "event",
+      "text": "这次开放的MRC，是实现微秒级故障恢复、能支持10万块以上GPU高效协作的底层通信协议。",
+      "source": "canonical_text_heuristic"
+    },
+    {
+      "id": "auto_point_5",
+      "type": "event",
+      "text": "核心奥义就是，在大规模的训练环境下，确保网络通信的稳定性。",
+      "source": "canonical_text_heuristic"
+    },
+    {
+      "id": "auto_point_6",
+      "type": "event",
+      "text": "而且这一波是和硬件厂商合作，在OpenAI的组织下，英伟达、AMD和英特尔都参与了这个项目。",
+      "source": "canonical_text_heuristic"
+    }
+  ],
+  "important_quotes": [],
+  "open_questions": [],
+  "source_trace": {
+    "record_path": "knowledge_state/articles/86d606aaf417/record.json",
+    "canonical_text_path": "knowledge_state/articles/86d606aaf417/canonical_text.txt",
+    "legacy_claims_path": "knowledge_state/articles/86d606aaf417/claims.json"
+  }
+}

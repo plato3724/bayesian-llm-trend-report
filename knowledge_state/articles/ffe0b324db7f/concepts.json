@@ -1,7 +1,7 @@
 {
   "article_id": "ffe0b324db7f",
   "concept_status": "drafted",
-  "generated_at": "2026-05-06T13:40:37+00:00",
+  "generated_at": "2026-05-07T15:23:34+00:00",
   "method": "tag_to_concept_mvp",
   "matched_concepts": [
     "agent_runtime",

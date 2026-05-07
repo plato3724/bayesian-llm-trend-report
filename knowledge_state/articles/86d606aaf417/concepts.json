@@ -1,0 +1,40 @@
+{
+  "article_id": "86d606aaf417",
+  "concept_status": "drafted",
+  "generated_at": "2026-05-07T15:23:34+00:00",
+  "method": "tag_to_concept_mvp",
+  "matched_concepts": [
+    "datacenter_networking",
+    "gpu_cluster",
+    "infrastructure",
+    "market_signal",
+    "network_protocol",
+    "training_infrastructure"
+  ],
+  "created_concepts": [
+    "datacenter_networking",
+    "gpu_cluster",
+    "infrastructure",
+    "network_protocol",
+    "training_infrastructure"
+  ],
+  "candidate_concepts": [],
+  "source_trace": {
+    "classification_path": "knowledge_state/articles/86d606aaf417/classification.json",
+    "extraction_path": "knowledge_state/articles/86d606aaf417/extraction.json"
+  },
+  "article_entities": [
+    "QbitAI",
+    "OpenAI",
+    "MRC",
+    "Multipath Reliable Connection",
+    "AMD",
+    "Compute",
+    "Multi-Plane Network",
+    "Adaptive Packet Spraying",
+    "IPv6 Segment Routing",
+    "One More Thing",
+    "TiW96H5HmAw",
+    "Fusion"
+  ]
+}

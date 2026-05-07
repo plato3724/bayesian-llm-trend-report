@@ -215,7 +215,7 @@
       </nav>
     </header>
 
-    <section class="stats"><div class='stat'><span>文章</span><strong>25</strong></div><div class='stat'><span>已抽取</span><strong>25</strong></div><div class='stat'><span>已分类</span><strong>25</strong></div><div class='stat'><span>综述</span><strong>9</strong></div></section>
+    <section class="stats"><div class='stat'><span>文章</span><strong>26</strong></div><div class='stat'><span>已抽取</span><strong>26</strong></div><div class='stat'><span>已分类</span><strong>26</strong></div><div class='stat'><span>综述</span><strong>9</strong></div></section>
 
     <section id="reviews">
       <h2>主题综述</h2>
@@ -237,7 +237,7 @@
           <span class="pill-row review-preview-tags"><span class='pill pattern'>agent-runtime</span><span class='pill pattern'>workflow-orchestration</span><span class='pill pattern'>coding-agent</span><span class='pill pattern'>cloud-agent</span><span class='pill pattern'>context-engineering</span><span class='pill pattern'>structured-memory</span></span>
         </summary>
         <div class="review-body">
-        
+
       <div class="deep-review">
         <p class="eyebrow">深度分析文章</p>
         <h3>AI Agent 的分水岭不在模型更强，而在“可托付的运行时”是否成型</h3>
@@ -248,7 +248,7 @@
         </div>
         <section class='deep-section'><h4>一、先给结论：Agent 赛道真正升级的是“运行时”，不是“外壳感”</h4><p>如果只看行业叙事，很容易把这组材料读成一个熟悉故事：模型更强了，Agent 更热了，人人都在谈自动化、多智能体、消费级入口和异步执行。但把材料放在一起之后，最稳的核心判断其实更朴素：Agent 的跃迁，不是从 chatbot 升级成“会调工具的聊天框”，而是从一次性回答系统，升级成可持续运行、可管理状态、可受控执行的 runtime。</p><p>这个判断的机制证据主要来自三类材料。第一类是《YC内部AI架构曝光！YC总裁Garry亲证：比谷歌员工效率高1000倍的秘密，不在模型，而在“Harness”》，它最明确地提出：实时仓库上下文、提示缓存、专门工具、结构化记忆、并行子代理，并不是让模型“更聪明”，而是让模型在正确时间拿到正确上下文，并避免噪声污染。第二类是《Anthropic发布Managed Agents，才发现这支硅谷华人团队早就押对了赌注》，它把 agent 运行时拆成 session、harness、sandbox 三个可替换接口，说明行业开始把 Agent 当作基础设施而不是产品皮肤。第三类是《Claude Code Harness+龙虾科研团来了！金字塔分层架构+多智能体讨论，单人也能跑出「实验室」科研》，其中不可编辑的 Experiment Harness、标准化 results.json、异常值校验、verified results 回灌 agent loop，直接把“可信执行链路”说成了系统骨架。</p><p>相对地，热度与叙事信号也很明显存在，但证据强度较弱。比如《Anthropic发布Managed Agents，才发现这支硅谷华人团队早就押对了赌注》里对 CREAO 热搜、全球 KOL 关注、消费级入口的描述，和《有人把巴菲特芒格炼化成Agent，然后开源了》中 GitHub Trending、Star 数、投资大师 Agent 化趋势，更多说明社会注意力正在聚集，而不能直接证明某种架构一定有效。它们是市场温度计，不是机制本身。</p><p>因此，当前更准确的说法不是“Agent 时代来了”，而是“Agent 的可托付运行时开始成型”。这是比热度更窄、但也更重要的变化。</p></section><section class='deep-section'><h4>二、为什么说决定性变量不是模型，而是 harness：因为生产力差距来自上下文与执行边界的组织方式</h4><p>《YC内部AI架构曝光！YC总裁Garry亲证：比谷歌员工效率高1000倍的秘密，不在模型，而在“Harness”》给出的最大洞见，不是那组夸张的效率数字，而是对差距来源的拆解：提升 2 倍的人和提升 10 倍、100 倍的人，往往用的是同一个模型，差别在于模型外部的组织系统。这里的“瘦外壳 + 胖技能”尤其关键。薄 harness 只做循环执行、文件读写、上下文管理和安全检查；厚 skill 则承载过程知识、判断逻辑和可复用的工作方法。这意味着真正的产品资产不再是某个神奇 prompt，而是被结构化沉淀下来的工作方法。</p><p>这条机制与上下文工程直接相连。材料一里 Garry Tan 从 20000 行 CLAUDE.md 回退到约 200 行指针式文档，本质上是在证明：上下文不是越多越好，而是越能按需路由越好。Resolver 的作用不是增加知识，而是在任务类型出现时加载恰当文档，避免上下文窗口被历史噪声占满。这和很多团队的直觉相反：他们以为给 Agent 更多信息就更稳，结果往往是注意力退化、token 膨胀、延迟上升、失败率增加。</p><p>这里还能看到另一个更深的机制：Agent 性能的提升，越来越不像“换大脑”，更像“修交通”。Skill 决定模型应该沿什么程序思考，resolver 决定什么时候读什么，专用工具决定动作成本够不够低，结构化记忆决定长期任务是否连续，确定性工具决定关键步骤是否可信。模型依然重要，但它开始像 CPU，而 harness 更像操作系统与调度层。没有后者，前者的智能就难以稳定落地。</p><p>这也是为什么材料一反复批评臃肿工具层：40 多个工具定义挤占半个上下文窗口、把每个接口都包装成 REST API、延迟和 token 成本同时爆炸。这种系统失败，不是模型不行，而是 runtime 设计把模型拖垮了。</p></section><section class='deep-section'><h4>三、Agent 不是“会调工具”就够了，真正门槛是它是否学会了一个小世界</h4><p>如果材料一解释了 Agent 为什么需要 harness，那么《斯隆奖得主青年学者苏煜谈Agent：会用的人，不是Prompt高手，而是能把自己的工作小世界说清楚的人》解释了 harness 里面到底该装什么。它给出的核心反驳非常有力：把 Agent 理解为“提示词 + 工具调用 + 工作流外壳”太窄了。工具调用只是行动通道，不是世界理解。一个 Agent 能按按钮，不代表它知道按钮之后会发生什么，也不代表你敢把责任交给它。</p><p>这是本组材料里最强的机制性理论证据之一。它把很多看似技术问题，重新翻译成世界建模问题：真实工作不是一串动作，而是对象、流程、权限、例外、风险与评价标准的组合。Agent 现在最尴尬的状态，不是完全不会做，而是常常能完成 60%-70%，却在剩下 30%-40% 的隐性边界上翻车。这个比例不是 Benchmark，而是一种结构感：它足够聪明让你心动，但不够稳让你托付。</p><p>把这一点和材料一放在一起，关系就很清楚了。Skill 文件之所以有价值，不只是因为它是可复用 prompt，而是因为它在尝试把某个工作小世界的方法论显式化。Resolver 之所以重要，也不只是检索文档，而是把这个小世界的相关约束在需要时调进来。换句话说，harness 的真正功能，不是替模型加几个轮子，而是把隐性的工作世界翻译成机器可用的运行环境。</p><p>这一判断还解释了为什么很多“看起来像 Agent”的产品不稳定。只堆工具，Agent 会更忙；只有把工作世界讲清楚，Agent 才会更稳。</p></section><section class='deep-section'><h4>四、从编程到科研到学习，成功案例都在重复同一条结构：潜在空间负责判断，确定性层负责交付</h4><p>这些材料覆盖编程、科研、教育、投资等不同场景，但机制上出现了高度同构。材料一最明确地提出“潜在的 vs. 确定的”：判断、综合、模式识别交给模型；SQL、编译、算术、执行交给确定性工具。这个分工不是工程洁癖，而是 Agent 可靠性的主条件。把该确定的部分塞进潜在空间，是很多系统不稳定的根源。</p><p>《Claude Code Harness+龙虾科研团来了！金字塔分层架构+多智能体讨论，单人也能跑出「实验室」科研》是这条机制的案例证据。它把科研流程拆成层级 Agent、任务队列、上下文连接，并在运行环境中注入不可编辑的 Experiment Harness，统一负责时间预算、指标上报、异常值校验与标准化结果输出。这说明多智能体并不是为了“更像实验室”而做的表演，而是为了把探索、执行、验证、回滚拆到不同职责层，形成可审计闭环。</p><p>《哥大休学创业：不要 Ask ChatGPT，Ask Hyperknow 3.0》则提供了教育场景里的另一种同构。Hyperknow 强调连接 Canvas LMS、课程知识库、主动捕捉进度变化、提前准备材料，并以 Deep Learn Sessions 做结构化章节学习。这里最值得注意的不是“主动式”这个产品卖点，而是它试图把学习上下文做成长期、连续、个体化的运行环境。它同样在做一件事：把碎片问答，改造成有记忆、有节奏、有阶段判断的任务系统。</p><p>即便是《有人把巴菲特芒格炼化成Agent，然后开源了》这样的投资案例，也体现了类似结构：前端可视化流程编辑器、后端 LangGraph 编排、共享 AgentState、数据层对接外部 API、回测模块验证历史表现。它还不足以证明“投资 Agent 可赚钱”，但足以证明行业正在把多 Agent 从角色扮演，转向状态共享、流程可视化和可回测的系统设计。</p><p>因此，跨场景真正重复的不是“Agent 会做很多事”，而是一个分层原则：开放性判断与封闭性执行必须被拆开，并通过 runtime 串起来。</p></section><section class='deep-section'><h4>五、Managed Agents、Codex 与云端异步执行，说明 Agent 正在从界面功能变成计算基础设施</h4><p>《Anthropic发布Managed Agents，才发现这支硅谷华人团队早就押对了赌注》和《OpenAI Codex 核心团队爆猛料：我们不写 PRD，几乎不用 PM，设计师写代码比工程师还猛》共同揭示了一个产业层面的转向：Agent 不再只是 IDE 里的一个按钮，或聊天窗口里的一轮交互，而是开始成为一种托管式、异步式、云端化的执行基座。</p><p>材料二里 session、harness、sandbox 的解耦，以及沙盒化独立运行、外置凭证、durable session log 的表述，指向的是 Agent Runtime 的虚拟化。它不再要求用户始终在线盯着，也不再默认把所有能力绑死在单个前端进程里。材料五则从 Codex 的角度给出了相近的叙事：真正的范式变化不是“副驾式补全更强”，而是用户开始把长周期任务整个委派给异步自主 Agent。这里“睡前列任务，醒来任务完成”的故事带有叙事夸张，但其结构方向是可信的：Agent 正在从实时协同，转向离线代理。</p><p>值得注意的是，材料五的很多内容属于访谈转述和行业解释，严格说机制证据强度弱于直接技术拆解，但它对产业意图的揭示仍有价值。尤其是“产品设计不要阻碍模型发挥能力”“只打磨核心底层原语”“高可配置性与极简体验并存”的说法，和材料一的薄 harness、厚 skill 几乎互相印证。这说明头部系统正在收敛到类似认识：可拓展的 Agent 平台，不应该把所有智能硬编码在庞大的产品流程里，而应该暴露足够通用的原语与运行边界。</p><p>换句话说，Agent 的产品形态正在从应用功能，向云端计算环境靠近。谁掌握 runtime，谁就更接近生态位中心。</p></section><section class='deep-section'><h4>六、但不要把“多智能体”当成答案：很多材料真正有效的是验证、回滚和人工闸门，而不是 agent 数量</h4><p>这组材料里另一个容易被误读的点是：仿佛系统越像“团队”、越有多个 agent、越像实验室，就越先进。但从证据看，多智能体本身不是最硬的机制，真正硬的是质量控制与责任边界。</p><p>《Claude Code Harness+龙虾科研团来了！金字塔分层架构+多智能体讨论，单人也能跑出「实验室」科研》确实描绘了金字塔式架构、Lab 讨论模式、跨方向共识生成，但它最可靠的部分其实不是‘多个 agent 一起讨论’这个画面，而是关键阶段的人类介入、回滚、标准化 results.json、异常值校验和 verified results 回灌。没有这些，所谓实验室更可能只是多个 hallucination 并行化。</p><p>《有人把巴菲特芒格炼化成Agent，然后开源了》也能说明这一点。它的“12 位大师 + 6 位分析师”在传播上很有吸引力，但从机制证据看，更重要的是 LangGraph 的状态编排、共享 AgentState 和回测模块。大师人设是叙事信号，状态共享与可回测才是系统证据。</p><p>因此，判断一个 Agent 系统是否成熟，不该先数有几个 agent，而该先问四个问题：它如何管理状态？如何验证结果？何时回滚？人什么时候必须介入？材料三在这些点上最完整，材料六则更多停留在框架展示阶段。</p></section><section class='deep-section'><h4>七、当前叙事里最夸大的部分：效率神话、100% 准确率与“软件即劳动”的直达式想象</h4><p>这组材料并不缺雄心，但也存在明显需要压低音量的地方。材料一中的“比 2005 年谷歌员工高约 1000 倍”是强叙事信号，而不是可外推的机制结论。它说明有人观察到了极大的生产率差异，但没有给出统一任务口径、比较条件和可复现实验，因此只能作为方向性信号，不能当作通用结论。</p><p>材料二中关于 CREAO“固化后不再依赖 LLM 实时推理，因此以后每次执行结果准确率都是 100%”的说法，也必须谨慎看待。它最多在一个被固定的自动化流程、接口稳定、环境不变的前提下成立；一旦外部软件界面变化、权限失效、业务规则调整或数据源异常，所谓 100% 准确率就会失效。这里更合理的理解是：把开放式推理前移成流程编制，能显著提高重复任务稳定性，而不是彻底消灭不确定性。</p><p>材料七提出“软件从工具走向劳动交付”，这个判断很有洞见，但也有边界。它更适合那些可定义对象、可约束流程、可验证结果、可建立反馈闭环的知识工作；对于高风险、低频、强责任归属、强隐性协商的任务，软件距离直接交付劳动仍有距离。也就是说，‘结果导向的软件’会扩大，但不会均匀替代所有知识劳动。</p><p>这些反证并不推翻主结论，反而帮助我们更准确定位：Agent 的进展首先发生在结构清晰、验证明确、上下文可积累的局部世界，而不是无差别地吞掉整个工作世界。</p></section><section class='deep-section'><h4>八、边界条件：什么任务最适合 Agent，什么任务仍不该过度委派</h4><p>综合这些材料，可以归纳出 Agent 适配度的几个边界条件。第一，任务最好有明确对象和中间状态，便于 session 与 memory 持续跟踪。编程仓库、科研实验、课程资料、财务数据都符合这一点。第二，任务最好能拆出确定性执行层，比如测试、编译、查询、回测、调度、文件操作、浏览器动作。第三，结果最好能被某种机制验证：测试集、results.json、历史回测、来源标注、用户反馈、NPS、人工审批等。</p><p>反过来，不适合过度委派的任务也很清楚。涉及高风险权限、无法回滚的操作、极高责任归属、低容错且缺少验证基线的任务，依然需要把 Agent 放在建议层而不是执行层。材料一关于潜在空间与确定性分工、材料三关于 human-in-the-loop 与 rollback、材料七关于权限与例外处理，实际上都在指向同一个边界：越接近不可逆后果，越不能把“看起来会做”当作“可以托付”。</p><p>这也是为什么当前最成熟的 Agent 形态，不是完全自治，而是‘受约束自治’。它能长时运行，但必须有日志；能调用工具，但必须有边界；能学习，但必须有反馈；能决策，但关键处必须能被中断。</p></section><section class='deep-section'><h4>九、下一轮最值得验证的问题：不是再找一个爆款 Agent，而是追问哪些机制真的能迁移</h4><p>基于现有证据，下一轮阅读最该验证的不是“下一个最火 Agent 是谁”，而是以下几个更实的问题。第一，薄 harness + 厚 skills 是否能跨行业迁移，还是主要适用于编码与知识整理这类高文本密度任务？第二，session、sandbox、durable log 这些 runtime 设计，究竟能在多大程度上降低长任务失败率，是否有公开 Benchmark 或生产指标支持？第三，human-in-the-loop 最有效的插入位置在哪里：规划前、执行中、验证后，还是只在异常时触发？第四，主动式 Agent 如 Hyperknow 这类场景，长期价值来自更强的主动性，还是来自更完整的用户状态建模？第五，多智能体架构到底在什么条件下优于单智能体 + 强验证链路？</p><p>还要特别验证一个关键反问题：是否存在大量场景，提升并不来自 agentization，而只是来自更好的工具层、UI、缓存和上下文管理？如果答案是肯定的，那么今天很多被叫作 Agent 的系统，本质上可能是“带推理内核的工作流软件”，而不是一个需要拟人化理解的新物种。这一点会直接影响我们如何给这个赛道命名和估值。</p><p>总之，当前材料已经足以支持一个强判断：Agent 的中心问题已经不再是‘模型够不够聪明’，而是‘系统是否足够可托付’。但要把这件事从趋势判断推进到稳定结论，还需要更多关于失败率、回滚成本、人工接管点和跨场景迁移能力的硬证据。</p></section>
       </div>
-    
+
         <details class="evidence-detail">
           <summary>证据附录：问题、模式、案例与下一轮问题</summary>
         <p class="review-question">在这 7 篇「AI Agent」文章中，超越单篇 claim 的重复结构是什么？</p>
@@ -278,7 +278,7 @@
         <div class="concept-strip"><span class='pill concept'>agent_runtime</span><span class='pill concept'>workflow_orchestration</span><span class='pill concept'>coding_agent</span><span class='pill concept'>cloud_agent</span><span class='pill concept'>cli_harness</span><span class='pill concept'>context_engineering</span><span class='pill concept'>deterministic_tools</span><span class='pill concept'>repo_context</span></div>
         </div>
       </details>
-    
+
       <details class="card review-card" id="ai-infrastructure-living-review">
         <summary class="review-summary">
           <span class="review-summary-main">
@@ -287,56 +287,56 @@
               <span class="review-title">AI 基础设施动态综述</span>
             </span>
             <span class="review-meta">
-              <span class="type-badge thinking">LLM 深度分析</span>
-              <span class="count">1 篇文章</span>
+              <span class="type-badge thinking">规则草稿</span>
+              <span class="count">2 篇文章</span>
             </span>
           </span>
-          <span class="review-preview">材料一真正重要的，不是提出了一个新的推理部署名词，而是揭示了一条清晰的机制链：混合注意力降低了长上下文场景下的KV Cache传输压力，KV带宽墙因此被削弱，原本被RDMA域锁死的Prefill/Decode分离获得跨数据中心落地的可能性，进一步把推理系统从“同构集群内局部最优”推进到“跨地域异构资源全局最优”。如果这个判断成立，那么KV Cache不再只是技术负担，而会变成一种可被调度、分发和商业化封装的中间状态资产。</span>
-          <span class="pill-row review-preview-tags"><span class='pill pattern'>kv-cache</span><span class='pill pattern'>prefill-decode-disaggregation</span><span class='pill pattern'>cross-data-center-inference</span><span class='pill pattern'>heterogeneous-cluster</span><span class='pill pattern'>inference-serving</span><span class='pill pattern'>service-architecture</span></span>
+          <span class="review-preview">这组 AI 基础设施 材料真正值得关注的不是底层平台、runtime 或工具链更新，而是可靠性、状态、权限、成本和可复现性如何支撑上层应用。越成熟的 AI 应用，越依赖不可见的系统层能力。</span>
+          <span class="pill-row review-preview-tags"><span class='pill pattern'>datacenter-networking</span><span class='pill pattern'>gpu-cluster</span><span class='pill pattern'>infrastructure</span><span class='pill pattern'>market-signal</span><span class='pill pattern'>network-protocol</span><span class='pill pattern'>training-infrastructure</span></span>
         </summary>
         <div class="review-body">
-        
+
       <div class="deep-review">
         <p class="eyebrow">深度分析文章</p>
-        <h3>跨机房推理不是部署技巧，而是由模型结构触发的基础设施重组</h3>
-        <p class="lead">这组证据虽然只有一个核心案例，但它指向了一个比“KV Cache优化”更重要的判断：当混合注意力把KV传输从RDMA级压到以太网级，Prefill/Decode分离就从单机房工程约束变成跨数据中心的资源编排问题，AI推理基础设施的竞争点也随之从算力堆叠转向异构调度与服务架构设计。</p>
+        <h3>AI 基础设施深度分析</h3>
+        <p class="lead">基于 2 篇文章，当前综述把 datacenter-networking、gpu-cluster、infrastructure 视为主要证据线索，并把 datacenter_networking、gpu_cluster、infrastructure 作为概念层的组织入口。</p>
         <div class="thesis">
           <strong>核心判断</strong>
-          <p>材料一真正重要的，不是提出了一个新的推理部署名词，而是揭示了一条清晰的机制链：混合注意力降低了长上下文场景下的KV Cache传输压力，KV带宽墙因此被削弱，原本被RDMA域锁死的Prefill/Decode分离获得跨数据中心落地的可能性，进一步把推理系统从“同构集群内局部最优”推进到“跨地域异构资源全局最优”。如果这个判断成立，那么KV Cache不再只是技术负担，而会变成一种可被调度、分发和商业化封装的中间状态资产。</p>
+          <p>这组 AI 基础设施 材料真正值得关注的不是底层平台、runtime 或工具链更新，而是可靠性、状态、权限、成本和可复现性如何支撑上层应用。越成熟的 AI 应用，越依赖不可见的系统层能力。</p>
         </div>
-        <section class='deep-section'><h4>一、核心判断：这不是一次KV Cache小修小补，而是推理系统边界被重新定义</h4><p>材料一最值得抓住的主线，不是“跨数据中心传KV Cache”这个表面动作本身，而是它意味着推理服务的基本边界正在变化。过去，Prefill/Decode分离虽然已是常见做法，但两者之间的状态传递严重依赖高带宽、低时延网络，因此通常只能被封装在同一个RDMA域内。材料一提出的PrFaaS之所以值得关注，不在于它发明了分离，而在于它声称把这种分离从“同一集群内部的工程技巧”推进成“跨机房异构协同的系统架构”。</p><p>这背后的结构性变化是：模型架构变了，基础设施的最优组织方式也跟着变。文章给出的核心判断是，混合注意力模型中只有全注意力层生成随上下文增长的KV Cache，而线性层只产生固定大小状态。换句话说，模型不是简单地变快，而是生成了更适合远距离传输的中间状态。正因为状态形态变化，网络要求下降，才使跨数据中心的Prefill-as-a-Service从叙事变成可能。</p><p>在证据类型上，这里需要区分三层：关于“线性注意力+全注意力混合架构降低KV压力”的描述，是机制证据；关于“吞吐提升54%、P90 TTFT降低64%”的实验结果，是案例证据；而“把KV Cache玩成新商业模式了”这样的表述，更接近热度或叙事信号，能提示方向，但不能单独当作结论依据。</p></section><section class='deep-section'><h4>二、真正的病灶不是算力不足，而是KV带宽墙把架构锁死了</h4><p>材料一最有解释力的部分，是它没有把问题归因于一个泛泛的“推理成本高”，而是明确指出病灶在KV Cache传输带宽。传统PD分离之所以被束缚在单一集群，并不是因为工程师没有想到跨机房，而是因为Prefill阶段产生的状态体积太大，跨数据中心的普通以太网根本扛不住。文章以dense GQA模型为例称，在32K上下文下，单实例KV生成速率可达60Gbps，而跨数据中心网络通常是10-100Gbps量级。这是典型的机制证据：它解释了为什么原有架构会稳定地收敛到“Prefill和Decode必须共处RDMA域”。</p><p>一旦接受这个机制，很多常见误读就应被排除。问题不只是“解码芯片和预填充芯片能否放在一起”，也不只是“机房之间能不能连通”，而是中间状态的产生速度是否超过了可承载的传输能力。只要这一点不变，再好的调度、再聪明的编排都只是局部修饰；只要这一点改变，基础设施层面的大量约束就会一起松动。</p><p>因此，KV Cache在这里不是一个单独的性能指标，而是决定基础设施形态的约束变量。谁能把它从不可搬运的沉重状态，变成可跨域流转的中间产物，谁就有机会重写推理服务的部署逻辑。</p></section><section class='deep-section'><h4>三、机制突破来自模型结构变化：不是网络更强了，而是要传的东西变少了</h4><p>材料一给出的关键机制是混合注意力。它声称，在线性注意力与全注意力结合的架构下，线性层的状态不随上下文线性膨胀，真正产生长度相关KV负担的只剩部分全注意力层。这一机制解释了为什么一些新模型在长上下文下的KV throughput显著下降：MiMo-V2-Flash在32K context下为4.66Gbps，较MiniMax-M2.5低13倍；Qwen3.5-397B为8.25Gbps，相比可比dense模型33.35Gbps低约4倍。这些数字本身仍来自文章转述，可靠性有待进一步核验，但它们至少构成了完整的机制链证据，而不是孤立的营销口号。</p><p>这个机制的重要性在于，它改变的是网络等级要求，而不是只改善一个模型的内存占用。过去跨机房推理之所以不现实，是因为中间状态必须跑在接近RDMA级的传输条件下；现在如果KV吞吐下降到数Gbps到十几Gbps区间，普通商用以太网就开始进入可用区间。基础设施的门槛由此不是被完全消灭，而是从“必须专用高性能网络”变成“可以用更常见、更便宜、更广泛部署的网络去承接”。</p><p>这也是为什么材料一的真正创新，不应被理解为一个单点系统技巧，而是“模型结构创新向系统架构创新外溢”的例子。模型论文通常只被看作能力提升来源，但这里更关键的是，它给服务架构释放了新自由度。</p></section><section class='deep-section'><h4>四、PrFaaS的价值，在于把局部优化变成跨地域异构资源的全局调度</h4><p>PrFaaS如果成立，它改变的不是某台机器的效率，而是资源编排的粒度。材料一描述的做法是：将长请求的Prefill选择性卸载到独立的算力密集型集群完成，再把KV Cache通过以太网传回本地PD集群执行Decode；短请求则仍在本地完成，以避免无谓的远程传输。这意味着系统不再要求每个集群都以固定比例同时配齐适合Prefill和适合Decode的硬件，而是允许两类资源独立扩缩容。</p><p>这部分最有价值的地方，是它说明了异构集群的收益来自解除强绑定。传统同构部署中，资源比例往往在架构层被预先写死；流量分布一旦偏离预期，就会出现一边拥堵、一边空闲。PrFaaS引入动态阈值t，根据实时带宽和请求长度分布决定哪些请求远程Prefill，实际上是在做一种基于状态体积和网络条件的在线切分。这里的机制证据是“动态阈值+长短请求分流”的设计；案例证据则是文章声称在内部1T参数混合注意力模型上，相比同构PD集群，吞吐提升54%，相较朴素异构方案也提升32%。</p><p>更值得注意的是TTFT下降64%这一点。它提示系统收益不只是总吞吐变高，而是排队结构被重塑：长请求不再持续挤占本地Prefill资源，短请求也因此少受牵连。这说明该架构可能不是单纯把工作搬走，而是在减少不同请求类别之间的相互干扰。对于线上服务来说，这类“干扰隔离”往往比平均性能提升更有商业价值。</p></section><section class='deep-section'><h4>五、所谓“新商业模式”的实质，是把中间状态资产化、服务化</h4><p>标题里最抓人的说法是“把KVCache玩成新商业模式”。如果把这句话技术化，它真正指向的是：KV Cache从一次性、机房内消费的临时副产物，变成可传输、可缓存、可复用、可调度的服务对象。材料一提到混合前缀缓存池，并区分prefix-cache与transfer-cache，这说明作者并不只把KV看作链路负担，还把它视作系统中的重要状态层。</p><p>一旦KV成为可跨域流转的标准化中间状态，基础设施的价值捕获方式就会变化。过去云上推理主要围绕模型托管、GPU利用率和请求调度展开；未来如果Prefill可以独立为服务，那么长上下文推理链路中就可能出现更细颗粒度的分工：有人专做高算力预填充，有人专做高带宽低时延解码，有人专做前缀缓存与状态调度。材料一没有直接给出商业化落地数据，因此这一层更多是由机制外推出的判断，而不是既成事实。</p><p>因此，这里必须保持证据纪律：‘商业模式’目前仍主要是叙事信号，不是被充分验证的市场证据。真正站得住脚的部分，是状态可搬运后，服务边界确实被改写；至于是否会形成稳定的产业分工，还需要看到价格模型、跨区域成本、运维复杂度和客户采用情况。</p></section><section class='deep-section'><h4>六、反证与边界：这个结论为什么还不能被轻易放大</h4><p>首先，这是单案例风险。当前材料只有《Kimi新论文：把KVCache玩成新商业模式了》一个锚点案例，足以提出机制假说，但不足以证明这是行业拐点。尤其文中涉及的多组数据大多来自文章转述和内部模型实验，尚未看到跨团队、跨模型、跨工作负载的系统性复现。单篇材料最容易高估的是“可行性”向“普适性”的外推速度。</p><p>其次，这套架构有明确边界。它高度依赖长上下文、高Prefill负担、混合注意力、且网络带宽至少落在可承载区间的场景。如果请求普遍很短，远程Prefill的收益会被传输和调度开销吃掉；如果模型仍是dense full attention，KV体量没有显著下降，那么跨机房PD分离依旧可能不划算；如果业务对跨地域时延、稳定性、合规性极其敏感，理论可行也未必等于生产可用。</p><p>再次，材料一强调普通以太网可承载，但这不等于网络问题已经解决。100Gbps上限只是链路名义能力，真实环境还受共享拥塞、抖动、丢包、跨区域波动、VPC与专线成本影响。把‘可在以太网上运行’误读成‘网络几乎不是问题’，会过度乐观。</p><p>最后，还要防止把混合注意力与PrFaaS混成同一个创新点。前者是使能条件，后者是系统架构选择。即使混合注意力成立，也不必然推出PrFaaS一定是最优组织形式；也可能存在更高效的本地压缩传输、边缘预填充、分层缓存或更细粒度状态切分方案。</p></section><section class='deep-section'><h4>七、下一轮最该验证什么：不是再找一个漂亮案例，而是找能推翻它的材料</h4><p>如果要判断这是不是AI基础设施中的结构性变化，下一轮阅读最该寻找三类材料。第一类是机制复现实验：不同团队、不同模型、不同上下文长度下，KV throughput是否真的稳定降到以太网友好区间，且不会以精度、训练复杂度或其他推理成本为代价。第二类是失败证据：哪些跨机房PD分离场景没有收益，甚至因缓存命中率、网络抖动、运维复杂度而恶化。第三类是成本证据：跨地域传输费用、缓存存储成本、异构调度复杂度，是否会抵消吞吐和TTFT上的性能红利。</p><p>还需要进一步验证几个具体问题。动态阈值t的控制策略是否稳定，是否会在流量波动下出现频繁抖动；prefix-cache与transfer-cache的生命周期和一致性如何管理；跨机房KV传输的安全、隔离与租户治理如何实现；以及最关键的，这种架构是否只适合超长上下文的少数高价值场景，还是能成为大规模通用推理平台的默认层。</p><p>所以，当前最稳妥的结论不是‘KV Cache已经变成新商业模式’，而是：材料一提出了一个值得高度重视的基础设施方向——模型结构变化正在松动推理系统的网络约束，而一旦中间状态可被跨域调度，AI推理的竞争将不只是模型能力竞争，更是状态管理、异构编排和服务边界设计的竞争。</p></section>
+        <section class='deep-section'><h4>一、AI 基础设施的真实议题：可靠性、状态、权限、成本和可复现性如何支撑上层应用</h4><p>AI 基础设施这一组文章不能只按发布时间或单篇观点阅读。更重要的是看它们如何从不同角度指向同一个问题：可靠性、状态、权限、成本和可复现性如何支撑上层应用。</p><p>《OpenAI公开大规模稳定训练的秘密，英伟达AMD英...》显示：刚刚，OpenAI通过OCP开放了超大规模AI训练时使用的网络协议——MRC。；《Kimi新论文：把KVCache玩成新商业模式了》显示：但这让KV Cache传输高度依赖RDMA网络，牢牢地把Prefill和Decode两个阶段强行绑定在单一集群内。。</p></section><section class='deep-section'><h4>二、datacenter-networking 暴露的瓶颈</h4><p>当前最强的重复模式是 datacenter-networking。这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。这个模式不是从标题或标签直接推出来的，而是需要回到文章中的具体材料：它反复出现在产品叙事、技术细节、使用场景或市场反应里。</p><p>因此，AI 基础设施的判断重点不应是单点能力强弱，而是它是否改变了基础设施 的约束条件、协作方式或规模化路径。</p></section><section class='deep-section'><h4>三、《OpenAI公开大规模稳定训练的秘密，英伟达AMD英...》等案例如何互相解释</h4><p>《OpenAI公开大规模稳定训练的秘密，英伟达AMD英...》承担的是 datacenter-networking、gpu-cluster、infrastructure 的证据角色：刚刚，OpenAI通过OCP开放了超大规模AI训练时使用的网络协议——MRC。；《Kimi新论文：把KVCache玩成新商业模式了》承担的是 kv-cache、prefill-decode-disaggregation、cross-data-center-inference 的证据角色：但这让KV Cache传输高度依赖RDMA网络，牢牢地把Prefill和Decode两个阶段强行绑定在单一集群内。。</p><p>这说明 2 篇文章之间不是简单相加。有些文章提供机制解释，有些文章提供案例和场景，有些文章只提供热度信号；只有区分这些证据角色，综述才可能形成判断。</p></section><section class='deep-section'><h4>四、从 datacenter_networking、gpu_cluster、infrastructure 推出的判断</h4><p>把这些材料放在一起后，可以形成一个暂时判断：越成熟的 AI 应用，越依赖不可见的系统层能力。datacenter_networking、gpu_cluster、infrastructure 不是装饰性标签，而是把多篇文章连接起来的解释入口。</p><p>如果这个判断成立，后续文章库的重点就不是继续堆积同类新闻，而是观察哪些新材料会增强、修正或削弱这一解释。</p></section><section class='deep-section'><h4>五、哪些证据会改变这篇综述的结论</h4><p>这组材料仍然不足以把趋势判断变成确定结论。真正可能削弱上述判断的，不是又一篇相似案例，而是失败案例、低采用率案例、成本约束、组织阻力，以及指标表现与真实价值不一致的证据。</p><p>因此，这篇综述的结论应被理解为可检验的判断：它解释了当前材料之间的共同结构，但也必须接受后续全文材料对其边界条件的修正。</p></section>
       </div>
-    
+
         <details class="evidence-detail">
           <summary>证据附录：问题、模式、案例与下一轮问题</summary>
-        <p class="review-question">这篇单独的「AI 基础设施」文章揭示了什么？还缺什么证据，才能形成稳定主题综述？</p>
-        <p>这组「AI 基础设施」综述目前处于「单案例」阶段。最强的重复模式是 kv-cache、prefill-decode-disaggregation、cross-data-center-inference；概念层正在围绕 cross_data_center_inference、ethernet_transport、heterogeneous_cluster 聚集。因此综述重点不应只是罗列文章 claim，而应判断这些案例是否在描述同一个底层机制。</p>
+        <p class="review-question">在这 2 篇「AI 基础设施」文章中，超越单篇 claim 的重复结构是什么？</p>
+        <p>这组「AI 基础设施」综述目前处于「早期成形」阶段。最强的重复模式是 datacenter-networking、gpu-cluster、infrastructure；概念层正在围绕 datacenter_networking、gpu_cluster、infrastructure 聚集。因此综述重点不应只是罗列文章 claim，而应判断这些案例是否在描述同一个底层机制。</p>
         <div class="split">
           <div>
             <h4>分析性结论</h4>
-            <ul><li><strong>kv-cache 是当前的组织性模式。</strong><p>这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。</p></li><li><strong>prefill-decode-disaggregation 是当前的组织性模式。</strong><p>这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。</p></li><li><strong>cross-data-center-inference 是当前的组织性模式。</strong><p>这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。</p></li></ul>
+            <ul><li><strong>datacenter-networking 是当前的组织性模式。</strong><p>这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。</p></li><li><strong>gpu-cluster 是当前的组织性模式。</strong><p>这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。</p></li><li><strong>infrastructure 是当前的组织性模式。</strong><p>共同信号是：这个品类依赖可见应用之下的平台层或系统层。</p></li></ul>
           </div>
           <div>
             <h4>主导模式</h4>
-            <ul><li><strong>kv-cache</strong> <span class='muted'>(单案例, 1 篇)</span><p>这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。</p></li><li><strong>prefill-decode-disaggregation</strong> <span class='muted'>(单案例, 1 篇)</span><p>这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。</p></li><li><strong>cross-data-center-inference</strong> <span class='muted'>(单案例, 1 篇)</span><p>这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。</p></li><li><strong>heterogeneous-cluster</strong> <span class='muted'>(单案例, 1 篇)</span><p>这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。</p></li></ul>
+            <ul><li><strong>datacenter-networking</strong> <span class='muted'>(单案例, 1 篇)</span><p>这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。</p></li><li><strong>gpu-cluster</strong> <span class='muted'>(单案例, 1 篇)</span><p>这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。</p></li><li><strong>infrastructure</strong> <span class='muted'>(单案例, 1 篇)</span><p>共同信号是：这个品类依赖可见应用之下的平台层或系统层。</p></li><li><strong>market-signal</strong> <span class='muted'>(单案例, 1 篇)</span><p>这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。</p></li></ul>
           </div>
         </div>
         <div class="split">
           <div>
             <h4>案例分析</h4>
-            <ul><li><strong><a href="https://mp.weixin.qq.com/s/V4bP5sWmqObOCboFJ7Imvw" target="_blank" rel="noreferrer">Kimi新论文：把KVCache玩成新商业模式了</a></strong><p>这个案例为 kv-cache, prefill-decode-disaggregation, cross-data-center-inference 提供了具体的文章级证据。</p><p class='muted'>它不能单独构成结论；需要和本综述中的其他案例比较后才能判断其结构性意义。</p></li></ul>
+            <ul><li><strong><a href="https://mp.weixin.qq.com/s/QugylM-Bhdx785Gnxca84w" target="_blank" rel="noreferrer">OpenAI公开大规模稳定训练的秘密，英伟达AMD英特尔都受益</a></strong><p>这个案例为 datacenter-networking, gpu-cluster, infrastructure 提供了具体的文章级证据。</p><p class='muted'>它不能单独构成结论；需要和本综述中的其他案例比较后才能判断其结构性意义。</p></li><li><strong><a href="https://mp.weixin.qq.com/s/V4bP5sWmqObOCboFJ7Imvw" target="_blank" rel="noreferrer">Kimi新论文：把KVCache玩成新商业模式了</a></strong><p>这个案例为 kv-cache, prefill-decode-disaggregation, cross-data-center-inference 提供了具体的文章级证据。</p><p class='muted'>它不能单独构成结论；需要和本综述中的其他案例比较后才能判断其结构性意义。</p></li></ul>
           </div>
           <div>
             <h4>张力与下一步问题</h4>
-            <ul><li><strong>单案例风险</strong><p>单篇文章可以识别信号，但还不能区分结构性模式和一次性故事。</p></li><li><strong>模式重叠</strong><p>当前综述同时混合了 kv-cache 和 prefill-decode-disaggregation。下一轮应判断它们是同一机制，还是两个相邻主题。</p></li></ul>
+            <ul><li><strong>模式重叠</strong><p>当前综述同时混合了 datacenter-networking 和 gpu-cluster。下一轮应判断它们是同一机制，还是两个相邻主题。</p></li></ul>
             <ul><li>哪类文章最能反驳当前对「AI 基础设施」的解释？</li><li>本综述中的哪个概念应该在人审后提升、合并或重命名？</li></ul>
           </div>
         </div>
         </details>
-        <div class="concept-strip"><span class='pill concept'>cross_data_center_inference</span><span class='pill concept'>ethernet_transport</span><span class='pill concept'>heterogeneous_cluster</span><span class='pill concept'>hybrid_attention</span><span class='pill concept'>inference_serving</span><span class='pill concept'>kv_cache</span><span class='pill concept'>prefill_decode_disaggregation</span><span class='pill concept'>service_architecture</span></div>
+        <div class="concept-strip"><span class='pill concept'>datacenter_networking</span><span class='pill concept'>gpu_cluster</span><span class='pill concept'>infrastructure</span><span class='pill concept'>market_signal</span><span class='pill concept'>network_protocol</span><span class='pill concept'>training_infrastructure</span><span class='pill concept'>cross_data_center_inference</span><span class='pill concept'>ethernet_transport</span></div>
         </div>
       </details>
-    
+
       <details class="card review-card" id="consumer-economy-living-review">
         <summary class="review-summary">
           <span class="review-summary-main">
@@ -353,7 +353,7 @@
           <span class="pill-row review-preview-tags"><span class='pill pattern'>nostalgia-economy</span><span class='pill pattern'>consumer-behavior</span><span class='pill pattern'>market-signal</span><span class='pill pattern'>secondhand-market</span><span class='pill pattern'>retro-ip</span><span class='pill pattern'>collectibles-demand</span></span>
         </summary>
         <div class="review-body">
-        
+
       <div class="deep-review">
         <p class="eyebrow">深度分析文章</p>
         <h3>复古经济不是倒退消费，而是把记忆重做成可交易资产</h3>
@@ -364,7 +364,7 @@
         </div>
         <section class='deep-section'><h4>一、真正值得关注的，不是怀旧火了，而是怀旧被产业化了</h4><p>如果只看表面，材料一讲的是一个熟悉故事：80后、90后开始怀念旧游戏、旧剧集、旧数码和旧年味，于是“复古经济”升温。但更核心的变化在于，这种情绪已经不再停留在个人回忆，而是被组织成了可规模化经营的消费形式。艾媒咨询给出的市场规模数据——2025年中国“复古经济”达3553亿元、同比增长11.7%、2030年有望接近6000亿元——属于市场信号证据，它至少说明资本、品牌和平台已经把“怀旧”视为一个足够大的需求池，而不是零散亚文化。</p><p>因此，这里不能把复古消费理解为单个爆款的偶然成功。更合理的判断是，一批不同品类在同一时期同步升温，意味着背后存在共通机制：经典IP提供识别符号，社交平台放大情绪共鸣，线下活动把记忆变成可参与场景，二手市场进一步把情绪消费转成可交易的价格体系。怀旧于是从一种心理感受，变成了一条完整的消费链。</p></section><section class='deep-section'><h4>二、机制证据：复古经济如何把情绪变成购买力</h4><p>材料一最有价值的部分，不是列举了多少“爷青回”案例，而是隐含了一条清晰机制。文章直接点出“玩转‘怀旧经济’的常见手法，是把‘名场面’重新摆到人们面前，来一场记忆激活”。这句话属于机制证据，因为它解释了消费为什么发生：消费者买的并不只是一个物，而是一个被重新唤醒的时代坐标。一旦某个物件、画面、旋律或游戏玩法足够精准地击中代际共同记忆，它就能迅速跨越功能层，进入情绪层和身份层。</p><p>这也是为什么旧物会获得超出使用价值的溢价。停产多年的iPhone 4，并不是因为性能重新领先而被搜索和回收价格推高；CCD相机也不是因为成像更先进才被追捧。它们被重新定价，是因为“颗粒感”“朦胧光影”“残缺美学”被解释为一种时间质感，成为可展示的审美立场。换句话说，复古经济中的价格形成，并不主要围绕效率，而围绕稀缺记忆、可见风格和社交表达。</p><p>再往前一步看，平台在这里扮演的不是单纯分发者，而是价值放大器。短视频和社区平台把旧剧梗、老歌、CCD成片效果、千禧画风快速模板化，让个人记忆变成群体模仿。原本私人的怀旧，被转译为公共话题、内容标签和可复制消费动作。平台越容易制造‘你也记得这个’的确认时刻，复古消费越容易从情绪走向成交。</p></section><section class='deep-section'><h4>三、案例证据：为什么同一波情绪能同时点燃IP、老物件和线下文旅</h4><p>材料一给出的案例证据覆盖了三个方向：经典IP回潮、老数码翻红、线下沉浸体验爆发。这些案例本身并不能独立证明长期趋势，但它们的重要性在于共同支持了同一机制。像《灌篮高手》《寻秦记》、演唱会巡演等内容产品，本质上出售的是集体记忆的再进入权；iPhone 4、CCD相机这类老物件，本质上出售的是可触摸、可拍照、可展示的时间感；而“偷菜”蔗田、港式复古日、露天老电影等线下活动，则把记忆从观看对象变成参与对象。</p><p>这说明复古经济并不是某一个行业的局部现象，而是一种跨品类迁移能力很强的消费逻辑。只要一个商品或场景能满足三个条件——容易识别、便于传播、可被再次参与——它就有机会被纳入复古经济。正因为如此，线上内容、实体商品和线下体验才会同时升温，它们共享的不是品类属性，而是同一种记忆商业化方法。</p><p>尤其值得注意的是线下场景。青神县的蔗田“偷菜”、深圳蛇口的“港式复古日”、陕西长武对儿时年味的重构，都说明当代消费者并不满足于被动回忆，而愿意为‘再演一次过去’付费。相比单纯售卖旧物，线下沉浸活动更像把怀旧变成了剧场：消费者不是买一个物件，而是购买一次可自拍、可叙述、可群体参与的身份体验。这类体验之所以有效，是因为它既满足情绪补偿，也满足社交内容生产。</p></section><section class='deep-section'><h4>四、二手市场是关键一环：它让怀旧从内容热度变成价格系统</h4><p>如果说IP和场景解决的是‘为什么想买’，那么二手市场解决的是‘怎么买、按什么价格买、买完还能不能转手’。材料一提到，去年国内二手平台活跃用户同比暴涨近20%，是增速最快的电商赛道之一。这个数字因未注明来源，只能视作较弱的市场信号，不能当作高强度事实证据；但即便如此，文章把二手经济放进复古经济叙事里是非常关键的，因为它揭示了复古消费为何具有持续性。</p><p>没有二手流通，怀旧更多只是一次性购买；有了二手流通，旧物就会被重新赋予资产属性。iPhone 4价格上行、未拆封机型被炒高，本质上都说明部分老物件已经不只被当作消费品，而被当作可收藏、可转售、可讲故事的标的。二手平台在这里并非附属渠道，而是价格发现机制：它让‘时代的眼泪’从抽象情绪变成具备市场报价的对象。</p><p>这也解释了为什么复古经济往往和社交平台联动出现。社交平台制造审美与话题，二手市场承接交易与流通，二者组合后，怀旧就不再只是文化情绪，而成为带有投资、收藏和身份展示意味的消费生态。文章最后提到AI验货、区块链溯源、信用评价体系会推动二手品类从物品流转升级为资产管理与循环经济生态，这部分目前只是前瞻性叙事，不构成现实证据，但它提示了一个可能方向：当验证、溯源和信用成本下降后，复古消费的高溢价部分才可能进一步稳定化。</p></section><section class='deep-section'><h4>五、哪些是强证据，哪些只是热度叙事</h4><p>当前材料中，强度最高的是三类信息。第一类是市场规模数据，这是较强的市场信号证据，至少说明“复古经济”已被研究机构识别为可测量市场。第二类是“名场面重现”“记忆激活”等描述，它们虽非实验数据，但属于机制证据，因为它们解释了消费动因与传播路径。第三类是多种案例在同一时期横跨内容、商品和线下场景同步出现，这属于案例证据，能够支持机制具有跨品类适用性。</p><p>相对较弱的，是社交平台阅读量、搜索量暴涨、某些活动客流爆发这类数据。它们更接近热度或叙事信号，能证明关注度高，却不能直接证明复购、毛利、生命周期和长期留存。比如#CCD#阅读量很高，说明话题传播成功，但不能自动推出CCD相机市场具备稳定需求；同样，某次复古活动11天吸引11万人次，说明事件型文旅有效，但并不代表这种模式可全年复制。</p><p>因此，对这组材料最稳妥的理解应该是：复古经济已经显著形成社会关注和商业组织能力，但关于它到底是长期结构，还是周期性的情绪繁荣，证据仍不充分。我们看到了市场信号和机制轮廓，却还没有看到足够多的经营质量数据。</p></section><section class='deep-section'><h4>六、反证与边界：不是所有怀旧都能变成生意</h4><p>要避免把这组材料读成‘怀旧必然带来增长’。首先，复古经济高度依赖代际共识，如果一个符号无法激活足够广泛、足够同步的共同记忆，它就很难跨出小圈层。也就是说，复古消费并不天然普适，它更可能集中发生在有明确代际标签、已有媒介沉淀、且可被重新视觉化的对象上。</p><p>其次，复古消费中的很多溢价可能是平台放大的短周期现象，而非稳定价值。CCD、老手机、老唱片、旧游戏周边都可能出现价格波动大、供给真假难辨、热度退潮快的问题。一旦审美风向变化，或者平台话题迁移，价格系统可能迅速回调。没有持续交易深度和稳定内容供给，所谓‘资产化’就很容易退化成一次性炒作。</p><p>再次，线下复古体验的成功有强场景依赖。偷菜、老电影、港风市集这类活动，本质上是节庆化、事件化消费，适合在假期、社交聚集和地方文旅营销中爆发，但未必适合作为常态化经营模型。它们的客流很可能受到稀缺感、媒体传播和从众效应驱动，而不是稳定需求驱动。</p><p>最后，文章对AI验货、区块链溯源等技术前景的判断值得保留。技术确实可能改善二手市场信任，但它是否足以把复古商品真正升级为大规模资产管理体系，还取决于标准化程度、品类流动性、平台治理与用户支付意愿。以当前材料而言，这仍然是叙事方向，不是已被验证的现实。</p></section><section class='deep-section'><h4>七、下一轮最该验证的，不是还有多少爆款，而是这套机制能否持续</h4><p>下一轮阅读最需要补充的，不是更多‘某某复古又火了’的新闻，而是能检验机制强度的材料。第一，应该寻找经营数据：复古品类的复购率、客单价、毛利、退货率、库存周转和二手转售率，只有这些指标才能判断怀旧消费到底是脉冲式热度还是稳定商业。第二，应该补充失败案例：哪些复古IP重启没有激起消费，哪些老物件只在社交媒体上火却没形成交易，哪些线下活动流量很高但难以盈利。</p><p>第三，需要区分不同年龄层的驱动力。80后、90后的‘本人记忆型怀旧’，与更年轻用户对Y2K、港风、胶片感的‘转译型怀旧’，可能是两套不同机制。前者是记忆回返，后者更像风格借用。若不区分这两类需求，就容易把代际情绪和时尚循环混为一谈。</p><p>第四，要继续验证二手平台在复古经济中的真实角色。它到底只是承接热度的交易渠道，还是正在形成更成熟的价格发现和信用基础设施？这是决定复古经济能否从内容生意升级为资产化生意的关键问题。</p></section>
       </div>
-    
+
         <details class="evidence-detail">
           <summary>证据附录：问题、模式、案例与下一轮问题</summary>
         <p class="review-question">这篇单独的「消费经济」文章揭示了什么？还缺什么证据，才能形成稳定主题综述？</p>
@@ -394,7 +394,7 @@
         <div class="concept-strip"><span class='pill concept'>collectibles_demand</span><span class='pill concept'>consumer_behavior</span><span class='pill concept'>market_signal</span><span class='pill concept'>nostalgia_economy</span><span class='pill concept'>offline_immersive_experience</span><span class='pill concept'>retro_ip</span><span class='pill concept'>secondhand_market</span><span class='pill concept'>social_commerce_trend</span></div>
         </div>
       </details>
-    
+
       <details class="card review-card" id="developer-tools-living-review">
         <summary class="review-summary">
           <span class="review-summary-main">
@@ -411,7 +411,7 @@
           <span class="pill-row review-preview-tags"><span class='pill pattern'>open-source-adoption</span><span class='pill pattern'>developer-experience</span><span class='pill pattern'>coding-agent-plugin</span><span class='pill pattern'>token-compression</span><span class='pill pattern'>prompt-compression</span><span class='pill pattern'>context-engineering</span></span>
         </summary>
         <div class="review-body">
-        
+
       <div class="deep-review">
         <p class="eyebrow">深度分析文章</p>
         <h3>开发者工具正在重写稀缺性：从“多写代码”转向“压缩上下文、验证结果、夺回渲染权”</h3>
@@ -422,7 +422,7 @@
         </div>
         <section class='deep-section'><h4>一、真正的变化不是“AI更会写代码了”，而是开发流程里的瓶颈被搬家了</h4><p>如果逐篇看，这三篇材料分别像是在讲插件爆红、工程师职业冲击和前端炫酷新玩法；但放在一起看，它们更像同一件事的三个切面：软件生产的关键约束正在迁移。过去开发者工具主要解决“怎么写出来”，现在越来越多工具解决的是“怎么少说废话、怎么更快试错、怎么验证没出错、怎么拿回底层控制权”。</p><p>这里最重要的机制证据来自《25年10x工程师经验一夜归零！Django创始人警告：3-8年的程序员受AI冲击最大》。材料里最有解释力的不是职业焦虑叙事，而是那个阈值判断：模型能力只是小幅增强，却跨过了“基本都能按要求工作”的线。一旦跨线，软件工程的主要瓶颈就从实现转向 testing、proving 和方案选择。这不是情绪判断，而是对生产函数的重估。</p><p>《省token神器3天狂揽4.1k星！19岁小哥开发，信息无损最高省87%》和《HTML-in-Canvas引爆前端！AI时代互联网视觉效果完全不一样了》则分别给出两个案例方向：一个在语言与上下文层压缩无效 token，另一个在渲染层绕开 DOM 的既有约束。它们都不是“模型更聪明”的故事，而是“系统怎么少绕路”的故事。</p></section><section class='deep-section'><h4>二、caveman 的意义不在省钱本身，而在于它把“废话”定义成了工程成本</h4><p>caveman 这类插件最容易被误读成一个便宜的小技巧：少输出一点字，省一点 token 费。但材料真正有价值的地方，在于它把自然语言交互中的冗余显性化了。按照材料描述，它通过更简洁的响应风格减少输出 token，并通过压缩记忆文件减少输入 token，同时尽量保留代码块、URL、路径、命令、版本号等技术对象。这说明它压缩的不是“信息”，而是“表达外壳”。</p><p>这是典型的机制证据：当 coding agent 已经进入工作流后，真正持续发生的成本不是单次回答贵不贵，而是上下文在会话中不断膨胀、污染、稀释关键信号。也就是说，Context Engineering 的关键不只是把更多信息塞进窗口，而是主动管理什么该原样保留、什么该结构化、什么该删掉。caveman 的价值在这里：它把人与 agent 的交互，从“自然语言越完整越安全”改写成“技术信号清晰比修辞完整更重要”。</p><p>不过，这篇材料里很多数字仍然主要属于案例证据，而非稳定的机制结论。例如“最高节省87%”“3天4.1k星”更接近热度与可传播性信号；“10个任务、平均节省65%”虽然比热度更进一步，但仍然是有限任务上的项目自述。真正可迁移的机制，不是具体节省比例，而是‘输出冗余和输入冗余都可以被工具化治理’这一点。</p><p>它还有一个容易被忽略的含义：当 agent 的思考 token 不受影响、只压缩表达 token 时，说明未来很多开发者工具的优化方向，不是让模型更会想，而是让系统更少说、更快传、更易读。换句话说，嘴变小，也是一种工程优化。</p></section><section class='deep-section'><h4>三、coding agents 的拐点，意味着“实现能力”正在从稀缺资产变成可批量调用的底座</h4><p>《25年10x工程师经验一夜归零！Django创始人警告：3-8年的程序员受AI冲击最大》是这组材料中最接近总框架的文章，因为它解释了为什么一些看似零散的小工具会突然变重要：不是工具本身孤立爆发，而是 coding agents 进入了“多数时候可用”的阶段。一旦原型生成和实现速度上来，组织内最稀缺的能力就不再是把代码敲出来，而是定义目标、比较方案、测试结果、承担责任。</p><p>这篇材料里的“中间层工程师最受冲击”更多是案例化推断，带有行业叙事色彩；但“新瓶颈转向 testing、proving 和选方案”则是机制证据。因为它解释了为什么同样是工具进步，有的产品放大的是资深工程师，有的产品压缩的是初级执行工作，有的产品则让传统的代码产出经验快速贬值。</p><p>这也反过来解释了 caveman 这类工具的时机为什么对。只有当 agent 已经足够常用，压缩 token、整理上下文、减少啰嗦才会从边角优化变成主流程优化。否则，在低可用阶段，最重要的是‘能不能做’，不是‘做的时候是否足够简洁’。</p><p>因此，材料二其实给材料一提供了上位解释：省 token 并不是一个独立趋势，而是 agent 进入生产后，围绕吞吐、上下文管理和审查效率展开的次级基础设施建设。</p></section><section class='deep-section'><h4>四、HTML-in-Canvas 不是单纯的酷炫前端，而是“默认系统让位于可编排系统”的另一种表现</h4><p>《HTML-in-Canvas引爆前端！AI时代互联网视觉效果完全不一样了》表面上离 coding agents 很远，实际上和前两篇处在同一个变化方向上：开发者不再满足于浏览器、模型或框架提供的默认抽象，而是开始主动接管更底层的控制面。材料中关于 HTML-in-Canvas 已进入 W3C/WICG 提案体系、Chrome 可开启实验特性的描述，属于机制与进展证据；关于炫酷效果刷屏、Pretext 千万浏览和 GitHub 快速涨星，则更多是热度信号。</p><p>它真正值得关注的地方在于这句话背后的逻辑：如果说 Pretext 是把文字排版权从浏览器手里拿走，那么 HTML-in-Canvas 是把整个界面渲染权部分拿走。这里的机制和 caveman 很像，都是在把原先由通用系统默认处理的事情，重新拆回给开发者或工具链决定。一个拿走的是表达层冗余，一个拿走的是渲染层约束。</p><p>这说明开发者工具的演进不只有 AI 这一条线。即使没有大模型，软件工具栈也在朝着更强可控性、更低默认束缚的方向发展。AI 时代只是把这种趋势放大了：因为原型生成变得极快，大家更愿意探索那些以前开发成本太高、维护边界太复杂的交互形式。</p><p>但这里也必须明确边界。HTML-in-Canvas 目前仍是实验性能力，进入提案体系不等于进入大规模生产；视觉自由度提升，也不自动等于可访问性、性能调优、SEO、调试体验和工程可维护性都同步变好。所以它更像一个方向性案例，而不是已经成立的主流工程范式。</p></section><section class='deep-section'><h4>五、三篇材料共同指向的，不是同一种产品，而是同一种工具哲学</h4><p>把这三篇材料连起来，能看到一种清晰的共同哲学：优秀的开发者工具，正在从“替你做更多事”转向“替你重排系统成本”。caveman 重排的是对话和上下文成本；coding agents 重排的是实现与验证的成本结构；HTML-in-Canvas 重排的是默认布局与视觉控制的权力分配。</p><p>这也是为什么单纯看 adoption 或 GitHub stars 容易看错。星标、刷屏、爆款安装教程只能说明叙事抓住了社区注意力，它们属于热度信号，不足以独立证明结构性转变。结构性转变要看是否出现了新的稳定工作流：比如 agent 输出是否真的需要被压缩与格式化、工程师是否真的把更多时间花在验证而不是实现、前端团队是否真的愿意为渲染自由度承担额外复杂性。</p><p>所以，这组材料最值得保留的判断，不是“AI 编程更强了”这么泛的结论，而是：开发者工具已经进入一个围绕控制边界重新分工的阶段。谁能把默认系统中的浪费、僵化和黑箱部分抽出来，谁就可能创造下一波工具价值。</p></section><section class='deep-section'><h4>六、反证、边界条件与下一轮要验证的问题</h4><p>这组材料也有明显不足。首先，caveman 的核心数据主要来自 README 与可复现实验描述，仍缺少跨模型、跨任务、跨团队的独立 Benchmark。它是否会在复杂协作中降低可读性、削弱礼貌提示中的隐含约束、或者在非技术任务里误删关键语义，还没有被证明。</p><p>其次，材料二对 coding agents 拐点的判断有很强解释力，但目前更多来自少数领先从业者的体感与访谈叙事。真正需要补充的是组织级证据：缺陷率是否下降、交付周期是否稳定缩短、测试成本是否反而上升、代码评审负担是否从逐行检查转向系统性验证。没有这些数据，‘拐点’仍可能只在特定人群和特定栈里成立。</p><p>再次，HTML-in-Canvas 的反证尤其重要。它也许会成为下一代交互实验场，也可能像 2016 年那次提案一样，再次因为生态和工程现实受阻。下一轮阅读必须特别寻找失败案例：性能回退、可访问性问题、调试复杂度、浏览器兼容阻力，以及团队在生产中放弃该方案的原因。</p><p>因此，最该继续验证的不是‘这些方向热不热’，而是四个更硬的问题：第一，压缩表达是否会稳定提升 agent 工作流的总效率，而不只是减少 token；第二，当实现变便宜后，testing 和 proving 的成本是否真的成为主瓶颈；第三，开发者是否愿意持续为更高控制权承担更高复杂度；第四，这些变化是头部开发者的先进实践，还是会下沉为广泛的默认工作流。只有回答了这些问题，这组材料才能从趋势感知升级为行业判断。</p></section>
       </div>
-    
+
         <details class="evidence-detail">
           <summary>证据附录：问题、模式、案例与下一轮问题</summary>
         <p class="review-question">在这 3 篇「开发者工具」文章中，超越单篇 claim 的重复结构是什么？</p>
@@ -452,7 +452,7 @@
         <div class="concept-strip"><span class='pill concept'>open_source_adoption</span><span class='pill concept'>developer_experience</span><span class='pill concept'>claude_code</span><span class='pill concept'>codex</span><span class='pill concept'>coding_agent_plugin</span><span class='pill concept'>context_engineering</span><span class='pill concept'>developer_workflow</span><span class='pill concept'>prompt_compression</span></div>
         </div>
       </details>
-    
+
       <details class="card review-card" id="memory-context-living-review">
         <summary class="review-summary">
           <span class="review-summary-main">
@@ -469,7 +469,7 @@
           <span class="pill-row review-preview-tags"><span class='pill pattern'>context-engineering</span><span class='pill pattern'>long-term-memory</span><span class='pill pattern'>memory-palace</span><span class='pill pattern'>hierarchical-retrieval</span><span class='pill pattern'>navigable-memory</span><span class='pill pattern'>local-first</span></span>
         </summary>
         <div class="review-body">
-        
+
       <div class="deep-review">
         <p class="eyebrow">深度分析文章</p>
         <h3>记忆系统的竞赛，正在从“会不会记”转向“怎么组织世界”</h3>
@@ -480,7 +480,7 @@
         </div>
         <section class='deep-section'><h4>一、真正的分水岭：记忆不再是“存下来”，而是“先形成结构”</h4><p>把这组三篇材料放在一起看，最值得下的判断是：AI 记忆系统的主战场，已经从“是否能保存更多上下文”转向“是否能把信息组织成一个可操作的外部世界”。这不是措辞变化，而是系统边界变化。过去的思路更像把文本塞进更长的窗口，或者把文本切块后做相似度召回；现在的思路是先把信息编排成层级、图谱或拓扑，再让检索沿着结构走。</p><p>这个判断有跨材料的一致性。材料一的 MemPalace 不是简单摘要历史对话，而是把记忆组织成 wings、rooms、halls、closets、drawers 的分层空间；材料二的 Graphify 不是把资料统统 embedding 后搜索，而是结合 Tree-sitter 静态分析与语义抽取，把代码、文档、图像统一构造成 graph；材料三的 M-FLOW 则更进一步，把检索入口放在细粒度命中点，再沿图路由汇聚到完整 Episode。三者路径不同，但机制上都在做同一件事：把“文本集合”改造为“结构化记忆对象”。</p><p>这里需要区分证据类型。‘分层空间组织’‘AST + 语义双阶段构图’‘图路由替代平坦检索’这些属于机制证据，因为它们解释了系统为何可能更省 token、更稳、更能处理跨粒度问题；LongMemEval、LoCoMo、EvolvingEvents 上的领先成绩属于案例证据，它们表明这些机制可能有效，但还没有覆盖足够多的真实环境；而“爆火 GitHub”“48 小时搞定”“年轻团队重构记忆”更多是热度或叙事信号，说明市场情绪已转向这个方向，但不能直接当成技术结论。</p></section><section class='deep-section'><h4>二、共同机制：它们都在反对平坦检索</h4><p>如果把三篇材料抽象到同一层，会发现它们共同反对的是一种旧范式：把知识当作平坦文本块，用向量相似度或关键词做近邻搜索。材料三对这个问题说得最直白：传统 RAG 只能回答“哪段文本和查询最像”，却很难处理答案跨文档分布、查询粒度不匹配、同实体异语境割裂等问题。材料一和材料二虽然没有用完全相同的话，但都在用结构设计绕过同一瓶颈。</p><p>材料一给出的机制是‘全部逐字保存，再做可导航检索’。这很关键，因为它把记忆写入阶段和记忆筛选阶段分开了：不是先让模型判断什么值得记，而是先完整保留，再通过宫殿式结构与记忆堆栈实现按需加载。这里的机制证据包括：层级路径能缩小搜索空间、增加语义约束；L0/L1 常驻、L2/L3 按需触发的堆栈能把长期记忆变成一种动态上下文编排，而不是一次性灌入。</p><p>材料二的机制则是‘确定性结构提取优先，LLM 语义提取补足其后’。代码部分用 Tree-sitter 本地 AST 解析，不消耗 token；非代码部分才交给并行 LLM 子代理；再配合缓存和图拓扑聚类，减少重复处理。这意味着 token 节省并非只是“模型更便宜”或“提示词更短”，而是把大量本来交给 LLM 理解的工作，前移到了可确定执行的结构化预处理层。</p><p>材料三提出的图路由 Bundle Search，本质上是在检索阶段引入拓扑意识：先命中细粒度实体或 FacetPoint，再沿图传播到完整语义单元。它的意义不只是提升召回率，而是把检索对象从‘片段’改成‘结构上的归属单元’。如果这个机制成立，那么记忆系统就不再只是搜索引擎，而更像一个可以在不同抽象层之间切换的知识运行时。</p></section><section class='deep-section'><h4>三、为什么这些方案会同时带来更低 token 成本和更高记忆质量</h4><p>三篇材料最容易被误读成三个孤立卖点：MemPalace 强在长期记忆，Graphify 强在省 token，M-FLOW 强在 benchmark 领先。实际上，这三件事背后是同一机制链条：先结构化，才能局部加载；能局部加载，才能降低 token；token 压力下降后，系统才有可能把更长时间跨度、更复杂关联的信息稳定留在外部记忆中。</p><p>材料一里，MemPalace 宣称面对 6 个月、约 1950 万 tokens 的对话历史，平时仅需加载约 170 tokens，按需加载约 13500 tokens。这不是单纯压缩算法的胜利，而是分层结构与记忆堆栈的胜利：常驻的是最核心的身份与上下文，细节只在需要时沿路径调出。材料二里，Graphify 所谓 71.5× token reduction，同样不是来自一句神奇提示词，而是来自本地 AST、LLM 语义抽取与增量缓存的分工。材料三虽强调的是图路由和 benchmark，但它也明确把优势归因于不依赖 LLM 的检索、毫秒级响应和多粒度索引。</p><p>因此，这一波 Context Engineering 的本质，不是‘让模型记住更多’，而是‘让模型少看无关内容，却在需要时更快触达相关结构’。换句话说，节省 token 不是目标，而是结构化记忆的副产品；真正的目标是把注意力预算花在正确位置。</p></section><section class='deep-section'><h4>四、最值得重视的变化：记忆写入逻辑正在从“筛选”转向“保真存档 + 后验组织”</h4><p>材料一最有启发性的地方，在于它公开挑战了一个旧前提：记忆系统必须先决定什么值得保存。MemPalace 走的是相反路线——先逐字保存，再通过空间结构和摘要层实现可导航访问。这一点之所以重要，是因为‘先筛选’常常把记忆错误前置：模型在写入当下并不知道未来什么会变得重要，而一旦丢弃，后续就无法恢复。</p><p>Graphify 在知识库场景中也体现了类似思想。它并不要求用户先手工归类 raw 文件，而是尽量把多模态资料全部入谱，再通过图谱关系、反向链接、报告输出和增量更新来维持知识库可用性。M-FLOW 虽然侧重检索，但它同样建立在一个前提上：知识要先被组织为多层图结构，后续才能在不同查询粒度之间切换。</p><p>这意味着‘写入’正在从压缩式判断，转向保真式摄取；而‘检索’则从全局搜索，转向拓扑路由。对于长期记忆系统，这可能是比任何单次 benchmark 提升更重要的变化，因为它决定了系统是偏向一次性回答，还是偏向持续积累。</p></section><section class='deep-section'><h4>五、但现有证据还不足以证明：结构化记忆已经全面胜过传统 RAG</h4><p>必须看到，这组三篇材料虽然方向一致，但证据强度并不一致。最强的是机制层面的收敛：三者都在用结构替代平坦检索。相对较弱的是性能层面的可比性：材料一承认 MemPalace 的 hybrid 分数和 AAAK 准确率存在方法学争议；材料三大量领先数据来自‘对齐对方官网 benchmark’的比较，这种比较有参考价值，但还不是严格统一评测；材料二的 71.5× token reduction 发生在一个包含仓库、论文和图片的 52 文件混合语料场景中，说明它有效，但外推到更复杂企业环境仍需谨慎。</p><p>也就是说，‘结构化记忆正在成为主流解法’这个判断，目前主要由机制证据支持；而‘某一种具体架构已经胜出’这个判断，还没有被充分证明。尤其是材料一的 AAAK 压缩语言，虽然很吸引人，但从文中给出的数字看，RAW 模式和 AAAK 模式之间存在明显差距，这提示我们：高压缩表示可能有成本，但这个成本在什么场景可接受，还需要更多验证。</p><p>另一个重要边界是，结构化并非免费午餐。结构层越复杂，写入、更新、一致性维护、跨源冲突处理就越难。Graphify 依赖不同模态的解析管线，M-FLOW 依赖图组织和路由逻辑，MemPalace 依赖空间层级和摘要层协同。它们都可能在 demo 或 benchmark 上表现出色，但真实系统要面对脏数据、错误链接、概念漂移和长期演化。当前材料对此提供的证据还不够。</p></section><section class='deep-section'><h4>六、这组材料透露的行业趋势：记忆系统正在向 Agent Runtime 的基础设施层靠近</h4><p>如果继续沿着这条线看，记忆系统不应再被理解为聊天机器人的附加插件，而更像 Agent Runtime 的底层设施。因为当记忆具备分层组织、增量更新、局部召回、来源溯源和多粒度跳转能力后，它承担的就不只是‘帮回答问题’，而是持续维护一个可操作状态空间。</p><p>材料二已经显出这种基础设施气质：graph.html、graph.json、GRAPH_REPORT.md 不是一次性回答，而是持续可查询、可复用的外部知识层。材料一的本地化处理与可导航记忆空间，则把隐私和长期状态统一到一个用户侧系统中。材料三强调指代消解、多粒度索引和图增强检索，也说明目标不只是找资料，而是支持联想、推理和跨回合一致性。</p><p>这也是为什么这组材料的真正议题不是单个 benchmark，而是‘记忆是否正在从检索技术升级为状态管理技术’。如果这个趋势成立，未来最重要的问题将不是模型上下文窗口还能扩到多大，而是记忆层如何与工具调用、任务规划、权限控制和审计机制整合。</p></section><section class='deep-section'><h4>七、下一轮最该验证什么：反证、边界条件和关键缺口</h4><p>要检验这篇判断，下一轮阅读最该补的不是更多‘又一个新记忆框架’，而是反证材料。第一，寻找失败案例：哪些结构化记忆系统在真实业务里因为维护成本过高、更新不及时、错误传播而失效？如果大量失败案例出现，那么‘先组织、后检索’可能只适合中小规模或高价值知识场景。</p><p>第二，寻找统一评测。当前材料中的 benchmark 成绩大多是单案自述或对齐他方官网测试，缺少统一数据集、统一预算、统一延迟约束下的横向比较。尤其需要验证：在相同模型、相同 token 预算、相同摄入规模下，层级空间、图谱、图路由究竟各自赢在哪里，代价又是什么。</p><p>第三，验证长期运行问题。结构化记忆最怕的不是第一次构建，而是连续更新后的退化：图会不会越来越脏，摘要会不会与原文漂移，跨模态链接会不会失真，指代消解会不会在长周期中积累偏差。当前三篇材料都更偏重首轮效果展示，对长期维护的负担揭示不足。</p><p>第四，验证‘local-first’和隐私优势是否可持续。材料一和材料二都强调本地处理，但本地并不自动等于可靠：本地算力、索引体积、跨设备同步、故障恢复、权限分层都可能成为新的瓶颈。未来若这些系统进入企业或个人长期使用阶段，这些工程问题会比 headline 分数更决定成败。</p></section>
       </div>
-    
+
         <details class="evidence-detail">
           <summary>证据附录：问题、模式、案例与下一轮问题</summary>
         <p class="review-question">在这 3 篇「记忆 / Context Engineering」文章中，超越单篇 claim 的重复结构是什么？</p>
@@ -510,7 +510,7 @@
         <div class="concept-strip"><span class='pill concept'>context_engineering</span><span class='pill concept'>long_term_memory</span><span class='pill concept'>aaak_compression</span><span class='pill concept'>github_stars</span><span class='pill concept'>hierarchical_retrieval</span><span class='pill concept'>local_first</span><span class='pill concept'>longmemeval</span><span class='pill concept'>mcp_tool_calling</span></div>
         </div>
       </details>
-    
+
       <details class="card review-card" id="multimodal-ai-living-review">
         <summary class="review-summary">
           <span class="review-summary-main">
@@ -527,7 +527,7 @@
           <span class="pill-row review-preview-tags"><span class='pill pattern'>speech-generation</span><span class='pill pattern'>audio-synthesis</span><span class='pill pattern'>long-form-audio</span><span class='pill pattern'>structured-generation</span><span class='pill pattern'>cross-modal-input</span><span class='pill pattern'>gst-schema</span></span>
         </summary>
         <div class="review-body">
-        
+
       <div class="deep-review">
         <p class="eyebrow">深度分析文章</p>
         <h3>语音生成正在从“念字”变成“导演系统”</h3>
@@ -538,7 +538,7 @@
         </div>
         <section class='deep-section'><h4>一、这不是“多模态更强了”，而是语音任务被重新定义了</h4><p>如果只看表层，这两篇材料讲的是两种不同的能力：一篇强调长音频、多人互动、跨模态输入，另一篇强调方言、多语种、音色克隆和开源部署。但把它们放在一起看，更重要的判断是：语音生成不再被定义为“把一句文本读出来”，而被定义为“把一个声音场景生产出来”。这意味着任务单位从字词、句子，升级到了角色、情绪弧线、声学空间、叙事节奏和可操作控制。</p><p>这个判断主要由机制证据支撑，而不是由热闹 Demo 支撑。《小米AI语音新框架：人人都能当声音导演》中，GST 分层 schema、Instruct/Think 双路、双阶段生成、Labeling over Filtering，这些都在说明系统先理解和规划，再发声；《国产免费2B开源语音模型征服《莽撞人》！复刻郭德纲最难贯口》中，tokenizer-free、扩散自回归连续表征、参考音频降噪、Control Instruction 和部署路径，则在说明系统不只是“能说”，还要“尽量不丢失原声细节并且能上线”。两篇材料共同推动了同一个边界变化：语音模型从朗读器变成声音生产系统。</p></section><section class='deep-section'><h4>二、Any2Speech 的关键意义，不是跨模态输入，而是把声音生成前移为“结构化规划”</h4><p>材料一最有价值的地方，不是“支持文本、视频、网页、音频、剧本等任意输入”这句宽泛表述本身，而是它给出了一个更具体的机制：用 GST 这样的分层 schema 作为 LLM Agent 与合成引擎之间的结构化语义接口。这里真正的突破不是多了几种输入模态，而是输入被压缩、抽象为一套可执行的中间表示。也就是说，模态融合不是发生在最后的声码器阶段，而是发生在表达规划阶段。</p><p>这一点很重要，因为传统 TTS 的瓶颈并不只是音质不够高，而是缺少一个稳定的“意图到表达”的接口。只让模型从文本直接出声音，模型往往只能局部决定停顿、情绪和韵律，难以在长上下文里保持角色稳定、情绪递进和背景一致。GST 的 Global、Sentence、Token 三层设计，本质上是在把全局场景、句级表达和音素细节拆开表示。它更像一种 Context Engineering：先把复杂创作目标编码成可追踪、可干预的控制层，再让合成模块执行。</p><p>材料一中还有两组机制证据值得注意。第一组是 Instruct 路与 Think 路的拆分：硬约束由用户指定，表达规划由模型推理，这意味着系统开始把“用户约束”和“模型创作”当成两类不同变量处理。第二组是双阶段生成：先生成逐句表达蓝图，再指导音频生成。这不是普通的参数调优，而是把传统 TTS 中“理解与发声合并”的黑盒过程显式展开。正因为展开了，系统才有机会支持多人对话、背景环境与人声统一建模、长文本连贯和剧本结构理解。</p></section><section class='deep-section'><h4>三、VoxCPM2 的意义，在于把“高表现力”做成可交付能力，而不只是展示样例</h4><p>材料二表面上更像一篇性能和体验报道：方言复刻、多语种、48kHz、不到一秒生成、免费开源、Demo 可玩。但若只把它看成热度信号，会低估它的结构意义。它提供的核心机制证据是 tokenizer-free 与扩散自回归连续表征。材料明确强调，这条路线区别于主流 token-based 方案，目标是减少语音转换中的信息损失，保留原始声音的声学细节、情感基调和方言特色。</p><p>这条机制和材料一并不冲突，反而互补。材料一解决的是“怎么更好地规划要生成什么声音”，材料二解决的是“怎么更好地保真地生成这些声音”。前者偏上游语义接口，后者偏下游声学表示。正因为如此，VoxCPM2 的多方言、多语种、可控克隆、无参考音色设计，不能只被视为案例证据，它们同时也反向证明：连续表征路线的价值，在于更适合承载那些难以离散 token 化的细腻特征，比如口音、节奏、情绪、特殊发音和音色风格。</p><p>此外，材料二还有一类容易被忽视但非常关键的证据：Apache-2.0 开源、Python API、CLI、Web Demo、Nano-vLLM 生产部署路径。这些不是模型机制证据，而是工程可用性的案例证据与落地信号。它们说明语音模型竞争已经不只是 Benchmark 或单条样音的胜负，而是‘团队能否在真实工作流里调用、控制、部署和复现’。如果没有这层，所谓表现力往往只能停留在视频展示里。</p></section><section class='deep-section'><h4>四、两篇材料共同揭示的机制关系：上游结构化， 下游连续化，中间走向 Agent-compatible</h4><p>把两篇材料并起来，最值得提炼的不是“speech-generation 很火”，而是一个更具体的系统图景：上游需要结构化语义接口，中下游需要高保真连续表示，而整个流程正变得更适合 Agent Runtime 调用。材料一中 Any2Speech 自称 Native Agentic，使用 schema 作为接口；材料二中 VoxCPM2 提供程序化 API 与部署路径。前者让 LLM 或 Agent 能够更明确地组织生成任务，后者让生成能力能够真正嵌进产品。</p><p>这里的共同方向是：语音生成正在模块化。过去的语音模型常被当作一个端到端黑盒，输入文字，输出波形。现在出现的则是可拆层的系统：计划层、约束层、表示层、合成层、部署层。模块化的好处不是学术上的优雅，而是使复杂任务终于能被分工处理。比如长篇播客和广播剧，需要跨段一致性；方言复刻和角色保持，需要细节保真；用户创作工具需要开放控制项；企业落地需要部署和降噪能力。两条路线分别切入不同模块，但都在推动同一件事：把语音从单点模型能力变成工作流能力。</p></section><section class='deep-section'><h4>五、要区分三类证据：哪些说明机制，哪些只是案例，哪些只是热度叙事</h4><p>这组材料里，最扎实的是机制证据。材料一中的 GST 分层 schema、Labeling over Filtering、双路拆分、双阶段生成，材料二中的 tokenizer-free、扩散自回归连续表征，属于解释“为什么会这样”的证据。它们可以连接能力与结果，是综述建立判断的主要支点。</p><p>第二类是案例证据。比如材料一中多人分角色对话、10 分钟连贯音频、背景环境与人声融合、播客和广播剧场景；材料二中《莽撞人》复刻、东北话/四川话演绎、30 languages、无参考音色设计、参考音频降噪。这些说明模型可能已经触及真实需求，也展示了机制带来的具体能力，但它们本身不足以单独证明趋势成立，因为成功案例可能经过挑选。</p><p>第三类只是热度或叙事信号，例如‘人人都能当声音导演’、‘征服最难贯口’、‘歪果仁纷纷表示效果针不戳’这类表达。它们有传播价值，但不该直接进入结论层。尤其是在语音领域，展示效果高度依赖样本选择、后处理和评测口径。真正应该追问的，是这些能力在长时间、多任务、不同口音、低质输入、批量部署场景下是否稳定。</p></section><section class='deep-section'><h4>六、这组证据支持什么，不支持什么</h4><p>它支持一个中等强度的结论：语音生成的主战场正在从句子级 TTS 升级为场景级、风格级、工作流级生成。也支持一个更具体的判断：未来领先系统可能不会只靠单一大模型取胜，而是靠更好的中间表示、更强的控制接口、更稳的声学表示以及更完整的部署链条。</p><p>但它还不支持几个更强的结论。第一，不能据此断言跨模态输入一定比纯文本输入更重要，因为材料一虽然强调网页、视频、剧本等输入，但并未提供严格对照说明这些模态分别带来了多少增益。第二，不能断言 tokenizer-free 必然优于 token-based，只能说材料二给出了它在保留细节和方言特色上的机制叙述与案例表现。第三，也不能断言 Agentic 音频生成已经成熟，因为目前看到的更多是系统设计叙事与精选场景，缺少稳定性、成本、失败率和人工编辑负担的数据。</p></section><section class='deep-section'><h4>七、反证、边界条件与下一轮最该验证的问题</h4><p>这组材料最需要的反证，不是再来几个好听 Demo，而是失败证据。比如：多人长音频里角色是否会漂移；复杂背景音是否会侵蚀语音可懂度；连续表征在低资源语言上是否稳定；可控克隆在极短参考音频下是否退化；结构化 planning 是否真的降低了人工返工，而不是把复杂度前移给提示词工程与标注体系。如果这些问题答案是否定的，那么‘导演系统’的叙事就可能只是展示层成功，而非生产层成功。</p><p>边界条件也很明确。材料一更适合叙事性强、场景复杂、需要长上下文和多人互动的任务，如播客、广播剧、有声书；但对短句导航播报、客服固定话术这类任务，其复杂 planning 可能并不划算。材料二更适合需要高保真音色保持、方言迁移、快速推理和可部署性的任务；但在极其复杂的多声源场景中，它是否还能维持一致性，材料并未给出足够证据。</p><p>下一轮阅读最该验证三个问题。第一，speech-generation 与 audio-synthesis 在这里究竟是一个主题的两个层面，还是正在分化为上游规划与下游生成两个子赛道。第二，结构化 schema 与连续表征是否会在同一代产品里融合，形成从意图规划到声学生成的一体化栈。第三，真实产品最关键的评价指标到底是什么：是 MOS、是可懂度、是角色一致性、是编辑成本下降，还是部署吞吐与延迟。只有回答这些问题，才能把当前材料中的方向感，升级为更稳的产业判断。</p></section>
       </div>
-    
+
         <details class="evidence-detail">
           <summary>证据附录：问题、模式、案例与下一轮问题</summary>
         <p class="review-question">在这 2 篇「多模态 AI」文章中，超越单篇 claim 的重复结构是什么？</p>
@@ -568,7 +568,7 @@
         <div class="concept-strip"><span class='pill concept'>audio_synthesis</span><span class='pill concept'>speech_generation</span><span class='pill concept'>acoustic_scene_modeling</span><span class='pill concept'>agent_compatible</span><span class='pill concept'>context_engineering</span><span class='pill concept'>cross_modal_input</span><span class='pill concept'>gst_schema</span><span class='pill concept'>long_form_audio</span></div>
         </div>
       </details>
-    
+
       <details class="card review-card" id="product-business-living-review">
         <summary class="review-summary">
           <span class="review-summary-main">
@@ -577,26 +577,26 @@
               <span class="review-title">产品 / 商业动态综述</span>
             </span>
             <span class="review-meta">
-              <span class="type-badge thinking">LLM 深度分析</span>
+              <span class="type-badge thinking">规则草稿</span>
               <span class="count">2 篇文章</span>
             </span>
           </span>
-          <span class="review-preview">这两篇材料拼在一起，最有解释力的判断不是“AI 很热”或“基础设施受益”，而是：AI 商业正在形成一个上下分层的结构。上层公司通过内部激励、开发流程重写和分发入口，主动放大 token 与算力消耗；下层公司则把这种被放大的吞吐需求，转化为光通信、网络设备与数据中心连接能力的收入与估值。Meta 的案例提供了需求被组织机制人为放大的证据，诺基亚的案例提供了这种需求如何外溢为基础设施价值捕获的案例证据。但现阶段，前者更像机制证据，后者更多是结果与市场地位证据，二者都还不足以单独证明这一结构可以长期成立。</span>
+          <span class="review-preview">这组 产品 / 商业 材料真正值得关注的不是产品发布、公司叙事或增长数字，而是能力如何被包装成可重复采用、可付费、可维护的生产关系。真正重要的是技术信号能否变成稳定的分发和价值捕获机制。</span>
           <span class="pill-row review-preview-tags"><span class='pill pattern'>token-economics</span><span class='pill pattern'>internal-incentives</span><span class='pill pattern'>agent-runtime</span><span class='pill pattern'>codebase-rewrite</span><span class='pill pattern'>developer-workflow</span><span class='pill pattern'>open-model-strategy</span></span>
         </summary>
         <div class="review-body">
-        
+
       <div class="deep-review">
         <p class="eyebrow">深度分析文章</p>
-        <h3>AI商业化正在分成两层：上层鼓励消耗，下层出售瓶颈</h3>
-        <p class="lead">这组材料表面上分别在讲 Meta 的 token 狂热和诺基亚的光通信复兴，实质上共同指向一个更硬的商业判断：AI 时代最先稳定下来的，不是模型能力本身，而是围绕“高消耗”建立的组织激励，以及围绕“高吞吐”出售的基础设施。</p>
+        <h3>产品 / 商业深度分析</h3>
+        <p class="lead">基于 2 篇文章，当前综述把 token-economics、internal-incentives、agent-runtime 视为主要证据线索，并把 agent_runtime、codebase_rewrite、developer_workflow 作为概念层的组织入口。</p>
         <div class="thesis">
           <strong>核心判断</strong>
-          <p>这两篇材料拼在一起，最有解释力的判断不是“AI 很热”或“基础设施受益”，而是：AI 商业正在形成一个上下分层的结构。上层公司通过内部激励、开发流程重写和分发入口，主动放大 token 与算力消耗；下层公司则把这种被放大的吞吐需求，转化为光通信、网络设备与数据中心连接能力的收入与估值。Meta 的案例提供了需求被组织机制人为放大的证据，诺基亚的案例提供了这种需求如何外溢为基础设施价值捕获的案例证据。但现阶段，前者更像机制证据，后者更多是结果与市场地位证据，二者都还不足以单独证明这一结构可以长期成立。</p>
+          <p>这组 产品 / 商业 材料真正值得关注的不是产品发布、公司叙事或增长数字，而是能力如何被包装成可重复采用、可付费、可维护的生产关系。真正重要的是技术信号能否变成稳定的分发和价值捕获机制。</p>
         </div>
-        <section class='deep-section'><h4>一、真正值得看的不是“AI有多强”，而是谁在把消耗制度化</h4><p>如果只看表层，材料一像是一篇关于大厂内卷和资源浪费的猎奇新闻，材料二像是一篇关于老牌通信公司借 AI 东风翻红的产业故事。但把两者放在一起，核心问题就变了：AI 商业化最先跑通的，并不是某个模型在 Benchmark 上更强，而是谁能把“更多调用、更多改写、更多传输、更多连接”变成一种被鼓励、被预算化、被持续采购的制度。</p><p>材料一里最关键的，不是“日均 2 万亿 token”这个吓人的数字本身，而是这个数字背后的组织结构：有排行榜、有勋章、有高层推动、有代码库重写目标，甚至有人让 agent 循环空跑来刷 token。这里的 token 已经不是单纯的技术计量单位，而是内部绩效文化的一部分。这个证据的价值在于，它揭示了需求不完全是自然发生的，很多时候是被组织激励制造出来、放大出来的。这属于机制证据。</p><p>材料二则把另一侧的商业现实补了出来：当 AI 训练和推理把数据中心里的传输压力迅速抬高时，真正能够稳定收费的，往往不是讲故事的人，而是解决吞吐瓶颈的人。光模块、光纤、IP 路由、海陆光网络之所以变热，并不是因为“光”这个概念新鲜，而是因为在 AI 数据中心里，连接能力开始成为算力兑现的必要条件。诺基亚拿到份额、进入云服务商供应链、在下一代光纤技术市场领先，这些都说明瓶颈一旦形成，基础设施环节就具备价值捕获能力。这更偏案例证据。</p></section><section class='deep-section'><h4>二、Meta案例说明：token-economics 的本质是激励设计，不是使用量统计</h4><p>材料一最重要的启发，是把 token-economics 从成本问题推进到了组织行为问题。过去人们常把 token 消耗理解为模型 API 的使用量，最多再加上一层单位经济学分析：每次调用多少钱，ROI 如何。可这篇材料里暴露出的更深层现象是，一旦 token 消耗被公开排名、被头衔化、被高层默许，它就会从生产资料变成地位符号。</p><p>这意味着，企业内部对 AI 的需求并不总是由真实任务强度决定，而可能由错误的代理指标驱动。就像过去一些组织用代码行数、工时、会议数量来代替真实产出，今天也可能用 token 吞吐代替生产力。员工构建循环运行的 agent 去刷榜，恰恰说明指标已经开始脱离价值本身。这个现象不是个别员工道德问题，而是典型的激励错配：当“烧得多”比“做得成”更容易被看见时，系统会自然奖励前者。</p><p>更值得注意的是，这种错配并不一定会立刻被组织纠正。材料一提到高层对高消耗投入持支持态度，背后的逻辑并不难理解：如果公司相信 AI 将重写开发流程、重构代码库，那么在管理层眼里，短期的资源浪费可能被视为必要的试错成本。于是，token 消耗在内部被赋予一种近似资本开支的合法性。问题在于，这种合法性到底对应真实生产率提升，还是只是对应政治正确的 AI 采用姿态，目前材料并没有给出硬证据。</p><p>因此，材料一是很强的机制证据，但它也是单案例机制证据。它说明了需求可以被人为放大，却还没有证明这种放大最终一定转化为产品优势、研发效率或商业回报。</p></section><section class='deep-section'><h4>三、代码库重写与 Agent Runtime，意味着需求将从“问答次数”转向“持续执行时长”</h4><p>材料一中另一个不能忽视的信号，是“用 AI 重写代码库”的要求。这不是普通意义上的 Copilot 辅助，而更接近把软件工程环境改造成 AI 可读、可执行、可接管的运行空间。这里真正重要的不是模型会不会生成几段代码，而是整个 developer workflow 是否被重构成适合 Agent Runtime 的形式。</p><p>一旦进入这个阶段，消耗结构就会改变。过去用户与模型的关系更像一次性对话：提问、回答、结束。可在代码重构、持续修改、冗长研究、后台运行这些任务中，agent 的价值来自持续 session、工具调用、状态保持和多步执行。也就是说，企业对 AI 的需求不再只是 prompt 数量，而是运行时长、上下文长度、工具链深度与错误恢复能力。token 的增长不再只是用户多说了几句话，而是执行链条本身被拉长了。</p><p>这也解释了为什么材料一中的“空跑”并不只是浪费新闻，而是商业模式信号。只要企业开始把 AI 当作持续运行的劳动力而非一次性交互界面，吞吐就会迅速膨胀，甚至在缺乏严格价值校验时出现过度消耗。对上层产品公司来说，这可能支撑更高频的内部调用；对下层基础设施公司来说，这意味着网络与互连的需求会被持续抬高。</p></section><section class='deep-section'><h4>四、诺基亚案例说明：AI时代最容易兑现收入的，往往是“连接算力”的那一层</h4><p>材料二虽然带有较强的市场叙事色彩，但它提供了一个重要对照：当行业沉迷于模型、应用和新入口时，真正率先兑现收入与份额的，往往是那些卡住物理瓶颈的供应商。文中关于诺基亚光通信份额、云服务商采用情况、网络基础设施业务构成的描述，说明它并不是靠情怀手机复活，而是靠长期沉淀的网络设备、光传输和基础设施能力重新进入增长主线。</p><p>这里的商业逻辑很直接。AI 算力并不是孤立存在的，GPU 与存储、服务器与交换机、数据中心内部与数据中心之间，都需要高速低损耗连接。算得越猛，传得越急；模型越大，互连越关键。于是，谁能把光通信、路由、海陆网络这些看似“旧行业”的能力打包成 AI 数据中心时代的刚需，谁就更有可能拿到真实订单，而不是仅仅拿到注意力。</p><p>材料二里的份额、营收、云厂商采用，属于案例证据；资本市场对“光”的追捧，以及各种段子化表达，则更多是热度和叙事信号。这两者必须分开。热度说明市场已经意识到瓶颈所在，但不能替代对供给能力、产品竞争力和盈利质量的判断。真正有分量的是：它在供应链中的位置、覆盖的客户类型、所处的技术代际，以及是否具备从数据中心内部到跨数据中心的全链路能力。</p></section><section class='deep-section'><h4>五、把两篇材料连起来看：AI商业正在形成“需求放大器—瓶颈收费站”结构</h4><p>如果把 Meta 和诺基亚放在同一张图里，结构就清晰了。Meta 代表的是需求放大器：通过内部 KPI、代码库改写、工具链接管、分发入口整合，把更多 AI 调用和更长执行链条合理化。诺基亚代表的是瓶颈收费站：当这些放大的调用最终落到数据中心传输、网络连接和基础设施升级上时，底层供应商开始收取通行费。</p><p>这个结构解释了为什么 AI 商业化常常出现一种错觉：上层看起来最性感，底层反而最挣钱。原因并不是基础设施比模型更重要，而是上层的价值经常依赖未来兑现，底层的价值则依赖当前约束。只要 GPU 继续堆、数据继续流、推理继续增，连接能力就有现实采购需求；但上层产品是否真的创造足够价值，还要接受留存、转化、流程效率和组织治理的检验。</p><p>更进一步说，这也解释了为何“分发优势”与“基础设施优势”并不矛盾。材料一提到 Meta 计划把模型能力深度嵌入 WhatsApp 和 Instagram，这属于上层分发逻辑：先抢入口、抢使用习惯、抢内部部署规模。材料二对应的是下层供给逻辑：无论入口归谁，底层吞吐都需要更强互连。前者争的是用户时间和工作流主导权，后者争的是系统必经之路。</p></section><section class='deep-section'><h4>六、需要警惕的反证：高消耗不等于高价值，基础设施受益也不必然长期持续</h4><p>这组材料最容易被误读成两个简单结论：第一，谁烧 token 多谁就更领先；第二，只要 AI 热，光通信和网络设备就会一直赢。两者都过于线性。</p><p>先看第一点。材料一最大的反证恰恰来自它自身：员工可以通过让 agent 空转来刷榜，这说明高 token 消耗可能只是在放大低质量任务，甚至是在制造无效工作。如果未来企业开始严格按代码质量、交付周期、线上故障率、真实人效来衡量 AI 采用效果，那么今天这种以 token 为荣誉的文化，可能会迅速退潮。也就是说，token-economics 与 internal-incentives 在当前材料里高度重叠，但它们未必是长期稳定机制，也可能只是某个阶段的组织狂热。</p><p>再看第二点。诺基亚受益于 AI 数据中心的连接需求，这个方向逻辑成立，但边界条件同样存在。若未来架构优化显著降低跨节点通信压力，或更高集成度封装、近存计算、网络拓扑创新改变了传输瓶颈的位置，那么现有光通信环节的利润池可能被重新分配。另一个边界是竞争格局：份额领先并不自动等于超额利润，尤其在基础设施行业，价格竞争、客户集中度和资本开支周期都可能侵蚀回报。</p><p>因此，现阶段我们能做出的最好判断不是“上层必胜”或“下层必胜”，而是：AI 商业化正在把大量价值先推向那些能放大消耗或控制瓶颈的环节，但这种价值分配仍高度依赖指标治理、技术架构和采购周期。</p></section><section class='deep-section'><h4>七、下一轮阅读最该验证什么</h4><p>如果要验证这篇综述的核心判断，下一轮最关键的不是再找更多“AI 很热”的报道，而是找能回答三个问题的材料。第一，Meta 这类高 token 消耗文化，最终有没有转化为明确的研发效率、发布速度或产品质量提升？如果没有，那么它更像是一场组织表演，而不是生产力革命。</p><p>第二，企业级 Agent Runtime 的真实资源结构到底如何？我们需要看到更具体的数据：持续 session、工具调用、多 agent 编排、长上下文处理分别占多少成本，哪些是必要消耗，哪些是管理失控带来的冗余消耗。只有这样，token-economics 才能从新闻概念变成可分析的商业机制。</p><p>第三，像诺基亚这样的基础设施供应商，其 AI 相关增长中有多少来自真实订单扩张，有多少只是被市场叙事重新估值？需要进一步核实的是客户结构、AI 相关收入占比、毛利变化、资本开支传导周期，以及它在下一代网络架构中的持续优势是否稳固。</p><p>换句话说，这组材料已经足够支持一个中等强度的判断：AI 商业并非先由最强模型决定，而是先由最会制造需求和最能承接瓶颈的环节共同塑形。但要把它升级为更强结论，还必须补上效率证据、财务证据和反例证据。</p></section>
+        <section class='deep-section'><h4>一、产品 / 商业的真实议题：能力如何被包装成可重复采用、可付费、可维护的生产关系</h4><p>产品 / 商业这一组文章不能只按发布时间或单篇观点阅读。更重要的是看它们如何从不同角度指向同一个问题：能力如何被包装成可重复采用、可付费、可维护的生产关系。</p><p>《Meta员工空转AI只为浪费token！烧的多挣的多...》显示：在这位首席AI官的强力推动下，全公司每天烧掉的Token数量就高达两万亿，相当于把整个维基百科过了40多遍。；《命运之神重新眷顾了诺基亚》显示：这其中大概又可以分为两块，一块是移动网络业务，主要为中国移动、联通等无线电接入网络提供产品和服务。另一块是网络基础设施业务，比如向向通信服务提供商、超大规模企业、数字行业以及政府等客户，提供光纤、IP路由、数据中心、海底陆地光网络等相关的设备和服务。。</p></section><section class='deep-section'><h4>二、token-economics 暴露的瓶颈</h4><p>当前最强的重复模式是 token-economics。这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。这个模式不是从标题或标签直接推出来的，而是需要回到文章中的具体材料：它反复出现在产品叙事、技术细节、使用场景或市场反应里。</p><p>因此，产品 / 商业的判断重点不应是单点能力强弱，而是它是否改变了产品与商业化 的约束条件、协作方式或规模化路径。</p></section><section class='deep-section'><h4>三、《Meta员工空转AI只为浪费token！烧的多挣的多...》等案例如何互相解释</h4><p>《Meta员工空转AI只为浪费token！烧的多挣的多...》承担的是 token-economics、internal-incentives、agent-runtime 的证据角色：在这位首席AI官的强力推动下，全公司每天烧掉的Token数量就高达两万亿，相当于把整个维基百科过了40多遍。；《命运之神重新眷顾了诺基亚》承担的是 optical-communication、ai-datacenter、telecom-equipment 的证据角色：这其中大概又可以分为两块，一块是移动网络业务，主要为中国移动、联通等无线电接入网络提供产品和服务。另一块是网络基础设施业务，比如向向通信服务提供商、超大规模企业、数字行业以及政府等客户，提供光纤、IP路由、数据中心、海底陆地光网络等相关的设备和服务。。</p><p>这说明 2 篇文章之间不是简单相加。有些文章提供机制解释，有些文章提供案例和场景，有些文章只提供热度信号；只有区分这些证据角色，综述才可能形成判断。</p></section><section class='deep-section'><h4>四、从 agent_runtime、codebase_rewrite、developer_workflow 推出的判断</h4><p>把这些材料放在一起后，可以形成一个暂时判断：真正重要的是技术信号能否变成稳定的分发和价值捕获机制。agent_runtime、codebase_rewrite、developer_workflow 不是装饰性标签，而是把多篇文章连接起来的解释入口。</p><p>如果这个判断成立，后续文章库的重点就不是继续堆积同类新闻，而是观察哪些新材料会增强、修正或削弱这一解释。</p></section><section class='deep-section'><h4>五、哪些证据会改变这篇综述的结论</h4><p>这组材料仍然不足以把趋势判断变成确定结论。真正可能削弱上述判断的，不是又一篇相似案例，而是失败案例、低采用率案例、成本约束、组织阻力，以及指标表现与真实价值不一致的证据。</p><p>因此，这篇综述的结论应被理解为可检验的判断：它解释了当前材料之间的共同结构，但也必须接受后续全文材料对其边界条件的修正。</p></section>
       </div>
-    
+
         <details class="evidence-detail">
           <summary>证据附录：问题、模式、案例与下一轮问题</summary>
         <p class="review-question">在这 2 篇「产品 / 商业」文章中，超越单篇 claim 的重复结构是什么？</p>
@@ -626,7 +626,7 @@
         <div class="concept-strip"><span class='pill concept'>agent_runtime</span><span class='pill concept'>codebase_rewrite</span><span class='pill concept'>developer_workflow</span><span class='pill concept'>distribution_advantage</span><span class='pill concept'>internal_incentives</span><span class='pill concept'>open_model_strategy</span><span class='pill concept'>org_behavior</span><span class='pill concept'>semi_open_source</span></div>
         </div>
       </details>
-    
+
       <details class="card review-card" id="research-benchmark-living-review">
         <summary class="review-summary">
           <span class="review-summary-main">
@@ -643,7 +643,7 @@
           <span class="pill-row review-preview-tags"><span class='pill pattern'>ai-index-report</span><span class='pill pattern'>benchmark-tracking</span><span class='pill pattern'>model-evaluation</span><span class='pill pattern'>swe-bench-verified</span><span class='pill pattern'>osworld</span><span class='pill pattern'>china-us-competition</span></span>
         </summary>
         <div class="review-body">
-        
+
       <div class="deep-review">
         <p class="eyebrow">深度分析文章</p>
         <h3>Benchmark 正在分化：通用能力接近天花板，领域能力转向“数据—语义—任务”闭环</h3>
@@ -654,7 +654,7 @@
         </div>
         <section class='deep-section'><h4>一、先给结论：Benchmark 的意义，正从“排名”转向“能力迁移诊断”</h4><p>如果只看表面，这两篇材料像是在讲两件不同的事：一篇讲《2026年AI指数报告》里中美模型差距收窄、SWE-bench Verified 接近满分；另一篇讲一个超声图文数据集和 Ultrasound-CLIP 的技术进展。但把它们放在一起，真正清晰的不是某个模型又赢了多少，而是 Benchmark 本身在变：它越来越像一种“能力诊断工具”，用来判断模型的进步究竟是通用外推，还是场景特化。</p><p>材料一更像宏观观察：它给出一系列强烈信号，说明前沿模型在编码、数学、多模态推理等标准化任务上持续逼近高分，且国家间、公司间的性能差距正在缩小。材料二则像机制拆解：它告诉我们，到了超声这种高专业性、高歧义、强临床语义约束的领域，通用视觉语言模型并不能直接吃到通用能力增长的红利，必须重建数据、标签体系和表示学习方式。</p><p>因此，这组证据支持的不是“模型无所不能”，而是一个更精确的判断：通用 Benchmark 上的快速提升，正在让基础能力成为公共底座；但真实高价值行业场景的竞争，转而取决于谁能把底座能力压进具体数据结构、具体语义框架和具体工作流。</p></section><section class='deep-section'><h4>二、材料一告诉我们的，不只是中美差距收窄，而是通用评测开始出现收敛现象</h4><p>《斯坦福年度结论：中美大模型已没差距》的核心价值，不在“中美”这个最吸睛的标题，而在它背后呈现出的 benchmark 收敛图景。SWE-bench Verified 从一年内约 60% 提升到接近 100%，OSWorld 从 12% 跃升到约 66%，再加上多个模型在博士级科学问题、多模态推理和竞赛数学上达到或超过人类基线，这些都指向同一个趋势：一批标准化、公开化、可重复测量的任务，正在被前沿模型快速吃透。</p><p>这里真正重要的是机制意义。通用基准一旦进入高位区间，领先优势就会变窄，追赶速度会变快。因为这类任务往往已经被行业充分关注、反复优化，并进入了数据、推理策略、工程调优和后训练集体收敛的阶段。材料一提到截至 2026 年 3 月，Anthropic 仍领先但优势仅 2.7%，这不是简单说明谁第一，而是说明在头部模型区间，性能差距越来越像工程效率和迭代速度的差异，而不是能力代际差异。</p><p>但材料一同时也给出一个重要反证：模型并非整体均匀变强。它一边能在 IMO 拿金牌，一边在读取指针式时钟上准确率仍只有 50.1%。这说明高分并不自动代表“世界模型完整”，更不代表对所有任务类型都具备鲁棒理解。换句话说，Benchmark 的高分正在变得更常见，但 Benchmark 之间的不一致，也在变得更有解释力。</p></section><section class='deep-section'><h4>三、材料二的意义在于补上机制：专业场景不是靠通用 scaling 自然解决的</h4><p>《36.4万超声图文对！中国团队构建首个大规模超声专属数据集，让AI真正读懂临床诊断语义》提供的，不主要是一个“又发了一篇 CVPR”的热闹消息，而是一个很关键的机制证据：当数据模态稀缺、专业术语高歧义、诊断依赖结构化知识时，通用视觉语言模型的迁移会明显失效。</p><p>文章里最值得重视的首先不是结果数字，而是问题设定：现有医疗跨模态数据中超声样本占比不足 5%。这意味着超声不是简单地落后于大盘，而是在训练分布里长期被边缘化。于是，模型缺的不是一点参数量，而是对这个模态的语义地基。团队构建 US-365K，包含 36.4 万图文对、11676 个真实病例、超过 90% 的数据有效率，本质上是在补这个地基。</p><p>更关键的是，它没有停留在“多收集数据”这一层，而是进一步提出 UDT、UHAT、UDAF 等标准化知识框架，并在 Ultrasound-CLIP 中把这些临床属性结构通过异构图编码器、语义软标签和双目标优化压进表征学习。也就是说，这篇材料给出的机制不是“大数据有效”，而是“结构化领域知识把原本模糊的图文对应关系变成可学习的语义对齐问题”。这类证据很重要，因为它解释了为何有些 Benchmark 提升可以被复制，而有些不行。</p></section><section class='deep-section'><h4>四、两篇材料合在一起，揭示了 Benchmark 的两层分工</h4><p>把两篇材料并读，可以把证据分成三类。第一类是机制证据。材料二关于超声样本稀缺、语义模糊、临床结构缺失，以及用 UDT/UDAF/异构图编码器解决这些问题，属于机制证据；它解释了能力为何卡住，也解释了能力为何能被提升。材料一中“IMO 金牌但不会看钟表”“OSWorld 仍有约三分之一任务失败”也部分属于机制证据，因为它揭示了能力分布不均衡和任务结构差异。</p><p>第二类是案例证据。材料一里 SWE-bench Verified 从 60% 到接近 100%、中美差距缩小到 2.7%，以及材料二里 US-365K 的规模和 Ultrasound-CLIP 在分类、检索上的指标提升，都属于案例证据。它们证明某种现象正在发生，但本身不能独立解释为什么发生。</p><p>第三类只是热度或叙事信号。比如“中美已没差距”“首个大规模超声专属数据集”“CVPR 2026 接收”都具有传播价值，但它们更多负责吸引注意力，而不是建立因果解释。尤其是国别竞争叙事，很容易把真正的问题——评测是否代表可迁移能力——遮蔽掉。</p><p>这三类证据的区分，直接决定综述质量。因为如果把叙事信号当机制，把案例当结论，就会得出过度乐观的判断；只有先分清证据角色，才能看清一个更现实的结构：通用 Benchmark 正在把基础能力快速商品化，而垂直 Benchmark 正在把行业 know-how 重新变成护城河。</p></section><section class='deep-section'><h4>五、这意味着竞争焦点正在转移：从“谁训练出更强大模型”到“谁定义了更有用的任务”</h4><p>材料一说明，通用前沿模型的能力高地正在被迅速压平。只要一个任务足够公开、足够标准化、足够被行业重视，它就很容易成为全行业共同优化的目标。最终结果不是没人进步，而是大家都进步，且差距收窄。对于国家竞争、公司竞争，这意味着纯粹依赖通用模型排行榜建立壁垒会越来越困难。</p><p>材料二则说明，真正难复制的是任务定义权。谁能提出贴合临床流程的数据标准，谁能把散乱报告转成结构化语义，谁能构造和真实决策过程相一致的评测任务，谁就更可能在高价值领域形成领先。换句话说，行业竞争的下一阶段未必围绕更大的基础模型，而更可能围绕更好的 Context Engineering、数据治理和领域 Benchmark 设计展开。</p><p>这也解释了为什么“中美大模型已没差距”与“中国团队构建超声专属数据集”并不矛盾。前者说的是基础模型层的能力差距在缩小，后者说的是一旦进入专业任务，差距将重新由数据和任务结构决定。基础层趋同，不等于应用层趋同；恰恰相反，基础层越趋同，应用层的结构化差异越重要。</p></section><section class='deep-section'><h4>六、需要警惕的反证与边界：高分不等于真实可用，专属数据也不自动等于临床价值</h4><p>这组材料虽然支持“Benchmark 正在从排名走向迁移诊断”的判断，但还远不足以得出确定结论。首先，材料一里的很多指标来自头部公开基准，它们可能受到任务污染、过度针对性优化、Agent scaffold 改善等影响。SWE-bench Verified 接近 100% 极具冲击力，但也正因此更需要追问：这代表模型已经接近真实软件工程自动化上限，还是代表这一基准正在被完成式攻克，失去区分度？</p><p>其次，材料二展示了优于现有医疗 CLIP 基线的结果，但还不能直接推出“AI 真正读懂临床诊断语义”。原因在于，跨模态检索、多任务分类和下游泛化，仍是代理性指标，而不是完整的临床决策指标。超声场景尤其依赖动态视频、操作手法、上下文病史和医生交互。US-365K 虽然解决了静态图文对齐和标准化语义问题，但是否足以支撑真实临床部署，仍有明显边界。</p><p>更进一步说，两篇材料都没有充分回答成本问题。通用 Benchmark 逼近高分后，继续提升的边际成本是否越来越高？超声专属数据集的构建、专家审核和领域知识工程，是否能以可持续成本复制到更多细分模态？如果不能，那么我们看到的可能是一批漂亮但昂贵、可复制性有限的样板工程。</p></section><section class='deep-section'><h4>七、下一轮阅读最该验证什么</h4><p>下一轮最该补的，不是更多“又创新高”的新闻，而是三类缺失证据。第一类是真实工作流证据：例如通用模型在生产软件团队、医院超声科、医学教育中的长期表现，是否能复现 Benchmark 上的高分。第二类是失败证据：哪些任务在公开基准上接近解决，却在开放环境中反复失效；哪些领域专属模型在论文中优于基线，却无法通过合规、部署和成本约束。第三类是比较证据：领域专属数据与领域专属结构，究竟哪个更决定最终表现，二者是否存在替代关系还是互补关系。</p><p>尤其值得验证的一个问题是：Benchmark 的失效速度是否在加快。材料一已经让人看到，一些通用基准正被迅速攻克；如果一个 Benchmark 的区分度只能维持几个月，那么未来真正重要的也许不是分数本身，而是 Benchmark 迭代机制。对应到材料二，则要继续追问：像 US-365K 这样的数据集，是不是能够成为长期稳定的基础设施，还是也会很快被更接近临床流程的新评测替代。</p><p>简而言之，这组材料提示我们不要再把 Benchmark 当成静态成绩单，而要把它看成动态制度：它一方面筛选出已商品化的通用能力，另一方面也暴露出那些尚未被标准化、因此仍具高价值的专业能力。真正值得追踪的，不是哪一次跑分刷新，而是哪一类任务开始失去区分力，哪一类任务正在被重新定义。</p></section>
       </div>
-    
+
         <details class="evidence-detail">
           <summary>证据附录：问题、模式、案例与下一轮问题</summary>
         <p class="review-question">在这 2 篇「研究 / Benchmark」文章中，超越单篇 claim 的重复结构是什么？</p>
@@ -684,7 +684,7 @@
         <div class="concept-strip"><span class='pill concept'>ai_adoption</span><span class='pill concept'>ai_index_report</span><span class='pill concept'>ai_safety_incidents</span><span class='pill concept'>benchmark_tracking</span><span class='pill concept'>china_us_competition</span><span class='pill concept'>frontier_models</span><span class='pill concept'>market_comparison</span><span class='pill concept'>model_evaluation</span></div>
         </div>
       </details>
-    
+
       <details class="card review-card" id="robotics-embodied-ai-living-review">
         <summary class="review-summary">
           <span class="review-summary-main">
@@ -701,7 +701,7 @@
           <span class="pill-row review-preview-tags"><span class='pill pattern'>embodied-ai</span><span class='pill pattern'>physical-grounding</span><span class='pill pattern'>tactile-sensing</span><span class='pill pattern'>autonomous-driving</span><span class='pill pattern'>world-model</span><span class='pill pattern'>self-diagnosis</span></span>
         </summary>
         <div class="review-body">
-        
+
       <div class="deep-review">
         <p class="eyebrow">深度分析文章</p>
         <h3>具身智能的真正瓶颈，正在从“会不会做”转向“能否被驯化、压缩并接上物理反馈”</h3>
@@ -712,7 +712,7 @@
         </div>
         <section class='deep-section'><h4>一条主线：具身智能的问题，本质上是“物理闭环”问题，不是“把语言模型装到机器人里”</h4><p>如果只看表面，这四份材料分别在讲自动驾驶世界模型、VLA加速、触觉数据集、灵巧手硬件，主题很散。但把证据重新排列后，会出现一条很清晰的主线：它们都在修补同一个断裂——模型内部的表征、训练流程和真实世界接触之间，还没有天然闭环。材料一说得最激进：当系统能力超过人类局部判断时，人类不再适合作为持续的“教练”，AI需要自我诊断、自我定向采集、自我迭代。材料二讲的是另一面：即使模型思路成立，如果推理成本过高、动作头太慢，它也无法成为实时控制系统。材料三、材料四则把问题进一步拉回物理接触：没有触觉、没有顺应性、没有足够自由度，系统即便“看懂了”，也未必“碰得对”。</p><p>因此，这组证据支持的不是一个宽泛口号，而是一个更尖锐的判断：具身智能的技术重心，正在从感知-理解层面的泛化，转向对物理闭环的重建。这里的“闭环”包含三层含义：模型是否拥有比语言更贴近动作的内部状态；系统是否能在受限硬件上实时输出动作；动作是否能通过触觉、力反馈和结构自由度与现实接触并被再次校正。谁能把这三层打通，谁才可能真正跨过“实验室演示”和“长期可用系统”之间的鸿沟。</p></section><section class='deep-section'><h4>最有机制含量的证据：中间表示正在从“语言中心”转向“意图/接触/动作中心”</h4><p>材料一提供了这组综述里最完整的机制论证。它并不是简单反对语言，而是指出在自动驾驶这类高维4D物理时空任务中，语言是一种高效但降维严重的中间表示，天然会丢失大量物理上下文。对应的替代方案不是取消语义，而是把中间层换成更贴近控制本质的 Intention。更关键的是，这个意图层不是事后解释，而是在训练中与动作联合学习的原生能力。这个区别非常大：如果中间层是原生的，它就不仅用于“解释模型”，还能反向生成训练场景、做误差定位、驱动定向数据采集。这已经不是可解释性装饰件，而是训练范式的一部分。</p><p>材料三从另一个方向补强了这个判断。它没有直接讨论语言，但实际上在做同一件事：用视觉-触觉同步数据，把“看见了什么”转成“手上感受到了什么”。这说明在具身任务里，真正重要的中间层不一定是自然语言，也可能是压力分布、接触稳定性、施力路径这类低层但更物理的状态。材料四也在印证这一点：全掌触觉和指尖视触觉的价值，不是增加一个感知模态这么简单，而是把动作控制从依赖外部摄像头猜测接触，改成局部闭环地知道“抓稳了没有、在不在滑、是不是偏了一点”。</p><p>这里要明确区分证据类型。材料一关于语言中间层上限、Intention 联合学习、自我诊断和定向进化，属于机制证据；材料三关于触觉缺失会导致无法判断接触稳定和操作成功，同样是机制证据；材料四中关于触觉融合改善精细操作的描述，则是案例级机制线索，但更多还是产品化叙事，严格性弱于前两者。真正能成立的结构性判断是：具身系统需要一种比 human language 更贴近物理控制的中间表示，而这个表示可能是意图，也可能是触觉/力学状态，未必是单一符号层。</p></section><section class='deep-section'><h4>第二个决定性约束：不是模型不强，而是推理预算不允许它一直“想太久”</h4><p>材料二的价值，在于它把具身智能从“能力问题”拉回“系统工程问题”。VLA之所以落地难，文中给出的原因非常具体：主干 VLM 大、动作头还要多步迭代去噪，延迟是双重的。A₁ 的贡献，不是证明 VLA 最优，而是证明 VLA 若要进入普通硬件和实时控制，必须接受预算感知推理：只在真正改变动作的层上花算力，动作差异足够小就提前退出，并让上一层输出热启动下一层，避免每次从噪声重新开始。</p><p>这类证据的重要性在于，它提供了一个经常被低估的事实：具身智能不是离线问答，控制系统的性能函数里，时延本身就是能力的一部分。一个需要等太久才能给出更优动作的模型，在机器人里可能就是更差的模型。材料二的实验数字——时延最高降低72%、计算量最高减少76.6%、在 RoboChallenge 上优于若干开源基线——属于案例证据，说明这条优化路径在特定实现中有效；而“动作头与主干联合加速、按任务复杂度动态分配算力”的思路，则属于机制证据，说明未来具身模型很可能越来越像一种 runtime-aware system，而不是静态大模型。</p><p>这也给材料一中的世界模型路径形成了一个必要补充。材料一强调中间表示和自我进化，但对车端推理预算谈得相对抽象；材料二则提醒我们，即便中间表示更合理，若不能把计算压到实时窗口内，也很难变成可部署系统。所以，这两条证据并不冲突，反而拼出了完整图景：具身系统既要有更物理的表示，也要有更节制的推理机制。前者决定上限，后者决定能否进入现实。</p></section><section class='deep-section'><h4>第三个硬约束：没有接触反馈，所谓“世界模型”很容易只停留在远距离理解</h4><p>材料三和材料四共同指向一个此前常被轻描淡写的问题：机器人并不只是要识别世界，还要承受、调节并利用接触。材料三给出的机制非常直接：现有第一人称具身数据集缺乏触觉模态，导致模型难以建模人与环境之间的接触与力学交互，连抓取是否稳定、操作是否成功都难判断。这个论点不是“触觉很重要”的空泛表态，而是在说明：没有触觉，模型会在最关键的结果变量上失明。</p><p>材料四把这个逻辑推进到了硬件层。文中关于反驱的论述尤其值得注意：仿真环境默认接触是可顺应的，但若真实硬件关节过于刚性，策略落地就会出现过力、卡死、震荡，sim-to-real gap 会在接触瞬间被放大。这里的反驱，不只是安全设计，而是让控制策略可以在真实世界保留“让一下”的自由度。换句话说，硬件顺应性本身就是学习系统的一部分。再加上全掌触觉和指尖视触觉，灵巧手才从一个会动的执行器，变成一个能产生局部闭环反馈的末端。</p><p>这组证据支持一个更深的判断：具身智能的下一个瓶颈不是“能不能生成动作”，而是“动作生成后有没有足够密的物理回授让系统校正”。世界模型如果只有视觉和语言，很可能更擅长远程规划和场景解释；而一旦进入精细操作，它就必须接入触觉、力学和结构弹性这些更低层但更决定成败的信号。材料三提供的是机制与数据基础，材料四提供的是硬件实例与产品化案例，两者合在一起说明，‘physical grounding’不是口号，而是要落实到可对齐、可采集、可训练、可执行的接触变量上。</p></section><section class='deep-section'><h4>“Harness”为什么在这组材料里不是修辞，而是一种系统能力</h4><p>材料一把 Harness 提到时代级能力，乍看像宏大叙事，但如果放进其他材料中理解，它其实有非常具体的技术含义。第一层含义是驯化模型内部复杂性：不是任由模型无限增加参数和步骤，而是找到更有效的中间表示与评价体系，让系统知道哪里错、怎么改。第二层含义是驯化推理成本：像 A₁ 那样让模型按任务复杂度分配算力，而不是每一步都满血推理。第三层含义是驯化物理交互的不确定性：通过触觉、反驱、自由度和局部视觉，把不可控接触变成可回授、可修正的接触。</p><p>这样看，Harness 在具身智能里并不是“把AI管住”这么简单，而是把模型能力压缩成一个可持续工作的控制闭环。它对应的不是单个算法模块，而是一整套系统工程：中间表示、评价标准、数据采集、推理runtime、末端执行器设计、仿真到真机的过渡方式。材料一里‘AI自己派单让人去补数据’看起来像组织结构变化，但本质上也是 Harness 的外溢：系统开始主导它需要什么信息，人类则负责满足这些信息需求。</p><p>不过，这里也要保持克制。材料一关于 AI 主导研发、管理团队甚至通往物理 AGI 的表述，更多属于方向性叙事信号，而不是本文可以直接采信的机制证据。它有启发性，但强度不如关于 Intention 中间层、自我诊断、定向采集这些更具体的部分。换言之，我们可以接受 Harness 是核心能力的判断，但不能因为这个词好听，就默认所有上层愿景都已被证明。</p></section><section class='deep-section'><h4>哪些是强证据，哪些只是案例，哪些只是热度信号</h4><p>先看强机制证据。材料一最强的部分，是对“为什么模仿学习会失效、为什么人类评价会在超人系统前失真、为什么需要更贴近物理的中间层和自我诊断闭环”的论证。材料二最强的部分，是把 VLA 的瓶颈具体化为主干和动作头双重延迟，并给出提前退出与层间热启动这类可复用机制。材料三最强的部分，是触觉缺失会直接损害对接触稳定与操作成功的判断，以及多视角和更大规模数据会稳定提升视觉到触觉映射。材料四最强的部分，则是关于反驱缓解 sim-to-real gap、触觉与指尖视触觉形成局部闭环、自由度影响操作上限的硬件机制说明。</p><p>再看案例证据。A₁ 在 RoboChallenge 上的成绩、推理成本下降比例，属于案例级结果；EgoTouch 的 302 项任务、4530 个 episodes、三视角和百万帧同步对齐，属于支撑研究方向可行性的资源案例；Revo 3 的 21 自由度、70N 握力、已适配多仿真平台，也属于产品能力案例；小马智行积累千万公里无人数据、在多城市运营，同样是世界模型闭环可持续运转的案例证据。这些都重要，但它们证明的是“某条路径能跑起来”，不是自动证明“路径必然胜出”。</p><p>最后是热度或叙事信号。比如‘通往物理AGI的道路已经打开’、‘AI未来管理团队’、‘最大单笔融资’、‘资本市场完整叙事’、‘全球首个完全体产品’这类说法，更适合被当作产业情绪、公司定位或竞争叙事，而不能直接上升为技术结论。尤其材料四中融资、IPO、赛道交叉的描述，对理解行业热度有价值，但不构成硬机制。把这些信号与真正证据混为一谈，是当前具身智能讨论最常见的失真来源。</p></section><section class='deep-section'><h4>反证与边界：这组材料不能证明什么</h4><p>第一，不能据此得出“语言在具身智能里无用”。材料一批评的是把 human language 当成 V 和 A 之间长期终局桥梁的做法，而不是否定语言在中间阶段的价值。材料二本身就是 VLA 路线的有效改进，说明语言或语言化表示在当前阶段仍然能工作，问题是效率、时延和上限。更稳妥的结论应是：语言可能更适合作为接口层、任务层、训练过渡层，而不一定是最终控制层。</p><p>第二，不能把自动驾驶中的世界模型经验直接平移到所有具身场景。材料一的证据强在自动驾驶，它拥有规则、车队运营、海量闭环数据和高可观测性。灵巧操作面对的是更复杂的接触、材料属性、遮挡和长尾任务。自动驾驶中的‘意图分布可穷尽’在手部操作中是否成立，目前并没有被这组材料直接证明。</p><p>第三，不能因为材料三、材料四强调触觉，就认定触觉会成为所有具身任务的主导模态。触觉对精细操作显然关键，但对导航、远距离移动或部分粗粒度作业，其边际价值可能低于视觉、地图或语言指令。触觉更可能是某些子任务的瓶颈模态，而不是通用主导模态。</p><p>第四，不能把硬件自由度简单等同于能力。材料四里‘20到21自由度有跃升’是公司系统测试结果，属于有价值的案例线索，但缺少更广泛基准、公开实验设置和跨平台验证。它说明自由度可能存在甜点位，但尚不足以构成行业定律。类似地，反驱和触觉也要看控制算法是否真正用起来，否则硬件配置可能只是一种冗余堆料。</p></section><section class='deep-section'><h4>下一轮最值得验证的阅读问题</h4><p>第一，要验证“意图中间层”是否能跨场景迁移。自动驾驶里的 Intention 与灵巧操作里的接触意图、施力意图，是否能共享一套抽象框架？如果不能，那么‘比语言更好的中间层’很可能是任务特定的，而不是普适答案。</p><p>第二，要继续追问触觉的真实收益边界。材料三证明了触觉缺失是问题，但还需要更多证据比较：在不同任务难度、不同硬件精度、不同视觉质量下，触觉到底提升多少成功率、鲁棒性和样本效率？什么时候它是必须模态，什么时候只是锦上添花？</p><p>第三，要查证硬件特性与学习效果之间的因果关系。材料四提出反驱能缓解 sim-to-real gap，这很合理，但仍需要更多公开实验说明：如果控制策略、仿真精度、域随机化一起变化，反驱本身究竟贡献了多少？21自由度的“甜点位”是否对不同手型和任务都成立？</p><p>第四，要补足对评价体系的阅读。材料一非常强调 AI 评测 AI，但外部材料尚未给出可复用的 Benchmark、失效模式分类和安全边界设计。若没有严谨评价体系，自我诊断就可能沦为闭门自证。这是世界模型路线最需要外部验证的一环。</p><p>第五，要继续关注 runtime 作为独立竞争层。材料二说明推理预算已是核心矛盾，下一轮阅读应寻找更多关于 Agent Runtime、实时控制调度、边缘部署、异构传感器融合的材料。很可能未来具身智能的差异，不只来自 foundation model，也来自谁能把模型塞进真正可工作的系统壳层中。</p></section>
       </div>
-    
+
         <details class="evidence-detail">
           <summary>证据附录：问题、模式、案例与下一轮问题</summary>
         <p class="review-question">在这 4 篇「机器人 / 具身智能」文章中，超越单篇 claim 的重复结构是什么？</p>
@@ -779,7 +779,7 @@
               <span>已获取</span>
             </div>
           </li>
-        
+
           <li class="category-article">
             <div>
               <h4><a href='https://mp.weixin.qq.com/s/Dc1ZW4NEn2xVmJAd6lEZNQ' target='_blank' rel='noreferrer'>Claude Code Harness+龙虾科研团来了！金字塔分层架构+多智能体讨论，单人也能跑出「实验室」科研</a></h4>
@@ -797,7 +797,7 @@
               <span>已获取</span>
             </div>
           </li>
-        
+
           <li class="category-article">
             <div>
               <h4><a href='https://mp.weixin.qq.com/s/FGUP63N48OsmqS1qG13grA' target='_blank' rel='noreferrer'>OpenAI Codex 核心团队爆猛料：我们不写 PRD，几乎不用 PM，设计师写代码比工程师还猛</a></h4>
@@ -815,7 +815,7 @@
               <span>已获取</span>
             </div>
           </li>
-        
+
           <li class="category-article">
             <div>
               <h4><a href='https://mp.weixin.qq.com/s/z6ZXj_p6Z9fIvFifkAvP9A' target='_blank' rel='noreferrer'>YC内部AI架构曝光！YC总裁Garry亲证：比谷歌员工效率高1000倍的秘密，不在模型，而在“Harness”</a></h4>
@@ -833,7 +833,7 @@
               <span>已获取</span>
             </div>
           </li>
-        
+
           <li class="category-article">
             <div>
               <h4><a href='https://mp.weixin.qq.com/s/DdftSCeLD-gRKQpo2YOiJw' target='_blank' rel='noreferrer'>https://mp.weixin.qq.com/s/DdftSCeLD-gRKQpo2YOiJw</a></h4>
@@ -851,7 +851,7 @@
               <span>已获取</span>
             </div>
           </li>
-        
+
           <li class="category-article">
             <div>
               <h4><a href='https://mp.weixin.qq.com/s/YGWffrojuQlS0nsUh4oaCA' target='_blank' rel='noreferrer'>斯隆奖得主青年学者苏煜谈Agent：会用的人，不是Prompt高手，而是能把自己的工作小世界说清楚的人</a></h4>
@@ -869,7 +869,7 @@
               <span>已获取</span>
             </div>
           </li>
-        
+
           <li class="category-article">
             <div>
               <h4><a href='https://mp.weixin.qq.com/s/4umG7Vx_cWr0FwWc1YLuWQ' target='_blank' rel='noreferrer'>有人把巴菲特芒格炼化成Agent，然后开源了</a></h4>
@@ -889,7 +889,7 @@
           </li>
         </ul>
       </details>
-    
+
       <details class="article-group" id="articles-ai-infrastructure">
         <summary class="category-summary">
           <span class="category-summary-main">
@@ -897,7 +897,7 @@
               <span class="eyebrow">分类文章</span>
               <span class="category-title">AI 基础设施</span>
             </span>
-            <span class="count">1 篇文章</span>
+            <span class="count">2 篇文章</span>
           </span>
           <span class="category-intro">模型服务、编排、模型运维、沙箱、运行时系统和平台层。</span>
           <span class="pill-row category-preview-tags"><span class='pill pattern'>kv-cache</span><span class='pill pattern'>prefill-decode-disaggregation</span><span class='pill pattern'>cross-data-center-inference</span><span class='pill pattern'>heterogeneous-cluster</span><span class='pill pattern'>inference-serving</span></span>
@@ -920,9 +920,27 @@
               <span>已获取</span>
             </div>
           </li>
+
+          <li class="category-article">
+            <div>
+              <h4><a href='https://mp.weixin.qq.com/s/QugylM-Bhdx785Gnxca84w' target='_blank' rel='noreferrer'>OpenAI公开大规模稳定训练的秘密，英伟达AMD英特尔都受益</a></h4>
+              <p>OpenAI公开大规模稳定训练的秘密，英伟达AMD英特尔都受益 OpenAI，这次又真·Open了一下。 刚刚，OpenAI通过OCP开放了超大规模AI训练时使用的网络协议——MRC。</p>
+              <div class="pill-row"><span class='pill pattern'>datacenter-networking</span><span class='pill pattern'>gpu-cluster</span><span class='pill pattern'>infrastructure</span><span class='pill pattern'>market-signal</span><span class='pill pattern'>network-protocol</span><span class='pill pattern'>training-infrastructure</span></div>
+              <div class="article-actions">
+                <button type="button" class="article-action" data-copy="/archive 86d606aaf417 原因：">归档请求</button>
+                <button type="button" class="article-action" data-copy="/exclude 86d606aaf417 原因：">排除这篇</button>
+                <a class='article-action-link' href='https://github.com/plato3724/bayesian-llm-trend-report/issues/17' target='_blank' rel='noreferrer'>管理 issue</a>
+              </div>
+            </div>
+            <div class="article-meta">
+              <span>86d606aaf417</span>
+              <span>高</span>
+              <span>已获取</span>
+            </div>
+          </li>
         </ul>
       </details>
-    
+
       <details class="article-group" id="articles-product-business">
         <summary class="category-summary">
           <span class="category-summary-main">
@@ -953,7 +971,7 @@
               <span>已获取</span>
             </div>
           </li>
-        
+
           <li class="category-article">
             <div>
               <h4><a href='https://mp.weixin.qq.com/s/8s5ib3bBwtYLKWC6Fp-SlA' target='_blank' rel='noreferrer'>命运之神重新眷顾了诺基亚</a></h4>
@@ -973,7 +991,7 @@
           </li>
         </ul>
       </details>
-    
+
       <details class="article-group" id="articles-multimodal-ai">
         <summary class="category-summary">
           <span class="category-summary-main">
@@ -1004,7 +1022,7 @@
               <span>已获取</span>
             </div>
           </li>
-        
+
           <li class="category-article">
             <div>
               <h4><a href='https://mp.weixin.qq.com/s/iECTNjrTOOpWN3tqGeektw' target='_blank' rel='noreferrer'>小米AI语音新框架：人人都能当声音导演</a></h4>
@@ -1024,7 +1042,7 @@
           </li>
         </ul>
       </details>
-    
+
       <details class="article-group" id="articles-developer-tools">
         <summary class="category-summary">
           <span class="category-summary-main">
@@ -1055,7 +1073,7 @@
               <span>已获取</span>
             </div>
           </li>
-        
+
           <li class="category-article">
             <div>
               <h4><a href='https://mp.weixin.qq.com/s/1sHFs1JKXC0Kta6fd3zGBQ' target='_blank' rel='noreferrer'>HTML-in-Canvas引爆前端！AI时代互联网视觉效果完全不一样了</a></h4>
@@ -1073,7 +1091,7 @@
               <span>已获取</span>
             </div>
           </li>
-        
+
           <li class="category-article">
             <div>
               <h4><a href='https://mp.weixin.qq.com/s/jYNoySKC_OiDpsbYTg_Gzg' target='_blank' rel='noreferrer'>省token神器3天狂揽4.1k星！19岁小哥开发，信息无损最高省87%</a></h4>
@@ -1093,7 +1111,7 @@
           </li>
         </ul>
       </details>
-    
+
       <details class="article-group" id="articles-robotics-embodied-ai">
         <summary class="category-summary">
           <span class="category-summary-main">
@@ -1124,7 +1142,7 @@
               <span>已获取</span>
             </div>
           </li>
-        
+
           <li class="category-article">
             <div>
               <h4><a href='https://mp.weixin.qq.com/s/m1P0KXuGzgrS-D0K7Z1Bug' target='_blank' rel='noreferrer'>https://mp.weixin.qq.com/s/m1P0KXuGzgrS-D0K7Z1Bug</a></h4>
@@ -1142,7 +1160,7 @@
               <span>已获取</span>
             </div>
           </li>
-        
+
           <li class="category-article">
             <div>
               <h4><a href='https://mp.weixin.qq.com/s/qvFg1-bihlvvHGkBgJEKBA' target='_blank' rel='noreferrer'>补全具身智能「触觉」拼图！哈工深发布EgoTouch：300项操作任务，百万帧视觉触觉同步对齐</a></h4>
@@ -1160,7 +1178,7 @@
               <span>已获取</span>
             </div>
           </li>
-        
+
           <li class="category-article">
             <div>
               <h4><a href='https://mp.weixin.qq.com/s/u1lUvNUZErK1AwiBpa-jeA' target='_blank' rel='noreferrer'>解决VLA模型落地难，普通硬件也能跑！全透明全开源的高效VLA模型把推理成本砍掉76%</a></h4>
@@ -1180,7 +1198,7 @@
           </li>
         </ul>
       </details>
-    
+
       <details class="article-group" id="articles-consumer-economy">
         <summary class="category-summary">
           <span class="category-summary-main">
@@ -1213,7 +1231,7 @@
           </li>
         </ul>
       </details>
-    
+
       <details class="article-group" id="articles-research-benchmark">
         <summary class="category-summary">
           <span class="category-summary-main">
@@ -1244,7 +1262,7 @@
               <span>已获取</span>
             </div>
           </li>
-        
+
           <li class="category-article">
             <div>
               <h4><a href='https://mp.weixin.qq.com/s/5E8nVOZ3KI2LFfsIa41EpA' target='_blank' rel='noreferrer'>斯坦福年度结论：中美大模型已没差距</a></h4>
@@ -1264,7 +1282,7 @@
           </li>
         </ul>
       </details>
-    
+
       <details class="article-group" id="articles-memory-context">
         <summary class="category-summary">
           <span class="category-summary-main">
@@ -1295,7 +1313,7 @@
               <span>已获取</span>
             </div>
           </li>
-        
+
           <li class="category-article">
             <div>
               <h4><a href='https://mp.weixin.qq.com/s/wtUOYjlnUHED6iclScu2zg' target='_blank' rel='noreferrer'>《生化危机》女主演跨界AI拿SOTA了！打造免费“AI记忆系统”爆火GitHub</a></h4>
@@ -1313,7 +1331,7 @@
               <span>已获取</span>
             </div>
           </li>
-        
+
           <li class="category-article">
             <div>
               <h4><a href='https://mp.weixin.qq.com/s/1CG6zpho8n16u_3DOWXWHg' target='_blank' rel='noreferrer'>卡帕西没做完的，开源社区48小时搞定了！完全体知识库，token省70倍</a></h4>
@@ -1343,85 +1361,43 @@
             <article class="card framework-card thinking-framework">
               <div class="type-row">
                 <span class="type-badge thinking">思考框架</span>
-                <span class="status-badge">LLM 初稿</span>
+                <span class="status-badge">草稿</span>
               </div>
-              <h3>机制链—边界检验框架</h3>
-              <p>用于判断多个案例是否真的指向同一个底层机制，而非只是共享热词、叙事风格或阶段性注意力。</p>
-              <div class="pill-row"><span class='pill category'>动态综述归纳</span><span class='pill category'>主题聚类判定</span><span class='pill category'>单案例到稳定主题的过渡分析</span><span class='pill category'>识别模式重叠与概念重命名</span></div>
-              <ul><li>表面现象是什么，背后被声称驱动它的机制链条是什么</li><li>这条机制链中哪些环节已有证据支持，哪些仍是推演或叙事补足</li><li>如果拿掉某个关键前提，结论是否仍成立，还是会整体失效</li><li>有哪些反例、失败案例或负面结果最可能推翻当前解释</li><li>当前模式与相邻模式是同一机制的不同切片，还是被误并的两个主题</li><li>该机制在什么任务、规模、组织条件或成本结构下有效，边界在哪里</li></ul>
+              <h3>机制-约束-反证框架</h3>
+              <p>把分类综述中的观察推进到可讨论的判断：先解释机制，再找约束和反证，最后给出可更新结论。</p>
+              <div class="pill-row"><span class='pill category'>AI Agent</span><span class='pill category'>AI 基础设施</span><span class='pill category'>消费经济</span><span class='pill category'>开发者工具</span><span class='pill category'>记忆 / Context Engineering</span><span class='pill category'>多模态 AI</span></div>
+              <ul><li>这个分类的核心现象是什么？</li><li>多篇文章共同指向了什么底层机制？</li><li>哪些边界条件会让这个机制失效？</li><li>已有材料里有哪些反向信号或失败线索？</li><li>当前最稳妥的判断是什么，后续应如何更新？</li></ul>
             </article>
-            
+
             <article class="card framework-card thinking-framework">
               <div class="type-row">
                 <span class="type-badge thinking">思考框架</span>
-                <span class="status-badge">LLM 初稿</span>
+                <span class="status-badge">草稿</span>
               </div>
-              <h3>Runtime 胜过模型能力框架</h3>
-              <p>用于分析一个系统的真实竞争力是否主要来自模型本身，还是来自 runtime、流程约束、状态管理、验证链路与权限边界。</p>
-              <div class="pill-row"><span class='pill category'>Ai Agent</span><span class='pill category'>记忆 / Context Engineering</span><span class='pill category'>开发者工具</span><span class='pill category'>产品化 Ai 系统评估</span></div>
-              <ul><li>开放性判断由模型承担，哪些执行与验证由确定性层承担</li><li>上下文、状态、记忆、权限和异常是如何被编码进系统的</li><li>验证回灌、回滚、人类闸门与审计链是否存在且可操作</li><li>工具调用只是通道，还是已经形成可托付的任务世界建模</li><li>系统失败最常发生在哪一层：理解、执行、验证、状态漂移还是权限越界</li><li>当底层模型替换后，系统能力会保留多少，护城河位于哪里</li></ul>
+              <h3>证据网络映射框架</h3>
+              <p>把文章、分类、标签、综述之间的关系画成证据网络，避免把单篇文章误读成结构性结论。</p>
+              <div class="pill-row"><span class='pill category'>AI Agent</span><span class='pill category'>AI 基础设施</span><span class='pill category'>消费经济</span><span class='pill category'>开发者工具</span><span class='pill category'>记忆 / Context Engineering</span><span class='pill category'>多模态 AI</span></div>
+              <ul><li>哪些文章提供机制证据，哪些只提供热度信号？</li><li>哪些标签反复出现，哪些只是单篇材料的噪声？</li><li>不同分类综述之间是否共享同一个问题结构？</li><li>哪些材料支持当前判断，哪些材料削弱当前判断？</li><li>下一篇新文章应该验证网络中的哪个薄弱环节？</li></ul>
             </article>
-            
-            <article class="card framework-card thinking-framework">
-              <div class="type-row">
-                <span class="type-badge thinking">思考框架</span>
-                <span class="status-badge">LLM 初稿</span>
-              </div>
-              <h3>先组织后调用框架</h3>
-              <p>用于判断系统性能提升究竟来自更强的模型/检索，还是来自先验组织、结构化写入、路由与按需加载。</p>
-              <div class="pill-row"><span class='pill category'>记忆 / Context Engineering</span><span class='pill category'>开发者工具中的 Context Engineering</span><span class='pill category'>语音与多模态工作流</span><span class='pill category'>知识系统设计</span></div>
-              <ul><li>信息是以原始堆叠方式进入系统，还是先被压缩、分层、图化或模块化</li><li>调用阶段是在全量搜索，还是沿着预先构造的拓扑进行路由</li><li>结构化收益体现为省 token、提稳定性、提可解释性，还是只是换了表达形式</li><li>写入、更新、失真传播和长期维护成本由谁承担</li><li>在跨任务、跨时间、跨模态场景下，组织结构是否依旧有效</li><li>如果没有预组织步骤，性能会退化多少，这个差距是否被严格验证</li></ul>
-            </article>
-            
-            <article class="card framework-card thinking-framework">
-              <div class="type-row">
-                <span class="type-badge thinking">思考框架</span>
-                <span class="status-badge">LLM 初稿</span>
-              </div>
-              <h3>成本结构重排框架</h3>
-              <p>用于分析新技术不是简单增量提效，而是如何把成本、瓶颈与稀缺能力从一个环节转移到另一个环节。</p>
-              <div class="pill-row"><span class='pill category'>开发者工具</span><span class='pill category'>Ai 基础设施</span><span class='pill category'>产品 / 商业</span><span class='pill category'>消费经济</span><span class='pill category'>Agent 系统设计</span></div>
-              <ul><li>旧系统的主要成本、延迟或摩擦点原本集中在哪里</li><li>新方案压缩了哪些成本，同时把压力转移到了哪些新环节</li><li>被转移出来的新瓶颈是技术瓶颈、组织瓶颈还是市场瓶颈</li><li>谁因为这种重排受益，谁被边缘化，谁承担新增复杂度</li><li>当热度退去后，新的成本结构是否仍可持续</li><li>有哪些失败案例说明成本只是被隐藏而非真正消除</li></ul>
-            </article>
-            
+
             <article class="card framework-card expression-template">
               <div class="type-row">
                 <span class="type-badge expression">表达模板</span>
-                <span class="status-badge">LLM 初稿</span>
+                <span class="status-badge">草稿</span>
               </div>
-              <h3>从案例到机制的综述模板</h3>
-              <p>用于写动态综述结论，重点不是复述文章观点，而是抽象共同机制并指出尚未解决的边界。</p>
-              <ul><li>先定义问题：这组材料要解释的不是谁更火，而是是否共享同一底层机制</li><li>概括共同变化：用一句话指出最强共识或重复结构</li><li>展开机制链：说明变化是通过哪几个环节串起来的</li><li>指出跨案例共通性：解释为什么看似不同场景其实在复用同一结构</li><li>纳入反证与误读：说明哪些流行解释并不构成有效证据</li><li>交代边界条件：在哪些任务、组织或成本条件下判断才成立</li><li>给出下一步问题：最需要什么反驳材料、补充证据或概念重命名</li></ul>
+              <h3>从综述到论点</h3>
+              <p>把一个分类综述改写成一篇分析文章或观点笔记。</p>
+              <ul><li>一句话判断</li><li>代表性材料</li><li>重复模式</li><li>机制解释</li><li>约束与反证</li><li>可更新结论</li></ul>
             </article>
-            
+
             <article class="card framework-card expression-template">
               <div class="type-row">
                 <span class="type-badge expression">表达模板</span>
-                <span class="status-badge">LLM 初稿</span>
+                <span class="status-badge">草稿</span>
               </div>
-              <h3>趋势成熟度判断模板</h3>
-              <p>用于写一个主题目前处于单案例、早期成形还是反复出现阶段，并解释为什么还不能下定论。</p>
-              <ul><li>先给成熟度定位：单案例、早期成形或反复出现</li><li>说明当前最强证据是什么：机制、结果、热度还是采用</li><li>指出证据缺口：缺少独立复现、失败案例、成本数据或跨场景验证</li><li>分析最容易被误判的地方：哪些信号会被错当成结构</li><li>说明相邻模式重叠：当前主题与另一个概念是否混杂</li><li>提出反证需求：什么类型的新材料最能推翻当前判断</li></ul>
-            </article>
-            
-            <article class="card framework-card expression-template">
-              <div class="type-row">
-                <span class="type-badge expression">表达模板</span>
-                <span class="status-badge">LLM 初稿</span>
-              </div>
-              <h3>模型能力 vs 系统能力表达模板</h3>
-              <p>用于写一类产品或技术的价值来源，强调价值不只来自模型本身，而来自系统边界、runtime 与验证设计。</p>
-              <ul><li>先否定直觉：真正变化不只是模型更强</li><li>指出系统重心转移：价值开始落到 runtime、流程、状态或基础设施</li><li>拆解分层结构：模型负责什么，确定性层负责什么，人类负责什么</li><li>说明为什么这比单点能力更关键：它如何决定可托付性、可维护性或商业护城河</li><li>补充失败模式：缺少哪一层时系统会停留在 60%-70% 可用性</li><li>给出判断标准：未来评估同类产品应优先看哪些系统指标</li></ul>
-            </article>
-            
-            <article class="card framework-card expression-template">
-              <div class="type-row">
-                <span class="type-badge expression">表达模板</span>
-                <span class="status-badge">LLM 初稿</span>
-              </div>
-              <h3>成本与瓶颈迁移分析模板</h3>
-              <p>用于写一个新技术如何重排成本结构、改变稀缺能力位置，并由此带来新的产品机会或基础设施价值。</p>
-              <ul><li>界定旧瓶颈：原系统最贵、最慢或最不稳定的环节是什么</li><li>说明新机制如何释放旧瓶颈</li><li>指出新瓶颈转移到哪里：验证、网络、状态管理、数据治理或组织协同</li><li>分析谁因此获得新价值，谁因此被削弱</li><li>讨论表面提效与真实提效的差别：成本是否只是被后移或隐藏</li><li>列出边界与反例：在哪些条件下重排无效甚至更差</li><li>收束为判断：真正值得关注的是哪类新收费权或新能力缺口</li></ul>
+              <h3>跨综述理论笔记</h3>
+              <p>把多个分类综述抽象成更高层的判断或理论雏形。</p>
+              <ul><li>多个分类共同暴露的问题</li><li>表层差异</li><li>共享机制</li><li>边界条件</li><li>理论化表达</li><li>后续验证材料</li></ul>
             </article>
             </div>
     </section>

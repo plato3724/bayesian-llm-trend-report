@@ -1,30 +1,29 @@
 {
-  "created_at": "2026-05-06T13:42:19+00:00",
-  "last_updated_at": "2026-05-06T13:43:37+00:00",
+  "created_at": "2026-05-07T15:23:09+00:00",
+  "last_updated_at": "2026-05-07T15:23:09+00:00",
   "version": 1,
-  "source_hash": "9235ba5e0c6a45834bee99e24631e55570f9854f2dc81592e289b575008ac2f9",
+  "source_hash": "96f472d54142a7fec6e0ce89efa1953ac3a804026c2ad2185ada4b4d2a1ca3b8",
   "prompt_version": "frameworks_from_reviews_v1",
-  "generated_by": "llm_framework_generation_v1",
-  "llm_model": "openai/gpt-5.4",
-  "llm_attempts": 1,
+  "generated_by": "deterministic_framework_fallback_v1",
   "frameworks": [
     {
-      "framework_id": "mechanism_chain_boundary_test",
-      "name": "机制链—边界检验框架",
-      "purpose": "用于判断多个案例是否真的指向同一个底层机制，而非只是共享热词、叙事风格或阶段性注意力。",
+      "framework_id": "mechanism_constraint_counterevidence",
+      "name": "机制-约束-反证框架",
+      "purpose": "把分类综述中的观察推进到可讨论的判断：先解释机制，再找约束和反证，最后给出可更新结论。",
       "dimensions": [
-        "表面现象是什么，背后被声称驱动它的机制链条是什么",
-        "这条机制链中哪些环节已有证据支持，哪些仍是推演或叙事补足",
-        "如果拿掉某个关键前提，结论是否仍成立，还是会整体失效",
-        "有哪些反例、失败案例或负面结果最可能推翻当前解释",
-        "当前模式与相邻模式是同一机制的不同切片，还是被误并的两个主题",
-        "该机制在什么任务、规模、组织条件或成本结构下有效，边界在哪里"
+        "这个分类的核心现象是什么？",
+        "多篇文章共同指向了什么底层机制？",
+        "哪些边界条件会让这个机制失效？",
+        "已有材料里有哪些反向信号或失败线索？",
+        "当前最稳妥的判断是什么，后续应如何更新？"
       ],
       "best_for": [
-        "动态综述归纳",
-        "主题聚类判定",
-        "单案例到稳定主题的过渡分析",
-        "识别模式重叠与概念重命名"
+        "ai_agent",
+        "ai_infrastructure",
+        "consumer_economy",
+        "developer_tools",
+        "memory_context",
+        "multimodal_ai"
       ],
       "source_review_ids": [
         "ai_agent_living_review",
@@ -37,87 +36,39 @@
         "research_benchmark_living_review",
         "robotics_embodied_ai_living_review"
       ],
-      "status": "llm_draft"
+      "status": "drafted"
     },
     {
-      "framework_id": "runtime_over_model_capability",
-      "name": "Runtime 胜过模型能力框架",
-      "purpose": "用于分析一个系统的真实竞争力是否主要来自模型本身，还是来自 runtime、流程约束、状态管理、验证链路与权限边界。",
+      "framework_id": "evidence_network_mapping",
+      "name": "证据网络映射框架",
+      "purpose": "把文章、分类、标签、综述之间的关系画成证据网络，避免把单篇文章误读成结构性结论。",
       "dimensions": [
-        "开放性判断由模型承担，哪些执行与验证由确定性层承担",
-        "上下文、状态、记忆、权限和异常是如何被编码进系统的",
-        "验证回灌、回滚、人类闸门与审计链是否存在且可操作",
-        "工具调用只是通道，还是已经形成可托付的任务世界建模",
-        "系统失败最常发生在哪一层：理解、执行、验证、状态漂移还是权限越界",
-        "当底层模型替换后，系统能力会保留多少，护城河位于哪里"
+        "哪些文章提供机制证据，哪些只提供热度信号？",
+        "哪些标签反复出现，哪些只是单篇材料的噪声？",
+        "不同分类综述之间是否共享同一个问题结构？",
+        "哪些材料支持当前判断，哪些材料削弱当前判断？",
+        "下一篇新文章应该验证网络中的哪个薄弱环节？"
       ],
       "best_for": [
-        "AI Agent",
-        "记忆 / Context Engineering",
-        "开发者工具",
-        "产品化 AI 系统评估"
+        "ai_agent",
+        "ai_infrastructure",
+        "consumer_economy",
+        "developer_tools",
+        "memory_context",
+        "multimodal_ai"
       ],
       "source_review_ids": [
         "ai_agent_living_review",
-        "memory_context_living_review",
-        "developer_tools_living_review",
-        "product_business_living_review"
-      ],
-      "status": "llm_draft"
-    },
-    {
-      "framework_id": "organization_before_retrieval",
-      "name": "先组织后调用框架",
-      "purpose": "用于判断系统性能提升究竟来自更强的模型/检索，还是来自先验组织、结构化写入、路由与按需加载。",
-      "dimensions": [
-        "信息是以原始堆叠方式进入系统，还是先被压缩、分层、图化或模块化",
-        "调用阶段是在全量搜索，还是沿着预先构造的拓扑进行路由",
-        "结构化收益体现为省 token、提稳定性、提可解释性，还是只是换了表达形式",
-        "写入、更新、失真传播和长期维护成本由谁承担",
-        "在跨任务、跨时间、跨模态场景下，组织结构是否依旧有效",
-        "如果没有预组织步骤，性能会退化多少，这个差距是否被严格验证"
-      ],
-      "best_for": [
-        "记忆 / Context Engineering",
-        "开发者工具中的 Context Engineering",
-        "语音与多模态工作流",
-        "知识系统设计"
-      ],
-      "source_review_ids": [
-        "memory_context_living_review",
-        "developer_tools_living_review",
-        "multimodal_ai_living_review",
-        "ai_agent_living_review"
-      ],
-      "status": "llm_draft"
-    },
-    {
-      "framework_id": "cost_structure_redistribution",
-      "name": "成本结构重排框架",
-      "purpose": "用于分析新技术不是简单增量提效，而是如何把成本、瓶颈与稀缺能力从一个环节转移到另一个环节。",
-      "dimensions": [
-        "旧系统的主要成本、延迟或摩擦点原本集中在哪里",
-        "新方案压缩了哪些成本，同时把压力转移到了哪些新环节",
-        "被转移出来的新瓶颈是技术瓶颈、组织瓶颈还是市场瓶颈",
-        "谁因为这种重排受益，谁被边缘化，谁承担新增复杂度",
-        "当热度退去后，新的成本结构是否仍可持续",
-        "有哪些失败案例说明成本只是被隐藏而非真正消除"
-      ],
-      "best_for": [
-        "开发者工具",
-        "AI 基础设施",
-        "产品 / 商业",
-        "消费经济",
-        "Agent 系统设计"
-      ],
-      "source_review_ids": [
-        "developer_tools_living_review",
         "ai_infrastructure_living_review",
-        "product_business_living_review",
         "consumer_economy_living_review",
-        "ai_agent_living_review"
+        "developer_tools_living_review",
+        "memory_context_living_review",
+        "multimodal_ai_living_review",
+        "product_business_living_review",
+        "research_benchmark_living_review",
+        "robotics_embodied_ai_living_review"
       ],
-      "status": "llm_draft"
+      "status": "drafted"
     }
   ]
 }

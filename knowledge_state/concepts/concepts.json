@@ -1,6 +1,6 @@
 {
   "created_at": "2026-04-25T15:25:50+00:00",
-  "last_updated_at": "2026-05-06T13:40:37+00:00",
+  "last_updated_at": "2026-05-07T15:23:34+00:00",
   "version": 1,
   "concepts": [
     {
@@ -11,8 +11,8 @@
         "agent-runtime"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-05-06T13:40:37+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "memory_context",
@@ -32,8 +32,8 @@
         "271ba75686b0",
         "44f454b544d9",
         "719a74e44194",
-        "d11e99337c97",
         "7446bf91ca19",
+        "d11e99337c97",
         "ffe0b324db7f"
       ],
       "notes": []
@@ -46,8 +46,8 @@
         "workflow-orchestration"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-05-06T13:40:37+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "memory_context",
@@ -78,8 +78,8 @@
         "context-engineering"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "memory_context",
@@ -111,8 +111,8 @@
         "structured-memory"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "memory_context",
@@ -135,8 +135,8 @@
         "tool-routing"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "memory_context",
@@ -159,8 +159,8 @@
         "thin-harness-fat-skills"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "memory_context",
@@ -183,8 +183,8 @@
         "coding-agent"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-27T15:34:12+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "memory_context",
@@ -210,8 +210,8 @@
         "repo-context"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "memory_context",
@@ -234,8 +234,8 @@
         "deterministic-tools"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "memory_context",
@@ -258,8 +258,8 @@
         "cli-harness"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "memory_context",
@@ -282,8 +282,8 @@
         "nostalgia-economy"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "consumer_economy",
         "product_business"
@@ -304,8 +304,8 @@
         "consumer-behavior"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "consumer_economy",
         "product_business"
@@ -326,17 +326,19 @@
         "market-signal"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "consumer_economy",
-        "product_business"
+        "product_business",
+        "ai_infrastructure"
       ],
       "related_tags": [
         "market-signal"
       ],
       "supporting_articles": [
-        "06eb3b8e8732"
+        "06eb3b8e8732",
+        "86d606aaf417"
       ],
       "notes": []
     },
@@ -348,8 +350,8 @@
         "secondhand-market"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "consumer_economy",
         "product_business"
@@ -370,8 +372,8 @@
         "retro-ip"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "consumer_economy",
         "product_business"
@@ -392,8 +394,8 @@
         "collectibles-demand"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "consumer_economy",
         "product_business"
@@ -414,8 +416,8 @@
         "offline-immersive-experience"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "consumer_economy",
         "product_business"
@@ -436,8 +438,8 @@
         "social-commerce-trend"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "consumer_economy",
         "product_business"
@@ -458,8 +460,8 @@
         "ai-index-report"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "research_benchmark",
         "product_business",
@@ -482,8 +484,8 @@
         "benchmark-tracking"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "research_benchmark",
         "product_business",
@@ -506,8 +508,8 @@
         "model-evaluation"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "research_benchmark",
         "product_business",
@@ -530,8 +532,8 @@
         "swe-bench-verified"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "research_benchmark",
         "product_business",
@@ -554,8 +556,8 @@
         "osworld"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "research_benchmark",
         "product_business",
@@ -578,8 +580,8 @@
         "china-us-competition"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "research_benchmark",
         "product_business",
@@ -602,8 +604,8 @@
         "frontier-models"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "research_benchmark",
         "product_business",
@@ -626,8 +628,8 @@
         "ai-adoption"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "research_benchmark",
         "product_business",
@@ -650,8 +652,8 @@
         "ai-safety-incidents"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "research_benchmark",
         "product_business",
@@ -674,8 +676,8 @@
         "market-comparison"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "research_benchmark",
         "product_business",
@@ -698,8 +700,8 @@
         "managed-agents"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "ai_infrastructure",
@@ -722,8 +724,8 @@
         "agent-harness"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "ai_infrastructure",
@@ -746,8 +748,8 @@
         "sandboxed-execution"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "ai_infrastructure",
@@ -770,8 +772,8 @@
         "durable-session"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "ai_infrastructure",
@@ -794,8 +796,8 @@
         "tool-integration"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "ai_infrastructure",
@@ -818,8 +820,8 @@
         "consumer-agent"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "ai_infrastructure",
@@ -842,8 +844,8 @@
         "deterministic-execution"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "ai_infrastructure",
@@ -866,8 +868,8 @@
         "cloud-agent"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-27T15:34:12+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "ai_infrastructure",
@@ -893,8 +895,8 @@
         "token-economics"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "product_business",
         "ai_agent",
@@ -917,8 +919,8 @@
         "internal-incentives"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "product_business",
         "ai_agent",
@@ -941,8 +943,8 @@
         "codebase-rewrite"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "product_business",
         "ai_agent",
@@ -965,8 +967,8 @@
         "developer-workflow"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-27T15:34:12+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "product_business",
         "ai_agent",
@@ -992,8 +994,8 @@
         "open-model-strategy"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "product_business",
         "ai_agent",
@@ -1016,8 +1018,8 @@
         "semi-open-source"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "product_business",
         "ai_agent",
@@ -1040,8 +1042,8 @@
         "distribution-advantage"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "product_business",
         "ai_agent",
@@ -1064,8 +1066,8 @@
         "token-consumption"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "product_business",
         "ai_agent",
@@ -1088,8 +1090,8 @@
         "org-behavior"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "product_business",
         "ai_agent",
@@ -1112,8 +1114,8 @@
         "speech-generation"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "multimodal_ai",
         "ai_agent",
@@ -1139,8 +1141,8 @@
         "audio-synthesis"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "multimodal_ai",
         "ai_agent",
@@ -1166,8 +1168,8 @@
         "long-form-audio"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "multimodal_ai",
         "ai_agent",
@@ -1190,8 +1192,8 @@
         "structured-generation"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "multimodal_ai",
         "ai_agent",
@@ -1214,8 +1216,8 @@
         "cross-modal-input"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "multimodal_ai",
         "ai_agent",
@@ -1238,8 +1240,8 @@
         "gst-schema"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "multimodal_ai",
         "ai_agent",
@@ -1262,8 +1264,8 @@
         "agent-compatible"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "multimodal_ai",
         "ai_agent",
@@ -1286,8 +1288,8 @@
         "multi-speaker-dialogue"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "multimodal_ai",
         "ai_agent",
@@ -1310,8 +1312,8 @@
         "acoustic-scene-modeling"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "multimodal_ai",
         "ai_agent",
@@ -1327,6 +1329,259 @@
       "notes": []
     },
     {
+      "concept_id": "embodied_ai",
+      "name": "Embodied AI",
+      "definition": "植根于物理世界行动、感知、机器人或第一人称交互的 AI 系统。",
+      "aliases": [
+        "embodied-ai"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "ai_agent",
+        "research_benchmark",
+        "product_business",
+        "open_source_ecosystem",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "embodied-ai"
+      ],
+      "supporting_articles": [
+        "39ca3e825456",
+        "59b86c15655e",
+        "7ffdcd4439dc",
+        "df7acb42e706"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "physical_grounding",
+      "name": "Physical Grounding",
+      "definition": "把模型行为连接到物理信号、传感器、触觉或动作的证据与机制。",
+      "aliases": [
+        "physical-grounding"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "ai_agent",
+        "research_benchmark",
+        "product_business",
+        "multimodal_ai",
+        "open_source_ecosystem"
+      ],
+      "related_tags": [
+        "physical-grounding"
+      ],
+      "supporting_articles": [
+        "39ca3e825456",
+        "7ffdcd4439dc",
+        "df7acb42e706"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "autonomous_driving",
+      "name": "Autonomous Driving",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "autonomous-driving"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "ai_agent",
+        "research_benchmark",
+        "product_business"
+      ],
+      "related_tags": [
+        "autonomous-driving"
+      ],
+      "supporting_articles": [
+        "39ca3e825456"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "world_model",
+      "name": "World Model",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "world-model"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "ai_agent",
+        "research_benchmark",
+        "product_business",
+        "developer_tools"
+      ],
+      "related_tags": [
+        "world-model"
+      ],
+      "supporting_articles": [
+        "39ca3e825456",
+        "ffe0b324db7f"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "self_diagnosis",
+      "name": "Self Diagnosis",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "self-diagnosis"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "ai_agent",
+        "research_benchmark",
+        "product_business"
+      ],
+      "related_tags": [
+        "self-diagnosis"
+      ],
+      "supporting_articles": [
+        "39ca3e825456"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "tool_calling",
+      "name": "Tool Calling",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "tool-calling"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "ai_agent",
+        "research_benchmark",
+        "product_business",
+        "developer_tools"
+      ],
+      "related_tags": [
+        "tool-calling"
+      ],
+      "supporting_articles": [
+        "39ca3e825456",
+        "ffe0b324db7f"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "agent_evaluation",
+      "name": "Agent Evaluation",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "agent-evaluation"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "ai_agent",
+        "research_benchmark",
+        "product_business"
+      ],
+      "related_tags": [
+        "agent-evaluation"
+      ],
+      "supporting_articles": [
+        "39ca3e825456"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "intention_modeling",
+      "name": "Intention Modeling",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "intention-modeling"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "ai_agent",
+        "research_benchmark",
+        "product_business"
+      ],
+      "related_tags": [
+        "intention-modeling"
+      ],
+      "supporting_articles": [
+        "39ca3e825456"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "reinforcement_learning",
+      "name": "Reinforcement Learning",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "reinforcement-learning"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "ai_agent",
+        "research_benchmark",
+        "product_business"
+      ],
+      "related_tags": [
+        "reinforcement-learning"
+      ],
+      "supporting_articles": [
+        "39ca3e825456"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "robotaxi",
+      "name": "Robotaxi",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "robotaxi"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "ai_agent",
+        "research_benchmark",
+        "product_business"
+      ],
+      "related_tags": [
+        "robotaxi"
+      ],
+      "supporting_articles": [
+        "39ca3e825456"
+      ],
+      "notes": []
+    },
+    {
       "concept_id": "coding_agent_plugin",
       "name": "Coding Agent Plugin",
       "definition": "从反复出现的文章标签中生成的草稿概念。",
@@ -1334,8 +1589,8 @@
         "coding-agent-plugin"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "developer_tools",
         "memory_context",
@@ -1358,8 +1613,8 @@
         "token-compression"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "developer_tools",
         "memory_context",
@@ -1382,8 +1637,8 @@
         "prompt-compression"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "developer_tools",
         "memory_context",
@@ -1406,8 +1661,8 @@
         "claude-code"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "developer_tools",
         "memory_context",
@@ -1430,8 +1685,8 @@
         "codex"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-27T15:34:12+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "developer_tools",
         "memory_context",
@@ -1456,8 +1711,8 @@
         "skills-plugin"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "developer_tools",
         "memory_context",
@@ -1480,8 +1735,8 @@
         "open-source-adoption"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "developer_tools",
         "memory_context",
@@ -1506,8 +1761,8 @@
         "multi-agent-research-workflow"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "ai_infrastructure",
@@ -1530,8 +1785,8 @@
         "hierarchical-agent-architecture"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "ai_infrastructure",
@@ -1554,8 +1809,8 @@
         "experiment-harness"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "ai_infrastructure",
@@ -1578,8 +1833,8 @@
         "isolated-runs"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "ai_infrastructure",
@@ -1602,8 +1857,8 @@
         "human-in-the-loop"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "ai_infrastructure",
@@ -1626,8 +1881,8 @@
         "rollback-control"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "ai_infrastructure",
@@ -1650,8 +1905,8 @@
         "verified-results-feedback"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "ai_infrastructure",
@@ -1674,8 +1929,8 @@
         "research-automation"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "ai_infrastructure",
@@ -1698,8 +1953,8 @@
         "long-term-memory"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "memory_context",
         "open_source_ecosystem",
@@ -1727,8 +1982,8 @@
         "memory-palace"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "memory_context",
         "open_source_ecosystem",
@@ -1751,8 +2006,8 @@
         "hierarchical-retrieval"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "memory_context",
         "open_source_ecosystem",
@@ -1775,8 +2030,8 @@
         "navigable-memory"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "memory_context",
         "open_source_ecosystem",
@@ -1799,8 +2054,8 @@
         "local-first"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "memory_context",
         "open_source_ecosystem",
@@ -1823,8 +2078,8 @@
         "longmemeval"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "memory_context",
         "open_source_ecosystem",
@@ -1847,8 +2102,8 @@
         "aaak-compression"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "memory_context",
         "open_source_ecosystem",
@@ -1871,8 +2126,8 @@
         "mcp-tool-calling"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "memory_context",
         "open_source_ecosystem",
@@ -1895,8 +2150,8 @@
         "github-stars"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "memory_context",
         "open_source_ecosystem",
@@ -1919,8 +2174,8 @@
         "vla-model"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "robotics_embodied_ai",
         "research_benchmark",
@@ -1943,8 +2198,8 @@
         "vision-language-action"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "robotics_embodied_ai",
         "research_benchmark",
@@ -1960,35 +2215,6 @@
       "notes": []
     },
     {
-      "concept_id": "embodied_ai",
-      "name": "Embodied AI",
-      "definition": "植根于物理世界行动、感知、机器人或第一人称交互的 AI 系统。",
-      "aliases": [
-        "embodied-ai"
-      ],
-      "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-27T01:41:05+00:00",
-      "related_categories": [
-        "robotics_embodied_ai",
-        "research_benchmark",
-        "open_source_ecosystem",
-        "multimodal_ai",
-        "product_business",
-        "ai_agent"
-      ],
-      "related_tags": [
-        "embodied-ai"
-      ],
-      "supporting_articles": [
-        "59b86c15655e",
-        "7ffdcd4439dc",
-        "df7acb42e706",
-        "39ca3e825456"
-      ],
-      "notes": []
-    },
-    {
       "concept_id": "robot_control",
       "name": "Robot Control",
       "definition": "从反复出现的文章标签中生成的草稿概念。",
@@ -1996,8 +2222,8 @@
         "robot-control"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "robotics_embodied_ai",
         "research_benchmark",
@@ -2020,8 +2246,8 @@
         "adaptive-inference"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "robotics_embodied_ai",
         "research_benchmark",
@@ -2044,8 +2270,8 @@
         "early-exit"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "robotics_embodied_ai",
         "research_benchmark",
@@ -2068,8 +2294,8 @@
         "flow-matching"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "robotics_embodied_ai",
         "research_benchmark",
@@ -2092,8 +2318,8 @@
         "real-world-robotics"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "robotics_embodied_ai",
         "research_benchmark",
@@ -2116,8 +2342,8 @@
         "robot-benchmark"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "robotics_embodied_ai",
         "research_benchmark",
@@ -2140,8 +2366,8 @@
         "open-source-model"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "robotics_embodied_ai",
         "research_benchmark",
@@ -2164,8 +2390,8 @@
         "coding-agents"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "developer_tools",
         "ai_agent",
@@ -2187,8 +2413,8 @@
         "agentic-engineering"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "developer_tools",
         "ai_agent",
@@ -2210,8 +2436,8 @@
         "software-engineering"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "developer_tools",
         "ai_agent",
@@ -2233,8 +2459,8 @@
         "developer-experience"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "developer_tools",
         "ai_agent",
@@ -2258,8 +2484,8 @@
         "testing-and-verification"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "developer_tools",
         "ai_agent",
@@ -2281,8 +2507,8 @@
         "prototype-generation"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "developer_tools",
         "ai_agent",
@@ -2304,8 +2530,8 @@
         "engineering-productivity"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "developer_tools",
         "ai_agent",
@@ -2327,8 +2553,8 @@
         "career-impact"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "developer_tools",
         "ai_agent",
@@ -2350,8 +2576,8 @@
         "learning-agent"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "product_business",
@@ -2374,8 +2600,8 @@
         "proactive-assistance"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "product_business",
@@ -2398,8 +2624,8 @@
         "personalized-learning"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "product_business",
@@ -2422,8 +2648,8 @@
         "context-aware-agent"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "product_business",
@@ -2446,8 +2672,8 @@
         "student-workflow"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "product_business",
@@ -2470,8 +2696,8 @@
         "tool-use"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "product_business",
@@ -2494,8 +2720,8 @@
         "deep-research"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "product_business",
@@ -2518,8 +2744,8 @@
         "course-knowledge-base"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "product_business",
@@ -2535,6 +2761,126 @@
       "notes": []
     },
     {
+      "concept_id": "async_agent",
+      "name": "Async Agent",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "async-agent"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
+      "related_categories": [
+        "ai_agent",
+        "developer_tools",
+        "product_business",
+        "open_source_ecosystem"
+      ],
+      "related_tags": [
+        "async-agent"
+      ],
+      "supporting_articles": [
+        "7446bf91ca19"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "long_running_tasks",
+      "name": "Long Running Tasks",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "long-running-tasks"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
+      "related_categories": [
+        "ai_agent",
+        "developer_tools",
+        "product_business",
+        "open_source_ecosystem"
+      ],
+      "related_tags": [
+        "long-running-tasks"
+      ],
+      "supporting_articles": [
+        "7446bf91ca19"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "task_delegation",
+      "name": "Task Delegation",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "task-delegation"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
+      "related_categories": [
+        "ai_agent",
+        "developer_tools",
+        "product_business",
+        "open_source_ecosystem"
+      ],
+      "related_tags": [
+        "task-delegation"
+      ],
+      "supporting_articles": [
+        "7446bf91ca19"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "ide_integration",
+      "name": "Ide Integration",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "ide-integration"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
+      "related_categories": [
+        "ai_agent",
+        "developer_tools",
+        "product_business",
+        "open_source_ecosystem"
+      ],
+      "related_tags": [
+        "ide-integration"
+      ],
+      "supporting_articles": [
+        "7446bf91ca19"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "openclaw",
+      "name": "Openclaw",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "openclaw"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
+      "related_categories": [
+        "ai_agent",
+        "developer_tools",
+        "product_business",
+        "open_source_ecosystem"
+      ],
+      "related_tags": [
+        "openclaw"
+      ],
+      "supporting_articles": [
+        "7446bf91ca19"
+      ],
+      "notes": []
+    },
+    {
       "concept_id": "knowledge_graph",
       "name": "Knowledge Graph",
       "definition": "从反复出现的文章标签中生成的草稿概念。",
@@ -2542,8 +2888,8 @@
         "knowledge-graph"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "memory_context",
         "developer_tools",
@@ -2566,8 +2912,8 @@
         "token-reduction"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "memory_context",
         "developer_tools",
@@ -2590,8 +2936,8 @@
         "tree-sitter"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "memory_context",
         "developer_tools",
@@ -2614,8 +2960,8 @@
         "ast-parsing"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "memory_context",
         "developer_tools",
@@ -2638,8 +2984,8 @@
         "multimodal-ingestion"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "memory_context",
         "developer_tools",
@@ -2662,8 +3008,8 @@
         "ai-coding-assistant"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "memory_context",
         "developer_tools",
@@ -2686,8 +3032,8 @@
         "graph-based-retrieval"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "memory_context",
         "developer_tools",
@@ -2710,8 +3056,8 @@
         "no-vector-embeddings"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "memory_context",
         "developer_tools",
@@ -2734,8 +3080,8 @@
         "incremental-update"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "memory_context",
         "developer_tools",
@@ -2758,8 +3104,8 @@
         "open-source"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "memory_context",
         "developer_tools",
@@ -2785,8 +3131,8 @@
         "medical-vlm"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "research_benchmark",
         "multimodal_ai",
@@ -2808,8 +3154,8 @@
         "ultrasound-imaging"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "research_benchmark",
         "multimodal_ai",
@@ -2831,8 +3177,8 @@
         "image-text-dataset"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "research_benchmark",
         "multimodal_ai",
@@ -2854,8 +3200,8 @@
         "multimodal-benchmark"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "research_benchmark",
         "multimodal_ai",
@@ -2877,8 +3223,8 @@
         "clip-style-pretraining"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "research_benchmark",
         "multimodal_ai",
@@ -2900,8 +3246,8 @@
         "semantic-alignment"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "research_benchmark",
         "multimodal_ai",
@@ -2923,8 +3269,8 @@
         "cross-modal-retrieval"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "research_benchmark",
         "multimodal_ai",
@@ -2946,8 +3292,8 @@
         "clinical-report-understanding"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "research_benchmark",
         "multimodal_ai",
@@ -2969,8 +3315,8 @@
         "open-dataset"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "research_benchmark",
         "multimodal_ai",
@@ -2992,8 +3338,8 @@
         "tactile-sensing"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "robotics_embodied_ai",
         "research_benchmark",
@@ -3018,8 +3364,8 @@
         "egocentric-video"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "robotics_embodied_ai",
         "research_benchmark",
@@ -3041,8 +3387,8 @@
         "vision-tactile-alignment"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "robotics_embodied_ai",
         "research_benchmark",
@@ -3064,8 +3410,8 @@
         "bimanual-manipulation"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "robotics_embodied_ai",
         "research_benchmark",
@@ -3080,34 +3426,6 @@
       "notes": []
     },
     {
-      "concept_id": "physical_grounding",
-      "name": "Physical Grounding",
-      "definition": "把模型行为连接到物理信号、传感器、触觉或动作的证据与机制。",
-      "aliases": [
-        "physical-grounding"
-      ],
-      "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-27T01:41:05+00:00",
-      "related_categories": [
-        "robotics_embodied_ai",
-        "research_benchmark",
-        "multimodal_ai",
-        "product_business",
-        "open_source_ecosystem",
-        "ai_agent"
-      ],
-      "related_tags": [
-        "physical-grounding"
-      ],
-      "supporting_articles": [
-        "7ffdcd4439dc",
-        "df7acb42e706",
-        "39ca3e825456"
-      ],
-      "notes": []
-    },
-    {
       "concept_id": "multimodal_dataset",
       "name": "Multimodal Dataset",
       "definition": "从反复出现的文章标签中生成的草稿概念。",
@@ -3115,8 +3433,8 @@
         "multimodal-dataset"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "robotics_embodied_ai",
         "research_benchmark",
@@ -3138,8 +3456,8 @@
         "tactile-prediction"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "robotics_embodied_ai",
         "research_benchmark",
@@ -3154,6 +3472,111 @@
       "notes": []
     },
     {
+      "concept_id": "datacenter_networking",
+      "name": "Datacenter Networking",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "datacenter-networking"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
+      "related_categories": [
+        "ai_infrastructure"
+      ],
+      "related_tags": [
+        "datacenter-networking"
+      ],
+      "supporting_articles": [
+        "86d606aaf417"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "gpu_cluster",
+      "name": "Gpu Cluster",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "gpu-cluster"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
+      "related_categories": [
+        "ai_infrastructure"
+      ],
+      "related_tags": [
+        "gpu-cluster"
+      ],
+      "supporting_articles": [
+        "86d606aaf417"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "infrastructure",
+      "name": "Infrastructure",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "infrastructure"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
+      "related_categories": [
+        "ai_infrastructure"
+      ],
+      "related_tags": [
+        "infrastructure"
+      ],
+      "supporting_articles": [
+        "86d606aaf417"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "network_protocol",
+      "name": "Network Protocol",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "network-protocol"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
+      "related_categories": [
+        "ai_infrastructure"
+      ],
+      "related_tags": [
+        "network-protocol"
+      ],
+      "supporting_articles": [
+        "86d606aaf417"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "training_infrastructure",
+      "name": "Training Infrastructure",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "training-infrastructure"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
+      "related_categories": [
+        "ai_infrastructure"
+      ],
+      "related_tags": [
+        "training-infrastructure"
+      ],
+      "supporting_articles": [
+        "86d606aaf417"
+      ],
+      "notes": []
+    },
+    {
       "concept_id": "tts",
       "name": "Tts",
       "definition": "从反复出现的文章标签中生成的草稿概念。",
@@ -3161,8 +3584,8 @@
         "tts"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "multimodal_ai",
         "open_source_ecosystem",
@@ -3184,8 +3607,8 @@
         "voice-cloning"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "multimodal_ai",
         "open_source_ecosystem",
@@ -3207,8 +3630,8 @@
         "controllable-voice-cloning"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "multimodal_ai",
         "open_source_ecosystem",
@@ -3230,8 +3653,8 @@
         "multilingual-speech"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "multimodal_ai",
         "open_source_ecosystem",
@@ -3253,8 +3676,8 @@
         "chinese-dialects"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "multimodal_ai",
         "open_source_ecosystem",
@@ -3276,8 +3699,8 @@
         "tokenizer-free"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "multimodal_ai",
         "open_source_ecosystem",
@@ -3299,8 +3722,8 @@
         "diffusion-autoregressive"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "multimodal_ai",
         "open_source_ecosystem",
@@ -3322,8 +3745,8 @@
         "apache-2-0"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "multimodal_ai",
         "open_source_ecosystem",
@@ -3345,8 +3768,8 @@
         "python-api"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "multimodal_ai",
         "open_source_ecosystem",
@@ -3368,8 +3791,8 @@
         "cli"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "multimodal_ai",
         "open_source_ecosystem",
@@ -3391,8 +3814,8 @@
         "kv-cache"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_infrastructure",
         "memory_context",
@@ -3415,8 +3838,8 @@
         "prefill-decode-disaggregation"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_infrastructure",
         "memory_context",
@@ -3439,8 +3862,8 @@
         "cross-data-center-inference"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_infrastructure",
         "memory_context",
@@ -3463,8 +3886,8 @@
         "heterogeneous-cluster"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_infrastructure",
         "memory_context",
@@ -3487,8 +3910,8 @@
         "inference-serving"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_infrastructure",
         "memory_context",
@@ -3511,8 +3934,8 @@
         "service-architecture"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_infrastructure",
         "memory_context",
@@ -3535,8 +3958,8 @@
         "ethernet-transport"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_infrastructure",
         "memory_context",
@@ -3559,8 +3982,8 @@
         "ttft"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_infrastructure",
         "memory_context",
@@ -3583,8 +4006,8 @@
         "throughput-optimization"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_infrastructure",
         "memory_context",
@@ -3607,8 +4030,8 @@
         "hybrid-attention"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_infrastructure",
         "memory_context",
@@ -3631,8 +4054,8 @@
         "ai-memory-engine"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "memory_context",
         "research_benchmark",
@@ -3655,8 +4078,8 @@
         "graph-memory"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "memory_context",
         "research_benchmark",
@@ -3679,8 +4102,8 @@
         "graph-routing"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "memory_context",
         "research_benchmark",
@@ -3703,8 +4126,8 @@
         "bundle-search"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "memory_context",
         "research_benchmark",
@@ -3727,8 +4150,8 @@
         "coreference-resolution"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "memory_context",
         "research_benchmark",
@@ -3751,8 +4174,8 @@
         "retrieval-architecture"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "memory_context",
         "research_benchmark",
@@ -3775,8 +4198,8 @@
         "llm-free-retrieval"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "memory_context",
         "research_benchmark",
@@ -3799,8 +4222,8 @@
         "low-latency-retrieval"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "memory_context",
         "research_benchmark",
@@ -3823,8 +4246,8 @@
         "benchmark-comparison"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "memory_context",
         "research_benchmark",
@@ -3847,8 +4270,8 @@
         "docker-deployment"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "memory_context",
         "research_benchmark",
@@ -3871,8 +4294,8 @@
         "multi-agent-system"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "open_source_ecosystem",
@@ -3895,8 +4318,8 @@
         "langgraph"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "open_source_ecosystem",
@@ -3919,8 +4342,8 @@
         "agent-state"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "open_source_ecosystem",
@@ -3943,8 +4366,8 @@
         "investment-agent"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "open_source_ecosystem",
@@ -3967,8 +4390,8 @@
         "backtesting"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "open_source_ecosystem",
@@ -3991,8 +4414,8 @@
         "github-trending"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "open_source_ecosystem",
@@ -4015,8 +4438,8 @@
         "local-llm"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "open_source_ecosystem",
@@ -4039,8 +4462,8 @@
         "ollama"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "open_source_ecosystem",
@@ -4063,8 +4486,8 @@
         "react-flow"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "open_source_ecosystem",
@@ -4087,8 +4510,8 @@
         "frontend-rendering"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "developer_tools",
         "open_source_ecosystem",
@@ -4110,8 +4533,8 @@
         "html-in-canvas"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "developer_tools",
         "open_source_ecosystem",
@@ -4133,8 +4556,8 @@
         "canvas-api"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "developer_tools",
         "open_source_ecosystem",
@@ -4156,8 +4579,8 @@
         "web-platform"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "developer_tools",
         "open_source_ecosystem",
@@ -4179,8 +4602,8 @@
         "experimental-web-api"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "developer_tools",
         "open_source_ecosystem",
@@ -4202,8 +4625,8 @@
         "dom-bypass"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "developer_tools",
         "open_source_ecosystem",
@@ -4225,8 +4648,8 @@
         "text-layout-engine"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "developer_tools",
         "open_source_ecosystem",
@@ -4248,8 +4671,8 @@
         "pretext"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "developer_tools",
         "open_source_ecosystem",
@@ -4271,8 +4694,8 @@
         "dexterous-hand"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "robotics_embodied_ai",
         "product_business",
@@ -4295,8 +4718,8 @@
         "visuotactile-sensing"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "robotics_embodied_ai",
         "product_business",
@@ -4319,8 +4742,8 @@
         "direct-drive"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "robotics_embodied_ai",
         "product_business",
@@ -4343,8 +4766,8 @@
         "backdrivability"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "robotics_embodied_ai",
         "product_business",
@@ -4367,8 +4790,8 @@
         "sim-to-real"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "robotics_embodied_ai",
         "product_business",
@@ -4391,8 +4814,8 @@
         "teleoperation-data"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "robotics_embodied_ai",
         "product_business",
@@ -4415,8 +4838,8 @@
         "robot-hand"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "robotics_embodied_ai",
         "product_business",
@@ -4439,8 +4862,8 @@
         "optical-communication"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "product_business",
         "ai_infrastructure",
@@ -4462,8 +4885,8 @@
         "ai-datacenter"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "product_business",
         "ai_infrastructure",
@@ -4485,8 +4908,8 @@
         "telecom-equipment"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "product_business",
         "ai_infrastructure",
@@ -4508,8 +4931,8 @@
         "market-share"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "product_business",
         "ai_infrastructure",
@@ -4531,8 +4954,8 @@
         "infrastructure-supplier"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "product_business",
         "ai_infrastructure",
@@ -4554,8 +4977,8 @@
         "patent-licensing"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "product_business",
         "ai_infrastructure",
@@ -4577,8 +5000,8 @@
         "nokia"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "product_business",
         "ai_infrastructure",
@@ -4600,8 +5023,8 @@
         "motorola"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "product_business",
         "ai_infrastructure",
@@ -4623,8 +5046,8 @@
         "supply-chain-strategy"
       ],
       "status": "drafted",
-      "created_at": "2026-04-26T14:55:54+00:00",
-      "last_updated_at": "2026-04-26T14:55:54+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "product_business",
         "ai_infrastructure",
@@ -4639,322 +5062,6 @@
       "notes": []
     },
     {
-      "concept_id": "autonomous_driving",
-      "name": "Autonomous Driving",
-      "definition": "从反复出现的文章标签中生成的草稿概念。",
-      "aliases": [
-        "autonomous-driving"
-      ],
-      "status": "drafted",
-      "created_at": "2026-04-27T01:41:05+00:00",
-      "last_updated_at": "2026-04-27T01:41:05+00:00",
-      "related_categories": [
-        "robotics_embodied_ai",
-        "ai_agent",
-        "research_benchmark",
-        "product_business"
-      ],
-      "related_tags": [
-        "autonomous-driving"
-      ],
-      "supporting_articles": [
-        "39ca3e825456"
-      ],
-      "notes": []
-    },
-    {
-      "concept_id": "world_model",
-      "name": "World Model",
-      "definition": "从反复出现的文章标签中生成的草稿概念。",
-      "aliases": [
-        "world-model"
-      ],
-      "status": "drafted",
-      "created_at": "2026-04-27T01:41:05+00:00",
-      "last_updated_at": "2026-05-06T13:40:37+00:00",
-      "related_categories": [
-        "robotics_embodied_ai",
-        "ai_agent",
-        "research_benchmark",
-        "product_business",
-        "developer_tools"
-      ],
-      "related_tags": [
-        "world-model"
-      ],
-      "supporting_articles": [
-        "39ca3e825456",
-        "ffe0b324db7f"
-      ],
-      "notes": []
-    },
-    {
-      "concept_id": "self_diagnosis",
-      "name": "Self Diagnosis",
-      "definition": "从反复出现的文章标签中生成的草稿概念。",
-      "aliases": [
-        "self-diagnosis"
-      ],
-      "status": "drafted",
-      "created_at": "2026-04-27T01:41:05+00:00",
-      "last_updated_at": "2026-04-27T01:41:05+00:00",
-      "related_categories": [
-        "robotics_embodied_ai",
-        "ai_agent",
-        "research_benchmark",
-        "product_business"
-      ],
-      "related_tags": [
-        "self-diagnosis"
-      ],
-      "supporting_articles": [
-        "39ca3e825456"
-      ],
-      "notes": []
-    },
-    {
-      "concept_id": "tool_calling",
-      "name": "Tool Calling",
-      "definition": "从反复出现的文章标签中生成的草稿概念。",
-      "aliases": [
-        "tool-calling"
-      ],
-      "status": "drafted",
-      "created_at": "2026-04-27T01:41:05+00:00",
-      "last_updated_at": "2026-05-06T13:40:37+00:00",
-      "related_categories": [
-        "robotics_embodied_ai",
-        "ai_agent",
-        "research_benchmark",
-        "product_business",
-        "developer_tools"
-      ],
-      "related_tags": [
-        "tool-calling"
-      ],
-      "supporting_articles": [
-        "39ca3e825456",
-        "ffe0b324db7f"
-      ],
-      "notes": []
-    },
-    {
-      "concept_id": "agent_evaluation",
-      "name": "Agent Evaluation",
-      "definition": "从反复出现的文章标签中生成的草稿概念。",
-      "aliases": [
-        "agent-evaluation"
-      ],
-      "status": "drafted",
-      "created_at": "2026-04-27T01:41:05+00:00",
-      "last_updated_at": "2026-04-27T01:41:05+00:00",
-      "related_categories": [
-        "robotics_embodied_ai",
-        "ai_agent",
-        "research_benchmark",
-        "product_business"
-      ],
-      "related_tags": [
-        "agent-evaluation"
-      ],
-      "supporting_articles": [
-        "39ca3e825456"
-      ],
-      "notes": []
-    },
-    {
-      "concept_id": "intention_modeling",
-      "name": "Intention Modeling",
-      "definition": "从反复出现的文章标签中生成的草稿概念。",
-      "aliases": [
-        "intention-modeling"
-      ],
-      "status": "drafted",
-      "created_at": "2026-04-27T01:41:05+00:00",
-      "last_updated_at": "2026-04-27T01:41:05+00:00",
-      "related_categories": [
-        "robotics_embodied_ai",
-        "ai_agent",
-        "research_benchmark",
-        "product_business"
-      ],
-      "related_tags": [
-        "intention-modeling"
-      ],
-      "supporting_articles": [
-        "39ca3e825456"
-      ],
-      "notes": []
-    },
-    {
-      "concept_id": "reinforcement_learning",
-      "name": "Reinforcement Learning",
-      "definition": "从反复出现的文章标签中生成的草稿概念。",
-      "aliases": [
-        "reinforcement-learning"
-      ],
-      "status": "drafted",
-      "created_at": "2026-04-27T01:41:05+00:00",
-      "last_updated_at": "2026-04-27T01:41:05+00:00",
-      "related_categories": [
-        "robotics_embodied_ai",
-        "ai_agent",
-        "research_benchmark",
-        "product_business"
-      ],
-      "related_tags": [
-        "reinforcement-learning"
-      ],
-      "supporting_articles": [
-        "39ca3e825456"
-      ],
-      "notes": []
-    },
-    {
-      "concept_id": "robotaxi",
-      "name": "Robotaxi",
-      "definition": "从反复出现的文章标签中生成的草稿概念。",
-      "aliases": [
-        "robotaxi"
-      ],
-      "status": "drafted",
-      "created_at": "2026-04-27T01:41:05+00:00",
-      "last_updated_at": "2026-04-27T01:41:05+00:00",
-      "related_categories": [
-        "robotics_embodied_ai",
-        "ai_agent",
-        "research_benchmark",
-        "product_business"
-      ],
-      "related_tags": [
-        "robotaxi"
-      ],
-      "supporting_articles": [
-        "39ca3e825456"
-      ],
-      "notes": []
-    },
-    {
-      "concept_id": "async_agent",
-      "name": "Async Agent",
-      "definition": "从反复出现的文章标签中生成的草稿概念。",
-      "aliases": [
-        "async-agent"
-      ],
-      "status": "drafted",
-      "created_at": "2026-04-27T15:34:12+00:00",
-      "last_updated_at": "2026-04-27T15:34:12+00:00",
-      "related_categories": [
-        "ai_agent",
-        "developer_tools",
-        "product_business",
-        "open_source_ecosystem"
-      ],
-      "related_tags": [
-        "async-agent"
-      ],
-      "supporting_articles": [
-        "7446bf91ca19"
-      ],
-      "notes": []
-    },
-    {
-      "concept_id": "long_running_tasks",
-      "name": "Long Running Tasks",
-      "definition": "从反复出现的文章标签中生成的草稿概念。",
-      "aliases": [
-        "long-running-tasks"
-      ],
-      "status": "drafted",
-      "created_at": "2026-04-27T15:34:12+00:00",
-      "last_updated_at": "2026-04-27T15:34:12+00:00",
-      "related_categories": [
-        "ai_agent",
-        "developer_tools",
-        "product_business",
-        "open_source_ecosystem"
-      ],
-      "related_tags": [
-        "long-running-tasks"
-      ],
-      "supporting_articles": [
-        "7446bf91ca19"
-      ],
-      "notes": []
-    },
-    {
-      "concept_id": "task_delegation",
-      "name": "Task Delegation",
-      "definition": "从反复出现的文章标签中生成的草稿概念。",
-      "aliases": [
-        "task-delegation"
-      ],
-      "status": "drafted",
-      "created_at": "2026-04-27T15:34:12+00:00",
-      "last_updated_at": "2026-04-27T15:34:12+00:00",
-      "related_categories": [
-        "ai_agent",
-        "developer_tools",
-        "product_business",
-        "open_source_ecosystem"
-      ],
-      "related_tags": [
-        "task-delegation"
-      ],
-      "supporting_articles": [
-        "7446bf91ca19"
-      ],
-      "notes": []
-    },
-    {
-      "concept_id": "ide_integration",
-      "name": "Ide Integration",
-      "definition": "从反复出现的文章标签中生成的草稿概念。",
-      "aliases": [
-        "ide-integration"
-      ],
-      "status": "drafted",
-      "created_at": "2026-04-27T15:34:12+00:00",
-      "last_updated_at": "2026-04-27T15:34:12+00:00",
-      "related_categories": [
-        "ai_agent",
-        "developer_tools",
-        "product_business",
-        "open_source_ecosystem"
-      ],
-      "related_tags": [
-        "ide-integration"
-      ],
-      "supporting_articles": [
-        "7446bf91ca19"
-      ],
-      "notes": []
-    },
-    {
-      "concept_id": "openclaw",
-      "name": "Openclaw",
-      "definition": "从反复出现的文章标签中生成的草稿概念。",
-      "aliases": [
-        "openclaw"
-      ],
-      "status": "drafted",
-      "created_at": "2026-04-27T15:34:12+00:00",
-      "last_updated_at": "2026-04-27T15:34:12+00:00",
-      "related_categories": [
-        "ai_agent",
-        "developer_tools",
-        "product_business",
-        "open_source_ecosystem"
-      ],
-      "related_tags": [
-        "openclaw"
-      ],
-      "supporting_articles": [
-        "7446bf91ca19"
-      ],
-      "notes": []
-    },
-    {
       "concept_id": "language_agent",
       "name": "Language Agent",
       "definition": "从反复出现的文章标签中生成的草稿概念。",
@@ -4962,8 +5069,8 @@
         "language-agent"
       ],
       "status": "drafted",
-      "created_at": "2026-05-06T13:40:37+00:00",
-      "last_updated_at": "2026-05-06T13:40:37+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "product_business",
@@ -4985,8 +5092,8 @@
         "computer-use-agent"
       ],
       "status": "drafted",
-      "created_at": "2026-05-06T13:40:37+00:00",
-      "last_updated_at": "2026-05-06T13:40:37+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "product_business",
@@ -5008,8 +5115,8 @@
         "micro-world"
       ],
       "status": "drafted",
-      "created_at": "2026-05-06T13:40:37+00:00",
-      "last_updated_at": "2026-05-06T13:40:37+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "product_business",
@@ -5031,8 +5138,8 @@
         "digital-workflow"
       ],
       "status": "drafted",
-      "created_at": "2026-05-06T13:40:37+00:00",
-      "last_updated_at": "2026-05-06T13:40:37+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "product_business",
@@ -5054,8 +5161,8 @@
         "software-automation"
       ],
       "status": "drafted",
-      "created_at": "2026-05-06T13:40:37+00:00",
-      "last_updated_at": "2026-05-06T13:40:37+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "product_business",
@@ -5077,8 +5184,8 @@
         "knowledge-work"
       ],
       "status": "drafted",
-      "created_at": "2026-05-06T13:40:37+00:00",
-      "last_updated_at": "2026-05-06T13:40:37+00:00",
+      "created_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-07T15:23:34+00:00",
       "related_categories": [
         "ai_agent",
         "product_business",
