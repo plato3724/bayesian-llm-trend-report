@@ -1,14 +1,14 @@
 {
   "created_at": "2026-04-25T15:25:50+00:00",
-  "last_updated_at": "2026-05-08T09:21:55+00:00",
+  "last_updated_at": "2026-05-08T09:23:55+00:00",
   "version": 1,
   "reviews": [
     {
       "review_id": "ai_agent_living_review",
       "title": "AI Agent动态综述",
       "status": "drafted",
-      "version": 15,
-      "last_updated_at": "2026-05-08T09:17:11+00:00",
+      "version": 16,
+      "last_updated_at": "2026-05-08T09:23:55+00:00",
       "scope": {
         "primary_category": "ai_agent",
         "tags": [
@@ -640,8 +640,8 @@
       "review_id": "ai_infrastructure_living_review",
       "title": "AI 基础设施动态综述",
       "status": "drafted",
-      "version": 14,
-      "last_updated_at": "2026-05-08T09:17:11+00:00",
+      "version": 15,
+      "last_updated_at": "2026-05-08T09:23:55+00:00",
       "scope": {
         "primary_category": "ai_infrastructure",
         "tags": [
@@ -1065,20 +1065,15 @@
         "method": "deterministic_review_analysis_mvp",
         "deep_review_method": "llm",
         "deep_review_model": "openai/gpt-5.4",
-        "deep_review_attempts": 1,
-        "deep_review_input_text_lengths": {
-          "86d606aaf417": 2288,
-          "a36d7f67197d": 4470
-        },
-        "deep_review_input_truncated_article_ids": []
+        "deep_review_attempts": 1
       }
     },
     {
       "review_id": "consumer_economy_living_review",
       "title": "消费经济动态综述",
       "status": "drafted",
-      "version": 15,
-      "last_updated_at": "2026-05-08T09:17:11+00:00",
+      "version": 16,
+      "last_updated_at": "2026-05-08T09:23:55+00:00",
       "scope": {
         "primary_category": "consumer_economy",
         "tags": [
@@ -1460,8 +1455,8 @@
       "review_id": "developer_tools_living_review",
       "title": "开发者工具动态综述",
       "status": "drafted",
-      "version": 15,
-      "last_updated_at": "2026-05-08T09:17:11+00:00",
+      "version": 16,
+      "last_updated_at": "2026-05-08T09:23:55+00:00",
       "scope": {
         "primary_category": "developer_tools",
         "tags": [
@@ -1928,8 +1923,8 @@
       "review_id": "memory_context_living_review",
       "title": "记忆 / Context Engineering动态综述",
       "status": "drafted",
-      "version": 15,
-      "last_updated_at": "2026-05-08T09:17:11+00:00",
+      "version": 16,
+      "last_updated_at": "2026-05-08T09:23:55+00:00",
       "scope": {
         "primary_category": "memory_context",
         "tags": [
@@ -2414,8 +2409,8 @@
       "review_id": "multimodal_ai_living_review",
       "title": "多模态 AI动态综述",
       "status": "drafted",
-      "version": 15,
-      "last_updated_at": "2026-05-08T09:17:11+00:00",
+      "version": 16,
+      "last_updated_at": "2026-05-08T09:23:55+00:00",
       "scope": {
         "primary_category": "multimodal_ai",
         "tags": [
@@ -2842,8 +2837,8 @@
       "review_id": "product_business_living_review",
       "title": "产品 / 商业动态综述",
       "status": "drafted",
-      "version": 15,
-      "last_updated_at": "2026-05-08T09:17:11+00:00",
+      "version": 16,
+      "last_updated_at": "2026-05-08T09:23:55+00:00",
       "scope": {
         "primary_category": "product_business",
         "tags": [
@@ -3275,20 +3270,15 @@
         "method": "deterministic_review_analysis_mvp",
         "deep_review_method": "llm",
         "deep_review_model": "openai/gpt-5.4",
-        "deep_review_attempts": 1,
-        "deep_review_input_text_lengths": {
-          "271ba75686b0": 2424,
-          "e7483ff9ebd1": 4574
-        },
-        "deep_review_input_truncated_article_ids": []
+        "deep_review_attempts": 1
       }
     },
     {
       "review_id": "research_benchmark_living_review",
       "title": "研究 / Benchmark动态综述",
       "status": "drafted",
-      "version": 15,
-      "last_updated_at": "2026-05-08T09:17:11+00:00",
+      "version": 16,
+      "last_updated_at": "2026-05-08T09:23:55+00:00",
       "scope": {
         "primary_category": "research_benchmark",
         "tags": [
@@ -3707,8 +3697,8 @@
       "review_id": "robotics_embodied_ai_living_review",
       "title": "机器人 / 具身智能动态综述",
       "status": "drafted",
-      "version": 15,
-      "last_updated_at": "2026-05-08T09:17:11+00:00",
+      "version": 16,
+      "last_updated_at": "2026-05-08T09:23:55+00:00",
       "scope": {
         "primary_category": "robotics_embodied_ai",
         "tags": [
@@ -4273,15 +4263,7 @@
         "method": "deterministic_review_analysis_mvp",
         "deep_review_method": "llm",
         "deep_review_model": "openai/gpt-5.4",
-        "deep_review_attempts": 1,
-        "deep_review_input_text_lengths": {
-          "39ca3e825456": 14959,
-          "59b86c15655e": 2416,
-          "7ffdcd4439dc": 2878,
-          "90dd93cbb228": 4182,
-          "df7acb42e706": 4261
-        },
-        "deep_review_input_truncated_article_ids": []
+        "deep_review_attempts": 1
       }
     }
   ],
