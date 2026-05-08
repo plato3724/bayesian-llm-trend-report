@@ -1,0 +1,53 @@
+{
+  "article_id": "90dd93cbb228",
+  "concept_status": "drafted",
+  "generated_at": "2026-05-08T09:17:11+00:00",
+  "method": "tag_to_concept_mvp",
+  "matched_concepts": [
+    "annotation_pipeline",
+    "autonomous_driving",
+    "closed_loop_data",
+    "data_labeling",
+    "embodied_ai",
+    "fsd",
+    "human_in_the_loop",
+    "multimodal_sensing",
+    "occupancy_network",
+    "optimus",
+    "physical_grounding",
+    "real_world_data_engine"
+  ],
+  "created_concepts": [
+    "real_world_data_engine",
+    "data_labeling",
+    "optimus",
+    "fsd",
+    "multimodal_sensing",
+    "annotation_pipeline",
+    "closed_loop_data",
+    "occupancy_network"
+  ],
+  "candidate_concepts": [],
+  "source_trace": {
+    "classification_path": "knowledge_state/articles/90dd93cbb228/classification.json",
+    "extraction_path": "knowledge_state/articles/90dd93cbb228/extraction.json"
+  },
+  "article_entities": [
+    "Labeler",
+    "Optimus Data Collectors",
+    "QbitAI",
+    "Tesla AI",
+    "Network",
+    "Draper",
+    "Palo Alto",
+    "FSD",
+    "Must",
+    "Scale AI",
+    "AI",
+    "Appen",
+    "Labelbox",
+    "TeslaRecruiting",
+    "US",
+    "Fusion"
+  ]
+}

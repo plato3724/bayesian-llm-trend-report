@@ -1,6 +1,6 @@
 {
   "created_at": "2026-04-25T15:25:50+00:00",
-  "last_updated_at": "2026-05-07T15:23:34+00:00",
+  "last_updated_at": "2026-05-08T09:17:11+00:00",
   "version": 1,
   "concepts": [
     {
@@ -1337,14 +1337,15 @@
       ],
       "status": "drafted",
       "created_at": "2026-05-07T15:23:34+00:00",
-      "last_updated_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-08T09:17:11+00:00",
       "related_categories": [
         "robotics_embodied_ai",
         "ai_agent",
         "research_benchmark",
         "product_business",
         "open_source_ecosystem",
-        "multimodal_ai"
+        "multimodal_ai",
+        "ai_infrastructure"
       ],
       "related_tags": [
         "embodied-ai"
@@ -1353,7 +1354,8 @@
         "39ca3e825456",
         "59b86c15655e",
         "7ffdcd4439dc",
-        "df7acb42e706"
+        "df7acb42e706",
+        "90dd93cbb228"
       ],
       "notes": []
     },
@@ -1366,14 +1368,15 @@
       ],
       "status": "drafted",
       "created_at": "2026-05-07T15:23:34+00:00",
-      "last_updated_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-08T09:17:11+00:00",
       "related_categories": [
         "robotics_embodied_ai",
         "ai_agent",
         "research_benchmark",
         "product_business",
         "multimodal_ai",
-        "open_source_ecosystem"
+        "open_source_ecosystem",
+        "ai_infrastructure"
       ],
       "related_tags": [
         "physical-grounding"
@@ -1381,7 +1384,8 @@
       "supporting_articles": [
         "39ca3e825456",
         "7ffdcd4439dc",
-        "df7acb42e706"
+        "df7acb42e706",
+        "90dd93cbb228"
       ],
       "notes": []
     },
@@ -1394,18 +1398,21 @@
       ],
       "status": "drafted",
       "created_at": "2026-05-07T15:23:34+00:00",
-      "last_updated_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-08T09:17:11+00:00",
       "related_categories": [
         "robotics_embodied_ai",
         "ai_agent",
         "research_benchmark",
-        "product_business"
+        "product_business",
+        "ai_infrastructure",
+        "multimodal_ai"
       ],
       "related_tags": [
         "autonomous-driving"
       ],
       "supporting_articles": [
-        "39ca3e825456"
+        "39ca3e825456",
+        "90dd93cbb228"
       ],
       "notes": []
     },
@@ -1858,18 +1865,22 @@
       ],
       "status": "drafted",
       "created_at": "2026-05-07T15:23:34+00:00",
-      "last_updated_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-08T09:17:11+00:00",
       "related_categories": [
         "ai_agent",
         "ai_infrastructure",
         "developer_tools",
-        "research_benchmark"
+        "research_benchmark",
+        "robotics_embodied_ai",
+        "product_business",
+        "multimodal_ai"
       ],
       "related_tags": [
         "human-in-the-loop"
       ],
       "supporting_articles": [
-        "44f454b544d9"
+        "44f454b544d9",
+        "90dd93cbb228"
       ],
       "notes": []
     },
@@ -5196,6 +5207,198 @@
       ],
       "supporting_articles": [
         "ffe0b324db7f"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "real_world_data_engine",
+      "name": "Real World Data Engine",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "real-world-data-engine"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-08T09:17:11+00:00",
+      "last_updated_at": "2026-05-08T09:17:11+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "ai_infrastructure",
+        "product_business",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "real-world-data-engine"
+      ],
+      "supporting_articles": [
+        "90dd93cbb228"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "data_labeling",
+      "name": "Data Labeling",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "data-labeling"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-08T09:17:11+00:00",
+      "last_updated_at": "2026-05-08T09:17:11+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "ai_infrastructure",
+        "product_business",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "data-labeling"
+      ],
+      "supporting_articles": [
+        "90dd93cbb228"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "optimus",
+      "name": "Optimus",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "optimus"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-08T09:17:11+00:00",
+      "last_updated_at": "2026-05-08T09:17:11+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "ai_infrastructure",
+        "product_business",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "optimus"
+      ],
+      "supporting_articles": [
+        "90dd93cbb228"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "fsd",
+      "name": "Fsd",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "fsd"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-08T09:17:11+00:00",
+      "last_updated_at": "2026-05-08T09:17:11+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "ai_infrastructure",
+        "product_business",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "fsd"
+      ],
+      "supporting_articles": [
+        "90dd93cbb228"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "multimodal_sensing",
+      "name": "Multimodal Sensing",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "multimodal-sensing"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-08T09:17:11+00:00",
+      "last_updated_at": "2026-05-08T09:17:11+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "ai_infrastructure",
+        "product_business",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "multimodal-sensing"
+      ],
+      "supporting_articles": [
+        "90dd93cbb228"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "annotation_pipeline",
+      "name": "Annotation Pipeline",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "annotation-pipeline"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-08T09:17:11+00:00",
+      "last_updated_at": "2026-05-08T09:17:11+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "ai_infrastructure",
+        "product_business",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "annotation-pipeline"
+      ],
+      "supporting_articles": [
+        "90dd93cbb228"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "closed_loop_data",
+      "name": "Closed Loop Data",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "closed-loop-data"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-08T09:17:11+00:00",
+      "last_updated_at": "2026-05-08T09:17:11+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "ai_infrastructure",
+        "product_business",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "closed-loop-data"
+      ],
+      "supporting_articles": [
+        "90dd93cbb228"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "occupancy_network",
+      "name": "Occupancy Network",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "occupancy-network"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-08T09:17:11+00:00",
+      "last_updated_at": "2026-05-08T09:17:11+00:00",
+      "related_categories": [
+        "robotics_embodied_ai",
+        "ai_infrastructure",
+        "product_business",
+        "multimodal_ai"
+      ],
+      "related_tags": [
+        "occupancy-network"
+      ],
+      "supporting_articles": [
+        "90dd93cbb228"
       ],
       "notes": []
     }

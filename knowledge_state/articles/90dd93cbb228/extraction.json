@@ -1,0 +1,80 @@
+{
+  "article_id": "90dd93cbb228",
+  "extraction_status": "completed",
+  "generated_at": "2026-05-08T09:17:04+00:00",
+  "method": "deterministic_mvp",
+  "summary": "特斯拉百万年薪招数据标注员，朝九晚五，无需AI经验 个别岗位年薪达到9-13万美元（61-88万人民币），还有现金和股票激励。 特斯拉新鲜出炉的招聘启事，看起来心动不？",
+  "main_points": [
+    "特斯拉百万年薪招数据标注员，朝九晚五，无需AI经验",
+    "个别岗位年薪达到9-13万美元（61-88万人民币），还有现金和股票激励。",
+    "特斯拉新鲜出炉的招聘启事，看起来心动不？",
+    "Tesla AI 工程总监Phil Duan也转发了：",
+    "加入我们，共同打造全球最大的真实世界人工智能数据引擎。",
+    "如果你不熟悉这个人，他的中文名叫段鹏飞，刚在今年2月被马斯克提拔为Autopilot工程总监。",
+    "他亲手带队做出了FSD v12/v13/v14、Robotaxi发布，以及特斯拉最重要的Occupancy Network。",
+    "技术负责人亲自发帖，就一个意思：数据引擎要转起来了，缺人。"
+  ],
+  "entities": [
+    "Labeler",
+    "Optimus Data Collectors",
+    "QbitAI",
+    "Tesla AI",
+    "Network",
+    "Draper",
+    "Palo Alto",
+    "FSD",
+    "Must",
+    "Scale AI",
+    "AI",
+    "Appen",
+    "Labelbox",
+    "TeslaRecruiting",
+    "US",
+    "Fusion"
+  ],
+  "claims": [
+    {
+      "id": "auto_point_1",
+      "type": "event",
+      "text": "特斯拉百万年薪招数据标注员，朝九晚五，无需AI经验",
+      "source": "canonical_text_heuristic"
+    },
+    {
+      "id": "auto_point_2",
+      "type": "event",
+      "text": "个别岗位年薪达到9-13万美元（61-88万人民币），还有现金和股票激励。",
+      "source": "canonical_text_heuristic"
+    },
+    {
+      "id": "auto_point_3",
+      "type": "event",
+      "text": "特斯拉新鲜出炉的招聘启事，看起来心动不？",
+      "source": "canonical_text_heuristic"
+    },
+    {
+      "id": "auto_point_4",
+      "type": "event",
+      "text": "Tesla AI 工程总监Phil Duan也转发了：",
+      "source": "canonical_text_heuristic"
+    },
+    {
+      "id": "auto_point_5",
+      "type": "event",
+      "text": "加入我们，共同打造全球最大的真实世界人工智能数据引擎。",
+      "source": "canonical_text_heuristic"
+    },
+    {
+      "id": "auto_point_6",
+      "type": "event",
+      "text": "如果你不熟悉这个人，他的中文名叫段鹏飞，刚在今年2月被马斯克提拔为Autopilot工程总监。",
+      "source": "canonical_text_heuristic"
+    }
+  ],
+  "important_quotes": [],
+  "open_questions": [],
+  "source_trace": {
+    "record_path": "knowledge_state/articles/90dd93cbb228/record.json",
+    "canonical_text_path": "knowledge_state/articles/90dd93cbb228/canonical_text.txt",
+    "legacy_claims_path": "knowledge_state/articles/90dd93cbb228/claims.json"
+  }
+}

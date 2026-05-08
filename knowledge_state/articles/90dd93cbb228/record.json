@@ -1,0 +1,48 @@
+{
+  "article_id": "90dd93cbb228",
+  "title": "特斯拉百万年薪招数据标注员，朝九晚五，无需AI经验",
+  "url": "https://mp.weixin.qq.com/s/gkZLaXQO-FlDdmtydwj4Vg",
+  "ingested_from": "github_issue",
+  "ingested_at": "2026-05-08T09:17:00+00:00",
+  "last_updated_at": "2026-05-08T09:17:04+00:00",
+  "content_state": {
+    "full_text_status": "acquired",
+    "canonical_text_source": "knowledge_state/articles/90dd93cbb228/canonical_text.txt",
+    "fetch_attempts": [
+      {
+        "attempted_at": "2026-05-08T09:17:04+00:00",
+        "status": "acquired",
+        "status_code": 200,
+        "final_url": "https://mp.weixin.qq.com/s/gkZLaXQO-FlDdmtydwj4Vg",
+        "content_type": "text/html",
+        "text_length": 4182,
+        "raw_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/knowledge_state/articles/90dd93cbb228/raw/fetch_20260508T091701Z.html",
+        "text_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/knowledge_state/articles/90dd93cbb228/raw/extract_20260508T091701Z.txt",
+        "note": "Full text looks sufficient for claim extraction."
+      }
+    ],
+    "manual_artifacts": [],
+    "next_action": "extract_claims"
+  },
+  "analysis_state": {
+    "claim_extraction_status": "not_started",
+    "verification_status": "not_started",
+    "bayesian_status": "excluded_until_verified"
+  },
+  "article_summary": {
+    "events": [],
+    "techniques": [],
+    "tools": []
+  },
+  "hypothesis_impacts": [],
+  "ingest_sources": [
+    {
+      "source_name": "github_issue",
+      "source_ref": "https://github.com/plato3724/bayesian-llm-trend-report/issues/18",
+      "source_note": "https://mp.weixin.qq.com/s/gkZLaXQO-FlDdmtydwj4Vg",
+      "ingested_at": "2026-05-08T09:17:00+00:00"
+    }
+  ],
+  "lifecycle_state": "active",
+  "lifecycle_events": []
+}

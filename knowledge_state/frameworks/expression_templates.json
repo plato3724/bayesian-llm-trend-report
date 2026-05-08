@@ -1,60 +1,96 @@
 {
-  "created_at": "2026-05-07T15:23:09+00:00",
-  "last_updated_at": "2026-05-07T15:23:09+00:00",
+  "created_at": "2026-05-08T09:21:55+00:00",
+  "last_updated_at": "2026-05-08T09:23:35+00:00",
   "version": 1,
-  "source_hash": "96f472d54142a7fec6e0ce89efa1953ac3a804026c2ad2185ada4b4d2a1ca3b8",
+  "source_hash": "f4815d0c8d49a3ac6b04ffff9266be7caf43cb6853ed0a5d16fc9b15ade5f22d",
   "prompt_version": "frameworks_from_reviews_v1",
-  "generated_by": "deterministic_framework_fallback_v1",
+  "generated_by": "llm_framework_generation_v1",
+  "llm_model": "openai/gpt-5.4",
+  "llm_attempts": 1,
   "templates": [
     {
-      "template_id": "review_to_argument",
-      "name": "从综述到论点",
-      "use_case": "把一个分类综述改写成一篇分析文章或观点笔记。",
+      "template_id": "mechanism_over_claims_review",
+      "name": "从 claim 到机制的综述模板",
+      "use_case": "用于写动态综述、行业判断或主题分析，强调跨案例重复结构，而非逐篇摘要。",
       "structure": [
-        "一句话判断",
-        "代表性材料",
-        "重复模式",
-        "机制解释",
-        "约束与反证",
-        "可更新结论"
+        "先给出主题当前阶段判断：单案例、早期成形、反复出现或相对稳固",
+        "指出多个材料中反复出现的现象，并提出它们可能共享的底层机制",
+        "用一句核心论点重写主题：真正变化的不是表面热度，而是某个系统机制",
+        "拆解该机制的 2-4 个关键组成部分，说明它们如何共同作用",
+        "加入反证与误读校正：哪些材料只是热度信号，哪些结论不能外推",
+        "说明失败模式与边界条件：该机制在什么情况下成立，在什么情况下会失效",
+        "最后提出下一轮最该寻找的反驳材料或概念修正点"
       ],
       "source_review_ids": [
         "ai_agent_living_review",
         "ai_infrastructure_living_review",
-        "consumer_economy_living_review",
-        "developer_tools_living_review",
         "memory_context_living_review",
-        "multimodal_ai_living_review",
-        "product_business_living_review",
-        "research_benchmark_living_review",
-        "robotics_embodied_ai_living_review"
+        "research_benchmark_living_review"
       ],
-      "status": "drafted"
+      "status": "llm_draft"
     },
     {
-      "template_id": "cross_review_theory_note",
-      "name": "跨综述理论笔记",
-      "use_case": "把多个分类综述抽象成更高层的判断或理论雏形。",
+      "template_id": "positive_negative_balanced_argument",
+      "name": "正反并置论证模板",
+      "use_case": "用于讨论一个新趋势、新技术或热门方向，既呈现其成立逻辑，也呈现失败风险与反例空间。",
       "structure": [
-        "多个分类共同暴露的问题",
-        "表层差异",
-        "共享机制",
-        "边界条件",
-        "理论化表达",
-        "后续验证材料"
+        "先明确该方向最强的正面判断是什么",
+        "解释这个判断成立所依赖的机制，而不是只引用口号或数据点",
+        "补充它真正改变了什么：成本结构、组织方式、技术边界或市场结构",
+        "转入限制条件：该判断依赖哪些前提，一旦前提消失会怎样",
+        "列出最可能的反证类型：失败案例、迁移失效、对照实验或 ROI 不成立",
+        "区分局部成立与普遍成立：哪些场景可接受，哪些场景仍危险",
+        "以审慎结论收束：说明现在能说到哪一步，不能说到哪一步"
+      ],
+      "source_review_ids": [
+        "developer_tools_living_review",
+        "multimodal_ai_living_review",
+        "consumer_economy_living_review",
+        "product_business_living_review"
+      ],
+      "status": "llm_draft"
+    },
+    {
+      "template_id": "system_layer_decomposition",
+      "name": "系统分层拆解模板",
+      "use_case": "用于解释一个复杂系统为什么有效，适合 AI Agent、基础设施、机器人、记忆系统等主题。",
+      "structure": [
+        "定义系统目标：系统要稳定解决的不是单点能力，而是一类完整任务",
+        "拆出感知/输入层：系统接收什么信息，信息如何被标准化或压缩",
+        "拆出决策/规划层：LLM、策略、路由或规划器承担什么职责",
+        "拆出执行/约束层：工具、协议、硬件、sandbox、动作头或渲染层如何落地",
+        "拆出验证/反馈层：校验器、人审、环境反馈、benchmark 或日志如何闭环",
+        "分析层间耦合：哪些性能提升来自跨层协同，而非某一层单独增强",
+        "指出最脆弱的一层与系统边界：如果要规模化，首先会卡在哪里"
       ],
       "source_review_ids": [
         "ai_agent_living_review",
         "ai_infrastructure_living_review",
-        "consumer_economy_living_review",
+        "robotics_embodied_ai_living_review",
+        "memory_context_living_review"
+      ],
+      "status": "llm_draft"
+    },
+    {
+      "template_id": "bottleneck_shift_explanation",
+      "name": "瓶颈迁移解释模板",
+      "use_case": "用于写技术拐点、工具升级或产业变化，强调问题并未消失，而是从旧位置转移到新位置。",
+      "structure": [
+        "先指出旧瓶颈是什么，以及过去系统为何受限",
+        "说明新方案如何解决或缓解了旧瓶颈",
+        "强调收益并非免费：瓶颈被转移到了新的环节",
+        "分析新瓶颈的性质：验证、带宽、时延、维护、责任或组织协作",
+        "用反例说明如果忽略新瓶颈，会产生哪些误判",
+        "比较谁更受益：头部公司、基础设施层、应用层还是开发者个体",
+        "最后给出判断标准：未来应追踪哪类指标而不是旧指标"
+      ],
+      "source_review_ids": [
         "developer_tools_living_review",
-        "memory_context_living_review",
-        "multimodal_ai_living_review",
+        "ai_infrastructure_living_review",
         "product_business_living_review",
-        "research_benchmark_living_review",
         "robotics_embodied_ai_living_review"
       ],
-      "status": "drafted"
+      "status": "llm_draft"
     }
   ]
 }

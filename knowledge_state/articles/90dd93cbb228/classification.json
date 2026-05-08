@@ -1,0 +1,63 @@
+{
+  "article_id": "90dd93cbb228",
+  "classification_status": "drafted",
+  "generated_at": "2026-05-08T09:17:11+00:00",
+  "method": "llm_openrouter",
+  "llm_model": "openai/gpt-5.4",
+  "llm_attempts": 1,
+  "primary_category": "robotics_embodied_ai",
+  "secondary_categories": [
+    "ai_infrastructure",
+    "product_business",
+    "multimodal_ai"
+  ],
+  "tags": [
+    "embodied-ai",
+    "physical-grounding",
+    "real-world-data-engine",
+    "data-labeling",
+    "autonomous-driving",
+    "optimus",
+    "fsd",
+    "multimodal-sensing",
+    "human-in-the-loop",
+    "annotation-pipeline",
+    "closed-loop-data",
+    "occupancy-network"
+  ],
+  "source_type": "media",
+  "importance": "high",
+  "rationale": "文章核心不是一般的人才招聘或薪资讨论，而是借特斯拉招募数据标注团队，揭示其服务 FSD 与 Optimus 的真实世界数据引擎正在扩张。重点落在自动驾驶与人形机器人共用的数据采集、标注、训练闭环，以及具身系统对物理世界高质量标注的强依赖，这更属于机器人/具身智能的关键能力建设。之所以补充 AI 基础设施，是因为文中也强调了内部工具、数据保密、标注 pipeline 和数据飞轮；补充产品/商业，是因为招聘动作反映了特斯拉在 FSD 和 Optimus 两条产品线上的战略投入。",
+  "category_scores": {
+    "ai_agent": 0,
+    "ai_infrastructure": 6,
+    "memory_context": 0,
+    "developer_tools": 1,
+    "multimodal_ai": 7,
+    "robotics_embodied_ai": 10,
+    "consumer_economy": 4,
+    "research_benchmark": 0,
+    "open_source_ecosystem": 1,
+    "policy_regulation": 0,
+    "product_business": 5
+  },
+  "fallback_suggestion": {
+    "primary_category": "robotics_embodied_ai",
+    "secondary_categories": [
+      "multimodal_ai",
+      "ai_infrastructure",
+      "product_business"
+    ],
+    "tags": [
+      "business-model",
+      "cross-modal",
+      "embodied-ai",
+      "infrastructure",
+      "market-signal",
+      "multimodal",
+      "physical-grounding",
+      "product-launch",
+      "training-infrastructure"
+    ]
+  }
+}
