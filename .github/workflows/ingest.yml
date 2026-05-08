@@ -1,11 +1,10 @@
 name: ingest-article
 
-# Phase A of the automation plan: when a new article issue is labeled,
-# pull it into the knowledge_state queue and try to fetch its canonical
-# text. This workflow deliberately does NOT call any LLM API and does
-# NOT touch claims / verification / hypotheses. Its only job is to
-# shorten the "I saw something on my phone → canonical_text.txt lives
-# in the repo" loop from "open Claude Code" to "paste a link on mobile".
+# When a new article issue is opened or labeled, pull it into the
+# knowledge_state queue, fetch the canonical text, classify/extract it,
+# then refresh the knowledge page. The workflow comments early so the
+# issue does not look idle, confirms article-library ingestion before
+# the slow synthesis pass, then posts a final completion update.
 #
 # Triggers:
 #   - issue lifecycle events for issues carrying the `article` label
@@ -13,12 +12,14 @@ name: ingest-article
 #   - manual workflow_dispatch for recovery / re-runs
 #
 # Output:
+#   - an acknowledgement comment is posted immediately
 #   - sync-issues imports the URL into knowledge_state/articles/<id>/record.json
 #   - fetch-pending attempts HTTP fetch and writes canonical_text.txt
-#   - all changes are committed to main with a bot signature
+#   - article-library changes are committed before deep synthesis refresh
+#   - final synthesis changes are committed with a bot signature
 #
 # Safety:
-#   - uses the built-in GITHUB_TOKEN (no external secrets yet)
+#   - uses the built-in GITHUB_TOKEN and optional OpenRouter secret
 #   - if nothing actually changed, skips the commit
 #   - fetch failures are non-fatal: the record is persisted with
 #     content_state.full_text_status=fetch_failed/blocked and you can
@@ -38,6 +39,30 @@ on:
 # label (or the label event itself was `article`), or when the workflow
 # was dispatched manually.
 jobs:
+  acknowledge:
+    if: ${{ github.event_name == 'issues' && (github.event.label.name == 'article' || contains(github.event.issue.labels.*.name, 'article')) }}
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    concurrency:
+      # The same issue can emit `opened` and `labeled` events close together.
+      # Serialize only the acknowledgement for that issue so we update one
+      # comment instead of creating duplicates.
+      group: ingest-ack-${{ github.event.issue.number }}
+      cancel-in-progress: false
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Acknowledge article issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          PAGES_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/knowledge.html
+        run: |
+          python scripts/knowledge_issue_comment.py ack --issue-number "$ISSUE_NUMBER" \
+            || echo "Acknowledgement comment failed (not fatal)."
+
   ingest:
     if: ${{ github.event_name == 'workflow_dispatch' || github.event.label.name == 'article' || contains(github.event.issue.labels.*.name, 'article') }}
     runs-on: ubuntu-latest
@@ -57,24 +82,44 @@ jobs:
           ref: ${{ github.ref }}
           fetch-depth: 0
 
+      - name: Decide whether this issue event needs ingest
+        id: preflight
+        if: ${{ github.event_name == 'issues' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_ACTION: ${{ github.event.action }}
+        run: |
+          python scripts/knowledge_issue_comment.py should-ingest \
+            --issue-number "$ISSUE_NUMBER" \
+            --action "$ISSUE_ACTION" >> "$GITHUB_OUTPUT"
+
+      - name: Skip duplicate issue event
+        if: ${{ github.event_name == 'issues' && steps.preflight.outputs.should_ingest == 'false' }}
+        run: |
+          echo "This labeled event was already completed by an earlier issue event."
+
       - name: Set up Python
+        if: ${{ github.event_name == 'workflow_dispatch' || steps.preflight.outputs.should_ingest != 'false' }}
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
       - name: Install dependencies
+        if: ${{ github.event_name == 'workflow_dispatch' || steps.preflight.outputs.should_ingest != 'false' }}
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
       - name: Sync triggering issue into knowledge_state
-        if: ${{ github.event_name == 'issues' }}
+        if: ${{ github.event_name == 'issues' && steps.preflight.outputs.should_ingest != 'false' }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python scripts/bayesian_reader.py sync-issue --issue-number "${{ github.event.issue.number }}"
 
       - name: Sync GitHub issues into knowledge_state
+        if: ${{ github.event_name == 'workflow_dispatch' || steps.preflight.outputs.should_ingest != 'false' }}
         env:
           # `gh` CLI on ubuntu-latest is already installed; it just needs a token.
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -82,14 +127,17 @@ jobs:
           python scripts/bayesian_reader.py sync-issues
 
       - name: Fetch pending articles
+        if: ${{ github.event_name == 'workflow_dispatch' || steps.preflight.outputs.should_ingest != 'false' }}
         run: |
           LIMIT="${{ github.event.inputs.fetch_limit || '20' }}"
           python scripts/bayesian_reader.py fetch-pending --limit "$LIMIT"
 
       - name: Show acquisition status
+        if: ${{ github.event_name == 'workflow_dispatch' || steps.preflight.outputs.should_ingest != 'false' }}
         run: python scripts/bayesian_reader.py status
 
-      - name: Update knowledge system
+      - name: Update article library
+        if: ${{ github.event_name == 'workflow_dispatch' || steps.preflight.outputs.should_ingest != 'false' }}
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           OPENROUTER_DEFAULT_MODEL: ${{ vars.OPENROUTER_DEFAULT_MODEL }}
@@ -97,11 +145,67 @@ jobs:
           OPENROUTER_TITLE: "tec_trade knowledge system"
         run: |
           python scripts/knowledge_pipeline.py run-mvp --skip-frameworks
+          python scripts/knowledge_pipeline.py build-report
+
+      - name: Commit and push article ingest changes
+        if: ${{ github.event_name == 'workflow_dispatch' || steps.preflight.outputs.should_ingest != 'false' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add \
+            knowledge_state/articles/ \
+            knowledge_state/taxonomy/ \
+            knowledge_state/concepts/ \
+            knowledge_state/reviews/ \
+            knowledge_state/frameworks/ \
+            knowledge_state/judgments/ \
+            knowledge_state/theories/ \
+            knowledge_state/change_log.jsonl \
+            docs/knowledge.html || true
+
+          if git diff --staged --quiet; then
+            echo "No article ingest changes to commit."
+            exit 0
+          fi
+
+          if [ -n "${{ github.event.issue.number }}" ]; then
+            SUBJECT="chore(ingest): sync issue #${{ github.event.issue.number }}"
+          else
+            SUBJECT="chore(ingest): manual fetch-pending run"
+          fi
+
+          git commit -m "$SUBJECT" -m "Automated knowledge workflow: sync/fetch article, classify, update the article library, and rebuild docs/knowledge.html. Deep synthesis refresh runs in a later step. Legacy Bayesian report is not updated." -m "Co-Authored-By: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
+          git push
+
+      - name: Comment article ingest result
+        if: ${{ github.event_name == 'issues' && steps.preflight.outputs.should_ingest != 'false' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          PAGES_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/knowledge.html
+        run: |
+          python scripts/knowledge_issue_comment.py result \
+            --issue-number "$ISSUE_NUMBER" \
+            --phase quick \
+            || echo "Article ingest comment failed (not fatal)."
+
+      - name: Refresh deep synthesis
+        if: ${{ github.event_name == 'workflow_dispatch' || steps.preflight.outputs.should_ingest != 'false' }}
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENROUTER_DEFAULT_MODEL: ${{ vars.OPENROUTER_DEFAULT_MODEL }}
+          OPENROUTER_REFERER: https://github.com/${{ github.repository }}
+          OPENROUTER_TITLE: "tec_trade knowledge system"
+        run: |
           python scripts/knowledge_pipeline.py refresh-llm-reviews
           python scripts/knowledge_pipeline.py build-frameworks
           python scripts/knowledge_pipeline.py build-report
 
-      - name: Commit and push if there are changes
+      - name: Commit and push synthesis changes
+        if: ${{ github.event_name == 'workflow_dispatch' || steps.preflight.outputs.should_ingest != 'false' }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -123,122 +227,27 @@ jobs:
             docs/knowledge.html || true
 
           if git diff --staged --quiet; then
-            echo "No changes to commit."
+            echo "No synthesis changes to commit."
             exit 0
           fi
 
-          # Include the issue number when we know it, otherwise mark the
-          # commit as a manual dispatch.
           if [ -n "${{ github.event.issue.number }}" ]; then
-            SUBJECT="chore(ingest): sync issue #${{ github.event.issue.number }}"
+            SUBJECT="chore(knowledge): refresh synthesis for issue #${{ github.event.issue.number }}"
           else
-            SUBJECT="chore(ingest): manual fetch-pending run"
+            SUBJECT="chore(knowledge): refresh synthesis from manual ingest"
           fi
 
-          git commit -m "$SUBJECT" -m "Automated knowledge workflow: sync/fetch article, classify, refresh LLM reviews, rebuild frameworks and docs/knowledge.html. Legacy Bayesian report is not updated." -m "Co-Authored-By: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
+          git commit -m "$SUBJECT" -m "Automated knowledge workflow: refresh LLM reviews, rebuild frameworks, and rebuild docs/knowledge.html. Legacy Bayesian report is not updated." -m "Co-Authored-By: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
           git push
 
       - name: Comment on the triggering issue
-        if: ${{ github.event_name == 'issues' }}
+        if: ${{ github.event_name == 'issues' && steps.preflight.outputs.should_ingest != 'false' }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           PAGES_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/knowledge.html
         run: |
-          ISSUE_JSON="$(gh issue view "$ISSUE_NUMBER" --json body,url --jq '{body: .body, url: .url}')"
-          export ISSUE_JSON
-
-          python - <<'PY' > knowledge-comment.md
-          import json
-          import os
-          import subprocess
-          from pathlib import Path
-
-          issue = json.loads(os.environ.get("ISSUE_JSON") or "{}")
-          issue_body = issue.get("body") or ""
-          issue_url = issue.get("url") or ""
-          pages_url = os.environ.get("PAGES_URL") or "docs/knowledge.html"
-
-          def read_json(path, default=None):
-              try:
-                  return json.loads(path.read_text(encoding="utf-8"))
-              except Exception:
-                  return {} if default is None else default
-
-          def knowledge_status():
-              try:
-                  raw = subprocess.check_output(
-                      ["python", "scripts/knowledge_pipeline.py", "status"],
-                      text=True,
-                  )
-                  return json.loads(raw)
-              except Exception as exc:
-                  return {"status_error": str(exc)}
-
-          matched = []
-          article_root = Path("knowledge_state/articles")
-          for article_dir in sorted(article_root.glob("*")):
-              if not article_dir.is_dir():
-                  continue
-              record = read_json(article_dir / "record.json")
-              if not record:
-                  continue
-              record_blob = json.dumps(record, ensure_ascii=False)
-              article_url = record.get("url") or ""
-              issue_match = issue_url and issue_url in record_blob
-              body_match = article_url and article_url in issue_body
-              if not issue_match and not body_match:
-                  continue
-
-              classification = read_json(article_dir / "classification.json")
-              extraction = read_json(article_dir / "extraction.json")
-              concepts = read_json(article_dir / "concepts.json")
-              matched.append({
-                  "article_id": article_dir.name,
-                  "title": record.get("title") or article_url or article_dir.name,
-                  "url": article_url,
-                  "full_text_status": (record.get("content_state") or {}).get("full_text_status", "unknown"),
-                  "classification_method": classification.get("method", "unknown"),
-                  "primary_category": classification.get("primary_category", "unknown"),
-                  "secondary_categories": classification.get("secondary_categories") or [],
-                  "tags": classification.get("tags") or [],
-                  "importance": classification.get("importance", "unknown"),
-                  "extraction_status": extraction.get("extraction_status", "unknown"),
-                  "concept_count": len(concepts.get("concept_candidates") or concepts.get("concepts") or []),
-              })
-
-          print("Knowledge system updated.")
-          print()
-          if matched:
-              print("Updated article:")
-              for item in matched:
-                  print(f"- `{item['article_id']}` {item['title']}")
-                  if item["url"]:
-                      print(f"  - Source: {item['url']}")
-                  print(f"  - Full text: `{item['full_text_status']}`")
-                  print(f"  - Extraction: `{item['extraction_status']}`")
-                  print(f"  - Category: `{item['primary_category']}`")
-                  if item["secondary_categories"]:
-                      secondary = ', '.join(f"`{value}`" for value in item["secondary_categories"])
-                      print(f"  - Secondary: {secondary}")
-                  print(f"  - Classification: `{item['classification_method']}`")
-                  print(f"  - Importance: `{item['importance']}`")
-                  if item["tags"]:
-                      tags = ', '.join(f"`{value}`" for value in item["tags"][:8])
-                      print(f"  - Tags: {tags}")
-                  print(f"  - Report: {pages_url}#articles")
-          else:
-              print("No matching article record was found for this issue. Check the workflow log if the article URL was edited, blocked, or already existed under another issue.")
-
-          print()
-          print("Knowledge coverage:")
-          print("```json")
-          print(json.dumps(knowledge_status(), ensure_ascii=False, indent=2))
-          print("```")
-          print()
-          print("Legacy Bayesian report is kept as a historical page and is not refreshed by this workflow.")
-          PY
-
-          gh issue comment "$ISSUE_NUMBER" \
-            --body-file knowledge-comment.md \
-            || echo "Comment failed (not fatal)."
+          python scripts/knowledge_issue_comment.py result \
+            --issue-number "$ISSUE_NUMBER" \
+            --phase final \
+            || echo "Final knowledge comment failed (not fatal)."
