@@ -1,119 +1,111 @@
 {
-  "created_at": "2026-05-08T09:21:55+00:00",
-  "last_updated_at": "2026-05-08T09:23:35+00:00",
+  "created_at": "2026-05-09T05:36:27+00:00",
+  "last_updated_at": "2026-05-09T05:37:46+00:00",
   "version": 1,
-  "source_hash": "f4815d0c8d49a3ac6b04ffff9266be7caf43cb6853ed0a5d16fc9b15ade5f22d",
+  "source_hash": "3c134d04741d57efa21cfa1d3dd4a0440d9e55235973168da5d4993e0db113d7",
   "prompt_version": "frameworks_from_reviews_v1",
   "generated_by": "llm_framework_generation_v1",
   "llm_model": "openai/gpt-5.4",
   "llm_attempts": 1,
   "frameworks": [
     {
-      "framework_id": "runtime_trustworthiness_analysis",
-      "name": "可托付执行系统分析框架",
-      "purpose": "判断一个 AI Agent 或自动化系统是否真的具备稳定交付能力，而不是只展示模型聪明或工具丰富。",
+      "framework_id": "mechanism_boundary_evidence_framework",
+      "name": "机制-边界-证据三层判断框架",
+      "purpose": "用于从多篇主题材料中抽取可迁移的底层机制，区分叙事信号与机制证据，并系统处理反例、失败案例与适用边界。",
       "dimensions": [
-        "任务世界是否被显式建模：对象、流程、权限、例外、评价标准是否进入系统",
-        "runtime 是否完整：session、memory、sandbox、context routing、skills、工具编排是否形成闭环",
-        "开放判断与确定性执行如何分层：哪些交给 LLM，哪些交给规则、验证器、回滚机制",
-        "验证与纠错链路是否存在：结果校验、失败回灌、重试、人工闸门是否可操作",
-        "失败模式是什么：系统会卡在理解、执行、状态漂移、权限越界还是验证缺失",
-        "边界条件在哪里：适用于小世界任务、半结构化任务还是高开放环境，迁移时哪些假设会失效"
+        "这些材料是否在描述同一个底层机制，而非多个相邻但不同的话题？",
+        "真正起作用的变量是什么：模型、运行时、协议、组织流程、数据结构还是硬件约束？",
+        "现有证据属于机制证据、案例证据、热度信号还是宣传叙事？各自权重如何？",
+        "该解释最容易被什么类型的反证推翻：失败案例、跨场景失效、成本失控、规模不成立还是评价口径错误？",
+        "这个机制在哪些边界条件下成立，在哪些任务、行业、时延、权限或资源约束下会失效？",
+        "如果多个概念重叠，应该合并、重命名还是拆分为上下游机制？"
+      ],
+      "best_for": [
+        "动态综述归纳",
+        "主题聚类命名",
+        "行业机制识别",
+        "趋势辨伪"
+      ],
+      "source_review_ids": [
+        "ai_agent_living_review",
+        "ai_infrastructure_living_review",
+        "memory_context_living_review",
+        "research_benchmark_living_review",
+        "robotics_embodied_ai_living_review"
+      ],
+      "status": "llm_draft"
+    },
+    {
+      "framework_id": "runtime_trust_system_framework",
+      "name": "可托付系统设计框架",
+      "purpose": "用于分析一个 AI 系统为何能从 Demo 走向可托付运行，重点审视运行时、状态管理、权限、验证与持续执行能力。",
+      "dimensions": [
+        "系统的核心价值来自模型判断，还是来自 Runtime 对状态、上下文、调度和持久化的托底？",
+        "任务小世界是否被清晰建模，包括对象、权限、例外、评价标准和领域技能？",
+        "执行链路中哪些环节由确定性工具承担，哪些环节由模型承担，边界是否清楚？",
+        "系统如何处理长时程任务中的上下文污染、记忆退化、异常中断和回滚？",
+        "验证与仲裁机制是什么，如何发现错误行动、权限越界或结果失真？",
+        "离开人工盯梢后系统还能否继续稳定运行，若不能，失败主因是什么？"
       ],
       "best_for": [
         "AI Agent",
-        "coding agent",
-        "workflow orchestration",
-        "企业自动化落地",
-        "Agent Runtime 评估"
+        "记忆系统",
+        "开发者工具中的 Agent 工作流",
+        "消费级后台自动化产品"
       ],
       "source_review_ids": [
         "ai_agent_living_review",
         "memory_context_living_review",
-        "developer_tools_living_review",
-        "robotics_embodied_ai_living_review"
+        "developer_tools_living_review"
       ],
       "status": "llm_draft"
     },
     {
-      "framework_id": "system_boundary_redraw",
-      "name": "系统边界重绘框架",
-      "purpose": "分析新技术或新工具的真正价值是否来自能力增强，还是来自把原本分散的成本、控制权和责任边界重新划分。",
+      "framework_id": "communication_bottleneck_rewrite_framework",
+      "name": "通信瓶颈重写框架",
+      "purpose": "用于分析 AI 基础设施或分布式系统中，哪些性能瓶颈本来看似物理极限，后来被协议、拓扑、调度或模型协同改写为可工程化变量。",
       "dimensions": [
-        "旧边界在哪里：过去由人、平台、硬件或流程分别承担哪些成本",
-        "新边界如何被重画：哪些环节被合并、拆分、前移、后移或模块化",
-        "成本结构如何变化：时间、token、带宽、认知负担、验证成本分别转移到哪里",
-        "控制权如何变化：系统是增强开发者、运营者、机器人本体还是基础设施层的掌控力",
-        "新的瓶颈是什么：旧瓶颈被打掉后，testing、proving、带宽、时延、维护是否成为新稀缺",
-        "失败或反例说明什么：如果 adoption 低、性能退化或协作更复杂，说明边界重绘并未成立",
-        "适用边界是什么：实验性演示、组织级落地、生产级基础设施分别需要何种条件"
-      ],
-      "best_for": [
-        "开发者工具",
-        "产品与商业分析",
-        "前端/平台控制权变化",
-        "具身智能系统设计",
-        "AI 工作流重构"
-      ],
-      "source_review_ids": [
-        "developer_tools_living_review",
-        "product_business_living_review",
-        "robotics_embodied_ai_living_review",
-        "ai_agent_living_review"
-      ],
-      "status": "llm_draft"
-    },
-    {
-      "framework_id": "communication_bottleneck_reframing",
-      "name": "通信瓶颈重构框架",
-      "purpose": "识别一个基础设施或系统创新，是否真正把看似物理刚性的约束改写为可调度、可编排、可优化的工程变量。",
-      "dimensions": [
-        "原始瓶颈是什么：尾延迟、拥塞、故障恢复、KV Cache 带宽、时延还是跨节点同步",
-        "瓶颈被在哪一层重构：协议、拓扑、调度、模型结构、服务解耦还是硬件接口",
-        "跨层协同是否成立：模型设计、系统软件、网络和部署方式是否相互支持",
-        "收益口径是什么：吞吐、成本、稳定性、可扩展性还是资源池化能力",
-        "前提条件有哪些：是否依赖特定注意力机制、流量形态、芯片配置或数据中心结构",
-        "反证来自哪里：更简单方案是否已足够、收益是否只在头部规模成立、是否存在迁移失败",
-        "外推边界在哪里：单集群、跨集群、跨地域或多数据中心场景能否复制"
+        "当前瓶颈本质是算力不足、带宽不足、尾延迟、拥塞、故障恢复还是数据移动成本？",
+        "瓶颈是由物理层决定，还是可以通过协议、拓扑、路由、缓存或任务解耦被重写？",
+        "系统改进依赖单点器件升级，还是跨层联合设计？",
+        "训练与推理中的通信约束是否共享同一机制，还是只是表面相似？",
+        "方案成立依赖哪些前提条件，例如模型结构变化、流量压缩、共址假设或网络质量？",
+        "在规模扩大、异构芯片接入、跨集群部署或跨数据中心扩展时，哪些失效模式会出现？"
       ],
       "best_for": [
         "AI 基础设施",
-        "GPU cluster",
-        "datacenter networking",
-        "推理服务架构",
-        "高吞吐系统分析"
+        "GPU 集群",
+        "数据中心网络",
+        "推理服务架构"
       ],
       "source_review_ids": [
         "ai_infrastructure_living_review",
-        "product_business_living_review",
-        "robotics_embodied_ai_living_review"
+        "product_business_living_review"
       ],
       "status": "llm_draft"
     },
     {
-      "framework_id": "structure_before_retrieval",
-      "name": "先组织后检索框架",
-      "purpose": "评估记忆、知识、语音或内容系统是否通过结构化组织提升性能，而不只是扩大输入或堆叠检索。",
+      "framework_id": "context_topology_governance_framework",
+      "name": "上下文拓扑治理框架",
+      "purpose": "用于分析 Context Engineering 与长期记忆系统，不再只看上下文能装多少，而是看信息如何被组织、压缩、路由、更新与审计。",
       "dimensions": [
-        "原始材料如何被组织：层级空间、图谱、蓝图、场景单元还是外部状态机",
-        "检索或生成如何依赖结构：按需加载、图路由、局部激活、顺序规划还是模块调用",
-        "结构化收益是什么：更省 token、更稳、一致性更强还是可审计性提升",
-        "维护成本如何变化：写入、更新、纠错、长期退化、来源追踪是否变得更复杂",
-        "与平坦方案相比强在哪里：相较长上下文、传统 RAG、单轮生成的具体优势是什么",
-        "失败条件是什么：结构过时、错误传播、图失真、组织成本过高时会发生什么",
-        "适用边界是什么：短任务、长期记忆、长音频、复杂叙事或跨模态输入分别适不适合"
+        "系统是平铺上下文，还是先组织信息拓扑再检索调用？",
+        "写入策略是什么：即时筛选、保真存档、后验组织还是混合模式？",
+        "检索和装配依据什么路由：任务、实体、时间、来源、可信度还是使用频率？",
+        "压缩是否牺牲关键信号，是否会引入摘要偏见、来源丢失或长期误差累积？",
+        "记忆系统如何进行增量更新、冲突消解、遗忘控制与来源审计？",
+        "在跨任务、长周期和多用户条件下，结构化记忆会出现哪些维护成本和退化问题？"
       ],
       "best_for": [
-        "Context Engineering",
-        "长期记忆系统",
-        "多模态语音生成",
-        "知识组织系统",
-        "Agent memory"
+        "记忆 / Context Engineering",
+        "Agent 记忆层",
+        "RAG 升级方案",
+        "开发者上下文工具"
       ],
       "source_review_ids": [
         "memory_context_living_review",
-        "multimodal_ai_living_review",
-        "ai_agent_living_review"
+        "ai_agent_living_review",
+        "developer_tools_living_review"
       ],
       "status": "llm_draft"
     }

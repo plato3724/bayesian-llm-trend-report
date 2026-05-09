@@ -1,25 +1,25 @@
 {
-  "created_at": "2026-05-08T09:21:55+00:00",
-  "last_updated_at": "2026-05-08T09:23:35+00:00",
+  "created_at": "2026-05-09T05:36:27+00:00",
+  "last_updated_at": "2026-05-09T05:37:46+00:00",
   "version": 1,
-  "source_hash": "f4815d0c8d49a3ac6b04ffff9266be7caf43cb6853ed0a5d16fc9b15ade5f22d",
+  "source_hash": "3c134d04741d57efa21cfa1d3dd4a0440d9e55235973168da5d4993e0db113d7",
   "prompt_version": "frameworks_from_reviews_v1",
   "generated_by": "llm_framework_generation_v1",
   "llm_model": "openai/gpt-5.4",
   "llm_attempts": 1,
   "templates": [
     {
-      "template_id": "mechanism_over_claims_review",
-      "name": "从 claim 到机制的综述模板",
-      "use_case": "用于写动态综述、行业判断或主题分析，强调跨案例重复结构，而非逐篇摘要。",
+      "template_id": "mechanism_first_review_template",
+      "name": "机制优先型综述模板",
+      "use_case": "用于撰写跨多篇材料的主题综述，先解释底层机制，再讨论案例、反证与命名边界。",
       "structure": [
-        "先给出主题当前阶段判断：单案例、早期成形、反复出现或相对稳固",
-        "指出多个材料中反复出现的现象，并提出它们可能共享的底层机制",
-        "用一句核心论点重写主题：真正变化的不是表面热度，而是某个系统机制",
-        "拆解该机制的 2-4 个关键组成部分，说明它们如何共同作用",
-        "加入反证与误读校正：哪些材料只是热度信号，哪些结论不能外推",
-        "说明失败模式与边界条件：该机制在什么情况下成立，在什么情况下会失效",
-        "最后提出下一轮最该寻找的反驳材料或概念修正点"
+        "先指出这些材料表面上各讲各的，但可能在描述同一个底层机制",
+        "用一句话定义该机制，并说明它为何比单篇 claim 更能解释现象",
+        "拆解机制成立的关键环节，说明真正起作用的变量是什么",
+        "区分机制证据、案例证据与热度信号，给出证据强弱排序",
+        "列出最重要的误读与反证来源，说明什么材料最可能推翻当前解释",
+        "讨论概念重叠、命名边界与需要合并或拆分的主题",
+        "最后给出下一轮最值得补充的证据类型或研究问题"
       ],
       "source_review_ids": [
         "ai_agent_living_review",
@@ -30,65 +30,61 @@
       "status": "llm_draft"
     },
     {
-      "template_id": "positive_negative_balanced_argument",
-      "name": "正反并置论证模板",
-      "use_case": "用于讨论一个新趋势、新技术或热门方向，既呈现其成立逻辑，也呈现失败风险与反例空间。",
+      "template_id": "system_trust_analysis_template",
+      "name": "可托付系统分析模板",
+      "use_case": "用于分析 AI Agent、记忆系统或自动化产品为何能或不能被长期托付。",
       "structure": [
-        "先明确该方向最强的正面判断是什么",
-        "解释这个判断成立所依赖的机制，而不是只引用口号或数据点",
-        "补充它真正改变了什么：成本结构、组织方式、技术边界或市场结构",
-        "转入限制条件：该判断依赖哪些前提，一旦前提消失会怎样",
-        "列出最可能的反证类型：失败案例、迁移失效、对照实验或 ROI 不成立",
-        "区分局部成立与普遍成立：哪些场景可接受，哪些场景仍危险",
-        "以审慎结论收束：说明现在能说到哪一步，不能说到哪一步"
-      ],
-      "source_review_ids": [
-        "developer_tools_living_review",
-        "multimodal_ai_living_review",
-        "consumer_economy_living_review",
-        "product_business_living_review"
-      ],
-      "status": "llm_draft"
-    },
-    {
-      "template_id": "system_layer_decomposition",
-      "name": "系统分层拆解模板",
-      "use_case": "用于解释一个复杂系统为什么有效，适合 AI Agent、基础设施、机器人、记忆系统等主题。",
-      "structure": [
-        "定义系统目标：系统要稳定解决的不是单点能力，而是一类完整任务",
-        "拆出感知/输入层：系统接收什么信息，信息如何被标准化或压缩",
-        "拆出决策/规划层：LLM、策略、路由或规划器承担什么职责",
-        "拆出执行/约束层：工具、协议、硬件、sandbox、动作头或渲染层如何落地",
-        "拆出验证/反馈层：校验器、人审、环境反馈、benchmark 或日志如何闭环",
-        "分析层间耦合：哪些性能提升来自跨层协同，而非某一层单独增强",
-        "指出最脆弱的一层与系统边界：如果要规模化，首先会卡在哪里"
+        "先说明系统展示出的能力与真正可托付之间不是一回事",
+        "定义任务小世界：对象、权限、规则、例外和评价标准",
+        "分析 Runtime 如何处理状态、上下文、调度、持久化和异常恢复",
+        "说明模型负责什么判断，工具负责什么执行，验证链如何闭环",
+        "列出系统最脆弱的失效点，如上下文污染、权限越界、长时程漂移或人工依赖",
+        "给出反面案例或边界条件，说明何时 Demo 无法转化为可托付能力",
+        "总结真正决定上限的是模型、运行时还是领域建模"
       ],
       "source_review_ids": [
         "ai_agent_living_review",
-        "ai_infrastructure_living_review",
-        "robotics_embodied_ai_living_review",
         "memory_context_living_review"
       ],
       "status": "llm_draft"
     },
     {
-      "template_id": "bottleneck_shift_explanation",
-      "name": "瓶颈迁移解释模板",
-      "use_case": "用于写技术拐点、工具升级或产业变化，强调问题并未消失，而是从旧位置转移到新位置。",
+      "template_id": "signal_vs_structure_template",
+      "name": "信号与结构区分模板",
+      "use_case": "用于写趋势判断，避免把热度、涨星、传播或单次爆款误判为长期结构。",
       "structure": [
-        "先指出旧瓶颈是什么，以及过去系统为何受限",
-        "说明新方案如何解决或缓解了旧瓶颈",
-        "强调收益并非免费：瓶颈被转移到了新的环节",
-        "分析新瓶颈的性质：验证、带宽、时延、维护、责任或组织协作",
-        "用反例说明如果忽略新瓶颈，会产生哪些误判",
-        "比较谁更受益：头部公司、基础设施层、应用层还是开发者个体",
-        "最后给出判断标准：未来应追踪哪类指标而不是旧指标"
+        "先承认市场信号已经出现，但提醒信号不等于结构",
+        "区分当前看到的是热度指标、采用证据、机制证据还是经营证据",
+        "解释这些信号背后可能对应的真实机制",
+        "指出缺失的关键证据，如失败率、复购、长期 ROI、组织级采用或标准对照",
+        "列出最容易发生的误读与过度推断",
+        "给出判断升级的条件：什么证据出现后才能把信号提升为结构性趋势"
       ],
       "source_review_ids": [
+        "consumer_economy_living_review",
         "developer_tools_living_review",
+        "multimodal_ai_living_review",
+        "product_business_living_review"
+      ],
+      "status": "llm_draft"
+    },
+    {
+      "template_id": "bottleneck_rewrite_template",
+      "name": "瓶颈重写论证模板",
+      "use_case": "用于描述某一技术进展如何把原本的硬约束、流程约束或成本约束改写为可工程化变量。",
+      "structure": [
+        "先指出行业原有的默认约束是什么，以及它为何长期被视为硬瓶颈",
+        "说明新方案并非简单加速，而是改写了瓶颈所在层级",
+        "分层解释改写发生在协议、拓扑、调度、模型结构或组织流程中的哪一层",
+        "强调方案成立依赖的前提条件，避免把局部成功外推为普遍规律",
+        "分析由此释放出的新能力，例如跨集群、解耦部署、长期运行或资源池化",
+        "列出可能的失效模式与扩展成本",
+        "最后说明这意味着竞争力正在从单点性能转向跨层协同"
+      ],
+      "source_review_ids": [
         "ai_infrastructure_living_review",
-        "product_business_living_review",
-        "robotics_embodied_ai_living_review"
+        "memory_context_living_review",
+        "product_business_living_review"
       ],
       "status": "llm_draft"
     }
