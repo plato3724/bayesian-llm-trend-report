@@ -1,0 +1,48 @@
+{
+  "article_id": "876053e8e449",
+  "title": "为什么完美的AI Agent不存在？Claude Code源码背后的五大设计哲学与妥协",
+  "url": "https://mp.weixin.qq.com/s/RFU_PymPZDvqsL4eVDcAHg",
+  "ingested_from": "github_issue",
+  "ingested_at": "2026-05-09T05:34:35+00:00",
+  "last_updated_at": "2026-05-09T05:34:40+00:00",
+  "content_state": {
+    "full_text_status": "acquired",
+    "canonical_text_source": "knowledge_state/articles/876053e8e449/canonical_text.txt",
+    "fetch_attempts": [
+      {
+        "attempted_at": "2026-05-09T05:34:40+00:00",
+        "status": "acquired",
+        "status_code": 200,
+        "final_url": "https://mp.weixin.qq.com/s/RFU_PymPZDvqsL4eVDcAHg",
+        "content_type": "text/html",
+        "text_length": 6743,
+        "raw_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/knowledge_state/articles/876053e8e449/raw/fetch_20260509T053436Z.html",
+        "text_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/knowledge_state/articles/876053e8e449/raw/extract_20260509T053436Z.txt",
+        "note": "Full text looks sufficient for claim extraction."
+      }
+    ],
+    "manual_artifacts": [],
+    "next_action": "extract_claims"
+  },
+  "analysis_state": {
+    "claim_extraction_status": "not_started",
+    "verification_status": "not_started",
+    "bayesian_status": "excluded_until_verified"
+  },
+  "article_summary": {
+    "events": [],
+    "techniques": [],
+    "tools": []
+  },
+  "hypothesis_impacts": [],
+  "ingest_sources": [
+    {
+      "source_name": "github_issue",
+      "source_ref": "https://github.com/plato3724/bayesian-llm-trend-report/issues/19",
+      "source_note": "https://mp.weixin.qq.com/s/RFU_PymPZDvqsL4eVDcAHg",
+      "ingested_at": "2026-05-09T05:34:35+00:00"
+    }
+  ],
+  "lifecycle_state": "active",
+  "lifecycle_events": []
+}

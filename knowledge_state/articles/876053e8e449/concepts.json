@@ -1,0 +1,55 @@
+{
+  "article_id": "876053e8e449",
+  "concept_status": "drafted",
+  "generated_at": "2026-05-09T05:34:46+00:00",
+  "method": "tag_to_concept_mvp",
+  "matched_concepts": [
+    "agent_runtime",
+    "claude_code",
+    "coding_agent",
+    "context_compaction",
+    "human_in_the_loop",
+    "openclaw_comparison",
+    "operational_harness",
+    "permission_system",
+    "sandboxing",
+    "subagent_orchestration",
+    "tool_calling",
+    "workflow_orchestration"
+  ],
+  "created_concepts": [
+    "permission_system",
+    "context_compaction",
+    "subagent_orchestration",
+    "operational_harness",
+    "sandboxing",
+    "openclaw_comparison"
+  ],
+  "candidate_concepts": [],
+  "source_trace": {
+    "classification_path": "knowledge_state/articles/876053e8e449/classification.json",
+    "extraction_path": "knowledge_state/articles/876053e8e449/extraction.json"
+  },
+  "article_entities": [
+    "Claude",
+    "VILA-Lab",
+    "Dive",
+    "Claude-Code",
+    "Anthropic",
+    "MBZUAI",
+    "QbitAI",
+    "MBZUAI VILA",
+    "VILA",
+    "Agent",
+    "Claude Code",
+    "Design Principles",
+    "Deny-First",
+    "Graduated Trust",
+    "Defense",
+    "Depth",
+    "Minimal Scaffolding",
+    "Maximal Operational Harness",
+    "Check Point",
+    "CVE-2025-59536"
+  ]
+}

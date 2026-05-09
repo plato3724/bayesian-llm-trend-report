@@ -215,7 +215,7 @@
       </nav>
     </header>
 
-    <section class="stats"><div class='stat'><span>文章</span><strong>27</strong></div><div class='stat'><span>已抽取</span><strong>27</strong></div><div class='stat'><span>已分类</span><strong>27</strong></div><div class='stat'><span>综述</span><strong>9</strong></div></section>
+    <section class="stats"><div class='stat'><span>文章</span><strong>28</strong></div><div class='stat'><span>已抽取</span><strong>28</strong></div><div class='stat'><span>已分类</span><strong>28</strong></div><div class='stat'><span>综述</span><strong>9</strong></div></section>
 
     <section id="reviews">
       <h2>主题综述</h2>
@@ -229,29 +229,29 @@
               <span class="review-title">AI Agent动态综述</span>
             </span>
             <span class="review-meta">
-              <span class="type-badge thinking">LLM 深度分析</span>
-              <span class="count">7 篇文章</span>
+              <span class="type-badge thinking">规则草稿</span>
+              <span class="count">8 篇文章</span>
             </span>
           </span>
-          <span class="review-preview">这批证据最强的共识不是“Agent 更火了”，而是“Agent 正在从会说话的模型，变成可托付的执行系统”。其中最关键的机制不是单次推理更聪明，而是通过 harness、session、sandbox、技能文件、上下文路由、确定性工具、验证回灌和人工闸门，把模型嵌入一个受约束的 runtime。换句话说，Agent 的本质正在从回答问题，转向在特定小世界里稳定交付劳动；而能否交付，取决于是否把任务世界的对象、流程、权限、例外和评价标准编码进系统，而不只是把更多 prompt 和工具堆上去。</span>
-          <span class="pill-row review-preview-tags"><span class='pill pattern'>agent-runtime</span><span class='pill pattern'>workflow-orchestration</span><span class='pill pattern'>coding-agent</span><span class='pill pattern'>cloud-agent</span><span class='pill pattern'>context-engineering</span><span class='pill pattern'>structured-memory</span></span>
+          <span class="review-preview">这组 AI Agent 材料真正值得关注的不是模型能否完成单次任务，而是任务如何被拆解、编排、校验并在失败后恢复。竞争重心正在从回答质量转向可运行的工作流能力。</span>
+          <span class="pill-row review-preview-tags"><span class='pill pattern'>agent-runtime</span><span class='pill pattern'>workflow-orchestration</span><span class='pill pattern'>coding-agent</span><span class='pill pattern'>cloud-agent</span><span class='pill pattern'>human-in-the-loop</span><span class='pill pattern'>tool-calling</span></span>
         </summary>
         <div class="review-body">
         
       <div class="deep-review">
         <p class="eyebrow">深度分析文章</p>
-        <h3>AI Agent 的分水岭不在模型更强，而在“可托付的运行时”是否成型</h3>
-        <p class="lead">这组材料共同指向一个更具体的判断：Agent 的竞争中心正在从模型能力展示，转向 runtime、harness、context、验证与人机边界的系统设计。真正拉开差距的，不是谁会多接几个工具，而是谁能把一个任务世界做成可持续、可回滚、可验证、可复用的执行环境。</p>
+        <h3>AI Agent深度分析</h3>
+        <p class="lead">基于 8 篇文章，当前综述把 agent-runtime、workflow-orchestration、coding-agent 视为主要证据线索，并把 agent_runtime、workflow_orchestration、coding_agent 作为概念层的组织入口。</p>
         <div class="thesis">
           <strong>核心判断</strong>
-          <p>这批证据最强的共识不是“Agent 更火了”，而是“Agent 正在从会说话的模型，变成可托付的执行系统”。其中最关键的机制不是单次推理更聪明，而是通过 harness、session、sandbox、技能文件、上下文路由、确定性工具、验证回灌和人工闸门，把模型嵌入一个受约束的 runtime。换句话说，Agent 的本质正在从回答问题，转向在特定小世界里稳定交付劳动；而能否交付，取决于是否把任务世界的对象、流程、权限、例外和评价标准编码进系统，而不只是把更多 prompt 和工具堆上去。</p>
+          <p>这组 AI Agent 材料真正值得关注的不是模型能否完成单次任务，而是任务如何被拆解、编排、校验并在失败后恢复。竞争重心正在从回答质量转向可运行的工作流能力。</p>
         </div>
-        <section class='deep-section'><h4>一、先给结论：Agent 赛道真正升级的是“运行时”，不是“外壳感”</h4><p>如果只看行业叙事，很容易把这组材料读成一个熟悉故事：模型更强了，Agent 更热了，人人都在谈自动化、多智能体、消费级入口和异步执行。但把材料放在一起之后，最稳的核心判断其实更朴素：Agent 的跃迁，不是从 chatbot 升级成“会调工具的聊天框”，而是从一次性回答系统，升级成可持续运行、可管理状态、可受控执行的 runtime。</p><p>这个判断的机制证据主要来自三类材料。第一类是《YC内部AI架构曝光！YC总裁Garry亲证：比谷歌员工效率高1000倍的秘密，不在模型，而在“Harness”》，它最明确地提出：实时仓库上下文、提示缓存、专门工具、结构化记忆、并行子代理，并不是让模型“更聪明”，而是让模型在正确时间拿到正确上下文，并避免噪声污染。第二类是《Anthropic发布Managed Agents，才发现这支硅谷华人团队早就押对了赌注》，它把 agent 运行时拆成 session、harness、sandbox 三个可替换接口，说明行业开始把 Agent 当作基础设施而不是产品皮肤。第三类是《Claude Code Harness+龙虾科研团来了！金字塔分层架构+多智能体讨论，单人也能跑出「实验室」科研》，其中不可编辑的 Experiment Harness、标准化 results.json、异常值校验、verified results 回灌 agent loop，直接把“可信执行链路”说成了系统骨架。</p><p>相对地，热度与叙事信号也很明显存在，但证据强度较弱。比如《Anthropic发布Managed Agents，才发现这支硅谷华人团队早就押对了赌注》里对 CREAO 热搜、全球 KOL 关注、消费级入口的描述，和《有人把巴菲特芒格炼化成Agent，然后开源了》中 GitHub Trending、Star 数、投资大师 Agent 化趋势，更多说明社会注意力正在聚集，而不能直接证明某种架构一定有效。它们是市场温度计，不是机制本身。</p><p>因此，当前更准确的说法不是“Agent 时代来了”，而是“Agent 的可托付运行时开始成型”。这是比热度更窄、但也更重要的变化。</p></section><section class='deep-section'><h4>二、为什么说决定性变量不是模型，而是 harness：因为生产力差距来自上下文与执行边界的组织方式</h4><p>《YC内部AI架构曝光！YC总裁Garry亲证：比谷歌员工效率高1000倍的秘密，不在模型，而在“Harness”》给出的最大洞见，不是那组夸张的效率数字，而是对差距来源的拆解：提升 2 倍的人和提升 10 倍、100 倍的人，往往用的是同一个模型，差别在于模型外部的组织系统。这里的“瘦外壳 + 胖技能”尤其关键。薄 harness 只做循环执行、文件读写、上下文管理和安全检查；厚 skill 则承载过程知识、判断逻辑和可复用的工作方法。这意味着真正的产品资产不再是某个神奇 prompt，而是被结构化沉淀下来的工作方法。</p><p>这条机制与上下文工程直接相连。材料一里 Garry Tan 从 20000 行 CLAUDE.md 回退到约 200 行指针式文档，本质上是在证明：上下文不是越多越好，而是越能按需路由越好。Resolver 的作用不是增加知识，而是在任务类型出现时加载恰当文档，避免上下文窗口被历史噪声占满。这和很多团队的直觉相反：他们以为给 Agent 更多信息就更稳，结果往往是注意力退化、token 膨胀、延迟上升、失败率增加。</p><p>这里还能看到另一个更深的机制：Agent 性能的提升，越来越不像“换大脑”，更像“修交通”。Skill 决定模型应该沿什么程序思考，resolver 决定什么时候读什么，专用工具决定动作成本够不够低，结构化记忆决定长期任务是否连续，确定性工具决定关键步骤是否可信。模型依然重要，但它开始像 CPU，而 harness 更像操作系统与调度层。没有后者，前者的智能就难以稳定落地。</p><p>这也是为什么材料一反复批评臃肿工具层：40 多个工具定义挤占半个上下文窗口、把每个接口都包装成 REST API、延迟和 token 成本同时爆炸。这种系统失败，不是模型不行，而是 runtime 设计把模型拖垮了。</p></section><section class='deep-section'><h4>三、Agent 不是“会调工具”就够了，真正门槛是它是否学会了一个小世界</h4><p>如果材料一解释了 Agent 为什么需要 harness，那么《斯隆奖得主青年学者苏煜谈Agent：会用的人，不是Prompt高手，而是能把自己的工作小世界说清楚的人》解释了 harness 里面到底该装什么。它给出的核心反驳非常有力：把 Agent 理解为“提示词 + 工具调用 + 工作流外壳”太窄了。工具调用只是行动通道，不是世界理解。一个 Agent 能按按钮，不代表它知道按钮之后会发生什么，也不代表你敢把责任交给它。</p><p>这是本组材料里最强的机制性理论证据之一。它把很多看似技术问题，重新翻译成世界建模问题：真实工作不是一串动作，而是对象、流程、权限、例外、风险与评价标准的组合。Agent 现在最尴尬的状态，不是完全不会做，而是常常能完成 60%-70%，却在剩下 30%-40% 的隐性边界上翻车。这个比例不是 Benchmark，而是一种结构感：它足够聪明让你心动，但不够稳让你托付。</p><p>把这一点和材料一放在一起，关系就很清楚了。Skill 文件之所以有价值，不只是因为它是可复用 prompt，而是因为它在尝试把某个工作小世界的方法论显式化。Resolver 之所以重要，也不只是检索文档，而是把这个小世界的相关约束在需要时调进来。换句话说，harness 的真正功能，不是替模型加几个轮子，而是把隐性的工作世界翻译成机器可用的运行环境。</p><p>这一判断还解释了为什么很多“看起来像 Agent”的产品不稳定。只堆工具，Agent 会更忙；只有把工作世界讲清楚，Agent 才会更稳。</p></section><section class='deep-section'><h4>四、从编程到科研到学习，成功案例都在重复同一条结构：潜在空间负责判断，确定性层负责交付</h4><p>这些材料覆盖编程、科研、教育、投资等不同场景，但机制上出现了高度同构。材料一最明确地提出“潜在的 vs. 确定的”：判断、综合、模式识别交给模型；SQL、编译、算术、执行交给确定性工具。这个分工不是工程洁癖，而是 Agent 可靠性的主条件。把该确定的部分塞进潜在空间，是很多系统不稳定的根源。</p><p>《Claude Code Harness+龙虾科研团来了！金字塔分层架构+多智能体讨论，单人也能跑出「实验室」科研》是这条机制的案例证据。它把科研流程拆成层级 Agent、任务队列、上下文连接，并在运行环境中注入不可编辑的 Experiment Harness，统一负责时间预算、指标上报、异常值校验与标准化结果输出。这说明多智能体并不是为了“更像实验室”而做的表演，而是为了把探索、执行、验证、回滚拆到不同职责层，形成可审计闭环。</p><p>《哥大休学创业：不要 Ask ChatGPT，Ask Hyperknow 3.0》则提供了教育场景里的另一种同构。Hyperknow 强调连接 Canvas LMS、课程知识库、主动捕捉进度变化、提前准备材料，并以 Deep Learn Sessions 做结构化章节学习。这里最值得注意的不是“主动式”这个产品卖点，而是它试图把学习上下文做成长期、连续、个体化的运行环境。它同样在做一件事：把碎片问答，改造成有记忆、有节奏、有阶段判断的任务系统。</p><p>即便是《有人把巴菲特芒格炼化成Agent，然后开源了》这样的投资案例，也体现了类似结构：前端可视化流程编辑器、后端 LangGraph 编排、共享 AgentState、数据层对接外部 API、回测模块验证历史表现。它还不足以证明“投资 Agent 可赚钱”，但足以证明行业正在把多 Agent 从角色扮演，转向状态共享、流程可视化和可回测的系统设计。</p><p>因此，跨场景真正重复的不是“Agent 会做很多事”，而是一个分层原则：开放性判断与封闭性执行必须被拆开，并通过 runtime 串起来。</p></section><section class='deep-section'><h4>五、Managed Agents、Codex 与云端异步执行，说明 Agent 正在从界面功能变成计算基础设施</h4><p>《Anthropic发布Managed Agents，才发现这支硅谷华人团队早就押对了赌注》和《OpenAI Codex 核心团队爆猛料：我们不写 PRD，几乎不用 PM，设计师写代码比工程师还猛》共同揭示了一个产业层面的转向：Agent 不再只是 IDE 里的一个按钮，或聊天窗口里的一轮交互，而是开始成为一种托管式、异步式、云端化的执行基座。</p><p>材料二里 session、harness、sandbox 的解耦，以及沙盒化独立运行、外置凭证、durable session log 的表述，指向的是 Agent Runtime 的虚拟化。它不再要求用户始终在线盯着，也不再默认把所有能力绑死在单个前端进程里。材料五则从 Codex 的角度给出了相近的叙事：真正的范式变化不是“副驾式补全更强”，而是用户开始把长周期任务整个委派给异步自主 Agent。这里“睡前列任务，醒来任务完成”的故事带有叙事夸张，但其结构方向是可信的：Agent 正在从实时协同，转向离线代理。</p><p>值得注意的是，材料五的很多内容属于访谈转述和行业解释，严格说机制证据强度弱于直接技术拆解，但它对产业意图的揭示仍有价值。尤其是“产品设计不要阻碍模型发挥能力”“只打磨核心底层原语”“高可配置性与极简体验并存”的说法，和材料一的薄 harness、厚 skill 几乎互相印证。这说明头部系统正在收敛到类似认识：可拓展的 Agent 平台，不应该把所有智能硬编码在庞大的产品流程里，而应该暴露足够通用的原语与运行边界。</p><p>换句话说，Agent 的产品形态正在从应用功能，向云端计算环境靠近。谁掌握 runtime，谁就更接近生态位中心。</p></section><section class='deep-section'><h4>六、但不要把“多智能体”当成答案：很多材料真正有效的是验证、回滚和人工闸门，而不是 agent 数量</h4><p>这组材料里另一个容易被误读的点是：仿佛系统越像“团队”、越有多个 agent、越像实验室，就越先进。但从证据看，多智能体本身不是最硬的机制，真正硬的是质量控制与责任边界。</p><p>《Claude Code Harness+龙虾科研团来了！金字塔分层架构+多智能体讨论，单人也能跑出「实验室」科研》确实描绘了金字塔式架构、Lab 讨论模式、跨方向共识生成，但它最可靠的部分其实不是‘多个 agent 一起讨论’这个画面，而是关键阶段的人类介入、回滚、标准化 results.json、异常值校验和 verified results 回灌。没有这些，所谓实验室更可能只是多个 hallucination 并行化。</p><p>《有人把巴菲特芒格炼化成Agent，然后开源了》也能说明这一点。它的“12 位大师 + 6 位分析师”在传播上很有吸引力，但从机制证据看，更重要的是 LangGraph 的状态编排、共享 AgentState 和回测模块。大师人设是叙事信号，状态共享与可回测才是系统证据。</p><p>因此，判断一个 Agent 系统是否成熟，不该先数有几个 agent，而该先问四个问题：它如何管理状态？如何验证结果？何时回滚？人什么时候必须介入？材料三在这些点上最完整，材料六则更多停留在框架展示阶段。</p></section><section class='deep-section'><h4>七、当前叙事里最夸大的部分：效率神话、100% 准确率与“软件即劳动”的直达式想象</h4><p>这组材料并不缺雄心，但也存在明显需要压低音量的地方。材料一中的“比 2005 年谷歌员工高约 1000 倍”是强叙事信号，而不是可外推的机制结论。它说明有人观察到了极大的生产率差异，但没有给出统一任务口径、比较条件和可复现实验，因此只能作为方向性信号，不能当作通用结论。</p><p>材料二中关于 CREAO“固化后不再依赖 LLM 实时推理，因此以后每次执行结果准确率都是 100%”的说法，也必须谨慎看待。它最多在一个被固定的自动化流程、接口稳定、环境不变的前提下成立；一旦外部软件界面变化、权限失效、业务规则调整或数据源异常，所谓 100% 准确率就会失效。这里更合理的理解是：把开放式推理前移成流程编制，能显著提高重复任务稳定性，而不是彻底消灭不确定性。</p><p>材料七提出“软件从工具走向劳动交付”，这个判断很有洞见，但也有边界。它更适合那些可定义对象、可约束流程、可验证结果、可建立反馈闭环的知识工作；对于高风险、低频、强责任归属、强隐性协商的任务，软件距离直接交付劳动仍有距离。也就是说，‘结果导向的软件’会扩大，但不会均匀替代所有知识劳动。</p><p>这些反证并不推翻主结论，反而帮助我们更准确定位：Agent 的进展首先发生在结构清晰、验证明确、上下文可积累的局部世界，而不是无差别地吞掉整个工作世界。</p></section><section class='deep-section'><h4>八、边界条件：什么任务最适合 Agent，什么任务仍不该过度委派</h4><p>综合这些材料，可以归纳出 Agent 适配度的几个边界条件。第一，任务最好有明确对象和中间状态，便于 session 与 memory 持续跟踪。编程仓库、科研实验、课程资料、财务数据都符合这一点。第二，任务最好能拆出确定性执行层，比如测试、编译、查询、回测、调度、文件操作、浏览器动作。第三，结果最好能被某种机制验证：测试集、results.json、历史回测、来源标注、用户反馈、NPS、人工审批等。</p><p>反过来，不适合过度委派的任务也很清楚。涉及高风险权限、无法回滚的操作、极高责任归属、低容错且缺少验证基线的任务，依然需要把 Agent 放在建议层而不是执行层。材料一关于潜在空间与确定性分工、材料三关于 human-in-the-loop 与 rollback、材料七关于权限与例外处理，实际上都在指向同一个边界：越接近不可逆后果，越不能把“看起来会做”当作“可以托付”。</p><p>这也是为什么当前最成熟的 Agent 形态，不是完全自治，而是‘受约束自治’。它能长时运行，但必须有日志；能调用工具，但必须有边界；能学习，但必须有反馈；能决策，但关键处必须能被中断。</p></section><section class='deep-section'><h4>九、下一轮最值得验证的问题：不是再找一个爆款 Agent，而是追问哪些机制真的能迁移</h4><p>基于现有证据，下一轮阅读最该验证的不是“下一个最火 Agent 是谁”，而是以下几个更实的问题。第一，薄 harness + 厚 skills 是否能跨行业迁移，还是主要适用于编码与知识整理这类高文本密度任务？第二，session、sandbox、durable log 这些 runtime 设计，究竟能在多大程度上降低长任务失败率，是否有公开 Benchmark 或生产指标支持？第三，human-in-the-loop 最有效的插入位置在哪里：规划前、执行中、验证后，还是只在异常时触发？第四，主动式 Agent 如 Hyperknow 这类场景，长期价值来自更强的主动性，还是来自更完整的用户状态建模？第五，多智能体架构到底在什么条件下优于单智能体 + 强验证链路？</p><p>还要特别验证一个关键反问题：是否存在大量场景，提升并不来自 agentization，而只是来自更好的工具层、UI、缓存和上下文管理？如果答案是肯定的，那么今天很多被叫作 Agent 的系统，本质上可能是“带推理内核的工作流软件”，而不是一个需要拟人化理解的新物种。这一点会直接影响我们如何给这个赛道命名和估值。</p><p>总之，当前材料已经足以支持一个强判断：Agent 的中心问题已经不再是‘模型够不够聪明’，而是‘系统是否足够可托付’。但要把这件事从趋势判断推进到稳定结论，还需要更多关于失败率、回滚成本、人工接管点和跨场景迁移能力的硬证据。</p></section>
+        <section class='deep-section'><h4>一、AI Agent的真实议题：任务如何被拆解、编排、校验并在失败后恢复</h4><p>AI Agent这一组文章不能只按发布时间或单篇观点阅读。更重要的是看它们如何从不同角度指向同一个问题：任务如何被拆解、编排、校验并在失败后恢复。</p><p>《YC内部AI架构曝光！YC总裁Garry亲证：比谷歌...》显示：你可能见过这种情况：一个外壳里塞了40多个工具定义，占掉了半个上下文窗口；每个工具都做得很“神级”，结果调用一次要等2到5秒；把每个接口都包装成REST API工具，导致token数量变成三倍、延迟变成三倍、失败率也变成三倍。；《Anthropic发布Managed Agents，...》显示：Anthropic发布Managed Agents，才发现这支硅谷华人团队早就押对了赌注；《Claude Code Harness+龙虾科研团来...》显示：Claude Code Harness+龙虾科研团来了！金字塔分层架构+多智能体讨论，单人也能跑出「实验室」科研。</p></section><section class='deep-section'><h4>二、agent-runtime 暴露的瓶颈</h4><p>当前最强的重复模式是 agent-runtime。这组文章把 agent 能力视为运行时问题：持久 session、工具、状态和执行边界，与基础模型本身同样重要。这个模式不是从标题或标签直接推出来的，而是需要回到文章中的具体材料：它反复出现在产品叙事、技术细节、使用场景或市场反应里。</p><p>因此，AI Agent的判断重点不应是单点能力强弱，而是它是否改变了Agent 系统 的约束条件、协作方式或规模化路径。</p></section><section class='deep-section'><h4>三、《YC内部AI架构曝光！YC总裁Garry亲证：比谷歌...》等案例如何互相解释</h4><p>《YC内部AI架构曝光！YC总裁Garry亲证：比谷歌...》承担的是 agent-runtime、workflow-orchestration、context-engineering 的证据角色：你可能见过这种情况：一个外壳里塞了40多个工具定义，占掉了半个上下文窗口；每个工具都做得很“神级”，结果调用一次要等2到5秒；把每个接口都包装成REST API工具，导致token数量变成三倍、延迟变成三倍、失败率也变成三倍。；《Anthropic发布Managed Agents，...》承担的是 managed-agents、agent-harness、agent-runtime 的证据角色：Anthropic发布Managed Agents，才发现这支硅谷华人团队早就押对了赌注；《Claude Code Harness+龙虾科研团来...》承担的是 multi-agent-research-workflow、hierarchical-agent-architecture、agent-runtime 的证据角色：Claude Code Harness+龙虾科研团来了！金字塔分层架构+多智能体讨论，单人也能跑出「实验室」科研。</p><p>这说明 8 篇文章之间不是简单相加。有些文章提供机制解释，有些文章提供案例和场景，有些文章只提供热度信号；只有区分这些证据角色，综述才可能形成判断。</p></section><section class='deep-section'><h4>四、从 agent_runtime、workflow_orchestration、coding_agent 推出的判断</h4><p>把这些材料放在一起后，可以形成一个暂时判断：竞争重心正在从回答质量转向可运行的工作流能力。agent_runtime、workflow_orchestration、coding_agent 不是装饰性标签，而是把多篇文章连接起来的解释入口。</p><p>如果这个判断成立，后续文章库的重点就不是继续堆积同类新闻，而是观察哪些新材料会增强、修正或削弱这一解释。</p></section><section class='deep-section'><h4>五、哪些证据会改变这篇综述的结论</h4><p>这组材料仍然不足以把趋势判断变成确定结论。真正可能削弱上述判断的，不是又一篇相似案例，而是失败案例、低采用率案例、成本约束、组织阻力，以及指标表现与真实价值不一致的证据。</p><p>因此，这篇综述的结论应被理解为可检验的判断：它解释了当前材料之间的共同结构，但也必须接受后续全文材料对其边界条件的修正。</p></section>
       </div>
     
         <details class="evidence-detail">
           <summary>证据附录：问题、模式、案例与下一轮问题</summary>
-        <p class="review-question">在这 7 篇「AI Agent」文章中，超越单篇 claim 的重复结构是什么？</p>
+        <p class="review-question">在这 8 篇「AI Agent」文章中，超越单篇 claim 的重复结构是什么？</p>
         <p>这组「AI Agent」综述目前处于「反复出现」阶段。最强的重复模式是 agent-runtime、workflow-orchestration、coding-agent；概念层正在围绕 agent_runtime、workflow_orchestration、coding_agent 聚集。因此综述重点不应只是罗列文章 claim，而应判断这些案例是否在描述同一个底层机制。</p>
         <div class="split">
           <div>
@@ -260,13 +260,13 @@
           </div>
           <div>
             <h4>主导模式</h4>
-            <ul><li><strong>agent-runtime</strong> <span class='muted'>(反复出现, 7 篇)</span><p>这组文章把 agent 能力视为运行时问题：持久 session、工具、状态和执行边界，与基础模型本身同样重要。</p></li><li><strong>workflow-orchestration</strong> <span class='muted'>(反复出现, 5 篇)</span><p>反复出现的信号是编排：有用系统需要协调多步骤、多个行动者、工具或审查门，而不是依赖一次模型回答。</p></li><li><strong>coding-agent</strong> <span class='muted'>(早期成形, 2 篇)</span><p>这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。</p></li><li><strong>cloud-agent</strong> <span class='muted'>(早期成形, 2 篇)</span><p>这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。</p></li></ul>
+            <ul><li><strong>agent-runtime</strong> <span class='muted'>(反复出现, 8 篇)</span><p>这组文章把 agent 能力视为运行时问题：持久 session、工具、状态和执行边界，与基础模型本身同样重要。</p></li><li><strong>workflow-orchestration</strong> <span class='muted'>(反复出现, 6 篇)</span><p>反复出现的信号是编排：有用系统需要协调多步骤、多个行动者、工具或审查门，而不是依赖一次模型回答。</p></li><li><strong>coding-agent</strong> <span class='muted'>(反复出现, 3 篇)</span><p>这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。</p></li><li><strong>cloud-agent</strong> <span class='muted'>(早期成形, 2 篇)</span><p>这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。</p></li></ul>
           </div>
         </div>
         <div class="split">
           <div>
             <h4>案例分析</h4>
-            <ul><li><strong><a href="https://mp.weixin.qq.com/s/z6ZXj_p6Z9fIvFifkAvP9A" target="_blank" rel="noreferrer">YC内部AI架构曝光！YC总裁Garry亲证：比谷歌员工效率高1000倍的秘密，不在模型，而在“Harness”</a></strong><p>这个案例为 agent-runtime, workflow-orchestration, coding-agent 提供了具体的文章级证据。</p><p class='muted'>它不能单独构成结论；需要和本综述中的其他案例比较后才能判断其结构性意义。</p></li><li><strong><a href="https://mp.weixin.qq.com/s/8k_J9QDdg7XiCXwc-GimRA" target="_blank" rel="noreferrer">Anthropic发布Managed Agents，才发现这支硅谷华人团队早就押对了赌注</a></strong><p>这个案例为 agent-runtime, workflow-orchestration, cloud-agent 提供了具体的文章级证据。</p><p class='muted'>它不能单独构成结论；需要和本综述中的其他案例比较后才能判断其结构性意义。</p></li><li><strong><a href="https://mp.weixin.qq.com/s/Dc1ZW4NEn2xVmJAd6lEZNQ" target="_blank" rel="noreferrer">Claude Code Harness+龙虾科研团来了！金字塔分层架构+多智能体讨论，单人也能跑出「实验室」科研</a></strong><p>这个案例为 agent-runtime, workflow-orchestration 提供了具体的文章级证据。</p><p class='muted'>它不能单独构成结论；需要和本综述中的其他案例比较后才能判断其结构性意义。</p></li><li><strong><a href="https://mp.weixin.qq.com/s/DdftSCeLD-gRKQpo2YOiJw" target="_blank" rel="noreferrer">https://mp.weixin.qq.com/s/DdftSCeLD-gRKQpo2YOiJw</a></strong><p>这个案例为 agent-runtime 提供了具体的文章级证据。</p><p class='muted'>它不能单独构成结论；需要和本综述中的其他案例比较后才能判断其结构性意义。</p></li></ul>
+            <ul><li><strong><a href="https://mp.weixin.qq.com/s/z6ZXj_p6Z9fIvFifkAvP9A" target="_blank" rel="noreferrer">YC内部AI架构曝光！YC总裁Garry亲证：比谷歌员工效率高1000倍的秘密，不在模型，而在“Harness”</a></strong><p>这个案例为 agent-runtime, workflow-orchestration, coding-agent 提供了具体的文章级证据。</p><p class='muted'>它不能单独构成结论；需要和本综述中的其他案例比较后才能判断其结构性意义。</p></li><li><strong><a href="https://mp.weixin.qq.com/s/8k_J9QDdg7XiCXwc-GimRA" target="_blank" rel="noreferrer">Anthropic发布Managed Agents，才发现这支硅谷华人团队早就押对了赌注</a></strong><p>这个案例为 agent-runtime, workflow-orchestration, cloud-agent 提供了具体的文章级证据。</p><p class='muted'>它不能单独构成结论；需要和本综述中的其他案例比较后才能判断其结构性意义。</p></li><li><strong><a href="https://mp.weixin.qq.com/s/Dc1ZW4NEn2xVmJAd6lEZNQ" target="_blank" rel="noreferrer">Claude Code Harness+龙虾科研团来了！金字塔分层架构+多智能体讨论，单人也能跑出「实验室」科研</a></strong><p>这个案例为 agent-runtime, workflow-orchestration, human-in-the-loop 提供了具体的文章级证据。</p><p class='muted'>它不能单独构成结论；需要和本综述中的其他案例比较后才能判断其结构性意义。</p></li><li><strong><a href="https://mp.weixin.qq.com/s/DdftSCeLD-gRKQpo2YOiJw" target="_blank" rel="noreferrer">https://mp.weixin.qq.com/s/DdftSCeLD-gRKQpo2YOiJw</a></strong><p>这个案例为 agent-runtime 提供了具体的文章级证据。</p><p class='muted'>它不能单独构成结论；需要和本综述中的其他案例比较后才能判断其结构性意义。</p></li></ul>
           </div>
           <div>
             <h4>张力与下一步问题</h4>
@@ -275,7 +275,7 @@
           </div>
         </div>
         </details>
-        <div class="concept-strip"><span class='pill concept'>agent_runtime</span><span class='pill concept'>workflow_orchestration</span><span class='pill concept'>coding_agent</span><span class='pill concept'>cloud_agent</span><span class='pill concept'>cli_harness</span><span class='pill concept'>context_engineering</span><span class='pill concept'>deterministic_tools</span><span class='pill concept'>repo_context</span></div>
+        <div class="concept-strip"><span class='pill concept'>agent_runtime</span><span class='pill concept'>workflow_orchestration</span><span class='pill concept'>coding_agent</span><span class='pill concept'>cloud_agent</span><span class='pill concept'>human_in_the_loop</span><span class='pill concept'>tool_calling</span><span class='pill concept'>cli_harness</span><span class='pill concept'>context_engineering</span></div>
         </div>
       </details>
     
@@ -756,10 +756,10 @@
               <span class="eyebrow">分类文章</span>
               <span class="category-title">AI Agent</span>
             </span>
-            <span class="count">7 篇文章</span>
+            <span class="count">8 篇文章</span>
           </span>
           <span class="category-intro">Agent 行为、工作流、运行时、工具调用、自主性和长任务系统。</span>
-          <span class="pill-row category-preview-tags"><span class='pill pattern'>agent-runtime</span><span class='pill pattern'>workflow-orchestration</span><span class='pill pattern'>cloud-agent</span><span class='pill pattern'>coding-agent</span><span class='pill pattern'>managed-agents</span></span>
+          <span class="pill-row category-preview-tags"><span class='pill pattern'>agent-runtime</span><span class='pill pattern'>workflow-orchestration</span><span class='pill pattern'>coding-agent</span><span class='pill pattern'>cloud-agent</span><span class='pill pattern'>human-in-the-loop</span></span>
         </summary>
         <ul class="category-article-list">
           <li class="category-article">
@@ -847,6 +847,24 @@
             </div>
             <div class="article-meta">
               <span>719a74e44194</span>
+              <span>高</span>
+              <span>已获取</span>
+            </div>
+          </li>
+        
+          <li class="category-article">
+            <div>
+              <h4><a href='https://mp.weixin.qq.com/s/RFU_PymPZDvqsL4eVDcAHg' target='_blank' rel='noreferrer'>为什么完美的AI Agent不存在？Claude Code源码背后的五大设计哲学与妥协</a></h4>
+              <p>为什么完美的AI Agent不存在？Claude Code源码背后的五大设计哲学与妥协 当AI编程工具进化为能自主执行任务的智能体，架构层面的设计选择不再只关乎性能，更关乎安全、可控性与可持续性。MBZUAI VILA Lab联合UCL以Anthropic的Claude Code源码为案例，系统分析了生产级AI智能体的设计空间。 这篇文章在X上也引起了广泛的关注和讨论：</p>
+              <div class="pill-row"><span class='pill pattern'>agent-runtime</span><span class='pill pattern'>tool-calling</span><span class='pill pattern'>workflow-orchestration</span><span class='pill pattern'>coding-agent</span><span class='pill pattern'>permission-system</span><span class='pill pattern'>context-compaction</span></div>
+              <div class="article-actions">
+                <button type="button" class="article-action" data-copy="/archive 876053e8e449 原因：">归档请求</button>
+                <button type="button" class="article-action" data-copy="/exclude 876053e8e449 原因：">排除这篇</button>
+                <a class='article-action-link' href='https://github.com/plato3724/bayesian-llm-trend-report/issues/19' target='_blank' rel='noreferrer'>管理 issue</a>
+              </div>
+            </div>
+            <div class="article-meta">
+              <span>876053e8e449</span>
               <span>高</span>
               <span>已获取</span>
             </div>

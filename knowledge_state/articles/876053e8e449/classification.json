@@ -1,0 +1,62 @@
+{
+  "article_id": "876053e8e449",
+  "classification_status": "drafted",
+  "generated_at": "2026-05-09T05:34:46+00:00",
+  "method": "llm_openrouter",
+  "llm_model": "openai/gpt-5.4",
+  "llm_attempts": 1,
+  "primary_category": "ai_agent",
+  "secondary_categories": [
+    "developer_tools",
+    "research_benchmark",
+    "memory_context"
+  ],
+  "tags": [
+    "agent-runtime",
+    "tool-calling",
+    "workflow-orchestration",
+    "coding-agent",
+    "permission-system",
+    "context-compaction",
+    "subagent-orchestration",
+    "operational-harness",
+    "human-in-the-loop",
+    "sandboxing",
+    "claude-code",
+    "openclaw-comparison"
+  ],
+  "source_type": "media",
+  "importance": "high",
+  "rationale": "文章核心在于分析生产级 AI Agent 的架构设计空间，而不是单纯讨论编程工具本身。全文围绕智能体循环、工具调用、权限判定、子智能体委派、扩展机制与安全可控性等机制展开，重点回答“生产级 Agent 应如何设计与权衡”。虽然案例落在 Claude Code 这一开发者工具，且涉及上下文压缩与记忆问题，但这些内容都是为解释 Agent 运行时与自主执行框架服务，因此主分类应归入 AI Agent。",
+  "category_scores": {
+    "ai_agent": 73,
+    "ai_infrastructure": 8,
+    "memory_context": 29,
+    "developer_tools": 33,
+    "multimodal_ai": 0,
+    "robotics_embodied_ai": 0,
+    "consumer_economy": 12,
+    "research_benchmark": 12,
+    "open_source_ecosystem": 9,
+    "policy_regulation": 0,
+    "product_business": 6
+  },
+  "fallback_suggestion": {
+    "primary_category": "ai_agent",
+    "secondary_categories": [
+      "developer_tools",
+      "memory_context"
+    ],
+    "tags": [
+      "agent-runtime",
+      "consumer-behavior",
+      "context-engineering",
+      "developer-experience",
+      "governance",
+      "long-term-memory",
+      "research-result",
+      "software-engineering",
+      "workflow-orchestration"
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 {
   "created_at": "2026-04-25T15:25:50+00:00",
-  "last_updated_at": "2026-05-08T09:17:11+00:00",
+  "last_updated_at": "2026-05-09T05:34:46+00:00",
   "version": 1,
   "concepts": [
     {
@@ -12,7 +12,7 @@
       ],
       "status": "drafted",
       "created_at": "2026-05-07T15:23:34+00:00",
-      "last_updated_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-09T05:34:46+00:00",
       "related_categories": [
         "ai_agent",
         "memory_context",
@@ -34,7 +34,8 @@
         "719a74e44194",
         "7446bf91ca19",
         "d11e99337c97",
-        "ffe0b324db7f"
+        "ffe0b324db7f",
+        "876053e8e449"
       ],
       "notes": []
     },
@@ -47,7 +48,7 @@
       ],
       "status": "drafted",
       "created_at": "2026-05-07T15:23:34+00:00",
-      "last_updated_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-09T05:34:46+00:00",
       "related_categories": [
         "ai_agent",
         "memory_context",
@@ -66,7 +67,8 @@
         "20fb29fec269",
         "44f454b544d9",
         "d11e99337c97",
-        "ffe0b324db7f"
+        "ffe0b324db7f",
+        "876053e8e449"
       ],
       "notes": []
     },
@@ -184,21 +186,23 @@
       ],
       "status": "drafted",
       "created_at": "2026-05-07T15:23:34+00:00",
-      "last_updated_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-09T05:34:46+00:00",
       "related_categories": [
         "ai_agent",
         "memory_context",
         "developer_tools",
         "ai_infrastructure",
         "product_business",
-        "open_source_ecosystem"
+        "open_source_ecosystem",
+        "research_benchmark"
       ],
       "related_tags": [
         "coding-agent"
       ],
       "supporting_articles": [
         "03f809cb0476",
-        "7446bf91ca19"
+        "7446bf91ca19",
+        "876053e8e449"
       ],
       "notes": []
     },
@@ -1475,20 +1479,22 @@
       ],
       "status": "drafted",
       "created_at": "2026-05-07T15:23:34+00:00",
-      "last_updated_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-09T05:34:46+00:00",
       "related_categories": [
         "robotics_embodied_ai",
         "ai_agent",
         "research_benchmark",
         "product_business",
-        "developer_tools"
+        "developer_tools",
+        "memory_context"
       ],
       "related_tags": [
         "tool-calling"
       ],
       "supporting_articles": [
         "39ca3e825456",
-        "ffe0b324db7f"
+        "ffe0b324db7f",
+        "876053e8e449"
       ],
       "notes": []
     },
@@ -1669,18 +1675,20 @@
       ],
       "status": "drafted",
       "created_at": "2026-05-07T15:23:34+00:00",
-      "last_updated_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-09T05:34:46+00:00",
       "related_categories": [
         "developer_tools",
         "memory_context",
         "open_source_ecosystem",
-        "ai_agent"
+        "ai_agent",
+        "research_benchmark"
       ],
       "related_tags": [
         "claude-code"
       ],
       "supporting_articles": [
-        "3c07c6956807"
+        "3c07c6956807",
+        "876053e8e449"
       ],
       "notes": []
     },
@@ -1865,7 +1873,7 @@
       ],
       "status": "drafted",
       "created_at": "2026-05-07T15:23:34+00:00",
-      "last_updated_at": "2026-05-08T09:17:11+00:00",
+      "last_updated_at": "2026-05-09T05:34:46+00:00",
       "related_categories": [
         "ai_agent",
         "ai_infrastructure",
@@ -1873,14 +1881,16 @@
         "research_benchmark",
         "robotics_embodied_ai",
         "product_business",
-        "multimodal_ai"
+        "multimodal_ai",
+        "memory_context"
       ],
       "related_tags": [
         "human-in-the-loop"
       ],
       "supporting_articles": [
         "44f454b544d9",
-        "90dd93cbb228"
+        "90dd93cbb228",
+        "876053e8e449"
       ],
       "notes": []
     },
@@ -5399,6 +5409,150 @@
       ],
       "supporting_articles": [
         "90dd93cbb228"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "permission_system",
+      "name": "Permission System",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "permission-system"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-09T05:34:46+00:00",
+      "last_updated_at": "2026-05-09T05:34:46+00:00",
+      "related_categories": [
+        "ai_agent",
+        "developer_tools",
+        "research_benchmark",
+        "memory_context"
+      ],
+      "related_tags": [
+        "permission-system"
+      ],
+      "supporting_articles": [
+        "876053e8e449"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "context_compaction",
+      "name": "Context Compaction",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "context-compaction"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-09T05:34:46+00:00",
+      "last_updated_at": "2026-05-09T05:34:46+00:00",
+      "related_categories": [
+        "ai_agent",
+        "developer_tools",
+        "research_benchmark",
+        "memory_context"
+      ],
+      "related_tags": [
+        "context-compaction"
+      ],
+      "supporting_articles": [
+        "876053e8e449"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "subagent_orchestration",
+      "name": "Subagent Orchestration",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "subagent-orchestration"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-09T05:34:46+00:00",
+      "last_updated_at": "2026-05-09T05:34:46+00:00",
+      "related_categories": [
+        "ai_agent",
+        "developer_tools",
+        "research_benchmark",
+        "memory_context"
+      ],
+      "related_tags": [
+        "subagent-orchestration"
+      ],
+      "supporting_articles": [
+        "876053e8e449"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "operational_harness",
+      "name": "Operational Harness",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "operational-harness"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-09T05:34:46+00:00",
+      "last_updated_at": "2026-05-09T05:34:46+00:00",
+      "related_categories": [
+        "ai_agent",
+        "developer_tools",
+        "research_benchmark",
+        "memory_context"
+      ],
+      "related_tags": [
+        "operational-harness"
+      ],
+      "supporting_articles": [
+        "876053e8e449"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "sandboxing",
+      "name": "Sandboxing",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "sandboxing"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-09T05:34:46+00:00",
+      "last_updated_at": "2026-05-09T05:34:46+00:00",
+      "related_categories": [
+        "ai_agent",
+        "developer_tools",
+        "research_benchmark",
+        "memory_context"
+      ],
+      "related_tags": [
+        "sandboxing"
+      ],
+      "supporting_articles": [
+        "876053e8e449"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "openclaw_comparison",
+      "name": "Openclaw Comparison",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "openclaw-comparison"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-09T05:34:46+00:00",
+      "last_updated_at": "2026-05-09T05:34:46+00:00",
+      "related_categories": [
+        "ai_agent",
+        "developer_tools",
+        "research_benchmark",
+        "memory_context"
+      ],
+      "related_tags": [
+        "openclaw-comparison"
+      ],
+      "supporting_articles": [
+        "876053e8e449"
       ],
       "notes": []
     }
