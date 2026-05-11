@@ -1,6 +1,6 @@
 {
   "created_at": "2026-04-25T15:25:50+00:00",
-  "last_updated_at": "2026-05-09T05:34:46+00:00",
+  "last_updated_at": "2026-05-11T04:49:46+00:00",
   "version": 1,
   "concepts": [
     {
@@ -12,7 +12,7 @@
       ],
       "status": "drafted",
       "created_at": "2026-05-07T15:23:34+00:00",
-      "last_updated_at": "2026-05-09T05:34:46+00:00",
+      "last_updated_at": "2026-05-11T04:49:46+00:00",
       "related_categories": [
         "ai_agent",
         "memory_context",
@@ -35,7 +35,8 @@
         "7446bf91ca19",
         "d11e99337c97",
         "ffe0b324db7f",
-        "876053e8e449"
+        "876053e8e449",
+        "8f3d72e73f50"
       ],
       "notes": []
     },
@@ -48,7 +49,7 @@
       ],
       "status": "drafted",
       "created_at": "2026-05-07T15:23:34+00:00",
-      "last_updated_at": "2026-05-09T05:34:46+00:00",
+      "last_updated_at": "2026-05-11T04:49:46+00:00",
       "related_categories": [
         "ai_agent",
         "memory_context",
@@ -68,7 +69,8 @@
         "44f454b544d9",
         "d11e99337c97",
         "ffe0b324db7f",
-        "876053e8e449"
+        "876053e8e449",
+        "8f3d72e73f50"
       ],
       "notes": []
     },
@@ -705,7 +707,7 @@
       ],
       "status": "drafted",
       "created_at": "2026-05-07T15:23:34+00:00",
-      "last_updated_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-11T04:49:46+00:00",
       "related_categories": [
         "ai_agent",
         "ai_infrastructure",
@@ -716,7 +718,8 @@
         "managed-agents"
       ],
       "supporting_articles": [
-        "20fb29fec269"
+        "20fb29fec269",
+        "8f3d72e73f50"
       ],
       "notes": []
     },
@@ -753,7 +756,7 @@
       ],
       "status": "drafted",
       "created_at": "2026-05-07T15:23:34+00:00",
-      "last_updated_at": "2026-05-07T15:23:34+00:00",
+      "last_updated_at": "2026-05-11T04:49:46+00:00",
       "related_categories": [
         "ai_agent",
         "ai_infrastructure",
@@ -764,7 +767,8 @@
         "sandboxed-execution"
       ],
       "supporting_articles": [
-        "20fb29fec269"
+        "20fb29fec269",
+        "8f3d72e73f50"
       ],
       "notes": []
     },
@@ -5553,6 +5557,144 @@
       ],
       "supporting_articles": [
         "876053e8e449"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "state_management",
+      "name": "State Management",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "state-management"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-11T04:49:46+00:00",
+      "last_updated_at": "2026-05-11T04:49:46+00:00",
+      "related_categories": [
+        "ai_infrastructure",
+        "ai_agent",
+        "product_business"
+      ],
+      "related_tags": [
+        "state-management"
+      ],
+      "supporting_articles": [
+        "8f3d72e73f50"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "model_serving_platform",
+      "name": "Model Serving Platform",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "model-serving-platform"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-11T04:49:46+00:00",
+      "last_updated_at": "2026-05-11T04:49:46+00:00",
+      "related_categories": [
+        "ai_infrastructure",
+        "ai_agent",
+        "product_business"
+      ],
+      "related_tags": [
+        "model-serving-platform"
+      ],
+      "supporting_articles": [
+        "8f3d72e73f50"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "agent_infrastructure",
+      "name": "Agent Infrastructure",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "agent-infrastructure"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-11T04:49:46+00:00",
+      "last_updated_at": "2026-05-11T04:49:46+00:00",
+      "related_categories": [
+        "ai_infrastructure",
+        "ai_agent",
+        "product_business"
+      ],
+      "related_tags": [
+        "agent-infrastructure"
+      ],
+      "supporting_articles": [
+        "8f3d72e73f50"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "tooling_abstraction",
+      "name": "Tooling Abstraction",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "tooling-abstraction"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-11T04:49:46+00:00",
+      "last_updated_at": "2026-05-11T04:49:46+00:00",
+      "related_categories": [
+        "ai_infrastructure",
+        "ai_agent",
+        "product_business"
+      ],
+      "related_tags": [
+        "tooling-abstraction"
+      ],
+      "supporting_articles": [
+        "8f3d72e73f50"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "model_harness_coupling",
+      "name": "Model Harness Coupling",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "model-harness-coupling"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-11T04:49:46+00:00",
+      "last_updated_at": "2026-05-11T04:49:46+00:00",
+      "related_categories": [
+        "ai_infrastructure",
+        "ai_agent",
+        "product_business"
+      ],
+      "related_tags": [
+        "model-harness-coupling"
+      ],
+      "supporting_articles": [
+        "8f3d72e73f50"
+      ],
+      "notes": []
+    },
+    {
+      "concept_id": "production_deployment",
+      "name": "Production Deployment",
+      "definition": "从反复出现的文章标签中生成的草稿概念。",
+      "aliases": [
+        "production-deployment"
+      ],
+      "status": "drafted",
+      "created_at": "2026-05-11T04:49:46+00:00",
+      "last_updated_at": "2026-05-11T04:49:46+00:00",
+      "related_categories": [
+        "ai_infrastructure",
+        "ai_agent",
+        "product_business"
+      ],
+      "related_tags": [
+        "production-deployment"
+      ],
+      "supporting_articles": [
+        "8f3d72e73f50"
       ],
       "notes": []
     }

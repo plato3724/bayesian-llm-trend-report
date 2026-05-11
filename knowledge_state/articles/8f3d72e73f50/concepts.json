@@ -1,0 +1,53 @@
+{
+  "article_id": "8f3d72e73f50",
+  "concept_status": "drafted",
+  "generated_at": "2026-05-11T04:49:46+00:00",
+  "method": "tag_to_concept_mvp",
+  "matched_concepts": [
+    "agent_infrastructure",
+    "agent_runtime",
+    "managed_agents",
+    "model_harness_coupling",
+    "model_serving_platform",
+    "production_deployment",
+    "sandboxed_execution",
+    "state_management",
+    "tooling_abstraction",
+    "workflow_orchestration"
+  ],
+  "created_concepts": [
+    "state_management",
+    "model_serving_platform",
+    "agent_infrastructure",
+    "tooling_abstraction",
+    "model_harness_coupling",
+    "production_deployment"
+  ],
+  "candidate_concepts": [],
+  "source_trace": {
+    "classification_path": "knowledge_state/articles/8f3d72e73f50/classification.json",
+    "extraction_path": "knowledge_state/articles/8f3d72e73f50/extraction.json"
+  },
+  "article_entities": [
+    "Claude",
+    "Angela",
+    "Katelyn",
+    "Harness",
+    "Managed Agents",
+    "Agent",
+    "Slack",
+    "Anthropic",
+    "AI",
+    "Skill",
+    "Claude Code",
+    "PR",
+    "OpenClaw",
+    "API",
+    "Mac Mini",
+    "Agents",
+    "Bug",
+    "Claude Managed Agents",
+    "Codex",
+    "Stripe"
+  ]
+}

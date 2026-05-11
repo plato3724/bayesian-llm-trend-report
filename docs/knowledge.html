@@ -215,7 +215,7 @@
       </nav>
     </header>
 
-    <section class="stats"><div class='stat'><span>文章</span><strong>28</strong></div><div class='stat'><span>已抽取</span><strong>28</strong></div><div class='stat'><span>已分类</span><strong>28</strong></div><div class='stat'><span>综述</span><strong>9</strong></div></section>
+    <section class="stats"><div class='stat'><span>文章</span><strong>29</strong></div><div class='stat'><span>已抽取</span><strong>29</strong></div><div class='stat'><span>已分类</span><strong>29</strong></div><div class='stat'><span>综述</span><strong>9</strong></div></section>
 
     <section id="reviews">
       <h2>主题综述</h2>
@@ -287,29 +287,29 @@
               <span class="review-title">AI 基础设施动态综述</span>
             </span>
             <span class="review-meta">
-              <span class="type-badge thinking">LLM 深度分析</span>
-              <span class="count">2 篇文章</span>
+              <span class="type-badge thinking">规则草稿</span>
+              <span class="count">3 篇文章</span>
             </span>
           </span>
-          <span class="review-preview">这组证据最强的结论不是“网络越来越重要”，而是AI基础设施正在进入一个以通信重构为核心的阶段：谁能把训练中的尾延迟、故障恢复、路径拥塞，以及推理中的KV Cache带宽墙、Prefill/Decode绑定关系，从物理限制改写为协议、拓扑、调度和模型协同下的工程变量，谁就能释放出跨芯片、跨集群、跨数据中心的真实系统效率。材料一提供的是训练网络的机制证据，材料二提供的是推理服务解耦的机制加案例证据；而诸如厂商联盟、开放标准、‘新商业模式’等，更接近热度与叙事信号，不能单独支撑行业结论。</span>
+          <span class="review-preview">这组 AI 基础设施 材料真正值得关注的不是底层平台、runtime 或工具链更新，而是可靠性、状态、权限、成本和可复现性如何支撑上层应用。越成熟的 AI 应用，越依赖不可见的系统层能力。</span>
           <span class="pill-row review-preview-tags"><span class='pill pattern'>datacenter-networking</span><span class='pill pattern'>gpu-cluster</span><span class='pill pattern'>infrastructure</span><span class='pill pattern'>market-signal</span><span class='pill pattern'>network-protocol</span><span class='pill pattern'>training-infrastructure</span></span>
         </summary>
         <div class="review-body">
         
       <div class="deep-review">
         <p class="eyebrow">深度分析文章</p>
-        <h3>AI基础设施的下一阶段，不是更大带宽，而是把“不可调度的通信”改造成“可编排的系统资源”</h3>
-        <p class="lead">两篇材料指向同一个底层转向：训练侧用协议与拓扑把大规模同步通信从脆弱的网络事件变成可快速绕开的路径问题，推理侧用模型结构与服务架构把KV Cache从必须留在本地RDMA域的负担变成可跨数据中心运输的资产。真正的基础设施进步，不只是硬件更强，而是通信约束被重新工程化。</p>
+        <h3>AI 基础设施深度分析</h3>
+        <p class="lead">基于 3 篇文章，当前综述把 datacenter-networking、gpu-cluster、infrastructure 视为主要证据线索，并把 datacenter_networking、gpu_cluster、infrastructure 作为概念层的组织入口。</p>
         <div class="thesis">
           <strong>核心判断</strong>
-          <p>这组证据最强的结论不是“网络越来越重要”，而是AI基础设施正在进入一个以通信重构为核心的阶段：谁能把训练中的尾延迟、故障恢复、路径拥塞，以及推理中的KV Cache带宽墙、Prefill/Decode绑定关系，从物理限制改写为协议、拓扑、调度和模型协同下的工程变量，谁就能释放出跨芯片、跨集群、跨数据中心的真实系统效率。材料一提供的是训练网络的机制证据，材料二提供的是推理服务解耦的机制加案例证据；而诸如厂商联盟、开放标准、‘新商业模式’等，更接近热度与叙事信号，不能单独支撑行业结论。</p>
+          <p>这组 AI 基础设施 材料真正值得关注的不是底层平台、runtime 或工具链更新，而是可靠性、状态、权限、成本和可复现性如何支撑上层应用。越成熟的 AI 应用，越依赖不可见的系统层能力。</p>
         </div>
-        <section class='deep-section'><h4>核心判断：AI基础设施的瓶颈，正在从算力供给转向通信可治理性</h4><p>如果只看表面，这两篇材料分别讲的是训练网络协议和推理服务架构，似乎相距很远；但把证据放在一起看，核心其实一致：大模型系统正在被通信约束重新定义。训练里，十万卡同步预训练的all-reduce让最慢一次传输决定整体step完成时间，网络抖动会层层放大；推理里，Prefill-Decode分离原本受制于KV Cache传输带宽，只能被锁死在单一RDMA域内。二者共同说明，AI基础设施的真正难点不是“算力芯片够不够”，而是通信能否被工程化到足以支持大规模协同与灵活调度。</p><p>因此，这组材料支持的更深判断是：下一代AI基础设施的竞争，不再只是堆更高规格GPU、NIC和交换机，而是把原本不可调度、不可拆分、不可恢复的通信过程，重写为可分层控制、可局部失效、可异构部署的系统能力。这个判断有机制支撑，而不只是行业热词。</p></section><section class='deep-section'><h4>训练侧的机制：MRC不是单一协议优化，而是在拓扑、传输、路由三个层次消灭同步训练的脆弱点</h4><p>材料一最有价值的部分，不是“OpenAI开放了MRC”，而是它解释了为什么大规模同步预训练会把网络变成系统性脆弱源。这里属于机制证据：在同步预训练中，all-reduce主导的集合通信对尾延迟极其敏感，任何拥塞或丢包都会拖慢整个job，集群越大，故障的绝对频率越高。这不是单条链路问题，而是规模化之后的结构性问题。</p><p>MRC给出的解法，也不是某一个参数调优，而是三层联动。第一层是多平面网络拓扑，把单个800Gb/s链路拆成8条100Gb/s子链路，连到独立交换机，形成并行网络平面。它的意义不只在于端口扩展和拓扑扁平化，更重要的是为后续的路径冗余和快速绕障提供物理前提。第二层是自适应包喷射，允许同一RDMA传输的数据包走多条路径，并通过包头携带目标内存地址来容忍乱序写入，这等于把“单流必须单路径顺序到达”的旧约束打破。第三层是用SRv6静态源路由取代依赖收敛的动态路由，把故障响应从交换机网络层转移到发送端连接层。三层叠加之后，训练网络从依赖全网收敛的一体化系统，变成可以局部绕开坏路径的可控系统。</p><p>这篇材料里的机制强度相对高，因为它解释了问题来源、系统设计和作用链条：同步训练为何怕尾延迟，为什么多平面是基础，为什么允许乱序才能做有效喷射，为什么发送端控制路径能消除收敛抖动。相比之下，“支持10万块以上GPU”“微秒级故障恢复”是结论性表述，属于结果信号，但详细Benchmark数据没有在材料中展开，所以仍需要更原始技术文档验证其普适性与代价。</p></section><section class='deep-section'><h4>推理侧的机制：PrFaaS成立的前提，不只是调度聪明，而是模型先把KV Cache带宽墙打薄了</h4><p>材料二的关键洞见在于，它没有把跨数据中心推理说成单纯的调度创新，而是明确指出：传统Prefill-Decode分离之所以被锁在单一集群内，是因为KV Cache传输高度依赖高带宽、低时延RDMA网络。也就是说，先前的问题并非组织方式落后，而是对象本身太重，重到以太网根本运不动。这一部分属于机制证据。</p><p>真正让PrFaaS变得可行的第一推动力，是混合注意力架构改变了KV Cache的物理性质。材料二指出，线性注意力层产生固定大小的recurrent state，只有全注意力层生成随上下文增长的KV Cache，因此整体KV吞吐量显著下降。文中给出了多个模型在32K上下文下的带宽对比，这些数字的意义不是证明某一模型更先进，而是证明“KV从RDMA级别降到以太网级别”这一阈值跨越已经发生。只有过了这个阈值，跨数据中心传输KV Cache才从概念上成立。</p><p>在这个基础上，PrFaaS才有了架构价值：将长上下文请求的Prefill卸载到远端算力密集型集群，本地保留更适合Decode的带宽型集群，通过动态阈值t决定哪些请求值得跨中心调度，再用双时间尺度调度处理带宽、缓存和资源重分配。换句话说，材料二的真正贡献不是一句‘预填充即服务’，而是把模型结构变化、缓存对象拆分、网络传输能力和服务调度联成了一个闭环。</p></section><section class='deep-section'><h4>两篇材料的共同机制：把“必须共址”的系统拆成“可以协作”的系统</h4><p>把两篇材料并置，会看到一个更有解释力的共同机制：AI系统原来很多关键组件之所以必须绑在一起，不是因为逻辑上不可分，而是因为通信代价过高、恢复代价过高、失序代价过高。材料一解决的是训练场景里‘这么多GPU必须像一个脆弱整体那样同步’的问题；材料二解决的是推理场景里‘Prefill和Decode必须待在同一RDMA域’的问题。</p><p>二者的方法也有结构相似性。材料一通过拓扑并行化、包级多路径和发送端路径控制，弱化了网络内部状态同步的必要性；材料二通过混合注意力降低KV体积，再配合阈值调度与分层缓存，弱化了Prefill和Decode物理共址的必要性。一个是在训练中把同步通信变成可快速绕路的过程，一个是在推理中把状态传输变成可跨中心移动的对象。它们都在做同一件事：把原本由硬件边界决定的耦合关系，转化成由系统软件治理的可编排关系。</p></section><section class='deep-section'><h4>哪些是机制证据，哪些是案例证据，哪些只是叙事信号</h4><p>机制证据方面，材料一中最关键的是同步预训练对尾延迟的敏感性、多平面拓扑如何降低层数与故障点、自适应包喷射为何依赖乱序写入、SRv6静态源路由如何绕开动态收敛；材料二中最关键的是KV Cache为何把PD分离锁死在RDMA域内、混合注意力为何显著压低KV吞吐量、PrFaaS为何能用阈值和双时间尺度调度实现跨中心部署。这些内容解释了因果链条，因此是本综述最可靠的基础。</p><p>案例证据方面，材料一给出了MRC已运行在OpenAI最大规模GB200超算、涉及OCI与微软超算的描述；材料二给出了内部1T参数混合注意力模型、32张H200加64张H20、100Gbps VPC、吞吐提升54%、P90 TTFT降低64%、平均出口带宽13Gbps等结果。这些能说明方案在特定环境中可落地，但仍是案例级证据，不能直接推导为行业普遍结论。</p><p>叙事与热度信号方面，材料一中‘OpenAI真Open了’‘英伟达、AMD、英特尔都受益’‘把这些厂商聚在一起比实现AGI还难’之类说法，更像产业关注度和开放标准的象征；材料二中‘把KV Cache玩成新商业模式了’‘天生圣体’等表达，更偏媒体包装。这些信息有助于判断市场兴趣和议题方向，但不应被误读为技术优势已经无争议地转化为普遍商业现实。</p></section><section class='deep-section'><h4>这意味着什么：基础设施的价值正在向跨层协同迁移</h4><p>从投资、架构和产业链角度看，这组材料最值得重视的，不是某个单点产品，而是价值重心正在从单一硬件能力向跨层协同能力迁移。训练侧，单看交换芯片、网卡或GPU都不足以解释MRC的意义，真正的优势来自协议、拓扑和路由设计如何共同降低尾部风险。推理侧，单看更强GPU也不足以解释PrFaaS，真正的优势来自模型结构是否足够压缩KV、服务层是否能做阈值判断、调度层是否能按时间尺度重分配资源。</p><p>这会带来一个重要后果：未来基础设施壁垒可能不再只是‘买到更贵的芯片’，而是‘能否把不同层的约束一起改写’。谁拥有模型层、系统层和网络层的联合设计能力，谁就更可能获得超线性的系统效率收益。相反，只在单个层面做优化，可能越来越难突破整体瓶颈。</p></section><section class='deep-section'><h4>反证与边界：这还不足以证明“以太网替代RDMA”或“通信问题已被解决”</h4><p>需要明确反证。第一，材料二并不能推出‘普通以太网已经足够承载所有大模型推理’。它成立的前提是混合注意力显著压低了KV吞吐量，而且实验负载、模型结构、请求长度分布都比较特定。对dense模型、极端长上下文、突发流量或更严格SLO场景，跨中心KV传输可能仍然吃紧。换言之，PrFaaS更像是在特定模型代际变化后打开了新窗口，而不是宣布网络问题普遍终结。</p><p>第二，材料一也不能推出‘训练网络的可靠性问题已经解决’。MRC的三层设计看上去非常强，但材料没有展开其部署复杂度、兼容性成本、交换机生态成熟度，也没有给出在不同厂商设备、不同故障模式下的完整对比Benchmark。特别是允许乱序、源路由控制和多平面设计，可能会把复杂性从网络设备转移到端侧协议栈与运维系统，这种复杂性的新增成本还需要更多证据。</p><p>第三，这两篇材料共同展示的是少数头部玩家的系统工程能力，而不是全行业平均水平。它们说明方向已出现，不代表中小团队可以低门槛复现。跨层协同本身往往意味着更高的研发门槛、更强的全栈控制权，以及更难标准化的实施过程。</p></section><section class='deep-section'><h4>下一轮阅读最该验证的问题</h4><p>首先，需要补更原始的技术文档和Benchmark，验证MRC在不同故障注入、不同流量模式、不同交换生态中的表现，特别是与传统RoCE、ECMP、动态路由体系相比的稳定性收益和复杂度代价。当前材料更像高质量技术解读，但还不是完整评测。</p><p>其次，需要验证PrFaaS的适用边界：混合注意力模型占比若继续提升，它会不会成为长上下文服务的常规架构；反过来，如果模型重新回到更高比例全注意力、或者出现新的缓存机制，跨中心KV传输的经济性是否仍成立。尤其要看不同上下文长度分布、缓存命中率和跨区域带宽价格下的成本曲线。</p><p>再次，需要寻找反例文章：是否存在训练任务并不受网络尾延迟主导，或推理任务并不值得做跨中心PD解耦的场景。如果这些反例很多，那么本综述的结论应被限定为‘头部超大规模训练与长上下文推理’的基础设施趋势，而不是整个AI基础设施的通则。</p></section>
+        <section class='deep-section'><h4>一、AI 基础设施的真实议题：可靠性、状态、权限、成本和可复现性如何支撑上层应用</h4><p>AI 基础设施这一组文章不能只按发布时间或单篇观点阅读。更重要的是看它们如何从不同角度指向同一个问题：可靠性、状态、权限、成本和可复现性如何支撑上层应用。</p><p>《OpenAI公开大规模稳定训练的秘密，英伟达AMD英...》显示：刚刚，OpenAI通过OCP开放了超大规模AI训练时使用的网络协议——MRC。；《一年后Claude不需要Harness工程了？产品和...》显示：Managed Agents 的新功能多智能体编排就被人们用来尝试构建不同的 Harness 技术了，比如将“执行”与“建议”分开的智能体，有内容生成和内容审核的“对抗”智能体和适合于找 Bug 的“蜂群（swarm）”智能体。；《Kimi新论文：把KVCache玩成新商业模式了》显示：但这让KV Cache传输高度依赖RDMA网络，牢牢地把Prefill和Decode两个阶段强行绑定在单一集群内。。</p></section><section class='deep-section'><h4>二、datacenter-networking 暴露的瓶颈</h4><p>当前最强的重复模式是 datacenter-networking。这个模式在文章组中反复出现，应作为潜在组织概念审查，而不是只当作松散标签。这个模式不是从标题或标签直接推出来的，而是需要回到文章中的具体材料：它反复出现在产品叙事、技术细节、使用场景或市场反应里。</p><p>因此，AI 基础设施的判断重点不应是单点能力强弱，而是它是否改变了基础设施 的约束条件、协作方式或规模化路径。</p></section><section class='deep-section'><h4>三、《OpenAI公开大规模稳定训练的秘密，英伟达AMD英...》等案例如何互相解释</h4><p>《OpenAI公开大规模稳定训练的秘密，英伟达AMD英...》承担的是 datacenter-networking、gpu-cluster、infrastructure 的证据角色：刚刚，OpenAI通过OCP开放了超大规模AI训练时使用的网络协议——MRC。；《一年后Claude不需要Harness工程了？产品和...》承担的是 managed-agents、agent-runtime、sandboxed-execution 的证据角色：Managed Agents 的新功能多智能体编排就被人们用来尝试构建不同的 Harness 技术了，比如将“执行”与“建议”分开的智能体，有内容生成和内容审核的“对抗”智能体和适合于找 Bug 的“蜂群（swarm）”智能体。；《Kimi新论文：把KVCache玩成新商业模式了》承担的是 kv-cache、prefill-decode-disaggregation、cross-data-center-inference 的证据角色：但这让KV Cache传输高度依赖RDMA网络，牢牢地把Prefill和Decode两个阶段强行绑定在单一集群内。。</p><p>这说明 3 篇文章之间不是简单相加。有些文章提供机制解释，有些文章提供案例和场景，有些文章只提供热度信号；只有区分这些证据角色，综述才可能形成判断。</p></section><section class='deep-section'><h4>四、从 datacenter_networking、gpu_cluster、infrastructure 推出的判断</h4><p>把这些材料放在一起后，可以形成一个暂时判断：越成熟的 AI 应用，越依赖不可见的系统层能力。datacenter_networking、gpu_cluster、infrastructure 不是装饰性标签，而是把多篇文章连接起来的解释入口。</p><p>如果这个判断成立，后续文章库的重点就不是继续堆积同类新闻，而是观察哪些新材料会增强、修正或削弱这一解释。</p></section><section class='deep-section'><h4>五、哪些证据会改变这篇综述的结论</h4><p>这组材料仍然不足以把趋势判断变成确定结论。真正可能削弱上述判断的，不是又一篇相似案例，而是失败案例、低采用率案例、成本约束、组织阻力，以及指标表现与真实价值不一致的证据。</p><p>因此，这篇综述的结论应被理解为可检验的判断：它解释了当前材料之间的共同结构，但也必须接受后续全文材料对其边界条件的修正。</p></section>
       </div>
     
         <details class="evidence-detail">
           <summary>证据附录：问题、模式、案例与下一轮问题</summary>
-        <p class="review-question">在这 2 篇「AI 基础设施」文章中，超越单篇 claim 的重复结构是什么？</p>
+        <p class="review-question">在这 3 篇「AI 基础设施」文章中，超越单篇 claim 的重复结构是什么？</p>
         <p>这组「AI 基础设施」综述目前处于「早期成形」阶段。最强的重复模式是 datacenter-networking、gpu-cluster、infrastructure；概念层正在围绕 datacenter_networking、gpu_cluster、infrastructure 聚集。因此综述重点不应只是罗列文章 claim，而应判断这些案例是否在描述同一个底层机制。</p>
         <div class="split">
           <div>
@@ -324,7 +324,7 @@
         <div class="split">
           <div>
             <h4>案例分析</h4>
-            <ul><li><strong><a href="https://mp.weixin.qq.com/s/QugylM-Bhdx785Gnxca84w" target="_blank" rel="noreferrer">OpenAI公开大规模稳定训练的秘密，英伟达AMD英特尔都受益</a></strong><p>这个案例为 datacenter-networking, gpu-cluster, infrastructure 提供了具体的文章级证据。</p><p class='muted'>它不能单独构成结论；需要和本综述中的其他案例比较后才能判断其结构性意义。</p></li><li><strong><a href="https://mp.weixin.qq.com/s/V4bP5sWmqObOCboFJ7Imvw" target="_blank" rel="noreferrer">Kimi新论文：把KVCache玩成新商业模式了</a></strong><p>这个案例为 kv-cache, prefill-decode-disaggregation, cross-data-center-inference 提供了具体的文章级证据。</p><p class='muted'>它不能单独构成结论；需要和本综述中的其他案例比较后才能判断其结构性意义。</p></li></ul>
+            <ul><li><strong><a href="https://mp.weixin.qq.com/s/QugylM-Bhdx785Gnxca84w" target="_blank" rel="noreferrer">OpenAI公开大规模稳定训练的秘密，英伟达AMD英特尔都受益</a></strong><p>这个案例为 datacenter-networking, gpu-cluster, infrastructure 提供了具体的文章级证据。</p><p class='muted'>它不能单独构成结论；需要和本综述中的其他案例比较后才能判断其结构性意义。</p></li><li><strong><a href="https://mp.weixin.qq.com/s/hYMj375l9Y29kOhehuOkZQ" target="_blank" rel="noreferrer">一年后Claude不需要Harness工程了？产品和工程负责人爆料：搭建Agent的最终难关是基础设施壁垒；Harness和模型正高度配对</a></strong><p>这个案例为 managed-agents, agent-runtime, sandboxed-execution 提供了具体的文章级证据。</p><p class='muted'>它不能单独构成结论；需要和本综述中的其他案例比较后才能判断其结构性意义。</p></li><li><strong><a href="https://mp.weixin.qq.com/s/V4bP5sWmqObOCboFJ7Imvw" target="_blank" rel="noreferrer">Kimi新论文：把KVCache玩成新商业模式了</a></strong><p>这个案例为 kv-cache, prefill-decode-disaggregation, cross-data-center-inference 提供了具体的文章级证据。</p><p class='muted'>它不能单独构成结论；需要和本综述中的其他案例比较后才能判断其结构性意义。</p></li></ul>
           </div>
           <div>
             <h4>张力与下一步问题</h4>
@@ -333,7 +333,7 @@
           </div>
         </div>
         </details>
-        <div class="concept-strip"><span class='pill concept'>datacenter_networking</span><span class='pill concept'>gpu_cluster</span><span class='pill concept'>infrastructure</span><span class='pill concept'>market_signal</span><span class='pill concept'>network_protocol</span><span class='pill concept'>training_infrastructure</span><span class='pill concept'>cross_data_center_inference</span><span class='pill concept'>ethernet_transport</span></div>
+        <div class="concept-strip"><span class='pill concept'>datacenter_networking</span><span class='pill concept'>gpu_cluster</span><span class='pill concept'>infrastructure</span><span class='pill concept'>market_signal</span><span class='pill concept'>network_protocol</span><span class='pill concept'>training_infrastructure</span><span class='pill concept'>agent_infrastructure</span><span class='pill concept'>agent_runtime</span></div>
         </div>
       </details>
     
@@ -915,7 +915,7 @@
               <span class="eyebrow">分类文章</span>
               <span class="category-title">AI 基础设施</span>
             </span>
-            <span class="count">2 篇文章</span>
+            <span class="count">3 篇文章</span>
           </span>
           <span class="category-intro">模型服务、编排、模型运维、沙箱、运行时系统和平台层。</span>
           <span class="pill-row category-preview-tags"><span class='pill pattern'>kv-cache</span><span class='pill pattern'>prefill-decode-disaggregation</span><span class='pill pattern'>cross-data-center-inference</span><span class='pill pattern'>heterogeneous-cluster</span><span class='pill pattern'>inference-serving</span></span>
@@ -952,6 +952,24 @@
             </div>
             <div class="article-meta">
               <span>86d606aaf417</span>
+              <span>高</span>
+              <span>已获取</span>
+            </div>
+          </li>
+        
+          <li class="category-article">
+            <div>
+              <h4><a href='https://mp.weixin.qq.com/s/hYMj375l9Y29kOhehuOkZQ' target='_blank' rel='noreferrer'>一年后Claude不需要Harness工程了？产品和工程负责人爆料：搭建Agent的最终难关是基础设施壁垒；Harness和模型正高度配对</a></h4>
+              <p>一年后Claude不需要Harness工程了？产品和工程负责人爆料：搭建Agent的最终难关是基础设施壁垒；Harness和模型正高度配对 “一年后，我们希望实现极致的简化……在那个世界里，你不需要再考虑‘Harness 工程’，不需要纠结如何构建工具。你会删掉很多脚手架代码，也不需要那么多提示词工程。” “我认为基础设施才是大多数人最终撞上的壁垒，尽管他们原以为 Harness 工程和挖掘模型潜力才是最难的。”</p>
+              <div class="pill-row"><span class='pill pattern'>managed-agents</span><span class='pill pattern'>agent-runtime</span><span class='pill pattern'>sandboxed-execution</span><span class='pill pattern'>state-management</span><span class='pill pattern'>workflow-orchestration</span><span class='pill pattern'>model-serving-platform</span></div>
+              <div class="article-actions">
+                <button type="button" class="article-action" data-copy="/archive 8f3d72e73f50 原因：">归档请求</button>
+                <button type="button" class="article-action" data-copy="/exclude 8f3d72e73f50 原因：">排除这篇</button>
+                <a class='article-action-link' href='https://github.com/plato3724/bayesian-llm-trend-report/issues/20' target='_blank' rel='noreferrer'>管理 issue</a>
+              </div>
+            </div>
+            <div class="article-meta">
+              <span>8f3d72e73f50</span>
               <span>高</span>
               <span>已获取</span>
             </div>

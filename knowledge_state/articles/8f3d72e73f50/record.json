@@ -1,0 +1,48 @@
+{
+  "article_id": "8f3d72e73f50",
+  "title": "一年后Claude不需要Harness工程了？产品和工程负责人爆料：搭建Agent的最终难关是基础设施壁垒；Harness和模型正高度配对",
+  "url": "https://mp.weixin.qq.com/s/hYMj375l9Y29kOhehuOkZQ",
+  "ingested_from": "github_issue",
+  "ingested_at": "2026-05-11T04:49:31+00:00",
+  "last_updated_at": "2026-05-11T04:49:36+00:00",
+  "content_state": {
+    "full_text_status": "acquired",
+    "canonical_text_source": "knowledge_state/articles/8f3d72e73f50/canonical_text.txt",
+    "fetch_attempts": [
+      {
+        "attempted_at": "2026-05-11T04:49:36+00:00",
+        "status": "acquired",
+        "status_code": 200,
+        "final_url": "https://mp.weixin.qq.com/s/hYMj375l9Y29kOhehuOkZQ",
+        "content_type": "text/html",
+        "text_length": 13322,
+        "raw_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/knowledge_state/articles/8f3d72e73f50/raw/fetch_20260511T044932Z.html",
+        "text_path": "/home/runner/work/bayesian-llm-trend-report/bayesian-llm-trend-report/knowledge_state/articles/8f3d72e73f50/raw/extract_20260511T044932Z.txt",
+        "note": "Full text looks sufficient for claim extraction."
+      }
+    ],
+    "manual_artifacts": [],
+    "next_action": "extract_claims"
+  },
+  "analysis_state": {
+    "claim_extraction_status": "not_started",
+    "verification_status": "not_started",
+    "bayesian_status": "excluded_until_verified"
+  },
+  "article_summary": {
+    "events": [],
+    "techniques": [],
+    "tools": []
+  },
+  "hypothesis_impacts": [],
+  "ingest_sources": [
+    {
+      "source_name": "github_issue",
+      "source_ref": "https://github.com/plato3724/bayesian-llm-trend-report/issues/20",
+      "source_note": "https://mp.weixin.qq.com/s/hYMj375l9Y29kOhehuOkZQ",
+      "ingested_at": "2026-05-11T04:49:31+00:00"
+    }
+  ],
+  "lifecycle_state": "active",
+  "lifecycle_events": []
+}

@@ -1,0 +1,84 @@
+{
+  "article_id": "8f3d72e73f50",
+  "extraction_status": "completed",
+  "generated_at": "2026-05-11T04:49:37+00:00",
+  "method": "deterministic_mvp",
+  "summary": "一年后Claude不需要Harness工程了？产品和工程负责人爆料：搭建Agent的最终难关是基础设施壁垒；Harness和模型正高度配对 “一年后，我们希望实现极致的简化……在那个世界里，你不需要再考虑‘Harness 工程’，不需要纠结如何构建工具。你会删掉很多脚手架代码，也不需要那么多提示词工程。” “我认为基础设施才是大多数人最终撞上的壁垒，尽管他们原以为 Harness 工程和挖掘模型潜力才是最难的。”",
+  "main_points": [
+    "一年后Claude不需要Harness工程了？产品和工程负责人爆料：搭建Agent的最终难关是基础设施壁垒；Harness和模型正高度配对",
+    "“一年后，我们希望实现极致的简化……在那个世界里，你不需要再考虑‘Harness 工程’，不需要纠结如何构建工具。你会删掉很多脚手架代码，也不需要那么多提示词工程。”",
+    "“我认为基础设施才是大多数人最终撞上的壁垒，尽管他们原以为 Harness 工程和挖掘模型潜力才是最难的。”",
+    "“大家都在试图压榨每个模型的每一丝性能，针对每一点细微差别进行‘ Harness 工程。’”",
+    "今天 Claude 平台的产品负责人 Angela Jiang 和工程负责人 Katelyn Lesse 的访谈播客上线了！",
+    "这周三，Anthropic 刚在 Code with Claude 开发者大会上发布了 Managed Agents 的梦境（Dreaming）、多智能体编排和结果验收（Outcomes）等全新功能。Claude的Agent四件套终于来了！Agents是新一代应用形式，Harvey任务完成率暴涨6倍！网友：有一批创业公司要倒下了！",
+    "这场播客正好就讨论了为什么 Anthropic 要开发 Managed Agents 和它是如何被构建和使用的。",
+    "当然 Claude 平台的发展轨迹、对 OpenClaw 的看法、搭建 Agent 的难点、团队使用 Agent 的形式、以及一年后 Claude 将是什么样子，两位嘉宾和主持人都有聊到。"
+  ],
+  "entities": [
+    "Claude",
+    "Angela",
+    "Katelyn",
+    "Harness",
+    "Managed Agents",
+    "Agent",
+    "Slack",
+    "Anthropic",
+    "AI",
+    "Skill",
+    "Claude Code",
+    "PR",
+    "OpenClaw",
+    "API",
+    "Mac Mini",
+    "Agents",
+    "Bug",
+    "Claude Managed Agents",
+    "Codex",
+    "Stripe"
+  ],
+  "claims": [
+    {
+      "id": "auto_point_1",
+      "type": "event",
+      "text": "一年后Claude不需要Harness工程了？产品和工程负责人爆料：搭建Agent的最终难关是基础设施壁垒；Harness和模型正高度配对",
+      "source": "canonical_text_heuristic"
+    },
+    {
+      "id": "auto_point_2",
+      "type": "event",
+      "text": "“一年后，我们希望实现极致的简化……在那个世界里，你不需要再考虑‘Harness 工程’，不需要纠结如何构建工具。你会删掉很多脚手架代码，也不需要那么多提示词工程。”",
+      "source": "canonical_text_heuristic"
+    },
+    {
+      "id": "auto_point_3",
+      "type": "event",
+      "text": "“我认为基础设施才是大多数人最终撞上的壁垒，尽管他们原以为 Harness 工程和挖掘模型潜力才是最难的。”",
+      "source": "canonical_text_heuristic"
+    },
+    {
+      "id": "auto_point_4",
+      "type": "event",
+      "text": "“大家都在试图压榨每个模型的每一丝性能，针对每一点细微差别进行‘ Harness 工程。’”",
+      "source": "canonical_text_heuristic"
+    },
+    {
+      "id": "auto_point_5",
+      "type": "event",
+      "text": "今天 Claude 平台的产品负责人 Angela Jiang 和工程负责人 Katelyn Lesse 的访谈播客上线了！",
+      "source": "canonical_text_heuristic"
+    },
+    {
+      "id": "auto_point_6",
+      "type": "event",
+      "text": "这周三，Anthropic 刚在 Code with Claude 开发者大会上发布了 Managed Agents 的梦境（Dreaming）、多智能体编排和结果验收（Outcomes）等全新功能。Claude的Agent四件套终于来了！Agents是新一代应用形式，Harvey任务完成率暴涨6倍！网友：有一批创业公司要倒下了！",
+      "source": "canonical_text_heuristic"
+    }
+  ],
+  "important_quotes": [],
+  "open_questions": [],
+  "source_trace": {
+    "record_path": "knowledge_state/articles/8f3d72e73f50/record.json",
+    "canonical_text_path": "knowledge_state/articles/8f3d72e73f50/canonical_text.txt",
+    "legacy_claims_path": "knowledge_state/articles/8f3d72e73f50/claims.json"
+  }
+}
