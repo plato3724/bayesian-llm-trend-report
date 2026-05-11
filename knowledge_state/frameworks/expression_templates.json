@@ -1,90 +1,95 @@
 {
-  "created_at": "2026-05-09T05:36:27+00:00",
-  "last_updated_at": "2026-05-09T05:37:46+00:00",
+  "created_at": "2026-05-11T04:51:01+00:00",
+  "last_updated_at": "2026-05-11T04:52:18+00:00",
   "version": 1,
-  "source_hash": "3c134d04741d57efa21cfa1d3dd4a0440d9e55235973168da5d4993e0db113d7",
+  "source_hash": "d4b7eadc5f199bf6114b4511fca3399d1e66c0ae2f618781a677b402b78bc341",
   "prompt_version": "frameworks_from_reviews_v1",
   "generated_by": "llm_framework_generation_v1",
   "llm_model": "openai/gpt-5.4",
   "llm_attempts": 1,
   "templates": [
     {
-      "template_id": "mechanism_first_review_template",
+      "template_id": "mechanism_first_review",
       "name": "机制优先型综述模板",
-      "use_case": "用于撰写跨多篇材料的主题综述，先解释底层机制，再讨论案例、反证与命名边界。",
+      "use_case": "用于撰写跨文章主题综述，不按文章逐篇复述，而先提炼共同机制，再讨论证据、边界与反证。",
       "structure": [
-        "先指出这些材料表面上各讲各的，但可能在描述同一个底层机制",
-        "用一句话定义该机制，并说明它为何比单篇 claim 更能解释现象",
-        "拆解机制成立的关键环节，说明真正起作用的变量是什么",
-        "区分机制证据、案例证据与热度信号，给出证据强弱排序",
-        "列出最重要的误读与反证来源，说明什么材料最可能推翻当前解释",
-        "讨论概念重叠、命名边界与需要合并或拆分的主题",
-        "最后给出下一轮最值得补充的证据类型或研究问题"
+        "先给出一句总判断：这组材料真正反复出现的不是哪些新闻点，而是哪一个底层机制。",
+        "说明该机制如何在不同案例中以不同表象出现，并指出它们共享的系统逻辑。",
+        "划分当前主题成熟度：单案例、早期成形、反复出现或相对稳定，并说明原因。",
+        "列出最关键的支持证据，但强调哪些只是机制收敛，哪些仍只是叙事或热度信号。",
+        "专门讨论边界条件、失败方式和最可能的反证材料，避免单向乐观。",
+        "指出当前混合概念中哪些应该合并、拆分或重命名。",
+        "以“下一轮最该验证什么”收束，给出后续阅读与证据补强方向。"
       ],
       "source_review_ids": [
         "ai_agent_living_review",
         "ai_infrastructure_living_review",
         "memory_context_living_review",
-        "research_benchmark_living_review"
+        "research_benchmark_living_review",
+        "robotics_embodied_ai_living_review"
       ],
       "status": "llm_draft"
     },
     {
-      "template_id": "system_trust_analysis_template",
-      "name": "可托付系统分析模板",
-      "use_case": "用于分析 AI Agent、记忆系统或自动化产品为何能或不能被长期托付。",
+      "template_id": "boundary_shift_analysis",
+      "name": "系统边界变化分析模板",
+      "use_case": "用于写技术或产品变化分析，强调变化不只是能力变强，而是责任、接口和瓶颈位置发生转移。",
       "structure": [
-        "先说明系统展示出的能力与真正可托付之间不是一回事",
-        "定义任务小世界：对象、权限、规则、例外和评价标准",
-        "分析 Runtime 如何处理状态、上下文、调度、持久化和异常恢复",
-        "说明模型负责什么判断，工具负责什么执行，验证链如何闭环",
-        "列出系统最脆弱的失效点，如上下文污染、权限越界、长时程漂移或人工依赖",
-        "给出反面案例或边界条件，说明何时 Demo 无法转化为可托付能力",
-        "总结真正决定上限的是模型、运行时还是领域建模"
+        "先指出旧系统的默认边界是什么，过去由谁承担关键职责。",
+        "说明新方案把哪些职责重新分配给模型、运行时、工具、平台或用户。",
+        "分析重画边界后获得的收益：可控性、效率、可验证性、部署性或扩展性。",
+        "指出新边界带来的新瓶颈和新成本，例如验证、维护、时延、数据或权限治理。",
+        "加入失败条件：在什么约束下，这种边界变化不成立或收益不明显。",
+        "对比常见误读，解释为什么这不是单点功能升级或营销包装。",
+        "最后总结新的竞争焦点已经从哪里转移到哪里。"
       ],
       "source_review_ids": [
+        "developer_tools_living_review",
         "ai_agent_living_review",
+        "robotics_embodied_ai_living_review",
         "memory_context_living_review"
       ],
       "status": "llm_draft"
     },
     {
-      "template_id": "signal_vs_structure_template",
-      "name": "信号与结构区分模板",
-      "use_case": "用于写趋势判断，避免把热度、涨星、传播或单次爆款误判为长期结构。",
+      "template_id": "decoupling_case_writeup",
+      "name": "解耦案例写作模板",
+      "use_case": "用于描述基础设施、平台或架构创新如何通过解耦与隔离改善性能、可靠性和产品化能力。",
       "structure": [
-        "先承认市场信号已经出现，但提醒信号不等于结构",
-        "区分当前看到的是热度指标、采用证据、机制证据还是经营证据",
-        "解释这些信号背后可能对应的真实机制",
-        "指出缺失的关键证据，如失败率、复购、长期 ROI、组织级采用或标准对照",
-        "列出最容易发生的误读与过度推断",
-        "给出判断升级的条件：什么证据出现后才能把信号提升为结构性趋势"
+        "定义原系统中的关键耦合点，以及它为什么成为性能或稳定性瓶颈。",
+        "说明新方案如何把局部故障、局部资源约束或局部错误变成可隔离问题。",
+        "分析解耦后在调度、恢复、成本或扩展性上的具体收益。",
+        "指出这种解耦成立所依赖的前提条件和适用范围。",
+        "提醒读者：这不是完全通用化，而往往是从旧耦合切换到更可控的新耦合。",
+        "补充反面情况：在哪些业务或模型条件下，解耦会引入额外复杂度或得不偿失。",
+        "以“真正的护城河在耦合治理能力”收束。"
       ],
       "source_review_ids": [
-        "consumer_economy_living_review",
-        "developer_tools_living_review",
-        "multimodal_ai_living_review",
+        "ai_infrastructure_living_review",
+        "ai_agent_living_review",
         "product_business_living_review"
       ],
       "status": "llm_draft"
     },
     {
-      "template_id": "bottleneck_rewrite_template",
-      "name": "瓶颈重写论证模板",
-      "use_case": "用于描述某一技术进展如何把原本的硬约束、流程约束或成本约束改写为可工程化变量。",
+      "template_id": "evidence_calibration_template",
+      "name": "证据校准模板",
+      "use_case": "用于在趋势判断、产品分析或技术评论中校准证据强弱，区分机制证据、案例证据与传播信号。",
       "structure": [
-        "先指出行业原有的默认约束是什么，以及它为何长期被视为硬瓶颈",
-        "说明新方案并非简单加速，而是改写了瓶颈所在层级",
-        "分层解释改写发生在协议、拓扑、调度、模型结构或组织流程中的哪一层",
-        "强调方案成立依赖的前提条件，避免把局部成功外推为普遍规律",
-        "分析由此释放出的新能力，例如跨集群、解耦部署、长期运行或资源池化",
-        "列出可能的失效模式与扩展成本",
-        "最后说明这意味着竞争力正在从单点性能转向跨层协同"
+        "先给出结论，但立刻说明这是机制判断、趋势判断还是确定性判断。",
+        "把现有证据分成机制证据、案例证据、运营证据、传播信号四类。",
+        "说明哪些证据足以支持当前判断，哪些只能作为辅助线索。",
+        "列出目前最缺失的证据类型，例如失败案例、对照评测、留存数据或成本数据。",
+        "专门处理常见误读：为什么高热度、高分数或高增长不自动等于结构成立。",
+        "提出最有力的反证路径，说明什么样的新材料会迫使结论修正。",
+        "最后给出一个经过校准后的、更保守但更稳的判断。"
       ],
       "source_review_ids": [
-        "ai_infrastructure_living_review",
-        "memory_context_living_review",
-        "product_business_living_review"
+        "consumer_economy_living_review",
+        "developer_tools_living_review",
+        "multimodal_ai_living_review",
+        "research_benchmark_living_review",
+        "memory_context_living_review"
       ],
       "status": "llm_draft"
     }

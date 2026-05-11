@@ -1,110 +1,119 @@
 {
-  "created_at": "2026-05-09T05:36:27+00:00",
-  "last_updated_at": "2026-05-09T05:37:46+00:00",
+  "created_at": "2026-05-11T04:51:01+00:00",
+  "last_updated_at": "2026-05-11T04:52:18+00:00",
   "version": 1,
-  "source_hash": "3c134d04741d57efa21cfa1d3dd4a0440d9e55235973168da5d4993e0db113d7",
+  "source_hash": "d4b7eadc5f199bf6114b4511fca3399d1e66c0ae2f618781a677b402b78bc341",
   "prompt_version": "frameworks_from_reviews_v1",
   "generated_by": "llm_framework_generation_v1",
   "llm_model": "openai/gpt-5.4",
   "llm_attempts": 1,
   "frameworks": [
     {
-      "framework_id": "mechanism_boundary_evidence_framework",
-      "name": "机制-边界-证据三层判断框架",
-      "purpose": "用于从多篇主题材料中抽取可迁移的底层机制，区分叙事信号与机制证据，并系统处理反例、失败案例与适用边界。",
+      "framework_id": "mechanism_maturity_boundary",
+      "name": "机制—成熟度—边界判断框架",
+      "purpose": "用于从多篇材料中抽取可迁移的底层机制，并同时判断主题处于信号、成形还是重复出现阶段，避免把热度叙事误当成熟结构。",
       "dimensions": [
-        "这些材料是否在描述同一个底层机制，而非多个相邻但不同的话题？",
-        "真正起作用的变量是什么：模型、运行时、协议、组织流程、数据结构还是硬件约束？",
-        "现有证据属于机制证据、案例证据、热度信号还是宣传叙事？各自权重如何？",
-        "该解释最容易被什么类型的反证推翻：失败案例、跨场景失效、成本失控、规模不成立还是评价口径错误？",
-        "这个机制在哪些边界条件下成立，在哪些任务、行业、时延、权限或资源约束下会失效？",
-        "如果多个概念重叠，应该合并、重命名还是拆分为上下游机制？"
+        "这些材料反复指向的底层机制是什么，而不是各自表层 claim 是什么？",
+        "当前证据处于单案例、早期成形、反复出现还是较稳定阶段？判断依据是什么？",
+        "哪些现象是真正的机制收敛，哪些只是传播热度、产品宣传或一次性演示？",
+        "这个机制在哪些任务、行业或用户条件下成立，边界条件是什么？",
+        "有哪些反证、失败案例或负面样本最可能推翻当前解释？",
+        "当前混合在一起的概念中，哪些应合并，哪些应拆分为相邻主题？"
       ],
       "best_for": [
-        "动态综述归纳",
-        "主题聚类命名",
-        "行业机制识别",
-        "趋势辨伪"
+        "动态综述抽象",
+        "主题归纳与命名",
+        "趋势成熟度判断",
+        "早期赛道研判"
       ],
       "source_review_ids": [
         "ai_agent_living_review",
         "ai_infrastructure_living_review",
+        "consumer_economy_living_review",
+        "developer_tools_living_review",
         "memory_context_living_review",
+        "multimodal_ai_living_review",
+        "product_business_living_review",
         "research_benchmark_living_review",
         "robotics_embodied_ai_living_review"
       ],
       "status": "llm_draft"
     },
     {
-      "framework_id": "runtime_trust_system_framework",
-      "name": "可托付系统设计框架",
-      "purpose": "用于分析一个 AI 系统为何能从 Demo 走向可托付运行，重点审视运行时、状态管理、权限、验证与持续执行能力。",
+      "framework_id": "system_boundary_reconfiguration",
+      "name": "系统边界重画框架",
+      "purpose": "用于判断一个变化是否只是能力增强，还是正在重写系统边界、责任分工和价值分配。",
       "dimensions": [
-        "系统的核心价值来自模型判断，还是来自 Runtime 对状态、上下文、调度和持久化的托底？",
-        "任务小世界是否被清晰建模，包括对象、权限、例外、评价标准和领域技能？",
-        "执行链路中哪些环节由确定性工具承担，哪些环节由模型承担，边界是否清楚？",
-        "系统如何处理长时程任务中的上下文污染、记忆退化、异常中断和回滚？",
-        "验证与仲裁机制是什么，如何发现错误行动、权限越界或结果失真？",
-        "离开人工盯梢后系统还能否继续稳定运行，若不能，失败主因是什么？"
+        "变化发生在模型/组件能力本身，还是发生在模块边界、接口和控制权分配？",
+        "哪些原本由人、浏览器、网络、会话或人工脚手架承担的职责被重新分配了？",
+        "新的边界是否引入了更强的可验证性、可调度性、可持久化或可维护性？",
+        "系统重画后，新的瓶颈转移到了哪里：验证、时延、数据、权限、吞吐还是运营？",
+        "重画边界后带来的副作用是什么：耦合转移、维护成本上升、局部最优或新型脆弱性？",
+        "如果不重画边界，只靠堆模型、堆上下文或堆工具，为什么会失效？"
       ],
       "best_for": [
         "AI Agent",
+        "开发者工具",
         "记忆系统",
-        "开发者工具中的 Agent 工作流",
-        "消费级后台自动化产品"
+        "具身智能",
+        "产品与平台演进"
       ],
       "source_review_ids": [
         "ai_agent_living_review",
+        "developer_tools_living_review",
         "memory_context_living_review",
-        "developer_tools_living_review"
-      ],
-      "status": "llm_draft"
-    },
-    {
-      "framework_id": "communication_bottleneck_rewrite_framework",
-      "name": "通信瓶颈重写框架",
-      "purpose": "用于分析 AI 基础设施或分布式系统中，哪些性能瓶颈本来看似物理极限，后来被协议、拓扑、调度或模型协同改写为可工程化变量。",
-      "dimensions": [
-        "当前瓶颈本质是算力不足、带宽不足、尾延迟、拥塞、故障恢复还是数据移动成本？",
-        "瓶颈是由物理层决定，还是可以通过协议、拓扑、路由、缓存或任务解耦被重写？",
-        "系统改进依赖单点器件升级，还是跨层联合设计？",
-        "训练与推理中的通信约束是否共享同一机制，还是只是表面相似？",
-        "方案成立依赖哪些前提条件，例如模型结构变化、流量压缩、共址假设或网络质量？",
-        "在规模扩大、异构芯片接入、跨集群部署或跨数据中心扩展时，哪些失效模式会出现？"
-      ],
-      "best_for": [
-        "AI 基础设施",
-        "GPU 集群",
-        "数据中心网络",
-        "推理服务架构"
-      ],
-      "source_review_ids": [
-        "ai_infrastructure_living_review",
+        "robotics_embodied_ai_living_review",
         "product_business_living_review"
       ],
       "status": "llm_draft"
     },
     {
-      "framework_id": "context_topology_governance_framework",
-      "name": "上下文拓扑治理框架",
-      "purpose": "用于分析 Context Engineering 与长期记忆系统，不再只看上下文能装多少，而是看信息如何被组织、压缩、路由、更新与审计。",
+      "framework_id": "coupling_governance",
+      "name": "耦合治理框架",
+      "purpose": "用于分析系统性能、成本和可靠性问题是否源于强耦合，以及创新是否真正实现了解耦、隔离与恢复。",
       "dimensions": [
-        "系统是平铺上下文，还是先组织信息拓扑再检索调用？",
-        "写入策略是什么：即时筛选、保真存档、后验组织还是混合模式？",
-        "检索和装配依据什么路由：任务、实体、时间、来源、可信度还是使用频率？",
-        "压缩是否牺牲关键信号，是否会引入摘要偏见、来源丢失或长期误差累积？",
-        "记忆系统如何进行增量更新、冲突消解、遗忘控制与来源审计？",
-        "在跨任务、长周期和多用户条件下，结构化记忆会出现哪些维护成本和退化问题？"
+        "当前系统最关键的强耦合是什么：网络、状态、KV Cache、权限、人工流程还是单机进程？",
+        "这些耦合如何放大尾延迟、故障传播、组织摩擦或资源浪费？",
+        "新方案是在真正解耦，还是只是把旧耦合换成了更可控的新耦合？",
+        "局部故障、局部资源约束或局部错误，能否被隔离、调度、回滚和恢复？",
+        "解耦成立依赖哪些前提条件，例如模型结构、任务长度、网络条件或业务约束？",
+        "在哪些场景下，保留一定耦合反而比过度通用化更有效？"
       ],
       "best_for": [
-        "记忆 / Context Engineering",
-        "Agent 记忆层",
-        "RAG 升级方案",
-        "开发者上下文工具"
+        "AI 基础设施",
+        "Agent Runtime",
+        "推理服务架构",
+        "训练网络",
+        "平台工程"
       ],
       "source_review_ids": [
-        "memory_context_living_review",
+        "ai_infrastructure_living_review",
         "ai_agent_living_review",
+        "product_business_living_review"
+      ],
+      "status": "llm_draft"
+    },
+    {
+      "framework_id": "context_state_governance",
+      "name": "上下文与状态治理框架",
+      "purpose": "用于评估一个系统是否真正解决了长时程任务中的信息装配、记忆污染、状态退化和可审计性问题。",
+      "dimensions": [
+        "系统处理的是一次性上下文，还是长期状态与记忆？",
+        "信息是先组织后检索，还是平铺后召回；两者成本与失真差异在哪里？",
+        "写入、压缩、路由、加载、遗忘和审计分别由什么机制承担？",
+        "大窗口、更多 token 或更多检索结果，为什么不足以自动提升长期稳定性？",
+        "错误记忆、过时信息和上下文污染如何被发现、纠正和回滚？",
+        "该系统在哪些长时程、多会话、多角色场景下有效，在哪些场景下会退化？"
+      ],
+      "best_for": [
+        "Context Engineering",
+        "长期记忆系统",
+        "AI Agent",
+        "开发者工具中的上下文管理"
+      ],
+      "source_review_ids": [
+        "ai_agent_living_review",
+        "memory_context_living_review",
         "developer_tools_living_review"
       ],
       "status": "llm_draft"

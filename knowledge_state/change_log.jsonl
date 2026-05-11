@@ -4767,3 +4767,11 @@
 {"timestamp": "2026-05-11T04:49:46+00:00", "event": "knowledge_init", "created": [], "force": false}
 {"timestamp": "2026-05-11T04:49:46+00:00", "event": "knowledge_init", "created": [], "force": false}
 {"timestamp": "2026-05-11T04:49:46+00:00", "event": "knowledge_build_report", "output_path": "docs/knowledge.html"}
+{"timestamp": "2026-05-11T04:51:01+00:00", "event": "knowledge_init", "created": [], "force": false}
+{"timestamp": "2026-05-11T04:51:01+00:00", "event": "knowledge_init", "created": [], "force": false}
+{"timestamp": "2026-05-11T04:51:01+00:00", "event": "knowledge_build_report", "output_path": "docs/knowledge.html"}
+{"timestamp": "2026-05-11T04:51:01+00:00", "event": "knowledge_init", "created": [], "force": false}
+{"timestamp": "2026-05-11T04:52:18+00:00", "event": "knowledge_build_frameworks", "method": "llm", "source_hash": "d4b7eadc5f199bf6114b4511fca3399d1e66c0ae2f618781a677b402b78bc341", "framework_count": 4, "template_count": 4}
+{"timestamp": "2026-05-11T04:52:19+00:00", "event": "knowledge_init", "created": [], "force": false}
+{"timestamp": "2026-05-11T04:52:19+00:00", "event": "knowledge_init", "created": [], "force": false}
+{"timestamp": "2026-05-11T04:52:19+00:00", "event": "knowledge_build_report", "output_path": "docs/knowledge.html"}
